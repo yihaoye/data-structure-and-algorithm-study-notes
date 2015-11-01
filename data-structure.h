@@ -1,6 +1,9 @@
 //数据结构与算法
 
 
+//lecture 01-05 
+//general introduction，理论介绍，时间复杂度、空间复杂度的概念与解析
+
 
 //lecture 06
 /*
@@ -66,7 +69,7 @@
 	// Status是函数的类型，其值是函数结果状态代码，如OK等。
 	// 初始条件，顺序线性表L已存在，1<=i<=ListLength(L)
 	//操作结果，用e返回L中第i个数据元素的值。
-	#Status GetElem(SqList L, int i, ElemType *e)
+	Status GetElem(SqList L, int i, ElemType *e)
 	{
 		if(L.length==0 || i<1 || i>L.length)
 		{
@@ -149,8 +152,6 @@
 	
 	
 	
-	
-	
 //lecture 10
 //头指针是链表的必要元素，空链表也有头指针。头结点则不是必要的，但头结点能统一操作，比如在第一个有效结点前插入元素。头结点的数据域一般为空，但也可以用来存放链表长度。
 	
@@ -166,7 +167,32 @@
 	
 	
 //10.2 getElem.c 实现GetElem的代码 (单链表)
+	//初始条件，顺序线性表L已存在，1<=i<=ListLength(L)
+	//操作结果，用e返回L中第i个数据元素的值。
 	
+Status GetElem(LinkList *L, int i, ElemType *e)
+{
+	int j;
+	LinkList p;
+	
+	p = *L->next;
+	j = 1;
+	
+	while(p && j<i)
+	{
+		p = p->next;
+		++j;
+	}
+	
+	if(!p || j>i)
+	{
+		return ERROR;
+	}
+	
+	*e = p->data;
+	
+	return OK;
+}
 	
 	
 	
