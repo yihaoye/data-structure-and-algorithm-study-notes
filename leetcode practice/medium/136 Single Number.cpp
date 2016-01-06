@@ -44,4 +44,6 @@ for example:
 		  XOR					  XOR
 	---------				---------
 		0100					0100
+So if the same number appear twice, no matter what the order is, it is equals to these two same number XOR immediately.
+And finally, the number which only appear once remained.
 */
