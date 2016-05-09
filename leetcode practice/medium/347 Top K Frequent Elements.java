@@ -42,3 +42,15 @@ public List<Integer> topKFrequent(int[] nums, int k) {
     }
     return res;
 }    
+
+/* Someone's comment:
+
+Thanks for sharing, only one nitpick:
+
+Think about the case when K=2, and you have 1 number that has max frequency, say 10 times. and you have 10 numbers that has 2nd max frequency, say 9 times. With your algo, the returned list will contain 11 numbers instead of 2.
+
+Any easy fix: return res.subList(0,k);
+
+(It seems the above scenario is not covered by the existing test cases.)
+
+*/
