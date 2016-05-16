@@ -1,6 +1,6 @@
 //Question:
 /*
-Given a binary tree, return the inorder traversal of its nodes' values.
+Given a binary tree, return the inorder traversal (中序遍历) of its nodes' values.
 
 For example:
 Given binary tree {1,#,2,3},
