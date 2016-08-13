@@ -54,3 +54,23 @@ public:
         return ans;
     }
 };
+
+
+
+//Official Answer 2:
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        int n = s.length(), ans = 0;
+        map<char,int> the_map; // current index of character
+        // try to extend the range [i, j]
+        for (int j = 0, i = 0; j < n; j++) {
+            if (the_map.find(s[j]) != the_map.end()) {
+                i = max(the_map[s[j]], i);
+            }
+            ans = max(ans, j - i + 1);
+            the_map[s[j]] = j + 1;
+        }
+        return ans;
+    }
+};
