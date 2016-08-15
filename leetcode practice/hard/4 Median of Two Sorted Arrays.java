@@ -67,6 +67,8 @@ public class Solution {
         pa = Math.min(k/2, m); pb = k - pa;
         if (a[pa-1] < b[pb-1]){
             // java.util.Arrays.copyOf()实现深拷贝，内部实现是调用System.arraycopy
+            // copyOfRange(int[] original, int from, int to)
+            // Copies the specified range of the specified array into a new array.
             a = Arrays.copyOfRange(a, pa, m);
             return findk(a, m-pa, b, n, k-pa);
         } else if (a[pa-1] > b[pb-1]) {
