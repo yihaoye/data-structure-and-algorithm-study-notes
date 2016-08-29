@@ -32,7 +32,8 @@ public class Solution {
         return list;
     }
 }
-/*
+/* 
+Explain:
 The basic idea is to find the next number to add.
 Take 45 for example: if the current number is 45, the next one will be 450 (450 == 45 * 10)(if 450 <= n), or 46 (46 == 45 + 1) (if 46 <= n) or 5 (5 == 45 / 10 + 1)(5 is less than 45 so it is for sure less than n).
 We should also consider n = 600, and the current number = 499, the next number is 5 because there are all "9"s after "4" in "499" so we should divide 499 by 10 until the last digit is not "9".
@@ -56,3 +57,10 @@ public class Solution {
         else return;
     }
 }
+/*
+Explain:
+The big idea is Tree's pre-order traversal, which means we first output the root, and then its left and right child, and we cannot output right child until we finishing outputting all nodes on the left branch.
+For this problem, a dummy node is the top root, and its children are 1 through 9; for node 1, its children are 10, 100, 1000 and so on; for node 10, its children are 11 through 19.
+Notes that we use (i + 1 <= (i / 10) * 10 + 9) to restrict the range of children.
+*/
+
