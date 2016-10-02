@@ -31,11 +31,14 @@ Return false.
 //My Solution: (not checked by leetcode check machine yet)
 public class Solution{
     public boolean validWordAbbreviation(String word, String abbr) {
-        String[] abbr_split = abbr.split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)");
+        String[] abbr_split = abbr.split("(?<=\\D)(?=\\d)|(?<=\\d)(?=\\D)"); //把数字和字母分开，全都存在abbr_split数组
         /*
         for(int i=0; i<abbr_split.length; i++){
         	System.out.println(abbr_split[i]);
         }
+        
+        比如"i12iz4n"，你会看到abbr_split是:
+        ["i","12","iz","4","n"]
         */
         for(int i=0; i<abbr_split.length; i++){
         	if(Character.isDigit(abbr_split[i].charAt(0))){
