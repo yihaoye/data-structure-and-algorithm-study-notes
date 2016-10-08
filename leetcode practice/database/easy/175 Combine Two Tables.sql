@@ -35,8 +35,24 @@ FirstName, LastName, City, State
 
 
 # Others' Solution:
-# Write your MySQL query statement below
+# basic left join: 902ms.
+
 SELECT FirstName, LastName, City, State
 FROM Person
 LEFT JOIN Address
 ON Person.PersonId = Address.PersonId;
+
+# left join + using: 907ms
+
+SELECT FirstName, LastName, City, State
+FROM Person
+LEFT JOIN Address
+USING(PersonId);
+
+# natural left join: 940ms
+
+SELECT FirstName, LastName, City, State
+FROM Person
+NATURAL LEFT JOIN Address;
+
+# left join is the fastest compare to the two others.
