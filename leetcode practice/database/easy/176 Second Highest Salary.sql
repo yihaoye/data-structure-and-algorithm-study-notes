@@ -18,7 +18,7 @@ For example, given the above Employee table, the second highest salary is 200. I
 
 
 # Others' Solution A:
-SELECT max(Salary)
+SELECT max(Salary) as SecondHighestSalary 
 FROM Employee
 WHERE Salary < (SELECT max(Salary) FROM Employee)
 /* Explain:
@@ -30,7 +30,7 @@ Using max() will return a NULL if the value doesn't exist. So there is no need t
 # Others' Solution B:
 select (
   select distinct Salary from Employee order by Salary Desc limit 1 offset 1
-)as second
+)as SecondHighestSalary
 /* Explain: 
 Change the number after 'offset' gives u n-th highest salary
 */
