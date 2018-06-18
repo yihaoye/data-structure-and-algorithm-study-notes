@@ -20,24 +20,24 @@
 function solution(A) {
     // write your code in JavaScript (Node.js 8.9.4)
     var arr = A.sort(function(a, b) {
-      return a - b;
-    });
+      return a - b
+    })
     if(arr[arr.length-1]<1 || arr[0]>1) {
-        return 1;
+        return 1
     }
     
     for(var i=0; i<arr.length; i++) {
         if(arr[i+1]==arr[i] || arr[i+1]<=1) {
-            continue;
+            continue
         } else if(arr[i+1]-arr[i]>1) {
             if(arr[i]>=0) {
-                return arr[i]+1;
+                return arr[i]+1
             } else if(arr[i]<=0) {
-                return 1;
+                return 1
             }
         } else {
             continue;
         }
     }
-    return arr[arr.length-1]+1;
+    return arr[arr.length-1]+1
 }
