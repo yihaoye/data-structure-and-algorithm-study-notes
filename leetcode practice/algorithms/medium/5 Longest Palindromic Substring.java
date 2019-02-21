@@ -39,7 +39,8 @@ public class Solution {
             lo = j + 1;
             maxLen = k - j - 1;
         }
-    }}
+    }
+}
 
 
 // My Solution:
