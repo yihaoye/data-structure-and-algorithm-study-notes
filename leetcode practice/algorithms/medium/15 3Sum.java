@@ -44,6 +44,8 @@ class Solution {
 // My Solution: (not work yet)
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
+        // sort (do quick or merge sort)
+        Arrays.sort(nums);
         // ss short for "solution set"
         List<List<Integer>> ss = new ArrayList<ArrayList<Integer>>(); 
         
@@ -70,9 +72,7 @@ class Solution {
             return ss;
         }
         
-        // more setting and sort (do quick or merge sort)
-        Arrays.sort(negatives);
-        Arrays.sort(positives);
+        // more setting
         int preNum = 0;
         
         // case 2:
