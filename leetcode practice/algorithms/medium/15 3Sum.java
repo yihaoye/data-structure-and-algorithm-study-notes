@@ -17,23 +17,45 @@ A solution set is:
 ]
 */
 
-// Other's Solution:
+
+// Other's Solution 1:
 class Solution {
-    public List<List<Integer>> threeSum(int[] num) {
-        Arrays.sort(num);
-        List<List<Integer>> res = new LinkedList<>(); 
-        for (int i = 0; i < num.length-2; i++) {
-            if (i == 0 || (i > 0 && num[i] != num[i-1])) {
-                int lo = i+1, hi = num.length-1, sum = 0 - num[i];
-                while (lo < hi) {
-                    if (num[lo] + num[hi] == sum) {
-                        res.add(Arrays.asList(num[i], num[lo], num[hi]));
-                        while (lo < hi && num[lo] == num[lo+1]) lo++;
-                        while (lo < hi && num[hi] == num[hi-1]) hi--;
-                        lo++; hi--;
-                    } else if (num[lo] + num[hi] < sum) lo++;
-                    else hi--;
+    public List<List<Integer>> threeSum(int[] nums) {
+        Set<List<Integer>> res  = new HashSet<>();
+        if (nums.length == 0) return new ArrayList<>(res);
+        Arrays.sort(nums);
+        for (int i = 0; i < nums.length - 2; i++) {
+            int j = i + 1;
+            int k = nums.length - 1;
+            while (j < k) {
+                int sum = nums[i] + nums[j] + nums[k];
+                if (sum == 0) res.add(Arrays.asList(nums[i], nums[j++], nums[k--]));
+                else if (sum > 0) k--;
+                else if (sum < 0) j++;
             }
+        }
+        return new ArrayList<>(res);
+    }
+}
+
+
+// Other's Solution 2:
+class Solution {
+    public List<List<Integer>> threeSum(int[] nums) {
+        Arrays.sort(nums);
+        List<List<Integer>> res = new LinkedList<>(); 
+        for (int i = 0; i < nums.length-2; i++) {
+            if (i == 0 || (i > 0 && nums[i] != nums[i-1])) {
+                int lo = i+1, hi = nums.length-1, sum = 0 - nums[i];
+                while (lo < hi) {
+                    if (nums[lo] + nums[hi] == sum) {
+                        res.add(Arrays.asList(nums[i], nums[lo], nums[hi]));
+                        while (lo < hi && nums[lo] == nums[lo+1]) lo++;
+                        while (lo < hi && nums[hi] == nums[hi-1]) hi--;
+                        lo++; hi--;
+                    } else if (nums[lo] + nums[hi] < sum) lo++;
+                    else hi--;
+                }
             }
         }
         return res;
@@ -41,13 +63,17 @@ class Solution {
 }
 
 
-// My Solution: (not work yet)
+// My Solution: 
 class Solution {
     public List<List<Integer>> threeSum(int[] nums) {
-        // sort (do quick or merge sort)
-        Arrays.sort(nums);
         // ss short for "solution set"
         List<List<Integer>> ss = new LinkedList<>(); 
+        if (nums.length < 3) {
+            return ss;
+        }
+        
+        // sort (do quick or merge sort)
+        Arrays.sort(nums);
         
         // four abstract cases: [0, 0, 0], [<0, 0, >0], [<0, <0, >0], [<0, >0, >0]
         // pre setting:
@@ -78,43 +104,38 @@ class Solution {
         // case 2 and case 4:
         for (int negative : negatives) {
             // case 2:
-            if (positives.indexOf(-negative) != -1 && negative != preNum) {
+            if (zeroCount > 0 && positives.indexOf(-negative) != -1 && negative != preNum) {
                 ss.add(Arrays.asList(negative, 0, -negative));
             }
             preNum = negative; // prevent duplicate triplets.
 
             // case 4:
-            for (List<Integer> otherTwo : findOtherTwo(negative, positives)) {
-                ss.add(Arrays.asList(negative, otherTwo.get(0), otherTwo.get(1)));
-            }
+            ss = addOtherTwo(negative, positives, ss);
         }
         
         // case 3:
         for (int positive : positives) {
-            for (List<Integer> otherTwo : findOtherTwo(positive, negatives)) {
-                ss.add(Arrays.asList(otherTwo.get(0), otherTwo.get(1), positive));
-            }
+            ss = addOtherTwo(positive, negatives, ss);
         }
         
         return ss;
     }
     
-    public List<List<Integer>> findOtherTwo(int num, List<Integer> nums) {
+    public List<List<Integer>> addOtherTwo(int num, List<Integer> nums, List<List<Integer>> ss) {
         // nums is sortted int array
-        List<List<Integer>> otherTwo = new LinkedList<>();
         for (int i = 0; i < nums.size(); i++) {
-            if (num >0 && -2*nums.get(i) > num) {
+            if (num >0 && -2*nums.get(i) < num) {
                 break;
             }
             if (num <0 && 2*nums.get(i) > -num) {
                 break;
             }
-            if (nums.indexOf(- num - nums.get(i)) != -1 && nums.indexOf(- num - nums.get(i)) > i) {
-                otherTwo.add(Arrays.asList(nums.get(i), - num - nums.get(i)));
-            } else {
-                break;
+            if ((2*nums.get(i) == -num && Collections.frequency(nums, - num - nums.get(i)) > 1) || (2*nums.get(i) != -num && Collections.frequency(nums, - num - nums.get(i)) > 0)) {
+                if (!ss.contains(Arrays.asList(num, nums.get(i), - num - nums.get(i)))) {
+                    ss.add(Arrays.asList(num, nums.get(i), - num - nums.get(i)));
+                }
             }
         }
-        return otherTwo;
+        return ss;
     }
 }
