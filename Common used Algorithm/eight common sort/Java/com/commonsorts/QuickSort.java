@@ -1,6 +1,7 @@
-public class QuickSortApp {
+package com.commonsorts;
 
-    public static void qSort(int[] arr, int head, int tail) {
+public class QuickSort {
+    public void quickSort(int[] arr, int head, int tail) {
         if (head >= tail || arr == null || arr.length <= 1) {
             return;
         }
@@ -22,17 +23,7 @@ public class QuickSortApp {
                 ++i;
             }
         }
-        qSort(arr, head, j);
-        qSort(arr, i, tail);
-    }
-
-    public static void main(String[] args) {
-        int[] arr = new int[]{1, 4, 8, 2, 55, 3, 4, 8, 6, 4, 0, 11, 34, 90, 23, 54, 77, 9, 2, 9, 4, 10};
-        qSort(arr, 0, arr.length - 1);
-        String out = "";
-        for (int digit : arr) {
-            out += (digit + ",");
-        }
-        System.out.println(out);
+        quickSort(arr, head, j);
+        quickSort(arr, i, tail);
     }
 }
