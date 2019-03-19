@@ -1,6 +1,6 @@
 package com.commonsorts;
 
-// 插入排序
+// 插入排序（时间复杂度：O(n^2)）
 public class InsertSort {
     public void insertSort(int[] a){
             int length = a.length; //数组长度，将这个提取出来是为了提高速度。
@@ -43,4 +43,26 @@ public class InsertSort {
 
 /* ???
 想想上面的步骤3和4能不能通过swap函数合二为一？如果C++使用swap的话需要'#include<algorithm>'。
+*/
+
+
+
+/*
+// 对顺序表L作直接插入排序
+void InsertSort(SqList *L) {
+    int i, j;
+    for (i = 2; i <= L->length; i++) {
+        // 需将L->r[i]插入有序子表
+        if (L->r[i] < L->r[i - 1]) {
+            // 设置哨兵
+            L->r[0] = L->r[i];
+            for (j = i - 1; L->r[j] > L->r[0]; j--) {
+                //记录后移
+                L->r[j + 1] = L->r[j];
+            }
+            // 插入到正确位置
+            L->r[j + 1] = L->r[0];
+        }
+    }
+}
 */
