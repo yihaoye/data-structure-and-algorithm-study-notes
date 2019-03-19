@@ -35,5 +35,13 @@ public class Tests {
             out += (digit + ",");
         }
         System.out.println(out);
+
+        // bubbleSort
+        new BubbleSort().bubbleSort(arr);
+        out = "";
+        for (int digit : arr) {
+            out += (digit + ",");
+        }
+        System.out.println(out);
     }
 }
