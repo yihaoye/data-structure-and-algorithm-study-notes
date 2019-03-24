@@ -1,6 +1,6 @@
 package com.commonsorts;
 
-// 希尔排序 (时间复杂度：O(nlog2n)，不稳定，由数学家希尔对直接插入排序的改良版，在此之前直接插入排序是最好的排序，即当时最好的算法的时间复杂度未突破O(n^2))
+// 希尔排序 (时间复杂度：O(nlog2n)，不稳定，由计算机科学家希尔对直接插入排序的改良版，在此之前直接插入排序是最好的排序，即当时最好的算法的时间复杂度未突破O(n^2))
 
 /*
 对于直接插入排序问题，数据量巨大时。
@@ -75,6 +75,31 @@ public class ShellSort {
 
 Shell排序比冒泡排序快5倍，比插入排序大致快2倍。Shell排序比起QuickSort，MergeSort，HeapSort慢很多。但是它相对比较简单，它适合于数据量在5000以下并且速度并不是特别重要的场合。它对于数据量较小的数列重复排序是非常好的。
 More： https://www.zhihu.com/question/28634804
+
+// 大话数据结构：对顺序表L作希尔排序
+void ShellSort(SqList *L)
+{
+	int i,j,k=0;
+	int increment=L->length;
+	do
+	{
+		increment=increment/3+1; // 增量序列
+		for(i=increment+1;i<=L->length;i++)
+		{
+			if (L->r[i]<L->r[i-increment]) // 需将L->r[i]插入有序增量子表
+			{
+				L->r[0]=L->r[i]; // 暂存在L->r[0]
+				for(j=i-increment;j>0 && L->r[0]<L->r[j];j-=increment)
+					L->r[j+increment]=L->r[j]; // 记录后移，查找插入位置
+				L->r[j+increment]=L->r[0]; // 插入
+			}
+		}
+	}
+	while(increment>1);
+}
+// “增量”的选取非常关键。我们在代码中第7行，是用increment=increment/3+1;的方式选取增量的，可究竟应该选取什么样的增量才是最好，目前还是一个数学难题，迄今为止还没有人找到一种最好的增量序列。不过大量的研究表明，当增量序列为dlta[k]=2t-k+1-1（0≤k≤t≤）时，可以获得不错的效率，其时间复杂度为O(n3/2)，要好于直接排序的O(n2)。需要注意的是，增量序列的最后一个增量值必须等于1才行。另外由于记录是跳跃式的移动，希尔排序并不是一种稳定的排序算法。
+
+讲解：https://www.jianshu.com/p/d730ae586cf3 图解部分简单易懂
 */
 
 

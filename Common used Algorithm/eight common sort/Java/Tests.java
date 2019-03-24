@@ -43,5 +43,13 @@ public class Tests {
             out += (digit + ",");
         }
         System.out.println(out);
+
+        // heapSort
+        new HeapSort().heapSort(arr);
+        out = "";
+        for (int digit : arr) {
+            out += (digit + ",");
+        }
+        System.out.println(out);
     }
 }

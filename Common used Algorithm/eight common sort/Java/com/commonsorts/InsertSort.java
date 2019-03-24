@@ -1,6 +1,7 @@
 package com.commonsorts;
 
 // 插入排序（时间复杂度：O(n^2)，稳定，最好情况下即原数据已全部排序好则时间复杂度是O(n)，空间复杂度只需要带排序数据加一个额外辅助单位即可）
+// 原理如其名，即如整理扑克牌每次拿到新牌先对比最后一个大牌，如果小才开始往前一一对比并插入合适位置否则直接放最后，默认每次拿到新牌前前面的牌已全部由小至大排序好。
 public class InsertSort {
     public void insertSort(int[] a){
             int length = a.length; //数组长度，将这个提取出来是为了提高速度。
