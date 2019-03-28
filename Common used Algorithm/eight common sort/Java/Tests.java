@@ -51,5 +51,13 @@ public class Tests {
             out += (digit + ",");
         }
         System.out.println(out);
+
+        // mergeSort
+        new MergeSort().mergeSort(arr);
+        out = "";
+        for (int digit : arr) {
+            out += (digit + ",");
+        }
+        System.out.println(out);
     }
 }

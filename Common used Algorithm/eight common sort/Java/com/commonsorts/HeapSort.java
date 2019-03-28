@@ -5,7 +5,7 @@ public class HeapSort {
     public void heapSort(int[] a) {
         int i;
         for (i = a.length/2-1; i>0; i--) { /*  把a中的所有元素构建成一个大根堆 */
-            HeapAdjust(a, i, a.length-1);
+            HeapAdjust(a, i, a.length-1); /* 以数组形式存在的堆（以数组index暗示在二叉树的哪个、第几个结点上。完全二叉树 - 根结点数值比其任何孩子结点数值都大，但左子树未必大于右子树） */
         }
         for (i = a.length-1; i>1; i--) { 
             swap(a, 1, i); /* 将堆顶记录和当前未经排序子序列的最后一个记录交换 */
