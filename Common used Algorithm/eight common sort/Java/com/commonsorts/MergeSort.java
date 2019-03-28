@@ -1,6 +1,6 @@
 package com.commonsorts;
 
-// 归并排序 (时间复杂度：O(nlog2n)，稳定)
+// 归并排序（时间复杂度：O(nlog2n)，空间复杂度：O(n+logn)，稳定）
 public class MergeSort {
     public void mergeSort(int[] a)
     { 
@@ -129,13 +129,13 @@ public class MergeSort {
             Merge(TR2,TR1,s,m,t);	// 将TR2[s..m]和TR2[m+1..t]归并到TR1[s..t]
         }
     }
-
     // 对顺序表L作归并排序
     void MergeSort(SqList *L)
     { 
         MSort(L->r,L->r,1,L->length);
     }
 
+    
     // 非递归法
     // 将SR[]中相邻长度为s的子序列两两归并到TR[]
     void MergePass(int SR[],int TR[],int s,int n)
@@ -153,7 +153,6 @@ public class MergeSort {
             for(j =i;j <= n;j++)
                 TR[j] = SR[j];
     }
-
     // 对顺序表L作归并非递归排序
     void MergeSort2(SqList *L)
     {

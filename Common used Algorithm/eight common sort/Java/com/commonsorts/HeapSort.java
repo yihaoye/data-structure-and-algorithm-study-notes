@@ -1,6 +1,6 @@
 package com.commonsorts;
 
-// 堆排序 (时间复杂度：O(nlogn)，稳定，是简单选择排序的改良版)
+// 堆排序 (时间复杂度：O(nlogn)，不稳定，是简单选择排序的改良版)
 public class HeapSort {
     public void heapSort(int[] a) {
         int i;

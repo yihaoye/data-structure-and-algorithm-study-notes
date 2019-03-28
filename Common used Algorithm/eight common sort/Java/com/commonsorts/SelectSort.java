@@ -1,6 +1,6 @@
 package com.commonsorts;
 
-// 简单选择排序（对链表更友好 SqList *L）（时间复杂度：O(n^2)）
+// 简单选择排序（对链表更友好 SqList *L）（时间复杂度：O(n^2)，不稳定）
 // 选择排序与冒泡排序原理基本一样，只是选择排序尽量减少数据元素移动、交换次数，比较次数仍是一样。应该说，尽管与冒泡排序同为O(n2)，但简单选择排序的性能上还是要略优于冒泡排序。<大话数据结构> 
 public class SelectSort {
     public void selectSort(int[] a) { // SqList *L 作为参数也可，代码稍作链表语法改动即可
