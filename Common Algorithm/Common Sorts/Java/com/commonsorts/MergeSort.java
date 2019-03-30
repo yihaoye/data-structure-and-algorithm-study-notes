@@ -85,6 +85,8 @@ public class MergeSort {
 // 作者：Java3y
 // 链接：https://juejin.im/post/5ab4c7566fb9a028cb2d9126
 
+// 非递归可参考：https://www.jianshu.com/p/3f27384387c1或大话数据结构
+
 
 
 /* 
