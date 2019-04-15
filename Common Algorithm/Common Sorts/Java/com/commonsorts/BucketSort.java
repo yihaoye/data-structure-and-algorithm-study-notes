@@ -1,10 +1,17 @@
 package com.commonsorts;
 
-// 桶排序 (时间复杂度：O(n+k)，稳定)
+// 桶排序 (时间复杂度：O(n+n^2/k+k)，不稳定，最坏空间复杂度：O(n*k)，最坏时间复杂度：O(n^2))
 
 
 public class BucketSort {
-	public void bucketSort(int[] a, int maxVal) {
+    // 无需过多解释该算法，以下代码非常简单一目了然
+	public void bucketSort(int[] a) {
+        int maxVal = a[0];
+
+        for (int i = 1; i < a.length; i++) {
+            if (a[i] > maxVal) maxVal = a[i];
+        }
+
         int[] bucket = new int[maxVal+1];
 
         for (int i = 0; i < bucket.length; i++) {

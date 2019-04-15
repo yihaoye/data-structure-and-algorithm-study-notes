@@ -6,7 +6,7 @@ public class Tests {
         
         // quickSort
         int[] arr = messArr;
-        new QuickSort().quickSort(arr, 0, arr.length - 1);
+        new QuickSort().quickSort(arr);
         String out = "";
         for (int digit : arr) {
             out += (digit + ",");
@@ -69,7 +69,7 @@ public class Tests {
 
         // bucketSort
         arr = messArr;
-        new BucketSort().bucketSort(arr, 90); // Here you should write some code to get the Max Value within the array
+        new BucketSort().bucketSort(arr);
         out = "";
         for (int digit : arr) {
             out += (digit + ",");

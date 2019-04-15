@@ -1,7 +1,11 @@
 package com.commonsorts;
 
 public class QuickSort {
-    public void quickSort(int[] arr, int head, int tail) {
+	public void quickSort(int[] a) {
+		sort(a, 0, a.length - 1);
+	}
+	
+    public void sort(int[] arr, int head, int tail) {
         if (head >= tail || arr == null || arr.length <= 1) {
             return;
         }
@@ -23,8 +27,8 @@ public class QuickSort {
                 ++i;
             }
         }
-        quickSort(arr, head, j);
-        quickSort(arr, i, tail);
+        sort(arr, head, j);
+        sort(arr, i, tail);
     }
 }
 
