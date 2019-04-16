@@ -6,5 +6,5 @@
 3. Common Sorts, Algorithm, Data Structure Implementation  
 4. Codility Practices  
 5. Google Code Jam Practices  
-6. Leetcode Practices (每个问题第一次提交是自己的首次解答方法，第二次提交是进行复盘复习后并添加、理解他人的更优解)  
+6. Leetcode Practices (每个问题第一次提交是自己的首次解答方法，第二次提交是进行复盘复习后并添加、理解他人的更优解以及增添其他语言解题实现)  
 7. 其他关于数据结构与算法的重要心得笔记  
