@@ -20,7 +20,7 @@ The minute must be consist of two digits and may contain a leading zero, for exa
 
 
 
-// Orther's Solution: (Backtracking)
+// Other's Solution 1: (Backtracking)
 public class Solution {
     public List<String> readBinaryWatch(int num) {
         List<String> res = new ArrayList<>();
@@ -54,6 +54,23 @@ public class Solution {
         for(int i = pos; i < nums.length; i++) {
             generateDigitHelper(nums, count - 1, i + 1, sum + nums[i], res);    
         }
+    }
+}
+
+
+
+// Other's Solution 2:
+class Solution {
+    public List<String> readBinaryWatch(int num) {
+        ArrayList<String> result = new ArrayList<>();
+        for (int i = 0; i < 12; i++) {
+            for (int j = 0; j < 60; j++) {
+                if (Integer.bitCount(i) + Integer.bitCount(j) == num) {
+                    result.add(String.format("%d:%02d", i, j));
+                }
+            }
+        }
+        return result;
     }
 }
 
