@@ -128,3 +128,55 @@ class Solution {
         return combination/100 + ":" + (combination%100 < 10 ? "0"+combination%100 : combination%100);
     }
 }
+
+
+
+// My Solution 2: (Backtracking)
+class Solution {
+    Integer[] hourMap = new Integer[]{8, 4, 2, 1}, minMap = new Integer[]{32, 16, 8, 4, 2, 1};
+    List<String> res = new ArrayList<>();
+    
+    public List<String> readBinaryWatch(int num) {
+        for (int i=0; i <= num; i++) {
+            Set<Integer> setH = new HashSet<>(), setM = new HashSet<>(); 
+            backTrack(hourMap, i, 0, 0, setH); // if i > hourMap.length, return null
+            backTrack(minMap, num-i, 0, 0, setM);
+            for(int h: setH) { // if i > hourMap.length, since null, no loop
+                if(h >= 12) continue;
+                for(int m: setM) { // if num-i > minMap.length, since null, no loop too, will not add anything
+                    if(m >= 60) continue;
+                    res.add(String.format("%d:%02d", h, m));
+                }
+            }
+        }
+        
+        return res;
+    }
+
+    public void backTrack(Integer[] tMap, int num, int nextIndex, int preSum, Set<Integer> setT) {
+        if (num > tMap.length) {
+            return;
+        } else if (num >= 1) {
+            for (int i=nextIndex; i < tMap.length; i++) {
+                backTrack(tMap, num-1, i+1, preSum+tMap[i], setT);
+            }
+        } else if (num == 0) {
+            setT.add(preSum);
+        }
+    }
+    
+    // public void backTrack(Integer[] tMap, int num, int preSum, Set<Integer> setT) { // 这个不是真回溯，回溯不走重复路
+    //     if (num > tMap.length) {
+    //         return;
+    //     } else if (num >= 1) {
+    //         for (int t : tMap) {
+    //              // 这段不是真回溯，回溯不走重复路
+    //             List<Integer> temp = new ArrayList<Integer>(Arrays.asList(tMap));
+    //             temp.remove(temp.indexOf(t));
+    //             backTrack(temp.toArray(new Integer[temp.size()]), num-1, preSum+t, setT);
+    //         }
+    //     } else if (num == 0) {
+    //         setT.add(preSum);
+    //     }
+    // }
+}
