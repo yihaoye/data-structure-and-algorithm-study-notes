@@ -44,39 +44,48 @@ Note:
 
 
 
-// Other's Solution:
+// Other's Solution 1:
 class Solution {
-    public List<String> ipToCIDR(String ip, int range) {
+    public List<String> ipToCIDR(String ip, int n) {
         long x = 0;
         String[] ips = ip.split("\\.");
-        for (int i = 0; i < ips.length; ++i) {
+        for (int i = 0; i < ips.length; ++i) { // transfer binary represented ip "xxxx.xxxx.xxxx.xxxx" (String) to long data type representation
             x = Integer.parseInt(ips[i]) + x * 256;
         }
 
-        List<String> ans = new ArrayList<>();
-        while (range > 0) {
-            long step = x & -x;
-            while (step > range) step /= 2;
-            ans.add(longToIP(x, (int)step));
-            x += step;
-            range -= step;
+        List<String> res = new ArrayList<>();
+        while (n > 0) {
+            /*
+                (-x) is the two’s complement of x. (-x) will be equal to one’s complement of x plus 1.
+                x & (-x) can mean for x (e.g. 4278190087 which is long data type representation of 255.0.0.7), how many more ips we can represent in CIDR. In this case it's only 1.(because x & (-x) of 7 is 1)
+                for example, 255.0.0.8, x & (-x) of it is 00001000, it's 8, we can represent 8 more ips which start from it.
+                for 255.0.0.9, x & (-x) of it is 00000001, 1 again.
+            */
+            long lowestIndexCount = x & -x; 
+
+            while (lowestIndexCount > n) lowestIndexCount /= 2;
+
+            // But the specification of CIDR asks us to use a mask instead of count. So we transfer it to mask, it's the function "longToCIDR" has done.
+            res.add(longToCIDR(x, (int)lowestIndexCount));
+            x += lowestIndexCount; // Get next available/startable base IP whose CIDR will never conflict/overlap existing added CIDR or less/incompatible than given initial IP.
+            n -= lowestIndexCount;
         }
 
-        return ans;
+        return res;
     }
 
-    String longToIP(long x, int step) {
-        int[] ans = new int[4];
-        ans[0] = (int) (x & 255); x >>= 8;
-        ans[1] = (int) (x & 255); x >>= 8;
-        ans[2] = (int) (x & 255); x >>= 8;
-        ans[3] = (int) x;
+    String longToCIDR(long x, int lowestIndexCount) {
+        int[] res = new int[4];
+        res[0] = (int) (x & 255); x >>= 8;
+        res[1] = (int) (x & 255); x >>= 8;
+        res[2] = (int) (x & 255); x >>= 8;
+        res[3] = (int) x;
         int len = 33;
-        while (step > 0) {
+        while (lowestIndexCount > 0) {
             len --;
-            step /= 2;
+            lowestIndexCount /= 2;
         }
-        return ans[3] + "." + ans[2] + "." + ans[1] + "." + ans[0] + "/" + len;
+        return res[3] + "." + res[2] + "." + res[1] + "." + res[0] + "/" + len;
     }
 }
 /*
@@ -84,7 +93,75 @@ reference:
 https://leetcode.com/problems/ip-to-cidr/discuss/110222/Very-Simple-Java-Solution-(beat-100)
 https://leetcode.com/problems/ip-to-cidr/discuss/228131/Java-Solution-with-Explanation
 https://zhuanlan.zhihu.com/p/35541808
+https://leetcode.com/problems/ip-to-cidr/discuss/151348/Java-Solution-with-Very-Detailed-Explanation-8ms
+
+https://stackoverflow.com/questions/2604296/twos-complement-why-the-name-two
+https://stackoverflow.com/questions/10178980/how-to-convert-a-binary-string-to-a-base-10-integer-in-java
+https://zh.wikipedia.org/wiki/%E4%BA%8C%E8%A3%9C%E6%95%B8
 */
+
+
+
+// Other's Solution 2:
+class Solution {
+    public List<String> ipToCIDR(String ip, int n) {
+      long x = 0;
+      String[] parts = ip.split("\\."); // we need \\ here because '.' is a keyword in regex.
+      for(int i = 0; i < 4; i++) {
+        x = x * 256 + Long.parseLong(parts[i]);
+      }
+      
+      List<String> res = new ArrayList();
+      while(n > 0) {
+        long count = x & -x; 
+        // this count value here means if we don't change the current start ip, how many
+        // more ips we can represent with CIDR
+        
+        while(count > n) { // for example count is 7 but we only want to 2 more ips
+          count /= 2;
+        }
+        
+        res.add(oneCIDR(x, count));
+        n = n - (int)count;
+        x = x + (int)count;
+      }
+      return res;
+    }
+    
+    private String oneCIDR(long x, long count) {
+      int d, c, b, a;
+      d = (int) x & 255; // Compute right-most part of ip
+      x >>= 8; // throw away the right-most part of ip
+      c = (int) x & 255;
+      x >>= 8;
+      b = (int) x & 255;
+      x >>= 8;
+      a = (int) x & 255;
+      
+      int len = 0;
+       // this while loop to know how many digits of count is in binary
+       // for example, 00001000 here the len will be 4.
+      while(count > 0) {
+        count /= 2;
+        len++;
+      }
+      int mask = 32 - (len - 1);
+      // Think about 255.0.0.7 -> 11111111 00000000 00000000 00000111
+      // x & -x of it is 00000001, the mask is 32. (which is 32 - (1 - 1))
+      
+      return new StringBuilder()
+        .append(a)
+        .append(".")
+        .append(b)
+        .append(".")
+        .append(c)
+        .append(".")
+        .append(d)
+        .append("/")
+        .append(mask)
+        .toString();
+    }
+}
 
 
 
