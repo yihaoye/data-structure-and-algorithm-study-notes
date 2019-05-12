@@ -44,7 +44,51 @@ Note:
 
 
 
-// My Solution:
+// Other's Solution:
+class Solution {
+    public List<String> ipToCIDR(String ip, int range) {
+        long x = 0;
+        String[] ips = ip.split("\\.");
+        for (int i = 0; i < ips.length; ++i) {
+            x = Integer.parseInt(ips[i]) + x * 256;
+        }
+
+        List<String> ans = new ArrayList<>();
+        while (range > 0) {
+            long step = x & -x;
+            while (step > range) step /= 2;
+            ans.add(longToIP(x, (int)step));
+            x += step;
+            range -= step;
+        }
+
+        return ans;
+    }
+
+    String longToIP(long x, int step) {
+        int[] ans = new int[4];
+        ans[0] = (int) (x & 255); x >>= 8;
+        ans[1] = (int) (x & 255); x >>= 8;
+        ans[2] = (int) (x & 255); x >>= 8;
+        ans[3] = (int) x;
+        int len = 33;
+        while (step > 0) {
+            len --;
+            step /= 2;
+        }
+        return ans[3] + "." + ans[2] + "." + ans[1] + "." + ans[0] + "/" + len;
+    }
+}
+/*
+reference:
+https://leetcode.com/problems/ip-to-cidr/discuss/110222/Very-Simple-Java-Solution-(beat-100)
+https://leetcode.com/problems/ip-to-cidr/discuss/228131/Java-Solution-with-Explanation
+https://zhuanlan.zhihu.com/p/35541808
+*/
+
+
+
+// My Solution 1 (still in thinking process):
 class Solution {
     public List<String> ipToCIDR(String ip, int n) {
         /*
