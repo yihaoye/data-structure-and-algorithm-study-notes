@@ -94,6 +94,7 @@ https://leetcode.com/problems/ip-to-cidr/discuss/110222/Very-Simple-Java-Solutio
 https://leetcode.com/problems/ip-to-cidr/discuss/228131/Java-Solution-with-Explanation
 https://zhuanlan.zhihu.com/p/35541808
 https://leetcode.com/problems/ip-to-cidr/discuss/151348/Java-Solution-with-Very-Detailed-Explanation-8ms
+https://www.cnblogs.com/grandyang/p/8440087.html
 
 https://stackoverflow.com/questions/2604296/twos-complement-why-the-name-two
 https://stackoverflow.com/questions/10178980/how-to-convert-a-binary-string-to-a-base-10-integer-in-java
