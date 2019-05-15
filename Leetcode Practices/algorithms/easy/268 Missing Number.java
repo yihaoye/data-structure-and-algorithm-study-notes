@@ -54,20 +54,9 @@ class Solution {
         return sum;
     }
 }
-// 3.Binary Search
-class Solution {
-    public int missingNumber(int[] nums) { //binary search
-        Arrays.sort(nums);
-        int left = 0, right = nums.length, mid= (left + right)/2;
-        while(left<right){
-            mid = (left + right)/2;
-            if(nums[mid]>mid) right = mid;
-            else left = mid+1;
-        }
-        return left;
-    }
-}
-/*
-Summary:
-If the array is in order, I prefer Binary Search method. Otherwise, the XOR method is better.
-*/
+
+
+
+// My Solution:
+// Requirement - linear runtime complexity means O(n). Which means Binary Search (need array sort first) will not be acceptable here, since sort need aleast O(n*logn).
+// Requirement - only constant extra space complexity. Which means BucketSort way (use the same principle but no need sort which must be O(n) in time & space complexity) is not acceptable here too.
