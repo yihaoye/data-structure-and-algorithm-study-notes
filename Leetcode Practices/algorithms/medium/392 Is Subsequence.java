@@ -21,11 +21,25 @@ If there are lots of incoming S, say S1, S2, ... , Sk where k >= 1B, and you wan
 
 
 
+// Other's Solution: (Greedy - 贪心算法)
+class Solution {
+    public boolean isSubsequence(String s, String t) {
+        if (s.length() == 0) return true;
+        int idx = 0;
+        for (int i = 0; i < t.length(); i++) {
+            if (s.charAt(idx) == t.charAt(i)) idx++;
+            if (idx == s.length()) return true;
+        }
+        return false;
+    }
+}
+
+
+
 // My Solution:
 class Solution {
     public boolean isSubsequence(String s, String t) {
-        int lenS = s.length();
-        if (lenS == 0) return true;
+        if (s.length() == 0) return true;
         int findIndex = t.indexOf(s.charAt(0));
         if (findIndex != -1) return isSubsequence(s.substring(1), t.substring(findIndex+1));
         return false;
