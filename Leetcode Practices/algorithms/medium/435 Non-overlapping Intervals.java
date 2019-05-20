@@ -37,7 +37,7 @@ NOTE: input types have been changed on April 15, 2019. Please reset to default c
 
 
 
-// Other's Solution:
+// Other's Solution: (Greedy)
 class Solution {
     public int eraseOverlapIntervals(int[][] intervals) {        
         if (intervals.length == 0) return 0;
@@ -59,7 +59,7 @@ class Solution {
 
 
 
-// My Solution: (last 2 test case not passed yet)
+// My Solution: (Greedy) (last 2 test case not passed yet, basically concept is the similar as above but sort different dimension in the beginning)
 class Solution {
     public int eraseOverlapIntervals(int[][] intervals) {
         // remove larger interval arr
