@@ -19,3 +19,6 @@
 #### 编码时、做题中
 1. 编码一，制作工具，即是否需要、可以把复杂或重复部分的逻辑、代码封装成一个函数。（大致方向已明晰的情况下，这样尤其有利于简化中间实现过程中一些中等的复杂、模糊的思绪）
 2. 编码二，注意一些语言的相似数据结构的不同效率以及performance，如 Java 的普通 Array 的时间及空间性能都会比 ArrayList 好很多。
+#### 题型技巧
+更多题型、细节技巧请看：  
+https://github.com/yihaoye/data-structure-and-algorithm-study-notes/tree/master/Cracking%20the%20Coding%20Interview  
