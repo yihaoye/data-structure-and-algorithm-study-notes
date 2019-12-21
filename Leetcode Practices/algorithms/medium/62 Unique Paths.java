@@ -27,7 +27,7 @@ Output: 28
 
 
 
-// My Solution 1:
+// My Solution 1 (2D Dynamic Programming):
 class Solution {
     public int uniquePaths(int m, int n) {
         int[][] mem = new int[m][n];
