@@ -41,6 +41,22 @@ for (int i = 0; i < len; i++) {
 
 
 
+// Other's Solution:
+class Solution {
+    public int removeElement(int[] nums, int val) {
+       int m = 0;    
+       for(int i = 0; i < nums.length; i++){
+           if(nums[i] != val){
+               nums[m] = nums[i];
+               m++;
+           }
+       }
+       return m;
+    }
+}
+
+
+
 // My Solution 1:
 class Solution {
     public int removeElement(int[] nums, int val) {
