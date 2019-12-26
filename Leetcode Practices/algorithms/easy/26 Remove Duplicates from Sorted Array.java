@@ -37,7 +37,7 @@ for (int i = 0; i < len; i++) {
 
 
 
-// Other's Solution:
+// Other's Solution: (considering the input array is an alreadt sorted array)
 class Solution {
     public int removeDuplicates(int[] nums) {
         if(nums.length < 2) return nums.length;
@@ -53,7 +53,6 @@ class Solution {
 class Solution {
     public int removeDuplicates(int[] nums) {
         if (nums.length == 0) return 0;
-        Arrays.sort(nums);
         int max = nums[nums.length-1] + 1;
         int res = 1;
         for (int i=1,j=0; i<nums.length; i++) {
