@@ -2,7 +2,7 @@
 
 ### 本Repo包括以下内容:  
 1. 数据结构网课笔记(http://bbs.fishc.com)  
-2. <Introduction to Algorithms> Practices  
+2. 《Introduction to Algorithms》 Practices  
 3. Common Sorts, Algorithm, Data Structure Implementation  
 4. Codility Practices  
 5. Google Code Jam Practices  
