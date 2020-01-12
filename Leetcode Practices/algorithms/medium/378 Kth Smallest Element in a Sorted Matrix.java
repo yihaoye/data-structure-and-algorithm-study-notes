@@ -27,7 +27,7 @@ class Solution {
         while (start < end) {
             int mid = start + (end - start) / 2;
             int total = 0;
-            for (int[] row : matrix) {
+            for (int[] row : matrix) { // O(N*logN)
                 total += upperBound(row, mid);
             }
             if (total >= k) end = mid;
