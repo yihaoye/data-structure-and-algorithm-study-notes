@@ -51,4 +51,5 @@ https://github.com/yihaoye/data-structure-and-algorithm-study-notes/tree/master/
 > 而代码能力则是将解决问题的想法具体实现。  
 > 查错问题能力则是在代码实现的过程中，发生了不符合预期的结果时，快速找到原因（比如发现原先的分析思路有误，重新分析问题），并最终解决问题。  
 > 专业选手通过不断的训练自己，个人能力已经是我们这些业余选手远远不能想象的了。  
+  
 以上摘录自：http://github.tiankonguse.com/blog/2019/06/26/algorithm-profession-and-amateur.html  
