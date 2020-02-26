@@ -54,3 +54,11 @@ public class Solution extends Relation {
       return candidate;
   }
 }
+// It you have a hard time understanding this code, check out the other Java code using stack. 
+// It's a lot easier to understand, they used the same approache. 
+// First you assume everyone to be a candidate, then you just randomly pick two, check whether a knows b, if a knows b, we know for sure, a is not a cele, if a does not know b, we know for sure b is not cele. 
+// Either way, one person is gonna get eliminated. At the end, you have one person left that might be a cele. You confirm that by do a walk through again.
+
+
+
+// My Solution:
