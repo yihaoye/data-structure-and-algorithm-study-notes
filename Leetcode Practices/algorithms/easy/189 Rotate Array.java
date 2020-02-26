@@ -29,15 +29,15 @@ class Solution {
     public void rotate(int[] nums, int k) {
         int len = nums.length;
         
-        // edge case process
+        // edge case handle
         if (k > len) k = k%len;
         if (len == 1 || k == 0) return;
         
-        // migrate process
-        migrate(nums, len, k);
+        // shift process
+        shift(nums, len, k);
     }
     
-    public void migrate(int[] nums, int len, int k) {
+    public void shift(int[] nums, int len, int k) {
         int tmp = 0;
         for (int i=0; i<len; i+=k) {
             for (int j=0; j<k && i+k+j<len; j++) {
@@ -46,19 +46,19 @@ class Solution {
                 nums[j] = tmp;
             }
         }
-        if (len%k != 0) migrate(nums, k, k-len%k);
+        if (len%k != 0) shift(nums, k, k-len%k);
     }
     
     /* example */
     // [1,2,3,4,5,6,7,8] and k=3
-    // after migrate:
+    // after shift:
     // tmp=8
     // [7,8,6,1,2,3,4,5]
-    // after nested migrate: (for [7,8,6], len=3, k=1)
+    // after nested shift: (for [7,8,6], len=3, k=1)
     // tmp=6
     // [6,7,8,1,2,3,4,5]
     
-    // Although nested method, performance is ok hedged since either migrate() or nested migrate() take time or both similar average.
+    // Although nested method, performance is ok hedged since either shift() or nested shift() take time or both similar average.
 }
 
 
