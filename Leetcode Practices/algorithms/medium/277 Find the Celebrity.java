@@ -48,6 +48,12 @@ public class Solution extends Relation {
           if(knows(candidate, i))
               candidate = i;
       }
+      // celebrity 只能有一个，最后 candidate 之前的肯定都不是，因为他们不是认识了另一个人就是另一个人不认识他，
+      // 而前面的人除了上一个 candidate 都没和最后的 candidate 有过双向检查，而最后一个 candidate 后面的所有人也肯定不是，
+      // 因为最后 candidate 不认识他们，但是并没有检查他们是否认识最后 candidate。
+
+      // 因此需要第 2 个 for 循环，用来双向检查最后 candidate 和最后 candidate 之前的人（上一个 candidate 和最后 candidate 已有一次单向检查，但是这里重复一次没关系对性能影响可以忽略不计），
+      // 以及检查最后 candidate 之后的人是否认识最后 candidate。
       for(int i = 0; i < n; i++){
           if(i != candidate && (knows(candidate, i) || !knows(i, candidate))) return -1;
       }
@@ -62,3 +68,8 @@ public class Solution extends Relation {
 
 
 // My Solution:
+public class Solution extends Relation {
+  public int findCelebrity(int n) {
+    // ToDo...
+  }
+}
