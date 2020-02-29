@@ -38,15 +38,20 @@ class Solution {
 
 
 
-// Other's Solution:
+// Other's Solution (O(n) time, O(1) space):
 public class Solution {
     public int firstMissingPositive(int[] nums) {
+        // The key here is to use swapping to keep constant space and also make use of the length of the array, which means there can be at most n positive integers. 
+        // So each time we encounter an valid integer, find its correct position and swap. Otherwise we continue.
         int i = 0;
         while(i < nums.length){
             if(nums[i] == i+1 || nums[i] <= 0 || nums[i] > nums.length) i++;
-            else if(nums[nums[i]-1] != nums[i]) swap(nums, i, nums[i]-1);
+            else if(nums[i] != nums[nums[i]-1]) swap(nums, i, nums[i]-1);  
             else i++;
         }
+        // Q: why if(nums[i] != nums[nums[i]-1]) instead of if(i != nums[i]-1) ? Aren't they the same?
+        // A: Almost the same, but like [3,2,3,4], when i = 0, A[0] = 3, which should be put on position i = 2 where also A[2] = 3. Thus there is no need to do swap and go to else statement i++ for next check or it will go into endless loop
+
         i = 0;
         while(i < nums.length && nums[i] == i+1) i++;
         return i+1;
