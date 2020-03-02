@@ -9,7 +9,3 @@
 - [递归迭代 | Recursion Iteration](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Common%20Algorithm%20and%20Theory/%E9%80%92%E5%BD%92%E4%B8%8E%E8%BF%AD%E4%BB%A3.md)
 - [深度优先, 广度优先 | Depth First Search, Breadth First Search](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Common%20Algorithm%20and%20Theory/%E6%A0%91%E5%9B%BE%E9%81%8D%E5%8E%86.md)
   
-  
-  
-### 非常用的专用数据结构
-- [参考阅读](https://stackoverflow.com/questions/500607/what-are-the-lesser-known-but-useful-data-structures)
