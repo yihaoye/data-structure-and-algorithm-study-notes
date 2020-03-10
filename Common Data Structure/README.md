@@ -1,10 +1,11 @@
 ## 常用数据结构
   
-- [数组](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Common%20Data%20Structure/README.md)
+- [顺序表/数组](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Common%20Data%20Structure/README.md)
+- [链表](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Common%20Data%20Structure/README.md)
 - [队列](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Common%20Data%20Structure/README.md)
 - [栈](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Common%20Data%20Structure/README.md)
-- [哈希表](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Common%20Data%20Structure/README.md)
-- [Set](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Common%20Data%20Structure/README.md)
+- [Map/哈希表](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Common%20Data%20Structure/README.md)
+- [Set/集合](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Common%20Data%20Structure/README.md)
 - [树](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Common%20Data%20Structure/README.md)
 - [图](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Common%20Data%20Structure/README.md)
   
