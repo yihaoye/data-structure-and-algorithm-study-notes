@@ -18,10 +18,10 @@
 - [x] 243	Shortest Word Distance		
 - [x] 244	Shortest Word Distance II		
 - [ ] 245	Shortest Word Distance III		
-- [ ] 217	Contains Duplicate		
+- [x] 217	Contains Duplicate		
 - [ ] 219	Contains Duplicate II		                                很少考
 - [ ] 220	Contains Duplicate III		                                很少考
-- [ ] 55	Jump Game		
+- [x] 55	Jump Game		
 - [ ] 45	Jump Game II		
 - [ ] 121	Best Time to Buy and Sell Stock		
 - [ ] 122	Best Time to Buy and Sell Stock II		
