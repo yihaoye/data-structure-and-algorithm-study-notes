@@ -23,8 +23,8 @@
 - [ ] 220	Contains Duplicate III		                                很少考
 - [x] 55	Jump Game		
 - [ ] 45	Jump Game II		
-- [ ] 121	Best Time to Buy and Sell Stock		
-- [ ] 122	Best Time to Buy and Sell Stock II		
+- [x] 121	Best Time to Buy and Sell Stock		
+- [x] 122	Best Time to Buy and Sell Stock II		
 - [ ] 123	Best Time to Buy and Sell Stock III		
 - [ ] 188	Best Time to Buy and Sell Stock IV		
 - [ ] 309	Best Time to Buy and Sell Stock with Cooldown		
@@ -37,7 +37,7 @@
 - [ ] 135	Candy		                                                很少考
 - [ ] 330	Patching Array		                                        很少考
 ### 提高			
-- [ ] 4	    Median of Two Sorted Arrays		                            很少考
+- [x] 4	    Median of Two Sorted Arrays		                            很少考
 - [ ] 321	Create Maximum Number		                                很少考
 - [ ] 327	Count of Range Sum		
 - [ ] 289	Game of Life		
@@ -50,15 +50,15 @@
 ### Counter			
 - [ ] 239	Sliding Window Maximum		
 - [ ] 295	Find Median from Data Stream		
-- [ ] 53	Maximum Subarray		
+- [x] 53	Maximum Subarray		
 - [ ] 325	Maximum Size Subarray Sum Equals k		
 - [ ] 209	Minimum Size Subarray Sum		
-- [ ] 238	Product of Array Except Self		
+- [x] 238	Product of Array Except Self		
 - [ ] 152	Maximum Product Subarray		
 - [ ] 228	Summary Ranges		
 - [ ] 163	Missing Ranges		
 ### Counter			
-- [ ] 88	Merge Sorted Array		
+- [x] 88	Merge Sorted Array		
 - [ ] 75	Sort Colors		
 - [ ] 283	Move Zeroes		
 - [ ] 376	Wiggle Subsequence		
@@ -78,6 +78,73 @@
 - [ ] 315	Count of Smaller Numbers After Self		
 - [ ] 300	Longest Increasing Subsequence		
 - [ ] 354	Russian Doll Envelopes	
+  
+## String
+### 基础			
+- [ ] 28	Implement strStr()		
+- [ ] 14	Longest Common Prefix		
+- [ ] 58	Length of Last Word		
+- [ ] 387	First Unique Character in a String		
+- [ ] 383	Ransom Note		
+- [ ] 344	Reverse String		
+- [ ] 151	Reverse Words in a String		
+- [ ] 186	Reverse Words in a String II		
+- [ ] 345	Reverse Vowels of a String		
+- [ ] 205	Isomorphic Strings		
+- [ ] 293	Flip Game		
+- [ ] 294	Flip Game II		
+- [ ] 290	Word Pattern		
+- [ ] 242	Valid Anagram		
+- [ ] 49	Group Anagrams		
+- [ ] 249	Group Shifted Strings		
+- [ ] 87	Scramble String		
+- [ ] 179	Largest Number		                                                    很少考
+- [ ] 6	    ZigZag Conversion		                                                很少考
+- [ ] 161	One Edit Distance		
+- [ ] 38	Count and Say		
+- [ ] 358	Rearrange String k Distance Apart		
+- [ ] 316	Remove Duplicate Letters		
+- [ ] 271	Encode and Decode Strings		
+- [ ] 168	Excel Sheet Column Title		
+- [ ] 171	Excel Sheet Column Number		
+- [ ] 13	Roman to Integer		
+- [ ] 12	Integer to Roman		
+- [ ] 273	Integer to English Words		
+- [ ] 246	Strobogrammatic Number		
+- [ ] 247	Strobogrammatic Number II		
+- [ ] 248	Strobogrammatic Number III		                                        很少考
+### 提高			
+- [ ] 157	Read N Characters Given Read4		
+- [ ] 158	Read N Characters Given Read4 II - Call multiple times		
+- [ ] 68	Text Justification		
+- [ ] 65	Valid Number		
+### Substring			
+- [ ] 76	Minimum Window Substring		                                        Sliding Window
+- [ ] 30	Substring with Concatenation of All Words		                        Sliding Window
+- [x] 3	    Longest Substring Without Repeating Characters		                    Sliding Window
+- [ ] 340	Longest Substring with At Most K Distinct Characters		            Sliding Window
+- [ ] 395	Longest Substring with At Least K Repeating Characters		            Sliding Window
+- [ ] 159	Longest Substring with At Most Two Distinct Characters		            Sliding Window
+### Palindrome			
+- [ ] 125	Valid Palindrome		
+- [ ] 266	Palindrome Permutation		
+- [x] 5	    Longest Palindromic Substring		
+- [x] 9	    Palindrome Number		
+- [ ] 214	Shortest Palindrome		
+- [ ] 336	Palindrome Pairs		
+- [ ] 131	Palindrome Partitioning		
+- [ ] 132	Palindrome Partitioning II		
+- [ ] 267	Palindrome Permutation II		
+### Parentheses			
+- [ ] 20	Valid Parentheses		
+- [ ] 22	Generate Parentheses		
+- [ ] 32	Longest Valid Parentheses		
+- [ ] 241	Different Ways to Add Parentheses		
+- [ ] 301	Remove Invalid Parentheses		
+### Subsequence			
+- [x] 392	Is Subsequence		
+- [ ] 115	Distinct Subsequences		
+- [ ] 187	Repeated DNA Sequences		                                            很少考
   
   
   
