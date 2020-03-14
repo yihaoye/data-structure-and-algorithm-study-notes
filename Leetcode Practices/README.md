@@ -81,7 +81,7 @@
   
 ## String
 ### 基础			
-- [ ] 28	Implement strStr()		
+- [x] 28	Implement strStr()		
 - [ ] 14	Longest Common Prefix		
 - [ ] 58	Length of Last Word		
 - [ ] 387	First Unique Character in a String		
