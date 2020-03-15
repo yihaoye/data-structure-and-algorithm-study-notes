@@ -30,7 +30,7 @@ Define base case:
 
 s0[0] = 0; // At the start, you don't have any stock if you just rest
 s1[0] = -prices[0]; // After buy, you should have -prices[0] profit. Be positive!
-s2[0] = INT_MIN; // Lower base case
+s2[0] = Integer.MIN_VALUE; // Lower base case
 */
 class Solution {
     public int maxProfit(int[] prices) {
@@ -63,7 +63,7 @@ class Solution {
     }
     
     // dfs
-    public void dfs(int[] prices, int[] res, int index, int profit, int[] action) { // action[0] last action index; action[1] last action: 0 for do nothing, 1 for buy, -1 for sell.
+    public void dfs(int[] prices, int[] res, int index, int profit, int[] action) { // action[0] last action index; action[1] last action: 0 for do nothing or cool down, 1 for buy, -1 for sell.
         int len = prices.length;
         if (index == len) {
             res[0] = Math.max(res[0], profit);
