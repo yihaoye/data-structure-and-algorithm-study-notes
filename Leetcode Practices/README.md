@@ -87,7 +87,7 @@
 - [x] 387	First Unique Character in a String		
 - [x] 383	Ransom Note		
 - [x] 344	Reverse String		
-- [ ] 151	Reverse Words in a String		
+- [x] 151	Reverse Words in a String		
 - [ ] 186	Reverse Words in a String II		
 - [ ] 345	Reverse Vowels of a String		
 - [ ] 205	Isomorphic Strings		
