@@ -43,6 +43,27 @@ https://github.com/yihaoye/data-structure-and-algorithm-study-notes/tree/master/
 ![](刷题技巧.png)  
 花花酱刷题题目列表：https://bit.ly/2E8yBHq  
   
+### LeetCode 需要的基础
+> LC需要的基础，实在是太广了，以最基本的来论，科班出身必学的两门课《数据结构》《算法分析》，能够覆盖到70%左右，但也仅限于此不能再多了。简单给大家说一下我们需要知道的基础：  
+> 1，数据结构  
+> 数据结构（低级的）：数组，链表，栈，队列，树，图，堆，HashTable等  
+> 数据结构（高级的，本科基本学不到）：线段树，树状数组，并查集，字典树等  
+> 2，算法  
+> 算法（低级的）：排序算法（八种），DFS，BFS，二分查找，回溯，分治，递归，动态规划，拓扑排序，贪心等  
+> 算法（学校学不到的）：Sliding window，扫描线算法（图形学），蓄水池算法，flood fill（图形学）等  
+> 更难的其实也涉及到很多：KMP，马拉车等  
+> 3，其他知识  
+> 这还仅仅是算法和数据结构，那么还有别的知识：  
+> 位运算（Bit），基础数据结构实现（LinkedList Deque等实现），一些设计思想（Design），数学知识（Math），通配符，转义字符，记忆化搜索等。  
+> 如果用的是Java，其实别的语言也一样，Java 还有一些常用的数据结构：TreeMap，TreeSet，PriorityQueue，Deque 等  
+> 以上的所有东西，全部都是Leetcode题目出现过的。  
+> 如果是针对面试，有很多都是北美的，Google Facebook这种公司，会的还要更多：  
+> Dijkstra，二分图，红黑树知识等；  
+> Java的基础：Heap实现，HashMap，HashSet具体区别等，equals hashcode重写等  
+> 这些东西一样，都是曾经在面试中大量出现的，就是我们要会的基础。  
+  
+以上引用自：https://www.zhihu.com/question/30737325/answer/524120016  
+  
 ### 关于专业与业余的算法差距
 > 先来看看算法比赛专业选手都做的是什么数据和算法吧！  
 > 初级的算法是数论、二分、三分、线段树、树状数组、最短路、最小生成树、简单DP等。  
