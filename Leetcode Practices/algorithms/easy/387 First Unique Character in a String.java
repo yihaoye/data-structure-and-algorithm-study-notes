@@ -18,7 +18,7 @@ Note: You may assume the string contain only lowercase letters.
 
 
 //My Answer:
-public class Solution {
+class Solution {
     public int firstUniqChar(String s) {
         LinkedHashMap<Character, Integer> map = new LinkedHashMap<Character, Integer>();
         char[] charArray = s.toCharArray();
@@ -39,6 +39,24 @@ public class Solution {
                     }
                 }
             }
+        }
+        
+        return -1;
+    }
+}
+
+
+
+// My Solution 2:
+class Solution2 {
+    public int firstUniqChar(String s) {
+        int[] alphas = new int[26];
+        char[] cArray = s.toCharArray();
+        for (char c : cArray) {
+            alphas[c-'a']++;
+        }
+        for (int i=0; i<cArray.length; i++) {
+            if (alphas[cArray[i]-'a'] == 1) return i;
         }
         
         return -1;
