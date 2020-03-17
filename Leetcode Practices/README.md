@@ -86,7 +86,7 @@
 - [x] 58	Length of Last Word		
 - [x] 387	First Unique Character in a String		
 - [x] 383	Ransom Note		
-- [ ] 344	Reverse String		
+- [x] 344	Reverse String		
 - [ ] 151	Reverse Words in a String		
 - [ ] 186	Reverse Words in a String II		
 - [ ] 345	Reverse Vowels of a String		
