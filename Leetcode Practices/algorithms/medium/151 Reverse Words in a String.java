@@ -38,21 +38,23 @@ class Solution {
     public String reverseWords(String s) {
         char[] cArray = s.trim().toCharArray();
         Stack<String> stack = new Stack<String>();
-        String tmpStr = "", res = "";
+        StringBuilder strB = new StringBuilder();
         for (char c : cArray) {
             if (c == ' ') {
-                if (tmpStr.equals("")) continue;
-                stack.push(tmpStr);
-                tmpStr = "";
+                if (strB.length() == 0) continue;
+                stack.push(strB.toString());
+                strB.setLength(0);
             } else {
-                tmpStr = tmpStr+c;
+                strB.append(c);
             }
         }
-        stack.push(tmpStr);
+        stack.push(strB.toString());
+        strB.setLength(0);
         while(!stack.isEmpty()) {
-            res = res + stack.pop() + " ";
+            strB.append(stack.pop());
+            strB.append(" ");
         }
         
-        return res.trim();
+        return strB.toString().trim();
     }
 }
