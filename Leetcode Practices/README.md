@@ -85,7 +85,7 @@
 - [x] 14	Longest Common Prefix		
 - [x] 58	Length of Last Word		
 - [x] 387	First Unique Character in a String		
-- [ ] 383	Ransom Note		
+- [x] 383	Ransom Note		
 - [ ] 344	Reverse String		
 - [ ] 151	Reverse Words in a String		
 - [ ] 186	Reverse Words in a String II		
