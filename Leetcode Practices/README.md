@@ -89,8 +89,8 @@
 - [x] 344	Reverse String		
 - [x] 151	Reverse Words in a String		
 - [x] 186	Reverse Words in a String II		
-- [ ] 345	Reverse Vowels of a String		
-- [ ] 205	Isomorphic Strings		
+- [x] 345	Reverse Vowels of a String		
+- [x] 205	Isomorphic Strings		
 - [ ] 293	Flip Game		
 - [ ] 294	Flip Game II		
 - [ ] 290	Word Pattern		
