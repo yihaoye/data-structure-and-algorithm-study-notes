@@ -94,8 +94,8 @@
 - [x] 293	Flip Game		
 - [x] 294	Flip Game II		
 - [x] 290	Word Pattern		
-- [ ] 242	Valid Anagram		
-- [ ] 49	Group Anagrams		
+- [x] 242	Valid Anagram		
+- [x] 49	Group Anagrams		
 - [ ] 249	Group Shifted Strings		
 - [ ] 87	Scramble String		
 - [ ] 179	Largest Number		                                                    很少考
@@ -127,7 +127,7 @@
 - [ ] 159	Longest Substring with At Most Two Distinct Characters		            Sliding Window
 ### Palindrome			
 - [ ] 125	Valid Palindrome		
-- [ ] 266	Palindrome Permutation		
+- [x] 266	Palindrome Permutation		
 - [x] 5	    Longest Palindromic Substring		
 - [x] 9	    Palindrome Number		
 - [ ] 214	Shortest Palindrome		
