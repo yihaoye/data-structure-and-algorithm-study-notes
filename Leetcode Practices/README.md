@@ -92,7 +92,7 @@
 - [x] 345	Reverse Vowels of a String		
 - [x] 205	Isomorphic Strings		
 - [x] 293	Flip Game		
-- [ ] 294	Flip Game II		
+- [x] 294	Flip Game II		
 - [ ] 290	Word Pattern		
 - [ ] 242	Valid Anagram		
 - [ ] 49	Group Anagrams		
