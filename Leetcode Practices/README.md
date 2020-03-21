@@ -105,16 +105,16 @@
 - [ ] 358	Rearrange String k Distance Apart		
 - [ ] 316	Remove Duplicate Letters		
 - [ ] 271	Encode and Decode Strings		
-- [ ] 168	Excel Sheet Column Title		
-- [ ] 171	Excel Sheet Column Number		
-- [ ] 13	Roman to Integer		
+- [x] 168	Excel Sheet Column Title		
+- [x] 171	Excel Sheet Column Number		
+- [x] 13	Roman to Integer		
 - [ ] 12	Integer to Roman		
 - [ ] 273	Integer to English Words		
-- [ ] 246	Strobogrammatic Number		
+- [x] 246	Strobogrammatic Number		
 - [ ] 247	Strobogrammatic Number II		
 - [ ] 248	Strobogrammatic Number III		                                        很少考
 ### 提高			
-- [ ] 157	Read N Characters Given Read4		
+- [x] 157	Read N Characters Given Read4		
 - [ ] 158	Read N Characters Given Read4 II - Call multiple times		
 - [ ] 68	Text Justification		
 - [ ] 65	Valid Number		
@@ -136,7 +136,7 @@
 - [ ] 132	Palindrome Partitioning II		
 - [ ] 267	Palindrome Permutation II		
 ### Parentheses			
-- [ ] 20	Valid Parentheses		
+- [x] 20	Valid Parentheses		
 - [ ] 22	Generate Parentheses		
 - [ ] 32	Longest Valid Parentheses		
 - [ ] 241	Different Ways to Add Parentheses		
