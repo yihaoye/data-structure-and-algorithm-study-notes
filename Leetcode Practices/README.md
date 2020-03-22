@@ -152,8 +152,8 @@
 - [x] 165	Compare Version Numbers		
 - [x] 66	Plus One		
 - [x] 8	    String to Integer (atoi)		
-- [ ] 258	Add Digits		
-- [ ] 67	Add Binary		
+- [x] 258	Add Digits		
+- [x] 67	Add Binary		
 - [ ] 43	Multiply Strings		
 - [ ] 29	Divide Two Integers		
 - [x] 69	Sqrt(x)		
