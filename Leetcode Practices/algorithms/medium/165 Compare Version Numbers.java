@@ -47,7 +47,7 @@ Version strings do not start or end with dots, and they will not be two consecut
 // My Solution:
 class Solution {
     public int compareVersion(String version1, String version2) {
-        String[] strs1 = version1.split("\\.");
+        String[] strs1 = version1.split("\\."); // 注意是 split("\\.") 而不是 split(".")
         String[] strs2 = version2.split("\\.");
         int len1 = strs1.length, len2 = strs2.length;
         int maxLen = len1 > len2 ? len1 : len2;
