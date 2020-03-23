@@ -34,3 +34,42 @@ class Solution {
         return false;
     }
 }
+
+
+
+// Other's Solution:
+/*
+A square number is 1+3+5+7+... : 
+This is a math problem：
+1 = 1
+4 = 1 + 3
+9 = 1 + 3 + 5
+16 = 1 + 3 + 5 + 7
+25 = 1 + 3 + 5 + 7 + 9
+36 = 1 + 3 + 5 + 7 + 9 + 11
+....
+so 1+3+...+(2n-1) = (2n-1 + 1)n/2 = nn
+*/
+class Solution1 { // time complexity is O(sqrt(n))
+    public boolean isPerfectSquare(int num) {
+        int i = 1;
+        while (num > 0) {
+            num -= i;
+            i += 2;
+        }
+        return num == 0;
+    }
+}
+
+// Another way is to use Newton Method to calculate the square root or num, refer to Newton Method for details.
+// https://zh.wikipedia.org/wiki/%E7%89%9B%E9%A1%BF%E6%B3%95
+class Solution2 {
+    public boolean isPerfectSquare(int num) {
+        long x = num;
+        while (x * x > num) {
+            x = (x + num / x) >> 1;
+        }
+        return x * x == num;
+    }
+}
+// https://leetcode.com/problems/valid-perfect-square/discuss/83874/A-square-number-is-1%2B3%2B5%2B7%2B...-JAVA-code
