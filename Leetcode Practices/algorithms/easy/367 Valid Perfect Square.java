@@ -63,6 +63,7 @@ class Solution1 { // time complexity is O(sqrt(n))
 
 // Another way is to use Newton Method to calculate the square root or num, refer to Newton Method for details.
 // https://zh.wikipedia.org/wiki/%E7%89%9B%E9%A1%BF%E6%B3%95
+// https://en.wikipedia.org/wiki/Integer_square_root#Using_only_integer_division
 class Solution2 {
     public boolean isPerfectSquare(int num) {
         long x = num;
