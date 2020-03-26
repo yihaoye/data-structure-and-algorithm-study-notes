@@ -160,7 +160,7 @@
 - [ ] 50	Pow(x, n)		
 - [x] 367	Valid Perfect Square		
 - [ ] 365	Water and Jug Problem		
-- [ ] 204	Count Primes		
+- [x] 204	Count Primes		
 ### Sum			
 - [x] 1	    Two Sum		
 - [ ] 167	Two Sum II - Input array is sorted		
