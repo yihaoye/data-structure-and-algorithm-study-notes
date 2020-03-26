@@ -233,7 +233,7 @@
 -[ ] 99	    Recover Binary Search Tree		                                                inorder
 ### 重要程度			
 -[ ] 156	Binary Tree Upside Down		                                                    很少考
--[ ] 114	Flatten Binary Tree to Linked List		                                        很少考
+-[x] 114	Flatten Binary Tree to Linked List		                                        很少考
 -[ ] 255	Verify Preorder Sequence in Binary Search Tree		                            很少考
 -[ ] 333	Largest BST Subtree		                                                        很少考
 -[ ] 222	Count Complete Tree Nodes		                                                很少考
