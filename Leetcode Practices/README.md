@@ -198,24 +198,24 @@
 -[ ] 145	Binary Tree Postorder Traversal		
 -[x] 102	Binary Tree Level Order Traversal		
 ### Preorder			
--[ ] 100	Same Tree		
--[ ] 101	Symmetric Tree		
--[ ] 226	Invert Binary Tree		                                                        preorder + BFS
+-[x] 100	Same Tree		
+-[x] 101	Symmetric Tree		
+-[x] 226	Invert Binary Tree		                                                        preorder + BFS
 -[ ] 257	Binary Tree Paths		
--[ ] 112	Path Sum		
+-[x] 112	Path Sum		
 -[ ] 113	Path Sum II		
 -[ ] 129	Sum Root to Leaf Numbers		
 -[ ] 298	Binary Tree Longest Consecutive Sequence		
--[ ] 111	Minimum Depth of Binary Tree		
+-[x] 111	Minimum Depth of Binary Tree		
 ### Preorder			
--[ ] 104	Maximum Depth of Binary Tree		
--[ ] 110	Balanced Binary Tree		
+-[x] 104	Maximum Depth of Binary Tree		
+-[x] 110	Balanced Binary Tree		
 -[ ] 124	Binary Tree Maximum Path Sum		
 -[ ] 250	Count Univalue Subtrees		
 -[ ] 366	Find Leaves of Binary Tree		
 -[ ] 337	House Robber III		                                                        postorder + preorder
 ### BFS			
--[ ] 107	Binary Tree Level Order Traversal II		
+-[x] 107	Binary Tree Level Order Traversal II		
 -[ ] 103	Binary Tree Zigzag Level Order Traversal		
 -[ ] 199	Binary Tree Right Side View		                                                BFS + preorder
 ### BST			
