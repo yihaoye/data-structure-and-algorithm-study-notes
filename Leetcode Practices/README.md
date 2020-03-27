@@ -195,7 +195,7 @@
 ### 基础			
 - [x] 144	Binary Tree Preorder Traversal		
 - [x] 94	Binary Tree Inorder Traversal		
-- [ ] 145	Binary Tree Postorder Traversal		
+- [x] 145	Binary Tree Postorder Traversal		
 - [x] 102	Binary Tree Level Order Traversal		
 ### Preorder			
 - [x] 100	Same Tree		
