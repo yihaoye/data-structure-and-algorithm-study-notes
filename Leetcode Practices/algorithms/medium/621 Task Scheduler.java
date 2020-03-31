@@ -109,24 +109,50 @@ class Solution {
 
 
 
-// My Solution 2: (not finished)
+// My Solution 2 (Kind of Greedy):
 class Solution {
     public int leastInterval(char[] tasks, int n) {
         int res = 0;
         Arrays.sort(tasks);
-        
-        char tempLetter = tasks[0];
-        int count = 0;
-        for (char task : tasks) {
-            if (tempLetter != task) {
-                // arrList.add(count);
-                count = 1;
-                tempLetter = task;
-            } else {
-                count++;
+
+        int len = countLetter(tasks);
+        int[][] freq = new int[len][2]; // freq[i][0] is letter's count, freq[i][1] is last put in position index in resList (init -n-1)
+        for (int[] f : freq) f[1] = -n-1;
+        for (int i=0, j=0; i < tasks.length; i++) {
+            if (i > 0 && tasks[i-1] != tasks[i]) j++;
+            freq[j][0]++;
+        }
+        Arrays.sort(freq, (a, b) -> Integer.compare(a[0], b[0]));
+
+        while(true) {
+            if (freq[len-1][0] == 0) break;
+            // for example: if freq = [2, 3, 5], n = 2
+            // then need to take care of freq[-1] first, since it is most frequency,
+            // which means every time, when we come to a resList new position, we always pickup the most frequency one and check if it is valid to put it in, if not check the second most frequency and so on ..., if finally non of them can put in this position, then we consider put in an idle
+            for (int i=len-1; i >= 0; i--) {
+                if (res - freq[i][1] > n) {
+                    freq[i][0]--;
+                    freq[i][1] = res;
+                    break;
+                }
             }
+            res++;
+            Arrays.sort(freq, (a, b) -> Integer.compare(a[0], b[0]));
         }
         
+        return res;
+    }
+
+    // this method only works for sorted non-empty char array, so need sort and confirm non-empty before call the method.
+    public int countLetter(char[] charArr) {
+        int res = 1;
+        char tempLetter = charArr[0];
+        for (char c : charArr) {
+            if (c != tempLetter) {
+                res++;
+                tempLetter = c;
+            }
+        }
         return res;
     }
 }
