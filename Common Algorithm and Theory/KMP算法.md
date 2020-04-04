@@ -1,5 +1,5 @@
-Knuth-Morris-Pratt字符串查找算法（简称为 KMP 算法）可在一个主文本字符串 S (或称 txt) 内查找一个词 W (或称 pattern) 的出现位置。此算法通过运用对这个词在不匹配时本身就包含足够的信息来确定下一个匹配将在哪里开始的发现，从而避免重新检查先前匹配的字符（即避免暴力匹配算法）。  
-暴力匹配算法：循环主字符串 S 中每个字符，从该字符起始一个个匹配 W 中的每个字符，若发生任一不匹配则退出本次匹配动作并从主字符串 S 的下一个字符重复前面的匹配动作，直到主字符串所有字符皆被试完或中间发生了正确匹配。时间复杂度为 O(N*M) - N = S.length, M = W.length。  
+Knuth-Morris-Pratt字符串查找算法（简称为 KMP 算法）可在一个主文本字符串 S (或称 txt) 内查找一个词 W (或称 pattern) 的出现位置。此算法通过运用对这个词在不匹配时本身就包含足够的信息来确定下一个匹配将在哪里开始的发现，从而避免重新检查先前匹配的字符（即避免暴力匹配算法 - BF / Brute Force 算法）。KMP 算法的时间复杂度为 O(N+M) 其中 N = S.length, M = W.length。  
+暴力匹配算法：循环主字符串 S 中每个字符，从该字符起始一个个匹配 W 中的每个字符，若发生任一不匹配则退出本次匹配动作并从主字符串 S 的下一个字符重复前面的匹配动作，直到主字符串所有字符皆被试完或中间发生了正确匹配。时间复杂度为 O(N*M) 其中 N = S.length, M = W.length。  
 KMP 算法的核心思想是先基于 W (pattern) 创建一个 Partial Match Table，其中的每个字符下的值是以该字符为尾的最大可能的后缀 Suffix 的对应前缀 Prefix 的尾 index。Partial Match Table 可以优化为 DFA (Deterministic Finite Automaton - 确定有限状态自动机)。  
 ![](KMP(Partial&#32;Match&#32;Table).png)  
 ![](KMP(Example).png)  
@@ -188,3 +188,4 @@ public class KMP {
   
   
   
+更多：字符串匹配算法中，有 KMP 算法更快的算法，比如 BM / Boyer-Moore 算法。另外与字符串匹配/搜索相关的有趣算法还有 BK / Burkhard-Keller 树算法等等。  
