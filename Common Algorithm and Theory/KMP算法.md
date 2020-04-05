@@ -1,13 +1,14 @@
 Knuth-Morris-Pratt字符串查找算法（简称为 KMP 算法）可在一个主文本字符串 S (或称 txt) 内查找一个词 W (或称 pattern) 的出现位置。此算法通过运用对这个词在不匹配时本身就包含足够的信息来确定下一个匹配将在哪里开始的发现，从而避免重新检查先前匹配的字符（即避免暴力匹配算法 - BF / Brute Force 算法）。KMP 算法的时间复杂度为 O(N+M) 其中 N = S.length, M = W.length。  
 暴力匹配算法：循环主字符串 S 中每个字符，从该字符起始一个个匹配 W 中的每个字符，若发生任一不匹配则退出本次匹配动作并从主字符串 S 的下一个字符重复前面的匹配动作，直到主字符串所有字符皆被试完或中间发生了正确匹配。时间复杂度为 O(N*M) 其中 N = S.length, M = W.length。  
 KMP 算法则是为了避免暴力匹配算法中在主字符串循环中回退的行为而设计的，从而减少浪费减少时间复杂度。  
-KMP 算法的核心思想是先基于 W (pattern) 创建一个 Partial Match Table，其中的每个字符下的值是以该字符为尾的最大可能的后缀 Suffix 的对应前缀 Prefix 的尾 index。KMP 算法除了可以用 Partial Match Table 实现外也可以用 DFA (Deterministic Finite Automaton - 确定有限状态自动机) 实现 (https://donche.github.io/2017/06/24/KMP.html)。  
+KMP 算法的核心思想是先基于 W (pattern) 创建一个 Partial Match Table，其中的每个字符下的值是以该字符为尾的最大可能的后缀 Suffix 的对应前缀 Prefix 的尾 index。KMP 算法除了可以用 Partial Match Table 实现外也可以用 DFA (Deterministic Finite Automaton - 确定有限状态自动机) 实现 (https://blog.csdn.net/congduan/article/details/45459963, https://donche.github.io/2017/06/24/KMP.html)。  
 ![](KMP(Partial&#32;Match&#32;Table).png)  
 ![](KMP(Example).png)  
 ![](KMP(DFA).png)  
 ![](KMP(DFA2).png)  
-简单易懂的教程：https://www.youtube.com/watch?v=V5-7GzOfADQ  
-  
+简易教程：https://www.youtube.com/watch?v=V5-7GzOfADQ  
+详解教程：https://blog.csdn.net/v_july_v/article/details/7041827  
+    
   
   
 ### Java 实现（普林斯顿源代码）
@@ -76,7 +77,7 @@ public class KMP {
         // build DFA from pattern
         int m = pat.length();
         dfa = new int[R][m]; 
-        dfa[pat.charAt(0)][0] = 1; 
+        dfa[pat.charAt(0)][0] = 1; // 创建一个二维数组dfa[][]来保存对于模式字符串的每个字符来说，文本的每个字符应该使模式字符串指针前进到哪个位置。
         for (int x = 0, j = 1; j < m; j++) {
             for (int c = 0; c < R; c++) 
                 dfa[c][j] = dfa[c][x];     // Copy mismatch cases. 
@@ -124,7 +125,8 @@ public class KMP {
         int n = txt.length();
         int i, j;
         for (i = 0, j = 0; i < n && j < m; i++) {
-            j = dfa[txt.charAt(i)][j];
+            if (txt.charAt(i) == pat.charAt(j)) j++;
+            else j = dfa[txt.charAt(i)][j];
         }
         if (j == m) return i - m;    // found
         return n;                    // not found
@@ -145,7 +147,8 @@ public class KMP {
         int n = text.length;
         int i, j;
         for (i = 0, j = 0; i < n && j < m; i++) {
-            j = dfa[text[i]][j];
+            if (text[i] == pattern[j]) j++;
+            else j = dfa[text[i]][j];
         }
         if (j == m) return i - m;    // found
         return n;                    // not found
