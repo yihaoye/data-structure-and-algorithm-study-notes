@@ -6,7 +6,7 @@ KMP 算法的核心思想是先基于 W (pattern) 创建一个 Partial Match Tab
 ![](KMP(Example).png)  
 ![](KMP(DFA).png)  
 ![](KMP(DFA2).png)  
-![](https://pic4.zhimg.com/v2-6594ba99da1f3c8ea609d0b24be448cb_b.webp)  
+![](KMP(DFA3).webp)  
 简易教程：https://www.youtube.com/watch?v=V5-7GzOfADQ  
 详解教程：https://zhuanlan.zhihu.com/p/83334559, https://blog.csdn.net/v_july_v/article/details/7041827  
     
