@@ -12,7 +12,7 @@ KMP 算法的核心思想是先基于 W (pattern) 创建一个 Partial Match Tab
     
   
   
-### Java 实现（KMP DFA）
+## Java 实现（KMP DFA）
 ```java
 /******************************************************************************
  *  Compilation:  javac KMP.java
@@ -130,10 +130,26 @@ public class KMP {
 }
 ```
 参考：https://algs4.cs.princeton.edu/53substring/KMP.java.html  
+### (重要) DFA 已理清思路：  
+确实比较难，for 语句执行前已初始化一次是非匹配与影子状态（非匹配与影子状态赋值没明显因为它们初始值必为 0，即 int 初值所以不用写），
+进入 for 语句之后：是非匹配先行，所以执行后面的更新影子状态时已为该更新准备好数据，第二轮的是非匹配不会更改前一轮的是非匹配结果，
+不过上一轮的是非匹配结果与上一轮的更新的影子状态会影响这一轮的非匹配结果。  
+影子状态 x 与 j 的关系就是如 PMT 的 prefix 尾与 suffix 尾的关系。  
+具体可以再看一次上面的动图理解。  
+是非匹配即代码中的：  
+```java
+for (int c = 0; c < R; c++) 
+    dfa[c][j] = dfa[c][x];
+dfa[pat.charAt(j)][j] = j+1;
+```
+更新影子状态即代码中的：  
+```java
+x = dfa[pat.charAt(j)][x];
+```
   
   
   
-### Java 实现2 (KMP PMT)
+## Java 实现 2 (KMP PMT)
 ```java
 public static int KMP(String txt, String pat) {
     int i = 0, j = 0;
