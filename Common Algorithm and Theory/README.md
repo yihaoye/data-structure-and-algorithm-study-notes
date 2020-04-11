@@ -9,4 +9,7 @@
 - [递归迭代 | Recursion Iteration](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Common%20Algorithm%20and%20Theory/%E9%80%92%E5%BD%92%E4%B8%8E%E8%BF%AD%E4%BB%A3.md)
 - [深度优先, 广度优先 | Depth First Search, Breadth First Search](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Common%20Algorithm%20and%20Theory/%E6%A0%91%E5%9B%BE%E9%81%8D%E5%8E%86.md)
 - [KMP算法 | Knuth–Morris–Pratt Algorithm](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Common%20Algorithm%20and%20Theory/KMP%E7%AE%97%E6%B3%95.md)
+- [AC自动机 | Aho–Corasick Algorithm](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Common%20Algorithm%20and%20Theory/AC%E8%87%AA%E5%8A%A8%E6%9C%BA.md)
+- [位运算 | Bitwise Operation](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Common%20Algorithm%20and%20Theory/%E4%BD%8D%E8%BF%90%E7%AE%97.md)
+- [戴克斯特拉算法 | Dijkstra Algorithm](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Common%20Algorithm%20and%20Theory/Dijkstra%E7%AE%97%E6%B3%95.md)
   
