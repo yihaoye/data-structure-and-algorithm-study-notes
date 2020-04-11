@@ -1,4 +1,4 @@
-## A*算法总结 (Summary of the A* Method)  
+## A&ast;算法总结 (Summary of the A&ast; Method)  
 
 原文地址： http://www.gamedev.net/reference/articles/article2003.asp  
 翻译： https://blog.csdn.net/hitwhylz/article/details/23089415  
