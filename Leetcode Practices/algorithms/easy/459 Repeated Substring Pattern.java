@@ -21,7 +21,7 @@ Explanation: It's the substring "abc" four times. (And the substring "abcabc" tw
 
 
 
-// My Solution (KMP):
+// My Solution after a bit inspired (KMP):
 class Solution {
     public boolean repeatedSubstringPattern(String s) {
         int len = s.length();
@@ -54,3 +54,28 @@ class Solution {
         return pmt;
     }
 }
+
+
+
+// Other's Solution (KMP):
+class Solution2 {
+    public boolean repeatedSubstringPattern(String s) {
+        int len = s.length();
+        int[] pmt = PMT(s);
+        
+        return pmt[len] > 0 && len%(len-pmt[len]) == 0;
+    }
+    
+    public static int[] PMT(String pat) {
+        int pmt[] = new int[pat.length()+1];
+        pmt[0] = 0;
+        pmt[1] = 0;
+        for (int i=1, j=0; i < pat.length(); i++) {
+            while (j > 0 && pat.charAt(i) != pat.charAt(j)) j = pmt[j];
+            if (pat.charAt(i) == pat.charAt(j)) j++;
+            pmt[i+1] = j;
+        }
+        return pmt;
+    }
+}
+// https://www.youtube.com/watch?v=uKr9qIZMtzw&t=1040s
