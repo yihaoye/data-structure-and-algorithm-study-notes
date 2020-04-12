@@ -151,42 +151,37 @@ x = dfa[pat.charAt(j)][x];
   
 ## Java 实现 2 (KMP PMT)
 ```java
-public static int KMP(String txt, String pat) {
-    int i = 0, j = 0;
+public static List<Integer> KMP(String txt, String pat) {
+    List res = new ArrayList<Integer>();
     int pmt[] = PMT(pat);
     
-    while (i < txt.length() && j < pat.length()) {
-        if (j == -1 || txt.charAt(i) == pat.charAt(j)) {
-            i++;
-            j++;
-        } else {
+    for (int i=0, j=0; i < txt.length(); i++) {
+        while (j > 0 && txt.charAt(i) != pat.charAt(j)) j = pmt[j];
+        if (txt.charAt(i) == pat.charAt(j)) j++;
+        if (j == pat.length()) {
+            res.add(i-j+1);
             j = pmt[j];
         }
     }
     
-    if (j == pat.length()) return i - j;
-    else return -1;
+    return res;
 }
 
-public static int[] PMT(String s) { // 有些实现把 pmt 叫做 next 数组
-    int pmt[] = new int[s.length()]; // 定义大一个，防止越界，只有前 length 个数据有用
-    int i = 0, j = -1; // 求pmt数组的 j 初始化为 -1。这样设计是要使 pmt[1]=0;
-    pmt[0] = -1;
-    // 有越界就改这个地方 s.length()-1
-    // 这部分的循环就是字符串匹配  循环和上面很相似
-    while (i < s.length()-1) {
-        if (j == -1 || s.charAt(i) == s.charAt(j)) {
-            pmt[i+1] = j+1;
-            i++;
-            j++;
-        } else {
-            j = -1;
-        }
+// 基于 pattern 来构建 PMT (Partial Match Table)
+public static int[] PMT(String pat) { // 有些实现把 pmt 叫做 next 数组
+    int pmt[] = new int[pat.length()+1]; // 定义大一个，防止越界，只有前 length 个数据有用
+    pmt[0] = 0;
+    pmt[1] = 0;
+    // 这部分的循环就是字符串匹配，循环和上面很相似
+    for (int i=1, j=0; i < pat.length(); i++) {
+        while (j > 0 && pat.charAt(i) != pat.charAt(j)) j = pmt[j];
+        if (pat.charAt(i) == pat.charAt(j)) j++;
+        pmt[i+1] = j;
     }
     return pmt;
 }
 ```
-参考：https://blog.csdn.net/qq_28619473/java/article/details/88760101
+参考：https://www.youtube.com/watch?v=uKr9qIZMtzw&t=258s
   
   
   
