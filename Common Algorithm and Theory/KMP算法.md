@@ -151,7 +151,7 @@ x = dfa[pat.charAt(j)][x];
   
 ## Java 实现 2 (KMP PMT)
 ```java
-// 此实现可返回多匹配结果
+// 此实现或可返回多匹配结果？
 public static List<Integer> KMP(String txt, String pat) {
     List res = new ArrayList<Integer>();
     int[] pmt = PMT(pat);
@@ -170,12 +170,12 @@ public static List<Integer> KMP(String txt, String pat) {
 
 // 基于 pattern 来构建 PMT (Partial Match Table)
 public static int[] PMT(String pat) { // 有些实现把 pmt 叫做 next 数组
-    int pmt[] = new int[pat.length()+1]; // 定义大一个，防止越界，只有前 length 个数据有用
+    int pmt[] = new int[pat.length()+1]; // 定义大一个，最后元素 pmt[pat.length()] 指向 LPS 最长前缀的最尾元素的索引值
     pmt[0] = 0;
     pmt[1] = 0;
     // 这部分的循环就是字符串匹配，循环和上面很相似
-    for (int i=1, j=0; i < pat.length(); i++) {
-        while (j > 0 && pat.charAt(i) != pat.charAt(j)) j = pmt[j];
+    for (int i=1, j=0; i < pat.length(); i++) { // i 从 1 开始，j 从 0 开始是因为 LPS (len of the longest prefix of pat[0...j] which is also the suffix) 从索引 0 和 1 就可以开始对比，比如若 pat 为 AAXXX 时，PMT 就是 [0,0,1,x,x,x]，即在 pat[0...1] 时 pat[1] 为 pat[0] 的 LPS
+        while (j > 0 && pat.charAt(i) != pat.charAt(j)) j = pmt[j]; // 比如 pat: ABCABDABCABC 或 ABCABDABCABD
         if (pat.charAt(i) == pat.charAt(j)) j++;
         pmt[i+1] = j;
     }
