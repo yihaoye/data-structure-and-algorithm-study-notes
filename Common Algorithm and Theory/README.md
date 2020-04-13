@@ -1,5 +1,6 @@
 ## 小章目录
   
+- [常用排序算法 | Sorting Algorithms](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Common%20Algorithm%20and%20Theory/Common%20Sorts/)
 - [A&ast;搜索算法 | A&ast; Search Algorithm](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Common%20Algorithm%20and%20Theory/A*%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95.md)
 - [回溯法 | Backtracking](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Common%20Algorithm%20and%20Theory/NQueen.java)
 - [二分搜索 | Binary Search](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Common%20Algorithm%20and%20Theory/%E4%BA%8C%E5%88%86%E6%90%9C%E7%B4%A2.md)
