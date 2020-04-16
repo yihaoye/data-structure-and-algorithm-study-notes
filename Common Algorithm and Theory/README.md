@@ -13,4 +13,6 @@
 - [AC自动机 | Aho–Corasick Algorithm](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Common%20Algorithm%20and%20Theory/AC%E8%87%AA%E5%8A%A8%E6%9C%BA.md)
 - [位运算 | Bitwise Operation](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Common%20Algorithm%20and%20Theory/%E4%BD%8D%E8%BF%90%E7%AE%97.md)
 - [迪杰斯特拉算法 | Dijkstra Algorithm](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Common%20Algorithm%20and%20Theory/Dijkstra%E7%AE%97%E6%B3%95.md)
+- [最小生成树相关算法 | Minimum Spanning Tree Algorithms]()
+- [拓扑排序 | Topological Sorting]()
   
