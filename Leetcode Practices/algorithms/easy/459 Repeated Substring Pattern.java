@@ -85,16 +85,28 @@ class Solution2 {
         // x,x,x,x,x,x,x,x,x,o,o,o,x,x,x
         // x,x,x,x,x,x,x,x,x,x,x,x,o,o,o
         // 
-        // 以上全部结合得（若 len%(len-pmt[len]) != 0，则以下的最后一行不能刚好匹配至 len-1）
+        // 以上全部结合得
         // o,o,o,x,x,x,x,x,x,x,x,x,x,x,x
         // x,x,x,o,o,o,x,x,x,x,x,x,x,x,x
         // x,x,x,x,x,x,o,o,o,x,x,x,x,x,x
         // x,x,x,x,x,x,x,x,x,o,o,o,x,x,x
         // x,x,x,x,x,x,x,x,x,x,x,x,o,o,o
+        // 符合 Repeated Substring Pattern，且若字符串 s 加长还可以如上继续每 subStrLen 地同理往后推...
         //
-        // 若字符串加长还可以如上继续每 subStrLen 地往后推...
+        // 但若 len%(len-pmt[len]) != 0，比如下面的例子：
+        // o,o,o,o,o,o,o,o,o,o,o,x,x,x,x
+        // x,x,x,x,o,o,o,o,o,o,o,o,o,o,o
+        // 例子
+        // a,b,c,d,a,b,c,d,a,b,c,d,a,b,c
+        // 会导致
+        // a,b,c,d,x,x,x,x,x,x,x,x,x,x,x
+        // x,x,x,x,a,b,c,d,x,x,x,x,x,x,x
+        // x,x,x,x,x,x,x,x,a,b,c,d,x,x,x
+        // x,x,x,x,x,x,x,x,x,x,x,x,a,b,c
+        // 则总集合时的最后一行的第 len-1 元素不能刚好匹配至 Substring 的最后一位字符，不符合 Repeated Substring Pattern
         //
-        // 最终可得出结论：符合 Repeated Substring Pattern
+        //
+        // 所以 pmt[len] > 0 && len%(len-pmt[len]) == 0 最终可得出结论：符合 Repeated Substring Pattern
         return pmt[len] > 0 && len%(len-pmt[len]) == 0;
     }
     
