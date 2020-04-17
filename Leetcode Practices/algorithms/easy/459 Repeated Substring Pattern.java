@@ -63,7 +63,7 @@ class Solution2 {
         int len = s.length();
         int[] pmt = PMT(s);
         
-        // 若 pmt[len] > 0 && len%(len-pmt[len]) == 0 则必然 pmt[len-1] -> pmt[len-subStrLen],（以下图解假设 subStrLen == 3）
+        // 若 pmt[len] > 0 && len%(len-pmt[len]) == 0 则必然 pmt[len-1] -> pmt[len-subStrLen],（subStrLen 即 len-pmt[len], 以下图解假设 subStrLen == 3）
         // 
         // 因为 PMT 属性，必有 pmt[0...len-subStrLen-1] == pmt[subStrLen...len-1],
         // o,o,o,o,o,o,o,o,o,o,o,o,x,x,x
