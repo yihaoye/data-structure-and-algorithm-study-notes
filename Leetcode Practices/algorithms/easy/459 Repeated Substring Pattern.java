@@ -65,36 +65,34 @@ class Solution2 {
         
         // 若 pmt[len] > 0 && len%(len-pmt[len]) == 0 则必然 pmt[len-1] -> pmt[len-subStrLen],（以下图解假设 subStrLen == 3）
         // 
-        // 则必然 pmt[len-subStrLen...len-1] == pmt[len-2*subStrLen...len-subStrLen-1],
-        // x,x,x,x,x,x,x,x,x,o,o,o,x,x,x
-        // x,x,x,x,x,x,x,x,x,x,x,x,o,o,o
-        //
-        // 且因为 PMT 属性，必有 pmt[0...len-subStrLen-1] == pmt[subStrLen...len-1],
+        // 因为 PMT 属性，必有 pmt[0...len-subStrLen-1] == pmt[subStrLen...len-1],
         // o,o,o,o,o,o,o,o,o,o,o,o,x,x,x
         // x,x,x,o,o,o,o,o,o,o,o,o,o,o,o
         //
-        // 则 pmt[0...subStrLen-1] == pmt[subStrLen...2*subStrLen-1],
+        // 则当然其子集 pmt[0...subStrLen-1] == pmt[subStrLen...2*subStrLen-1] 也成立,
         // o,o,o,x,x,x,x,x,x,x,x,x,x,x,x
         // x,x,x,o,o,o,x,x,x,x,x,x,x,x,x
         // 
-        // 则 pmt[subStrLen...len-2*subStrLen-1] == pmt[2*subStrLen...len-subStrLen-1],
-        // x,x,x,o,o,o,o,o,o,x,x,x,x,x,x
-        // x,x,x,x,x,x,o,o,o,o,o,o,x,x,x
-        // 
-        // 则 
+        // 结合上面两个可得
         // x,x,x,o,o,o,x,x,x,x,x,x,x,x,x
         // x,x,x,x,x,x,o,o,o,x,x,x,x,x,x
         //
         // 同理可往后得
         // x,x,x,x,x,x,o,o,o,x,x,x,x,x,x
         // x,x,x,x,x,x,x,x,x,o,o,o,x,x,x
-        // 若字符串加长还可以继续每 subStrLen 地往后推
-        // 此时结合前面得
+        //
+        // 再往后得
+        // x,x,x,x,x,x,x,x,x,o,o,o,x,x,x
+        // x,x,x,x,x,x,x,x,x,x,x,x,o,o,o
+        // 
+        // 以上全部结合得
         // o,o,o,x,x,x,x,x,x,x,x,x,x,x,x
         // x,x,x,o,o,o,x,x,x,x,x,x,x,x,x
         // x,x,x,x,x,x,o,o,o,x,x,x,x,x,x
         // x,x,x,x,x,x,x,x,x,o,o,o,x,x,x
-        // ...
+        // x,x,x,x,x,x,x,x,x,x,x,x,o,o,o
+        //
+        // 若字符串加长还可以如上继续每 subStrLen 地往后推...
         //
         // 最终可得出结论：符合 Repeated Substring Pattern
         return pmt[len] > 0 && len%(len-pmt[len]) == 0;
