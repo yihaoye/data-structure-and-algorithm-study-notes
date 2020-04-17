@@ -85,7 +85,7 @@ class Solution2 {
         // x,x,x,x,x,x,x,x,x,o,o,o,x,x,x
         // x,x,x,x,x,x,x,x,x,x,x,x,o,o,o
         // 
-        // 以上全部结合得
+        // 以上全部结合得（若 len%(len-pmt[len]) != 0，则以下的最后一行不能刚好匹配至 len-1）
         // o,o,o,x,x,x,x,x,x,x,x,x,x,x,x
         // x,x,x,o,o,o,x,x,x,x,x,x,x,x,x
         // x,x,x,x,x,x,o,o,o,x,x,x,x,x,x
