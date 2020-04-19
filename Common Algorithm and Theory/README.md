@@ -16,4 +16,5 @@
 - [马拉车算法 | Manacher Algorithm]()
 - [最小生成树相关算法 | Minimum Spanning Tree Algorithms]()
 - [拓扑排序 | Topological Sorting]()
+- [并查集与联合查找算法 | Disjoint Set and Union Find](./并查集与联合查找算法.md)
   
