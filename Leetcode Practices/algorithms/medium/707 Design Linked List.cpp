@@ -75,7 +75,7 @@ public:
         if (index < 0 || index > size_) return;
         if (index == 0) return addAtHead(val);
         if (index == size_) return addAtTail(val);
-        Node dummy(0, head_);
+        Node dummy(0, head_); // 通过 dummy 函数在内存的栈区创建 prev Node，因为若直接 new 一个 Node 是在堆区创建，在堆区创建需要记得写删除释放内存，在栈区则不用因为系统自动回收。（这是 C/C++ 才需要注意的，Java 等有自动垃圾回收机制的语言则无需注意）
         Node* prev = &dummy;
         while (index--) prev = prev->next;
         prev->next = new Node(val, prev->next);    
