@@ -27,6 +27,7 @@
     - [B+树 | B Tree]()
     - [2–3树 | 2-3 Tree]()
   - [字典树 | Trie]()
+  - [并查集 | Disjoint-Set/Union-Find Forest]()
 - [图 | Graph]()
   - [有向图 | Directed Graph]()
   - [无向图 | Undirected Graph]()
