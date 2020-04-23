@@ -34,7 +34,7 @@ class Solution {
         UnionFindSet ufs = new UnionFindSet(edges.length);
         
         for (int[] edge : edges) {
-            if (!ufs.Union(edge[0], edge[1])) return edge;
+            if (!ufs.Union(edge[0], edge[1])) return edge; // 经测试，使用 ufs.Union 并不强制 edge[0] 一定大于或小于 edge[1]
         }
         
         return new int[1];
@@ -43,7 +43,7 @@ class Solution {
 
 class UnionFindSet {
   private int[] parents_;
-  private int[] ranks_;
+  private int[] ranks_; // 这里 ranks_[x] 并不实时准确表示该节点所属树的深度（因为发生 path compression 时并不对 ranks_[i] 自减，当然也可以针对此进行优化使其准确反应深度并提高效率），但这不影响题解的正确性，只是可能在某些输入情况中性能有些影响。
  
   public UnionFindSet(int n) {
       parents_ = new int[n + 1];
@@ -60,7 +60,7 @@ class UnionFindSet {
       if (pu == pv) return false;
  
       if (ranks_[pv] > ranks_[pu])
-          parents_[pu] = pv;           
+          parents_[pu] = pv;
       else if (ranks_[pu] > ranks_[pv])
           parents_[pv] = pu;
       else {
@@ -71,7 +71,7 @@ class UnionFindSet {
       return true;
   }
  
-  public int Find(int u) {
+  public int Find(int u) { // 一次 Find 调用不会将该节点所属树的全部节点都 path compression，甚至可能本次不会将输入节点的 parents_[x] 完成赋值为根父节点（可能只赋值为中途的某个节点）。
       while (parents_[u] != u) {
           parents_[u] = parents_[parents_[u]];
           u = parents_[u];
@@ -79,3 +79,4 @@ class UnionFindSet {
       return u;
   }
 }
+// https://zxi.mytechroad.com/blog/tree/leetcode-684-redundant-connection/
