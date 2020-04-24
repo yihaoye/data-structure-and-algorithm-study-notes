@@ -32,7 +32,7 @@ class Solution {
     public int findCircleNum(int[][] M) {
         UnionFindSet ufs = new UnionFindSet(M.length);
         for (int i=0; i<M.length; i++) {
-            for (int j=0; j<M.length; j++) {
+            for (int j=0; j<M.length; j++) { // 根据题意，必有 M[i][j] = M[j][i]，M 矩阵上数据必按主对角线对称，遍历过 M[i][j] 就不必遍历 M[j][i] 因为是同两个人的重复，所以其实只需要遍历主对角线的其中一边即可，故此处可优化为 for (int j=i+1; j<M.length; j++)
                 if (M[i][j] == 1) {
                     ufs.Union(i, j);
                 }
