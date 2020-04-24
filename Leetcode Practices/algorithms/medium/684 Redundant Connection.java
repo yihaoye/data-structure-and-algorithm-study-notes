@@ -43,7 +43,7 @@ class Solution {
 
 class UnionFindSet {
   private int[] parents_;
-  private int[] ranks_; // 这里 ranks_[x] 并不实时准确表示该节点所属树的深度（因为发生 path compression 时并不对 ranks_[i] 自减，当然也可以针对此进行优化使其准确反应深度并提高效率），但这不影响题解的正确性，只是可能在某些输入情况中性能有些影响。
+  private int[] ranks_; // 这里 ranks_[x] 并不实时准确表示该节点所属树的深度（因为发生 path compression 时并不对 ranks_[i] 自减，应该可以针对此进行优化使其准确反应深度并提高效率但是实现此优化可能很复杂），但这不影响题解的正确性，只是可能在某些输入情况中性能有些影响。
  
   public UnionFindSet(int n) {
       parents_ = new int[n + 1];
@@ -80,3 +80,10 @@ class UnionFindSet {
   }
 }
 // https://zxi.mytechroad.com/blog/tree/leetcode-684-redundant-connection/
+/*
+个人理解补充：
+if (pu == pv) return false;
+如上行代码，比较根节点 (Find(u)) 是否相等只是用来判定是否连通，
+至于谁做根节点没关系、都是一样的，只要是该片连通的所有节点中的其中一个即可（该片连通应是树状网络的形式），
+当然从效率上来说，中心的那个节点（即被直连最多即深度最深的那个节点）最好。
+*/
