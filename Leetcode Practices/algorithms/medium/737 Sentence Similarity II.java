@@ -26,7 +26,7 @@ class Solution {
     public boolean areSentencesSimilarTwo(String[] words1, String[] words2, List<List<String>> pairs) {
         if (words1.length != words2.length) return false;
         
-        UnionFindSet ufs = new UnionFindSet(pairs.size() * 2);
+        UnionFindSet ufs = new UnionFindSet(pairs.size() * 2); // 不一定全部用完，比如如果多个 pair 都有某个相同字符串时（如 ["great", "good"], ["fine", "good"] 里的 "good"），除非 pairs 里包含的所有字符串每个都是 unique 才会刚刚好用完
         
         Map<String, Integer> indies = new HashMap<>(); // word to index
         
