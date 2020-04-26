@@ -50,7 +50,7 @@ class Solution {
     private int getIndex(String word, Map<String, Integer> indies, Boolean create) {
         if (!indies.containsKey(word)) {
             if (!create) return Integer.MIN_VALUE;
-            int index = indies.size();
+            int index = indies.size(); // 这里 index = indies.size() 的意思是每插入一个新的元素就把其对应至其插入的顺序值（即 value = 它被遍历时的顺序，比如第一个被 getIndex 的则赋值 0，第二个被 getIndex 的则赋值 1，后面也如是）
             indies.put(word, index);
             return index;
         }
