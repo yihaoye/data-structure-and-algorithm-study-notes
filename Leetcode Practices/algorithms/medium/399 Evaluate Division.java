@@ -86,3 +86,5 @@ class Solution {
     }
 }
 // https://zxi.mytechroad.com/blog/graph/leetcode-399-evaluate-division/
+// 简易图解：http://zxi.mytechroad.com/blog/wp-content/uploads/2017/12/399-ep120.png
+// 本题还可以使用 Graph + DFS 解题，但是并查集因为有 path compression，所以时间复杂度更优，所以当测试输入较大时，其性能比 DFS 更好。
