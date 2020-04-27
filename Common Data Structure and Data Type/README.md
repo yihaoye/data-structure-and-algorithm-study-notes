@@ -50,7 +50,9 @@
 ## 常用数据类型
 - [布尔型 | Boolean]()
 - [字节 | Byte]()
-- [整数 | Integer]()
+- [整型 | Integer]()
+  - [有符号整型 | Signed Integer]()
+  - [无符号整型 | Unsigned Integer]()
 - [浮点型 | Float]()
 - [字符串 | String]()
 - [字符 | Character]()
