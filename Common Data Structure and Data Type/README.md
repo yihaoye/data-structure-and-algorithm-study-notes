@@ -56,3 +56,9 @@
 - [浮点型 | Float]()
 - [字符串 | String]()
 - [字符 | Character]()
+  
+  
+以上总结未完待续...  
+  
+### 常用数据类型的一些细节补充
+* 有些编程语言（比如 Java 早期版本）不支持 unsigned（无符号）数据类型（如 unsigned char, unsigned short, unsigned int 和 unsigned long 等等），因此在一些与 Bitwise 或数据类型符号相关的题目中需要注意，参见[例子](./../Leetcode%20Practices/algorithms/easy/190%20Reverse%20Bits.java)。
