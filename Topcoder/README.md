@@ -11,6 +11,8 @@ https://www.jianshu.com/p/5089318b2e71
 ### Topcoder 使用
 <details>
 <summary>转自：http://blog.csdn.net/skai_csdn/article/details/6167334</summary>
+
+```
 最近找我问TC的朋友越来越多，于是就想写一个入门教程放在这里。对我来说，TC目前是总收入的一个重要组成部分，虽然不如工资多，但是性价比极高。由于我基本只干Design/Development，因此本文只介绍这两种，对于有志于Architecture/Assembly乃至Studio的，我给予精神上支持。另外，我在软件工程方面的知识体系极其山寨，这篇文章应该会有不少错误，请海涵。最后，转载请注明。  
 一，准备  
 　　虽然说TC的门槛并不高，但是还是有一些基础要求的，基本可以概括为：  
@@ -24,7 +26,7 @@ https://www.jianshu.com/p/5089318b2e71
 4. 忽悠能力：这点在appeal时尤其重要，后面另说。  
 5. 网络情况：出国速度越快越好！（抢review很重要！）  
 二，TC的开发流程  
-　　TopCoder作为一个老牌的软件外包（Outsourcing，参考http://en.wikipedia.org/wiki/Outsourcing）公司，在六年多的发展中自己完善了一套开发模式，从一开始只有Design/Development作为比赛开放给member，到现在的一条龙服务，按照开发时间顺序排列如下，括号里是我自己的土鳖翻译：  
+　　TopCoder作为一个老牌的软件外包（Outsourcing，参考http://en.wikipedia.org/wiki/Outsourcing ）公司，在六年多的发展中自己完善了一套开发模式，从一开始只有Design/Development作为比赛开放给member，到现在的一条龙服务，按照开发时间顺序排列如下，括号里是我自己的土鳖翻译：  
 　　Conceptualization（概念化）: competitor直接与客户公司代表沟通，确定需求，将需求形成文字；  
 　　Specification（规格化）: 根据conceptualization的结果，进一步完善成需求文档（一般称为ARS，　　Application Requirement Specification）；  
 　　Architecture（架构）: 根据ARS确定整个系统的架构，并将整个系统打散成多个component，给出每个component的逻辑功能以及对外接口；  
@@ -49,12 +51,12 @@ https://www.jianshu.com/p/5089318b2e71
 　　其他几个需要注意的：  
 　　报酬方面，一般来说一个组件的前2名有钱，第二名是第一名的50%，所以，如果Submission结束后你发现除了你只有一个人提交，那么恭喜你，一般来说你有钱拿了(有一个例外就是你的submission 75分以下，这是不能拿钱的。当然，根据我的经验，想拿75分以下是挺难的…………)  
 　　关于Reliability：这是一个衡量一个competitor信用的指标，同时影响到收入；它被定义为过去15次注册的组件中，最后提交并超过75分的比例。如果是100%，则收入有一个20%的bonus，95%-100%的，15%，以此类推，80%以下就没有了。由于有Reliability的存在，小号就显得很必要了…………下面详述；  
-　　关于rating：一个表示水平的数字，和钱基本无关，忽略即可，如果有兴趣的可以研究http://www.topcoder.com/wiki/display/tc/Component+Design+Ratings。  
+　　关于rating：一个表示水平的数字，和钱基本无关，忽略即可，如果有兴趣的可以研究http://www.topcoder.com/wiki/display/tc/Component+Design+Ratings 。  
 四、上手  
 　　好，说了这么多，该上手试试了。我的建议是先使用一个小号，海量注册（注册即可下载别人的submission），等积累了一定经验有感性认识了以后再开始干活，避免影响Reliability。以design为例：  
-　　一、进入http://www.topcoder.com/tc，点击右上角的Register Now；  
+　　一、进入http://www.topcoder.com/tc ，点击右上角的Register Now；  
 　　二、填写个人信息，由于是小号可以填一些假信息但是注意别太过分…………毕竟这个在道理上是不被允许的，虽然很多人这么干；记得勾上I want to Compete - on TopCoder；  
-　　三、好了，你有自己的TC账号了，重新进入http://www.topcoder.com/tc点击左边Software Design/Active Contests，这里列出了所有处于Submission期间的组建，列出了他们的注册deadline，提交deadline以及报酬；点你感兴趣的之后点击Register即可完成注册；  
+　　三、好了，你有自己的TC账号了，重新进入http://www.topcoder.com/tc 点击左边Software Design/Active Contests，这里列出了所有处于Submission期间的组建，列出了他们的注册deadline，提交deadline以及报酬；点你感兴趣的之后点击Register即可完成注册；  
 　　四、你现在已经注册了一个组件，进入这个组件的页面点击forum可以进入组件论坛，其中Design Documents给出了一些开发文档，Design Questions供开发者提问，会有专职人员(一般是架构师或者PM)进行答疑；  
 　　五，当这个组件进入Aggregation后，进入Software Design/Submis & Review界面便可以看到别人提交的压缩包，下载下来学习吧！  
 五、Review之路  
@@ -65,4 +67,5 @@ https://www.jianshu.com/p/5089318b2e71
 　　TC的付款方式有三种：支票，电汇和Paypal，手续费从低到高，延时从高到低，一般来说支票需要三个月到半年左右时间到账，但是基本不需要手续费；Paypal可以在一周内到账，但是Paypal转账到国内银行需要收取35$/笔的手续费。考虑到Paypal转账单次最大金额是2500$，并且在银行还要收取一定费用，因此可以看做2%左右的手续费。  
 　　第一次拿钱时，需要打印一份Assignment Document，签名扫描后email或者传真给TC，此后就不需要了。以我选择的Paypal支付为例，TC会把每个月的收入在下个月的15日打到Paypal上，然后积攒到2500$后一次汇到国内银行账户上，总的来说延时不超过一周。  
 　　总算赶在十一之内草草结束掉，其中各种技巧只能靠大家自己挖掘了。最后说一句，如果大家觉得这篇文章还算有点用，注册TC账号的时候Referer填linwe（我的handle），算是对我的一点肯定吧。  
+```
 </details>
