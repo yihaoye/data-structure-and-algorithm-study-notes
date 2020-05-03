@@ -51,9 +51,11 @@ These are more details:
 
 For example, an array {1, 2, 2, 1, 1, 7, 2 }
 
-        1        2       2       1         1       7     2
-  one  [1]     [1,2]    [1]    [null]    [null]   [7]   [7] (<=Answer)
-  two  [null]  [null]   [2]    [1,2]     [2]      [2]   [0]
+        1        2       2       1         1       7        2
+  ones [1]     [1,2]    [1]    [null]    [null]   [7,-2]   [7] (<=Answer)
+  twos [null]  [null]   [2]    [1,2]     [2]      [null]   [null]
+  // if above array has more than 1 element, it means result of that array equals sum of its elements, for example [1,2] = [3] for example [7,-2] = [5]
+  // some of above display as [null] which is i.e. [0]
   
   Index form 0 to 6.....====>>>>>>
 ※ which [N] means the info in variables.
