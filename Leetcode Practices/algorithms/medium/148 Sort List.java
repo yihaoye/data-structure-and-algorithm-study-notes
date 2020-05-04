@@ -13,7 +13,88 @@ Output: -1->0->3->4->5
 
 
 
-// Other's Solution (Merge Sort, Author: Huahua):
+// Other's Solution (Merge Sort - Bottom Down, Author: Huahua):
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+  public ListNode sortList(ListNode head) {
+    // 0 or 1 element, we are done.
+    if (head == null || head.next == null) return head;
+
+    int len = 1;
+    ListNode cur = head;
+    while (cur != null) {
+        cur = cur.next;
+        ++len;
+    }
+
+    ListNode dummy = new ListNode(0, head);
+    ListNode l, r, tail;
+    for (int n = 1; n < len; n <<= 1) { // n <<= 1 意思是翻倍，等同于 n *= 2   
+      cur = dummy.next; // partial sorted head
+      tail = dummy;
+      while (cur != null) {
+        l = cur;
+        r = split(l, n);
+        cur = split(r, n);
+        List<ListNode> merged = merge(l, r);
+        tail.next = merged.get(0);
+        tail = merged.get(1);
+      }
+    }      
+    return dummy.next;
+  }
+
+  // Splits the list into two parts, first n element and the rest.
+  // Returns the head of the rest.
+  private ListNode split(ListNode head, int n) {    
+    while (--n > 0 && head != null) head = head.next;
+    ListNode rest = head != null ? head.next : null;
+    if (head != null) head.next = null;
+    return rest;
+  }
+  
+  // Merges two lists, returns the head and tail of the merged list.
+  private List<ListNode> merge(ListNode l1, ListNode l2) {
+    ListNode dummy = new ListNode(0);
+    ListNode tail = dummy;
+    while (l1 != null && l2 != null) {
+      if (l1.val > l2.val) {
+          ListNode tmp = l1;
+          l1 = l2;
+          l2 = tmp;
+      }
+      tail.next = l1;
+      l1 = l1.next;
+      tail = tail.next;
+    }
+    tail.next = (l1 != null) ? l1 : l2;
+    while (tail.next != null) tail = tail.next;
+    return Arrays.asList(dummy.next, tail);
+  }
+}
+/*
+https://zxi.mytechroad.com/blog/wp-content/uploads/2018/07/148-ep211-2.png
+与下面的 Top Down 的递归手法相反（但核心思路一样），此法是从一开始把 List 分成 length 个 sub list，每个 sub list 至多 1 个 Node 然后每两个 sub list 之间的 Node 排序合并，
+全部完成后此时 List 被分成 length/2 个 sub list 每个 sub list 至多 2 个 Node，准备下一轮排序合并，
+即在第 i 轮时，List 被分成 length/(2^i) 个 sub list，每个 sub list 至多 2^i 个 Node 然后每两个 sub list 之间的 Node（共 2*(2^i) 个，此处 ^ 是指数运算的意思）排序合并（其实同上操作），
+由此类推直至最后排序合并为一个 list 则最终完成。
+时间复杂度：O(N*logN)
+空间复杂度：O(1)
+*/
+// 参考：http://zxi.mytechroad.com/blog/list/leetcode-148-sort-list/
+
+
+
+// Other's Solution (Merge Sort - Top Down, Author: Huahua):
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -55,4 +136,13 @@ class Solution {
       return dummy.next;
     }
 }
+/*
+通过快慢指针将 List 分成两部分
+l1, l2 = split(l)
+l1', l2' = sortList(l1), sortList(l2)
+merge(l1', l2')
+时间复杂度：O(N*logN)
+空间复杂度：O(logN) 因为分治递归
+*/
 // 参考：http://zxi.mytechroad.com/blog/list/leetcode-148-sort-list/
+// https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Common%20Algorithm%20and%20Theory/Common%20Sorts/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%80%A7%E8%83%BD%E5%AF%B9%E6%AF%94.png
