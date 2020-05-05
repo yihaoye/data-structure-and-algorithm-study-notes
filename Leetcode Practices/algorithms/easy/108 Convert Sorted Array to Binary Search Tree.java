@@ -18,7 +18,7 @@ One possible answer is: [0,-3,9,-10,null,5], which represents the following heig
 
 
 
-// Other's Solution (Author: Huahua):
+// Other's Solution (递归 - Author: Huahua):
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -48,3 +48,7 @@ class Solution {
         return root;
     }
 }
+/*
+时间复杂度：O(N)
+空间复杂度：O(logN)
+*/
