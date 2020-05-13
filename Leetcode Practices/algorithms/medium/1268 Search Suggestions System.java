@@ -49,19 +49,21 @@ class Solution {
     public List<List<String>> suggestedProducts(String[] products, String searchWord) {
         Arrays.sort(products);
         ArrayList<List<String>> res = new ArrayList<List<String>>();
+        int[] startIndex = new int[]{0}; // reusable start index flag to improve performance, not must
         for (int i=1; i<=searchWord.length(); i++) {
-            res.add(matchProducts(products, searchWord.substring(0, i)));
+            res.add(matchProducts(products, searchWord.substring(0, i), startIndex));
         }
         
         return res;
     }
     
-    public List<String> matchProducts(String[] products, String word) {
+    public List<String> matchProducts(String[] products, String word, int[] index) {
         ArrayList<String> res = new ArrayList<String>();
         int count = 0;
-        for (String product : products) { // can apply binary-search or reusable start index flag to improve performance?
-            if (product.indexOf(word) == 0) {
-                res.add(product);
+        for (int i=index[0]; i<products.length; i++) { // can apply binary-search first time to improve performance?
+            if (products[i].indexOf(word) == 0) {
+                res.add(products[i]);
+                if (count == 0) index[0] = i;
                 if (++count == 3) break;
             }
         }
