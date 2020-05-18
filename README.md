@@ -2,16 +2,19 @@
   
 ### 本Repo包括以下内容:  
 * Books and Courses 
-  * 数据结构网课笔记(http://bbs.fishc.com)  
-  * Introduction to Algorithms 
-  * Cracking the Coding Interview
-  * 算法竞赛入门经典
-* Common Sorts, Algorithm, Data Structure Implementation, Computer and Programming Languages basics   
-* Codility Practices  
-* Google Code Jam Practices  
-* Topcoder  
-* Leetcode Practices (每个问题第一次提交 round 1 是自己的首次解答方法，第二次提交 round 2 是进行复盘复习后并添加、理解他人的更优解以及增添其他语言解题实现，round 0 则是首次答题没头绪参考他人解题思路)  
-* 其他关于数据结构与算法的重要心得笔记  
+  * [fishc.com 数据结构网课笔记](./数据结构网课/)
+  * [Introduction to Algorithms](./Introduction%20to%20Algorithms/)
+  * [Cracking the Coding Interview](./Cracking%20the%20Coding%20Interview/)
+  * [算法竞赛入门经典](./算法竞赛入门经典/)
+* [Common Algorithm & Theory](./Common%20Algorithm%20and%20Theory/)
+* [Data Structure & Implementation & Data Type](./Common%20Data%20Structure%20and%20Data%20Type/)
+* [Computer System Basics](./Computer%20System%20Layer/)
+* [Programming Languages Features](./Program%20Languages%20Features/)
+* [Codility Practices](./Codility%20Practices/)
+* [Google Code Jam Practices](./Google%20Code%20Jam/)
+* [Topcoder](./Topcoder/)
+* [Leetcode Practices](./Leetcode%20Practices/) (每个问题第一次提交 round 1 是自己的首次解答方法，第二次提交 round 2 是进行复盘复习后并添加、理解他人的更优解以及增添其他语言解题实现，round 0 则是首次答题没头绪参考他人解题思路)
+* [其他关于数据结构与算法的重要心得笔记](./Other%20Practices/)  
   
   
 ### 刷题技巧与笔记:
@@ -36,8 +39,8 @@
 6. 编码六，有时题解没通过测试时不用先急着怀疑是自己的基本思路错误，有可能只是需要再对一些 edge cases 做优化即可（例如 Leetcode Q214）。
 7. 编码七，题解中的一些灵活小技巧，比如在某些情况下可以对 char 或 string 等非数学数据类型直接互相进行 +/- 操作，可以减少代码里一些繁琐的逻辑、表达、判断等等。
 #### 题型技巧
-更多题型、细节技巧请看：  
-https://github.com/yihaoye/data-structure-and-algorithm-study-notes/tree/master/Cracking%20the%20Coding%20Interview  
+查看[更多题型、细节技巧](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/tree/master/Cracking%20the%20Coding%20Interview)  
+  
   
 #### 感想
 要培养分治法（分而治之）的思维，把一个大的复杂困难的问题分解成多个小的较简单、直白的问题，原问题的解则由子问题的解的合并获得，这种思维在平时工作、生活中也很重要、实用。  

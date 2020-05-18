@@ -143,7 +143,7 @@ public class Solution {
 		}
 		Set<Integer> set = new HashSet<>();
 		int[] low = new int[numRouters];
-		int[] ids = new int[numRouters];
+		int[] ids = new int[numRouters]; // ids for IDs?
 		int[] parent = new int[numRouters]; 
 		Arrays.fill(ids, -1);
 		Arrays.fill(parent, -1);
@@ -155,9 +155,9 @@ public class Solution {
 	}
 	
 	private static void dfs(Map<Integer, Set<Integer>> map, int[] low, int[] ids, int[] parent, int cur, Set<Integer> res) {
-		int children = 0; 
+		int children = 0;
 		ids[cur] = low[cur] = ++time;
-		for(int nei : map.get(cur)) {
+		for(int nei : map.get(cur)) { // nei for neighbour
 			if(ids[nei] == -1) {
 				children++;
 				parent[nei] = cur;
