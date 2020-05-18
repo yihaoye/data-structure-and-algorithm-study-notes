@@ -2,7 +2,7 @@
   
 ### 本Repo包括以下内容:  
 * Books and Courses 
-  * [fishc.com 数据结构网课笔记](./数据结构网课/)
+  * [fishc.com 数据结构网课笔记](./fishc.com%20数据结构网课/)
   * [Introduction to Algorithms](./Introduction%20to%20Algorithms/)
   * [Cracking the Coding Interview](./Cracking%20the%20Coding%20Interview/)
   * [算法竞赛入门经典](./算法竞赛入门经典/)
