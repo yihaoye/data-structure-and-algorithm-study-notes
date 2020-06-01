@@ -155,5 +155,10 @@ Event.operation.publish("action#create", message);
 Event.operation.publish("action#update", message2);
 ```
   
+![](https://miro.medium.com/max/942/1*yL442HcOzp72L6hBrEIYFA.png)  
+![](https://miro.medium.com/max/942/1*C4ZfsoZmAFIa0uL0Ig3Nag.png)  
+![](https://miro.medium.com/max/1400/1*cnlIFMEjaeIG-9_QK0JQcg.png)  
+  
+
 ### More details to be concern
-multithreading and message queue.  
+Multithreading and Message Queue.  
