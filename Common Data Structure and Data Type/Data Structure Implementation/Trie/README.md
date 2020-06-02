@@ -12,7 +12,8 @@ Trie 的结构非常好懂，用 f(u,c) 表示结点 u 的 c 字符指向的下�
   
 有时需要标记插入进 Trie 的是哪些字符串，每次插入完成时在这个字符串所代表的节点处打上标记即可。  
   
-[代码实现](Trie.cpp)  
+[C++ 代码实现](Trie.cpp)  
+[Java 代码实现](../../../Leetcode%20Practices/algorithms/medium/208%20Implement%20Trie%20(Prefix%20Tree).java)  
   
 ## 应用
 检索字符串  
