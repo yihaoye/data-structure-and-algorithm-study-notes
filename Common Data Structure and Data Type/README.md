@@ -1,7 +1,7 @@
 ## 常用数据结构
   
 - [顺序表/数组 | Array]()
-- [链表 | Linked List]()
+- [链表 | Linked List](./Data%20Structure%20Implementation/Linked%20List/README.md)
 - [队列 | Queue]()
   - [优先队列 | PriorityQueue]()
   - [双端队列 | Deque]()
@@ -26,7 +26,7 @@
     - [B树 | B Tree]()
     - [B+树 | B Tree]()
     - [2–3树 | 2-3 Tree]()
-  - [字典树 | Trie]()
+  - [字典树 | Trie](./Data%20Structure%20Implementation/Trie/README.md)
   - [并查集 | Disjoint-Set/Union-Find Forest]()
 - [图 | Graph]()
   - [有向图 | Directed Graph]()
