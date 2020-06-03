@@ -21,7 +21,7 @@ All inputs are guaranteed to be non-empty strings.
 
 // Other's Solution:
 // https://leetcode.com/problems/implement-trie-prefix-tree/
-// 时间复杂度：O(L)，空间复杂度：O(prefixes) 最坏为 O(N*L^2) 即插入的 N 个单词均无相同前缀，L 为插入单词的长度
+// 时间复杂度：O(L)，空间复杂度：O(prefixes) 最坏为 O(M^L) 即插入的单词均无相同前缀，M 为字符集，L 为插入单词的长度
 class Trie {
     class TrieNode {
         public TrieNode() {
