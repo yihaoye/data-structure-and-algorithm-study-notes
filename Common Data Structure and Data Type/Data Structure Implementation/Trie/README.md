@@ -11,6 +11,7 @@
 Trie 的结构非常好懂，用 next(u,c) 表示结点 u 的 c 字符指向的下一个结点，或着说是结点 u 代表的字符串后面添加一个字符 c 形成的字符串的结点。（ c 的取值范围和字符集大小有关，不一定是 0 - 26 。）  
   
 有时需要标记插入进 Trie 的是哪些字符串，每次插入完成时在这个字符串所代表的节点处打上标记即可。  
+时间复杂度：O(L) - 无论插入还是搜索，空间复杂度：O(prefixes)，L 为插入单词的长度。  
   
 [C++ 代码实现](Trie.cpp)  
 [Java 代码实现](../../../Leetcode%20Practices/algorithms/medium/208%20Implement%20Trie%20(Prefix%20Tree).java)  
