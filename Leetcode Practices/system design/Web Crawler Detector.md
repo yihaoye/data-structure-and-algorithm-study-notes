@@ -8,22 +8,19 @@ Designing a distributed detected service that runs separately for a region. This
 
 For every new request that comes over a particular duration (say a window of 15 minutes), we will save those requests. While saving those requests in the hash table we will check for:
 
-if we can find a pattern by looking into the time-stamps that can help identify whether it is a bot crawling our website
-I proposed finding the time differences between adjacent entries. In case the time difference is less than a threshold value, then it can be determined that it is a bot
-
-Also, check the webpages visited as well. In case the webpages that are visited do not contain any page related to shopping cart or payment then it can be a bot.
-
-Along with a hash-table we can keep an augmented trie in memory . By augmented trie I meant that each node before the "/" symbol of the URL, we will keep one such hash table.
-
-The hash table at the top will keep the collective information for each of its children.
-
-I explained this solution on these lines. The interviewer was interested in knowing:
-
-how can we distinguish between an actual user and a bot? The pattern detection algorithm which I have described above in (1), can mark an actual user as well as a bot. In such a case, if we think about a corrective action (like showing a captcha), then the experience may be bad.
-
-the bot may not visit pages which are children of a top level page, but may visit random pages in the website. will the algorithm work in this case
-
-how will we handle this problem at large scale. I suggested using a separate service for each of the regions.
-
-we can keep a db as well to back-up the trie at few intervals. This db can be a no-sql db. Interviewer was interested in knowing which no-sql would work for this? I suggested to use a columnar based db for this purpose
-
+1. if we can find a pattern by looking into the time-stamps that can help identify whether it is a bot crawling our website. It proposed finding the time differences between adjacent entries. In case the time difference is less than a threshold value, then it can be determined that it is a bot
+2. Also, check the webpages visited as well. In case the webpages that are visited do not contain any page related to shopping cart or payment then it can be a bot.
+3. Along with a hash-table we can keep an augmented trie in memory. By augmented trie it meant that each node before the "/" symbol of the URL, we will keep one such hash table.
+4. The hash table at the top will keep the collective information for each of its children.  
+  
+Explained this solution on these lines. The interviewer was interested in knowing:  
+  
+1. how can we distinguish between an actual user and a bot? The pattern detection algorithm which described above in (1), can mark an actual user as well as a bot. In such a case, if think about a corrective action (like showing a captcha), then the experience may be bad.
+2. the bot may not visit pages which are children of a top level page, but may visit random pages in the website. will the algorithm work in this case
+3. how will we handle this problem at large scale? Maybe using a separate service for each of the regions will help.
+4. and can keep a db as well to back-up the trie at few intervals. This db can be a no-sql db. Interviewer was interested in knowing which no-sql would work for this? Maybe use a columnar based db for this purpose.  
+  
+More Answer:  
+* Answer this may along the lines of a rate limiter. would suggest a simple rule such as "100+ requests from a single IP within a minute" results in an additional verification step to make sure requests are coming from a human. dont think it is necessary to device anything more complex than that within the 30 minutes you have. So question becomes a problem of integrating an existing system with a distributed lookup table for "IP -> # of requests from that IP over last 60 secs". If the lookup succeeds, request is dispatched within the system as usual. Otherwise, it is forwarded to a service that performs human verification steps (whose details would say is outside the scope of the interview). If verification fails, you notify your initial entry point of the system to black list the IP for a while so subsequent requests get discarded immediately.
+* can discuss about it one by one. I would 1st of all, we need to break the problem into 2 half: 1) a set of rules to identify whether a series of requests from one IP address or multiple follows a suspicious pattern. 2) Whether we are talking about a passive detection or an active instrumentation. Obviously. the set of patterns used and the scale of the problem itself will dictate the 2nd choice. **1st)** As far as patterns are concerned, there are multiple things to considers. a) A crawler will very likely to be a distributed crawler. These crawlers exists that operate in a clustered fashion to allow the sites gateways to not automatically detect the bot. b) A crawler will very likely use a bunch of proxies to route the requests to be not detected. c) A crawler will very likely use a different engine for indexing the pages and different for crawling to introduce a randomness to the crawl. d) A crawler might distribute the crawl into small chunks of manageable jobs to be executed at different times to allow large scale crawl. **2nd)** An active instrumentation might only be bothered about one IP address on one gateway. It can also extend to a set of local gateways but cannot go beyond that. The tradeoff can be defined between a potential false positive, speed of detection and overall impact on performance. A passive instrumentation might be offloading the access metrics to a separate system for identifying the potential patterns. These patterns can also be potentially using some machine learning algorithms from the previous patterns or it could be merely based on the frequency of visits from a series of random IP addresses. **Note** that some of the Application gateways have features like rate limiting, throttling, back-pressure, DDNS detection etc, which also follows similar approaches.
+* We can use big data and machine learning to learn the most of users behavior when they browsing the website. Like how frequent they click a new link or how much time they stay in a page(by adding a timer in the page to calculate that etc.). And generate rules based on the data. The behavior between human and bot should complete different.  
