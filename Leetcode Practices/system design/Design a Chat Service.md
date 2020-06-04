@@ -1,3 +1,5 @@
+https://leetcode.com/discuss/interview-question/system-design/585930/Amazon-or-System-Design-or-Design-a-Chat-Service  
+  
 Q:  
 Design an enterprise grade chat service which supports:  
 * authorized and anonymous users
