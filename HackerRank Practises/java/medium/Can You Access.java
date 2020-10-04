@@ -35,6 +35,7 @@ public class Solution {
 			int num = Integer.parseInt(br.readLine().trim());
 			Object o;// Must be used to hold the reference of the instance of the class Solution.Inner.Private
 
+            // Write code here:
             o = new Inner().new Private();
 			System.out.println(num + " is " + ((Solution.Inner.Private)o).powerof2(num));
 
