@@ -3,5 +3,5 @@ public class Item {
     private int quantity;
     private double price;
 
-    public boolean updateQuantity(long quantity);
+    public boolean updateQuantity(int quantity);
 }
