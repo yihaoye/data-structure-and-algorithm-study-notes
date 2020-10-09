@@ -13,9 +13,9 @@
 * [Codility Practices](./Codility%20Practices/)
 * [HackerRank Practices](./HackerRank%20Practises/)
 * [Google Code Jam Practices](./Google%20Code%20Jam/)
-* [Tool Sets](./Tool%20Sets/)
 * [Topcoder](./Topcoder/)
 * [Leetcode Practices](./Leetcode%20Practices/) (每个问题第一次提交 round 1 是自己的首次解答方法，第二次提交 round 2 是进行复盘复习后并添加、理解他人的更优解以及增添其他语言解题实现，round 0 则是首次答题没头绪参考他人解题思路)
+* [Tool Sets](./Tool%20Sets/)
 * [其他关于数据结构与算法的重要心得笔记](./Other%20Practices/)  
   
   
