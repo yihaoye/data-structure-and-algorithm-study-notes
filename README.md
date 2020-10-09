@@ -6,17 +6,17 @@
   * [算法导论 | Introduction to Algorithms](./Introduction%20to%20Algorithms/)
   * [程序员面试金典 | Cracking the Coding Interview](./Cracking%20the%20Coding%20Interview/)
   * [算法竞赛入门经典](./算法竞赛入门经典/)
-* [Common Algorithm & Theory](./Common%20Algorithm%20and%20Theory/)
-* [Common Data Structure & Data Type & Implementation](./Common%20Data%20Structure%20and%20Data%20Type/)
-* [Computer System Basics](./Computer%20System%20Layer/)
-* [Programming Languages Features](./Program%20Languages%20Features/)
 * [Topcoder](./Topcoder/)
 * [Codility Practices](./Codility%20Practices/)
 * [HackerRank Practices](./HackerRank%20Practises/)
 * [Google Code Jam Practices](./Google%20Code%20Jam/)
 * [Leetcode Practices](./Leetcode%20Practices/) (每个问题第一次提交 round 1 是自己的首次解答方法，第二次提交 round 2 是进行复盘复习后并添加、理解他人的更优解以及增添其他语言解题实现，round 0 则是首次答题没头绪参考他人解题思路)
 * [工具集查询手册 | Tool Sets](./Tool%20Sets/)
-* [其他关于数据结构与算法的重要心得笔记](./Other%20Practices/)  
+* [Common Algorithm & Theory](./Common%20Algorithm%20and%20Theory/)
+* [Common Data Structure & Data Type & Implementation](./Common%20Data%20Structure%20and%20Data%20Type/)
+* [其他关于数据结构与算法的重要心得笔记](./Other%20Practices/)
+* [Computer System Basics](./Computer%20System%20Layer/)
+* [Programming Languages Features](./Program%20Languages%20Features/)  
   
   
 ### 刷题技巧与笔记:
