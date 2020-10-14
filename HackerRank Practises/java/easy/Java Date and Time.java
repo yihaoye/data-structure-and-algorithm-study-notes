@@ -88,3 +88,67 @@ public class Solution {
         bufferedWriter.close();
     }
 }
+
+
+
+// 题外补充：
+import java.util.Date;
+//import java.util.Calendar;
+
+public class DateDemo {
+   public static void main(String args[]) {
+      // Instantiate a Date object
+      Date date = new Date();
+
+      // long millis = System.currentTimeMillis();  
+      // Date date = new Date(millis);
+
+      // Calendar calendar = Calendar.getInstance();
+      // calendar.set(2009, 5, 4, 9, 51, 52);
+      // Date date = calendar.getTime();
+
+      // display time and date using toString()
+      System.out.println(date.toString());
+   }
+}
+// This will produce the following result −
+// "on May 04 09:51:52 CDT 2009"
+
+
+import java.util.*;
+import java.text.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+//import java.time.ZonedDateTime;
+//import java.time.ZoneId;
+
+public class DateDemo {
+
+   public static void main(String args[]) {
+      LocalDate localDate = LocalDate.now(); // Create a date object
+      // LocalDate localDate = LocalDate.of(2004, 7, 18);
+      // ZoneId zoneId = ZoneId.of("Asia/Singapore");
+      // ZonedDateTime zdt = localDate.atStartOfDay(zoneId);
+
+      LocalDateTime localDateTime = LocalDateTime.now();
+      DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+      
+      Date dNow = new Date(); // build-in java.util.Date
+      // TimeZone tz = TimeZone.getTimeZone("UTC"); // java.util.TimeZone
+      // DateFormat df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'");
+      // df.setTimeZone(tz); // strip timezone
+      // df.format(dNow);
+      SimpleDateFormat ft1 = new SimpleDateFormat("E yyyy.MM.dd 'at' hh:mm:ss a zzz");
+      SimpleDateFormat ft2 = new SimpleDateFormat ("yyyy-MM-dd");
+
+      System.out.println(localDate);
+      System.out.println(localDateTime.format(dateTimeFormatter));
+      System.out.println("Current Date: " + ft1.format(dNow));
+      System.out.println(ft2.format(dNow));
+   }
+}
+// This will produce the following result −
+// "2004-07-18"
+// "18-07-2004 04:14:09"
+// "Current Date: Sun 2004.07.18 at 04:14:09 PM PDT"
+// "2004-07-18"
