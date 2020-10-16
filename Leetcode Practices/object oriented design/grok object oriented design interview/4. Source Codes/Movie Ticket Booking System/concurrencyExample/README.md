@@ -5,3 +5,6 @@ How to handle concurrency; such that no two users are able to book the same seat
 Once the above database transaction is successful, we can safely assume that the reservation has been marked successfully and no two customers will be able to reserve the same seat.  
   
 [Sample Java Code](./Customer.java)  
+  
+Read [JDBC Transaction Isolation Levels](https://docs.microsoft.com/en-us/sql/connect/jdbc/understanding-isolation-levels?view=sql-server-2017) for details.  
+
