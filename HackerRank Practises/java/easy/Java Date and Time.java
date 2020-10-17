@@ -93,7 +93,7 @@ public class Solution {
 
 // 题外补充：
 import java.util.Date;
-//import java.util.Calendar;
+import java.util.Calendar;
 
 public class DateDemo {
    public static void main(String args[]) {
@@ -114,7 +114,58 @@ public class DateDemo {
 // This will produce the following result −
 // "on May 04 09:51:52 CDT 2009"
 
+/*
+Date 或 Calendar 的 compare 案例
+*/
+// Date
+public class DateCompareDemo {
+    Date historyDate = new Date();
+    Date todayDate = new Date();
+    Date futureDate = new Date();
 
+    todayDate.after(historyDate);
+    todayDate.before(futureDate);
+    todayDate.equals(todayDate);
+
+    todayDate.compareTo(historyDate); // > 0 
+    todayDate.compareTo(futureDate); // < 0
+    todayDate.compareTo(todayDate); // == 0
+}
+
+// Calendar
+public class CalendarCompareDemo {
+    Calendar cal1 = Calendar.getInstance();
+    Calendar cal2 = Calendar.getInstance();
+    cal1.setTime(date1);
+    cal2.setTime(date2);
+
+    if(cal1.after(cal2)){
+        System.out.println("Date1 is after Date2");
+    }
+    if(cal1.before(cal2)){
+        System.out.println("Date1 is before Date2");
+    }
+    if(cal1.equals(cal2)){
+        System.out.println("Date1 is equal Date2");
+    }
+}
+
+
+
+/*
+LocalDate
+
+The LocalDate class represents a date-only value without time-of-day and without time zone.
+It is advised migrate to LocalDate from Joda-Time or java.util.Date.
+java.util.Date VS java.time.LocalDate: https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/HackerRank%20Practises/java/Java-8-Date-and-LocalDate.png
+
+A time zone is crucial in determining a date. 
+For any given moment, the date varies around the globe by zone. 
+For example, a few minutes after midnight in Paris France is a new day while still “yesterday” in Montréal Québec.
+
+The java.time framework is built into Java 8 and later. 
+These classes supplant the troublesome old legacy date-time classes such as java.util.Date, Calendar, & SimpleDateFormat.
+*/
 import java.util.*;
 import java.text.*;
 import java.time.LocalDate;
@@ -122,7 +173,7 @@ import java.time.format.DateTimeFormatter;
 //import java.time.ZonedDateTime;
 //import java.time.ZoneId;
 
-public class DateDemo {
+public class LocalDateDemo {
 
    public static void main(String args[]) {
       LocalDate localDate = LocalDate.now(); // Create a date object
@@ -153,39 +204,20 @@ public class DateDemo {
 // "Current Date: Sun 2004.07.18 at 04:14:09 PM PDT"
 // "2004-07-18"
 
+import java.time.LocalDate;
+import java.time.LocalDateRange;
+import java.time.ZoneId;
+import java.time.DateTimeFormatter;
 
+public class LocalDateCompareDemo {
+    DateTimeFormatter f = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    LocalDate start = LocalDate.parse("22-02-2010", f);
+    LocalDate stop = LocalDate.parse("25-12-2010", f);
+    LocalDate today = LocalDate.now(ZoneId.of("America/Montreal"));
 
-/*
-Date 或 Calendar 的 compare 案例
-*/
-// Date
-Date historyDate = new Date();
-Date todayDate = new Date();
-Date futureDate = new Date();
-
-todayDate.after(historyDate);
-todayDate.before(futureDate);
-todayDate.equals(todayDate);
-
-todayDate.compareTo(historyDate); // > 0 
-todayDate.compareTo(futureDate); // < 0
-todayDate.compareTo(todayDate); // == 0
-
-
-// Calendar
-Calendar cal1 = Calendar.getInstance();
-Calendar cal2 = Calendar.getInstance();
-cal1.setTime(date1);
-cal2.setTime(date2);
-
-if(cal1.after(cal2)){
-    System.out.println("Date1 is after Date2");
-}
-
-if(cal1.before(cal2)){
-    System.out.println("Date1 is before Date2");
-}
-
-if(cal1.equals(cal2)){
-    System.out.println("Date1 is equal Date2");
+    // intervalContainsToday
+    Boolean isBetween = 
+        (!today.isBefore(start))  // “not-before” is short for “is-equal-to or later-than”.
+        &&
+        today.isBefore(stop);
 }
