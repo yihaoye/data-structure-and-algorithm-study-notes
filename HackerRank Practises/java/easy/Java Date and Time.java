@@ -222,3 +222,12 @@ public class LocalDateCompareDemo {
         &&
         today.isBefore(stop);
 }
+/*
+isAfter()
+isBefore()
+isEqual()
+compareTo()
+
+These methods exists in LocalDate, LocalTime, and LocalDateTime classes.
+Those classes are built into Java 8 and later.
+*/
