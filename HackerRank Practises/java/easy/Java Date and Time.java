@@ -152,3 +152,40 @@ public class DateDemo {
 // "18-07-2004 04:14:09"
 // "Current Date: Sun 2004.07.18 at 04:14:09 PM PDT"
 // "2004-07-18"
+
+
+
+/*
+Date 或 Calendar 的 compare 案例
+*/
+// Date
+Date historyDate = new Date();
+Date todayDate = new Date();
+Date futureDate = new Date();
+
+todayDate.after(historyDate);
+todayDate.before(futureDate);
+todayDate.equals(todayDate);
+
+todayDate.compareTo(historyDate); // > 0 
+todayDate.compareTo(futureDate); // < 0
+todayDate.compareTo(todayDate); // == 0
+
+
+// Calendar
+Calendar cal1 = Calendar.getInstance();
+Calendar cal2 = Calendar.getInstance();
+cal1.setTime(date1);
+cal2.setTime(date2);
+
+if(cal1.after(cal2)){
+    System.out.println("Date1 is after Date2");
+}
+
+if(cal1.before(cal2)){
+    System.out.println("Date1 is before Date2");
+}
+
+if(cal1.equals(cal2)){
+    System.out.println("Date1 is equal Date2");
+}
