@@ -155,6 +155,7 @@ public class CalendarCompareDemo {
 /*
 LocalDate
 
+https://stackoverflow.com/questions/2592501/how-to-compare-dates-in-java
 The LocalDate class represents a date-only value without time-of-day and without time zone.
 It is advised migrate to LocalDate from Joda-Time or java.util.Date.
 java.util.Date VS java.time.LocalDate: https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/HackerRank%20Practises/java/Java-8-Date-and-LocalDate.png
