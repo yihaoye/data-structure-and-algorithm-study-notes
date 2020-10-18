@@ -14,3 +14,9 @@ https://s3.amazonaws.com/hr-challenge-images/8342/1449769013-e54ce90480-Country.
 
 /* solution */
 SELECT CITY.NAME FROM CITY INNER JOIN COUNTRY ON COUNTRYCODE=CODE WHERE COUNTRY.CONTINENT='Africa';
+
+
+
+/* solution 2 */
+Select City.Name From City, Country
+Where Code = CountryCode And Continent = 'Africa';
