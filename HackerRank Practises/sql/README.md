@@ -128,6 +128,18 @@ SELECT * FROM t_student s RIGHT JOIN t_class c ON s._fk=c._infor;
 ```
 上面 SQL 中表 t_class 在写在 JOIN 的右边，所以用 RIGHT JOIN 来进行外联接。  
 ![](./281954257733735.png)  
+这就是外联接的用法，通常用在想要的数据匹配不上时。  
+  
+自联接：  
+自联接属于内联接或外联接的一种特例，自联接所联接的表均是来自同一张。  
+![](./282008167895581.png)  
+上表中，6个人均属于某公司的员工。区别是李四为张三和王五的领导，张八为赵六和孙七的领导。leader_id与work_id相关联。  
+现在可以通过自联接巧妙的将一张表分为员工部分和领导部分：  
+```sql
+SELECT w.work_name,l.work_name 领导姓名 FROM t_emp w,t_emp l WHERE w.leader_id=l.work_id;
+```  
+结果：  
+![](./282011580541647.png)  
   
   
 ## SQL 的执行顺序
