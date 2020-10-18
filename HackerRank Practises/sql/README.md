@@ -101,6 +101,35 @@ SELECT 列3 , 列4 FROM 表2;
 Union VS Join:  
 ![](./SQL-UNION-vs-JOIN.png)  
   
+通过外键的匹配就得到了一张完美的联接之后的表，它可以看做一张新表，想要任何数据均可以从此表中查询，这就是表联接的强大之处。  
+  
+### 表联接的分类
+现在有如下两张表：  
+![](./281926560709208.png)  
+![](./281926198981725.png)  
+内联接：  
+内联接是指两个表中某一行相关的列值匹配时，这一行才会出现在表中。比如 t_student._fk 与 t_class._infor 相同时才会出行该行，其他的行剔除。  
+```sql
+SELECT * FROM t_student INNER JOIN t_class ON t_class._infor = t_student._fk;
+```
+语法为 INNER JOIN 其中 INNER 可以省略。  
+内联接的简写：  
+```sql
+SELECT * FROM t_student s,t_class c WHERE c._infor = s._fk 
+```
+此写法也是用的最多的。  
+  
+外联接：  
+分为左外联接与右处联接。  
+外联接是指不管有没有匹配，被定义了外联接的表数据都要出现在结果中。比如左外联接，那么在 JOIN 左边的表就被定义为外联接，那么此表中所有数据都会出现在查询结果中。  
+注意班级表中的四班是没有学生的，所以在内联接之后理所当然的被剔除了。现在以外联接做示例：  
+```sql
+SELECT * FROM t_student s RIGHT JOIN t_class c ON s._fk=c._infor;
+```
+上面 SQL 中表 t_class 在写在 JOIN 的右边，所以用 RIGHT JOIN 来进行外联接。  
+![](./281954257733735.png)  
+  
+  
 ## SQL 的执行顺序
 第一步：执行 FROM  
 第二步：WHERE 条件过滤  
