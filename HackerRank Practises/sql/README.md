@@ -1,6 +1,7 @@
-# SQL 语法
+# SQL 语法（进阶相关）
 
 ## SQL GROUP BY 语句
+GROUP BY 作用的[直观图示](./README.md#在-select-中嵌套)  
 GROUP BY 语句可结合一些聚合函数来使用  
   
 GROUP BY 语句  
@@ -30,6 +31,10 @@ GROUP BY column_name;
 但并不是每个位置嵌套子查询都是有意义并实用的。  
   
 ### 在 SELECT 中嵌套
+现有表两张：一张学生表、一张班表。id 相关联  
+![](./281716293203159.png)  
+![](./281719351646668.png)  
+  
 学生信息和班级名称位于不同的表中，要在同一张表中查出学生的学号、姓名、班级名称：  
 ```sql
 SELECT s.student_id,s.student_name,(SELECT class_name FROM t_class c WHERE c.class_id=s.class_id) FROM t_student s GROUP BY s.student_id;
@@ -66,7 +71,7 @@ SELECT * FROM t_student s1 WHERE s1.student_score >= ALL(SELECT s2.student_score
     * 独立于外部查询的子查询。
     * 子查询总共执行一次，执行完毕后后将值传递给外部查询。  
   
-相关子查询不推荐使用，因为相关子查询主查询执行一回，子查询就执行一回，十分耗费时间，尤其是当数据多的时候（前面第一个例子求学生对应班级名的即为相关子查询）。  
+相关子查询不推荐使用，因为相关子查询主查询执行一回，子查询就执行一回，十分耗费时间，尤其是当数据多的时候（前面第一个例子 SELECT 嵌套求学生对应班级名的即为相关子查询）。  
   
 ## 组合查询
 通过 UNION 运算符来将两张表纵向联接，基本方式为：  
