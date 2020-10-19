@@ -77,6 +77,10 @@ public static void main(String[] args) {
 
 
 // 多重排序，比如首先按 primaryComparator 排序然后按 secondaryComparator 排序
-// If you are sorting an array, use Arrays.sort(). If you are sorting a List, use Collections.sort(). Both of these methods are guaranteed to be stable.
-Arrays.sort(mylist, secondaryComparator);  // This must come first!
-Arrays.sort(mylist, primaryComparator);
+// If you are sorting an array, use Arrays.sort().
+Arrays.sort(array, secondaryComparator);  // This must come first!
+Arrays.sort(array, primaryComparator);
+// If you are sorting a List, use Collections.sort().
+Collections.sort(list, secondaryComparator);  // This must come first!
+Collections.sort(list, primaryComparator);
+// Both of above methods are guaranteed to be stable.
