@@ -73,3 +73,10 @@ public static void main(String[] args) {
     Arrays.sort(array, Comparator.comparingDouble(o -> o[1])); // sort 2D array based on 2nd element
     Arrays.sort(array, (a, b) -> Double.compare(a[0], b[0]));
 }
+
+
+
+// 多重排序，比如首先按 primaryComparator 排序然后按 secondaryComparator 排序
+// If you are sorting an array, use Arrays.sort(). If you are sorting a List, use Collections.sort(). Both of these methods are guaranteed to be stable.
+Arrays.sort(mylist, secondaryComparator);  // This must come first!
+Arrays.sort(mylist, primaryComparator);
