@@ -4,7 +4,7 @@
 - [链表 | Linked List](./Data%20Structure%20Implementation/Linked%20List/README.md) (查询 O(N)，插入/删除节点 O(1))
 - [队列 | Queue]() (查询 O(N)，插入/删除节点 O(N)，入队/出队 O(1))
   - [优先队列 | PriorityQueue]() (查询 O(N)，插入/删除节点 O(logN)，入队/出队 O(1))
-  - [双端队列 | Deque]()
+  - [双端队列 | Deque](./../HackerRank%20Practises/java/medium/Java%20Dequeue.java)
   - [阻塞队列 | BlockingQueue]()
 - [栈 | Stack]() (入栈/出栈 O(1))
 - [堆 | Heap]()
