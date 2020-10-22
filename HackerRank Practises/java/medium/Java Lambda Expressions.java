@@ -90,3 +90,92 @@ public class Solution {
   }
  }
 }
+
+
+
+
+
+/* Thinking in Java 5th */
+// functional/LambdaExpressions.java
+interface Description {
+    String brief();
+}
+  
+interface Body {
+    String detailed(String head);
+}
+  
+interface Multi {
+    String twoArg(String head, Double d);
+}
+  
+public class LambdaExpressions {
+  
+    static Body bod = h -> h + " No Parens!"; // [1]
+  
+    static Body bod2 = (h) -> h + " More details"; // [2]
+  
+    static Description desc = () -> "Short info"; // [3]
+  
+    static Multi mult = (h, n) -> h + n; // [4]
+  
+    static Description moreLines = () -> { // [5]
+      System.out.println("moreLines()");
+      return "from moreLines()";
+    };
+  
+    public static void main(String[] args) {
+      System.out.println(bod.detailed("Oh!"));
+      System.out.println(bod2.detailed("Hi!"));
+      System.out.println(desc.brief());
+      System.out.println(mult.twoArg("Pi! ", 3.14159));
+      System.out.println(moreLines.brief());
+    }
+}
+/*
+我们从三个接口开始，每个接口都有一个单独的方法（很快就会理解它的重要性）。但是，每个方法都有不同数量的参数，以便演示 Lambda 表达式语法。
+
+任何 Lambda 表达式的基本语法是：
+
+1. 参数。
+
+2. 接着 ->，可视为“产出”。
+
+3. -> 之后的内容都是方法体。
+
+    [1] 当只用一个参数，可以不需要括号 ()。 然而，这是一个特例。
+
+    [2] 正常情况使用括号 () 包裹参数。 为了保持一致性，也可以使用括号 () 包裹单个参数，虽然这种情况并不常见。
+
+    [3] 如果没有参数，则必须使用括号 () 表示空参数列表。
+
+    [4] 对于多个参数，将参数列表放在括号 () 中。
+
+    到目前为止，所有 Lambda 表达式方法体都是单行。 该表达式的结果自动成为 Lambda 表达式的返回值，在此处使用 return 关键字是非法的。 这是 Lambda 表达式简化相应语法的另一种方式。
+
+    [5] 如果在 Lambda 表达式中确实需要多行，则必须将这些行放在花括号中。 在这种情况下，就需要使用 return。
+
+Lambda 表达式通常比匿名内部类产生更易读的代码，因此我们将在本书中尽可能使用它们。
+*/
+
+
+/*
+递归
+递归函数是一个自我调用的函数。可以编写递归的 Lambda 表达式，但需要注意：递归方法必须是实例变量或静态变量，否则会出现编译时错误。 我们将为每个案例创建一个示例。
+
+这两个示例都需要一个接受 int 型参数并生成 int 的接口：
+*/
+// functional/IntCall.java
+interface IntCall {
+  int call(int arg);
+}
+// 整数 n 的阶乘将所有小于或等于 n 的正整数相乘。 阶乘函数是一个常见的递归示例：
+// functional/RecursiveFactorial.java
+public class RecursiveFactorial {
+  static IntCall fact;
+  public static void main(String[] args) {
+    fact = n -> n == 0 ? 1 : n * fact.call(n - 1);
+    for(int i = 0; i <= 10; i++)
+      System.out.println(fact.call(i));
+  }
+}
