@@ -95,7 +95,7 @@ public class Solution {
 
 
 
-/* Thinking in Java 5th */
+/* Thinking in Java 5th 参考链接：https://lingcoder.github.io/OnJava8/#/book/13-Functional-Programming?id=lambda%e8%a1%a8%e8%be%be%e5%bc%8f */
 // functional/LambdaExpressions.java
 interface Description {
     String brief();
@@ -158,7 +158,6 @@ public class LambdaExpressions {
 Lambda 表达式通常比匿名内部类产生更易读的代码，因此我们将在本书中尽可能使用它们。
 */
 
-
 /*
 递归
 递归函数是一个自我调用的函数。可以编写递归的 Lambda 表达式，但需要注意：递归方法必须是实例变量或静态变量，否则会出现编译时错误。 我们将为每个案例创建一个示例。
@@ -179,3 +178,25 @@ public class RecursiveFactorial {
       System.out.println(fact.call(i));
   }
 }
+// 这里，fact 是一个静态变量。 注意使用三元 if-else。 递归函数将一直调用自己，直到 i == 0。所有递归函数都有“停止条件”，否则将无限递归并产生异常。
+
+// 我们可以将 Fibonacci 序列用递归的 Lambda 表达式来实现，这次使用实例变量：
+// functional/RecursiveFibonacci.java
+public class RecursiveFibonacci {
+  IntCall fib;
+
+  RecursiveFibonacci() {
+    fib = n -> n == 0 ? 0 :
+               n == 1 ? 1 :
+               fib.call(n - 1) + fib.call(n - 2);
+  }
+
+  int fibonacci(int n) { return fib.call(n); }
+
+  public static void main(String[] args) {
+    RecursiveFibonacci rf = new RecursiveFibonacci();
+    for(int i = 0; i <= 10; i++)
+      System.out.println(rf.fibonacci(i));
+  }
+}
+// 将 Fibonacci 序列中的最后两个元素求和来产生下一个元素。
