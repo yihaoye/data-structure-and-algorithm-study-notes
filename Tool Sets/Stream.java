@@ -44,5 +44,8 @@ public class StreamOf {
         所有数之和 : 85
         平均数 : 9.444444444444445
         */
+
+        Stream<List<Integer>> ss = Stream.of(Arrays.asList(1, 2, 3), Arrays.asList(4, 5));
+        ss.flatMap(l -> l.stream()).forEach(System.out::println);
     }
 }
