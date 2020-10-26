@@ -275,6 +275,8 @@ public class MethodReferences {
 (x, y) -> x + y
 System.out :: println
 // lambda 表达式或方法引用如以上例子，你怎么知道传递给方法的参数的类型？为了解决这个问题，Java 8 引入了 java.util.function 包。它包含一组接口，这些接口是 Lambda 表达式和方法引用的目标类型。每个接口只包含一个抽象方法，称为函数式方法。（在编写接口时，可以使用 @FunctionalInterface 注解强制执行此“函数式方法”模式）
+// java.util.function 包里包含了一系列常用的目标类型即函数式接口（functional interfaces designed for commonly occuring use cases），由此你不用每次都在各种需要场景下重复创建它们（如 Function、Predicate、Consumer、Supplier、UnaryOperator、BinaryOperator 等等）。
+// 以下参考：http://tutorials.jenkov.com/java-functional-programming/functional-interfaces.html
 // The term Java functional interface was introduced in Java 8. A functional interface in Java is an interface that contains only a single abstract (unimplemented) method. 
 // A functional interface can contain default and static methods which do have an implementation, in addition to the single unimplemented method.
 // Here is a Java functional interface example:
