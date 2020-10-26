@@ -271,3 +271,60 @@ public class MethodReferences {
 
 // 在 Lambda 表达式当中不允许声明一个与局部变量同名的参数或者局部变量。
 
+// The term Java functional interface was introduced in Java 8. A functional interface in Java is an interface that contains only a single abstract (unimplemented) method. 
+// A functional interface can contain default and static methods which do have an implementation, in addition to the single unimplemented method.
+// Here is a Java functional interface example:
+public interface MyFunctionalInterface {
+    public void execute();
+}
+// The above counts as a functional interface in Java because it only contains a single method, and that method has no implementation. 
+// Normally a Java interface does not contain implementations of the methods it declares, but it can contain implementations in default methods, or in static methods. 
+// Below is another example of a Java functional interface, with implementations of some of the methods:
+public interface MyFunctionalInterface2{
+    public void execute();
+
+    public default void print(String text) {
+        System.out.println(text);
+    }
+
+    public static void print(String text, PrintWriter writer) throws IOException {
+        writer.write(text);
+    }
+}
+// The above interface still counts as a functional interface in Java, since it only contains a single non-implemented method.
+
+// Java 8 中静态方法和默认方法之间的区别：
+// 1）在实现类时可以覆盖默认方法，而static 不能。
+// 2）静态方法仅属于Interface类，因此您只能在Interface类上调用静态方法，而不能在实现此Interface的类上调用静态方法，请参见：
+public interface MyInterface {
+    default void defaultMethod(){
+        System.out.println("Default");
+    }
+
+    static void staticMethod(){
+        System.out.println("Static");
+    }    
+}
+
+public class MyClass implements MyInterface {
+
+    public static void main(String[] args) {
+
+        MyClass.staticMethod(); //not valid - static method may be invoked on containing interface class only
+        MyInterface.staticMethod(); //valid
+    }
+}
+// 3）类和接口都可以具有名称相同的静态方法，并且不能覆盖其他方法！
+public class MyClass implements MyInterface {
+
+    public static void main(String[] args) {
+
+        //both are valid and have different behaviour
+        MyClass.staticMethod();
+        MyInterface.staticMethod();
+    }
+
+    static void staticMethod(){
+        System.out.println("another static..");
+    }
+}
