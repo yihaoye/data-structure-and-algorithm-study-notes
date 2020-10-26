@@ -49,3 +49,35 @@ public class StreamOf {
         ss.flatMap(l -> l.stream()).forEach(System.out::println);
     }
 }
+
+
+
+// 声明式编程（流）VS 命令式编程
+// streams/Randoms.java
+import java.util.*;
+public class Randoms {
+    public static void main(String[] args) {
+        new Random(47)
+            .ints(5, 20)
+            .distinct()
+            .limit(7)
+            .sorted()
+            .forEach(System.out::println);
+    }
+}
+// 上面 Randoms.java 中没有声明任何变量。流可以在不使用赋值或可变数据的情况下对有状态的系统建模，这非常有用。
+// 以下是同义的命令式编程
+// streams/ImperativeRandoms.java
+import java.util.*;
+public class ImperativeRandoms {
+    public static void main(String[] args) {
+        Random rand = new Random(47);
+        SortedSet<Integer> rints = new TreeSet<>();
+        while(rints.size() < 7) {
+            int r = rand.nextInt(20);
+            if(r < 5) continue;
+            rints.add(r);
+        }
+        System.out.println(rints);
+    }
+}
