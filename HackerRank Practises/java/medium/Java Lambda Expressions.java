@@ -271,6 +271,10 @@ public class MethodReferences {
 
 // 在 Lambda 表达式当中不允许声明一个与局部变量同名的参数或者局部变量。
 
+// 函数式接口
+(x, y) -> x + y
+System.out :: println
+// lambda 表达式或方法引用如以上例子，你怎么知道传递给方法的参数的类型？为了解决这个问题，Java 8 引入了 java.util.function 包。它包含一组接口，这些接口是 Lambda 表达式和方法引用的目标类型。每个接口只包含一个抽象方法，称为函数式方法。（在编写接口时，可以使用 @FunctionalInterface 注解强制执行此“函数式方法”模式）
 // The term Java functional interface was introduced in Java 8. A functional interface in Java is an interface that contains only a single abstract (unimplemented) method. 
 // A functional interface can contain default and static methods which do have an implementation, in addition to the single unimplemented method.
 // Here is a Java functional interface example:
@@ -292,6 +296,25 @@ public interface MyFunctionalInterface2{
     }
 }
 // The above interface still counts as a functional interface in Java, since it only contains a single non-implemented method.
+
+// 目标类型（函数式接口）就是 lambda 表达式实例所要被赋予的类型，通常是接口类型； 
+// 类型推导：函数式接口的名称并不是 lambda 表达式的一部分。那么问题来了，对于给定的 lambda 表达式，它的目标类型是什么？
+// 答案是：它的类型是由其上下文推导而来。例如，下面代码中的 lambda 表达式类型是 ActionListener：
+ActionListener l = (ActionEvent e) -> ui.dazzle(e.getModifiers());
+// 这也意味着同样的lambda表达式在不同的上下文中，可以作为不同的类型：
+Callable<String> c = () -> "done"; // Callable类型
+PrivilegedAction<String> a = () -> "done"; // PrivilegedAction类型
+// 编译器负责推导 lambda 表达式类型。它利用 lambda 表达式所在上下文所期待的类型进行推导，这个被期待的类型被称为目标类型。lambda 表达式只能出现在目标类型为函数式接口的上下文中。
+/* 
+lambda作为目标类型的要求：lambda 表达式对目标类型也是有要求的。编译器会检查 lambda 表达式的类型和目标类型的方法签名（method signature）是否一致。当且仅当下面所有条件均满足时，lambda 表达式才可以被赋给目标类型 T：
+● T 是一个函数式接口
+● lambda 表达式的参数和 T 的方法参数在数量和类型上一一对应
+● lambda 表达式的返回值和 T 的方法返回值相兼容（Compatible）
+● lambda 表达式内所抛出的异常和 T 的方法 throws 类型相兼容
+*/
+// https://www.cnblogs.com/zyj-468161691/p/12213587.html
+
+// 在使用函数接口时，名称无关紧要——只要参数类型和返回类型相同。Java 会将你的方法映射到接口方法。要调用方法，可以调用接口的函数式方法名，而不是你的方法名。
 
 // Java 8 中静态方法和默认方法之间的区别：
 // 1）在实现类时可以覆盖默认方法，而static 不能。
