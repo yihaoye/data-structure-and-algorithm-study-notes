@@ -158,3 +158,5 @@ Stream<Obj> boxed() - returns a Stream consisting of the elements of this stream
 
 可以使用 Random 为任意对象集合创建 Supplier。
 */
+
+// Stream.generate() 的用法，它可以把任意 Supplier<T> 用于生成 T 类型的流。
