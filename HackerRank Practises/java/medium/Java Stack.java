@@ -51,18 +51,18 @@ class Solution{
                         case '}' : 
                             if (stack.peek() == '{') {
                                 stack.pop();
+                                break;
                             }
-                            break;
                         case ']' : 
                             if (stack.peek() == '[') {
                                 stack.pop();
-                            } 
-                            break;
+                                break;
+                            }
                         case ')' : 
                             if (stack.peek() == '(') {
                                 stack.pop();
-                            } 
-                            break;
+                                break;
+                            }
                         default: stack.push(input.charAt(i));
                     }
                 } else {
