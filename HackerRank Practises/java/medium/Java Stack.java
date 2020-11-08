@@ -43,7 +43,7 @@ class Solution{
 		Scanner sc = new Scanner(System.in);
 		
 		while (sc.hasNext()) {
-			String input=sc.next();
+			String input = sc.next();
             Stack<Character> stack = new Stack<>();
             for (int i = 0; i < input.length(); i++) {
                 if (!stack.isEmpty()) {
@@ -64,7 +64,7 @@ class Solution{
                             } 
                             break;
                         default: stack.push(input.charAt(i));
-                }
+                    }
                 } else {
                     stack.push(input.charAt(i));
                 } 
