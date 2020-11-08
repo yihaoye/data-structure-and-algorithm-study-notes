@@ -37,8 +37,8 @@ import java.lang.reflect.*;
 
 
 class Singleton{
-    private static Singleton instance;
-    public String str;
+    private volatile static Singleton instance;
+    public static String str;
     
     private Singleton() {}
     
