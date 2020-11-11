@@ -28,3 +28,8 @@ public class ParallelPrime {
     }
 }
 // 来自 Streams 的 Prime.java，查找质数可能是一个耗时的过程。
+/*
+并行流似乎是一个甜蜜的交易。你所需要做的就是将编程问题转换为流，然后插入 parallel() 以加快速度。
+实际上，有时候这很容易。但遗憾的是，有许多陷阱。
+  parallel() 不是灵丹妙药
+*/
