@@ -1,27 +1,35 @@
-## 常用数据结构
+# 常用数据结构
   
-- [顺序表/数组 | Array]() (查询 O(N)，插入/删除节点 O(N))
-- [链表 | Linked List](./Data%20Structure%20Implementation/Linked%20List/README.md) (查询 O(N)，插入/删除节点 O(1))
-- [队列 | Queue]() (查询 O(N)，插入/删除节点 O(N)，入队/出队 O(1))
-  - [优先队列 | PriorityQueue]() (查询 O(N)，插入/删除节点 O(logN)，入队/出队 O(1))
+- [数组 | Array]() (索引 O(1)，搜索 O(N)，插入/删除节点 O(N))
+- [线性表 | Linear List]()
+  - [顺序表 | ArrayList]() (索引 O(1)，搜索 O(N)，添加节点 O(1)，插入/删除节点 O(N))
+  - [链表 | LinkedList](./Data%20Structure%20Implementation/Linked%20List/README.md) (索引 O(N)，搜索 O(N)，插入/删除节点 O(1))
+    - [单链表 | Singly Linked List]()
+    - [双链表 | Doubly Linked List]()
+    - [循环链表 | Circular Linked List]()
+- [队列 | Queue]()
+  - [链表 | LinkedList](./Data%20Structure%20Implementation/Linked%20List/README.md) (入队/出队 O(1)，首值 O(1))
+  - [优先队列 | PriorityQueue]() (搜索 O(N)，入队/出队 O(logN)，首值 O(1))
   - [双端队列 | Deque](./../HackerRank%20Practises/java/medium/Java%20Dequeue.java)
-  - [阻塞队列 | BlockingQueue](./Data%20Structure%20Implementation/Blocking%20Queue/README.md) (offer O(1)，poll O(1))
+  - [阻塞队列 | BlockingQueue](./Data%20Structure%20Implementation/Blocking%20Queue/README.md) (入队/出队 O(1))
 - [栈 | Stack]() (入栈/出栈 O(1))
 - [堆 | Heap]()
-  - [二叉堆 | Binary Heap]() (查询 O(N)，插入/删除节点 O(logN))
+  - [二叉堆 | Binary Heap]() (搜索 O(N)，插入/删除节点 O(logN))
   - [斐波那契堆 | Fibonacci Heap]()
-- [映射表 | Map/Table]() (查询 O(1)，插入/删除节点 O(1))
-  - [散列表 | HashMap](./Data%20Structure%20Implementation/Hash%20Map/README.md) (查询 O(1)，插入/删除节点 O(1))
+- [映射表 | Map/Table]()
+  - [散列表 | HashMap](./Data%20Structure%20Implementation/Hash%20Map/README.md) (索引搜索 O(1)，插入/删除节点 O(1))
   - [并发散列表 | ConcurrentHashMap]()
-  - [树状映射表 | TreeMap]() (查询 O(logN)，插入/删除节点 O(logN))
-- [集合 | Set]() (查询 O(1)，插入/删除节点 O(1))
-  - [散列集 | HashSet]() (查询 O(1)，插入/删除节点 O(1))
-  - [树集 | TreeSet]() (查询 O(logN)，插入/删除节点 O(logN))
-- [树 | Tree]() (查询 O(N)，插入/删除节点 O(1))
-  - [二叉搜索树 | Binary Search Tree]() (查询 O(logN) - O(N)，插入/删除节点 O(1))
-  - [平衡二叉搜索树 | Self-Balanced Binary Search Tree]() (查询 O(logN)，插入/删除节点 O(logN))
-    - [AVL树 | AVL Tree](./Data%20Structure%20Implementation/AVL%20Tree/)
-    - [红黑树 | Red-Black Tree]()
+  - [链散列表 | LinkedHashMap]() (按插入顺序的散列表，索引搜索 O(1)，插入/删除节点 O(1))
+  - [树状映射表 | TreeMap]() (搜索 O(logN)，插入/删除节点 O(logN))
+- [集合 | Set]()
+  - [散列集 | HashSet]() (索引搜索 O(1)，插入/删除节点 O(1))
+  - [链散列集 | LinkedHashSet]() ()
+  - [树集 | TreeSet]() (索引搜索 O(logN)，插入/删除节点 O(logN))
+- [树 | Tree]()
+  - [二叉搜索树 | Binary Search Tree]() (搜索 O(logN) - O(N)，插入/删除节点 O(1))
+  - [平衡二叉搜索树 | Self-Balanced Binary Search Tree]()
+    - [AVL树 | AVL Tree](./Data%20Structure%20Implementation/AVL%20Tree/) (搜索 O(logN)，插入/删除节点 O(logN))
+    - [红黑树 | Red-Black Tree]() (搜索 O(logN)，插入/删除节点 O(logN))
   - [平衡搜索树 | Self-Balanced Search Tree]()
     - [B树 | B Tree]()
     - [B+树 | B Tree]()
@@ -33,8 +41,9 @@
   - [无向图 | Undirected Graph]()
   - [加权图 | Weighted Graph]()
   
-  
 以上总结未完待续...  
+  
+*术语表：索引 - get | 搜索 - search | 添加 - add | 插入 - insert | 删除 - remove | 入队 - offer | 出队 - poll | 首值 - peek*  
   
 ### 常用数据结构的一些细节补充
 * HashMap 与 Hashtable 有[区别](https://stackoverflow.com/questions/40471/differences-between-hashmap-and-hashtable)，Map、Dictionary、Table 的[异同](https://www.zhihu.com/question/27581780)。
@@ -43,12 +52,59 @@
 * 堆/Heap 是计算机科学中的一种特别的树状数据结构（比如堆排序/heap sort，是基于二叉堆树作为此算法的数据结构）。
 * Java 中，Queue 是通过 LinkedList 实现的而不是 ArrayList，[原因](https://stackoverflow.com/questions/41665425/why-arraylist-doesnt-implements-queue)。  
   
-### 非常用的专用数据结构
-- [参考阅读](https://stackoverflow.com/questions/500607/what-are-the-lesser-known-but-useful-data-structures)
+## 表格示
+List                 | Add  | Remove | Get  | Contains | Next | Data Structure
+---------------------|------|--------|------|----------|------|---------------
+ArrayList            | O(1) |  O(n)  | O(1) |   O(n)   | O(1) | Array
+LinkedList           | O(1) |  O(1)  | O(n) |   O(n)   | O(1) | Linked List
+CopyOnWriteArrayList | O(n) |  O(n)  | O(1) |   O(n)   | O(1) | Array
+  
+Set                   |    Add   |  Remove  | Contains |   Next   | Size | Data Structure
+----------------------|----------|----------|----------|----------|------|-------------------------
+HashSet               | O(1)     | O(1)     | O(1)     | O(h/n)   | O(1) | Hash Table
+LinkedHashSet         | O(1)     | O(1)     | O(1)     | O(1)     | O(1) | Hash Table + Linked List
+EnumSet               | O(1)     | O(1)     | O(1)     | O(1)     | O(1) | Bit Vector
+TreeSet               | O(log n) | O(log n) | O(log n) | O(log n) | O(1) | Red-black tree
+CopyOnWriteArraySet   | O(n)     | O(n)     | O(n)     | O(1)     | O(1) | Array
+ConcurrentSkipListSet | O(log n) | O(log n) | O(log n) | O(1)     | O(n) | Skip List
+  
+Queue                   |  Offer   | Peak |   Poll   | Remove | Size | Data Structure
+------------------------|----------|------|----------|--------|------|---------------
+PriorityQueue           | O(log n) | O(1) | O(log n) |  O(n)  | O(1) | Priority Heap
+LinkedList              | O(1)     | O(1) | O(1)     |  O(1)  | O(1) | Array
+ArrayDequeue            | O(1)     | O(1) | O(1)     |  O(n)  | O(1) | Linked List
+ConcurrentLinkedQueue   | O(1)     | O(1) | O(1)     |  O(n)  | O(n) | Linked List
+ArrayBlockingQueue      | O(1)     | O(1) | O(1)     |  O(n)  | O(1) | Array
+PriorirityBlockingQueue | O(log n) | O(1) | O(log n) |  O(n)  | O(1) | Priority Heap
+SynchronousQueue        | O(1)     | O(1) | O(1)     |  O(n)  | O(1) | None!
+DelayQueue              | O(log n) | O(1) | O(log n) |  O(n)  | O(1) | Priority Heap
+LinkedBlockingQueue     | O(1)     | O(1) | O(1)     |  O(n)  | O(1) | Linked List
+  
+Map                   |   Get    | ContainsKey |   Next   | Data Structure
+----------------------|----------|-------------|----------|-------------------------
+HashMap               | O(1)     |   O(1)      | O(h / n) | Hash Table
+LinkedHashMap         | O(1)     |   O(1)      | O(1)     | Hash Table + Linked List
+IdentityHashMap       | O(1)     |   O(1)      | O(h / n) | Array
+WeakHashMap           | O(1)     |   O(1)      | O(h / n) | Hash Table
+EnumMap               | O(1)     |   O(1)      | O(1)     | Array
+TreeMap               | O(log n) |   O(log n)  | O(log n) | Red-black tree
+ConcurrentHashMap     | O(1)     |   O(1)      | O(h / n) | Hash Tables
+ConcurrentSkipListMap | O(log n) |   O(log n)  | O(1)     | Skip List
+  
+以下参考自：https://gist.github.com/psayre23/c30a821239f4818b0709  
+  
+## 图示
+![](./Big-O%20Complexity%20Chart.png)  
+![](./Common%20Data%20Structure%20Operations.png)  
+![](./Array%20Sorting%20Algorithms.png)  
+![](./BIG-O-CHEATSHEET.png)  
+  
+## 非常用的专用数据结构
+- [参考阅读](https://stackoverflow.com/questions/500607/what-are-the-lesser-known-but-useful-data-structures)  
   
   
   
-## 常用数据类型
+# 常用数据类型
 - [布尔型 | Boolean]()
 - [字节 | Byte]()
 - [整型 | Integer]()
@@ -56,19 +112,10 @@
   - [无符号整型 | Unsigned Integer]()
 - [浮点型 | Float]()
 - [字符串 | String]()
-- [字符 | Character]()
-  
+- [字符 | Character]()  
   
 以上总结未完待续...  
   
 ### 常用数据类型的一些细节补充
 * 有些编程语言（比如 Java 早期版本）不支持 unsigned（无符号）数据类型（如 unsigned char, unsigned short, unsigned int 和 unsigned long 等等），因此在一些与 Bitwise 或数据类型符号相关的题目中需要注意，参见[例子](./../Leetcode%20Practices/algorithms/easy/190%20Reverse%20Bits.java)。
-  
-  
-  
-## 图示
-![](./Big-O%20Complexity%20Chart.png)  
-![](./Common%20Data%20Structure%20Operations.png)  
-![](./Array%20Sorting%20Algorithms.png)  
-![](./BIG-O-CHEATSHEET.png)  
   
