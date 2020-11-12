@@ -5,7 +5,7 @@
 - [队列 | Queue]() (查询 O(N)，插入/删除节点 O(N)，入队/出队 O(1))
   - [优先队列 | PriorityQueue]() (查询 O(N)，插入/删除节点 O(logN)，入队/出队 O(1))
   - [双端队列 | Deque](./../HackerRank%20Practises/java/medium/Java%20Dequeue.java)
-  - [阻塞队列 | BlockingQueue]()
+  - [阻塞队列 | BlockingQueue](./Data%20Structure%20Implementation/Blocking%20Queue/README.md) (offer O(1)，poll O(1))
 - [栈 | Stack]() (入栈/出栈 O(1))
 - [堆 | Heap]()
   - [二叉堆 | Binary Heap]() (查询 O(N)，插入/删除节点 O(logN))
@@ -63,3 +63,12 @@
   
 ### 常用数据类型的一些细节补充
 * 有些编程语言（比如 Java 早期版本）不支持 unsigned（无符号）数据类型（如 unsigned char, unsigned short, unsigned int 和 unsigned long 等等），因此在一些与 Bitwise 或数据类型符号相关的题目中需要注意，参见[例子](./../Leetcode%20Practices/algorithms/easy/190%20Reverse%20Bits.java)。
+  
+  
+  
+## 图示
+![](./Big-O%20Complexity%20Chart.png)  
+![](./Common%20Data%20Structure%20Operations.png)  
+![](./Array%20Sorting%20Algorithms.png)  
+![](./BIG-O-CHEATSHEET.png)  
+  
