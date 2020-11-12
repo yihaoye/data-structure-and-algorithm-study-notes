@@ -53,7 +53,7 @@
   - [无向图 | Undirected Graph]()
   - [加权图 | Weighted Graph]()
   
-[以上有些数据结构可能只有 Java 提供了官方实现](https://www.zhihu.com/question/325814788)，以上总结未完待续...  
+以上有些数据结构可能只有 Java 提供了官方实现 [more](https://www.zhihu.com/question/325814788) ，以上总结未完待续...  
   
 *术语表：索引 - get | 搜索 - search | 添加 - add | 插入 - insert | 删除 - remove | 入队 - offer | 出队 - poll | 首值 - peek*  
   
