@@ -10,8 +10,20 @@
 - [队列 | Queue]()
   - [链表 | LinkedList](./Data%20Structure%20Implementation/Linked%20List/README.md) (入队/出队 O(1)，首值 O(1))
   - [优先队列 | PriorityQueue]() (搜索 O(N)，入队/出队 O(logN)，首值 O(1))
-  - [双端队列 | Deque](./../HackerRank%20Practises/java/medium/Java%20Dequeue.java)
-  - [阻塞队列 | BlockingQueue](./Data%20Structure%20Implementation/Blocking%20Queue/README.md) (入队/出队 O(1))
+  - [双端队列 | Deque]()
+    - [链表 | LinkedList](./Data%20Structure%20Implementation/Linked%20List/README.md) (同上)
+    - [数组双端队列 | ArrayDeque](./../HackerRank%20Practises/java/medium/Java%20Dequeue.java)
+    - [基于链表的线程安全无界双端队列 | ConcurrentLinkedDeque]()
+    - [基于链表的FIFO双端阻塞队列 | LinkedBlockingDeque]()
+  - [基于链表的线程安全无界队列 | ConcurrentLinkedQueue]()
+  - [阻塞队列 | BlockingQueue](./Data%20Structure%20Implementation/Blocking%20Queue/README.md)
+    - [基于数组的并发阻塞队列 | ArrayBlockingQueue]() (入队/出队 O(1)，首值 O(1))
+    - [延期阻塞队列 | DelayQueue]() (入队/出队 O(logN)，首值 O(1))
+    - [基于链表的FIFO双端阻塞队列 | LinkedBlockingDeque]()
+    - [基于链表的FIFO阻塞队列 | LinkedBlockingQueue]() (入队/出队 O(1)，首值 O(1))
+    - [并发同步阻塞队列 | SynchronousQueue]() (入队/出队 O(1)，首值 O(1))
+    - [带优先级的无界阻塞队列 | PriorityBlockingQueue]() (入队/出队 O(logN)，首值 O(1))
+    - [基于链表的FIFO无界阻塞队列 | LinkedTransferQueue]()
 - [栈 | Stack]() (入栈/出栈 O(1))
 - [堆 | Heap]()
   - [二叉堆 | Binary Heap]() (搜索 O(N)，插入/删除节点 O(logN))
@@ -41,7 +53,7 @@
   - [无向图 | Undirected Graph]()
   - [加权图 | Weighted Graph]()
   
-以上总结未完待续...  
+[以上有些数据结构可能只有 Java 提供了官方实现](https://www.zhihu.com/question/325814788)，以上总结未完待续...  
   
 *术语表：索引 - get | 搜索 - search | 添加 - add | 插入 - insert | 删除 - remove | 入队 - offer | 出队 - poll | 首值 - peek*  
   
