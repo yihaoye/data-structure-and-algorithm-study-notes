@@ -94,6 +94,12 @@ public class ThreadExample {
             答案是使用守护线程（Daemon Thread）。
             守护线程是指为其他线程服务的线程。在JVM中，所有非守护线程都执行完毕后，无论有没有守护线程，虚拟机都会自动退出。
             因此，JVM退出时，不必关心守护线程是否已结束。
+            thread.setDaemon(true) 必须在 thread.start() 之前设置，否则会跑出一个IllegalThreadStateException异常。你不能把正在运行的常规线程设置为守护线程。
+            在 Daemon 线程中产生的新线程也是 Daemon 的。
+
+            意义及应用场景
+            当主线程结束时，结束其余的子线程（守护线程）自动关闭，就免去了还要继续关闭子线程的麻烦。
+            如：Java 垃圾回收线程就是一个典型的守护线程；内存资源或者线程的管理，但是非守护线程也可以。
         */
         thread.setDaemon(true);
         thread.start();
