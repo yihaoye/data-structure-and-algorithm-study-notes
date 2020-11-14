@@ -1,3 +1,19 @@
+熟悉 Java 并发编程的都知道，JMM(Java 内存模型) 中的 happen-before(简称 hb)规则，该规则定义了 Java 多线程操作的有序性和可见性，防止了编译器重排序对程序结果的影响。按照官方的说法：  
+当一个变量被多个线程读取并且至少被一个线程写入时，如果读操作和写操作没有 HB 关系，则会产生数据竞争问题。要想保证操作 B 的线程看到操作 A 的结果（无论 A 和 B 是否在一个线程），那么在 A 和 B 之间必须满足 HB 原则，如果没有，将有可能导致重排序。当缺少 HB 关系时，就可能出现重排序问题。  
+  
+### HB 有哪些规则
+这个大家都非常熟悉了应该，大部分书籍和文章都会介绍，这里稍微回顾一下：  
+1. 程序次序规则：一个线程内，按照代码顺序，书写在前面的操作先行发生于书写在后面的操作；
+2. 锁定规则：在监视器锁上的解锁操作必须在同一个监视器上的加锁操作之前执行。
+3. volatile变量规则：对一个变量的写操作先行发生于后面对这个变量的读操作；
+4. 传递规则：如果操作A先行发生于操作B，而操作B又先行发生于操作C，则可以得出操作A先行发生于操作C；
+5. 线程启动规则：Thread对象的start()方法先行发生于此线程的每一个动作；
+6. 线程中断规则：对线程interrupt()方法的调用先行发生于被中断线程的代码检测到中断事件的发生；
+7. 线程终结规则：线程中所有的操作都先行发生于线程的终止检测，我们可以通过Thread.join()方法结束、Thread.isAlive()的返回值手段检测到线程已经终止执行；
+8. 对象终结规则：一个对象的初始化完成先行发生于他的finalize()方法的开始；  
+  
+[以上参考](https://ifeve.com/java-%E4%BD%BF%E7%94%A8-happen-before-%E8%A7%84%E5%88%99%E5%AE%9E%E7%8E%B0%E5%85%B1%E4%BA%AB%E5%8F%98%E9%87%8F%E7%9A%84%E5%90%8C%E6%AD%A5%E6%93%8D%E4%BD%9C/)  
+  
 ## happens-before 俗解
 happens-before偏序关系。  
   
@@ -28,4 +44,4 @@ synchronized、大部分锁，众所周知的一个功能就是使多个线程�
 happens-before关系有个很重要的性质，就是传递性，即，如果hb(a,b),hb(b,c)，则有hb(a,c)。  
 Java内存模型中只是列出了几种比较基本的hb规则，在Java语言层面，又衍生了许多其他happens-before规则，如ReentrantLock的unlock与lock操作，又如AbstractQueuedSynchronizer的release与acquire，setState与getState等等。  
   
-参考自：http://ifeve.com/easy-happens-before/  
+[以上参考](http://ifeve.com/easy-happens-before/)  
