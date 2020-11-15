@@ -54,3 +54,8 @@ happens-before关系有个很重要的性质，就是传递性，即，如果hb(
 Java内存模型中只是列出了几种比较基本的hb规则，在Java语言层面，又衍生了许多其他happens-before规则，如ReentrantLock的unlock与lock操作，又如AbstractQueuedSynchronizer的release与acquire，setState与getState等等。  
   
 [以上参考](http://ifeve.com/easy-happens-before/)  
+  
+## synchronized 关键字
+synchronized 代码块/方法一次只能由一个线程执行。  
+  
+
