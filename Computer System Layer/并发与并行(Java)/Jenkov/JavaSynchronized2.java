@@ -108,3 +108,82 @@ public class SharedMonitorObjectsMain {
         smo3.incCounter();
     }
 }
+
+
+
+import java.util.function.Consumer;
+
+public class SynchronizedLambda {
+
+    private static Object object = null;
+
+    public static synchronized void setObject(Object o) {
+        object = o;
+    }
+
+    public static void consumeObject(Consumer consumer) {
+        consumer.accept(object);
+    }
+
+    public static void main(String[] args) {
+        consumeObject((obj) -> {
+            synchronized(SynchronizedLambda.class) { // 不能使用 this，因为 this 不存在于 lambda 表达式的 context 里
+                System.out.println(obj);
+            }
+        });
+
+        consumeObject((obj) -> {
+            synchronized(String.class) {
+                System.out.println(obj);
+            }
+        });
+    }
+}
+
+
+
+public class Reentrance {
+    private int count = 0;
+
+    public synchronized void inc() {
+        this.count++;
+    }
+
+    public synchronized int incAndGet() {
+        inc(); // 这里不会造成死锁或任何 block，因为是同一个线程调用，且与父函数 synchronized 的是同一个 monitor object，所以符合 Reentrance 机制，将正常执行 inc()
+        return this.count;
+    }
+}
+
+
+
+public class SyncCounter {
+    private long count = 0;
+
+    public synchronized void incCount() {
+        this.count++;
+    }
+
+    public synchronized long getCount() {
+        return this.count;
+    }
+}
+
+public class SyncCounterMain {
+
+    public static void main(String[] args) {
+        SyncCounter counter = new SyncCounter();
+
+        Thread thread1 = new Thread(() -> {
+            for (int i=0; i<1_000_000; i++) counter.incCount();
+            System.out.println(counter.getCount());
+        });
+        Thread thread2 = new Thread(() -> {
+            for (int i=0; i<1_000_000; i++) counter.incCount();
+            System.out.println(counter.getCount());
+        });
+
+        thread1.start();
+        thread2.start();
+    }
+}
