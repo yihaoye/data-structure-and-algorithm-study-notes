@@ -1,5 +1,5 @@
 熟悉 Java 并发编程的都知道，JMM(Java 内存模型) 中的 happen-before(简称 hb)规则，该规则定义了 Java 多线程操作的有序性和可见性，防止了编译器重排序对程序结果的影响。按照官方的说法：  
-当一个变量被多个线程读取并且至少被一个线程写入时，如果读操作和写操作没有 HB 关系，则会产生数据竞争问题。要想保证操作 B 的线程看到操作 A 的结果（无论 A 和 B 是否在一个线程），那么在 A 和 B 之间必须满足 HB 原则，如果没有，将有可能导致重排序。当缺少 HB 关系时，就可能出现重排序问题（重排序是对程序执行效率的优化 - 除了 CPU 会对指令重排序来优化性能之外，Java JIT 也会对指令进行重排序。重排序也会发生在单线程程序，而只是单线程程序的重排显然不会出问题但多线程程序会出问题）。  
+当一个变量被多个线程读取并且至少被一个线程写入时，如果读操作和写操作没有 HB 关系，则会产生数据竞争问题。要想保证操作 B 的线程看到操作 A 的结果（无论 A 和 B 是否在一个线程），那么在 A 和 B 之间必须满足 HB 原则，如果没有，将有可能导致重排序。当缺少 HB 关系时，就可能出现重排序问题（重排序 Instruction Reordering 是对程序执行效率的优化 - 除了 CPU 会对指令重排序来优化性能之外，Java JIT 也会对指令进行重排序。重排序也会发生在单线程程序，而只是单线程程序的重排显然不会出问题但多线程程序会出问题）。  
 ![](./Happens-Before%20Relation.png)  
   
 ### HB 有哪些规则
@@ -15,7 +15,7 @@
   
 以上参考自[链接](https://ifeve.com/java-%E4%BD%BF%E7%94%A8-happen-before-%E8%A7%84%E5%88%99%E5%AE%9E%E7%8E%B0%E5%85%B1%E4%BA%AB%E5%8F%98%E9%87%8F%E7%9A%84%E5%90%8C%E6%AD%A5%E6%93%8D%E4%BD%9C/)  
   
-**另外，虽然同一个线程的同一个代码块内的语句虽然均可能重排序，但写好的volatile变量读操作语句之后的普通变量读操作语句均不会被排序到volatile变量读操作语句之前（参考下图的 Thread 2 中的 takeFrame 方法/代码块的 while(!hasNewFrame) 检测），而类似的，volatile变量写操作语句之前的普通变量操作语句均不会被排序到volatile变量写操作语句之后（参考下图的 Thread 1 中的 storeFrame 方法/代码块，this.frame 和 this.framesStoredCount 的操作语句顺序虽然可能会被重排序但必然皆在 this.hasNewFrame 的操作语句之前）。另外值得一提的是每次程序读取volatile变量都是会直接从主内存/Heap中读取数据，而不是如读取普通变量一般（多数时候）从工作内存/Thread Stack中读取，且当线程正在读取volatile变量时，该线程对之后（严格的 HB 关系的之后关系）其他变量（无论volatile与否）的读取也会直接从主内存读取（比如下图线程2的 while(!hasNewFrame){...} 块中或之后的任意变量读取，但是 while 块之前的则不一定）；同理，当线程正在写入volatile变量时，该线程对之前（严格的 HB 关系的之前关系）其他变量（无论volatile与否）的写入也会保证同时写入主内存，但之后的则不一定 - 可能只是暂时先写入工作内存/Thread Stack而已。**  
+**另外，虽然同一个线程的同一个代码块内的语句虽然均可能重排序，但写好的volatile变量读操作语句之后的普通或volatile变量读操作语句均不会被排序到volatile变量读操作语句之前（参考下图的 Thread 2 中的 takeFrame 方法/代码块的 while(!hasNewFrame) 检测），而类似的，volatile变量写操作语句之前的普通或volatile变量操作语句均不会被排序到该volatile变量写操作语句之后（参考下图的 Thread 1 中的 storeFrame 方法/代码块，this.frame 和 this.framesStoredCount 的操作语句顺序虽然可能会被重排序但必然皆在 this.hasNewFrame 的操作语句之前）。另外值得一提的是每次程序读取volatile变量都是会直接从主内存/Heap中读取数据，而不是如读取普通变量一般（多数时候）从工作内存/Thread Stack中读取，且当线程正在读取volatile变量时，该线程对之后（严格的 HB 关系的之后关系）其他变量（无论volatile与否）的读取也会直接从主内存读取（比如下图线程2的 while(!hasNewFrame){...} 块中或之后的任意变量读取，但是 while 块之前的则不一定。这是因为线程会在那一刻才对其visible的所有变量从主内存/Heap中刷新读取，但之前执行的读取操作可能只是从工作内存/Thread Stack中读取所以那时读到的可能是过时的数据）；同理，当线程正在写入volatile变量时，该线程对之前（严格的 HB 关系的之前关系）其他变量（无论volatile与否）的写入也会保证同时写入主内存，但之后的则不一定 - 可能只是暂时先写入工作内存/Thread Stack而已。**  
 ![](./Happens-Before%20Relation%202.png)  
 **以上规则同样适用于synchronized代码块，比如synchronized代码块结尾之前的任意内存变量（无论主内存/Heap还是工作内存/Thread Stack）的写操作语句都不会被重排序到synchronized代码块结尾之后（且保证在结尾时也都会被写入Heap），而synchronized代码块开头之后任意内存变量的读操作语句皆不会被重排序到synchronized代码块开头之前。另外值得一提的是每次程序进入synchronized代码块开头时都会从Heap而不是Thread Stack中读取变量，且在synchronized代码块结尾时都会保证把任何变量的写操作写入Heap而不是只是写入Thread Stack（但是synchronized代码块之外的变量写操作不保证能同时写入Heap，因此当另一个Thread即使从Heap读取相关共享变量时很有可能读到的也是未更新的数据）。以上规则参考下图。**  
 ![](./Happens-Before%20Relation%203.png)  
