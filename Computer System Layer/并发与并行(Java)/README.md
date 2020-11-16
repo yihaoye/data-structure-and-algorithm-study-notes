@@ -19,7 +19,7 @@
 ![](./Happens-Before%20Relation%202.png)  
 **以上规则同样适用于synchronized代码块，比如synchronized代码块结尾之前的任意内存变量（无论主内存/Heap还是工作内存/Thread Stack）的写操作语句都不会被重排序到synchronized代码块结尾之后（且保证在结尾时也都会被写入Heap），而synchronized代码块开头之后任意内存变量的读操作语句皆不会被重排序到synchronized代码块开头之前。另外值得一提的是每次程序进入synchronized代码块开头时都会从Heap而不是Thread Stack中读取变量，且在synchronized代码块结尾时都会保证把任何变量的写操作写入Heap而不是只是写入Thread Stack（但是synchronized代码块之外的变量写操作不保证能同时写入Heap，因此当另一个Thread即使从Heap读取相关共享变量时很有可能读到的也是未更新的数据）。以上规则参考下图。**  
 ![](./Happens-Before%20Relation%203.png)  
-根据上一段落的描述，因此在synchronized代码块开头及结尾处都会带来一些额外的性能开销。  
+根据上一段落的描述，因此在synchronized代码块开头及结尾处都会带来一些额外的性能开销，同理volatile关键字使用同样有额外性能开销，所以应该在真正需要时才使用它们。  
 ![](./Java%20Synchronized%202.png)  
 其他 HB 规则：  
 ![](./Happens-Before%20Relation%204.png)  
@@ -63,3 +63,30 @@ synchronized 同一个 monitor object 代码块/方法一次只能由一个线�
   
 ## volatile 关键字
 volatile 关键字确保变量的写操作总是立刻保存到主内存/Heap 上，从而保证了多线程间不会发生线程A对共享变量的写操作只保存到自己的工作内存/Thread Stack 上而线程B从主内存（甚至自己的工作内存）中读取的仍是未更新的数据。  
+  
+## synchronized 与 volatile 区别
+1. volatile本质是在告诉jvm当前变量在寄存器（工作内存）中的值是不确定的，需要从主存中读取； synchronized则是锁定当前变量，只有当前线程可以访问该变量，其他线程被阻塞住。
+2. volatile仅能使用在变量级别；synchronized则可以使用在变量、方法、和类级别的
+3. volatile仅能实现变量的修改可见性，不能保证原子性；而synchronized则可以保证变量的修改可见性和原子性
+4. volatile不会造成线程的阻塞；synchronized可能会造成线程的阻塞。
+5. volatile标记的变量不会被编译器优化；synchronized标记的变量可以被编译器优化  
+  
+```java
+// volatile 错误案例（多线程场景）
+public class Counter {
+  private volatile int count = 0;
+    
+  public boolean inc() {
+    if (this.count == 10) { // 虽然使用了 volatile，但因为 volatile 并没有锁/阻塞功能，很可能多个线程同时到达这里并读取到 9 然后均继续执行该 if 块的后文
+        return false;
+    }
+    this.count++; // volatile 仅能实现变量的修改可见性，不能保证原子性，所以可能多个线程均在此同时读到 9 然后在工作内存增至 10 并在这之后写入主内存，导致最后结果是 10 而不是正确的数字（正确的应该更高，取决于线程数量）。这里除了使用 synchronized，也可以通过使用 java.util.concurrent.atomic 来解决问题
+    return true;
+  } 
+}
+```  
+以上 Java volatile 错误案例可通过使用 synchronized 来避免问题。  
+  
+## 原子性操作
+什么是原子性操作？就是一个或某几个操作只能在一个线程执行完之后，另一个线程才能开始执行该操作，也就是说这些操作是不可分割的，线程不能在这些操作上交替执行。  
+java.util.concurrent.atomic 的 Atomic类是通过无锁（lock-free）的方式实现的线程安全（thread-safe）访问。它的主要原理是利用了CAS：Compare and Set。  
