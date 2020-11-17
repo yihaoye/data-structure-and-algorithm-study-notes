@@ -15,7 +15,7 @@
 * [Common Algorithm & Theory](./Common%20Algorithm%20and%20Theory/)
 * [Common Data Structure & Data Type & Implementation](./Common%20Data%20Structure%20and%20Data%20Type/)
 * [其他关于数据结构与算法的重要心得笔记](./Other%20Practices/)
-* [Computer System Basics](./Computer%20System%20Layer/)
+* [Computer System Basics](./Computer%20System%20Layer/) (包括一些并发相关的数据结构的使用)
 * [Programming Languages Features](./Program%20Languages%20Features/)  
   
   
