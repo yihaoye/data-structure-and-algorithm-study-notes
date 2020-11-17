@@ -5,7 +5,7 @@
 
 Java标准库提供了一个特殊的ThreadLocal，它可以在一个线程中传递同一个对象。
 
-配合参考：../ThreadLocal.png
+配合参考：../ThreadLocal.jpg
 */
 
 public class ThreadLocalBasicExample {
@@ -94,5 +94,48 @@ public class ThreadLocalLazyInitExample {
         }
 
         System.out.println(value);
+    }
+}
+
+
+
+public class InheritableThreadLocalBasicExample {
+
+    public static void main(String[] args) {
+
+        ThreadLocal<String> threadLocal = new ThreadLocal<>();
+        InheritableThreadLocal<String> inheritableThreadLocal = new InheritableThreadLocal<>();
+
+        Thread thread1 = new Thread(() -> {
+            System.out.println("===== thread1 =====");
+            threadLocal.set("Thread 1 - ThreadLocal");
+            inheritableThreadLocal.set("Thread 1 - InheritableThreadLocal");
+            System.out.println(threadLocal.get());
+            System.out.println(inheritableThreadLocal.get());
+            
+            Thread childThread = new Thread(() -> {
+                System.out.println("===== childThread =====");
+                System.out.println(threadLocal.get()); // print null
+                System.out.println(inheritableThreadLocal.get()); // print "Thread 1 - InheritableThreadLocal"
+            });
+
+            childThread.start();
+        });
+
+        thread1.start();
+
+        Thread thread2 = new Thread(() -> {
+            try {
+                Thread.sleep(3000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            
+            System.out.println("===== thread2 =====");
+            System.out.println(threadLocal.get()); // print null
+            System.out.println(inheritableThreadLocal.get()); // print null
+        });
+
+        thread2.start();
     }
 }

@@ -90,3 +90,13 @@ public class Counter {
 ## 原子性操作
 什么是原子性操作？就是一个或某几个操作只能在一个线程执行完之后，另一个线程才能开始执行该操作，也就是说这些操作是不可分割的，线程不能在这些操作上交替执行。  
 java.util.concurrent.atomic 的 Atomic类是通过无锁（lock-free）的方式实现的线程安全（thread-safe）访问。它的主要原理是利用了CAS：Compare and Set。  
+  
+## ThreadLocal
+在一个线程中，横跨若干方法调用，需要传递的对象，我们通常称之为上下文（Context），它是一种状态，可以是用户身份、任务信息等。  
+给每个方法增加一个context参数非常麻烦，而且有些时候，如果调用链有无法修改源码的第三方库，需要传递的对象就传不进去了。  
+Java标准库提供了一个特殊的ThreadLocal，它可以在一个线程中传递同一个对象。  
+![](./ThreadLocal.jpg)  
+[示例代码](./Jenkov/ThreadLocalExamples.java)  
+  
+需要注意的是在有些情况下，比如多任务使用线程池时要小心任务之间可能因为共用一个线程所以其实共用了ThreadLocal的变量/数据，从而有可能发生任务之间的写入覆盖。  
+![](./ThreadLocal%202.png)  
