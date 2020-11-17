@@ -1,9 +1,9 @@
-import java.ytil.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ConcurrentHashMapRCExample {
 
     public static void main(String[] args) {
-        Map<String, String> sharedMap = new ConcurrentHashMap<String, String>();
+        Map<String, String> sharedMap = new ConcurrentHashMap<>();
 
         Thread thread1 = new Thread(getRunnable(sharedMap));
         Thread thread2 = new Thread(getRunnable(sharedMap));
