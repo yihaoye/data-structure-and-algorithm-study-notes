@@ -5,6 +5,15 @@ executorService.execute(new Runnable() {
     }
 });
 executorService.shutdown(); // please remember to call and only call .shutdown() when task is finished
+/*
+以下是 ExecutorService 可调用的内置方法：
+
+execute(Runnable)
+submit(Runnable)
+submit(Callable)
+invokeAny(...)
+invokeAll(...)
+*/
 
 
 
