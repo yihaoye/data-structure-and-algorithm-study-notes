@@ -68,9 +68,12 @@
 * Java 里，枚举（Enumeration）接口虽然它本身不属于数据结构,但它在其他数据结构的范畴里应用很广。枚举（The Enumeration）接口定义了一种从数据结构中取回连续元素的方式。
 * 堆/Heap 是计算机科学中的一种特别的树状数据结构（比如堆排序/heap sort，是基于二叉堆树作为此算法的数据结构）。
 * Java 中，Queue 是通过 LinkedList 实现的而不是 ArrayList，[原因](https://stackoverflow.com/questions/41665425/why-arraylist-doesnt-implements-queue)。
-* TreeSet 是二叉树（红黑树的树据结构）实现的，TreeSet中的数据是自动排好序的，不允许放入 null 值；HashSet 是哈希表实现的，HashSet 中的数据是无序的可以放入 null，但只能放入一个 null，两者中的值都不重复，就如数据库中唯一约束。HashSet 是基于哈希算法实现的，其性能通常都优于 TreeSet。为快速查找而设计的 Set，通常都应该使用 HashSet，在需要排序的功能时，才使用 TreeSet。  
+* TreeSet 是二叉树（红黑树的树据结构）实现的，TreeSet 中的数据是自动排好序的，不允许放入 null 值；HashSet 是哈希表实现的，HashSet 中的数据是无序的可以放入 null，但只能放入一个 null，两者中的值都不重复，就如数据库中唯一约束。HashSet 是基于哈希算法实现的，其性能通常都优于 TreeSet。为快速查找而设计的 Set，通常都应该使用 HashSet，在需要排序的功能时，才使用 TreeSet。  
   
-## 表格示
+## 更多性能展示
+<details>
+<summary>表格示</summary>
+
 List                 | Add  | Remove | Get  | Contains | Next | Data Structure
 ---------------------|------|--------|------|----------|------|---------------
 ArrayList            | O(1) |  O(n)  | O(1) |   O(n)   | O(1) | Array
@@ -109,13 +112,18 @@ TreeMap               | O(log n) |   O(log n)  | O(log n) | Red-black tree
 ConcurrentHashMap     | O(1)     |   O(1)      | O(h / n) | Hash Tables
 ConcurrentSkipListMap | O(log n) |   O(log n)  | O(1)     | Skip List
   
-以下参考自：https://gist.github.com/psayre23/c30a821239f4818b0709  
+以上参考自：https://gist.github.com/psayre23/c30a821239f4818b0709  
+</details>
   
-## 图示
+<details>
+<summary>图示</summary>
+
 ![](./Big-O%20Complexity%20Chart.png)  
 ![](./Common%20Data%20Structure%20Operations.png)  
 ![](./Array%20Sorting%20Algorithms.png)  
 ![](./BIG-O-CHEATSHEET.png)  
+</details>
+<br>
   
 ## 非常用的专用数据结构
 - [参考阅读](https://stackoverflow.com/questions/500607/what-are-the-lesser-known-but-useful-data-structures)  
