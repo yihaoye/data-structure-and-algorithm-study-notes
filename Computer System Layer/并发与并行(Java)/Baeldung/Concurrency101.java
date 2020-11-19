@@ -27,32 +27,33 @@ thread2.start();
 
 
 
-/* Describe the Different States of a Thread and When Do the State Transitions Occur. */
+/* 线程状态或生命周期 */
 /*
-The state of a Thread can be checked using the Thread.getState() method. 
-Different states of a Thread are described in the Thread.State enum. They are:
+参考：../Java%20Thread%20States.png
 
-NEW — 
-  a new Thread instance that was not yet started via Thread.start()
+线程的状态可以通过 Thread.getState() 方法检查. 
+这些线程状态被描述在 Thread.State enum 里，如下所示:
 
-RUNNABLE — 
-  a running thread. It is called runnable because at any given time it could be either running or waiting for the next quantum of time from the thread scheduler. 
-  A NEW thread enters the RUNNABLE state when you call Thread.start() on it
+NEW：创建状态，线程创建之后，但是还未启动 not yet started via Thread.start()。
+RUNNABLE：运行状态，处于运行状态的线程，但有可能处于等待状态，例如等待 CPU、IO 等，当调用 Thread.start() 时线程会进入这一状态。
+WAITING：等待状态，通常是线程等待另一个线程执行一个特定的动作，一般是对 monitor object 调用了 Object.wait()、或对另一个线程调用了 Thread.join()、或调用 LockSupport.spark() 等方法。
+TIMED_WAITING：超时等待状态，也就是带时间的等待状态。一般是调用了 Thread.sleep(time)、Object.wait(time)、Thread.join(time)、LockSupport.sparkNanos()、LockSupport.sparkUnit() 等方法。
+BLOCKED：阻塞状态，等待锁的释放，例如正在调用/进入一个 synchronized object/section 但是该 object/section 正在被另一个线程执行/monitor（monitor object 被锁）。
+TERMINATED：终止状态，一般是线程完成任务（完成 Runnable.run() 的运行）后退出或者异常终止。
 
-BLOCKED — 
-  a running thread becomes blocked if it needs to enter a synchronized section but cannot do that due to another thread holding the monitor of this section
+另外线程进入 RUNNABLE 运行态一般分为五种情况：
+  - 线程调用 sleep(time) 后结束了休眠时间
+  - 线程调用的阻塞 IO 已经返回，阻塞方法执行完毕
+  - 线程成功的获取了资源锁
+  - 线程正在等待某个通知，成功的获得了其他线程发出的通知
+  - 线程处于挂起状态，然后调用了 resume() 恢复方法，解除了挂起。
 
-WAITING — 
-  a thread enters this state if it waits for another thread to perform a particular action. 
-  For instance, a thread enters this state upon calling the Object.wait() method on a monitor it holds, 
-  or the Thread.join() method on another thread
-
-TIMED_WAITING — 
-  same as the above, but a thread enters this state after calling timed versions of Thread.sleep(), 
-  Object.wait(), Thread.join() and some other methods
-
-TERMINATED — 
-  a thread has completed the execution of its Runnable.run() method and terminated
+线程进入 BLOCKED 阻塞态一般也分为五种情况：
+  - 线程调用 sleep() 方法主动放弃占有的资源
+  - 线程调用了阻塞式 IO 的方法，在该方法返回前，该线程被阻塞。
+  - 线程视图获得一个资源锁，但是该资源锁正被其他线程锁持有。
+  - 线程正在等待某个通知
+  - 线程调度器调用 suspend() 方法将该线程挂起
 */
 
 
