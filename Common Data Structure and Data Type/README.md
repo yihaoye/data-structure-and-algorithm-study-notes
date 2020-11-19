@@ -58,12 +58,17 @@
 *术语表：索引 - get | 搜索 - search | 添加 - add | 插入 - insert | 删除 - remove | 入队 - offer | 出队 - poll | 首值 - peek*  
   
 ### 常用数据结构的一些细节补充
-* 在 Java，以上大部分数据结构属于 Collection，参见[图解](./Java%20Collection.png)。
-* HashMap 与 Hashtable 有[区别](https://stackoverflow.com/questions/40471/differences-between-hashmap-and-hashtable)，主要是关于线程安全；Map、Dictionary、Table 的[异同](https://www.zhihu.com/question/27581780)。
-* Java 的数组/array 是语言本身提供的，而 ArrayList、LinkedList、Vector(向量) 等等都是 Java Util 包基于数组实现的，参见[图解](./Java%20Util%20Collections.png)。Java 中 ArrayList、LinkedList、Vector 的[区别](https://www.cnblogs.com/wanlipeng/archive/2010/10/21/1857791.html)。
+* 在 Java，以上大部分数据结构属于 Collection / 集合类，参见[图解](./Java%20Collection.png)。以下是线程安全集合类与非线程安全集合类（《Java concurrency in practice》中定义：一个不论运行时/Runtime 如何调度线程都不需要调用方提供额外的同步和协调机制还能正确地运行的类是线程安全的）。
+  * LinkedList、ArrayList、HashSet 是非线程安全的，Vector 是线程安全的（Vector 类中的方法很多有 synchronied 进行修饰，这样就导致了 Vector 在效率上无法与 ArrayLst 相比），Java 中 ArrayList、LinkedList、Vector 的[区别](https://www.cnblogs.com/wanlipeng/archive/2010/10/21/1857791.html)。
+  * HashMap 是非线程安全的，HashTable 是线程安全的，它俩的[详细区别](https://stackoverflow.com/questions/40471/differences-between-hashmap-and-hashtable)。
+  * StringBuilder 是非线程安全的，StringBuffer 是线程安的。
+* Map、Dictionary、Table 的[异同](https://www.zhihu.com/question/27581780)。
+* Java 的数组/array 是语言本身提供的，而 ArrayList、LinkedList、Vector(向量) 等等都是 Java Util 包基于数组实现的，参见[图解](./Java%20Util%20Collections.png)。
+* 当需要对数据进行对此访问的情况下选用 ArrayList，当要对数据进行多次增加删除修改时采用 LinkedList。LinkedList 是一个双向链表，没有初始化大小，也没有扩容的机制，就是一直在前面或者后面新增。
 * Java 里，枚举（Enumeration）接口虽然它本身不属于数据结构,但它在其他数据结构的范畴里应用很广。枚举（The Enumeration）接口定义了一种从数据结构中取回连续元素的方式。
 * 堆/Heap 是计算机科学中的一种特别的树状数据结构（比如堆排序/heap sort，是基于二叉堆树作为此算法的数据结构）。
-* Java 中，Queue 是通过 LinkedList 实现的而不是 ArrayList，[原因](https://stackoverflow.com/questions/41665425/why-arraylist-doesnt-implements-queue)。  
+* Java 中，Queue 是通过 LinkedList 实现的而不是 ArrayList，[原因](https://stackoverflow.com/questions/41665425/why-arraylist-doesnt-implements-queue)。
+* TreeSet 是二叉树（红黑树的树据结构）实现的，TreeSet中的数据是自动排好序的，不允许放入 null 值；HashSet 是哈希表实现的，HashSet 中的数据是无序的可以放入 null，但只能放入一个 null，两者中的值都不重复，就如数据库中唯一约束。HashSet 是基于哈希算法实现的，其性能通常都优于 TreeSet。为快速查找而设计的 Set，通常都应该使用 HashSet，在需要排序的功能时，才使用 TreeSet。  
   
 ## 表格示
 List                 | Add  | Remove | Get  | Contains | Next | Data Structure
