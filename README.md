@@ -2,10 +2,10 @@
   
 ### 本 Repo 包括以下内容:  
 * Books and Courses 
-  * [fishc.com 数据结构网课笔记](./fishc.com%20数据结构网课/)
   * [算法导论 | Introduction to Algorithms](./Introduction%20to%20Algorithms/)
   * [程序员面试金典 | Cracking the Coding Interview](./Cracking%20the%20Coding%20Interview/)
   * [算法竞赛入门经典](./算法竞赛入门经典/)
+  * [其他数据结构网课笔记](./其他数据结构网课/)
 * [Topcoder](./Topcoder/)
 * [Codility Practices](./Codility%20Practices/)
 * [HackerRank Practices](./HackerRank%20Practises/) (包括一些 Java 语言详解)
