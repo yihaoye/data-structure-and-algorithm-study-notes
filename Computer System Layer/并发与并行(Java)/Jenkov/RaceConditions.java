@@ -15,7 +15,7 @@ public class ConcurrentHashMapRCExample {
     private static Runnable getRunnable(Map<String, String> sharedMap) {
         return () -> {
             for (int i=0; i<1_000_000; i++) {
-                synchronized(sharedMap) { // 虽然 ConcurrentHashMap 是线程安全的但那只是避免 HashMap 在多线程下操作时出现环形链表/死循环错误，对这里的多线程问题无补，所以这里需要对 if 块进行原子操作设置 synchronized，因为 ConcurrentHashMap 在这里并不保证线程2不会在线程1进入 if 条件后执行 remove 之前抢先把"key"删掉
+                synchronized(sharedMap) { // 虽然 ConcurrentHashMap 是线程安全的但那只是避免 HashMap 在多线程下操作时出现环形链表/死循环错误 - 即只保证该数据结构的独立的方法/数据被多线程同时调用时线程安全，因为该方法被视为独立原子化操作，但对这里的多线程问题无补因为这里是多线程对 ConcurrentHashMap 的多个方法组合调用（因为 ConcurrentHashMap 在这里并不保证先获权进入 if 条件然后解锁的 Thread 2 不会在 Thread 1 获权进入 if 条件并解锁后获权执行 remove 之前抢先把 "key" 删掉），因此解决方案是把这整段组合调用原子化 - 即需要对 if 块进行原子操作设置 synchronized
                     if (sharedMap.containsKey("key")) {
                         String val = sharedMap.remove("key");
                         if (val == null) {

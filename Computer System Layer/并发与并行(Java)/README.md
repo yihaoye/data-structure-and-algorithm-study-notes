@@ -117,19 +117,19 @@ volatile：具有有序性和可见性。
   
 ### ThreadLocal
 在一个线程中，横跨若干方法调用，需要传递的对象，我们通常称之为上下文（Context），它是一种状态，可以是用户身份、任务信息等。  
-给每个方法增加一个context参数非常麻烦，而且有些时候，如果调用链有无法修改源码的第三方库，需要传递的对象就传不进去了。  
-Java标准库提供了一个特殊的ThreadLocal，它可以在一个线程中传递同一个对象。  
+给每个方法增加一个 context 参数非常麻烦，而且有些时候，如果调用链有无法修改源码的第三方库，需要传递的对象就传不进去了。  
+Java 标准库提供了一个特殊的 ThreadLocal，它可以在一个线程中传递同一个对象。  
 ![](./ThreadLocal.jpg)  
 [示例代码](./Jenkov/ThreadLocalExamples.java)  
   
-需要注意的是在有些情况下，比如多任务使用线程池时要小心任务之间可能因为共用一个线程所以其实共用了ThreadLocal的变量/数据，从而有可能发生任务之间的写入覆盖。  
+需要注意的是在有些情况下，比如多任务使用线程池时要小心任务之间可能因为共用一个线程所以其实共用了 ThreadLocal 的变量/数据，从而有可能发生任务之间的写入覆盖。  
 ![](./ThreadLocal%202.png)  
   
 ### Runnable vs Callable
 runnable 是通过 run 方法实现多线程操作而 callable 是通过 call 方法实现多线程操作实体有返回值的任务必须通过 callable，另外 runnable 不可以抛出异常但是 callable 可以。  
   
 ### ExecutorService
-ExecutorService 是 Java java.util.concurrent 包的组成部分，用于简化异步模式下任务的执行。ExecutorService 会自动提供一个线程池和相关 API，用于为其分配任务。  
+ExecutorService 是 Java java.util.concurrent 包的组成部分，用于简化异步模式下任务的执行，且有利于改善性能（创建线程总是需要额外消耗，所以通过 ExecutorService 预置/复用线程会更高效）。ExecutorService 会自动提供一个线程池和相关 API，用于为其分配任务。  
   
 实例化 ExecutorService 的方式有两种：一种是工厂方法，另一种是直接创建。  
 #### 工厂方法创建 ExecutorService 实例
