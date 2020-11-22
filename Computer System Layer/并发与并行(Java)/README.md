@@ -210,9 +210,12 @@ List<Future<String>> futures = executorService.invokeAll(callableTasks);
 * 如果是 CPU 密集型的场景下，最好把线程池的 size 设置为与 CPU 核心数相等（在假设该计算机只有这一个程序运行没有其他程序的线程也占用 CPU 核心的情况下），因为如果多于核心数的话，多出来的线程不能享有自己独占的核心而只能与其他线程共享核心，导致所有线程以类似多进程单核心的纯并发方式被轮番切换执行，而切换会带来额外的开销，压低了程序的性能。
 * 如果是 I/O 密集型的场景下（比如数据库操作、HTTP操作、文件操作等等），可以把线程池的 size 扩大些大于 CPU 的核数（具体取决于 submit task 的速度多快以及 task 的平均等待时间），因为否则可能出现多个线程都在因为等待 I/O 响应而进入 waiting 状态导致 CPU 的核们部分未用甚至全部未用。  
   
+参考[示例代码](./Defog/ExecutorServiceThreadPool.java)里的第 2、3 个 main。  
+  
 ### ExecutorService 内部原理（Thread Pool 相关）
 [示例代码](./Defog/ExecutorServiceThreadPool.java)  
-以上面代码为例，当调用 `newFixedThreadPool(10)` 时，其实是在 ExecutorService 内部创建了一个 size 为 10 的 Thread Pool，而在 `for (int i=0; i<100; i++) { service.execute(new Task()); }` 这里其实是在 ExecutorService 创建了一个长度为 100 的 BlockingQueue（非一次性创建长度 100，而是每次循环往 Queue 里添加 Task 元素），当 ExecutorService 开始运行起来后，其实是线程池中的空闲线程会被调用执行阻塞队列里的 Task（因此阻塞队列必须线程安全）。  
+以上面代码里的第一个 main 为例，当调用 `newFixedThreadPool(10)` 时，其实是在 ExecutorService 内部创建了一个 size 为 10 的 Thread Pool，而在 `for (int i=0; i<100; i++) { service.execute(new Task()); }` 这里其实是在 ExecutorService 创建了一个长度为 100 的 BlockingQueue（非一次性创建长度 100，而是每次循环往 Queue 里添加 Task 元素），当 ExecutorService 开始运行起来后，其实是线程池中的空闲线程会被调用执行阻塞队列里的 Task（因此阻塞队列必须线程安全）。  
 另外 BlockingQueue 分有界无界两种，对于有界阻塞队列，超过其界限时进行 put 操作会被阻塞、take 方法在队列为空的时也会阻塞，有界阻塞队列的例子有 ArrayBlockingQueue（基于数组实现的阻塞队列）、LinkedBlockingQueue（初始化设置了大小的话就是有界队列，但是不设置大小时默认长度为 Integer.MAX_VALUE - 21 亿多因此使用体验上相当于“无界”，内部是基于链表实现）；而无界队列则 put 操作永远都不会阻塞、take 方法在队列为空时还是会阻塞，空间限制来源于系统资源的限制。[更多参考](https://blog.csdn.net/u012240455/article/details/81844007)  
+不同的 ExecutorService（比如 Executors.newCachedThreadPool、Executors.newScheduledThreadPool）由不同的 BlockingQueue 构建（比如 SynchronousQueue、DelayQueue 等等），参考[示例代码](./Defog/ExecutorServiceThreadPool.java)里的第 4、5 个 main。  
 
 

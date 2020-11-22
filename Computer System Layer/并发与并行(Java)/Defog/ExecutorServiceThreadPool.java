@@ -74,3 +74,51 @@ static class IOIntensiveTask implements Runnable {
         // some io operations which will cause thread to block/wait
     }
 }
+
+
+
+// 配合参考：../ExecutorService%20and%20Thread%20Pool%202.png
+public void main(String[] args) {
+
+    // for lots of short lived tasks
+    ExecutorService service = new Executors.newCachedThreadPool();
+
+    // submit the task for execution
+    for (int i=0; i<100; i++) {
+        service.execute(new Task());
+    }
+}
+
+static class Task implements Runnable {
+    @Override
+    public void run() {
+        // short lived task
+    }
+}
+
+
+
+// e.g. security check, logging check etc every 10 seconds.
+// 配合参考：../ExecutorService%20and%20Thread%20Pool%203.png
+public void main(String[] args) {
+
+    // for scheduling for tasks
+    ExecutorService service = new Executors.newScheduledThreadPool(10);
+
+    // task to run after 10 sec delay
+    service.schedule(new Task(), 10, SECONDS);
+
+    // task to run repeatedly every 10 sec
+    service.scheduleAtFixedRate(new Task(), 15, 10, SECONDS);
+
+    // task to run repeatedly 10 sec after previous task completes
+    service.scheduleWithFixedDelay(new Task(), 15, 10, TimeUnit.SECONDS);
+}
+
+static class Task implements Runnable {
+    @Override
+    public void run() {
+        // task that need to run
+        // based on schedule
+    }
+}
