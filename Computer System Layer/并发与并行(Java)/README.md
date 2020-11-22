@@ -24,10 +24,12 @@
 其他 HB 规则：  
 ![](./Happens-Before%20Relation%204.png)  
   
-## happens-before 俗解
-happens-before偏序关系。  
+## Happens-Before 详解
+happens-before 偏序关系。  
 ![](./Happens-Before%20Relation%205.png)  
   
+<details>
+<summary>通俗解释</summary>
 synchronized、大部分锁，众所周知的一个功能就是使多个线程互斥/串行的（共享锁允许多个线程同时访问，如读锁）访问临界区，但他们的第二个功能 —— 保证变量的可见性 —— 常被遗忘。  
   
 为什么存在可见性问题？简单介绍下。相对于内存，CPU的速度是极高的，如果CPU需要存取数据时都直接与内存打交道，在存取过程中，CPU将一直空闲，这是一种极大的浪费，所以，现代的CPU里都有很多寄存器，多级cache，他们比内存的存取速度高多了。某个线程执行时，内存中的一份数据，会存在于该线程的工作存储中（working memory，是cache和寄存器的一个抽象，这个解释源于《Concurrent Programming in Java: Design Principles and Patterns, Second Edition》§2.2.7，原文：Every thread is defined to have a working memory (an abstraction of caches and registers) in which to store values. 有不少人觉得working memory是内存的某个部分，这可能是有些译作将working memory译为工作内存的缘故，为避免混淆，这里称其为工作存储，每个线程都有自己的工作存储），并在某个特定时候回写到内存。单线程时，这没有问题，如果是多线程要同时访问同一个变量呢？内存中一个变量会存在于多个工作存储中，线程1修改了变量a的值什么时候对线程2可见？此外，编译器或运行时为了效率可以在允许的时候对指令进行重排序，重排序后的执行顺序就与代码不一致了，这样线程2读取某个变量的时候线程1可能还没有进行写入操作呢，虽然代码顺序上写操作是在前面的。这就是可见性问题的由来。  
@@ -55,6 +57,8 @@ happens-before关系有个很重要的性质，就是传递性，即，如果hb(
 Java内存模型中只是列出了几种比较基本的hb规则，在Java语言层面，又衍生了许多其他happens-before规则，如ReentrantLock的unlock与lock操作，又如AbstractQueuedSynchronizer的release与acquire，setState与getState等等。  
   
 以上参考：[链接](http://ifeve.com/easy-happens-before/)  
+</details>
+<br>
   
 ## synchronized 关键字
 synchronized 同一个 monitor object 代码块/方法一次只能由一个线程执行。如果有多个线程想访问/执行 synchronized 同一个 monitor object 的代码块/方法，哪一个等待中的线程将获得下一个访问/执行的顺序是无法保证、是不确定的（因此很有可能出现内同一个线程连续重复多次获得访问/执行机会，但其他线程都尚未有机会的情况；另外要注意不存在哪个线程先等待就在下一轮先执行的逻辑，若想保证绝对的等待公平的话可以使用 java.util.concurrent 包里的某些 API）。  
@@ -113,9 +117,12 @@ volatile：具有有序性和可见性。
   
 以上参考：[链接](https://www.jianshu.com/p/cf57726e77f2)  
   
-## Thread
+# Thread/线程
   
-### ThreadLocal
+## Runnable vs Callable
+runnable 是通过 run 方法实现多线程操作而 callable 是通过 call 方法实现多线程操作实体有返回值的任务必须通过 callable，另外 runnable 不可以抛出异常但是 callable 可以。  
+  
+## ThreadLocal
 在一个线程中，横跨若干方法调用，需要传递的对象，我们通常称之为上下文（Context），它是一种状态，可以是用户身份、任务信息等。  
 给每个方法增加一个 context 参数非常麻烦，而且有些时候，如果调用链有无法修改源码的第三方库，需要传递的对象就传不进去了。  
 Java 标准库提供了一个特殊的 ThreadLocal，它可以在一个线程中传递同一个对象。  
@@ -125,20 +132,24 @@ Java 标准库提供了一个特殊的 ThreadLocal，它可以在一个线程中
 需要注意的是在有些情况下，比如多任务使用线程池时要小心任务之间可能因为共用一个线程所以其实共用了 ThreadLocal 的变量/数据，从而有可能发生任务之间的写入覆盖。  
 ![](./ThreadLocal%202.png)  
   
-### Runnable vs Callable
-runnable 是通过 run 方法实现多线程操作而 callable 是通过 call 方法实现多线程操作实体有返回值的任务必须通过 callable，另外 runnable 不可以抛出异常但是 callable 可以。  
+## Thread Pool
+线程池，由阻塞队列（BlockingQueue）和 HashSet 集合构成，通常与 ExecutorService 配合使用。  
   
-### ExecutorService
+## ExecutorService
 ExecutorService 是 Java java.util.concurrent 包的组成部分，用于简化异步模式下任务的执行，且有利于改善性能（创建线程总是需要额外消耗，所以通过 ExecutorService 预置/复用线程会更高效）。ExecutorService 会自动提供一个线程池和相关 API，用于为其分配任务。  
   
+<details>
+<summary>ExecutorService 使用</summary>
 实例化 ExecutorService 的方式有两种：一种是工厂方法，另一种是直接创建。  
-#### 工厂方法创建 ExecutorService 实例
+
+### 工厂方法创建 ExecutorService 实例
 创建 ExecutorService 实例的最简单方法是使用 Executors 类的提供的工厂方法。比如  
 ```java
 ExecutorService executor = Executors.newFixedThreadPool(10);
 ```
 当然还有其它很多工厂方法，每种工厂方法都可以创建满足特定用例的预定义 ExecutorService 实例。编程时所需要做的就是找到合适的方法。  
-#### 直接创建 ExecutorService 的实例
+
+### 直接创建 ExecutorService 的实例
 因为 ExecutorService 是只是一个接口，因此可以使用其任何实现类的实例。java.util.concurrent 包已经预定义了几种实现可供选择，或者也可以创建自己的实现。  
 例如，ThreadPoolExecutor 类实现了 ExecutorService 接口并提供了一些构造函数用于配置执行程序服务及其内部池。  
 ```java
@@ -149,7 +160,7 @@ ExecutorService executorService =
 ```
 上面的代码与工厂方法 newSingleThreadExecutor() 的源代码非常相似。对于大多数情况，不需要详细的手动配置。  
   
-#### 分配任务给 ExecutorService
+### 分配任务给 ExecutorService
 ExecutorService 可以执行 Runnable 和 Callable 任务。这里将使用两个两个原始任务，如下面的代码所示。  
 ```java
 Runnable runnableTask = () -> {
@@ -192,9 +203,16 @@ String result = executorService.invokeAny(callableTasks);
 ```java
 List<Future<String>> futures = executorService.invokeAll(callableTasks);
 ```  
+</details>
+<br>
   
-#### 应用场景下如何使用 ExecutorService
+### 应用场景下如何使用 ExecutorService
 * 如果是 CPU 密集型的场景下，最好把线程池的 size 设置为与 CPU 核心数相等（在假设该计算机只有这一个程序运行没有其他程序的线程也占用 CPU 核心的情况下），因为如果多于核心数的话，多出来的线程不能享有自己独占的核心而只能与其他线程共享核心，导致所有线程以类似多进程单核心的纯并发方式被轮番切换执行，而切换会带来额外的开销，压低了程序的性能。
 * 如果是 I/O 密集型的场景下（比如数据库操作、HTTP操作、文件操作等等），可以把线程池的 size 扩大些大于 CPU 的核数（具体取决于 submit task 的速度多快以及 task 的平均等待时间），因为否则可能出现多个线程都在因为等待 I/O 响应而进入 waiting 状态导致 CPU 的核们部分未用甚至全部未用。  
+  
+### ExecutorService 内部原理（Thread Pool 相关）
+[示例代码](./Jenkov/ExecutorServiceThreadPool.java)  
+以上面代码为例，当调用 `newFixedThreadPool(10)` 时，其实是在 ExecutorService 内部创建了一个 size 为 10 的 Thread Pool，而在 `for (int i=0; i<100; i++) { service.execute(new Task()); }` 这里其实是在 ExecutorService 创建了一个长度为 100 的 BlockingQueue（非一次性创建长度 100，而是每次循环往 Queue 里添加 Task 元素），当 ExecutorService 开始运行起来后，其实是线程池中的空闲线程会被调用执行阻塞队列里的 Task（因此阻塞队列必须线程安全）。  
+另外 BlockingQueue 分有界无界两种，对于有界阻塞队列，超过其界限时进行 put 操作会被阻塞、take 方法在队列为空的时也会阻塞，有界阻塞队列的例子有 ArrayBlockingQueue（基于数组实现的阻塞队列）、LinkedBlockingQueue（初始化设置了大小的话就是有界队列，但是不设置大小时默认长度为 Integer.MAX_VALUE - 21 亿多因此使用体验上相当于“无界”，内部是基于链表实现）；而无界队列则 put 操作永远都不会阻塞、take 方法在队列为空时还是会阻塞，空间限制来源于系统资源的限制。[更多参考](https://blog.csdn.net/u012240455/article/details/81844007)  
 
 
