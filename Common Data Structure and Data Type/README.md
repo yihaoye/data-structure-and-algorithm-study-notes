@@ -125,6 +125,12 @@ ConcurrentSkipListMap | O(log n) |   O(log n)  | O(1)     | Skip List
 </details>
 <br>
   
+## 更多常用的高级数据结构
+  
+* [高级数据结构 | Advanced Data Structures]()
+  * [MIT Course](https://courses.csail.mit.edu/6.851/fall17/)
+  * [Geeksforgeeks](https://www.geeksforgeeks.org/advanced-data-structures/)
+  
 ## 非常用的专用数据结构
 - [参考阅读](https://stackoverflow.com/questions/500607/what-are-the-lesser-known-but-useful-data-structures)  
   
