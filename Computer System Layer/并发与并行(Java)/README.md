@@ -216,6 +216,14 @@ List<Future<String>> futures = executorService.invokeAll(callableTasks);
 [示例代码](./Defog/ExecutorServiceThreadPool.java)  
 以上面代码里的第一个 main 为例，当调用 `newFixedThreadPool(10)` 时，其实是在 ExecutorService 内部创建了一个 size 为 10 的 Thread Pool，而在 `for (int i=0; i<100; i++) { service.execute(new Task()); }` 这里其实是在 ExecutorService 创建了一个长度为 100 的 BlockingQueue（非一次性创建长度 100，而是每次循环往 Queue 里添加 Task 元素），当 ExecutorService 开始运行起来后，其实是线程池中的空闲线程会被调用执行阻塞队列里的 Task（因此阻塞队列必须线程安全）。  
 另外 BlockingQueue 分有界无界两种，对于有界阻塞队列，超过其界限时进行 put 操作会被阻塞、take 方法在队列为空的时也会阻塞，有界阻塞队列的例子有 ArrayBlockingQueue（基于数组实现的阻塞队列）、LinkedBlockingQueue（初始化设置了大小的话就是有界队列，但是不设置大小时默认长度为 Integer.MAX_VALUE - 21 亿多因此使用体验上相当于“无界”，内部是基于链表实现）；而无界队列则 put 操作永远都不会阻塞、take 方法在队列为空时还是会阻塞，空间限制来源于系统资源的限制。[更多参考](https://blog.csdn.net/u012240455/article/details/81844007)  
-不同的 ExecutorService（比如 Executors.newCachedThreadPool、Executors.newScheduledThreadPool）由不同的 BlockingQueue 构建（比如 SynchronousQueue、DelayQueue 等等），参考[示例代码](./Defog/ExecutorServiceThreadPool.java)里的第 4、5 个 main。  
-
-
+不同的 ExecutorService（比如 Executors.newCachedThreadPool、Executors.newScheduledThreadPool）由不同的 BlockingQueue 构建（比如 SynchronousQueue、DelayQueue 等等），参考[示例代码](./Defog/ExecutorServiceThreadPool.java)里的第 4、5 个 main。更多参考下图：  
+![](./Thread%20Pool%20and%20Queue%20Types.png)  
+CachedThreadPool、ScheduledThreadPool 的 keepAliveTime 默认是 60 秒，意味着如果有线程 idle 超过 60 秒就会被回收（减少资源消耗并提高性能），参考下面两图：  
+![](./ExecutorService%20and%20Thread%20Pool%204.png)  
+![](./ExecutorService%20and%20Thread%20Pool%205.png)  
+  
+如果 task 被 reject 了怎么办？比方说 BlockingQueue 是有界的且已满且所有线程也都满负荷时，再执行 `service.execute(new Task())` 时线程池会 reject task：  
+![](./Rejection%20Handler.png)  
+![](./Rejection%20Handler%202.png)  
+Rejection Handler [示例代码](./Defog/RejectionHandler.java)  
+  

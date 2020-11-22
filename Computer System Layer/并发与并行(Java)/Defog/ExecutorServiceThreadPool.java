@@ -1,14 +1,13 @@
 /*
 核心线程数 2
 最大线程数 4
-空闲线程保活时间 60s
+空闲线程保活时间/keepAliveTime 60s
 使用无界队列 LinkedBlockingQueue（注意一般情况下要配置一下队列大小，设置成有界队列，否则 JVM 内存会被撑爆）
 */
 ExecutorService executor =  new ThreadPoolExecutor(
     2, 
     4, 
-    60L, 
-    TimeUnit.SECONDS, 
+    60L, TimeUnit.SECONDS, 
     new LinkedBlockingQueue<Runnable>()
 );
 
