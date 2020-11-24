@@ -248,6 +248,7 @@ Fork-Join 与 ExecutorService 基本一样，不同点是：
 ![](./Fork-Join%203.png)  
   
 Fork-Join [代码示例](./Defog/ForkJoin.java)  
+尽管相比 ExecutorService，Fork-Join 使用起来更加简单且频繁使用时更带来更快的性能（也因此在 Java 7 发布 Fork-Join 之后，许多开发人员都将 ExecutorService 框架替换为 Fork/Join 框架），但开发人员对并发执行的控制量也有所减少。  
   
 ### Fork-Join 最佳实现原则
 ![](./Fork-Join%204.png)  
