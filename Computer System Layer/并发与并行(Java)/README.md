@@ -236,12 +236,27 @@ ReentrantLock 可以替代 synchronized 进行同步；ReentrantLock 获取锁�
 若 `new ReentrantLock(true)` 即 fair lock 时，ReentrantLock 的 waiting 执行线程队列是 FIFO 的，即最先排队等待锁的线程最先下一个执行。若 `new ReentrantLock(false)` 即 unfair lock 时，则选择执行最快的那个线程，因此性能比 fair lock 好但是却可能造成一些线程 starvation/一直等待得不到执行。  
   
 ## Fork-Join
-Fork-Join 与 ExecutorService 基本一样，唯一不同是 Fork-Join 可以 fork/split 子任务 sub tasks，然后待子任务们完成后再合并/join 子任务们的结果得出最终结果。  
+Fork-Join 与 ExecutorService 基本一样，不同点是：  
+1. Fork-Join 可以 fork/split 子任务 sub tasks，然后待子任务们完成后再合并/join 子任务们的结果得出最终结果。  
 ![](./Fork-Join.png)  
-例子：计算斐波那契  
-![](./Fork-Join%202.png)  
-  
+示例：[计算斐波那契](./Defog/ForkJoin.java)  
 另外，子任务各自还可以再 fork/split 出各自的子任务  
+![](./Fork-Join%202.png)  
+因此 Fork-Join 在此逻辑上有点类似算法里的递归。  
+  
+2. 除了与 ExecutorService 一样有一个主 BlockingQueue，Fork-Join Pool 里每个线程有自己的一个 Deque（双端队列），即存放主任务 fork/split 出来的子任务，而且这些子任务不会存放在主 BlockingQueue 上；这除了利于 fork join 任务外（比如避免 synchronization），也避免了阻塞（除非发生了 work stealing，即线程1自己的双端队列还有许多子任务待完成，而此时线程2自己的双端队列已空且 Fork-Join Pool 主队列也已空时，线程2会从线程1的队列里抢子任务干活），且更容易安排任务。  
 ![](./Fork-Join%203.png)  
   
-因此 Fork-Join 在逻辑上有点类似算法里的递归。  
+Fork-Join [代码示例](./Defog/ForkJoin.java)  
+  
+### Fork-Join 最佳实现原则
+![](./Fork-Join%204.png)  
+  
+### Fork-Join 使用场景
+* 排序
+* 矩阵相乘
+* 游戏里最佳路径寻找
+* 树遍历  
+  
+等等  
+  
