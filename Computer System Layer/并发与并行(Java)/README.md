@@ -267,3 +267,7 @@ Semaphore 可以用于做流量控制，特别公用资源有限的应用场景�
 ![](./Semaphore.png)  
 [示例代码](./Defog/Semaphore.java)  
   
+## CountDownLatch
+CountDownLatch 允许一个或多个线程等待其他线程完成操作，即利用它可以实现类似计数器的功能：比如有一个任务A，它要等待其他4个任务执行完毕之后才能执行。  
+[代码示例](./Defog/CountDownLatch.java)  
+  
