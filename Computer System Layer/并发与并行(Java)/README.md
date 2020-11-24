@@ -244,7 +244,7 @@ Fork-Join 与 ExecutorService 基本一样，不同点是：
 ![](./Fork-Join%202.png)  
 因此 Fork-Join 在此逻辑上有点类似算法里的递归。  
   
-2. 除了与 ExecutorService 一样有一个主 BlockingQueue，Fork-Join Pool 里每个线程有自己的一个 Deque（双端队列），即存放主任务 fork/split 出来的子任务，而且这些子任务不会存放在主 BlockingQueue 上；这除了利于 fork join 任务外（比如避免 synchronization），也避免了阻塞（除非发生了 work stealing，即线程1自己的双端队列还有许多子任务待完成，而此时线程2自己的双端队列已空且 Fork-Join Pool 主队列也已空时，线程2会从线程1的队列里抢子任务干活），且更容易安排任务。  
+2. 除了与 ExecutorService 一样有一个主 BlockingQueue，Fork-Join Pool 里每个线程有自己的一个 Deque（双端队列），即存放主任务 fork/split 出来的子任务，而且这些子任务不会存放在主 BlockingQueue 上；这除了利于 fork join 任务外（比如不用担心 synchronization），也避免了阻塞（除非发生了 work stealing，即线程1自己的双端队列还有许多子任务待完成，而此时线程2自己的双端队列已空且 Fork-Join Pool 主队列也已空时，线程2会从线程1的队列里抢子任务干活），且更容易安排任务。  
 ![](./Fork-Join%203.png)  
   
 Fork-Join [代码示例](./Defog/ForkJoin.java)  
@@ -259,4 +259,10 @@ Fork-Join [代码示例](./Defog/ForkJoin.java)
 * 树遍历  
   
 等等  
+  
+## Semaphore
+Semaphore（信号量）是用来控制同时访问特定资源的线程数量，它通过协调各个线程，以保证合理的使用公共资源。  
+Semaphore 可以用于做流量控制，特别公用资源有限的应用场景，比如数据库连接。假如有一个需求，要读取几万个文件的数据，因为都是IO密集型任务，我们可以启动几十个线程并发的读取，但是如果读到内存后，还需要存储到数据库中，而数据库的连接数只有10个，这时我们必须控制只有十个线程同时获取数据库连接保存数据，否则会报错无法获取数据库连接。  
+![](./Semaphore.png)  
+[示例代码](./Defog/Semaphore.java)  
   
