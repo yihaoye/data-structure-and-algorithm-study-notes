@@ -3,4 +3,4 @@ Collections.min(list);
 Collections.max(list);
 Collections.sort(list);
 
-int[] arr = list.stream().mapToInt(Integer::intValue).toArray();
+int[] arr = list.stream().mapToInt(i->i).toArray();
