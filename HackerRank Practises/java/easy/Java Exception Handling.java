@@ -53,6 +53,17 @@ class MyCalculator {
         for (int i=0; i<p; i++) res *= n;
         return res;
     }
+
+    // 如果函数接口不允许带 throws Exception 的话，应使用 RuntimeException 来代替 Exception
+    /*
+    long power(int n, int p) {
+        if (n == 0 && p == 0) throw new RuntimeException("n and p should not be zero.");
+        if (n < 0 || p < 0) throw new RuntimeException("n or p should not be negative.");
+        long res = 1;
+        for (int i=0; i<p; i++) res *= n;
+        return res;
+    }
+    */
 }
 
 public class Solution {
