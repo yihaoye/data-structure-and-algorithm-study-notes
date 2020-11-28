@@ -1,0 +1,9 @@
+<svg width="200" height="50">
+    <ul>
+        <li>Clarify：通过和面试官交流，去除题目中歧义，确定答题范围</li>
+        <li>Core objects：确定题目所涉及的类，以及类之间的映射关系</li>
+        <li>Cases：Use Cases 确定题目中所需要实现的场景和功能</li>
+        <li>Classes：通过类图的方式，具体填充题目中设计的类</li>
+        <li>Correctness：检查自己的设计，是否满足关键点</li>
+    </ul>
+</svg>

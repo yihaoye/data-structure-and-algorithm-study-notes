@@ -11,11 +11,7 @@
           * I	 接口隔离原则:    认为“多个特定客户端接口要好于一个宽泛用途的接口”的概念。  
           * D	 依赖反转原则:    认为一个方法应该遵从“依赖于抽象而不是一个实例”的概念。依赖注入是该原则的一种实现方式。  
         * 5C 解题法
-          * Clarify：通过和面试官交流，去除题目中歧义，确定答题范围
-          * Core objects：确定题目所涉及的类，以及类之间的映射关系
-          * Cases：Use Cases 确定题目中所需要实现的场景和功能
-          * Classes：通过类图的方式，具体填充题目中设计的类
-          * Correctness：检查自己的设计，是否满足关键点
+          * ![](./5c.svg)
       * 设计模式讲解 Design Pattern - Strategy
   * 管理类面向对象设计 OOD for Management System（停车场问题 Parking Lot）
   * 预定类面向对象设计 OOD for Reservation System（餐厅管理问题 Restaurant、酒店预订系统设计 Hotel Reservation）
