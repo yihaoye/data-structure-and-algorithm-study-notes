@@ -1,9 +1,13 @@
-<svg width="200" height="50">
-    <ul>
-        <li>Clarify：通过和面试官交流，去除题目中歧义，确定答题范围</li>
-        <li>Core objects：确定题目所涉及的类，以及类之间的映射关系</li>
-        <li>Cases：Use Cases 确定题目中所需要实现的场景和功能</li>
-        <li>Classes：通过类图的方式，具体填充题目中设计的类</li>
-        <li>Correctness：检查自己的设计，是否满足关键点</li>
-    </ul>
+<svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+    <foreignObject width="100%" height="100%">
+        <div xmlns="http://www.w3.org/1999/xhtml">
+            <ul>
+                <li>Clarify 明确需求：通过和面试官交流，去除题目中歧义，确定答题范围（问 What、How、场景业务概况）</li>
+                <li>Core Objects 核心类/对象：确定题目所涉及的类，以及类之间的映射关系</li>
+                <li>Cases/Use Cases 确定场景和功能：确定题目中所需要实现的场景和功能</li>
+                <li>Classes 填充具体的类：通过类图的方式，具体填充题目中设计的类</li>
+                <li>Correctness 检查设计的关键点：检查自己的设计，是否满足关键点（除了通常案例也考虑边界案例）</li>
+            </ul>
+        </div>
+    </foreignObject>
 </svg>
