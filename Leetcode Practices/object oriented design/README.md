@@ -10,8 +10,8 @@
           * L	 里氏替换原则:    认为“程序中的对象应该是可以在不改变程序正确性的前提下被它的子类所替换的”的概念。参考契约式设计。  
           * I	 接口隔离原则:    认为“多个特定客户端接口要好于一个宽泛用途的接口”的概念。  
           * D	 依赖反转原则:    认为一个方法应该遵从“依赖于抽象而不是一个实例”的概念。依赖注入是该原则的一种实现方式。  
-        * 5C 解题法
-          * ![](./5c.svg)
+        * 5C 解题法  
+![](./5c.svg)  
       * 设计模式讲解 Design Pattern - Strategy
   * 管理类面向对象设计 OOD for Management System（停车场问题 Parking Lot）
   * 预定类面向对象设计 OOD for Reservation System（餐厅管理问题 Restaurant、酒店预订系统设计 Hotel Reservation）
