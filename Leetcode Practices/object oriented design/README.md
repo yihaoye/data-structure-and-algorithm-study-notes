@@ -4,12 +4,12 @@
 * 面向对象设计专题班（文泰来 / 九章算法），目录如下（[链接](https://www.youtube.com/watch?v=oaUVVBOhyJw) 仅能免费看第一部分）
   * 面向对象设计入门 Introduction to Object Oriented Design（高频 OOD 面试题 - 电梯设计 Elevator Design）
       * OOD 面试应对方法
-        * SOLID 设计原则
-          * S	 单一功能原则:    认为对象应该仅具有一种单一功能的概念。  
-          * O	 开闭原则:       认为“软件体应该是对于扩展开放的，但是对于修改封闭的”的概念。  
-          * L	 里氏替换原则:    认为“程序中的对象应该是可以在不改变程序正确性的前提下被它的子类所替换的”的概念。参考契约式设计。  
-          * I	 接口隔离原则:    认为“多个特定客户端接口要好于一个宽泛用途的接口”的概念。  
-          * D	 依赖反转原则:    认为一个方法应该遵从“依赖于抽象而不是一个实例”的概念。依赖注入是该原则的一种实现方式。  
+        * SOLID 设计原则（以下链接皆为示例代码）
+          * [S 单一功能原则](./SOLID/SingleResponsibility.java):    对象应该仅具有一种单一功能。
+          * [O 开闭原则](./SOLID/OpenClose.java):       软件体应该是对于扩展开放的，但是对于修改封闭的。
+          * [L 里氏替换原则](./SOLID/LiskovSubstitution.java):    程序中的对象应该是可以在不改变程序正确性的前提下被它的子类所替换的。参考契约式设计。
+          * [I 接口隔离原则](./SOLID/InterfaceSeggregation.java):    多个特定客户端接口要好于一个宽泛用途的接口。
+          * [D 依赖反转原则](./SOLID/DependencyInversion.java):    抽象不应该依赖于具体实现，具体实现应该依赖于抽象。High level 实体不应该依赖于 Low level 实体。
         * 5C 解题法  
 ![](./5c.svg)  
       * 设计模式讲解 Design Pattern - Strategy
