@@ -5,9 +5,9 @@
   * 面向对象设计入门 Introduction to Object Oriented Design（高频 OOD 面试题 - 电梯设计 Elevator Design）
       * OOD 面试应对方法
         * SOLID 设计原则（以下链接皆为示例代码）
-          * [S 单一功能原则](./SOLID/SingleResponsibility.java):    对象应该仅具有一种单一功能。
-          * [O 开闭原则](./SOLID/OpenClose.java):       软件体应该是对于扩展开放的，但是对于修改封闭的。
-          * [L 里氏替换原则](./SOLID/LiskovSubstitution.java):    程序中的对象应该是可以在不改变程序正确性的前提下被它的子类所替换的。参考契约式设计。
+          * [S 单一功能原则](./SOLID/SingleResponsibility.java):    对象或类应该仅具有一种单一功能。
+          * [O 开闭原则](./SOLID/OpenClose.java):       对象或实体应该对扩展开放，对修改封闭。
+          * [L 里氏替换原则](./SOLID/LiskovSubstitution.java):    任何一个子类或派生类应该可以替换它们的基类或父类（参考契约式设计）。
           * [I 接口隔离原则](./SOLID/InterfaceSeggregation.java):    多个特定客户端接口要好于一个宽泛用途的接口。
           * [D 依赖反转原则](./SOLID/DependencyInversion.java):    抽象不应该依赖于具体实现，具体实现应该依赖于抽象。High level 实体不应该依赖于 Low level 实体。
         * 5C 解题法  
