@@ -152,3 +152,7 @@ ConcurrentSkipListMap | O(log n) |   O(log n)  | O(1)     | Skip List
 * 有些编程语言（比如 Java 早期版本）不支持 unsigned（无符号）数据类型（如 unsigned char, unsigned short, unsigned int 和 unsigned long 等等），因此在一些与 Bitwise 或数据类型符号相关的题目中需要注意，参见[例子](./../Leetcode%20Practices/algorithms/easy/190%20Reverse%20Bits.java)。
 * 虽然功能一样，但 StringBuffer 是线程安全的，而 StringBuilder 不是线程安全的，在单线程下 StringBuilder 性能比 StringBuffer 高。
   
+  
+  
+# 数据结构组合
+[重定向](./数据结构组合/)  
