@@ -3,6 +3,7 @@
 - [数组 | Array]() (索引 O(1)，搜索 O(N)，插入/删除节点 O(N))
 - [线性表 | Linear List]()
   - [顺序表 | ArrayList]() (索引 O(1)，搜索 O(N)，添加节点 O(1)，插入/删除节点 O(N))
+  - [向量 | Vector](./Data%20Structure%20Implementation/Vector/) (索引 O(1)，搜索 O(N)，添加节点 O(1)，插入/删除节点 O(N))
   - [链表 | LinkedList](./Data%20Structure%20Implementation/LinkedList/) (索引 O(N)，搜索 O(N)，插入/删除节点 O(1))
     - [单链表 | Singly Linked List]()
     - [双链表 | Doubly Linked List]()
