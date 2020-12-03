@@ -19,6 +19,7 @@
       * 设计模式讲解 Design Pattern Factory
       * 设计模式讲解 Design Pattern: Adaptor
   * 游戏棋牌类面向对象设计 OOD for Games（Tictactoe、Chinese Chess、Black Jack）
+* [算法刷完了如何准备系统设计 OOD](https://www.youtube.com/watch?v=by6WFFzXlF0)
 * [Top 10 OOD Interview questions](https://hackernoon.com/the-top-10-object-oriented-design-interview-questions-developers-should-know-c7fc2e13ce39)  
 * [educative.io](https://www.educative.io/courses/grokking-the-object-oriented-design-interview)  
   
