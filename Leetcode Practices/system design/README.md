@@ -26,5 +26,6 @@
 * [Grok System Design Tutorial](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Leetcode%20Practices/system%20design/grok_system_design_interview.pdf)
 * [System-Design-Primer](https://github.com/donnemartin/system-design-primer)  
   
-### 系统主要分类（其他系统皆可从中找到类似）
+### 系统主要大类（其他系统皆可从中找到类似）
 ![](./System%20Category.png)  
+![](./System%20Category%202.png)  
