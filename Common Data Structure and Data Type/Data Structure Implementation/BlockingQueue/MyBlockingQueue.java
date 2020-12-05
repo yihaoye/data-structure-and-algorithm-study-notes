@@ -39,3 +39,36 @@ public class MyBlockingQueue<E> {
         }
     }
 }
+
+
+
+// Implement 2
+public class MyBlockingQueue<E> {
+
+    private Queue<E> queue;
+    private int max = 16;
+    private Object notEmpty = new Object();
+    private Object notFull = new Object();
+
+    public MyBlockingQueue(int size) {
+        queue = new LinkedList<>(); // can also use array, but need to track head and tail indexes
+        this.max = size;
+    }
+
+    public synchronized void put(E e) {
+        if (queue.size() == max) {
+            notFull.await(); // block the thread until queue has at least 1 slot to add item
+        }
+        queue.add(e);
+        notEmpty.signalAll(); // signal for notEmpty
+    }
+
+    public synchronized E take() {
+        if (queue.size() == 0) {
+            notEmpty.await(); // block the thread until queue has at least 1 item to take
+        }
+        E item = queue.remove();
+        notFull.signalAll();
+        return item;
+    }
+}
