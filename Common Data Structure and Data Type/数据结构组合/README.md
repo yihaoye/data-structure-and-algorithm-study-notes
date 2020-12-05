@@ -18,3 +18,26 @@ Map<String, String> bValueMap = new HashMap<>(); // key: b id, value: b value
 Map<String, Set<String>> aToBIdMap = new HashMap<>(); // key: a id, value: set of b ids (since b id is unique)
 ```
   
+### 组合 3
+```java
+// 编写一个根据 key 查找 list object 的程序，并利用 Map 充当缓存，以提高查找效率
+class Obj { String key; String data; }
+List<Obj> list = new ArrayList<>();
+Map<String, Obj> cache = new HashMap<>();
+
+public Obj getObj(String key) {
+    Obj obj = cache.get(key);
+    if (obj == null) {
+        obj = findInList(key);
+        cache.put(key, obj);
+    }
+    return obj;
+}
+
+public Obj findInList(String key) {
+    for (Obj obj : list) {
+        if (obj.key.equals(key)) return obj;
+    }
+    return null;
+}
+```
