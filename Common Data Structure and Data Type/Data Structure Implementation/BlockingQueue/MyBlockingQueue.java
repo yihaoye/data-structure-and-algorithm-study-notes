@@ -57,7 +57,7 @@ public class MyBlockingQueue<E> {
 
     public void put(E e) {
         while (queue.size() == max) {
-            synchronized (notFull) {
+            synchronized (notFull) { // The object used to wait/notify should be the same object used by threads to synchronize (to avoid IllegalMonitorStateException)
                 notFull.wait(); // block the thread until queue has at least 1 slot to add item
             }
         }
