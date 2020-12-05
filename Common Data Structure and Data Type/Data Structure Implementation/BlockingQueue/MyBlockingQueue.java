@@ -15,7 +15,7 @@ public class MyBlockingQueue<E> {
     public void put(E e) {
         lock.lock();
         try {
-            if (queue.size() == max) {
+            while (queue.size() == max) { // 不能用 if，因为 await 会造成 unlock，有可能导致多个线程进入此处 https://www.youtube.com/watch?v=UOr9kMCCa5g&t=497s
                 notFull.await(); // block the thread until queue has at least 1 slot to add item
             }
             queue.add(e); // protected by lock
@@ -28,7 +28,7 @@ public class MyBlockingQueue<E> {
     public E take() {
         lock.lock();
         try {
-            if (queue.size() == 0) {
+            while (queue.size() == 0) {
                 notEmpty.await(); // block the thread until queue has at least 1 item to take
             }
             E item = queue.remove();
@@ -56,7 +56,7 @@ public class MyBlockingQueue<E> {
     }
 
     public synchronized void put(E e) {
-        if (queue.size() == max) {
+        while (queue.size() == max) {
             notFull.await(); // block the thread until queue has at least 1 slot to add item
         }
         queue.add(e);
@@ -64,7 +64,7 @@ public class MyBlockingQueue<E> {
     }
 
     public synchronized E take() {
-        if (queue.size() == 0) {
+        while (queue.size() == 0) {
             notEmpty.await(); // block the thread until queue has at least 1 item to take
         }
         E item = queue.remove();
