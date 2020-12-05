@@ -15,7 +15,7 @@ public class MyBlockingQueue<E> {
     public void put(E e) {
         lock.lock();
         try {
-            while (queue.size() == max) { // 不能用 if，因为 await 会造成 unlock，有可能导致多个线程进入此处 https://www.youtube.com/watch?v=UOr9kMCCa5g&t=497s
+            while (queue.size() == max) { // 不能用 if，因为 await 会造成 unlock（https://stackoverflow.com/a/11308829/6481829），有可能导致多个线程进入此处 https://www.youtube.com/watch?v=UOr9kMCCa5g&t=497s
                 notFull.await(); // block the thread until queue has at least 1 slot to add item
             }
             queue.add(e); // protected by lock
