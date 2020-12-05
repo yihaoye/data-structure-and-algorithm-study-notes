@@ -34,10 +34,12 @@
   - [并发散列表 | ConcurrentHashMap]() (索引搜索 O(1)，插入/删除节点 O(1))
   - [链散列表 | LinkedHashMap]() (按插入顺序的散列表，索引搜索 O(1)，插入/删除节点 O(1))
   - [树状映射表 | TreeMap]() (索引搜索 O(logN)，插入/删除节点 O(logN))
+  - [枚举表 | EnumMap](./Data%20Structure%20Implementation/EnumMap/) (索引搜索 O(1))
 - [集合 | Set]()
   - [散列集 | HashSet]() (索引搜索 O(1)，插入/删除节点 O(1))
   - [链散列集 | LinkedHashSet]() (索引搜索 O(1)，插入/删除节点 O(1))
   - [树集 | TreeSet]() (索引搜索 O(logN)，插入/删除节点 O(logN))
+  - [枚举集 | EnumSet]()
 - [树 | Tree]()
   - [二叉搜索树 | Binary Search Tree]() (搜索 O(logN) - O(N)，插入/删除节点 O(1))
   - [平衡二叉搜索树 | Self-Balanced Binary Search Tree]()
@@ -68,6 +70,7 @@
 * Java 的 Vector、Stack 已过时（JDK 1.0）、不建议使用（性能不佳、继承了被弃用的父类、应用了不佳的旧设计和 API），相应的可以使用 ArrayList、Deque（具备 Stack 的 LIFO 功能、相关方法，具体比如 ArrayDeque）替代。同理 Java 的 Hashtable 也被弃用，原因也是性能不佳以及继承了被弃用的父类。
 * List 是按索引顺序访问的长度可变的有序表，优先使用 ArrayList 而不是 LinkedList；当需要对数据进行多此访问的情况下选用 ArrayList，当要对数据进行多次增加删除修改时采用 LinkedList。LinkedList 是一个双向链表，没有初始化大小，也没有扩容的机制，就是一直在前面或者后面新增。
 * 使用 Iterator 访问 List 的代码比使用索引在写法上更复杂，但是通过 Iterator 遍历 List 永远是最高效的方式，并且，由于 Iterator 遍历是如此常用，所以，Java 的 for each 循环本身就使用 Iterator 遍历。实际上，只要实现了 Iterable 接口的集合类都可以直接用 for each 循环来遍历，Java 编译器本身并不知道如何遍历集合对象，但它会自动把 for each 循环变成 Iterator 的调用，原因就在于 Iterable 接口定义了一个 `Iterator<E> iterator()` 方法，强迫集合类必须返回一个 Iterator 实例。
+* 在 List 中查找元素时，List 的实现类通过元素的 equals() 方法比较两个元素是否相等，因此，放入的元素必须正确覆写 equals() 方法，Java 标准库提供的 String、Integer 等已经覆写了 equals() 方法；编写 equals() 方法可借助 Objects.equals() 判断。如果不在 List 中查找元素，就不必覆写 equals() 方法。
 * Java 里，枚举（Enumeration）接口虽然它本身不属于数据结构,但它在其他数据结构的范畴里应用很广。枚举（The Enumeration）接口定义了一种从数据结构中取回连续元素的方式。
 * 堆/Heap 是计算机科学中的一种特别的树状数据结构（比如堆排序/heap sort，是基于二叉堆树作为此算法的数据结构）。
 * Java 中，Queue 是通过 LinkedList 实现的而不是 ArrayList，[原因](https://stackoverflow.com/questions/41665425/why-arraylist-doesnt-implements-queue)。
