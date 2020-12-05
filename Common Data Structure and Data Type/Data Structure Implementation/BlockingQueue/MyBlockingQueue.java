@@ -55,20 +55,28 @@ public class MyBlockingQueue<E> {
         this.max = size;
     }
 
-    public synchronized void put(E e) {
+    public void put(E e) {
         while (queue.size() == max) {
-            notFull.await(); // block the thread until queue has at least 1 slot to add item
+            synchronized (notFull) {
+                notFull.wait(); // block the thread until queue has at least 1 slot to add item
+            }
         }
         queue.add(e);
-        notEmpty.signalAll(); // signal for notEmpty
+        synchronized (notEmpty) {
+            notEmpty.notifyAll(); // notify for notEmpty
+        }
     }
 
-    public synchronized E take() {
+    public E take() {
         while (queue.size() == 0) {
-            notEmpty.await(); // block the thread until queue has at least 1 item to take
+            synchronized (notEmpty) {
+                notEmpty.wait(); // block the thread until queue has at least 1 item to take
+            }
         }
         E item = queue.remove();
-        notFull.signalAll();
+        synchronized (notFull) {
+            notFull.notifyAll();
+        }
         return item;
     }
 }
