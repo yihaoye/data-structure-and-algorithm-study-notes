@@ -246,7 +246,472 @@
 - [ ] 95	Unique Binary Search Trees II		                                            很少考
 - [ ] 331	Verify Preorder Serialization of a Binary Tree		                            很少考
   
-  
-  
-# Leetcode 重点 250 题
+## Backtracking
+- [ ] 78	Subsets		
+- [ ] 90	Subsets II		
+- [ ] 77	Combinations		
+- [ ] 39	Combination Sum		
+- [ ] 40	Combination Sum II		
+- [ ] 216	Combination Sum III		
+- [ ] 377	Combination Sum IV		                        Dynamic Programming
+- [ ] 254	Factor Combinations		
+- [ ] 46	Permutations		
+- [ ] 47	Permutations II		
+- [ ] 31	Next Permutation		                        String
+- [ ] 60	Permutation Sequence		                    String
+- [ ] 291	Word Pattern II		
+- [ ] 17	Letter Combinations of a Phone Number		
+- [ ] 320	Generalized Abbreviation		
+- [ ] 93	Restore IP Addresses		                    很少考
+- [ ] 282	Expression Add Operators		
+- [ ] 140	Word Break II		
+- [ ] 351	Android Unlock Patterns	
+   
+## Dynamic Programming
+### 一维			
+- [ ] 70	Climbing Stairs		
+- [ ] 62	Unique Paths		
+- [ ] 63	Unique Paths II		
+- [ ] 120	Triangle		                                很少考
+- [ ] 279	Perfect Squares		
+- [ ] 139	Word Break		
+- [ ] 375	Guess Number Higher or Lower II		
+- [ ] 312	Burst Balloons		
+- [ ] 322	Coin Change		
+### 二维
+- [ ] 256	Paint House		
+- [ ] 265	Paint House II		
+- [ ] 64	Minimum Path Sum		
+- [ ] 72	Edit Distance		
+- [ ] 97	Interleaving String		
+- [ ] 174	Dungeon Game		
+- [ ] 221	Maximal Square		
+- [ ] 85	Maximal Rectangle		
+- [ ] 363	Max Sum of Rectangle No Larger Than K		    TreeSet
+### 化简（降维？）
+- [ ] 198	House Robber		
+- [ ] 213	House Robber II		
+- [ ] 276	Paint Fence		
+- [ ] 91	Decode Ways		
+- [ ] 10	Regular Expression Matching		
+- [ ] 44	Wildcard Matching	
+   
+## LinkedList
+### 基础			
+- [ ] 206	Reverse Linked List		
+- [ ] 141	Linked List Cycle		
+- [ ] 24	Swap Nodes in Pairs		
+- [ ] 328	Odd Even Linked List		
+- [ ] 92	Reverse Linked List II		
+- [ ] 237	Delete Node in a Linked List		
+- [ ] 19	Remove Nth Node From End of List		
+- [ ] 83	Remove Duplicates from Sorted List		
+- [ ] 203	Remove Linked List Elements		
+- [ ] 82	Remove Duplicates from Sorted List II		
+- [ ] 369	Plus One Linked List		
+- [ ] 2	Add Two Numbers		
+- [ ] 160	Intersection of Two Linked Lists		
+- [ ] 21	Merge Two Sorted Lists		
+### 提高			
+- [ ] 234	Palindrome Linked List		
+- [ ] 143	Reorder List		
+- [ ] 142	Linked List Cycle II		
+- [ ] 148	Sort List		
+- [ ] 25	Reverse Nodes in k-Group		
+- [ ] 61	Rotate List		
+- [ ] 86	Partition List		
+- [ ] 23	Merge k Sorted Lists		
+- [ ] 147	Insertion Sort List	
+   
+## Binary Search
+- [ ] 278	First Bad Version		
+- [ ] 35	Search Insert Position		
+- [ ] 33	Search in Rotated Sorted Array		
+- [ ] 81	Search in Rotated Sorted Array II		
+- [ ] 153	Find Minimum in Rotated Sorted Array		
+- [ ] 154	Find Minimum in Rotated Sorted Array II		
+- [ ] 162	Find Peak Element		
+- [ ] 374	Guess Number Higher or Lower		
+- [ ] 34	Find First and Last Position of Element in Sorted Array		
+- [ ] 349	Intersection of Two Arrays		
+- [ ] 350	Intersection of Two Arrays II		
+- [ ] 315	Count of Smaller Numbers After Self		
+- [ ] 300	Longest Increasing Subsequence		
+- [ ] 354	Russian Doll Envelopes	
+   
+## Matrix
+- [ ] 48	Rotate Image		
+- [ ] 54	Spiral Matrix		
+- [ ] 59	Spiral Matrix II		
+- [ ] 73	Set Matrix Zeroes		
+- [ ] 311	Sparse Matrix Multiplication		
+- [ ] 329	Longest Increasing Path in a Matrix		
+- [ ] 378	Kth Smallest Element in a Sorted Matrix		
+- [ ] 74	Search a 2D Matrix		
+- [ ] 240	Search a 2D Matrix II		
+- [ ] 370	Range Addition		
+- [ ] 79	Word Search		
+- [ ] 296	Best Meeting Point		
+- [ ] 361	Bomb Enemy		
+- [ ] 317	Shortest Distance from All Buildings		
+- [ ] 302	Smallest Rectangle Enclosing Black Pixels		
+- [ ] 36	Valid Sudoku		
+- [ ] 37	Sudoku Solver	
+   
+## DFS & BFS
+- [ ] 200	Number of Islands		
+- [ ] 286	Walls and Gates		
+- [ ] 130	Surrounded Regions		
+- [ ] 339	Nested List Weight Sum		
+- [ ] 364	Nested List Weight Sum II		
+- [ ] 127	Word Ladder		
+- [ ] 51	N-Queens		
+- [ ] 52	N-Queens II		
+- [ ] 126	Word Ladder II	
+   
+## Stack & PriorityQueue
+### Stack			
+- [ ] 155	Min Stack		
+- [ ] 232	Implement Queue using Stacks		
+- [ ] 225	Implement Stack using Queues		
+- [ ] 150	Evaluate Reverse Polish Notation		
+- [ ] 71	Simplify Path		
+- [ ] 388	Longest Absolute File Path		
+- [ ] 394	Decode String		
+- [ ] 224	Basic Calculator		
+- [ ] 227	Basic Calculator II		
+- [ ] 385	Mini Parser		
+- [ ] 84	Largest Rectangle in Histogram		
+### PriorityQueue			
+- [ ] 215	Kth Largest Element in an Array		
+- [ ] 347	Top K Frequent Elements		
+- [ ] 313	Super Ugly Number		                            很少考
+- [ ] 373	Find K Pairs with Smallest Sums		                很少考
+- [ ] 218	The Skyline Problem		
+- [ ] 332	Reconstruct Itinerary		
+- [ ] 341	Flatten Nested List Iterator	
+   
+## Bit Manipulation
+- [ ] 389	Find the Difference		
+- [ ] 136	Single Number		
+- [ ] 318	Maximum Product of Word Lengths		
+### 很少考			
+- [ ] 393	UTF-8 Validation		
+- [ ] 201	Bitwise AND of Numbers Range		
+- [ ] 371	Sum of Two Integers emove Element		
+- [ ] 338	Counting Bits		
+- [ ] 89	Gray Code		
+- [ ] 268	Missing Number		
+- [ ] 191	Number of 1 Bits		
+- [ ] 190	Reverse Bits		
+- [ ] 137	Single Number II		
+- [ ] 260	Single Number III	
+   
+## Topological Sort
+- [ ] 207	Course Schedule		
+- [ ] 210	Course Schedule II		
+- [ ] 269	Alien Dictionary	
+   
+## Random
+- [ ] 384	Shuffle an Array		
+- [ ] 398	Random Pick Index		
+- [ ] 382	Linked List Random Node		
+- [ ] 380	Insert Delete GetRandom O(1)		
+- [ ] 381	Insert Delete GetRandom O(1) - Duplicates allowed		
+- [ ] 138	Copy List with Random Pointer	
+   
+## Graph
+### 基础			
+- [ ] 133	Clone Graph		
+- [ ] 399	Evaluate Division		
+- [ ] 310	Minimum Height Trees		
+### 图形学			
+- [ ] 149	Max Points on a Line		
+- [ ] 335	Self Crossing		                                    很少考
+- [ ] 356	Line Reflection		                                    很少考
+- [ ] 391	Perfect Rectangle		                                很少考
+- [ ] 223	Rectangle Area		                                    很少考
+   
+## Union Find
+- [ ] 261	Graph Valid Tree		
+- [ ] 323	Number of Connected Components in an Undirected Graph		
+- [ ] 305	Number of Islands II	
+   
+## Trie
+- [ ] 211	Add and Search Word - Data structure design		
+- [ ] 208	Implement Trie (Prefix Tree)		
+- [ ] 212	Word Search II	
+   
+## Design
+- [ ] 359	Logger Rate Limiter		
+- [ ] 346	Moving Average from Data Stream		                        Sliding Window
+- [ ] 362	Design Hit Counter		
+- [ ] 281	Zigzag Iterator		
+- [ ] 284	Peeking Iterator		
+- [ ] 251	Flatten 2D Vector		
+- [ ] 288	Unique Word Abbreviation		
+- [ ] 170	Two Sum III - Data structure design		
+- [ ] 348	Design Tic-Tac-Toe		
+- [ ] 379	Design Phone Directory		
+- [ ] 353	Design Snake Game		
+- [ ] 146	LRU Cache		
+- [ ] 355	Design Twitter		
+- [ ] 303	Range Sum Query - Immutable		
+- [ ] 304	Range Sum Query 2D - Immutable		
+- [ ] 307	Range Sum Query - Mutable		                            BIT & ST
+- [ ] 308	Range Sum Query 2D - Mutable		                        BIT & ST
+   
+   
+   
+# Leetcode 重点 250 题（建议前面 400 题全部刷完再精刷此 250 题）
+- [ ] 1	    Two Sum		
+- [ ] 3	    Longest Substring Without Repeating Characters		
+- [ ] 4	    Median of Two Sorted Arrays		
+- [ ] 5	    Longest Palindromic Substring		
+- [ ] 7	    Reverse Integer		
+- [ ] 8	    String to Integer (atoi)		
+- [ ] 10	Regular Expression Matching		
+- [ ] 11	Container With Most Water		
+- [ ] 12	Integer to Roman		
+- [ ] 13	Roman to Integer		
+- [ ] 15	3Sum		
+- [ ] 17	Letter Combinations of a Phone Number		
+- [ ] 18	4Sum		
+- [ ] 20	Valid Parentheses		
+- [ ] 22	Generate Parentheses		
+- [ ] 23	Merge k Sorted Lists		
+- [ ] 26	Remove Duplicates from Sorted Array		
+- [ ] 27	Remove Element		
+- [ ] 28	Implement strStr()		
+- [ ] 29	Divide Two Integers		
+- [ ] 31	Next Permutation		
+- [ ] 32	Longest Valid Parentheses		
+- [ ] 33	Search in Rotated Sorted Array		
+- [ ] 34	Find First and Last Position of Element in Sorted Array		
+- [ ] 35	Search Insert Position		
+- [ ] 36	Valid Sudoku		
+- [ ] 37	Sudoku Solver		
+- [ ] 38	Count and Say		
+- [ ] 39	Combination Sum		
+- [ ] 40	Combination Sum II		
+- [ ] 41	First Missing Positive		
+- [ ] 42	Trapping Rain Water		
+- [ ] 43	Multiply Strings		
+- [ ] 44	Wildcard Matching		
+- [ ] 45	Jump Game II		
+- [ ] 46	Permutations		
+- [ ] 47	Permutations II		
+- [ ] 48	Rotate Image		
+- [ ] 49	Group Anagrams		
+- [ ] 50	Pow(x, n)		
+- [ ] 51	N-Queens		
+- [ ] 52	N-Queens II		
+- [ ] 53	Maximum Subarray		
+- [ ] 54	Spiral Matrix		
+- [ ] 55	Jump Game		
+- [ ] 56	Merge Intervals		
+- [ ] 57	Insert Interval		
+- [ ] 59	Spiral Matrix II		
+- [ ] 60	Permutation Sequence		
+- [ ] 62	Unique Paths		
+- [ ] 64	Minimum Path Sum		
+- [ ] 65	Valid Number		
+- [ ] 66	Plus One		
+- [ ] 67	Add Binary		
+- [ ] 68	Text Justification		
+- [ ] 69	Sqrt(x)		
+- [ ] 70	Climbing Stairs		
+- [ ] 71	Simplify Path		
+- [ ] 72	Edit Distance		
+- [ ] 74	Search a 2D Matrix		
+- [ ] 75	Sort Colors		
+- [ ] 76	Minimum Window Substring		
+- [ ] 77	Combinations		
+- [ ] 78	Subsets		
+- [ ] 79	Word Search		
+- [ ] 80	Remove Duplicates from Sorted Array II		
+- [ ] 81	Search in Rotated Sorted Array II		
+- [ ] 82	Remove Duplicates from Sorted List II		
+- [ ] 84	Largest Rectangle in Histogram		
+- [ ] 85	Maximal Rectangle		
+- [ ] 88	Merge Sorted Array		
+- [ ] 90	Subsets II		
+- [ ] 91	Decode Ways		
+- [ ] 96	Unique Binary Search Trees		
+- [ ] 98	Validate Binary Search Tree		
+- [ ] 101	Symmetric Tree		
+- [ ] 104	Maximum Depth of Binary Tree		
+- [ ] 108	Convert Sorted Array to Binary Search Tree		
+- [ ] 110	Balanced Binary Tree		
+- [ ] 111	Minimum Depth of Binary Tree		
+- [ ] 112	Path Sum		
+- [ ] 113	Path Sum II		
+- [ ] 115	Distinct Subsequences		
+- [ ] 116	Populating Next Right Pointers in Each Node		
+- [ ] 117	Populating Next Right Pointers in Each Node II		
+- [ ] 121	Best Time to Buy and Sell Stock		
+- [ ] 122	Best Time to Buy and Sell Stock II		
+- [ ] 123	Best Time to Buy and Sell Stock III		
+- [ ] 124	Binary Tree Maximum Path Sum		
+- [ ] 125	Valid Palindrome		
+- [ ] 126	Word Ladder II		
+- [ ] 127	Word Ladder		
+- [ ] 128	Longest Consecutive Sequence		
+- [ ] 130	Surrounded Regions		
+- [ ] 133	Clone Graph		
+- [ ] 134	Gas Station		
+- [ ] 138	Copy List with Random Pointer		
+- [ ] 139	Word Break		
+- [ ] 140	Word Break II		
+- [ ] 142	Linked List Cycle II		
+- [ ] 146	LRU Cache		
+- [ ] 149	Max Points on a Line		
+- [ ] 150	Evaluate Reverse Polish Notation		
+- [ ] 152	Maximum Product Subarray		
+- [ ] 153	Find Minimum in Rotated Sorted Array		
+- [ ] 154	Find Minimum in Rotated Sorted Array II		
+- [ ] 155	Min Stack		
+- [ ] 157	Read N Characters Given Read4		
+- [ ] 158	Read N Characters Given Read4 II - Call multiple times		
+- [ ] 161	One Edit Distance		
+- [ ] 162	Find Peak Element		
+- [ ] 163	Missing Ranges		
+- [ ] 168	Excel Sheet Column Title		
+- [ ] 171	Excel Sheet Column Number		
+- [ ] 173	Binary Search Tree Iterator		
+- [ ] 174	Dungeon Game		
+- [ ] 186	Reverse Words in a String II		
+- [ ] 188	Best Time to Buy and Sell Stock IV		
+- [ ] 189	Rotate Array		
+- [ ] 191	Number of 1 Bits		
+- [ ] 198	House Robber		
+- [ ] 200	Number of Islands		
+- [ ] 201	Bitwise AND of Numbers Range		
+- [ ] 202	Happy Number		
+- [ ] 204	Count Primes		
+- [ ] 205	Isomorphic Strings		
+- [ ] 207	Course Schedule		
+- [ ] 208	Implement Trie (Prefix Tree)		
+- [ ] 209	Minimum Size Subarray Sum		
+- [ ] 210	Course Schedule II		
+- [ ] 211	Add and Search Word - Data structure design		
+- [ ] 212	Word Search II		
+- [ ] 213	House Robber II		
+- [ ] 214	Shortest Palindrome		
+- [ ] 215	Kth Largest Element in an Array		
+- [ ] 216	Combination Sum III		
+- [ ] 217	Contains Duplicate		
+- [ ] 218	The Skyline Problem		
+- [ ] 219	Contains Duplicate II		
+- [ ] 220	Contains Duplicate III		
+- [ ] 221	Maximal Square		
+- [ ] 224	Basic Calculator		
+- [ ] 225	Implement Stack using Queues		
+- [ ] 226	Invert Binary Tree		
+- [ ] 227	Basic Calculator II		
+- [ ] 228	Summary Ranges		
+- [ ] 230	Kth Smallest Element in a BST		
+- [ ] 231	Power of Two		
+- [ ] 232	Implement Queue using Stacks		
+- [ ] 235	Lowest Common Ancestor of a Binary Search Tree		
+- [ ] 236	Lowest Common Ancestor of a Binary Tree		
+- [ ] 238	Product of Array Except Self		
+- [ ] 239	Sliding Window Maximum		
+- [ ] 240	Search a 2D Matrix II		
+- [ ] 241	Different Ways to Add Parentheses		
+- [ ] 242	Valid Anagram		
+- [ ] 244	Shortest Word Distance II		
+- [ ] 245	Shortest Word Distance III		
+- [ ] 249	Group Shifted Strings		
+- [ ] 251	Flatten 2D Vector		
+- [ ] 252	Meeting Rooms		
+- [ ] 253	Meeting Rooms II		
+- [ ] 254	Factor Combinations		
+- [ ] 256	Paint House		
+- [ ] 257	Binary Tree Paths		
+- [ ] 261	Graph Valid Tree		
+- [ ] 263	Ugly Number		
+- [ ] 264	Ugly Number II		
+- [ ] 265	Paint House II		
+- [ ] 268	Missing Number		
+- [ ] 269	Alien Dictionary		
+- [ ] 270	Closest Binary Search Tree Value		
+- [ ] 271	Encode and Decode Strings		
+- [ ] 273	Integer to English Words		
+- [ ] 274	H-Index		
+- [ ] 275	H-Index II		
+- [ ] 276	Paint Fence		
+- [ ] 277	Find the Celebrity		
+- [ ] 278	First Bad Version		
+- [ ] 279	Perfect Squares		
+- [ ] 280	Wiggle Sort		
+- [ ] 282	Expression Add Operators		
+- [ ] 283	Move Zeroes		
+- [ ] 284	Peeking Iterator		
+- [ ] 285	Inorder Successor in BST		
+- [ ] 286	Walls and Gates		
+- [ ] 287	Find the Duplicate Number		
+- [ ] 288	Unique Word Abbreviation		
+- [ ] 289	Game of Life		
+- [ ] 290	Word Pattern		
+- [ ] 291	Word Pattern II		
+- [ ] 293	Flip Game		
+- [ ] 294	Flip Game II		
+- [ ] 295	Find Median from Data Stream		
+- [ ] 296	Best Meeting Point		
+- [ ] 297	Serialize and Deserialize Binary Tree		
+- [ ] 298	Binary Tree Longest Consecutive Sequence		
+- [ ] 299	Bulls and Cows		
+- [ ] 300	Longest Increasing Subsequence		
+- [ ] 301	Remove Invalid Parentheses		
+- [ ] 302	Smallest Rectangle Enclosing Black Pixels		
+- [ ] 305	Number of Islands II		
+- [ ] 307	Range Sum Query - Mutable		
+- [ ] 308	Range Sum Query 2D - Mutable		
+- [ ] 309	Best Time to Buy and Sell Stock with Cooldown		
+- [ ] 311	Sparse Matrix Multiplication		
+- [ ] 312	Burst Balloons		
+- [ ] 314	Binary Tree Vertical Order Traversal		
+- [ ] 316	Remove Duplicate Letters		
+- [ ] 317	Shortest Distance from All Buildings		
+- [ ] 318	Maximum Product of Word Lengths		
+- [ ] 322	Coin Change		
+- [ ] 323	Number of Connected Components in an Undirected Graph		
+- [ ] 324	Wiggle Sort II		
+- [ ] 325	Maximum Size Subarray Sum Equals k		
+- [ ] 329	Longest Increasing Path in a Matrix		
+- [ ] 334	Increasing Triplet Subsequence		
+- [ ] 336	Palindrome Pairs		
+- [ ] 337	House Robber III		
+- [ ] 338	Counting Bits		
+- [ ] 339	Nested List Weight Sum		
+- [ ] 340	Longest Substring with At Most K Distinct Characters		
+- [ ] 341	Flatten Nested List Iterator		
+- [ ] 346	Moving Average from Data Stream		
+- [ ] 347	Top K Frequent Elements		
+- [ ] 348	Design Tic-Tac-Toe		
+- [ ] 350	Intersection of Two Arrays II		
+- [ ] 351	Android Unlock Patterns		
+- [ ] 352	Data Stream as Disjoint Intervals		
+- [ ] 353	Design Snake Game		
+- [ ] 354	Russian Doll Envelopes		
+- [ ] 355	Design Twitter		
+- [ ] 359	Logger Rate Limiter		
+- [ ] 361	Bomb Enemy		
+- [ ] 362	Design Hit Counter		
+- [ ] 364	Nested List Weight Sum II		
+- [ ] 367	Valid Perfect Square		
+- [ ] 374	Guess Number Higher or Lower		
+- [ ] 375	Guess Number Higher or Lower II		
+- [ ] 376	Wiggle Subsequence		
+- [ ] 377	Combination Sum IV		
+- [ ] 378	Kth Smallest Element in a Sorted Matrix		
+- [ ] 379	Design Phone Directory		
+- [ ] 380	Insert Delete GetRandom O(1)		
+- [ ] 381	Insert Delete GetRandom O(1) - Duplicates allowed		
+- [ ] 384	Shuffle an Array		
+- [ ] 385	Mini Parser		
+- [ ] 389	Find the Difference		
+- [ ] 394	Decode String		
+- [ ] 398	Random Pick Index	
   
