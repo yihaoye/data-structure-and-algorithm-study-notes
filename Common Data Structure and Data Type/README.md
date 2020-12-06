@@ -1,17 +1,17 @@
 # 常用数据结构
   
-- [数组 | Array]() (索引 O(1)，搜索 O(N)，插入/删除节点 O(N))
+- [数组 | Array]() (索引 O(1)，遍历 O(N)，插入/删除节点 O(N))
 - [线性表 | Linear List]()
-  - [顺序表 | ArrayList]() (索引 O(1)，搜索 O(N)，添加节点 O(1)，插入/删除节点 O(N))
-  - [向量 | Vector](./Data%20Structure%20Implementation/Vector/) (索引 O(1)，搜索 O(N)，添加节点 O(1)，插入/删除节点 O(N))
-  - [链表 | LinkedList](./Data%20Structure%20Implementation/LinkedList/) (索引 O(N)，搜索 O(N)，插入/删除节点 O(1))
+  - [顺序表 | ArrayList]() (索引 O(1)，遍历 O(N)，添加节点 O(1)，插入/删除节点 O(N))
+  - [向量 | Vector](./Data%20Structure%20Implementation/Vector/) (索引 O(1)，遍历 O(N)，添加节点 O(1)，插入/删除节点 O(N))
+  - [链表 | LinkedList](./Data%20Structure%20Implementation/LinkedList/) (索引 O(N)，遍历 O(N)，插入/删除节点 O(1))
     - [单链表 | Singly Linked List]()
     - [双链表 | Doubly Linked List]()
     - [循环链表 | Circular Linked List]()
     - [跳表 | Skip List]()
 - [队列 | Queue]()
   - [链表 | LinkedList](./Data%20Structure%20Implementation/LinkedList/) (入队/出队 O(1)，首值 O(1))
-  - [优先队列 | PriorityQueue]() (搜索 O(N)，入队/出队 O(logN)，首值 O(1))
+  - [优先队列 | PriorityQueue]() (遍历 O(N)，入队/出队 O(logN)，首值 O(1))
   - [双端队列 | Deque]()
     - [链表 | LinkedList](./Data%20Structure%20Implementation/LinkedList/) (同上)
     - [数组双端队列 | ArrayDeque](./../HackerRank%20Practises/java/medium/Java%20Dequeue.java)
@@ -28,7 +28,8 @@
     - [基于链表的FIFO无界阻塞队列 | LinkedTransferQueue](./Data%20Structure%20Implementation/LinkedTransferQueue/)
 - [栈 | Stack]() (入栈/出栈 O(1))
 - [堆 | Heap]()
-  - [二叉堆 | Binary Heap](./Data%20Structure%20Implementation/BinaryHeap/) (搜索 O(N)，插入/删除节点 O(logN))
+  - [二叉堆 | Binary Heap](./Data%20Structure%20Implementation/BinaryHeap/) (构造 O(N)，遍历 O(N)，插入/删除节点 O(logN))
+    - [优先队列 | PriorityQueue]()
   - [斐波那契堆 | Fibonacci Heap]()
 - [映射表 | Map/Table]()
   - [散列表 | HashMap](./Data%20Structure%20Implementation/HashMap/) (索引搜索 O(1)，插入/删除节点 O(1))
@@ -59,7 +60,7 @@
   
 以上有些数据结构可能只有 Java 提供了官方实现 [more](https://www.zhihu.com/question/325814788) ，以上总结未完待续...  
   
-*术语表：索引 - get | 搜索 - search | 添加 - add | 插入 - insert | 删除 - remove | 入队 - offer | 出队 - poll | 首值 - peek*  
+*术语表：索引 - get | 搜索 - search | 遍历 - traversal | 添加 - add | 插入 - insert | 删除 - remove | 入队 - offer | 出队 - poll | 首值 - peek*  
   
 ### 常用数据结构的一些细节补充
 * 在 Java，以上大部分数据结构属于 Collection / 集合类，参见[图解](./Java%20Collection.png)。以下是线程安全集合类与非线程安全集合类（《Java concurrency in practice》中定义：一个不论运行时/Runtime 如何调度线程都不需要调用方提供额外的同步和协调机制还能正确地运行的类是线程安全的；但线程安全的类/数据结构通常仅指的是其独立的方法或数据是原子化/加锁的，参考[链接](https://blog.csdn.net/a158123/article/details/84948046)，另外可参考代码[案例](../Computer%20System%20Layer/并发与并行(Java)/Jenkov/RaceConditions.java)；线程不安全就是不提供数据访问保护，有可能出现多个线程先后更改数据造成所得到的数据是混乱数据）。
@@ -79,7 +80,8 @@
 * TreeSet 是二叉树（红黑树的树据结构）实现的，TreeSet 中的数据是自动排好序的，不允许放入 null 值；HashSet 是哈希表实现的，HashSet 中的数据是无序的可以放入 null，但只能放入一个 null，两者中的值都不重复，就如数据库中唯一约束。HashSet 是基于哈希算法实现的，其性能通常都优于 TreeSet。为快速查找而设计的 Set，通常都应该使用 HashSet，在需要排序的功能时，才使用 TreeSet。
 * 使用 TreeSet 和使用 TreeMap 的要求一样，添加的元素必须正确实现 Comparable 接口，如果没有实现 Comparable 接口，那么创建 TreeSet 时必须传入一个 Comparator 对象。TreeSet 实现了 SortedSet 接口，而 SortedSet 接口继承 Set 接口，HashSet 直接实现 Set 接口，Set 接口并不保证有序，而 SortedSet 接口才保证元素是有序的。
   * TreeMap、TreeSet 只提供了一般（或按元素所属的类的默认/自定义 compareTo 逻辑或传入的 Comparator 对象的 compare 逻辑）排序功能（而且每次插入新元素后会自动触发集合按元素的类的 compareTo 排序逻辑或传入的 Comparator 对象的 compare 逻辑来重新排一次序），并不能保证集合里的元素顺序按插入顺序，能保证集合里的元素顺序按插入顺序的是 LinkedHashMap、LinkedHashSet。
-* 放入 PriorityQueue 的元素，必须实现 Comparable 接口，PriorityQueue 会根据元素的排序顺序决定出队的优先级。如果要放入的元素并没有实现 Comparable 接口的话，也可以提供一个 Comparator 对象来判断两个元素的顺序。PriorityQueue 在每次插入新元素后会自动触发排序。  
+* 放入 PriorityQueue 的元素，必须实现 Comparable 接口，PriorityQueue 会根据元素的排序顺序决定出队的优先级。如果要放入的元素并没有实现 Comparable 接口的话，也可以提供一个 Comparator 对象来判断两个元素的顺序。PriorityQueue 在每次插入新元素后会自动触发排序。
+* Java 没有内置专门的二叉堆数据结构，因为可以使用 PriorityQueue（最小堆）来当二叉堆用。  
   
 ## 更多性能展示
 <details>
