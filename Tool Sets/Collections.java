@@ -10,3 +10,8 @@ Collections.max(list);
 Collections.sort(list);
 
 int[] arr = list.stream().mapToInt(i->i).toArray();
+
+
+int i = 1;
+int j = 3;
+Collections.swap(list, i, j);
