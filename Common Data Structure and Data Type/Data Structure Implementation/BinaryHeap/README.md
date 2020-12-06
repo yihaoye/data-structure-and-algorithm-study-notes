@@ -10,6 +10,16 @@
 ![](./Min%20Heap%203.png)  
 二叉堆示例代码[最小堆实现](./MinHeap.java)  
   
+### 最小堆应用
+* 堆排序 O(N*log(N))
+* Dijkstra 算法 O(|E|*log(V))
+* Priority Queue
+* Selection algorithm:
+  * Select top K elements among N
+  * Sorting: O(N*log(N))
+  * Binary Heap: O(N + K*log(N))  
+  
+### 其他
 而`最大—最小堆`集结了最大堆和最小堆的优点，这也是其名字的由来。  
 `最大—最小堆`是最大层和最小层交替出现的二叉树，即最大层结点的子节点属于最小层，最小层结点的子节点属于最大层。 以最大（小）层结n点为根结点的子树保有最大（小）堆性质：根结点的键值为该子树结点键值中最大（小）项。  
   

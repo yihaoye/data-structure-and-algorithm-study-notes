@@ -32,8 +32,10 @@ public class MinHeap {
 
     // Create a heap from a ArrayList/array（该参数集合为乱序未排序）
     public MinHeap(ArrayList<Integer> list) {
-        // 原理为从倒数第二层往上（类似广度优先）遍历地对所有元素调用 heapifyDown(element)，时间复杂度为 log(N)*(N/2) = N*log(N) -> 上限，实际可能 O(N)
-
+        // 原理为从倒数第二层往上（类似广度优先）遍历地对所有元素调用 heapifyDown(element)，时间复杂度为 log(N)*(N/2) = N*log(N) -> 为 Upper bound，Tighter bound 为 O(N)
+        data_ = new ArrayList<>(list);
+        for (int index = (data_.size() - 1) / 2; index >= 0; index--)
+            heapifyDown(index);
     }
 
     // return the min element
