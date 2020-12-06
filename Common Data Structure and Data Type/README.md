@@ -8,6 +8,7 @@
     - [单链表 | Singly Linked List]()
     - [双链表 | Doubly Linked List]()
     - [循环链表 | Circular Linked List]()
+    - [跳表 | Skip List]()
 - [队列 | Queue]()
   - [链表 | LinkedList](./Data%20Structure%20Implementation/LinkedList/) (入队/出队 O(1)，首值 O(1))
   - [优先队列 | PriorityQueue]() (搜索 O(N)，入队/出队 O(logN)，首值 O(1))
