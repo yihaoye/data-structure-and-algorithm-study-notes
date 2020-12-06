@@ -10,9 +10,10 @@
 ![](./Min%20Heap%203.png)  
 二叉堆示例代码[最小堆实现](./MinHeap.java)  
   
-### 最小堆应用
+### 堆的应用
+堆是经常用到的数据结构，具体例子如下：  
 * 堆排序 O(N*log(N))
-* Dijkstra 算法 O(|E|*log(V))
+* Dijkstra 算法 O((|E|+|V|)*log(|V|))
 * Priority Queue
 * Selection algorithm:
   * Select top K elements among N
