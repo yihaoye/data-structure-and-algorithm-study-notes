@@ -272,7 +272,7 @@
 - [ ] 70	Climbing Stairs		
 - [ ] 62	Unique Paths		
 - [ ] 63	Unique Paths II		
-- [ ] 120	Triangle		                                很少考
+- [x] 120	Triangle		                                很少考
 - [ ] 279	Perfect Squares		
 - [ ] 139	Word Break		
 - [ ] 375	Guess Number Higher or Lower II		
@@ -365,7 +365,7 @@
 - [ ] 339	Nested List Weight Sum		
 - [ ] 364	Nested List Weight Sum II		
 - [ ] 127	Word Ladder		
-- [ ] 51	N-Queens		
+- [x] 51	N-Queens		
 - [ ] 52	N-Queens II		
 - [ ] 126	Word Ladder II	
    
@@ -504,7 +504,7 @@
 - [ ] 48	Rotate Image		
 - [ ] 49	Group Anagrams		
 - [ ] 50	Pow(x, n)		
-- [ ] 51	N-Queens		
+- [x] 51	N-Queens		
 - [ ] 52	N-Queens II		
 - [ ] 53	Maximum Subarray		
 - [ ] 54	Spiral Matrix		

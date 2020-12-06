@@ -27,7 +27,7 @@
     - [基于链表的FIFO无界阻塞队列 | LinkedTransferQueue](./Data%20Structure%20Implementation/LinkedTransferQueue/)
 - [栈 | Stack]() (入栈/出栈 O(1))
 - [堆 | Heap]()
-  - [二叉堆 | Binary Heap]() (搜索 O(N)，插入/删除节点 O(logN))
+  - [二叉堆 | Binary Heap](./Data%20Structure%20Implementation/BinaryHeap/) (搜索 O(N)，插入/删除节点 O(logN))
   - [斐波那契堆 | Fibonacci Heap]()
 - [映射表 | Map/Table]()
   - [散列表 | HashMap](./Data%20Structure%20Implementation/HashMap/) (索引搜索 O(1)，插入/删除节点 O(1))
