@@ -74,9 +74,11 @@
 * Java 里，枚举（Enumeration）接口虽然它本身不属于数据结构,但它在其他数据结构的范畴里应用很广。枚举（The Enumeration）接口定义了一种从数据结构中取回连续元素的方式。
 * 堆/Heap 是计算机科学中的一种特别的树状数据结构（比如堆排序/heap sort，是基于二叉堆树作为此算法的数据结构）。
 * Java 中，Queue 是通过 LinkedList 实现的而不是 ArrayList，[原因](https://stackoverflow.com/questions/41665425/why-arraylist-doesnt-implements-queue)。
+* LinkedList 比较全能，它即是 List，又是 Queue，还是 Deque。但是在使用的时候，总是用特定的接口来引用它（比如应该写 `Deque<String> d = new LinkedList<>();` 而不是 `LinkedList<String> d = new LinkedList<>();`。同理适用于其他实现了多个接口的数据结构/类），这是因为持有接口说明代码的抽象层次更高，而且接口本身定义的方法代表了特定的用途。面向抽象编程的一个原则就是：尽量持有接口，而不是具体的实现类。
 * TreeSet 是二叉树（红黑树的树据结构）实现的，TreeSet 中的数据是自动排好序的，不允许放入 null 值；HashSet 是哈希表实现的，HashSet 中的数据是无序的可以放入 null，但只能放入一个 null，两者中的值都不重复，就如数据库中唯一约束。HashSet 是基于哈希算法实现的，其性能通常都优于 TreeSet。为快速查找而设计的 Set，通常都应该使用 HashSet，在需要排序的功能时，才使用 TreeSet。
 * 使用 TreeSet 和使用 TreeMap 的要求一样，添加的元素必须正确实现 Comparable 接口，如果没有实现 Comparable 接口，那么创建 TreeSet 时必须传入一个 Comparator 对象。TreeSet 实现了 SortedSet 接口，而 SortedSet 接口继承 Set 接口，HashSet 直接实现 Set 接口，Set 接口并不保证有序，而 SortedSet 接口才保证元素是有序的。
-  * TreeMap、TreeSet 只提供了一般（或按元素所属的类的默认/自定义 compareTo 逻辑或传入的 Comparator 对象的 compare 逻辑）排序功能（而且每次插入新元素后会自动触发集合按元素的类的 compareTo 排序逻辑或传入的 Comparator 对象的 compare 逻辑来重新排一次序），并不能保证集合里的元素顺序按插入顺序，能保证集合里的元素顺序按插入顺序的是 LinkedHashMap、LinkedHashSet。  
+  * TreeMap、TreeSet 只提供了一般（或按元素所属的类的默认/自定义 compareTo 逻辑或传入的 Comparator 对象的 compare 逻辑）排序功能（而且每次插入新元素后会自动触发集合按元素的类的 compareTo 排序逻辑或传入的 Comparator 对象的 compare 逻辑来重新排一次序），并不能保证集合里的元素顺序按插入顺序，能保证集合里的元素顺序按插入顺序的是 LinkedHashMap、LinkedHashSet。
+* 放入 PriorityQueue 的元素，必须实现 Comparable 接口，PriorityQueue 会根据元素的排序顺序决定出队的优先级。如果要放入的元素并没有实现 Comparable 接口的话，也可以提供一个 Comparator 对象来判断两个元素的顺序。PriorityQueue 在每次插入新元素后会自动触发排序。  
   
 ## 更多性能展示
 <details>
