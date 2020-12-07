@@ -122,7 +122,7 @@
 > OOD，从表象上理解是用class来抽象和模拟事物之间的关系，实际上是借助接口与继承这种抽象机制来decouple(解耦合)代码，使得代码结构清晰易于维护。在实践中，大家发现有一些解耦合的方式经常出现，就把它们总结为design patterns (设计模式)。很多人在读设计模式这本书的时候会有一种“啊，原来这种写法叫做这个模式”的感觉——然而一本系统性的总结书籍是必须的，1大家总有没用过见过的模式，2设计模式给出了一个交流的基础，举例来说当你讨论一段代码的写法时的时候不用自己在组织内部发明一套语言，或者绕一个大圈子描述细节，而是可以简单地说，我们可以用xxx模式  
 > 学OOD，就两本书，一本是大名鼎鼎的Design Patterns: Elements of Reusable Object-Oriented Software，因为作者有四个所以又称GOF/四人帮  
 > 另外一本是Head First Design Patterns，相对来说浅显易懂  
-> 比较重要的常用的pattern只有：Factory, Singleton, Adapter, Composite, Observer(Listener), Template Method, Proxy, Visitor, Iterator. 如果是临阵抱佛脚的可以多多关注这几个pattern。State，Bridge和Strategy也可以大体看看。  
+> 比较重要的常用的pattern只有：Factory, Singleton, Adapter, Composite, Observer(Listener), Template Method, Proxy, Visitor, Iterator, Builder. 如果是临阵抱佛脚的可以多多关注这几个pattern。State，Bridge和Strategy也可以大体看看。  
 > 具体的pattern这里就不去讨论了，大家静下心来看书就是。要达到的目标大体上是 1 能够回答，xxx模式如何实现的 2 为什么要使用xxx模式（其优点何在） 3 在什么场景下使用xxx模式。其实不单OOD，任何一项技术能够回答这三个问题，也就算是有一个big picture了。  
 > 下面说点关于OOD的闲话。  
 > OOD刚刚被发明的时候，是被很多人认为是Silver Bullet的。大家觉得它从根本上解决了代码reuse(复用)的问题——低耦合高内聚的代码，使得代码的模块化、重复使用不再复杂，进而解决了软件界一直存在的重造轮子的问题——结果我们都看到了，软件界到今天也仍然在重造轮子。软件界没有银弹——OOD不是，SOA不是，PaaS不是，IaaS也不是。说点哲学的，软件的复杂是内秉的：因为人类的需求是基于人类的高阶逻辑的，而计算机至今能满足的是一阶逻辑演算，所以软件界在强AI出现之前不能解决软件的统一解决方案是非常正常的。  
