@@ -247,9 +247,9 @@
 - [ ] 331	Verify Preorder Serialization of a Binary Tree		                            很少考
   
 ## Backtracking
-- [ ] 78	Subsets		
-- [ ] 90	Subsets II		
-- [ ] 77	Combinations		
+- [x] 78	Subsets		
+- [x] 90	Subsets II		
+- [x] 77	Combinations		
 - [ ] 39	Combination Sum		
 - [ ] 40	Combination Sum II		
 - [ ] 216	Combination Sum III		
