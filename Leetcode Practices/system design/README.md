@@ -6,7 +6,7 @@
 * [系统设计题怎么考怎么答](https://www.youtube.com/watch?v=28n0DVP3U14)  
   
 > 系统设计这块我最开始的时候也是无从下手，许多概念了解一点大概但是都没有深入学习，俗称“略懂”的状态，深究就暴露了。  
-> 具体如何准备这块，地里的很多前辈都总结了很多好的帖子，我觉得比较好的资料包括如下：Grokking the system design Interview, Designing Data-Intensive Applications, 以及一些YouTube视频（e.g., https://www.youtube.com/c/SystemDesignInterview/)。资料可能大家都有，我的诀窍在于下面几点：  
+> 具体如何准备这块，地里的很多前辈都总结了很多好的帖子，我觉得比较好的资料包括如下：Grokking the system design Interview, Designing Data-Intensive Applications, 以及一些YouTube视频（e.g., https://www.youtube.com/c/SystemDesignInterview/ )。资料可能大家都有，我的诀窍在于下面几点：  
 > 1）重复直至真的理解。发现“书读百遍，其义自现”是真的（古人诚不我欺）。比如DDIA至少过一遍，Grokking至少过5遍，第一遍可能过完什么印象都没有，后面好像每一遍都会有新的收获，然后可以逐渐自己思考如果自己遇到这种问题如何解决，会发现所有给的design decision都开始make sense。跟刷题一样，与其看一大堆然后没啥印象不如多过几遍经典题目然后学会融会贯通。  
 > 2）要做笔记并总结。很多系统设计题大概框架都是相似的，比如设计facebook, twitter, instgram, pinterest，核心都是feed generation，可以用push（fanout/heavy write，fast read）也可以pull（light write，slower read）模式，而且一般最优解都是两者结合。再比如如何处理hot object问题，一遍情况下我们可以加cache直接从内存读取，或者使用不同的sharding strategy来平分流量。  
 > 3）要学会抓关键得分点。这一点其实是目标公司HR在面试之前透露的系统设计的evaluation standard，发现特别受用，具体有以下这些：（1）problem exploration，先问清楚设计的目的，有哪些功能性和非功能性的要求，怎么评价成功；（2）quantitative analysis，无非就是估算QPS，内存，存储以及带宽需求；（3）completeness of the design，这个肯定是必须的，直接决定过不过；（4）ability to reason trade-offs，特别需要讲为什么选这个技术而不是其他的；（5）deep dive，重点关注数据/存储，以及如何解决scale/bottleneck等方面。面试过程要主动考虑这些点，整个流程如果每个点都有的话，应该不会有太大的偏差。  
