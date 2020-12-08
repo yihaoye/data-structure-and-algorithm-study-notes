@@ -17,4 +17,5 @@
 - [最小生成树相关算法 | Minimum Spanning Tree Algorithms]()
 - [拓扑排序 | Topological Sorting](./拓扑排序.md) (时间复杂度 O(N))
 - [联合查找算法 | Union Find Algorithm](./并查集与联合查找算法.md) (时间复杂度 O(1))
+- [分治法 | Divide-and-Conquer Algorithm](./分治法.md) (时间复杂度不确定 O(logN) 或 O(N))
   
