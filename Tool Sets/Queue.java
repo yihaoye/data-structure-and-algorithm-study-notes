@@ -14,3 +14,20 @@ PriorityQueue<Obj> pQueue = new PriorityQueue(
 
 pQueue.add(obj1);
 Obj firstObj = pQueue.poll();
+
+
+
+// 优先队列 with customized Object element and customized Comparator (lc q692)
+Queue<Node> pq = new PriorityQueue<>(new MyComparator());
+
+public class MyComparator implements Comparator<Node> {
+    public int compare(Node n1, Node n2) {
+        if (n1.val != n2.val) return n1.val.compareTo(n2.val);
+        return n2.key.compareTo(n1.key);
+    } 
+}
+
+public class Node {
+    public String key;
+    public Integer val;
+}
