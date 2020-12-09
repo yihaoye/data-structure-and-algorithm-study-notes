@@ -81,6 +81,7 @@ class Solution {
             else map.put(word, 1);
         }
         
+        // O(N*logK)
         for (Map.Entry<String, Integer> entry : map.entrySet()) {
             pq.offer(new Node(entry.getKey(), entry.getValue()));
             if (pq.size() > k) pq.poll();
