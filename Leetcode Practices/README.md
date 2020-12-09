@@ -157,7 +157,7 @@
 - [ ] 43	Multiply Strings		
 - [ ] 29	Divide Two Integers		
 - [x] 69	Sqrt(x)		
-- [ ] 50	Pow(x, n)		
+- [x] 50	Pow(x, n)		
 - [x] 367	Valid Perfect Square		
 - [ ] 365	Water and Jug Problem		
 - [x] 204	Count Primes		
