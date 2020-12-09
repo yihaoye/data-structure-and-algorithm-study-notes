@@ -22,7 +22,7 @@ Try to solve it in O(n log k) time and O(n) extra space.
 
 
 
-// My Solution (after inspired from other's solution: apply HashMap and PriorityQueue):
+// My Solution (inspired from below other's solution: apply HashMap and PriorityQueue):
 class Solution {
     public List<String> topKFrequent(String[] words, int k) {
         Queue<Node> pq = new PriorityQueue<>(new MyComparator());
@@ -54,6 +54,49 @@ class Solution {
         public int compare(Node n1, Node n2) {
             if (n2.val.compareTo(n1.val) != 0) return n2.val.compareTo(n1.val);
             return n1.key.compareTo(n2.key);
+        } 
+    }
+    
+    public class Node {
+        public String key;
+        public Integer val;
+        public Node(String key, Integer val) {
+            this.key = key;
+            this.val = val;
+        }
+    }
+}
+
+
+
+// Better performance: 时间复杂度 O(N*logK) - K 为第2个参数k，空间复杂度 O(N)
+// Other's Solution (http://zxi.mytechroad.com/blog/heap/leetcode-692-top-k-frequent-words/):
+class Solution {
+    public List<String> topKFrequent(String[] words, int k) {
+        Queue<Node> pq = new PriorityQueue<>(new MyComparator());
+        Map<String, Integer> map = new HashMap<>();
+        
+        for (String word : words) {
+            if (map.containsKey(word)) map.put(word, map.get(word)+1);
+            else map.put(word, 1);
+        }
+        
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            pq.offer(new Node(entry.getKey(), entry.getValue()));
+            if (pq.size() > k) pq.poll();
+        }
+        
+        List<String> res = new ArrayList<>();
+        while (!pq.isEmpty()) res.add(pq.poll().key);
+        Collections.reverse(res);
+        
+        return res;
+    }
+    
+    public class MyComparator implements Comparator<Node> {
+        public int compare(Node n1, Node n2) {
+            if (n1.val != n2.val) return n1.val.compareTo(n2.val);
+            return n2.key.compareTo(n1.key);
         } 
     }
     
