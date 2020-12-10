@@ -31,10 +31,14 @@ void foo(String a) {
 }
 
 String a = new String('123');
-foo(a); // Actually result to outside "a" is still '123' since java only support pass by value. The "a" inside foo() is actually a copy (pass by value), so foo(a) return 'abc' but ouside "a" still reference to '123', inside "a" and outside "a" are different references.
+foo(a); 
+// Actually result to outside "a" is still '123' since java only support pass by value. 
+// The "a" inside foo() is actually a copy (pass by value), 
+// so foo(a) return 'abc' but ouside "a" still reference to '123', 
+// inside "a" and outside "a" are different references.
 ```
   
-**Pass By Value vs Pass By Reference:**  
+**[重要] Pass By Value vs Pass By Reference:**  
 * Java / Python always pass by value (比如 Java，即使传参是基础类对象如 Integer 也一样)
 * C++ / C# support boths (比如 C++ 可通过设定参数为指针类型实现 Pass By Reference)  
   
