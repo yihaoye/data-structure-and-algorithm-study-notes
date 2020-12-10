@@ -179,3 +179,107 @@ System.out.println(n2);
 // 注意 Constructor 总是当前类定义的构造方法，和父类无关，因此不存在多态的问题。
 // 调用非 public 的 Constructor 时，必须首先通过 setAccessible(true) 设置允许访问。setAccessible(true) 可能会失败。
 
+
+/*
+## 获取继承关系
+
+通过 Class 对象可以获取继承关系：
+    * Class getSuperclass()：获取父类类型；
+    * Class[] getInterfaces()：获取当前类实现的所有接口。
+
+通过 Class 对象的 isAssignableFrom() 方法可以判断一个向上转型是否可以实现。
+*/
+// Integer 的父类类型是 Number，Number 的父类是 Object，Object 的父类是 null。除 Object 外，其他任何非 interface 的 Class 都必定存在一个父类类型。
+// 获取 interface。由于一个类可能实现一个或多个接口，通过 Class 我们就可以查询到实现的接口类型。例如，查询 Integer 实现的接口
+Class s = Integer.class;
+Class[] is = s.getInterfaces(); // 如果一个类没有实现任何 interface，那么 getInterfaces() 返回空数组
+for (Class i : is) System.out.println(i);
+// 要特别注意：getInterfaces() 只返回当前类直接实现的接口类型，并不包括其父类实现的接口类型
+// 此外，对所有 interface 的 Class 调用 getSuperclass() 返回的是 null，获取接口的父接口要用 getInterfaces()
+
+// 当我们判断一个实例是否是某个类型时，正常情况下，使用 instanceof 操作符：
+Object n = Integer.valueOf(123);
+boolean isDouble = n instanceof Double; // false
+boolean isInteger = n instanceof Integer; // true
+boolean isNumber = n instanceof Number; // true
+boolean isSerializable = n instanceof java.io.Serializable; // true
+// 如果是两个 Class 实例，要判断一个向上转型是否成立，可以调用 isAssignableFrom()：
+Integer.class.isAssignableFrom(Integer.class); // true，因为 Integer 可以赋值给 Integer
+Number.class.isAssignableFrom(Integer.class); // true，因为 Integer 可以赋值给 Number
+Object.class.isAssignableFrom(Integer.class); // true，因为 Integer 可以赋值给 Object
+Integer.class.isAssignableFrom(Number.class); // false，因为 Number 不能赋值给 Integer
+
+
+/*（重要）
+## 动态代理
+
+    * Java 标准库提供了动态代理功能，允许在运行期动态创建一个接口的实例；
+    * 动态代理是通过 Proxy 创建代理对象，然后将接口方法“代理”给 InvocationHandler 完成的。
+
+*/
+// 所谓动态代理，是和静态相对应的。来看静态代码写法
+// 定义接口：
+public interface Hello {
+    void morning(String name);
+}
+// 编写实现类：
+public class HelloWorld implements Hello {
+    public void morning(String name) {
+        System.out.println("Good morning, " + name);
+    }
+}
+// 创建实例，转型为接口并调用：
+Hello hello = new HelloWorld();
+hello.morning("Bob");
+// 这种方式就是通常编写代码的方式。
+
+// 还有一种方式是动态代码，仍然先定义了接口 Hello，但是并不去编写实现类，而是直接通过 JDK 提供的一个 Proxy.newProxyInstance() 创建了一个 Hello 接口对象。
+// 这种没有实现类但是在运行期动态创建了一个接口对象的方式，称为动态代码。JDK 提供的动态创建接口对象的方式，就叫动态代理。
+import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
+
+interface Hello {
+    void morning(String name);
+}
+
+InvocationHandler handler = new InvocationHandler() {
+    @Override
+    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        System.out.println(method);
+        if (method.getName().equals("morning")) {
+            System.out.println("Good morning, " + args[0]);
+        }
+        return null;
+    }
+};
+Hello hello = (Hello) Proxy.newProxyInstance(
+    Hello.class.getClassLoader(), // 传入 ClassLoader
+    new Class[] { Hello.class }, // 传入要实现的接口
+    handler); // 传入处理调用方法的 InvocationHandler
+hello.morning("Bob");
+/*
+在运行期动态创建一个 interface 实例的方法如下：
+    1. 定义一个 InvocationHandler 实例，它负责实现接口的方法调用；
+    2. 通过 Proxy.newProxyInstance() 创建 interface 实例，它需要 3 个参数：
+        1. 使用的 ClassLoader，通常就是接口类的 ClassLoader；
+        2. 需要实现的接口数组，至少需要传入一个接口进去；
+        3. 用来处理接口方法调用的 InvocationHandler 实例。
+    3. 将返回的 Object 强制转型为接口。
+动态代理实际上是 JDK 在运行期动态创建 class 字节码并加载的过程。
+*/
+
+// 把上面的动态代理改写为静态实现类大概长这样：
+public class HelloDynamicProxy implements Hello {
+    InvocationHandler handler;
+    public HelloDynamicProxy(InvocationHandler handler) {
+        this.handler = handler;
+    }
+    public void morning(String name) {
+        handler.invoke(
+           this,
+           Hello.class.getMethod("morning", String.class),
+           new Object[] { name });
+    }
+}
+// 其实就是 JDK 帮我们自动编写了一个上述类（不需要源码，可以直接生成字节码），并不存在可以直接实例化接口的黑魔法。
