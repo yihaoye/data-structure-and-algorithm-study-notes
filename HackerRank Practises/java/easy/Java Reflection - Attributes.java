@@ -63,10 +63,10 @@ public class Solution {
 /*
 ## Class 类
   
-    * JVM为每个加载的class及interface创建了对应的Class实例来保存class及interface的所有信息；
-    * 获取一个class对应的Class实例后，就可以获取该class的所有信息；
-    * 通过Class实例获取class信息的方法称为反射（Reflection）；
-    * JVM总是动态加载class，可以在运行期根据条件来控制加载class。  
+    * JVM 为每个加载的 class 及 interface 创建了对应的 Class 实例来保存 class 及 interface 的所有信息；
+    * 获取一个 class 对应的 Class 实例后，就可以获取该 class 的所有信息；
+    * 通过 Class 实例获取 class 信息的方法称为反射（Reflection）；
+    * JVM 总是动态加载 class，可以在运行期根据条件来控制加载 class。  
 */
 Class cls1 = String.class;
 String s = "Hello";
@@ -77,10 +77,10 @@ boolean sameClass = cls1 == cls2; // true
 /*
 ## 访问字段
   
-    * Java的反射API提供的Field类封装了字段的所有信息：
-    * 通过Class实例的方法可以获取Field实例：getField()，getFields()，getDeclaredField()，getDeclaredFields()；
-    * 通过Field实例可以获取字段信息：getName()，getType()，getModifiers()；
-    * 通过Field实例可以读取或设置某个对象的字段，如果存在访问限制，要首先调用setAccessible(true)来访问非public字段。
+    * Java 的反射 API 提供的 Field 类封装了字段的所有信息：
+    * 通过 Class 实例的方法可以获取 Field 实例：getField()，getFields()，getDeclaredField()，getDeclaredFields()；
+    * 通过 Field 实例可以获取字段信息：getName()，getType()，getModifiers()；
+    * 通过 Field 实例可以读取或设置某个对象的字段，如果存在访问限制，要首先调用 setAccessible(true) 来访问非 public 字段。
     * 通过反射读写字段是一种非常规方法，它会破坏对象的封装。  
 */
 Field f = String.class.getDeclaredField("value");
@@ -93,51 +93,51 @@ Modifier.isPrivate(m); // true
 Object p = new Person("Xiao Ming");
 Class c = p.getClass();
 Field f = c.getDeclaredField("name");
-f.setAccessible(true); // 调用Field.setAccessible(true)的意思是，别管这个字段是不是public，一律允许访问。
+f.setAccessible(true); // 调用 Field.setAccessible(true) 的意思是，别管这个字段是不是 public，一律允许访问。
 Object value = f.get(p);
 System.out.println(value); // "Xiao Ming"
-// 上述代码先获取Class实例，再获取Field实例，然后，用Field.get(Object)获取指定实例的指定字段的值。
+// 上述代码先获取 Class 实例，再获取 Field 实例，然后，用 Field.get(Object) 获取指定实例的指定字段的值。
 f.set(p, "Xiao Hong");
 System.out.println(p.getName()); // "Xiao Hong"
 /*
 如果使用反射可以获取 private 字段的值，那么类的封装还有什么意义？  
-答案是正常情况下，我们总是通过p.name来访问Person的name字段，编译器会根据public、protected和private决定是否允许访问字段，这样就达到了数据封装的目的。  
+答案是正常情况下，我们总是通过 p.name 来访问 Person 的 name 字段，编译器会根据 public、protected 和 private 决定是否允许访问字段，这样就达到了数据封装的目的。  
 而反射是一种非常规的用法，使用反射，首先代码非常繁琐，其次，它更多地是给工具或者底层框架来使用，目的是在不知道目标实例任何信息的情况下，获取特定字段的值。  
-此外，setAccessible(true)可能会失败。如果JVM运行期存在SecurityManager，那么它会根据规则进行检查，有可能阻止setAccessible(true)。例如，某个SecurityManager可能不允许对java和javax开头的package的类调用setAccessible(true)，这样可以保证 JVM 核心库的安全。  
+此外，setAccessible(true) 可能会失败。如果JVM运行期存在 SecurityManager，那么它会根据规则进行检查，有可能阻止 setAccessible(true)。例如，某个 SecurityManager 可能不允许对 java 和 javax 开头的 package 的类调用 setAccessible(true)，这样可以保证 JVM 核心库的安全。  
 */
 
 
 /*
 ## 调用方法
   
-    * Java的反射API提供的Method对象封装了方法的所有信息：
-    * 通过Class实例的方法可以获取Method实例：getMethod()，getMethods()，getDeclaredMethod()，getDeclaredMethods()；
-    * 通过Method实例可以获取方法信息：getName()，getReturnType()，getParameterTypes()，getModifiers()；
-    * 通过Method实例可以调用某个对象的方法：Object invoke(Object instance, Object... parameters)；
-    * 通过设置setAccessible(true)来访问非public方法；
+    * Java 的反射 API 提供的 Method 对象封装了方法的所有信息：
+    * 通过 Class 实例的方法可以获取 Method 实例：getMethod()，getMethods()，getDeclaredMethod()，getDeclaredMethods()；
+    * 通过 Method 实例可以获取方法信息：getName()，getReturnType()，getParameterTypes()，getModifiers()；
+    * 通过 Method 实例可以调用某个对象的方法：Object invoke(Object instance, Object... parameters)；
+    * 通过设置 setAccessible(true) 来访问非 public 方法；
     * 通过反射调用方法时，仍然遵循多态原则。  
   
 能通过 Class 实例获取所有 Field 对象，同样的，可以通过 Class 实例获取所有 Method 信息。Class 类提供了以下几个方法来获取 Method  
 */
 Class stdClass = Student.class;
-// 获取public方法getScore，参数为String:
+// 获取 public 方法 getScore，参数为 String:
 System.out.println(stdClass.getMethod("getScore", String.class));
-// 获取继承的public方法getName，无参数:
+// 获取继承的 public 方法 getName，无参数:
 System.out.println(stdClass.getMethod("getName"));
-// 获取private方法getGrade，参数为int:
+// 获取 private 方法 getGrade，参数为 int:
 System.out.println(stdClass.getDeclaredMethod("getGrade", int.class));
 
-// String对象:
+// String 对象:
 String s = "Hello world";
-// 获取String substring(int)方法，参数为int:
+// 获取 String substring(int) 方法，参数为 int:
 Method m = String.class.getMethod("substring", int.class);
-// 在s对象上调用该方法并获取结果: 对 Method 实例调用 invoke 就相当于调用该方法，invoke 的第一个参数是对象实例，即在哪个实例上调用该方法，后面的可变参数要与方法参数一致，否则将报错。
+// 在 s 对象上调用该方法并获取结果: 对 Method 实例调用 invoke 就相当于调用该方法，invoke 的第一个参数是对象实例，即在哪个实例上调用该方法，后面的可变参数要与方法参数一致，否则将报错。
 String r = (String) m.invoke(s, 6);
 // 打印调用结果:
 System.out.println(r);
 
 // 如果获取到的 Method 表示一个静态方法，调用静态方法时，由于无需指定实例对象，所以 invoke 方法传入的第一个参数永远为 null。以 Integer.parseInt(String) 为例：
-// 获取Integer.parseInt(String)方法，参数为String:
+// 获取 Integer.parseInt(String) 方法，参数为 String:
 Method m = Integer.class.getMethod("parseInt", String.class);
 // 调用该静态方法并获取结果:
 Integer n = (Integer) m.invoke(null, "12345");
@@ -157,21 +157,21 @@ System.out.println(n);
 /*
 ## 调用构造方法
 
-    * Constructor对象封装了构造方法的所有信息；
-    * 通过Class实例的方法可以获取Constructor实例：getConstructor()，getConstructors()，getDeclaredConstructor()，getDeclaredConstructors()；
-    * 通过Constructor实例可以创建一个实例对象：newInstance(Object... parameters)； 通过设置setAccessible(true)来访问非public构造方法。
+    * Constructor 对象封装了构造方法的所有信息；
+    * 通过 Class 实例的方法可以获取 Constructor 实例：getConstructor()，getConstructors()，getDeclaredConstructor()，getDeclaredConstructors()；
+    * 通过 Constructor 实例可以创建一个实例对象：newInstance(Object... parameters)； 通过设置 setAccessible(true) 来访问非 public 构造方法。
 
 */
 // 通过反射来创建新的实例，可以调用 Class 提供的 newInstance() 方法：
 Person p = Person.class.newInstance();
 // 调用 Class.newInstance() 的局限是，它只能调用该类的 public 无参数构造方法。如果构造方法带有参数，或者不是 public，就无法直接通过 Class.newInstance() 来调用。
 // 为了调用任意的构造方法，Java 的反射API提供了 Constructor 对象，它包含一个构造方法的所有信息，可以创建一个实例。Constructor 对象和 Method 非常类似，不同之处仅在于它是一个构造方法，并且，调用结果总是返回实例
-// 获取构造方法Integer(int):
+// 获取构造方法 Integer(int):
 Constructor cons1 = Integer.class.getConstructor(int.class);
 // 调用构造方法:
 Integer n1 = (Integer) cons1.newInstance(123);
 System.out.println(n1);
-// 获取构造方法Integer(String)
+// 获取构造方法 Integer(String)
 Constructor cons2 = Integer.class.getConstructor(String.class);
 Integer n2 = (Integer) cons2.newInstance("456");
 System.out.println(n2);
@@ -246,6 +246,7 @@ interface Hello {
 InvocationHandler handler = new InvocationHandler() {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        // System.out.println(proxy);
         System.out.println(method);
         if (method.getName().equals("morning")) {
             System.out.println("Good morning, " + args[0]);
