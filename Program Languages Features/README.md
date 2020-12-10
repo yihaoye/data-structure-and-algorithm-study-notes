@@ -1,5 +1,12 @@
 ## 概述
 在一些编程语言里，如 Java，很容易因为语言特性如`引用`的认知、使用错误，导致算法与数据结构正确的情况下题目解不出来或总是通不过测试却又找不出原因，或不懂得善用语言特性而无法使用简单的算法、数据结构与语言特性搭配来轻松解决问题（例子如`引用`配合`队列`）。  
+这里还有一些 Java 特性，在算法解题或面试中比较重要：  
+* [集合](../Tool%20Sets/Collections.java)
+* [异常](../HackerRank%20Practises/java/easy/Java%20Exception%20Handling.java)
+* [日期与时间](../HackerRank%20Practises/java/easy/Java%20Date%20and%20Time.java)
+* [IO]()
+* [反射](../HackerRank%20Practises/java/easy/Java%20Reflection%20-%20Attributes.java)
+* [泛型](../HackerRank%20Practises/java/easy/Java%20Generics.java)
   
 ### Reference（引用）
 错误例子：  
