@@ -1,14 +1,17 @@
 # 概述
 在一些编程语言里，如 Java，很容易因为语言特性如`引用`的认知、使用错误，导致算法与数据结构正确的情况下题目解不出来或总是通不过测试却又找不出原因，或不懂得善用语言特性而无法使用简单的算法、数据结构与语言特性搭配来轻松解决问题（例子如`引用`配合`队列`）。  
+以下列出在算法解题及面试中的 3 种常用编程语言的特性及它们的一些不同点。  
   
 ## Java 特性
-[Java Core](./Java%20Core.gif) 在算法解题或面试中比较常用、重要的知识点有：  
+[Java Core](./Java%20Core.gif) 在算法解题及面试中比较常用、重要的知识点有：  
 * [集合](../Tool%20Sets/Collections.java)
 * [异常](../HackerRank%20Practises/java/easy/Java%20Exception%20Handling.java)
+* [并发]()
 * [日期与时间](../HackerRank%20Practises/java/easy/Java%20Date%20and%20Time.java)
 * [IO]()
 * [反射](../HackerRank%20Practises/java/easy/Java%20Reflection%20-%20Attributes.java)
-* [泛型](../HackerRank%20Practises/java/easy/Java%20Generics.java)  
+* [泛型](../HackerRank%20Practises/java/easy/Java%20Generics.java)
+* [JVM]()  
   
 另外，需熟记 [Java 的关键字](Java%20关键字.pdf)  
   
@@ -70,13 +73,11 @@ public class A<T> {
     }
 }
 
-public static void foo(A<String> a)
-{
+public static void foo(A<String> a) {
    a.set('abc');
 }
 
-public static void main(String[] args)
-{
+public static void main(String[] args) {
   A<String> a = new A<>('123');
   foo(a);
   System.out.println(a.get()); // a.get() => 'abc'
