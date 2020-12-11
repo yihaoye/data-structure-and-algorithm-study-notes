@@ -102,3 +102,39 @@ class Solution {
         }
     }
 }
+
+
+
+// My Solution 2 (pass all lc tests but still not sure if identify is always correct):
+class Solution {
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+        // 1st, the solution could apply backtracking.
+        // 2nd, the key is how to identify a List<Integer> from another one (check if they are the same)
+        //      the way of 2nd is check if all 'arithmetic mean' and 'geometric mean' and 'quadratic mean' are the same (https://en.wikipedia.org/wiki/Inequality_of_arithmetic_and_geometric_means), 
+        //      since final List will all have same sum, so if size same equivalent 'arithmetic mean' same, if size and product same equivalent 'geometric mean' same, 
+        //      if size and pow sum same equivalent 'quadratic mean' same.
+        List<List<Integer>> res = new ArrayList<>();
+        List<Integer> stack = new ArrayList<>();
+        Set<String> set = new HashSet<>();
+        backtracking(candidates, target, res, stack, set, 1, 0, 0);
+        
+        return res;
+    }
+    
+    public void backtracking(int[] candidates, int target, List<List<Integer>> res, List<Integer> stack, Set<String> set, int product, int powsum, int size) {
+        if (target == 0) {
+            if (size == 0) return;
+            String hash = product+" "+powsum+" "+size;
+            if (set.contains(hash)) return;
+            set.add(hash);
+            res.add(new ArrayList<Integer>(stack));
+            return;
+        }
+        for (int c : candidates) {
+            if (c > target) continue;
+            stack.add(c);
+            backtracking(candidates, target-c, res, stack, set, product*c, powsum+c*c, size+1);
+            stack.remove(size);
+        }
+    }
+}
