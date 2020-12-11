@@ -110,7 +110,7 @@ class Solution {
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
         // 1st, the solution could apply backtracking.
         // 2nd, the key is how to identify a List<Integer> from another one (check if they are the same)
-        //      the way of 2nd is check if all 'arithmetic mean' and 'geometric mean' and 'quadratic mean' are the same (https://en.wikipedia.org/wiki/Inequality_of_arithmetic_and_geometric_means), 
+        //      the way of 2nd is check if all 'arithmetic mean' and 'geometric mean' and 'quadratic mean' are the same (https://zh.wikipedia.org/wiki/%E5%B9%B3%E5%9D%87%E6%95%B0%E4%B8%8D%E7%AD%89%E5%BC%8F), 
         //      since final List will all have same sum, so if size same equivalent 'arithmetic mean' same, if size and product same equivalent 'geometric mean' same, 
         //      if size and pow sum same equivalent 'quadratic mean' same.
         List<List<Integer>> res = new ArrayList<>();
