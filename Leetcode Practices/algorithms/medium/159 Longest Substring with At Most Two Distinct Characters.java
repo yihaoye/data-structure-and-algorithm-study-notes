@@ -94,18 +94,19 @@ class Solution {
     }
 }
 /*
-First we define a spot as where next character in the string is different from previous one. 
-j keeps track of the last spot. And j specifically points to the first char in the last spot. 
-For example if "ab" is the last spot, then j points to 'a'.
+https://leetcode.com/problems/longest-substring-with-at-most-two-distinct-characters/discuss/49687/Clean-11-lines-AC-answer-O(1)-space-O(n)-time./117115
 
-if code gets to second if, it means s[k] != s[k-1]. we find a new spot.
+i and j keeps track of the current substring's 2 key spot. And i specifically points to the first index of the substring. j specifically points to the index before first index of last continuous char of the current substring. 
+For example if "abaabbb" is the substring, then i points to index 0, then j points to index 3.
 
-j>-1 means if last spot exists, s[k]!=s[j] means first char in the last spot is different from the second char in the new spot. 
-So second if means if s[k] is the 3rd char. 
+if code gets to second if, it means s[k] != s[k-1]. we find a new spot. 
+
+j>-1 means if second char exist, (j > -1 && s[k] != s[j]) means if means if s[k] is the 3rd char. 
 and we need to update the substring starting point in this case such that new substring still only has two unique char. 
-So we update the starting point i to the second char in the last spot, which is j+1. 
+
+So we update the starting point i to the first index of last continuous char of the previous substring, which is j+1. 
 This makes sure all 1st chars are removed and at the same time keep 2nd char as many as possible.
-finally, we update j pointing to the new spot.
+finally, we update j pointing to the new spot (index before first index of last continuous char of the new substring).
 
 As you can see the key idea here is that we can update substring starting point by only keeping track of the last spot where character changes.
 */
