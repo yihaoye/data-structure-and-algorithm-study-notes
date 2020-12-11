@@ -74,3 +74,38 @@ class Solution {
         dcc2[1] = 1;
     }
 }
+
+
+
+// Other's Solution:
+class Solution {
+    public int lengthOfLongestSubstringTwoDistinct(String s) {
+        int i = 0, j = -1;
+        int maxLen = 0;
+        for (int k = 1; k < s.length(); k++) {
+            if (s.charAt(k) == s.charAt(k-1)) continue;
+            if (j > -1 && s.charAt(k) != s.charAt(j)) {
+                maxLen = maxLen > (k-i) ? maxLen : (k-i);
+                i = j + 1;
+            }
+            j = k - 1;
+        }
+        return maxLen > (s.length() - i) ? maxLen : s.length() - i;
+    }
+}
+/*
+First we define a spot as where next character in the string is different from previous one. 
+j keeps track of the last spot. And j specifically points to the first char in the last spot. 
+For example if "ab" is the last spot, then j points to 'a'.
+
+if code gets to second if, it means s[k] != s[k-1]. we find a new spot.
+
+j>-1 means if last spot exists, s[k]!=s[j] means first char in the last spot is different from the second char in the new spot. 
+So second if means if s[k] is the 3rd char. 
+and we need to update the substring starting point in this case such that new substring still only has two unique char. 
+So we update the starting point i to the second char in the last spot, which is j+1. 
+This makes sure all 1st chars are removed and at the same time keep 2nd char as many as possible.
+finally, we update j pointing to the new spot.
+
+As you can see the key idea here is that we can update substring starting point by only keeping track of the last spot where character changes.
+*/
