@@ -44,3 +44,15 @@ class Solution {
         return isPowerOfTwo(n/2);
     }
 }
+
+
+
+// Other's Solution:
+// Power of 2 means only one bit of n is '1', so use the trick n&(n-1)==0 to judge whether that is the case
+// https://leetcode.com/problems/power-of-two/discuss/63974/Using-nand(n-1)-trick/571472
+class Solution {
+    public boolean isPowerOfTwo(int n) {
+        if (n <= 0) return false;
+        return (n & (n-1)) == 0;
+    }
+}
