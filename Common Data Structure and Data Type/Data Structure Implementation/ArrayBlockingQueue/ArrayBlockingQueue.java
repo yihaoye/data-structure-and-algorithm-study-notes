@@ -1,3 +1,5 @@
+// 源码分析：https://developer.aliyun.com/article/774297
+
 public class ArrayBlockingQueue<E> extends AbstractQueue<E>
         implements BlockingQueue<E>, java.io.Serializable {
 
