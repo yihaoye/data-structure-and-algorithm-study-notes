@@ -50,7 +50,7 @@ class Solution {
             list.add(new ArrayList<>(tempList));
         } else {
             for (int i = startIndex; i < candidates.length; i++) {
-                if (used[i] || i > 0 && candidates[i] == candidates[i-1] && !used[i - 1]) continue;
+                if (i > 0 && candidates[i] == candidates[i-1] && !used[i - 1]) continue;
                 if (target < candidates[i]) return; 
                 used[i] = true;
                 tempList.add(candidates[i]);
