@@ -81,7 +81,8 @@
 * 使用 TreeSet 和使用 TreeMap 的要求一样，添加的元素必须正确实现 Comparable 接口，如果没有实现 Comparable 接口，那么创建 TreeSet 时必须传入一个 Comparator 对象。TreeSet 实现了 SortedSet 接口，而 SortedSet 接口继承 Set 接口，HashSet 直接实现 Set 接口，Set 接口并不保证有序，而 SortedSet 接口才保证元素是有序的。
   * TreeMap、TreeSet 只提供了一般（或按元素所属的类的默认/自定义 compareTo 逻辑或传入的 Comparator 对象的 compare 逻辑）排序功能（而且每次插入新元素后会自动触发集合按元素的类的 compareTo 排序逻辑或传入的 Comparator 对象的 compare 逻辑来重新排一次序），并不能保证集合里的元素顺序按插入顺序，能保证集合里的元素顺序按插入顺序的是 LinkedHashMap、LinkedHashSet。
 * 放入 PriorityQueue 的元素，必须实现 Comparable 接口，PriorityQueue 会根据元素的排序顺序决定出队的优先级。如果要放入的元素并没有实现 Comparable 接口的话，也可以提供一个 Comparator 对象来判断两个元素的顺序。PriorityQueue 在每次插入新元素后会自动触发排序。
-* Java 没有内置专门的二叉堆数据结构，因为可以使用 PriorityQueue（最小堆）来当二叉堆用。  
+* Java 没有内置专门的二叉堆数据结构，因为可以使用 PriorityQueue（最小堆）来当二叉堆用。
+* LinkedBlockingQueue 与 ArrayBlockingQueue 对比：1. ArrayBlockingQueue 入队出队采用一把锁，导致入队出队相互阻塞，效率低下；2. LinkedBlockingQueue 入队出队采用两把锁，入队出队互不干扰，效率较高；3. 二者都是有界队列，如果长度相等且出队速度跟不上入队速度，都会导致大量线程阻塞；4. LinkedBlockingQueue 如果初始化不传入初始容量，则使用最大 int 值，如果出队速度跟不上入队速度，会导致队列特别长，占用大量内存。  
   
 ## 更多性能展示
 <details>
