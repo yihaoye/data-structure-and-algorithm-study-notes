@@ -142,14 +142,21 @@ ExecutorService 是 Java java.util.concurrent 包的组成部分，用于简化�
 <summary>ExecutorService 使用</summary>
 实例化 ExecutorService 的方式有两种：一种是工厂方法，另一种是直接创建。  
 
-### 工厂方法创建 ExecutorService 实例
+### 工厂方法创建 ExecutorService 实例（[不推荐使用](https://zhuanlan.zhihu.com/p/80407132)）
 创建 ExecutorService 实例的最简单方法是使用 Executors 类的提供的工厂方法。比如  
 ```java
 ExecutorService executor = Executors.newFixedThreadPool(10);
 ```
 当然还有其它很多工厂方法，每种工厂方法都可以创建满足特定用例的预定义 ExecutorService 实例。编程时所需要做的就是找到合适的方法。  
-
-### 直接创建 ExecutorService 的实例
+  
+该方法在实际生产环境中不推荐甚至不允许，而是应通过 ThreadPoolExecutor 的方式，因为后者的处理方式让写的开发者更加明确线程池的运行规则，规避资源耗尽的风险。  
+Executor 提供的 4 个静态方法创建线程池，但是阿里规约却并不建议使用它。  
+Executors 各个方法的弊端（[具体导致原因](https://zhuanlan.zhihu.com/p/80407132)）：  
+1. newFixedThreadPool 和 newSingleThreadExecutor: 主要问题是堆积的请求处理队列可能会耗费非常大的内存，甚至 OOM。  
+2. newCachedThreadPool 和 newScheduledThreadPool: 主要问题是线程数最大数是 Integer.MAX_VALUE，可能会创建数量非常多的线程，甚至 OOM。  
+  
+  
+### 直接创建 ExecutorService 的实例（[推荐使用](https://zhuanlan.zhihu.com/p/80407132)）
 因为 ExecutorService 是只是一个接口，因此可以使用其任何实现类的实例。java.util.concurrent 包已经预定义了几种实现可供选择，或者也可以创建自己的实现。  
 例如，ThreadPoolExecutor 类实现了 ExecutorService 接口并提供了一些构造函数用于配置执行程序服务及其内部池。  
 ```java
