@@ -1,3 +1,4 @@
+// 引用：https://www.liaoxuefeng.com/wiki/1252599548343744/1281319245971489
 public class Task implements Callable<Long> {
     private long num;
     public Task(long num) {
