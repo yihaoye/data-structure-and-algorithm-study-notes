@@ -37,7 +37,7 @@ class Solution {
                 int p1 = i + j, p2 = i + j + 1;
                 int sum = mul + pos[p2];
 
-                pos[p1] += sum / 10;
+                pos[p1] += sum / 10; // Q: what if pos[p1] == 9 and sum > 10 ?  A: https://leetcode.com/problems/multiply-strings/discuss/17605/Easiest-JAVA-Solution-with-Graph-Explanation/17380
                 pos[p2] = (sum) % 10;
             }
         }  

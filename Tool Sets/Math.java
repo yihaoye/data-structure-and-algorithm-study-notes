@@ -21,7 +21,7 @@ public int[] multiply(int[] num1, int[] num2) { // e.g.   multiply({4, 5}, {1, 2
             int p1 = i + j, p2 = i + j + 1;
             int sum = mul + res[p2];
 
-            res[p1] += sum / 10;
+            res[p1] += sum / 10; // Q: what if pos[p1] == 9 and sum > 10 ?  A: https://leetcode.com/problems/multiply-strings/discuss/17605/Easiest-JAVA-Solution-with-Graph-Explanation/17380
             res[p2] = (sum) % 10;
         }
     }
