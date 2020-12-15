@@ -22,3 +22,24 @@ for (Integer id : employeeIds) {
         .thenApplyAsync(taxRate -> calculateTax(taxRate))
         .thenAcceptAsync(taxValue -> sendEmail(taxValue));
 }
+
+
+
+/* 
+Java NIO 
+    Buffer, Channels, Selectors
+    Low-level API for asynchronous / non-blocking IO
+    Applicable for Files, Sockets
+    Listener based (callbacks)
+*/
+ByteBuffer buffer = new ByteBuffer.allocate(1024);
+
+Path path = Paths.get("/home/file2");
+AsynchronousFileChannel fileChannel = AsynchronousFileChannel.open(path, StandardOpenOPtion.READ);
+
+fileChannel.read(buffer, 0 , buffer, new CompletionHandler<Integer, ByteBuffer>() {
+    @Override
+    public void completed(Integer result, ByteBuffer data) { // callback method
+        // process data
+    }
+});
