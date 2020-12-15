@@ -6,9 +6,9 @@
 [Java Core](./Java%20Core.gif) 在算法解题及面试中比较常用、重要的知识点有：  
 * [集合](../Tool%20Sets/Collections.java)
 * [异常](../HackerRank%20Practises/java/easy/Java%20Exception%20Handling.java)
-* [并发]()
+* [并发](../Computer%20System%20Layer/并发与并行(Java)/)
 * [日期与时间](../HackerRank%20Practises/java/easy/Java%20Date%20and%20Time.java)
-* [IO]()
+* [IO](../Tool%20Sets/IO(Serializable).java)
 * [反射](../HackerRank%20Practises/java/easy/Java%20Reflection%20-%20Attributes.java)
 * [泛型](../HackerRank%20Practises/java/easy/Java%20Generics.java)
 * [JVM]()  
