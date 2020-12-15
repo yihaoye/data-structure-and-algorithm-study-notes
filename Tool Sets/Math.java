@@ -11,7 +11,7 @@ Math.abs(c);
 // 手动相乘两个数 (每个数均以 int[] 形式表示)
 // Leetcode 43
 // https://leetcode.com/problems/multiply-strings/discuss/17605/Easiest-JAVA-Solution-with-Graph-Explanation
-public int[] multiply(int[] num1, int[] num2) {
+public int[] multiply(int[] num1, int[] num2) { // e.g.   multiply({4, 5}, {1, 2, 3})
     int m = num1.length, n = num2.length;
     int[] res = new int[m + n];
 
