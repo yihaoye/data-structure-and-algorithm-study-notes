@@ -38,3 +38,20 @@
 ### 系统主要大类（其他系统皆可从中找到类似）
 ![](./System%20Category.png)  
 ![](./System%20Category%202.png)  
+  
+### 系统通用基础设施
+摘录：https://www.cnblogs.com/ilinuxer/p/6697015.html  
+* API 网关（负载均衡）
+* 业务应用和后端基础框架（MVC、IOC、ORM）
+* 缓存、数据库、搜索引擎、消息队列
+* 文件存储（S3）
+* 统一认证中心
+* 单点登录系统
+* 统一配置中心（Config Server、propeties、yaml）
+* 服务治理框架（REST API、RPC）
+* 统一调度中心（定时调度 cron job，如定时抓取数据、刷新状态等）
+* 统一日志服务（log4j、logback、Kibana）
+* 数据基础设施（大数据、数据管道、数据分析）
+* 故障监控（系统监控、业务监控；Datadog、故障定位、警报等级、IM 或 oncall）
+* 扩展（内部服务：包括大数据、构建交付工具、通用运行时服务类库、数据持久化、安全等）  
+  
