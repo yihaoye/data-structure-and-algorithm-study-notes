@@ -132,6 +132,9 @@ Java 标准库提供了一个特殊的 ThreadLocal，它可以在一个线程中
 需要注意的是在有些情况下，比如多任务使用线程池时要小心任务之间可能因为共用一个线程所以其实共用了 ThreadLocal 的变量/数据，从而有可能发生任务之间的写入覆盖。  
 ![](./ThreadLocal%202.png)  
   
+## Thread 切换
+前面已介绍了 JMM 机制，因此已知每个线程有自己的工作内存、Context 等资源，所以当创建的线程数多于 CPU 核数时，后台其实就在不停地轮流切换这些线程进入 CPU 核心以达到貌似同时都在执行的假象，这样就会不停地创建、保存、擦除、复原线程的工作内存、Context 等资源，造成了消耗，称之为 data locality 和 context switches。因此当出现此情况时，多线程非但不能再提高性能反而可能会降低性能，则程序优化的选择应考虑异步编程（Asynchronous）。  
+  
 ## Thread Pool
 线程池，由阻塞队列（BlockingQueue）和 HashSet 集合构成，通常与 ExecutorService 配合使用。  
   
