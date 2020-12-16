@@ -59,6 +59,45 @@ public class Solution {
 
 
 
+// 什么是反射？
+// 反射就是在运行时才知道要操作的类是什么，并且可以在运行时获取类的完整构造，并调用对应的方法。
+// 简单例子：
+package com.test.api;
+
+public class Apple {
+    private int price;
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public static void main(String[] args) throws Exception{
+        // 正常的调用
+        Apple apple = new Apple();
+        apple.setPrice(5);
+        System.out.println("Apple Price:" + apple.getPrice());
+        // 使用反射调用
+        Class clz = Class.forName("com.test.api.Apple");
+        Method setPriceMethod = clz.getMethod("setPrice", int.class);
+        Constructor appleConstructor = clz.getConstructor();
+        Object appleObj = appleConstructor.newInstance();
+        setPriceMethod.invoke(appleObj, 14);
+        Method getPriceMethod = clz.getMethod("getPrice");
+        System.out.println("Apple Price:" + getPriceMethod.invoke(appleObj));
+    }
+}
+// 摘录自：https://www.cnblogs.com/chanshuyi/p/head_first_of_reflection.html
+
+
+
+// 反射源码解析：https://www.cnblogs.com/chanshuyi/p/head_first_of_reflection.html
+
+
+
 // https://www.liaoxuefeng.com/wiki/1252599548343744/  
 /*
 ## Class 类
