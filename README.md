@@ -1,6 +1,9 @@
 # data-structure-and-algorithm-study-note
   
-### 本 Repo 包括以下内容:  
+*本项目仅为私人笔记而非任何盈利或正规项目，其中引用、摘录了学习过程中看过的大量的网络资料，若涉及版权问题烦请版权所有者不吝沟通以便解决此类问题，在这里提前说声抱歉。*  
+*This repository is just a personal study note, but not any profit or regular project. Contents may contains/quotes plenty of network materials I learned from. Please contact me if there is any copyright issues. Sorry about that.*  
+  
+### 本笔记包括以下内容:  
 * Books and Courses 
   * [算法导论 | Introduction to Algorithms](./Introduction%20to%20Algorithms/)
   * [程序员面试金典 | Cracking the Coding Interview](./Cracking%20the%20Coding%20Interview/)
