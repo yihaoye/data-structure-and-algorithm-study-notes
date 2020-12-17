@@ -16,7 +16,7 @@
 ## 行为型模式
 行为型模式主要涉及算法和对象间的职责分配。通过使用对象组合，行为型模式可以描述一组对象应该如何协作来完成一个整体任务。  
 * [迭代器 | Iterator]()
-* [观察者 | Observer(Listener)]()
+* [观察者 | Observer(Listener)](./Observer.java)
 * [状态 | State]()
 * [策略 | Strategy]()
 * [模板方法 | Template Method]()
