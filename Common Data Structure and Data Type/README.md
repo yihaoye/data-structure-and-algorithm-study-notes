@@ -82,7 +82,8 @@
   * TreeMap、TreeSet 只提供了一般（或按元素所属的类的默认/自定义 compareTo 逻辑或传入的 Comparator 对象的 compare 逻辑）排序功能（而且每次插入新元素后会自动触发集合按元素的类的 compareTo 排序逻辑或传入的 Comparator 对象的 compare 逻辑来重新排一次序），并不能保证集合里的元素顺序按插入顺序，能保证集合里的元素顺序按插入顺序的是 LinkedHashMap、LinkedHashSet。
 * 放入 PriorityQueue 的元素，必须实现 Comparable 接口，PriorityQueue 会根据元素的排序顺序决定出队的优先级。如果要放入的元素并没有实现 Comparable 接口的话，也可以提供一个 Comparator 对象来判断两个元素的顺序。PriorityQueue 在每次插入新元素后会自动触发排序。
 * Java 没有内置专门的二叉堆数据结构，因为可以使用 PriorityQueue（最小堆）来当二叉堆用。
-* LinkedBlockingQueue 与 ArrayBlockingQueue 对比：1. ArrayBlockingQueue 入队出队采用一把锁，导致入队出队相互阻塞，效率低下；2. LinkedBlockingQueue 入队出队采用两把锁，入队出队互不干扰，效率较高；3. 二者都是有界队列，如果长度相等且出队速度跟不上入队速度，都会导致大量线程阻塞；4. LinkedBlockingQueue 如果初始化不传入初始容量，则使用最大 int 值，如果出队速度跟不上入队速度，会导致队列特别长，占用大量内存。  
+* LinkedBlockingQueue 与 ArrayBlockingQueue 对比：1. ArrayBlockingQueue 入队出队采用一把锁，导致入队出队相互阻塞，效率低下；2. LinkedBlockingQueue 入队出队采用两把锁，入队出队互不干扰，效率较高；3. 二者都是有界队列，如果长度相等且出队速度跟不上入队速度，都会导致大量线程阻塞；4. LinkedBlockingQueue 如果初始化不传入初始容量，则使用最大 int 值，如果出队速度跟不上入队速度，会导致队列特别长，占用大量内存。
+* JDK 为什么没有实现图（Graph）数据结构？因为一般更倾向于根据具体算法需求和数据的特性来自己实现图，就说最常用的两种实现 —— 邻接矩阵和邻接表。通常可以简单的使用二维数组做邻接矩阵，如果图连通性很低，也可以用 HashMap 做邻接矩阵。邻接表可以用链表的数组做，也可以 TreeMap 的数组做，也可以 HashMap 里放 TreeMap 或者其他数据结构来做。这要看具体的算法需要。这也是为什么通常说图不常用，其实不是不常用，是图的通用性不值得 JDK 去做一个 build-in 的实现给它（树 Tree 同理）。而且选择第三方实现的时候也要慎重，要结合具体的算法需要和数据情况。（[摘录来源](https://www.zhihu.com/question/275694305/answer/392905791)）  
   
 ## 更多性能展示
 <details>
