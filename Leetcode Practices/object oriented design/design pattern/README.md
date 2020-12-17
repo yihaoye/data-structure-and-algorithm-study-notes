@@ -18,7 +18,7 @@
 * [迭代器 | Iterator](./Iterator.java)
 * [观察者 | Observer(Listener)](./Observer.java)
 * [状态 | State](./State.java)
-* [策略 | Strategy]()
+* [策略 | Strategy](./Strategy.java)
 * [模板方法 | Template Method]()
 * [访问者 | Visitor]()  
   
