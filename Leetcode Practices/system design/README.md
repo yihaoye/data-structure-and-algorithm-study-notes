@@ -41,9 +41,12 @@
   
 ### 系统通用基础设施
 摘录：https://www.cnblogs.com/ilinuxer/p/6697015.html  
-* API 网关（负载均衡、身份验证、路由、速率限制、计费、监控、分析、安全防护）
+* API 网关（负载均衡、身份验证、路由、缓存、速率限制、计费、监控、分析、安全防护）
 * 业务应用和后端基础框架（MVC、IOC、ORM）
-* 缓存（本地缓存即内存中的缓存机制：ConcurrentHashMap etc；分布式缓存即单独的缓存服务：Redis、Memcached etc）、数据库（SQL、NoSQL）、搜索引擎（全文搜索、Elasticsearch）、消息队列（RabbitMQ、Kafka）
+* 缓存（本地缓存即内存中的缓存机制：ConcurrentHashMap etc；分布式缓存即单独的缓存服务：Redis、Memcached etc）
+* 数据库（SQL、NoSQL）
+* 搜索引擎（全文搜索、Elasticsearch）
+* 消息队列（RabbitMQ、Kafka）
 * 文件存储（S3、Hadoop HDFS）
 * 统一认证中心（用户的注册、登录验证、token 鉴权；内部信息系统用户的管理和登录鉴权；应用管理，应用的 secret 生成，应用信息的验证 - 如验证接口签名等）
 * 单点登录系统（Central Authentication Service - CAS）
