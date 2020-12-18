@@ -14,7 +14,7 @@
 * [Codility Practices](./Codility%20Practices/)
 * [HackerRank Practices](./HackerRank%20Practises/) (包括一些 Java 语言详解)
 * [Google Code Jam Practices](./Google%20Code%20Jam/)
-* [Leetcode Practices](./Leetcode%20Practices/) (每个问题第一次提交 round 1 是自己的首次解答方法，第二次提交 round 2 是进行复盘复习后并添加、理解他人的更优解以及增添其他语言解题实现，round 0 则是首次答题没头绪参考他人解题思路)
+* [Leetcode Practices](./Leetcode%20Practices/) (主要包含了[算法](./Leetcode%20Practices/algorithms/)、[OOD](./Leetcode%20Practices/object%20oriented%20design/) 和[系统设计](./Leetcode%20Practices/system%20design/)；算法题第一次提交 round 1 是自己的首次解答方法，第二次提交 round 2 是进行复盘复习后并添加、理解他人的更优解以及增添其他语言解题实现，round 0 则是首次答题没头绪参考他人解题思路)
 * [常用编码逻辑工具集查询手册 | Tool Sets](./Tool%20Sets/) (包括一些 Java 语言详解)
 * [Common Algorithm & Theory](./Common%20Algorithm%20and%20Theory/)
 * [Common Data Structure & Data Type & Implementation](./Common%20Data%20Structure%20and%20Data%20Type/) (常用数据结构、包括并发相关的数据结构的详解)
@@ -93,6 +93,10 @@ Google、Amazon 等各大中型公司技术面开始不再单纯地考核算法�
 * 面向类/对象设计的过程中，设计的优化思路可参考 [SOLID 原则](./Leetcode%20Practices/object%20oriented%20design/README.md) 和 [其他面向对象设计原则](./Leetcode%20Practices/object%20oriented%20design/README.md#其他面向对象设计原则)。
 * 数据类型的深入思考 - 比如若有多个数据类型（比如 Integer 或 String）均可以胜任时该场景（比如存储在不同容器如 List 或 Set）下使用/搭配哪个更好；以及应不应该对多个数据结构的同一个属性（比如 userID）保持数据类型一致还是说可以允许转换数据类型即不同数据结构中的对应属性/关联键的数据类型不同。
 * 理解、推测考核意图 - 比如提出考虑使用 UUID 生成 userID 但是考官询问是否有其他方法（比如简单的整数从零自增 userID++）时，并不是说考官认为在这里使用 UUID 不正确，而是可能考官只是想在接下来的延伸环节里考核多线程情景下的 userID++ 的线程不安全问题与解决方案而已（[UUID 是线程安全的](https://stackoverflow.com/questions/7212635/is-java-util-uuid-thread-safe)）。  
+  
+### 实用
+实际工作中，因为多数开发是业务场景，通过算法优化程序性能的机会可能并不多，因为大部分时候使用的库、框架已经封装了最优解的算法与数据结构。当然在基础设施（如网络）、系统底层或某些自定义（比如搜索模块、数据科学）的场景下，会使用最优的算法、数学和数据结构则非常重要了。  
+相比数据结构与算法，实际工作中更多的性能优化是来自并发、异步编程（比如多线程与非阻塞逻辑）以及系统设计（比如程序尽量复用缓存如内存变量或 NoSQL 且减少重复的 IO 调用如外部 API 请求）的。  
   
 ### ACM
 > 成为大牛还是菜鸟，还要看自己的努力程度，因为 ACM 是一个很漫长，很枯燥的路，因为别人在休息，玩的时候，自己可能在机房刷题目，学算法等等。见过很多人，从大一进入集训队，当时激情澎湃，热情似火，说很感兴趣，要达到什么什么高度。结果过了半年，一年，就受不了这个苦。兴趣，激情都被时间慢慢的磨灭了。  
