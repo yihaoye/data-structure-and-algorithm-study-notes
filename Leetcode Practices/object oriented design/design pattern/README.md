@@ -11,7 +11,7 @@
 * [适配器 | Adapter](./Adapter.java)
 * [桥接 | Bridge]()
 * [组合 | Composite](./Composite.java)
-* [代理 | Proxy]()  
+* [代理 | Proxy](./Proxy.java)  
   
 ## 行为型模式
 行为型模式主要涉及算法和对象间的职责分配。通过使用对象组合，行为型模式可以描述一组对象应该如何协作来完成一个整体任务。  
