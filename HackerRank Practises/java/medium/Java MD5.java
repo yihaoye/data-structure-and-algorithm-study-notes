@@ -33,6 +33,7 @@ Sample Output 1
 
 
 
+// MD5 已过时，已被破解了，安全加密应使用 SHA-2
 // Other's Solution:
 import java.security.MessageDigest;
 import java.util.Scanner;
