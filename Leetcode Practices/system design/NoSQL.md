@@ -43,7 +43,11 @@ MongoDB 的适用场景为：数据不是特别重要（例如通知，推送这
 * 持久化方式：Redis 所有数据都是放在内存中的，持久化是使用 RDB 方式或者 aof 方式。  
   
 #### DynamoDB
-* 比 MongoDB 安全性更高且更方便。  
+* Key-Value 和 Document 的数据库。
+* 比 MongoDB 安全性更高。
+* 比 MongoDB 更方便（AWS 完全托管的，将用户从底层基础结构中解放出来，并且仅通过远程端点与数据库进行交互，用户使用 DynamoDB 时无需担心操作问题或关注其他硬件规定）。
+* 费用比 MongoDB 昂贵。
+* 支持的语言和工具没有 MongoDB 多、生态比 MongoDB 小。  
   
   
 ### 其他
