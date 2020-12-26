@@ -38,8 +38,21 @@ ADD INDEX idx_col1 (col1);
 更多：  
 ![](./storage%20engines.jpeg)  
   
+### MySQL 体系结构
+![](./MySQL%20体系结构.jpeg)  
+  
+* Connectors：用来与客户端应用程序建立连接的数据库接口。
+* Management Services & Utilities：系统管理和服务控制相关的辅助工具。
+* Connection Pool：负责处理与用户访问有关的各种用户登录、线程处理、内存和进程缓存需求。
+* Sql Interface：提供从用户接受命令并把结果返回给用户的机制。
+* Parser：对SQL语句进行语法分析和解析，构造一个月来执行查询的数据结构。
+* Optimizer：优化查询语句，以保证数据检索动作的效率达到或者非常接近最最优。使用一种 “选取-投影-联结” 策略来处理查询，即先根据有关的限制条件进行选取(Select 操作)以减少将要处理的元组个数，再进行投影以减少被选取元组力的属性字段的个数，最后根据连接条件生产最终的查询结果。
+* Caches & Buffers：保证使用频率最高的数据或结构能够以最有效率的方式被访问，缓存的类型有：表缓存、记录缓存、键缓存、权限缓存、主机名缓存等。  
+  
+  
 ## 建议阅读
 https://blog.csdn.net/dong19891210/article/details/106969644  
+https://tech.meituan.com/2018/05/20/sql-parser-used-in-mtdp.html  
   
 # SQL 语法（进阶相关）
   
@@ -304,3 +317,6 @@ commit; -- 提交事务
 * 存储 IO：直接影响 MySQL 的处理性能；在大量数据变更的业务场景下，对存储的 IO 性能要求往往较高。  
   
   
+## 其他
+使用 EXPLAIN 分析 SQL 性能  
+
