@@ -108,12 +108,7 @@ class BoundedBlockingQueue {
     }
     
     public int size() {
-        lock.lock();
-		try {
-			return queue.size();
-		} finally {
-			lock.unlock();
-		}
+        return queue.size();
     }
 }
 
