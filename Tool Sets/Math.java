@@ -28,3 +28,25 @@ public int[] multiply(int[] num1, int[] num2) { // e.g.   multiply({4, 5}, {1, 2
 
     return res;
 }
+
+
+
+// 矩阵相乘（https://zh.wikipedia.org/wiki/%E7%9F%A9%E9%99%A3%E4%B9%98%E6%B3%95）
+// Leetcode Q311（C = AB）
+public int[][] multiply(int[][] A, int[][] B) {
+    int aH = A.length, aW = A[0].length, bW = B[0].length;
+    int[][] C = new int[aH][bW];
+    
+    for (int ai=0; ai<aH; ai++) {
+        for (int aj=0; aj<aW; aj++) {
+            if (A[ai][aj] != 0) { // if 优化
+                for (int bj=0; bj<bW; bj++) {
+                    if (B[aj][bj] != 0) C[ai][bj] += A[ai][aj]*B[aj][bj]; // if 优化
+                }
+            }
+        }
+    }
+    
+    return C;
+}
+
