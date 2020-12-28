@@ -55,6 +55,20 @@ ADD INDEX idx_col1 (col1);
 <br>
   
 <details>
+<summary>结构化查询语言简介</summary>
+  
+SQL 是`结构化查询语言`的缩写  
+SQL 已经被 ANSI 组织定义为标准，但是各个不同的数据库对标准的 SQL 支持不太一致。并且，大部分数据库都在标准的 SQL 上做了扩展。也就是说，如果只使用标准 SQL，理论上所有数据库都可以支持，但如果使用某个特定数据库的扩展 SQL，换一个数据库就不能执行了。例如，Oracle 把自己扩展的 SQL 称为 PL/SQL，Microsoft 把自己扩展的 SQL 称为 T-SQL。现实情况是，如果只使用标准 SQL 的核心功能，那么所有数据库通常都可以执行。不常用的 SQL 功能，不同的数据库支持的程度都不一样。而各个数据库支持的各自扩展的功能，通常称之为方言。  
+  
+SQL 语言定义了这么几种操作数据库的能力  
+* DDL（Data Definition Language）：DDL 允许用户定义数据，也就是创建表、删除表、修改表结构这些操作。通常，DDL 由数据库管理员执行。
+* DML（Data Manipulation Language）：DML 为用户提供添加、删除、更新数据的能力，这些是应用程序对数据库的日常操作。
+* DQL（Data Query Language）：DQL 允许用户查询数据，这也是通常最频繁的数据库日常操作。  
+  
+</details>
+<br>
+  
+<details>
 <summary>Query 流程</summary>
   
 ![](./查询流程.jpeg)  
