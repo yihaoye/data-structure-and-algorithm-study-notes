@@ -19,7 +19,7 @@
 - [x] 244	Shortest Word Distance II		
 - [ ] 245	Shortest Word Distance III		
 - [x] 217	Contains Duplicate		
-- [ ] 219	Contains Duplicate II		                                很少考
+- [x] 219	Contains Duplicate II		                                很少考
 - [ ] 220	Contains Duplicate III		                                很少考
 - [x] 55	Jump Game		
 - [ ] 45	Jump Game II		
@@ -43,9 +43,9 @@
 - [ ] 289	Game of Life		
 ### Interval			
 - [ ] 57	Insert Interval		
-- [ ] 56	Merge Intervals		
+- [x] 56	Merge Intervals		
 - [ ] 252	Meeting Rooms		
-- [ ] 253	Meeting Rooms II		
+- [x] 253	Meeting Rooms II		
 - [ ] 352	Data Stream as Disjoint Intervals		                    TreeMap
 ### Counter			
 - [ ] 239	Sliding Window Maximum		
@@ -59,21 +59,21 @@
 - [ ] 163	Missing Ranges		
 ### Counter			
 - [x] 88	Merge Sorted Array		
-- [ ] 75	Sort Colors		
-- [ ] 283	Move Zeroes		
+- [x] 75	Sort Colors		
+- [x] 283	Move Zeroes		
 - [ ] 376	Wiggle Subsequence		
-- [ ] 280	Wiggle Sort		
+- [x] 280	Wiggle Sort		
 - [ ] 324	Wiggle Sort II		
-- [ ] 278	First Bad Version		
+- [x] 278	First Bad Version		
 - [ ] 35	Search Insert Position		
-- [ ] 33	Search in Rotated Sorted Array		
+- [x] 33	Search in Rotated Sorted Array		
 - [ ] 81	Search in Rotated Sorted Array II		
 - [ ] 153	Find Minimum in Rotated Sorted Array		
 - [ ] 154	Find Minimum in Rotated Sorted Array II		
 - [ ] 162	Find Peak Element		
 - [ ] 374	Guess Number Higher or Lower		
 - [ ] 34	Find First and Last Position of Element in Sorted Array		
-- [ ] 349	Intersection of Two Arrays		
+- [x] 349	Intersection of Two Arrays		
 - [ ] 350	Intersection of Two Arrays II		
 - [ ] 315	Count of Smaller Numbers After Self		
 - [ ] 300	Longest Increasing Subsequence		
@@ -101,14 +101,14 @@
 - [ ] 179	Largest Number		                                                    很少考
 - [ ] 6	    ZigZag Conversion		                                                很少考
 - [ ] 161	One Edit Distance		
-- [ ] 38	Count and Say		
+- [x] 38	Count and Say		
 - [ ] 358	Rearrange String k Distance Apart		
 - [ ] 316	Remove Duplicate Letters		
 - [ ] 271	Encode and Decode Strings		
 - [x] 168	Excel Sheet Column Title		
 - [x] 171	Excel Sheet Column Number		
 - [x] 13	Roman to Integer		
-- [ ] 12	Integer to Roman		
+- [x] 12	Integer to Roman		
 - [ ] 273	Integer to English Words		
 - [x] 246	Strobogrammatic Number		
 - [ ] 247	Strobogrammatic Number II		
@@ -124,15 +124,15 @@
 - [x] 3	    Longest Substring Without Repeating Characters		                    Sliding Window
 - [ ] 340	Longest Substring with At Most K Distinct Characters		            Sliding Window
 - [ ] 395	Longest Substring with At Least K Repeating Characters		            Sliding Window
-- [ ] 159	Longest Substring with At Most Two Distinct Characters		            Sliding Window
+- [x] 159	Longest Substring with At Most Two Distinct Characters		            Sliding Window
 ### Palindrome			
-- [ ] 125	Valid Palindrome		
+- [x] 125	Valid Palindrome		
 - [x] 266	Palindrome Permutation		
 - [x] 5	    Longest Palindromic Substring		
 - [x] 9	    Palindrome Number		
-- [ ] 214	Shortest Palindrome		
+- [x] 214	Shortest Palindrome		
 - [ ] 336	Palindrome Pairs		
-- [ ] 131	Palindrome Partitioning		
+- [x] 131	Palindrome Partitioning		
 - [ ] 132	Palindrome Partitioning II		
 - [ ] 267	Palindrome Permutation II		
 ### Parentheses			
@@ -154,7 +154,7 @@
 - [x] 8	    String to Integer (atoi)		
 - [x] 258	Add Digits		
 - [x] 67	Add Binary		
-- [ ] 43	Multiply Strings		
+- [x] 43	Multiply Strings		
 - [ ] 29	Divide Two Integers		
 - [x] 69	Sqrt(x)		
 - [x] 50	Pow(x, n)		
@@ -169,25 +169,25 @@
 - [ ] 259	3Sum Smaller		                                                            很少考
 - [ ] 18	4Sum		
 ### 很少考			
-- [ ] 231	Power of Two		
-- [ ] 326	Power of Three		
+- [x] 231	Power of Two		
+- [x] 326	Power of Three		
 - [ ] 342	Power of Four		
 - [ ] 372	Super Pow		
 - [ ] 233	Number of Digit One		
 - [ ] 319	Bulb Switcher		
-- [ ] 292	Nim Game		
-- [ ] 202	Happy Number		
-- [ ] 400	Nth Digit		
-- [ ] 263	Ugly Number		
+- [x] 292	Nim Game		
+- [x] 202	Happy Number		
+- [x] 400	Nth Digit		
+- [x] 263	Ugly Number		
 - [ ] 264	Ugly Number II		
 - [ ] 306	Additive Number		
 - [ ] 172	Factorial Trailing Zeroes		
-- [ ] 343	Integer Break		
+- [x] 343	Integer Break		
 - [ ] 396	Rotate Function		
 - [ ] 390	Elimination Game		
-- [ ] 386	Lexicographical Numbers		
+- [x] 386	Lexicographical Numbers		
 - [ ] 357	Count Numbers with Unique Digits		
-- [ ] 360	Sort Transformed Array		
+- [x] 360	Sort Transformed Array		
 - [ ] 397	Integer Replacement		
 - [ ] 368	Largest Divisible Subset	
   
@@ -219,13 +219,13 @@
 - [ ] 103	Binary Tree Zigzag Level Order Traversal		
 - [ ] 199	Binary Tree Right Side View		                                                BFS + preorder
 ### BST			
-- [ ] 98	Validate Binary Search Tree		                                                preorder
-- [ ] 235	Lowest Common Ancestor of a Binary Search Tree		                            preorder
+- [x] 98	Validate Binary Search Tree		                                                preorder
+- [x] 235	Lowest Common Ancestor of a Binary Search Tree		                            preorder
 - [ ] 236	Lowest Common Ancestor of a Binary Tree		                                    postorder
-- [ ] 108	Convert Sorted Array to Binary Search Tree		                                binary search
+- [x] 108	Convert Sorted Array to Binary Search Tree		                                binary search
 - [ ] 109	Convert Sorted List to Binary Search Tree		                                binary search
 - [ ] 173	Binary Search Tree Iterator		                                                inorder
-- [ ] 230	Kth Smallest Element in a BST		                                            inorder
+- [x] 230	Kth Smallest Element in a BST		                                            inorder
 - [ ] 297	Serialize and Deserialize Binary Tree		                                    BFS
 - [ ] 285	Inorder Successor in BST		                                                inorder
 - [ ] 270	Closest Binary Search Tree Value		                                        preorder
@@ -250,13 +250,13 @@
 - [x] 78	Subsets		
 - [x] 90	Subsets II		
 - [x] 77	Combinations		
-- [ ] 39	Combination Sum		
-- [ ] 40	Combination Sum II		
+- [x] 39	Combination Sum		
+- [x] 40	Combination Sum II		
 - [ ] 216	Combination Sum III		
 - [ ] 377	Combination Sum IV		                        Dynamic Programming
 - [ ] 254	Factor Combinations		
-- [ ] 46	Permutations		
-- [ ] 47	Permutations II		
+- [x] 46	Permutations		
+- [x] 47	Permutations II		
 - [ ] 31	Next Permutation		                        String
 - [ ] 60	Permutation Sequence		                    String
 - [ ] 291	Word Pattern II		
@@ -269,9 +269,9 @@
    
 ## Dynamic Programming
 ### 一维			
-- [ ] 70	Climbing Stairs		
-- [ ] 62	Unique Paths		
-- [ ] 63	Unique Paths II		
+- [x] 70	Climbing Stairs		
+- [x] 62	Unique Paths		
+- [x] 63	Unique Paths II		
 - [x] 120	Triangle		                                很少考
 - [ ] 279	Perfect Squares		
 - [ ] 139	Word Break		
@@ -291,32 +291,32 @@
 ### 化简（降维？）
 - [ ] 198	House Robber		
 - [ ] 213	House Robber II		
-- [ ] 276	Paint Fence		
+- [x] 276	Paint Fence		
 - [ ] 91	Decode Ways		
 - [ ] 10	Regular Expression Matching		
 - [ ] 44	Wildcard Matching	
    
 ## LinkedList
 ### 基础			
-- [ ] 206	Reverse Linked List		
-- [ ] 141	Linked List Cycle		
-- [ ] 24	Swap Nodes in Pairs		
-- [ ] 328	Odd Even Linked List		
-- [ ] 92	Reverse Linked List II		
-- [ ] 237	Delete Node in a Linked List		
-- [ ] 19	Remove Nth Node From End of List		
-- [ ] 83	Remove Duplicates from Sorted List		
-- [ ] 203	Remove Linked List Elements		
-- [ ] 82	Remove Duplicates from Sorted List II		
-- [ ] 369	Plus One Linked List		
-- [ ] 2	Add Two Numbers		
-- [ ] 160	Intersection of Two Linked Lists		
-- [ ] 21	Merge Two Sorted Lists		
+- [x] 206	Reverse Linked List		
+- [x] 141	Linked List Cycle		
+- [x] 24	Swap Nodes in Pairs		
+- [x] 328	Odd Even Linked List		
+- [x] 92	Reverse Linked List II		
+- [x] 237	Delete Node in a Linked List		
+- [x] 19	Remove Nth Node From End of List		
+- [x] 83	Remove Duplicates from Sorted List		
+- [x] 203	Remove Linked List Elements		
+- [x] 82	Remove Duplicates from Sorted List II		
+- [x] 369	Plus One Linked List		
+- [x] 2	    Add Two Numbers		
+- [x] 160	Intersection of Two Linked Lists		
+- [x] 21	Merge Two Sorted Lists		
 ### 提高			
-- [ ] 234	Palindrome Linked List		
+- [x] 234	Palindrome Linked List		
 - [ ] 143	Reorder List		
-- [ ] 142	Linked List Cycle II		
-- [ ] 148	Sort List		
+- [x] 142	Linked List Cycle II		
+- [x] 148	Sort List		
 - [ ] 25	Reverse Nodes in k-Group		
 - [ ] 61	Rotate List		
 - [ ] 86	Partition List		
@@ -324,29 +324,29 @@
 - [ ] 147	Insertion Sort List	
    
 ## Binary Search
-- [ ] 278	First Bad Version		
+- [x] 278	First Bad Version		
 - [ ] 35	Search Insert Position		
-- [ ] 33	Search in Rotated Sorted Array		
+- [x] 33	Search in Rotated Sorted Array		
 - [ ] 81	Search in Rotated Sorted Array II		
 - [ ] 153	Find Minimum in Rotated Sorted Array		
 - [ ] 154	Find Minimum in Rotated Sorted Array II		
 - [ ] 162	Find Peak Element		
 - [ ] 374	Guess Number Higher or Lower		
 - [ ] 34	Find First and Last Position of Element in Sorted Array		
-- [ ] 349	Intersection of Two Arrays		
+- [x] 349	Intersection of Two Arrays		
 - [ ] 350	Intersection of Two Arrays II		
 - [ ] 315	Count of Smaller Numbers After Self		
 - [ ] 300	Longest Increasing Subsequence		
 - [ ] 354	Russian Doll Envelopes	
    
 ## Matrix
-- [ ] 48	Rotate Image		
-- [ ] 54	Spiral Matrix		
+- [x] 48	Rotate Image		
+- [x] 54	Spiral Matrix		
 - [ ] 59	Spiral Matrix II		
 - [ ] 73	Set Matrix Zeroes		
-- [ ] 311	Sparse Matrix Multiplication		
+- [x] 311	Sparse Matrix Multiplication		
 - [ ] 329	Longest Increasing Path in a Matrix		
-- [ ] 378	Kth Smallest Element in a Sorted Matrix		
+- [x] 378	Kth Smallest Element in a Sorted Matrix		
 - [ ] 74	Search a 2D Matrix		
 - [ ] 240	Search a 2D Matrix II		
 - [ ] 370	Range Addition		
@@ -359,10 +359,10 @@
 - [ ] 37	Sudoku Solver	
    
 ## DFS & BFS
-- [ ] 200	Number of Islands		
+- [x] 200	Number of Islands		
 - [ ] 286	Walls and Gates		
 - [ ] 130	Surrounded Regions		
-- [ ] 339	Nested List Weight Sum		
+- [x] 339	Nested List Weight Sum		
 - [ ] 364	Nested List Weight Sum II		
 - [ ] 127	Word Ladder		
 - [x] 51	N-Queens		
@@ -371,7 +371,7 @@
    
 ## Stack & PriorityQueue
 ### Stack			
-- [ ] 155	Min Stack		
+- [x] 155	Min Stack		
 - [ ] 232	Implement Queue using Stacks		
 - [ ] 225	Implement Stack using Queues		
 - [ ] 150	Evaluate Reverse Polish Notation		
@@ -384,7 +384,7 @@
 - [ ] 84	Largest Rectangle in Histogram		
 ### PriorityQueue			
 - [ ] 215	Kth Largest Element in an Array		
-- [ ] 347	Top K Frequent Elements		
+- [x] 347	Top K Frequent Elements		
 - [ ] 313	Super Ugly Number		                            很少考
 - [ ] 373	Find K Pairs with Smallest Sums		                很少考
 - [ ] 218	The Skyline Problem		
@@ -392,23 +392,23 @@
 - [ ] 341	Flatten Nested List Iterator	
    
 ## Bit Manipulation
-- [ ] 389	Find the Difference		
-- [ ] 136	Single Number		
+- [x] 389	Find the Difference		
+- [x] 136	Single Number		
 - [ ] 318	Maximum Product of Word Lengths		
 ### 很少考			
 - [ ] 393	UTF-8 Validation		
 - [ ] 201	Bitwise AND of Numbers Range		
-- [ ] 371	Sum of Two Integers emove Element		
-- [ ] 338	Counting Bits		
+- [x] 371	Sum of Two Integers emove Element		
+- [x] 338	Counting Bits		
 - [ ] 89	Gray Code		
-- [ ] 268	Missing Number		
-- [ ] 191	Number of 1 Bits		
-- [ ] 190	Reverse Bits		
-- [ ] 137	Single Number II		
+- [x] 268	Missing Number		
+- [x] 191	Number of 1 Bits		
+- [x] 190	Reverse Bits		
+- [x] 137	Single Number II		
 - [ ] 260	Single Number III	
    
 ## Topological Sort
-- [ ] 207	Course Schedule		
+- [x] 207	Course Schedule		
 - [ ] 210	Course Schedule II		
 - [ ] 269	Alien Dictionary	
    
@@ -422,8 +422,8 @@
    
 ## Graph
 ### 基础			
-- [ ] 133	Clone Graph		
-- [ ] 399	Evaluate Division		
+- [x] 133	Clone Graph		
+- [x] 399	Evaluate Division		
 - [ ] 310	Minimum Height Trees		
 ### 图形学			
 - [ ] 149	Max Points on a Line		
@@ -439,12 +439,12 @@
    
 ## Trie
 - [ ] 211	Add and Search Word - Data structure design		
-- [ ] 208	Implement Trie (Prefix Tree)		
+- [x] 208	Implement Trie (Prefix Tree)		
 - [ ] 212	Word Search II	
    
 ## Design
-- [ ] 359	Logger Rate Limiter		
-- [ ] 346	Moving Average from Data Stream		                        Sliding Window
+- [x] 359	Logger Rate Limiter		
+- [x] 346	Moving Average from Data Stream		                        Sliding Window
 - [ ] 362	Design Hit Counter		
 - [ ] 281	Zigzag Iterator		
 - [ ] 284	Peeking Iterator		
@@ -464,212 +464,212 @@
    
    
 # Leetcode 重点 250 题（建议前面 400 题全部刷完再精刷此 250 题）
-- [ ] 1	    Two Sum		
-- [ ] 3	    Longest Substring Without Repeating Characters		
-- [ ] 4	    Median of Two Sorted Arrays		
-- [ ] 5	    Longest Palindromic Substring		
-- [ ] 7	    Reverse Integer		
-- [ ] 8	    String to Integer (atoi)		
+- [x] 1	    Two Sum		
+- [x] 3	    Longest Substring Without Repeating Characters		
+- [x] 4	    Median of Two Sorted Arrays		
+- [x] 5	    Longest Palindromic Substring		
+- [x] 7	    Reverse Integer		
+- [x] 8	    String to Integer (atoi)		
 - [ ] 10	Regular Expression Matching		
 - [ ] 11	Container With Most Water		
-- [ ] 12	Integer to Roman		
-- [ ] 13	Roman to Integer		
-- [ ] 15	3Sum		
+- [x] 12	Integer to Roman		
+- [x] 13	Roman to Integer		
+- [x] 15	3Sum		
 - [ ] 17	Letter Combinations of a Phone Number		
 - [ ] 18	4Sum		
-- [ ] 20	Valid Parentheses		
+- [x] 20	Valid Parentheses		
 - [ ] 22	Generate Parentheses		
 - [ ] 23	Merge k Sorted Lists		
-- [ ] 26	Remove Duplicates from Sorted Array		
-- [ ] 27	Remove Element		
-- [ ] 28	Implement strStr()		
+- [x] 26	Remove Duplicates from Sorted Array		
+- [x] 27	Remove Element		
+- [x] 28	Implement strStr()		
 - [ ] 29	Divide Two Integers		
 - [ ] 31	Next Permutation		
 - [ ] 32	Longest Valid Parentheses		
-- [ ] 33	Search in Rotated Sorted Array		
+- [x] 33	Search in Rotated Sorted Array		
 - [ ] 34	Find First and Last Position of Element in Sorted Array		
 - [ ] 35	Search Insert Position		
 - [ ] 36	Valid Sudoku		
 - [ ] 37	Sudoku Solver		
-- [ ] 38	Count and Say		
-- [ ] 39	Combination Sum		
-- [ ] 40	Combination Sum II		
-- [ ] 41	First Missing Positive		
+- [x] 38	Count and Say		
+- [x] 39	Combination Sum		
+- [x] 40	Combination Sum II		
+- [x] 41	First Missing Positive		
 - [ ] 42	Trapping Rain Water		
-- [ ] 43	Multiply Strings		
+- [x] 43	Multiply Strings		
 - [ ] 44	Wildcard Matching		
 - [ ] 45	Jump Game II		
-- [ ] 46	Permutations		
-- [ ] 47	Permutations II		
-- [ ] 48	Rotate Image		
-- [ ] 49	Group Anagrams		
-- [ ] 50	Pow(x, n)		
+- [x] 46	Permutations		
+- [x] 47	Permutations II		
+- [x] 48	Rotate Image		
+- [x] 49	Group Anagrams		
+- [x] 50	Pow(x, n)		
 - [x] 51	N-Queens		
 - [ ] 52	N-Queens II		
-- [ ] 53	Maximum Subarray		
-- [ ] 54	Spiral Matrix		
-- [ ] 55	Jump Game		
-- [ ] 56	Merge Intervals		
+- [x] 53	Maximum Subarray		
+- [x] 54	Spiral Matrix		
+- [x] 55	Jump Game		
+- [x] 56	Merge Intervals		
 - [ ] 57	Insert Interval		
 - [ ] 59	Spiral Matrix II		
 - [ ] 60	Permutation Sequence		
-- [ ] 62	Unique Paths		
+- [x] 62	Unique Paths		
 - [ ] 64	Minimum Path Sum		
 - [ ] 65	Valid Number		
-- [ ] 66	Plus One		
-- [ ] 67	Add Binary		
+- [x] 66	Plus One		
+- [x] 67	Add Binary		
 - [ ] 68	Text Justification		
-- [ ] 69	Sqrt(x)		
-- [ ] 70	Climbing Stairs		
+- [x] 69	Sqrt(x)		
+- [x] 70	Climbing Stairs		
 - [ ] 71	Simplify Path		
 - [ ] 72	Edit Distance		
 - [ ] 74	Search a 2D Matrix		
-- [ ] 75	Sort Colors		
+- [x] 75	Sort Colors		
 - [ ] 76	Minimum Window Substring		
-- [ ] 77	Combinations		
-- [ ] 78	Subsets		
+- [x] 77	Combinations		
+- [x] 78	Subsets		
 - [ ] 79	Word Search		
-- [ ] 80	Remove Duplicates from Sorted Array II		
+- [x] 80	Remove Duplicates from Sorted Array II		
 - [ ] 81	Search in Rotated Sorted Array II		
-- [ ] 82	Remove Duplicates from Sorted List II		
+- [x] 82	Remove Duplicates from Sorted List II		
 - [ ] 84	Largest Rectangle in Histogram		
 - [ ] 85	Maximal Rectangle		
-- [ ] 88	Merge Sorted Array		
-- [ ] 90	Subsets II		
+- [x] 88	Merge Sorted Array		
+- [x] 90	Subsets II		
 - [ ] 91	Decode Ways		
 - [ ] 96	Unique Binary Search Trees		
-- [ ] 98	Validate Binary Search Tree		
-- [ ] 101	Symmetric Tree		
-- [ ] 104	Maximum Depth of Binary Tree		
-- [ ] 108	Convert Sorted Array to Binary Search Tree		
-- [ ] 110	Balanced Binary Tree		
-- [ ] 111	Minimum Depth of Binary Tree		
-- [ ] 112	Path Sum		
+- [x] 98	Validate Binary Search Tree		
+- [x] 101	Symmetric Tree		
+- [x] 104	Maximum Depth of Binary Tree		
+- [x] 108	Convert Sorted Array to Binary Search Tree		
+- [x] 110	Balanced Binary Tree		
+- [x] 111	Minimum Depth of Binary Tree		
+- [x] 112	Path Sum		
 - [ ] 113	Path Sum II		
 - [ ] 115	Distinct Subsequences		
 - [ ] 116	Populating Next Right Pointers in Each Node		
 - [ ] 117	Populating Next Right Pointers in Each Node II		
-- [ ] 121	Best Time to Buy and Sell Stock		
-- [ ] 122	Best Time to Buy and Sell Stock II		
+- [x] 121	Best Time to Buy and Sell Stock		
+- [x] 122	Best Time to Buy and Sell Stock II		
 - [ ] 123	Best Time to Buy and Sell Stock III		
 - [ ] 124	Binary Tree Maximum Path Sum		
-- [ ] 125	Valid Palindrome		
+- [x] 125	Valid Palindrome		
 - [ ] 126	Word Ladder II		
 - [ ] 127	Word Ladder		
 - [ ] 128	Longest Consecutive Sequence		
 - [ ] 130	Surrounded Regions		
-- [ ] 133	Clone Graph		
-- [ ] 134	Gas Station		
+- [x] 133	Clone Graph		
+- [x] 134	Gas Station		
 - [ ] 138	Copy List with Random Pointer		
 - [ ] 139	Word Break		
 - [ ] 140	Word Break II		
-- [ ] 142	Linked List Cycle II		
+- [x] 142	Linked List Cycle II		
 - [ ] 146	LRU Cache		
 - [ ] 149	Max Points on a Line		
 - [ ] 150	Evaluate Reverse Polish Notation		
 - [ ] 152	Maximum Product Subarray		
 - [ ] 153	Find Minimum in Rotated Sorted Array		
 - [ ] 154	Find Minimum in Rotated Sorted Array II		
-- [ ] 155	Min Stack		
-- [ ] 157	Read N Characters Given Read4		
+- [x] 155	Min Stack		
+- [x] 157	Read N Characters Given Read4		
 - [ ] 158	Read N Characters Given Read4 II - Call multiple times		
 - [ ] 161	One Edit Distance		
 - [ ] 162	Find Peak Element		
 - [ ] 163	Missing Ranges		
-- [ ] 168	Excel Sheet Column Title		
-- [ ] 171	Excel Sheet Column Number		
+- [x] 168	Excel Sheet Column Title		
+- [x] 171	Excel Sheet Column Number		
 - [ ] 173	Binary Search Tree Iterator		
 - [ ] 174	Dungeon Game		
-- [ ] 186	Reverse Words in a String II		
+- [x] 186	Reverse Words in a String II		
 - [ ] 188	Best Time to Buy and Sell Stock IV		
-- [ ] 189	Rotate Array		
-- [ ] 191	Number of 1 Bits		
+- [x] 189	Rotate Array		
+- [x] 191	Number of 1 Bits		
 - [ ] 198	House Robber		
-- [ ] 200	Number of Islands		
+- [x] 200	Number of Islands		
 - [ ] 201	Bitwise AND of Numbers Range		
-- [ ] 202	Happy Number		
-- [ ] 204	Count Primes		
-- [ ] 205	Isomorphic Strings		
-- [ ] 207	Course Schedule		
-- [ ] 208	Implement Trie (Prefix Tree)		
+- [x] 202	Happy Number		
+- [x] 204	Count Primes		
+- [x] 205	Isomorphic Strings		
+- [x] 207	Course Schedule		
+- [x] 208	Implement Trie (Prefix Tree)		
 - [ ] 209	Minimum Size Subarray Sum		
 - [ ] 210	Course Schedule II		
 - [ ] 211	Add and Search Word - Data structure design		
 - [ ] 212	Word Search II		
 - [ ] 213	House Robber II		
-- [ ] 214	Shortest Palindrome		
+- [x] 214	Shortest Palindrome		
 - [ ] 215	Kth Largest Element in an Array		
 - [ ] 216	Combination Sum III		
-- [ ] 217	Contains Duplicate		
+- [x] 217	Contains Duplicate		
 - [ ] 218	The Skyline Problem		
-- [ ] 219	Contains Duplicate II		
+- [x] 219	Contains Duplicate II		
 - [ ] 220	Contains Duplicate III		
 - [ ] 221	Maximal Square		
 - [ ] 224	Basic Calculator		
 - [ ] 225	Implement Stack using Queues		
-- [ ] 226	Invert Binary Tree		
+- [x] 226	Invert Binary Tree		
 - [ ] 227	Basic Calculator II		
 - [ ] 228	Summary Ranges		
-- [ ] 230	Kth Smallest Element in a BST		
-- [ ] 231	Power of Two		
+- [x] 230	Kth Smallest Element in a BST		
+- [x] 231	Power of Two		
 - [ ] 232	Implement Queue using Stacks		
-- [ ] 235	Lowest Common Ancestor of a Binary Search Tree		
+- [x] 235	Lowest Common Ancestor of a Binary Search Tree		
 - [ ] 236	Lowest Common Ancestor of a Binary Tree		
-- [ ] 238	Product of Array Except Self		
+- [x] 238	Product of Array Except Self		
 - [ ] 239	Sliding Window Maximum		
 - [ ] 240	Search a 2D Matrix II		
 - [ ] 241	Different Ways to Add Parentheses		
-- [ ] 242	Valid Anagram		
-- [ ] 244	Shortest Word Distance II		
+- [x] 242	Valid Anagram		
+- [x] 244	Shortest Word Distance II		
 - [ ] 245	Shortest Word Distance III		
 - [ ] 249	Group Shifted Strings		
 - [ ] 251	Flatten 2D Vector		
 - [ ] 252	Meeting Rooms		
-- [ ] 253	Meeting Rooms II		
+- [x] 253	Meeting Rooms II		
 - [ ] 254	Factor Combinations		
 - [ ] 256	Paint House		
 - [ ] 257	Binary Tree Paths		
 - [ ] 261	Graph Valid Tree		
-- [ ] 263	Ugly Number		
+- [x] 263	Ugly Number		
 - [ ] 264	Ugly Number II		
 - [ ] 265	Paint House II		
-- [ ] 268	Missing Number		
+- [x] 268	Missing Number		
 - [ ] 269	Alien Dictionary		
 - [ ] 270	Closest Binary Search Tree Value		
 - [ ] 271	Encode and Decode Strings		
 - [ ] 273	Integer to English Words		
-- [ ] 274	H-Index		
-- [ ] 275	H-Index II		
-- [ ] 276	Paint Fence		
-- [ ] 277	Find the Celebrity		
-- [ ] 278	First Bad Version		
+- [x] 274	H-Index		
+- [x] 275	H-Index II		
+- [x] 276	Paint Fence		
+- [x] 277	Find the Celebrity		
+- [x] 278	First Bad Version		
 - [ ] 279	Perfect Squares		
-- [ ] 280	Wiggle Sort		
+- [x] 280	Wiggle Sort		
 - [ ] 282	Expression Add Operators		
-- [ ] 283	Move Zeroes		
+- [x] 283	Move Zeroes		
 - [ ] 284	Peeking Iterator		
 - [ ] 285	Inorder Successor in BST		
 - [ ] 286	Walls and Gates		
 - [ ] 287	Find the Duplicate Number		
 - [ ] 288	Unique Word Abbreviation		
 - [ ] 289	Game of Life		
-- [ ] 290	Word Pattern		
+- [x] 290	Word Pattern		
 - [ ] 291	Word Pattern II		
-- [ ] 293	Flip Game		
-- [ ] 294	Flip Game II		
+- [x] 293	Flip Game		
+- [x] 294	Flip Game II		
 - [ ] 295	Find Median from Data Stream		
 - [ ] 296	Best Meeting Point		
 - [ ] 297	Serialize and Deserialize Binary Tree		
 - [ ] 298	Binary Tree Longest Consecutive Sequence		
-- [ ] 299	Bulls and Cows		
+- [x] 299	Bulls and Cows		
 - [ ] 300	Longest Increasing Subsequence		
 - [ ] 301	Remove Invalid Parentheses		
 - [ ] 302	Smallest Rectangle Enclosing Black Pixels		
 - [ ] 305	Number of Islands II		
 - [ ] 307	Range Sum Query - Mutable		
 - [ ] 308	Range Sum Query 2D - Mutable		
-- [ ] 309	Best Time to Buy and Sell Stock with Cooldown		
-- [ ] 311	Sparse Matrix Multiplication		
+- [x] 309	Best Time to Buy and Sell Stock with Cooldown		
+- [x] 311	Sparse Matrix Multiplication		
 - [ ] 312	Burst Balloons		
 - [ ] 314	Binary Tree Vertical Order Traversal		
 - [ ] 316	Remove Duplicate Letters		
@@ -683,12 +683,12 @@
 - [ ] 334	Increasing Triplet Subsequence		
 - [ ] 336	Palindrome Pairs		
 - [ ] 337	House Robber III		
-- [ ] 338	Counting Bits		
-- [ ] 339	Nested List Weight Sum		
+- [x] 338	Counting Bits		
+- [x] 339	Nested List Weight Sum		
 - [ ] 340	Longest Substring with At Most K Distinct Characters		
 - [ ] 341	Flatten Nested List Iterator		
-- [ ] 346	Moving Average from Data Stream		
-- [ ] 347	Top K Frequent Elements		
+- [x] 346	Moving Average from Data Stream		
+- [x] 347	Top K Frequent Elements		
 - [ ] 348	Design Tic-Tac-Toe		
 - [ ] 350	Intersection of Two Arrays II		
 - [ ] 351	Android Unlock Patterns		
@@ -696,22 +696,22 @@
 - [ ] 353	Design Snake Game		
 - [ ] 354	Russian Doll Envelopes		
 - [ ] 355	Design Twitter		
-- [ ] 359	Logger Rate Limiter		
+- [x] 359	Logger Rate Limiter		
 - [ ] 361	Bomb Enemy		
 - [ ] 362	Design Hit Counter		
 - [ ] 364	Nested List Weight Sum II		
-- [ ] 367	Valid Perfect Square		
+- [x] 367	Valid Perfect Square		
 - [ ] 374	Guess Number Higher or Lower		
 - [ ] 375	Guess Number Higher or Lower II		
 - [ ] 376	Wiggle Subsequence		
 - [ ] 377	Combination Sum IV		
-- [ ] 378	Kth Smallest Element in a Sorted Matrix		
+- [x] 378	Kth Smallest Element in a Sorted Matrix		
 - [ ] 379	Design Phone Directory		
 - [ ] 380	Insert Delete GetRandom O(1)		
 - [ ] 381	Insert Delete GetRandom O(1) - Duplicates allowed		
 - [ ] 384	Shuffle an Array		
 - [ ] 385	Mini Parser		
-- [ ] 389	Find the Difference		
+- [x] 389	Find the Difference		
 - [ ] 394	Decode String		
 - [ ] 398	Random Pick Index	
   
