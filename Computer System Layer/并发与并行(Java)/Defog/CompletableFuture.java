@@ -33,7 +33,7 @@ public static void main(String[] args) {
 
 
 /*
-上面的 getOrderTask + enrichTask + performPaymentTask + dispatchTask + sendEmailTask 应为一个 independant flow，
+上面的 getOrderTask + enrichTask + performPaymentTask + dispatchTask + sendEmailTask 被视为一个 independant flow，
 若 main thread 需要执行多个（比如 100 个）同类的 flow 时，希望其互相不要影响、阻塞，且任意 flow 也不应该阻塞 main thread。
 
 另，independant flow 里的 tasks 却不一定都 dependant，比如后 4 个 tasks 均依赖于 getOrderTask，performPaymentTask 与 enrichTask 互相不依赖，dispatchTask 依赖于 performPaymentTask 与 enrichTask 等等。
