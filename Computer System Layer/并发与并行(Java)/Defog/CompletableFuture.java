@@ -32,6 +32,12 @@ public static void main(String[] args) {
 }
 
 
+/*
+上面的 getOrderTask + enrichTask + performPaymentTask + dispatchTask + sendEmailTask 应为一个 independant flow，
+若 main thread 需要执行多个（比如 100 个）同类的 flow 时，希望其互相不要影响、阻塞，且任意 flow 也不应该阻塞 main thread。
+
+另，independant flow 里的 tasks 却不一定都 dependant，比如后 4 个 tasks 均依赖于 getOrderTask，performPaymentTask 与 enrichTask 互相不依赖，dispatchTask 依赖于 performPaymentTask 与 enrichTask 等等。
+*/
 public static void main(String[] args) {
 
     for (int i=0; i<100; i++) {
@@ -48,9 +54,9 @@ public static void main(String[] args) {
         // CompletableFuture.supplyAsync(() -> getOrder(), ioBound) // specify own/customized thread pool when with sec paramter ExecutorService
         //     .thenApplyAsync(order -> enrich(order), cpuBound) // subsequent operation not handled by same thread when using thenApplyAsync()
         //     .thenApplyAsync(order -> performPayment(order), ioBound) // specify own/customized thread pool when with sec paramter ExecutorService
-        //     .exceptionally(e -> new FailedOrder())
+        //     .exceptionally(e -> new FailedOrder()) // exception catch when any of above operation failed
         //     .thenApplyAsync(order -> dispatch(order))
         //     .thenAccept(order -> sendEmail(order))
-        //     .thenCombine();
+        //     .thenCombine(CompletableFuture.supplyAsync(() -> otherTask()), (res1, res2) -> System.out.println(res1 + res2)));
     }
 }
