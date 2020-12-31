@@ -67,6 +67,7 @@
   * LinkedList、ArrayList、HashSet 是非线程安全的，Vector 是线程安全的（Vector 类中的方法很多有 synchronied 进行修饰，这样就导致了 Vector 在效率上无法与 ArrayLst 相比），Java 中 ArrayList、LinkedList、Vector 的[区别](https://www.cnblogs.com/wanlipeng/archive/2010/10/21/1857791.html)。
   * HashMap 是非线程安全的，HashTable 是线程安全的，它俩的[详细区别](https://stackoverflow.com/questions/40471/differences-between-hashmap-and-hashtable)。
   * StringBuilder 是非线程安全的，StringBuffer 是线程安的。
+* 虽然 Java 没有提供内置的线程安全的 List 和 Set，但是可以通过 `Collections.synchronizedList(List<T> list)` 和 `Collections.synchronizedSet(Set<T> set)` 将非线程安全的 List 和 Set 转换为线程安全的 List 和 Set。
 * Map、Dictionary、Table 的[异同](https://www.zhihu.com/question/27581780)。
 * Java 的数组/array 是语言本身提供的，而 ArrayList、LinkedList、Vector(向量) 等等都是 Java Util 包基于数组实现的，参见[图解](./Java%20Util%20Collections.png)。
 * Java 的 Vector、Stack 已过时（JDK 1.0）、不建议使用（性能不佳、继承了被弃用的父类、应用了不佳的旧设计和 API），相应的可以使用 ArrayList、Deque（具备 Stack 的 LIFO 功能、相关方法，但注意只调用 push()/pop()/peek() 方法，避免调用 Deque 的其他方法，具体比如 ArrayDeque）替代。同理 Java 的 Hashtable 也被弃用，原因也是性能不佳以及继承了被弃用的父类。
