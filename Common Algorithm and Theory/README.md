@@ -8,7 +8,7 @@
   - [递归迭代 | Recursion Iteration](./递归与迭代.md)
   - [分治法 | Divide-and-Conquer Algorithm](./分治法.md) (时间复杂度不固定，比如若是指数分解则为 O(loga N)，若是线性分解则为 O(N)，其他分解情况下亦有可能是其他大 O)
   - [二分搜索 | Binary Search](./二分搜索.md) (时间复杂度 O(logN))
-  - [前缀和, 差分| Prefix Sum, Finite Difference](./前缀和与差分.md)
+  - [前缀和, 差分| Prefix Sum, Difference](./前缀和与差分.md)
 - 中阶
   - [双指针法, 滑动窗口算法 | Two Pointer, Sliding Window](./双指针法与滑动窗口算法.md)
   - [深度优先, 广度优先 | Depth First Search, Breadth First Search](./树图遍历.md)

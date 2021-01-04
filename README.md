@@ -87,16 +87,16 @@
 > 数据结构（高级的，本科基本学不到）：线段树，树状数组，并查集，字典树等  
 > 2，算法  
 > 算法（低级的）：排序算法（八种），DFS，BFS，二分查找，回溯，分治，递归，动态规划，拓扑排序，贪心等  
-> 算法（学校学不到的）：Sliding window，扫描线算法（图形学），蓄水池算法，flood fill（图形学）等  
+> 算法（学校学不到的）：Sliding Window，扫描线算法（图形学），蓄水池算法，Flood Fill（图形学）等  
 > 更难的其实也涉及到很多：KMP，马拉车等  
 > 3，其他知识  
 > 这还仅仅是算法和数据结构，那么还有别的知识：  
-> 位运算（Bit），基础数据结构实现（LinkedList Deque等实现），一些设计思想（Design），数学知识（Math），通配符，转义字符，记忆化搜索等。  
+> 位运算（Bit），基础数据结构实现（LinkedList、Deque等实现），一些设计思想（Design），数学知识（Math），通配符，转义字符，记忆化搜索等。  
 > 如果用的是 Java，其实别的语言也一样，Java 还有一些常用的数据结构：TreeMap，TreeSet，PriorityQueue，Deque 等  
 > 以上的所有东西，全部都是 Leetcode 题目出现过的。  
 > 如果是针对面试，有很多都是北美的，Google、Facebook 这种公司，会的还要更多：  
 > Dijkstra，二分图，红黑树知识等；  
-> Java 的基础：Heap 实现，HashMap，HashSet 具体区别等，equals hashcode 重写等  
+> Java 的基础：Heap 实现，HashMap，HashSet 具体区别等，equals、hashcode 重写等  
 > 这些东西一样，都是曾经在面试中大量出现的，就是我们要会的基础。  
   
 以上引用自：https://www.zhihu.com/question/30737325/answer/524120016  
