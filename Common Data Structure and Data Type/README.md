@@ -143,7 +143,7 @@ ConcurrentSkipListMap | O(log n) |   O(log n)  | O(1)     | Skip List
   
 ## 更多常用的高级数据结构（Advanced Data Structures）
   
-- [树状数组 | BinaryIndexedTree](../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/BinaryIndexedTree(FenwickTree)/)  
+- [树状数组 | BinaryIndexedTree](../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/BinaryIndexedTree(FenwickTree)/) (单点修改、区间查询均为 O(logN))  
   
 ### 参考
 * [MIT Course](https://courses.csail.mit.edu/6.851/fall17/)
