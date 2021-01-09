@@ -1,6 +1,7 @@
 # 常用数据结构
   
 - [数组 | Array]() (索引 O(1)，遍历 O(N)，插入/删除节点 O(N))
+  - [树状数组 | BinaryIndexedTree](../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/BinaryIndexedTree(FenwickTree)/)
 - [线性表 | Linear List]()
   - [顺序表 | ArrayList]() (索引 O(1)，遍历 O(N)，添加节点 O(1)，插入/删除节点 O(N))
   - [向量 | Vector](./Data%20Structure%20Implementation/Vector/) (索引 O(1)，遍历 O(N)，添加节点 O(1)，插入/删除节点 O(N))
