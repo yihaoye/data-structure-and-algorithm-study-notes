@@ -4,7 +4,7 @@
 ## 树状数组
 如果要执行“单点更新”，就得更新前缀和数组，又得计算一次前缀和，时间复杂度为 O(N)。那如果在一次业务场景中“前缀和”和“单点更新”的次数都很多，前缀和数组就不高效了。而 Fenwick 树（树状数组）就是“高效的”实现“前缀和”和“单点更新”这两个操作的数据结构。  
 树状数组插入和查询都可以优化到 O(logN)。差分和前缀和适合用在查询或修改次数十分巨大的时候，当修改和查询在同一复杂度时适合用树状数组。  
-*树状数组或二元索引树（英语：Binary Indexed Tree），简称 BIT，又以其发明者命名为 Fenwick 树，最早由 Peter M. Fenwick 于1994年以 A New Data Structure for Cumulative Frequency Tables 为题发表在 SOFTWARE PRACTICE AND EXPERIENCE。其初衷是解决数据压缩里的累积频率（Cumulative Frequency）的计算问题，现多用于高效计算数列的前缀和，区间和。它可以以 $\displaystyle O(\log n)$ 的时间得到任意前缀和 $\displaystyle \sum _{i=1}^{j}A[i],1<=j<=N$，并同时支持在 $\displaystyle O(\log n)$ 时间内支持动态单点值的修改。空间复杂度 $\displaystyle O(n)$。*  
+树状数组或二元索引树（英语：Binary Indexed Tree），简称 BIT，又以其发明者命名为 Fenwick 树，最早由 Peter M. Fenwick 于1994年以 A New Data Structure for Cumulative Frequency Tables 为题发表在 SOFTWARE PRACTICE AND EXPERIENCE。其初衷是解决数据压缩里的累积频率（Cumulative Frequency）的计算问题，现多用于高效计算数列的前缀和，区间和。它可以以 $\displaystyle O(\log n)$ 的时间得到任意前缀和 $\displaystyle \sum _{i=1}^{j}A[i],1<=j<=N$，并同时支持在 $\displaystyle O(\log n)$ 时间内支持动态单点值的修改。空间复杂度 $\displaystyle O(n)$。  
   
 根据数组 `[1, 2, 3, 4, 5]` 来创建对应的树状数组：  
 ![](./树状数组.gif)  
@@ -20,10 +20,11 @@
   
 理解数组 C 的定义  
 首先强调一下，树状数组的下标从 1 开始计数，这一点看到后面就会很清晰了。先了解如下的定义，请一定先记住这些记号所代表的含义：  
-1、数组 C 是一个对原始数组 A 的预处理数组。  
-2、还要熟悉几个记号。为了方便说明，避免后面行文啰嗦，将固定使用记号 i、j、k，它们的定义如下：
-记号 i：表示预处理数组 C 的索引（十进制表示）。
-记号 j：表示原始数组 A 的索引（十进制表示）。
+1. 数组 C 是一个对原始数组 A 的预处理数组。
+2. 还要熟悉几个记号。为了方便说明，避免后面行文啰嗦，将固定使用记号 i、j、k，它们的定义如下：
+    * 记号 i：表示预处理数组 C 的索引（十进制表示）。
+    * 记号 j：表示原始数组 A 的索引（十进制表示）。  
+
 通过以下的图，来看看 C1、C2、C3、C4、C5、C6、C7、C8 分别是如何定义的。  
   
 ![](./fenwick-tree-1.jpg)  
@@ -33,7 +34,7 @@
 ![](./fenwick-tree-5.jpg)  
 ![](./fenwick-tree-6.jpg)  
   
-关于数组 C 与 k：将数组 C 的索引 i 表示成二进制，从右向左数，遇到 1 则停止，数出 0 的个数记为 k，则计算 2<sup>k</sup> 就是“数组 C 中的元素来自数组 A 的个数”，并且可以具体得到来自数组 A 的表示，即从当前索引 i 开始，从右向前数出 2<sup>k</sup> 个数组 A 中的元素的和，即组成了 $C[i]$。  
+关于数组 C 与 k：将数组 C 的索引 i 表示成二进制，从右向左数，遇到 1 则停止，数出 0 的个数记为 k，则计算 2<sup>k</sup> 就是“数组 C 中的元素来自数组 A 的个数”，并且可以具体得到来自数组 A 的表示，即从当前索引 i 开始，从右向前数出 2<sup>k</sup> 个数组 A 中的元素的和，即组成了 C[i]。  
 记号 k ：将 i 的二进制表示从右向左数出的 0 的个数，遇到 1 则停止，记为 k。只对数组 C 的索引 i 进行这个计算，数组 A 的索引 j 不进行相应的计算。  
 例：当 i=8 时，计算 k。  
 分析：因为 8 的二进制表示是 00001000，从右边向左边数遇到 1 之前，遇到了 3 个 0，此时 k = 3。计算出 k 以后，2<sup>k</sup> 即 8 立马得到。  
@@ -46,7 +47,7 @@
   
 **parent(i) = i + lowbit(i)**  
   
-更多树状数组详解待添加/更新，[参考](https://www.acwing.com/blog/content/80/) ...  
+待续：更多树状数组详解有待添加/更新，参考[链接](https://www.acwing.com/blog/content/80/) ...  
   
   
   
