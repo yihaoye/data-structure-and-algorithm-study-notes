@@ -43,8 +43,12 @@
 
 **lowbit(i) = i & (-i)**  
 解释：如果直接将一个整数“按位取反”，再与原来的数做“与”运算，一定得到 0。巧就巧在，负数的二进制表示上，除了要求对“按位取反”以外，还要“加” 1，在“加” 1 的过程中产生的进位数即是“将 i 表示成二进制以后，从右向左数，遇到 1 停止时数出 0 的个数”。  
-
-
+  
+**parent(i) = i + lowbit(i)**  
+  
+更多树状数组详解待添加/更新，[参考](https://www.acwing.com/blog/content/80/) ...  
+  
+  
   
 ## 解释 2
 **树状数组的引入**  
@@ -84,4 +88,5 @@ lowbit 怎么算？如果一位一位验证的话，会形成额外的时间开�
 ### 参考
 https://zh.wikipedia.org/wiki/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84  
 https://www.acwing.com/blog/content/80/  
+https://jojozhuang.github.io/algorithm/data-structure-fenwick-tree  
 https://zhuanlan.zhihu.com/p/93795692  

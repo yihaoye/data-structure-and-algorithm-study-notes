@@ -1,14 +1,28 @@
+// 详细请看：
+// https://www.acwing.com/blog/content/80/
+// https://jojozhuang.github.io/algorithm/data-structure-fenwick-tree
 public class FenwickTree {
 
     /**
      * 预处理数组
      */
-    private int[] tree;
+    private int[] tree; // index 0 不使用，所以总长为 len + 1
     private int len;
 
     public FenwickTree(int n) {
         this.len = n;
-        tree = new int[n + 1];
+        tree = new int[this.len + 1];
+    }
+
+    /**
+     * 树状数组的初始化
+     */
+    public FenwickTree(int[] nums) {
+        this.len = nums.length;
+        tree = new int[this.len + 1];
+        for (int i = 0; i < this.len; i++) {
+            update(i, nums[i]);
+        }
     }
 
     /**
@@ -18,8 +32,9 @@ public class FenwickTree {
      * @param delta 变化值 = 更新以后的值 - 原始值
      */
     public void update(int i, int delta) {
-        // 从下到上更新，注意，预处理数组，比原始数组的 len 大 1，故 预处理索引的最大值为 len
-        while (i <= len) {
+        i += 1;
+        // 从下到上更新，注意，预处理数组，比原始数组的 len 大 1，故预处理索引的最大值为 len
+        while (i <= this.len) {
             tree[i] += delta;
             i += lowbit(i);
         }
@@ -31,6 +46,7 @@ public class FenwickTree {
      * @param i 前缀的最大索引，即查询区间 [0, i] 的所有元素之和
      */
     public int query(int i) {
+        i += 1;
         // 从右到左查询
         int sum = 0;
         while (i > 0) {
@@ -42,13 +58,17 @@ public class FenwickTree {
 
     /**
      * 区间查询
-     * 即查询区间 [a, b] 的所有元素之和
+     * 即查询区间 [i, j] 的所有元素之和
      * 
-     * @param a 前缀的最小索引
-     * @param b 前缀的最大索引
+     * @param i 前缀的最小索引
+     * @param j 前缀的最大索引
      */
-    public int query(int a, int b) {
-        return query(b) - query(a - 1);
+    public int query(int i, int j) {
+        if (i >= 0 && j >= 0 && j >= i) {
+            return query(j) - query(i - 1);
+        } else {
+            return -1;
+        }
     }
 
     /**
