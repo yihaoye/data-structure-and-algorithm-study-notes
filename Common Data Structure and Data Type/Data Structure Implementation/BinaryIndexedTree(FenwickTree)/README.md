@@ -4,7 +4,7 @@
 ## 树状数组
 如果要执行“单点更新”，就得更新前缀和数组，又得计算一次前缀和，时间复杂度为 O(N)。那如果在一次业务场景中“前缀和”和“单点更新”的次数都很多，前缀和数组就不高效了。而 Fenwick 树（树状数组）就是“高效的”实现“前缀和”和“单点更新”这两个操作的数据结构。  
 树状数组插入和查询都可以优化到 O(logN)。差分和前缀和适合用在查询或修改次数十分巨大的时候，当修改和查询在同一复杂度时适合用树状数组。  
-树状数组或二元索引树（英语：Binary Indexed Tree），简称 BIT，又以其发明者命名为 Fenwick 树，最早由 Peter M. Fenwick 于1994年以 A New Data Structure for Cumulative Frequency Tables 为题发表在 SOFTWARE PRACTICE AND EXPERIENCE。其初衷是解决数据压缩里的累积频率（Cumulative Frequency）的计算问题，现多用于高效计算数列的前缀和，区间和。它可以以 $\displaystyle O(\log n)$ 的时间得到任意前缀和 $\displaystyle \sum _{i=1}^{j}A[i],1<=j<=N$，并同时支持在 $\displaystyle O(\log n)$ 时间内支持动态单点值的修改。空间复杂度 $\displaystyle O(n)$。  
+*树状数组或二元索引树（英语：Binary Indexed Tree），简称 BIT，又以其发明者命名为 Fenwick 树，最早由 Peter M. Fenwick 于1994年以 A New Data Structure for Cumulative Frequency Tables 为题发表在 SOFTWARE PRACTICE AND EXPERIENCE。其初衷是解决数据压缩里的累积频率（Cumulative Frequency）的计算问题，现多用于高效计算数列的前缀和，区间和。它可以以 O(logN) 的时间得到任意前缀和 <img src="https://render.githubusercontent.com/render/math?math=\displaystyle \sum _{i=1}^{j}A[i],1<=j<=N">，并同时支持在 O(logN) 时间内支持动态单点值的修改。空间复杂度 O(N)。*  
   
 根据数组 `[1, 2, 3, 4, 5]` 来创建对应的树状数组：  
 ![](./树状数组.gif)  
