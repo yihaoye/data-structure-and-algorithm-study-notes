@@ -184,3 +184,46 @@ https://book.douban.com/review/8534721/
 https://blog.csdn.net/jerry11112/article/details/79027834  
 https://www.liaoxuefeng.com/wiki/1016959663602400/1017328525009056  
 https://www.jianshu.com/p/e074b85b84ef  
+  
+  
+### 代码质量
+```
+什么是好代码，不好定义，但是关于什么是代码里的"坏味道"，比较容易搞清楚。避免代码里的“坏味道"，离好的代码就不远了，坏味道一二三及推荐做法：  
+* 代码重复
+* 函数太长 - 如果太长（一般不宜超过 200 行,但不绝对），自己都不太容易读懂，请拆成小函数吧
+* 类太大 - 一般不宜超过 1000 行，同样不绝对，jdk 源码过千行的不少
+* 数据泥团 - 即很多地方有相同的三四项、两个类中有相同的字段、许多函数签名中有相同的参数。把这些应该捆绑在一起的数据项，弄到一个新的类里。这样，函数参数列表会变短不少，简单化了
+* 函数参数列表太长 - 工作中有 7 个参数的函数调用，搞清楚每个参数的业务含意和顺序有点困难。尽管可能有默认函数参数，仍然容易出错
+* 变量名、函数名称、类名、接口等命名含义不清晰 - 函数名能让人望名知义，看名字就知道函数的功能几乎不需要多少 comments 最好，通常 DAO 层函数的命令规范是“操作+对象+通过+什么”，如：updateUserById, insertQuarter，delteteUserByName
+* 太多的 if else
+* 在循环里定义大量耗资源的变量 - 大对象，如果可以放在循环外，被共享，节省时间空间
+* try 块代码太长 - try 块只包住真的可能发生异常的语句，最小原则，同样因为 try 包起来的代码要有额外开销
+* 不用的资源未及时清理掉，流及时关闭 - 如 IO 句柄、数据库连接、网络连接等。不清理掉可能后果严重
+* try-finally 不如 try-with-resources
+* 循环里字符串的拼接不要用”+“
+* 太巨量的循环，看情况用乘除法和移位运算 - 移位运算通常速度略微快于乘除法
+* 避免运行时大量的反射 - 反射的不好的地方：编译时没法检查了、反射的代码冗长和丑陋、性能损耗
+* 基本类型优于装箱基本类型 - 基本类型更快，更省空间。避免不经意引起自动装箱和拆箱。是否相等的比较，"装箱基本类型"可能会出错
+* 避免创建不必要的对象
+* 未作参数有效性检查 - ArrayIndexOutOfBoundsException、NullPointerException 等等，是否为空的检查推荐 Java 8 的 Optional
+* 延迟初始化和懒加载 - 这个的确是一种优化，即需要用到它的值时，才初始化。如果永远不用到，就永远不会被初始化。但要慎用，只有在初始化这个数据域开销很大的时候才用。在大多数情况下，正常的初始化要优于延迟初始化
+* LinkedHashMap、HashMap、ArrayList、HashSet、HashTable 等集合类，没有初始化容量
+* 方法和类如果确实有业务场景需求不会被覆盖、不会被继承，用 final 修饰 - final method 在某些处理器下得到优化，跑得更快
+* 合理数据库连接池和线程池 - 一个减少数据库连接的建立和断开（耗时)，一个减少线程的创建和销毁，动态根据请求分配资源，提高资源利用率
+* 多用 buffer 等缓冲提高输入输出 IO 效率及 FileChannel.transferTo、FileChannel.transferFrom 和 FileChannnel.map - 诸如 BufferedReader 、BufferedWriter、BufferedInputStream 和 BufferedOutputStream 等
+* synchronized 修饰符最小作用域 - synchronized 要耗费性能，因此 synchronized 代码块优于 synchronized 方法，最小原则
+* enum 代替 int 枚举模式 - int 枚举模式不具有类型安全性，也没有描述性，比较也会出问题
+* 合理使用静态工厂方法代替构造器
+* 组合优于继承 - 因为继承打破了封装性，overriding 可能导致安全漏洞
+* 异常只能用于处理错误，不能用来控制业务流程
+* 精准的运算，如货币运算等不要用 float 和 double - 正确的做法，用 BigDecimal、int 和 long
+* ArrayList 对于“随机访问较多的场景”性能较高，LinkedListd 对于“删除和插入较多的场景”性能更高
+* 使用范围最小的数据类型，redis 源码里大量使用 unsigned int 和 unsigned long，时间和空间效率高于 int 和 long
+* 将局部变量最小化
+* 并发的数据结构可以降低高并发下的 CPU 时间，但要评估内存消耗 - 并发的数据结构如 ConcurrentHashMap、CopyOnWriteArrayList、CopyOnWriteHashSet 等，可以在读和写的时候，不用加锁，因而提高了高并发下的处理效率。但是其复杂的数据结构和锁优化，代码了额外的内存消耗
+  
+参考《Effective java》《重构 —— 改善既有代码的设计》《深入分析Java Web技术内幕》  
+```
+  
+转载来源：  
+https://www.cnblogs.com/NaughtyCat/p/what-is-good-codes.html  
