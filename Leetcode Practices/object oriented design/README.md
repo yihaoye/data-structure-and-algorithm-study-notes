@@ -50,6 +50,17 @@
      2. 提高类的抽象程度，对于一个健全的类库来说，它的层次结构在进行若干层次的子类设计后，应当是深而窄的。这是因为，如果类层次结构中的层次较多。而每一层上的类少，就表明对象的共有特性经过了比较细致的分层次抽象，使用类的特殊性逐渐增强，因而能够提供较多的、在特定应用范畴内可普遍适用的类。
      3. 认定和培育构架，类库中的类就象一般建筑预制件，可以复杂到整个单元居室，也可以简单到梁柱，规格比较标准，容易被独立使用。但需要应用开发人员自己根据应用特征进行组装，因此类库本身并不是重用的基本单位。相对地，构架则是以构件之间有密切的联系为特征，面向特定的应用范畴，以整个构架而不是其中的单个构件来体现它的能量，因此构架本身是重用的基本单位，一旦与应用特征相符，就可以整体被重用。所以，构架是 OOD 是理想的目标。  
   
+#### 一些基本设计分工
+[参考链接 1](https://en.wikipedia.org/wiki/Object-oriented_analysis_and_design)  
+[参考链接 2](./grok%20object%20oriented%20design%20interview/1.%20Object-Oriented%20Design%20and%20UML/3.%20What%20is%20UML/What%20is%20UML_%20-%20Grokking%20the%20Object%20Oriented%20Design%20Interview.html)  
+* [Use Case Diagram](https://en.wikipedia.org/wiki/Use_case_diagram) - 即小人图，关心主要对象之间的互动（着重 Communication 与 Abstraction）。
+* [ER Diagram](https://en.wikipedia.org/wiki/Entity-relationship_model) 数据库图，只关注类、对象的数据以及类、对象互相间的关系（比如一对多关系，不包含互动关系）。
+* [Class Diagram](https://en.wikipedia.org/wiki/Class_diagram) 类似 ER Diagram，但是还多了对接口、类、对象之间依赖、继承、组成、调用(关联)、互动(动作)、实现等等关系描述。
+* [Sequence Diagram](https://en.wikipedia.org/wiki/Sequence_diagram) - 样子类似 TCP 协议握手解释图（Use Case Diagram 与 Sequence Diagram 的区别是前者描述最高、抽象层级的系统功能与用例/用况，是纯产品设计最高层；后者包括更多实际流程的考虑，是产品设计的底层并考虑、包括许多业务领域、工程领域的专业程序与逻辑）。
+* [Activity Diagram](https://en.wikipedia.org/wiki/Activity_diagram) - 类比状态机的图解（Sequence Diagram 与 Activity Diagram 的区别是前者关注在某个流程里对象之间的互动走向；后者关注于某个或全部流程里系统、应用的状态之间的互动走向），亦即 [Flow Charts](https://en.wikipedia.org/wiki/Flowchart)（类似编程语言教程的 if else 程序判断流程图）。  
+  
+OOD 通常不需要画 ER Diagram，除非要把数据库也考虑进去。以上 Diagram 均为 UML 所包含。  
+  
 ### 其他面向对象设计原则
   * CARP（Composition/Aggregation Reuse Principle），设计者首先应当考虑复合/聚合，而不是继承。这个就是所谓的 Favor Composition over Inheritance，在实践中复合/聚合会带来比继承更大的利益，所以要优先考虑。
   * LoD or LKP（Law of Demeter or Least Knowlegde Principle），迪米特法则或最少知识原则，这个原则首次在 Demeter 系统中得到正式运用，所以定义为迪米特法则。即一个对象应当尽可能少的去了解其他对象。也就是又一个关于如何松耦合（Loosely-Coupled）的法则。
