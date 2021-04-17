@@ -1,4 +1,5 @@
 <svg width="1000" height="150" xmlns="http://www.w3.org/2000/svg">
+    <style>svg { background-color: white; }</style>
     <foreignObject width="1000" height="150">
         <div xmlns="http://www.w3.org/1999/xhtml">
             <ul>

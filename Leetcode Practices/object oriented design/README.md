@@ -1,7 +1,7 @@
-## OOD 学习资源
-### 针对面试
+# OOD 学习资源
+## 针对面试
 * [Object Oriented Design 实践步骤](./object%20oriented%20design%20practical%20steps/)
-* [Grok Object Oriented Design Tutorial](./grok%20object%20oriented%20design%20interview)
+* [Grok Object Oriented Design Tutorial](./grok%20object%20oriented%20design%20interview)（即 [educative.io](https://www.educative.io/courses/grokking-the-object-oriented-design-interview) OOD 课程）
 * [设计模式](./design%20pattern/)
 * 面向对象设计专题班（文泰来 / 九章算法），目录如下（[链接](https://www.youtube.com/watch?v=oaUVVBOhyJw) 仅能免费看第一部分）
   * 面向对象设计入门 Introduction to Object Oriented Design（高频 OOD 面试题 - 电梯设计 Elevator Design）
@@ -23,9 +23,21 @@
   * 游戏棋牌类面向对象设计 OOD for Games（Tictactoe、Chinese Chess、Black Jack）
 * [算法刷完了如何准备系统设计 OOD](https://www.youtube.com/watch?v=by6WFFzXlF0)
 * [Top 10 OOD Interview questions](https://hackernoon.com/the-top-10-object-oriented-design-interview-questions-developers-should-know-c7fc2e13ce39)  
-* [educative.io](https://www.educative.io/courses/grokking-the-object-oriented-design-interview)  
   
-### 详细掌握 OOD 的基本方法与步骤
+## 详细掌握 OOD 的基本方法与步骤
+### 前置知识点：一些基本设计分工
+[参考链接 1](https://en.wikipedia.org/wiki/Object-oriented_analysis_and_design)  
+[参考链接 2](./grok%20object%20oriented%20design%20interview/1.%20Object-Oriented%20Design%20and%20UML/3.%20What%20is%20UML/What%20is%20UML_%20-%20Grokking%20the%20Object%20Oriented%20Design%20Interview.html)  
+* [Use Case Diagram](https://en.wikipedia.org/wiki/Use_case_diagram) - 即小人图，关心主要对象之间的互动（着重 Communication 与 Abstraction）。
+* [ER Diagram](https://en.wikipedia.org/wiki/Entity-relationship_model) 数据库图，只关注类、对象的数据以及类、对象互相间的关系（比如一对多关系，不包含互动关系）。
+* [Class Diagram](https://en.wikipedia.org/wiki/Class_diagram) 类似 ER Diagram，但是还多了对接口、类、对象之间依赖、继承、组成、调用(关联)、互动(动作)、实现等等关系描述。
+* [Sequence Diagram](https://en.wikipedia.org/wiki/Sequence_diagram) - 样子类似 TCP 协议握手解释图（Use Case Diagram 与 Sequence Diagram 的区别是前者描述最高、抽象层级的系统功能与用例/用况，是纯产品设计最高层；后者包括更多实际流程的考虑，是产品设计的底层并考虑、包括许多业务领域、工程领域的专业程序与逻辑）。
+* [Activity Diagram](https://en.wikipedia.org/wiki/Activity_diagram) - 类比状态机的图解（Sequence Diagram 与 Activity Diagram 的区别是前者关注在某个流程里对象之间的互动走向；后者关注于某个或全部流程里系统、应用的状态之间的互动走向），亦即 [Flow Charts](https://en.wikipedia.org/wiki/Flowchart)（类似编程语言教程的 if else 程序判断流程图）。  
+  
+*OOD 通常不需要画 ER Diagram，除非要把数据库也考虑进去。以上 Diagram 均为 UML 所包含。*  
+  
+### OOD 基本步骤
+基本还是应该参考上面的 [Object Oriented Design 实践步骤](./object%20oriented%20design%20practical%20steps/)，下面再总结、补充一下这些步骤：
   1. 类的认定 - OOD 中关于类的认定与 OOA 中关于对象的认定有着密切关系。但是 OOD 中对类的认定，不能像 OOA 中那样以准确反映问题空间为衡量准则，更多的要考虑通过对类以及类层次结构的认定，寻找解空间的基本结构，并为实现提供有效的支持。以下这些准则有助于更好的认定、定义类与方法：
      1. 对于问题空间中自然出现的实体，用类进行模型化；
      2. 将方法设计成单用途的；
@@ -51,18 +63,7 @@
      2. 提高类的抽象程度，对于一个健全的类库来说，它的层次结构在进行若干层次的子类设计后，应当是深而窄的。这是因为，如果类层次结构中的层次较多。而每一层上的类少，就表明对象的共有特性经过了比较细致的分层次抽象，使用类的特殊性逐渐增强，因而能够提供较多的、在特定应用范畴内可普遍适用的类。
      3. 认定和培育构架，类库中的类就象一般建筑预制件，可以复杂到整个单元居室，也可以简单到梁柱，规格比较标准，容易被独立使用。但需要应用开发人员自己根据应用特征进行组装，因此类库本身并不是重用的基本单位。相对地，构架则是以构件之间有密切的联系为特征，面向特定的应用范畴，以整个构架而不是其中的单个构件来体现它的能量，因此构架本身是重用的基本单位，一旦与应用特征相符，就可以整体被重用。所以，构架是 OOD 是理想的目标。  
   
-#### 一些基本设计分工
-[参考链接 1](https://en.wikipedia.org/wiki/Object-oriented_analysis_and_design)  
-[参考链接 2](./grok%20object%20oriented%20design%20interview/1.%20Object-Oriented%20Design%20and%20UML/3.%20What%20is%20UML/What%20is%20UML_%20-%20Grokking%20the%20Object%20Oriented%20Design%20Interview.html)  
-* [Use Case Diagram](https://en.wikipedia.org/wiki/Use_case_diagram) - 即小人图，关心主要对象之间的互动（着重 Communication 与 Abstraction）。
-* [ER Diagram](https://en.wikipedia.org/wiki/Entity-relationship_model) 数据库图，只关注类、对象的数据以及类、对象互相间的关系（比如一对多关系，不包含互动关系）。
-* [Class Diagram](https://en.wikipedia.org/wiki/Class_diagram) 类似 ER Diagram，但是还多了对接口、类、对象之间依赖、继承、组成、调用(关联)、互动(动作)、实现等等关系描述。
-* [Sequence Diagram](https://en.wikipedia.org/wiki/Sequence_diagram) - 样子类似 TCP 协议握手解释图（Use Case Diagram 与 Sequence Diagram 的区别是前者描述最高、抽象层级的系统功能与用例/用况，是纯产品设计最高层；后者包括更多实际流程的考虑，是产品设计的底层并考虑、包括许多业务领域、工程领域的专业程序与逻辑）。
-* [Activity Diagram](https://en.wikipedia.org/wiki/Activity_diagram) - 类比状态机的图解（Sequence Diagram 与 Activity Diagram 的区别是前者关注在某个流程里对象之间的互动走向；后者关注于某个或全部流程里系统、应用的状态之间的互动走向），亦即 [Flow Charts](https://en.wikipedia.org/wiki/Flowchart)（类似编程语言教程的 if else 程序判断流程图）。  
-  
-OOD 通常不需要画 ER Diagram，除非要把数据库也考虑进去。以上 Diagram 均为 UML 所包含。  
-  
-### 其他面向对象设计原则
+## 其他面向对象设计原则
   * CARP（Composition/Aggregation Reuse Principle），设计者首先应当考虑复合/聚合，而不是继承。这个就是所谓的 Favor Composition over Inheritance，在实践中复合/聚合会带来比继承更大的利益，所以要优先考虑。
   * LoD or LKP（Law of Demeter or Least Knowlegde Principle），迪米特法则或最少知识原则，这个原则首次在 Demeter 系统中得到正式运用，所以定义为迪米特法则。即一个对象应当尽可能少的去了解其他对象。也就是又一个关于如何松耦合（Loosely-Coupled）的法则。
   * 61 条面向对象设计的经验原则（来源于《OOD启思录》，不必严格遵守这些原则，违背它们也不会被处以宗教刑罚。但应当把这些原则看成警告，若违背了其中的一条，警告就会响起。）
@@ -128,10 +129,10 @@ OOD 通常不需要画 ER Diagram，除非要把数据库也考虑进去。以�
     60. 面向对象设计者不应当让物理设计准则来破坏他们的逻辑设计。但是，在对逻辑设计作出决策的过程中我们经常用到物理设计准则。
     61. 不要绕开公共接口去修改对象的状态。  
   
-### 其他
+## 其他
 * [Chaklader/Object-Oriented-Design](https://github.com/Chaklader/Object-Oriented-Design)  
   
-## 工作
+# 工作
 > OOD，从表象上理解是用class来抽象和模拟事物之间的关系，实际上是借助接口与继承这种抽象机制来 decouple (解耦合)代码，使得代码结构清晰易于维护。在实践中，大家发现有一些解耦合的方式经常出现，就把它们总结为 design patterns (设计模式)。很多人在读设计模式这本书的时候会有一种“啊，原来这种写法叫做这个模式”的感觉——然而一本系统性的总结书籍是必须的，1 大家总有没用过见过的模式，2 设计模式给出了一个交流的基础，举例来说当你讨论一段代码的写法时的时候不用自己在组织内部发明一套语言，或者绕一个大圈子描述细节，而是可以简单地说，我们可以用xxx模式  
 > 学 OOD，就两本书，一本是大名鼎鼎的 Design Patterns: Elements of Reusable Object-Oriented Software，因为作者有四个所以又称 GOF/四人帮  
 > 另外一本是 Head First Design Patterns，相对来说浅显易懂  
@@ -158,7 +159,7 @@ OOD 通常不需要画 ER Diagram，除非要把数据库也考虑进去。以�
   
 以上来源：https://www.1point3acres.com/bbs/thread-176958-1-1.html  
   
-### 面向对象 vs 面向过程 vs 函数式编程
+## 面向对象 vs 面向过程 vs 函数式编程
 > 例如五子棋，面向过程的设计思路就是首先分析问题的步骤：1、开始游戏，2、黑子先走，3、绘制画面，4、判断输赢，5、轮到白子，6、绘制画面，7、判断输赢，8、返回步骤2，9、输出最后结果。把上面每个步骤用分别的函数来实现，问题就解决了。  
 > 而面向对象的设计则是从另外的思路来解决问题。整个五子棋可以分为 1、黑白双方，这两方的行为是一模一样的，2、棋盘系统，负责绘制画面，3、规则系统，负责判定诸如犯规、输赢等。第一类对象（玩家对象）负责接受用户输入，并告知第二类对象（棋盘对象）棋子布局的变化，棋盘对象接收到了棋子的i变化就要负责在屏幕上面显示出这种变化，同时利用第三类对象（规则系统）来对棋局进行判定。  
 > 
@@ -198,7 +199,7 @@ https://www.liaoxuefeng.com/wiki/1016959663602400/1017328525009056
 https://www.jianshu.com/p/e074b85b84ef  
   
   
-### 代码质量
+## 代码质量
 ```
 什么是好代码，不好定义，但是关于什么是代码里的"坏味道"，比较容易搞清楚。避免代码里的“坏味道"，离好的代码就不远了，坏味道一二三及推荐做法：  
 * 代码重复
