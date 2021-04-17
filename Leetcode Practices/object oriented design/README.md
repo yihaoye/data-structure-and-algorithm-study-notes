@@ -1,5 +1,6 @@
 ## OOD 学习资源
 ### 针对面试
+* [Object Oriented Design 实践步骤](./object%20oriented%20design%20practical%20steps/)
 * [Grok Object Oriented Design Tutorial](./grok%20object%20oriented%20design%20interview)
 * [设计模式](./design%20pattern/)
 * 面向对象设计专题班（文泰来 / 九章算法），目录如下（[链接](https://www.youtube.com/watch?v=oaUVVBOhyJw) 仅能免费看第一部分）
