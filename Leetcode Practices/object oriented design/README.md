@@ -1,6 +1,6 @@
 # OOD 学习资源
 ## 针对面试
-* [Object Oriented Design 实践步骤](./object%20oriented%20design%20practical%20steps/)
+* [Object Oriented Design 实战步骤](./object%20oriented%20design%20practical%20steps/)
 * [Grok Object Oriented Design Tutorial](./grok%20object%20oriented%20design%20interview)（即 [educative.io](https://www.educative.io/courses/grokking-the-object-oriented-design-interview) OOD 课程）
 * [设计模式](./design%20pattern/)
 * 面向对象设计专题班（文泰来 / 九章算法），目录如下（[链接](https://www.youtube.com/watch?v=oaUVVBOhyJw) 仅能免费看第一部分）
@@ -37,7 +37,7 @@
 *OOD 通常不需要画 ER Diagram，除非要把数据库也考虑进去。以上 Diagram 均为 UML 所包含。*  
   
 ### OOD 基本步骤
-基本还是应该参考上面的 [Object Oriented Design 实践步骤](./object%20oriented%20design%20practical%20steps/)，下面再总结、补充一下这些步骤：
+基本还是应该参考上面的 [Object Oriented Design 实战步骤](./object%20oriented%20design%20practical%20steps/)，下面再总结、补充一下这些步骤：
   1. 类的认定 - OOD 中关于类的认定与 OOA 中关于对象的认定有着密切关系。但是 OOD 中对类的认定，不能像 OOA 中那样以准确反映问题空间为衡量准则，更多的要考虑通过对类以及类层次结构的认定，寻找解空间的基本结构，并为实现提供有效的支持。以下这些准则有助于更好的认定、定义类与方法：
      1. 对于问题空间中自然出现的实体，用类进行模型化；
      2. 将方法设计成单用途的；
