@@ -19,7 +19,7 @@
 * [观察者 | Observer(Listener)](./Observer.java)
 * [状态 | State](./State.java)
 * [策略 | Strategy](./Strategy.java)
-* [模板方法 | Template Method]()
+* [模板 | Template](./Template.java)
 * [访问者 | Visitor]()  
   
 以上引用自[来源](https://www.liaoxuefeng.com/wiki/1252599548343744/1264742167474528)  
