@@ -9,7 +9,7 @@
 ## 结构型模式
 结构型模式主要涉及如何组合各种对象以便获得更好、更灵活的结构。虽然面向对象的继承机制提供了最基本的子类扩展父类的功能，但结构型模式不仅仅简单地使用继承，而更多地通过组合与运行期的动态组合来实现更灵活的功能。  
 * [适配器 | Adapter](./Adapter.java)
-* [桥接 | Bridge]()
+* [桥接 | Bridge](./Bridge.java)
 * [组合 | Composite](./Composite.java)
 * [代理 | Proxy](./Proxy.java)  
   
@@ -26,6 +26,7 @@
   
 ## 更多
 ### 单例模式与工厂模式的区别
+参考：https://stackoverflow.com/a/2094231/6481829  
 > **A singleton pattern ensures that you always get back the same instance of whatever type you are retrieving, whereas the factory pattern generally gives you a different instance of each type.**  
 > The purpose of the singleton is where you want all calls to go through the same instance. An example of this might be a class that manages a disk cache, or gets data from a static dictionary; wherever it is important only one known instance interacts with the resource. This does make it less scalable.  
 > The purpose of the factory is to create and return new instances. Often, these won't actually be the same type at all, but they will be implementations of the same base class. However, there may be many instances of each type.  
