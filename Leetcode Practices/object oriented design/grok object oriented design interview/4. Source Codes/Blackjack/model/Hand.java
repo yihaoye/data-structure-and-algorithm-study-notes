@@ -3,7 +3,7 @@ public class Hand {
   
     private List<Integer> getScores() {
       List<Integer> totals = new ArrayList();
-      total.add(0);
+      totals.add(0);
   
       for (BlackjackCard card : cards) {
         List<Integer> newTotals = new ArrayList();

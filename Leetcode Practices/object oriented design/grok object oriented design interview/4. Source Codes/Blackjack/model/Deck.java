@@ -5,8 +5,8 @@ public class Deck {
     public Deck() {
       this.creationDate = new Date();
       this.cards = new ArrayList<BlackjackCard>();
-      for(int value = 1; value <= 13; value++){
-        for(SUIT suit : SUIT.values()){
+      for (int value = 1; value <= 13; value++) {
+        for (SUIT suit : SUIT.values()) {
           this.cards.add(new BlackjackCard(suit, value));
         }
       }
