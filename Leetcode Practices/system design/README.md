@@ -47,7 +47,7 @@
 * 数据库（SQL、NoSQL）
 * 搜索引擎（全文搜索、Elasticsearch）
 * 消息队列（RabbitMQ、Kafka）
-* 文件存储（S3、Hadoop HDFS）
+* 文件存储（S3、Hadoop HDFS）（e.g. distributed file storage system for storing photos and videos）
 * 统一认证中心（用户的注册、登录验证、token 鉴权；内部信息系统用户的管理和登录鉴权；应用管理，应用的 secret 生成，应用信息的验证 - 如验证接口签名等）
 * 单点登录系统（Central Authentication Service - CAS）
 * 统一配置中心（Config Server、propeties、yaml）
@@ -59,6 +59,17 @@
 * 扩展（内部服务：包括大数据、构建交付工具、通用运行时服务类库、数据持久化、安全等）  
   
   
+## Grokking System Design
+### Design Twitter
+* Step 1: Requirements clarifications
+* Step 2: System interface definition - Define what APIs/Methods are expected from the system
+* Step 3: Back-of-the-envelope estimation - estimate the scale of the system for scaling, partitioning, load balancing and caching
+* Step 4: Defining data model - entities of service, database choose and design
+* Step 5: High-level design - block diagram with 5-6 boxes representing the core components of the system
+* Step 6: Detailed design - dig deeper into two or three components
+* Step 7: Identifying and resolving bottlenecks
+  
+  
 ## DDIA（Designing Data-Intensive Applications）
 ### 数据密集型应用组件
 现今很多应用程序都是数据密集型（data-intensive）的，而非计算密集型（compute-intensive）的。因此 CPU 很少成为这类应用的瓶颈，更大的问题通常来自数据量、数据复杂性、以及数据的变更速度。  
@@ -68,7 +79,6 @@
 * 允许用户按关键字搜索数据，或以各种方式对数据进行过滤（搜索索引 search indexes）
 * 向其他进程发送消息，进行异步处理（流处理 stream processing）
 * 定期处理累积的大批量数据（批处理 batch processing）  
-  
   
 ### 非功能性需求
 * 可靠性（Reliability）意味着即使发生故障，系统也能正常工作。故障可能发生在硬件（通常是随机的和不相关的），软件（通常是系统性的Bug，很难处理），和人类（不可避免地时不时出错）。容错技术可以对终端用户隐藏某些类型的故障。
