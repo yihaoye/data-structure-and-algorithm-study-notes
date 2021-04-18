@@ -23,3 +23,9 @@
 * [访问者 | Visitor]()  
   
 以上引用自[来源](https://www.liaoxuefeng.com/wiki/1252599548343744/1264742167474528)  
+  
+## 更多
+### 单例模式与工厂模式的区别
+> **A singleton pattern ensures that you always get back the same instance of whatever type you are retrieving, whereas the factory pattern generally gives you a different instance of each type.**  
+> The purpose of the singleton is where you want all calls to go through the same instance. An example of this might be a class that manages a disk cache, or gets data from a static dictionary; wherever it is important only one known instance interacts with the resource. This does make it less scalable.  
+> The purpose of the factory is to create and return new instances. Often, these won't actually be the same type at all, but they will be implementations of the same base class. However, there may be many instances of each type.  
