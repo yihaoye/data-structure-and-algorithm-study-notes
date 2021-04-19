@@ -60,6 +60,15 @@
   
   
 ## Grokking System Design
+### Standard Design Steps within Interview
+* Step 1: Requirements clarifications
+* Step 2: System interface definition - Define what APIs/Methods are expected from the system
+* Step 3: Back-of-the-envelope estimation - estimate the scale of the system for scaling, partitioning, load balancing and caching
+* Step 4: Defining data model - entities of service, database choose and schema and design
+* Step 5: High-level design - block diagram with 5-6 boxes representing the core components of the system
+* Step 6: Detailed design - dig deeper into two or three components
+* Step 7: Identifying and resolving bottlenecks
+  
 ### System Design Basics
 During designing a large system, investing in scaling before it is needed is generally not a smart business proposition; however, some forethought into the design can save valuable time and resources in the future.  
 Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Theorem`, `Load Balancing`, `Caching`, `Data Partitioning`, `Indexes`, `Proxies`, `Queues`, `Replication`, and choosing between `SQL vs NoSQL`.  
@@ -79,15 +88,6 @@ Include:
   * Ease of diagnosing and understanding problems when they occur, ease of making updates or modifications, and how simple the system is to operate.
   
 ### Practice Examples
-#### Design Twitter
-* Step 1: Requirements clarifications
-* Step 2: System interface definition - Define what APIs/Methods are expected from the system
-* Step 3: Back-of-the-envelope estimation - estimate the scale of the system for scaling, partitioning, load balancing and caching
-* Step 4: Defining data model - entities of service, database choose and schema and design
-* Step 5: High-level design - block diagram with 5-6 boxes representing the core components of the system
-* Step 6: Detailed design - dig deeper into two or three components
-* Step 7: Identifying and resolving bottlenecks
-  
 #### Design TinyURL
 [Example Implementation](./example%20questions/Design%20a%20URL%20Shortener%20(TinyURL)%20System.md)  
 * Step 1: Why do we need URL shortening? - save a lot of space when displayed, printed, messaged, or tweeted, and hiding affiliated original URLs.
