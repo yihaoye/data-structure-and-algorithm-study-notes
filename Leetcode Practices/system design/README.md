@@ -60,7 +60,26 @@
   
   
 ## Grokking System Design
-### Design Twitter
+### System Design Basics
+During designing a large system, investing in scaling before it is needed is generally not a smart business proposition; however, some forethought into the design can save valuable time and resources in the future.  
+Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Theorem`, `Load Balancing`, `Caching`, `Data Partitioning`, `Indexes`, `Proxies`, `Queues`, `Replication`, and choosing between `SQL vs NoSQL`.  
+#### Key Characteristics of Distributed Systems
+Include: 
+* Scalability - the capability of a system, process, or a network to continuously evolve/grow and manage increased demand.
+  * Horizontal Scaling - Add more servers (e.g. Cassandra and MongoDB easy to scale horizontally).
+  * Vertical Scaling - Add more resource/power (CPU, RAM, Storage etc) to same server (e.g. MySQL easy to scale vertically) (scaling involves downtime).
+* Reliability - the probability a system will fail in a given period.
+* Availability - the time a system remains operational to perform its required function in a specific period.
+  * Reliability Vs Availability - If a system is reliable, it is available. However, if it is available, it is not necessarily reliable. high reliability contributes to high availability, but it is possible to achieve a high availability even with an unreliable product by minimizing repair time and ensuring that spares are always available when they are needed.
+* Efficiency - Two standard measures of efficiency are response time (or latency) and the throughput (or bandwidth). The two measures correspond to the following unit costs:
+  * Number of messages globally sent by the nodes of the system regardless of the message size.
+  * Size of messages representing the volume of data exchanges.
+* Serviceability or Manageability - how easy to operate and maintain. simplicity and speed with which a system can be repaired or maintained.
+  * If the time to fix a failed system increases, then availability will decrease.
+  * Ease of diagnosing and understanding problems when they occur, ease of making updates or modifications, and how simple the system is to operate.
+  
+### Practice Examples
+#### Design Twitter
 * Step 1: Requirements clarifications
 * Step 2: System interface definition - Define what APIs/Methods are expected from the system
 * Step 3: Back-of-the-envelope estimation - estimate the scale of the system for scaling, partitioning, load balancing and caching
@@ -69,7 +88,7 @@
 * Step 6: Detailed design - dig deeper into two or three components
 * Step 7: Identifying and resolving bottlenecks
   
-### Design TinyURL
+#### Design TinyURL
 [Example Implementation](./example%20questions/Design%20a%20URL%20Shortener%20(TinyURL)%20System.md)  
 * Step 1: Why do we need URL shortening? - save a lot of space when displayed, printed, messaged, or tweeted, and hiding affiliated original URLs.
 * Step 2: Requirements and Goals of the System (Functional Requirements, Non-Functional Requirements, Extended Requirements).
