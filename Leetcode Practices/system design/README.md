@@ -55,7 +55,7 @@
 * 统一调度中心（定时调度 cron job，如定时抓取数据、刷新状态等）
 * 统一日志服务（log4j、logback、Kibana、CloudWatch）
 * 数据基础设施（大数据：数据仓库；数据管道：Kafka、Kinesis；数据分析）
-* 故障监控（系统监控、业务监控；Datadog、故障定位、警报等级、IM 或 oncall）
+* 故障监控（系统监控、业务监控；Datadog、故障定位、警报等级、IM 或 oncall）(Telemetry)
 * 扩展（内部服务：包括大数据、构建交付工具、通用运行时服务类库、数据持久化、安全等）  
   
   
@@ -64,10 +64,25 @@
 * Step 1: Requirements clarifications
 * Step 2: System interface definition - Define what APIs/Methods are expected from the system
 * Step 3: Back-of-the-envelope estimation - estimate the scale of the system for scaling, partitioning, load balancing and caching
-* Step 4: Defining data model - entities of service, database choose and design
+* Step 4: Defining data model - entities of service, database choose and schema and design
 * Step 5: High-level design - block diagram with 5-6 boxes representing the core components of the system
 * Step 6: Detailed design - dig deeper into two or three components
 * Step 7: Identifying and resolving bottlenecks
+  
+### Design TinyURL
+[Example Implementation](./example%20questions/Design%20a%20URL%20Shortener%20(TinyURL)%20System.md)  
+* Step 1: Why do we need URL shortening? - save a lot of space when displayed, printed, messaged, or tweeted, and hiding affiliated original URLs.
+* Step 2: Requirements and Goals of the System (Functional Requirements, Non-Functional Requirements, Extended Requirements).
+* Step 3: Capacity Estimation and Constraints (Traffic estimates -> Bandwidth estimates -> Storage estimates, Memory/Cache estimates -> Summary/High Level estimates).
+* Step 4: System APIs - SOAP or REST APIs to expose the functionality of the service, definitions of the APIs with functionality, method name, params and return.
+* Step 5: Database Design - Defining the DB schema in the early stages would help to understand the data flow among various components and later would guide towards data partitioning. Choose NoSQL since no relationships between objects within requirement and easier to scale.
+* Step 6: Basic System Design and Algorithm - Encoding algorithm (e.g. MD5, SHA256, KGS etc) (concurrency problems?).
+* Step 7: Data Partitioning and Replication - come up with a partitioning scheme that would divide and store data to different DB servers (Range Based Partitioning, Hash-Based Partitioning).
+* Step 8: Cache (cache eviction policy - e.g. Least Recently Used (LRU) with LinkedHashMap).
+* Step 9: Load Balancer (Between Clients and Application servers; Between Application Servers and database servers; Between Application Servers and Cache servers) (policy - e.g. Round Robin LB).
+* Step 10: Purging or DB cleanup.
+* Step 11: Telemetry.
+* Step 12: Security and Permissions (user permission).
   
   
 ## DDIA（Designing Data-Intensive Applications）
