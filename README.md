@@ -13,14 +13,14 @@
 * [行为型问题 | Behavior Question](./Behavior%20Question/)
 * [Topcoder](./Topcoder/)
 * [Codility Practices](./Codility%20Practices/)
-* [HackerRank Practices](./HackerRank%20Practises/) (包括一些 Java 语言详解)
+* [HackerRank Practices](./HackerRank%20Practises/) (包括一些 [Java 语言实例解析](./HackerRank%20Practises/java/) 和 [SQL 数据库详解](./HackerRank%20Practises/sql/))
 * [Google Code Jam Practices](./Google%20Code%20Jam/)
 * [Leetcode Practices](./Leetcode%20Practices/) (主要包含了[算法](./Leetcode%20Practices/algorithms/)、[OOD](./Leetcode%20Practices/object%20oriented%20design/) 和[系统设计](./Leetcode%20Practices/system%20design/)；算法题第一次提交 round 1 是自己的首次解答方法，第二次提交 round 2 是进行复盘复习后并添加、理解他人的更优解以及增添其他语言解题实现，round 0 则是首次答题没头绪参考他人解题思路)
-* [常用编码逻辑工具集查询手册 | Tool Sets](./Tool%20Sets/) (包括一些 Java 语言详解)
+* [常用编码逻辑工具集查询手册 | Tool Sets](./Tool%20Sets/) (包括一些 Java 语言实例解析)
 * [Common Algorithm & Theory](./Common%20Algorithm%20and%20Theory/)
 * [Common Data Structure & Data Type & Implementation](./Common%20Data%20Structure%20and%20Data%20Type/) (常用数据结构、包括并发相关的数据结构的详解)
 * [其他关于数据结构与算法的重要心得笔记](./Other%20Practices/)
-* [Computer System Layer & Basics](./Computer%20System%20Layer/) (包括一些并发相关的数据结构的用例)
+* [Computer System Layer & Basics](./Computer%20System%20Layer/) (包括一些[并发相关的 Java 数据结构的用例与详解](./Computer%20System%20Layer/并发与并行(Java)/))
 * [Programming Languages Features](./Program%20Languages%20Features/)  
   
   
