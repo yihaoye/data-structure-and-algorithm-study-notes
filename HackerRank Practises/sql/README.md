@@ -362,4 +362,16 @@ commit; -- 提交事务
   
 ## 其他
 使用 EXPLAIN 分析 SQL 性能  
-
+[MySQL 性能优化神器 Explain 使用分析](https://segmentfault.com/a/1190000008131735)  
+> MySQL 提供了一个 EXPLAIN 命令, 它可以对 SELECT 语句进行分析, 并输出 SELECT 执行的详细信息, 以供开发人员针对性优化.
+EXPLAIN 命令用法十分简单, 在 SELECT 语句前加上 Explain 就可以了, 例如:  
+```sql
+EXPLAIN SELECT * from user_info WHERE id < 300;
+```
+EXPLAIN result 中会出现的比较重要的几个字段:  
+* select_type 表示了查询的类型
+* type 字段比较重要，它提供了判断查询是否高效的重要依据依据。通过 type 字段判断此次查询是全表扫描还是索引扫描等
+* possible_keys 表示 MySQL 在查询时，能够使用到的索引
+* key 是 MySQL 在当前查询时所真正使用到的索引
+* rows 是一个重要的字段。MySQL 查询优化器根据统计信息，估算 SQL 要查找到结果集需要扫描读取的数据行数。这个值非常直观显示 SQL 的效率好坏，原则上 rows 越少越好
+* Extra - EXPLAIN 中的很多额外的信息会在 Extra 字段显示
