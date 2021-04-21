@@ -362,7 +362,10 @@ commit; -- 提交事务
   
 ## 其他
 使用 EXPLAIN 分析 SQL 性能  
-[MySQL 性能优化神器 Explain 使用分析](https://segmentfault.com/a/1190000008131735)  
+参考：  
+* [MySQL 性能优化神器 Explain 使用分析](https://segmentfault.com/a/1190000008131735)
+* [MySQL Explain 使用详解](https://www.jianshu.com/p/22f7824e4235)
+  
 > MySQL 提供了一个 EXPLAIN 命令, 它可以对 SELECT 语句进行分析, 并输出 SELECT 执行的详细信息, 以供开发人员针对性优化.
 EXPLAIN 命令用法十分简单, 在 SELECT 语句前加上 Explain 就可以了, 例如:  
 ```sql
@@ -374,4 +377,4 @@ EXPLAIN result 中会出现的比较重要的几个字段:
 * possible_keys 表示 MySQL 在查询时，能够使用到的索引
 * key 是 MySQL 在当前查询时所真正使用到的索引
 * rows 是一个重要的字段。MySQL 查询优化器根据统计信息，估算 SQL 要查找到结果集需要扫描读取的数据行数。这个值非常直观显示 SQL 的效率好坏，原则上 rows 越少越好
-* Extra - EXPLAIN 中的很多额外的信息会在 Extra 字段显示
+* Extra - EXPLAIN 中的很多额外的信息会在 Extra 字段显示，这里可以看到的坏的例子是 Using temporary 和 Using filesort，意思 MySQL 根本不能使用索引，结果是检索会很慢，也有一些信息是表示性能被有效优化了
