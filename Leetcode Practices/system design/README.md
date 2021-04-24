@@ -3,7 +3,8 @@
 ### 针对面试
 * [Grokking-System-Design](https://github.com/lei-hsia/grokking-system-design)
 * [Systems Design Youtube Playlist](https://www.youtube.com/watch?v=ZgdS0EUmn70&list=PL73KFetZlkJSZ9vTDSJ1swZhe6CIYkqTL)
-* [系统设计题怎么考怎么答](https://www.youtube.com/watch?v=28n0DVP3U14)  
+* [系统设计题怎么考怎么答](https://www.youtube.com/watch?v=28n0DVP3U14)
+* [系統设计面试 6 个技巧](https://www.youtube.com/watch?v=zomYKjlvJGU)  
   
 > 系统设计这块我最开始的时候也是无从下手，许多概念了解一点大概但是都没有深入学习，俗称“略懂”的状态，深究就暴露了。  
 > 具体如何准备这块，地里的很多前辈都总结了很多好的帖子，我觉得比较好的资料包括如下：Grokking the system design Interview, Designing Data-Intensive Applications（https://vonng.gitbooks.io/ddia-cn/content/ ）, 以及一些 YouTube 视频（e.g., https://www.youtube.com/c/SystemDesignInterview/ )。资料可能大家都有，我的诀窍在于下面几点：  
@@ -88,7 +89,9 @@ Include:
   * Ease of diagnosing and understanding problems when they occur, ease of making updates or modifications, and how simple the system is to operate.
   
 ### Practice Examples
-#### Design TinyURL
+<details>
+<summary>Design TinyURL</summary>
+
 [Example Implementation](./example%20questions/Design%20a%20URL%20Shortener%20(TinyURL)%20System.md)  
 * Step 1: Why do we need URL shortening? - save a lot of space when displayed, printed, messaged, or tweeted, and hiding affiliated original URLs.
 * Step 2: Requirements and Goals of the System (Functional Requirements, Non-Functional Requirements, Extended Requirements).
@@ -102,6 +105,31 @@ Include:
 * Step 10: Purging or DB cleanup.
 * Step 11: Telemetry.
 * Step 12: Security and Permissions (user permission).
+</details>
+
+<details>
+<summary>Design Twitter</summary>
+
+[花花酱讲解](https://www.youtube.com/watch?v=PMCdWr6ejpw)
+* Step 1: What is Twitter?
+* Step 2: Requirements and Goals of the System (Functional Requirements, Non-Functional Requirements, Extended Requirements).
+* Step 3: Capacity Estimation and Constraints (XXXAction per day, Storage Estimates, Bandwidth Estimates)
+* Step 4: System APIs
+* Step 5: High Level System Design (read-heavy system, load balancers, database & file storage)
+* Step 6: Database Schema (table: tweet, user, user_follow, favorite)
+* Step 7: Data Sharding (Sharding based on UserID, Sharding based on TweetID, Sharding based on Tweet creation time, combine sharding by TweedID and Tweet creation time)
+* Step 8: Cache, e.g. many Memcache servers store targeted users' whole tweet objects posted within partial time
+  * Which cache replacement policy - LRU (Least Recently Used)
+  * More intelligent cache - 80-20 rule, cache 20% of daily read volume from each shard
+  * Cache the latest data - cache all the tweets from the past three days, cache would be like a hash table where ‘key’ would be ‘OwnerID’ and ‘value’ would be a doubly linked list containing all the tweets from that user in the past three days, can always insert new tweets at the head of the linked list and remove tweets from the tail
+* Step 9: Timeline Generation
+* Step 10: Replication and Fault Tolerance (secondary db servers for read replica and replace primary server if it fail)
+* Step 11: Load Balancing, policy e.g. Round Robin approach (improvement - periodically check server traffic load and adjust it), Between Clients and Application servers; Application servers and database replication servers; Aggregation servers and Cache server
+* Step 12: Monitoring, e.g. metrics
+* Step 13: Extended Requirements
+</details>
+
+<br />
   
   
 ## DDIA（Designing Data-Intensive Applications）
