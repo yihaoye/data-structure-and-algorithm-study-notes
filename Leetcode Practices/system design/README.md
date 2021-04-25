@@ -149,6 +149,44 @@ Software/Hardware acts as intermediary for requests from clients seeking resourc
 * Redundancy - backup or failover to avoid single points of failure
 * Replication - sharing information to ensure consistency between redundant resources (e.g. db master-slave relationship)
 
+#### SQL vs NoSQL
+* SQL - structured and predefined schemas
+* NoSQL
+  * Key-Value Stores - The 'key' is an
+attribute name which is linked to a 'value' (e.g. Redis and Dynamo)
+  * Document Databases - different structured data is stored in documents in collections (instead of rows in a table) (e.g. MongoDB)
+  * Wide-Column Databases - each row doesn’t have to have the same number of columns. e.g. Cassandra and HBase, Wide-Column DB best suited for analyzing large datasets
+  * Graph Databases - data saved in graph structures with nodes (entities), properties (information about the entities), and lines (connections between the entities). e.g. Neo4J
+* High level differences between SQL and NoSQL
+  * Storage
+    * SQL row represents an entity and each column represents a data point about that entity
+  * Schema
+    * SQL each record conforms to a fixed schema
+    * NoSQL schemas are dynamic, 'columns' can be added on the fly
+  * Querying
+    * SQL apply structured query language for defining and manipulating the data
+    * NoSQL apply UnQL (Unstructured Query Language), different databases have different syntax for using UnQL.
+  * Scalability
+    * SQL, in most common situations, are vertically scalable, horizontal scale is challenging and time-consuming
+    * NoSQL, horizontally scalable, many NoSQL tech also distribute data across servers automatically.
+  * Reliability or ACID Compliancy (Atomicity, Consistency, Isolation, Durability)
+    * SQL mostly are ACID compliant.
+    * NoSQL mostly sacrifice ACID compliance for performance and scalability.
+* SQL vs NoSQL Which one to use? - there’s no one-size-fits-all solution
+  * Reasons to use SQL database
+    * need to ensure ACID compliance reduces anomalies and protects the integrity of db (for many e-commerce and financial applications, an ACID- compliant database remains the preferred option)
+    * data is structured and unchanging
+  * Reasons to use NoSQL database (Big data contributes to NoSQL databases' succeed)
+    * Storing large volumes of data that often have little to no structure
+    * Making the most of cloud computing and storage, requires data to be easily spread across multiple servers to scale up
+    * Rapid development - quick iterations of system which require making frequent updates to the data structure without much downtime between versions
+
+#### CAP Theorem
+It is impossible for a distributed software system (especially data store) to simultaneously provide more than two of the following guarantees (CAP): Consistency, Availability, and Partition tolerance. When design a distributed system, trading off among CAP is almost the first thing to consider.  
+* Consistency - All nodes see the same data at the same time. It is achieved by updating several nodes before allowing further reads.
+* Availability - Every request gets a response on success/failure. It is achieved by replicating the data across different servers.
+* Partition tolerance - System continues to work despite message loss or partial failure.
+
 ### Practice Examples
 <details>
 <summary>Design TinyURL</summary>
