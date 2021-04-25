@@ -132,6 +132,23 @@ Data partitioning (aka sharding) is a technique to break up a big database into 
   * Referential integrity - foreign keys
   * Rebalancing - change sharding scheme
 
+#### Indexes
+Databases operations performance, faster to search through the table and find the row or rows wanted.  
+* Example: A library catalog
+* How do Indexes decrease write performance? - index speed up data retrieval but slow down data insertion/update/delete (update the index). (unnecessary indexes should be avoided and indexes no longer used should be removed. Adding indexes is to improving read query performance, so if table is write heavy and rarely read, index may not be added)
+
+#### Proxies
+Software/Hardware acts as intermediary for requests from clients seeking resources from other servers. Typically used to filter, log, transform requests (by adding/removing headers, encrypting/decrypting, or compressing a resource). Another advantage of a proxy server is its cache can serve many similar requests.  
+* Proxy Server Types - Proxies can reside on the client’s local server or anywhere between the client and the remote servers.
+  * Open Proxy
+    * Anonymous Proxy
+    * Trаnspаrent Proxy - able to cаche the websіtes.
+  * Reverse Proxy - retrieves resources from one or more servers then returned to client as originated from the proxy server itself
+
+#### Redundancy and Replication
+* Redundancy - backup or failover to avoid single points of failure
+* Replication - sharing information to ensure consistency between redundant resources (e.g. db master-slave relationship)
+
 ### Practice Examples
 <details>
 <summary>Design TinyURL</summary>
