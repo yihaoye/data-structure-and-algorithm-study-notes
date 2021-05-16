@@ -29,13 +29,17 @@ public class AccountRepository {
 
     public List<Account> findByBankCode(String bankCode) {
         List<Account> res = new ArrayList<>();
-        for (Account account : accounts.values()) {
-            if (account.getBankCode().equals(bankCode)) res.add(account);
+        synchronized (accounts) {
+            for (Account account : accounts.values()) {
+                if (account.getBankCode().equals(bankCode)) res.add(account);
+            }
         }
         return res;
     }
 
     public Account findByAccountNumber(String accountNumber) {
-        return accounts.get(accountNumber);
+        synchronized (accounts) {
+            return accounts.get(accountNumber);
+        }
     }
 }

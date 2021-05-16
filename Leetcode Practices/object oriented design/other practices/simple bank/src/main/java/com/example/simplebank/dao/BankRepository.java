@@ -27,6 +27,8 @@ public class BankRepository {
     }
 
     public Bank findByBankCode(BankCode bankCode) {
-        return banks.get(bankCode);
+        synchronized (banks) {
+            return banks.get(bankCode);
+        }
     }
 }
