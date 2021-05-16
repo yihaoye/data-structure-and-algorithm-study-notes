@@ -1,3 +1,31 @@
+/** Question:
+main routine, displayManagementTree(List<Employee>), should output the following:
+
+->Tom
+
+->->Jerry
+
+->->Mickey
+
+->->->John
+
+->->Sarah
+
+Where:
+
+    An employee has an ID, a name, and a manager ID
+
+    The printed tree must start from a root manager. You can assume that a root manager has a manager ID of zero (0). The tree must contain one and only one root manager. It is your responsibility to ensure that is the case no matter what input you get.
+
+    Each -> represents one level of management. The deeper the management structure, the more -> before the employee name. The root manager is at the top level, hence there is only one ->, e.g., ->Tom
+
+    If an employee has a manager, then he/she should be displayed below their direct manager.
+ */
+
+
+
+
+
 import java.util.*;
 import java.util.stream.*;
 
