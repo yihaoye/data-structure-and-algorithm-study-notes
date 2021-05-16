@@ -17,6 +17,10 @@ public class PinGenerator { // PinGenerator could be considered as a util class 
 
     public static List<String> generate(Integer outputAmount) {
         init();
+        if (outputAmount > pinSet.size()) {
+            System.out.println("Max output amount should be " + pinSet.size());
+            outputAmount = pinSet.size();
+        }
         List<String> tmp = new ArrayList<>(pinSet);
         Collections.shuffle(tmp);
         List<String> res = tmp.subList(0, outputAmount);
