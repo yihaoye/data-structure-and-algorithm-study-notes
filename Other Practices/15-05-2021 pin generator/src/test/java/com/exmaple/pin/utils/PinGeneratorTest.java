@@ -15,21 +15,9 @@ class PinGeneratorTest {
     }
 
     @Test
-    public void testPinListUnordered() {
-        List<String> pins = PinGenerator.generate(500);
-        List<String> sortedPins = new ArrayList<>(pins);
-        List<String> reversePins = new ArrayList<>(pins);
-        Collections.sort(sortedPins);
-        Collections.reverse(reversePins);
-        assert !pins.equals(sortedPins);
-        assert !pins.equals(reversePins);
-    }
-
-    @Test
     public void testAllValidPinList() {
         List<String> allValidPinListA = PinGenerator.generate();
         List<String> allValidPinListB = PinGenerator.generate();
-        assert !allValidPinListA.equals(allValidPinListB); // pins are unordered
         Collections.sort(allValidPinListA);
         Collections.sort(allValidPinListB);
         assert allValidPinListA.equals(allValidPinListB);
@@ -40,6 +28,7 @@ class PinGeneratorTest {
         assert PinGenerator.isValid("1234") == false;
         assert PinGenerator.isValid("4321") == false;
         assert PinGenerator.isValid("1042") == false;
+        assert PinGenerator.isValid("5581") == false;
         assert PinGenerator.isValid("1357") == true;
         assert PinGenerator.isValid("7531") == true;
         assert PinGenerator.isValid("8080") == true;
@@ -61,11 +50,9 @@ class PinGeneratorTest {
         assert pinLists.get(1).size() == 300;
         assert hasDuplicate(pinLists.get(0)) == false;
         assert hasDuplicate(pinLists.get(1)) == false;
-        Collections.sort(pinLists.get(0));
-        Collections.sort(pinLists.get(1));
-        assert !pinLists.get(0).equals(pinLists.get(1));
 
         assert allValidPinLists.get(0).containsAll(pinLists.get(0));
+        assert allValidPinLists.get(0).containsAll(pinLists.get(1));
     }
 
     public boolean hasDuplicate(List<String> pins) {

@@ -24,9 +24,6 @@ public class PinGenerator { // PinGenerator could be considered as a util class 
         List<String> tmp = new ArrayList<>(pinSet);
         Collections.shuffle(tmp);
         List<String> res = tmp.subList(0, outputAmount);
-        while (outputAmount > 2 && isPinListOrdered(res)) { // return pins should be never sorted or reverse ordered
-            Collections.shuffle(res);
-        }
         return res;
     }
 
@@ -51,14 +48,6 @@ public class PinGenerator { // PinGenerator could be considered as a util class 
             if (diff == 0 || diff == 1 || diff == -1) return "";
         }
         return str;
-    }
-
-    private static boolean isPinListOrdered(List<String> pins) {
-        List<String> sortedPins = new ArrayList<>(pins);
-        List<String> reversePins = new ArrayList<>(pins);
-        Collections.sort(sortedPins);
-        Collections.reverse(reversePins);
-        return pins.equals(sortedPins) || pins.equals(reversePins);
     }
 
     /* if want to prevent any duplicate digit within a pin

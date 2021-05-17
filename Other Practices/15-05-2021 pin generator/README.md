@@ -9,7 +9,6 @@
   
 ## Pin List Requirements:  
 * Pin Generator able to output a pin list contains 0-1000 pins.
-* Generated pin list should not be any order (DESC or ASC).
 * Every pin in the generated pin list should be unique.
 
 ## Source Code
