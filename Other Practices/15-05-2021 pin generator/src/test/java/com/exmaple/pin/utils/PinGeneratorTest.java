@@ -25,14 +25,22 @@ class PinGeneratorTest {
 
     @Test
     public void testWithValidAndInvalidExample() {
-        assert PinGenerator.isValid("1234") == false;
-        assert PinGenerator.isValid("4321") == false;
-        assert PinGenerator.isValid("1042") == false;
-        assert PinGenerator.isValid("5581") == false;
-        assert PinGenerator.isValid("1357") == true;
-        assert PinGenerator.isValid("7531") == true;
-        assert PinGenerator.isValid("8080") == true;
-        assert PinGenerator.isValid("2024") == true;
+        List<String> duplicateDigitPins = Arrays.asList("5581", "6008", "1355");
+        for (String duplicateDigitPin : duplicateDigitPins) {
+            if (PinGenerator.isValid(duplicateDigitPin)) assert false;
+        }
+        List<String> increasedByOneDigitPins = Arrays.asList("1234", "2457", "7934");
+        for (String increasedByOneDigitPin : increasedByOneDigitPins) {
+            if (PinGenerator.isValid(increasedByOneDigitPin)) assert false;
+        }
+        List<String> decreasedByOneDigitPins = Arrays.asList("4321", "1042", "3598");
+        for (String decreasedByOneDigitPin : decreasedByOneDigitPins) {
+            if (PinGenerator.isValid(decreasedByOneDigitPin)) assert false;
+        }
+        List<String> validDigitPins = Arrays.asList("1357", "7531", "8080", "2024");
+        for (String validDigitPin : validDigitPins) {
+            if (!PinGenerator.isValid(validDigitPin)) assert false;
+        }
         // assert PinGenerator.isValid("2024") == false; // if want to prevent any duplicate digit within a pin
     }
 

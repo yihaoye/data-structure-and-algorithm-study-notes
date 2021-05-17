@@ -16,4 +16,4 @@
 * [Unit Tests](./src/test/java/com/exmaple/pin/utils/PinGeneratorTest.java)
 
 ## Run Tests
-Run `gradle clean test` in this path (i.e. `./pinGenerator`).
+Run `gradle clean test` in this path.
