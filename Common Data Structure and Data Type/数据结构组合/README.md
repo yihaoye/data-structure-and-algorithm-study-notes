@@ -41,3 +41,4 @@ public Obj findInList(String key) {
     return null;
 }
 ```
+组合 3 为不严谨的大意展示，其实就是 [Leetcode Q146 LRU Cache](./../../Leetcode%20Practices/algorithms/medium/146%20LRU%20Cache.java)，具体请参考该题题解实现。  
