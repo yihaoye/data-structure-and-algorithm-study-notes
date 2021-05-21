@@ -28,6 +28,26 @@ The answer is guaranteed to fit in a 32-bit integer.
 
 
 
+
+// Other's Solution: (https://kobeko.medium.com/leetcode-453-minimum-moves-to-equal-array-elements-b1a8da3ff6d8)
+class Solution {
+    public int minMoves(int[] nums) {   
+        int sum = 0;
+        int minNum = Integer.MAX_VALUE;
+      
+        for(int n : nums) {
+            sum += n;
+            if (n < minNum) minNum = n;
+        }
+        
+        return sum - minNum * nums.length;
+    }
+}
+
+
+
+
+
 // My Solution (差分数组，但是 timeout):
 class Solution {
     public int minMoves(int[] nums) {   
