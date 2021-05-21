@@ -454,7 +454,7 @@
 - [ ] 348	Design Tic-Tac-Toe		
 - [ ] 379	Design Phone Directory		
 - [ ] 353	Design Snake Game		
-- [ ] 146	LRU Cache		
+- [x] 146	LRU Cache		
 - [ ] 355	Design Twitter		
 - [ ] 303	Range Sum Query - Immutable		
 - [ ] 304	Range Sum Query 2D - Immutable		
@@ -564,7 +564,7 @@
 - [ ] 139	Word Break		
 - [ ] 140	Word Break II		
 - [x] 142	Linked List Cycle II		
-- [ ] 146	LRU Cache		
+- [x] 146	LRU Cache		
 - [ ] 149	Max Points on a Line		
 - [ ] 150	Evaluate Reverse Polish Notation		
 - [ ] 152	Maximum Product Subarray		
