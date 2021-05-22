@@ -260,7 +260,7 @@
 - [ ] 31	Next Permutation		                        String
 - [ ] 60	Permutation Sequence		                    String
 - [ ] 291	Word Pattern II		
-- [ ] 17	Letter Combinations of a Phone Number		
+- [x] 17	Letter Combinations of a Phone Number		
 - [ ] 320	Generalized Abbreviation		
 - [ ] 93	Restore IP Addresses		                    很少考
 - [ ] 282	Expression Add Operators		
@@ -471,11 +471,11 @@
 - [x] 7	    Reverse Integer		
 - [x] 8	    String to Integer (atoi)		
 - [ ] 10	Regular Expression Matching		
-- [ ] 11	Container With Most Water		
+- [x] 11	Container With Most Water		
 - [x] 12	Integer to Roman		
 - [x] 13	Roman to Integer		
 - [x] 15	3Sum		
-- [ ] 17	Letter Combinations of a Phone Number		
+- [x] 17	Letter Combinations of a Phone Number		
 - [ ] 18	4Sum		
 - [x] 20	Valid Parentheses		
 - [ ] 22	Generate Parentheses		
