@@ -137,7 +137,7 @@
 - [ ] 267	Palindrome Permutation II		
 ### Parentheses			
 - [x] 20	Valid Parentheses		
-- [ ] 22	Generate Parentheses		
+- [x] 22	Generate Parentheses		
 - [ ] 32	Longest Valid Parentheses		
 - [ ] 241	Different Ways to Add Parentheses		
 - [ ] 301	Remove Invalid Parentheses		
@@ -478,7 +478,7 @@
 - [x] 17	Letter Combinations of a Phone Number		
 - [ ] 18	4Sum		
 - [x] 20	Valid Parentheses		
-- [ ] 22	Generate Parentheses		
+- [x] 22	Generate Parentheses		
 - [ ] 23	Merge k Sorted Lists		
 - [x] 26	Remove Duplicates from Sorted Array		
 - [x] 27	Remove Element		
