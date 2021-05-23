@@ -155,7 +155,7 @@
 - [x] 258	Add Digits		
 - [x] 67	Add Binary		
 - [x] 43	Multiply Strings		
-- [ ] 29	Divide Two Integers		
+- [x] 29	Divide Two Integers		
 - [x] 69	Sqrt(x)		
 - [x] 50	Pow(x, n)		
 - [x] 367	Valid Perfect Square		
@@ -293,7 +293,7 @@
 - [ ] 213	House Robber II		
 - [x] 276	Paint Fence		
 - [ ] 91	Decode Ways		
-- [ ] 10	Regular Expression Matching		
+- [x] 10	Regular Expression Matching		
 - [ ] 44	Wildcard Matching	
    
 ## LinkedList
@@ -470,7 +470,7 @@
 - [x] 5	    Longest Palindromic Substring		
 - [x] 7	    Reverse Integer		
 - [x] 8	    String to Integer (atoi)		
-- [ ] 10	Regular Expression Matching		
+- [x] 10	Regular Expression Matching		
 - [x] 11	Container With Most Water		
 - [x] 12	Integer to Roman		
 - [x] 13	Roman to Integer		
@@ -483,7 +483,7 @@
 - [x] 26	Remove Duplicates from Sorted Array		
 - [x] 27	Remove Element		
 - [x] 28	Implement strStr()		
-- [ ] 29	Divide Two Integers		
+- [x] 29	Divide Two Integers		
 - [ ] 31	Next Permutation		
 - [ ] 32	Longest Valid Parentheses		
 - [x] 33	Search in Rotated Sorted Array		
