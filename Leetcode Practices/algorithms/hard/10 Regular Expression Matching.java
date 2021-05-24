@@ -49,16 +49,28 @@ It is guaranteed for each appearance of the character '*', there will be a previ
 // Other's Solution (DP):
 class Solution {
     public boolean isMatch(String s, String p) {
-        if (s == null || p == null) {
-            return false;
-        }
+        // corner case
+        if (s == null || p == null) return false;
+
         boolean[][] dp = new boolean[s.length()+1][p.length()+1];
-        dp[0][0] = true;
-        for (int i = 0; i < p.length(); i++) {
-            if (p.charAt(i) == '*' && dp[0][i-1]) {
-                dp[0][i+1] = true;
+
+        // initialization: 
+		// 1. dp[0][0] = true, since empty string matches empty pattern
+		dp[0][0] = true;
+
+		// 2. dp[i][0] = false (which is default value of the boolean array) since empty pattern cannot match non-empty string
+		// 3. dp[0][j]: what pattern matches empty string ""? It should be #*#*#*#*..., or (#*)* if allow me to represent regex using regex :P, 
+		// and for this case we need to check manually: 
+        // as we can see, the length of pattern should be even && the character at the even position should be *, 
+		// thus for odd length, dp[0][j] = false which is default. So we can just skip the odd position, i.e. j starts from 2, the interval of j is also 2. 
+		// and notice that the length of repeat sub-pattern #* is only 2, we can just make use of dp[0][j-2] rather than scanning j length each time 
+		// for checking if it matches #*#*#*#*.
+        for (int j = 2; j <= p.length(); j += 2) {
+            if (p.charAt(j-1) == '*' && dp[0][j-2]) {
+                dp[0][j] = true;
             }
         }
+
         for (int i = 0 ; i < s.length(); i++) {
             for (int j = 0; j < p.length(); j++) {
                 if (p.charAt(j) == '.') {
@@ -80,6 +92,8 @@ class Solution {
     }
 }
 /*
+dp[i][j] means whether [0...j] of p regex match [0...i] of s.
+
 1, If p.charAt(j) == s.charAt(i) :  dp[i][j] = dp[i-1][j-1];
 2, If p.charAt(j) == '.' : dp[i][j] = dp[i-1][j-1];
 3, If p.charAt(j) == '*': 
