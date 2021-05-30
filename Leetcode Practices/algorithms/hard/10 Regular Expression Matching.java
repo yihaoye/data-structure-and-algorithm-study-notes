@@ -98,9 +98,9 @@ dp[i][j] means whether [0...j] of p regex match [0...i] of s.
 2, If p.charAt(j) == '.' : dp[i][j] = dp[i-1][j-1];
 3, If p.charAt(j) == '*': 
    here are two sub conditions:
-               1   if p.charAt(j-1) != s.charAt(i) : dp[i][j] = dp[i][j-2]  // in this case, a* only counts as empty (e.g. Example4's "c*" : Input: s = "aab", p = "c*a*b")
-               2   if p.charAt(j-1) == s.charAt(i) or p.charAt(j-1) == '.':
-                              dp[i][j] = dp[i-1][j]   // in this case, a* counts as multiple a 
-                           or dp[i][j] = dp[i][j-1]   // in this case, a* counts as single a
-                           or dp[i][j] = dp[i][j-2]   // in this case, a* counts as empty
+               3.1   if p.charAt(j-1) != s.charAt(i) : dp[i][j] = dp[i][j-2]  // in this case, a* only counts as empty (e.g. Example4's "c*" : Input: s = "aab", p = "c*a*b")
+               3.2   if p.charAt(j-1) == s.charAt(i) or p.charAt(j-1) == '.':
+                                dp[i][j] = dp[i-1][j]   // in this case, a* counts as multiple a (if p[j] == * && p[j-1] ~= s[i] && dp[i-1][j] == true, it means p[j-1..j]:s[i-1..i] ~= a*:aa i.e. s[i-1] == s[i]?. https://youtu.be/l3hda49XcDE?t=764)
+                                        or dp[i][j-1]   // in this case, a* counts as single a
+                                        or dp[i][j-2]   // in this case, a* counts as empty (丢弃 p[j-1] 和 p[j]，按 3.1 来)
 */
