@@ -21,3 +21,5 @@ Keep at least 3 project examples/stories which better to be large scale.
   * [Leadership Principles](https://www.amazon.jobs/en/principles)
   * 3 Main Product interest Amazon: AWS、Digital Product、Retailer  
   
+# Best Practice
+* [软件复杂度](./软件复杂度.md)
