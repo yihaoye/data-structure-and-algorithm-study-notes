@@ -10,7 +10,7 @@
   * [算法竞赛入门经典](./算法竞赛入门经典/)
   * [算法艺术与信息学竞赛](./算法艺术与信息学竞赛/)
   * [其他数据结构网课笔记](./其他数据结构网课/)
-* [行为型问题 | Behavior Question](./Behavior%20Question%20and%20Best%20Practice/)
+* [行为型问题与工作实践 | Behavior Question & Best Practice](./Behavior%20Question%20and%20Best%20Practice/)
 * [Topcoder](./Topcoder/)
 * [Codility Practices](./Codility%20Practices/)
 * [HackerRank Practices](./HackerRank%20Practises/) (包括一些 [Java 语言实例解析](./HackerRank%20Practises/java/) 和 [SQL 数据库详解](./HackerRank%20Practises/sql/))
