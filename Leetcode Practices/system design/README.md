@@ -206,6 +206,22 @@ It is impossible for a distributed software system (especially data store) to si
 * Step 12: Security and Permissions (user permission).
 </details>
 
+
+<details>
+<summary>Design Pastebin</summary>
+
+* Step 1: Pastebin enable users to store plain text or images over the network (Internet) and generate unique URLs to access the uploaded data. Such services are also used to share data over the network quickly, as users would just need to pass the URL to let other users see it.
+* Step 2: Requirements and Goals of the System.
+* Step 3: Some Design Considerations. Pastebin shares some requirements with TinyURL, but there are some additional considerations.
+  * What should be the limit on the amount of text user can paste at a time.
+  * Should we impose size limits on custom URLs.
+* Step 4: Capacity Estimation and Constraints
+
+
+</details>
+</br>
+
+
 <details>
 <summary>Design Twitter</summary>
 
