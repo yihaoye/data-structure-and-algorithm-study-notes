@@ -215,7 +215,7 @@ It is impossible for a distributed software system (especially data store) to si
 * Step 3: Some Design Considerations. Pastebin shares some requirements with TinyURL, but there are some additional considerations.
   * What should be the limit on the amount of text user can paste at a time.
   * Should we impose size limits on custom URLs.
-* Step 4: Capacity Estimation and Constraints
+* Step 4: Capacity Estimation and Constraints (Traffic estimates -> Storage estimates -> Bandwidth estimates -> Memory estimates).
 
 
 </details>
