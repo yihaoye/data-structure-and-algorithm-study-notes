@@ -216,10 +216,16 @@ It is impossible for a distributed software system (especially data store) to si
   * What should be the limit on the amount of text user can paste at a time.
   * Should we impose size limits on custom URLs.
 * Step 4: Capacity Estimation and Constraints (Traffic estimates -> Storage estimates -> Bandwidth estimates -> Memory estimates).
+* Step 5: System APIs - SOAP or REST APIs
+  * addPaste(api_dev_key, paste_data, custom_url=None user_name=None, paste_name=None, expire_date=None)
+  * getPaste(api_dev_key, api_paste_key)
+  * deletePaste(api_dev_key, api_paste_key)
+* Step 6: Database Design
+  * Paste {URLHash: varchar(16), ContentKey: varchar(512), ExpirationDate: datatime, CreationDate: datetime}
+  * User {UserID: int, Name: varchar(20), Email: varchar(32), CreationDate: datetime, LastLogin: datatime}
 
 
 </details>
-</br>
 
 
 <details>
