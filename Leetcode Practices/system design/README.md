@@ -223,6 +223,8 @@ It is impossible for a distributed software system (especially data store) to si
 * Step 6: Database Design
   * Paste {URLHash: varchar(16), ContentKey: varchar(512), ExpirationDate: datatime, CreationDate: datetime}
   * User {UserID: int, Name: varchar(20), Email: varchar(32), CreationDate: datetime, LastLogin: datatime}
+* Step 7: High Level Design
+  * Client -> Application -> (Object Storage, Metadata Storage)
 
 
 </details>
