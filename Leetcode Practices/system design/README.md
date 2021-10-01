@@ -229,6 +229,10 @@ It is impossible for a distributed software system (especially data store) to si
 * Step 8: Component Design
   * Application layer
   * Datastore layer
+* Step 9: Purging or DB Cleanup
+* Step 10: Data Partitioning and Replication
+* Step 11: Cache and Load Balancer
+* Step 12: Security and Permissions
 
 
 </details>
