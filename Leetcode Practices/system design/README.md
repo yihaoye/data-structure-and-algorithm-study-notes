@@ -227,12 +227,14 @@ It is impossible for a distributed software system (especially data store) to si
   * Client -> Application -> Object Storage (like Amazon S3: paste contents) and Metadata Storage (databse: metadata related to each paste, users, etc)
   * Above division of data will also allow us to scale them individually
 * Step 8: Component Design
-  * Application layer
+  * Application layer (根据粘贴内容创建一个随机 6 字符的 Key，将 Key 和粘贴内容一对一存在数据库，如果 Key 重复了就重创建直到没有重复；另一种办法是使用 KGS - Key Generation Service 并使用一个 Key 数据库作为 Key 池子 -- 一个已使用 Key 表一个未使用 Key 表，KGS 还可以用内存缓存未使用 Key -- 使用后则移除并存入已使用 Key 表，KGS 可能成为单点故障，所以需要为其准备一个 replica KGS，另外每个应用服务也可以缓存一些 Key 数据库的 Key)
+    * ![](./Pastebin.png)
   * Datastore layer
-* Step 9: Purging or DB Cleanup
-* Step 10: Data Partitioning and Replication
-* Step 11: Cache and Load Balancer
-* Step 12: Security and Permissions
+    * Metadata database: 可以是 MySQL 或 Distributed Key-Value store 如 Dynamo 或 Cassandra
+* Step 9: Purging or DB Cleanup (参考 TinyURL)
+* Step 10: Data Partitioning and Replication (参考 TinyURL)
+* Step 11: Cache and Load Balancer (参考 TinyURL)
+* Step 12: Security and Permissions (参考 TinyURL)
 
 
 </details>
