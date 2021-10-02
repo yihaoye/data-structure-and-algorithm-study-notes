@@ -230,7 +230,7 @@ It is impossible for a distributed software system (especially data store) to si
   * Application layer (根据粘贴内容创建一个随机 6 字符的 Key，将 Key 和粘贴内容一对一存在数据库，如果 Key 重复了就重创建直到没有重复；另一种办法是使用 KGS - Key Generation Service 并使用一个 Key 数据库作为 Key 池子 -- 一个已使用 Key 表一个未使用 Key 表，KGS 还可以用内存缓存未使用 Key -- 使用后则移除并存入已使用 Key 表，KGS 可能成为单点故障，所以需要为其准备一个 replica KGS，另外每个应用服务也可以缓存一些 Key 数据库的 Key)
     * ![](./Pastebin.png)
   * Datastore layer
-    * Metadata database: 可以是 MySQL 或 Distributed Key-Value store 如 Dynamo 或 Cassandra
+    * Metadata database: 可以是 RDBMS 如 MySQL 或 Distributed Key-Value store 如 Dynamo 或 Cassandra
 * Step 9: Purging or DB Cleanup (参考 TinyURL)
 * Step 10: Data Partitioning and Replication (参考 TinyURL)
 * Step 11: Cache and Load Balancer (参考 TinyURL)
@@ -261,6 +261,27 @@ It is impossible for a distributed software system (especially data store) to si
 * Step 12: Monitoring, e.g. metrics
 * Step 13: Extended Requirements
 </details>
+
+
+<details>
+<summary>Designing an API Rate Limiter</summary>
+
+* Step 1: Rate Limiter 限制用户发送的请求数量。单个服务每秒可处理的请求是有限的，因此需要机制限制实体（用户、设备、IP 等）单个时间内的请求、事件执行数量。
+  * 比如用户每秒可发 1 个消息、用户每天允许 3 次失败的信用卡交易、同一 IP 每天最多可创建 20 个账户
+* Step 2: 为什么需要 API Rate Limiter？在应用层面上避免 DDoS 攻击、暴力破解密码的尝试、暴力大数量的信用卡交易等等，此类攻击通常难以预判、并会使服务、应用、API 宕机。另外该机制还可以用于防止收入损失、降低基础设施成本、阻止垃圾邮件和阻止在线骚扰，以下是细节好处：
+  * 过滤行为不端的客户端/脚本或低优先级但量大的请求
+  * 安全（暴力破解密码）
+  * 防止滥用行为和不良设计实践
+  * 控制成本和资源使用
+  * 收入模型（某些服务不同套餐有不同的 API 限制）
+  * 消除流量高峰
+* Step 3: 系统的需求与目标。
+  * 功能需求：限制实体在一个时间窗口内可以向 API 发送的请求数量，例如每秒 15 个请求。API 服务可能是集群，因此应考虑跨服务器的限制，即每当在单个服务器或服务器组合中超过定义的阈值时，用户都会收到错误消息。
+  * 非功能需求：系统应该是高可用的，速率限制器应该始终有效，因为它可以保护服务免受外部攻击。速率限制器不应引入影响用户体验的大量延迟。
+* Step 4: 如何 Rate Limiting？节流是在给定时间段内控制客户对 API 使用的过程，可以在应用层级 和/或 API 层级上定义限制，当超过节流限制时，服务器返回 HTTP 状态 “429 - 请求过多”。
+
+</details>
+
 
 <br />
   
