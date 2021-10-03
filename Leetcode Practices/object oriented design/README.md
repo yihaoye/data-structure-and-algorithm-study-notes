@@ -63,6 +63,32 @@
      2. 提高类的抽象程度，对于一个健全的类库来说，它的层次结构在进行若干层次的子类设计后，应当是深而窄的。这是因为，如果类层次结构中的层次较多。而每一层上的类少，就表明对象的共有特性经过了比较细致的分层次抽象，使用类的特殊性逐渐增强，因而能够提供较多的、在特定应用范畴内可普遍适用的类。
      3. 认定和培育构架，类库中的类就象一般建筑预制件，可以复杂到整个单元居室，也可以简单到梁柱，规格比较标准，容易被独立使用。但需要应用开发人员自己根据应用特征进行组装，因此类库本身并不是重用的基本单位。相对地，构架则是以构件之间有密切的联系为特征，面向特定的应用范畴，以整个构架而不是其中的单个构件来体现它的能量，因此构架本身是重用的基本单位，一旦与应用特征相符，就可以整体被重用。所以，构架是 OOD 是理想的目标。  
   
+## OOD 与系统设计的区别
+> 软件工程面试（主要）侧重于面试中的编码和软件设计技能。数据结构和算法轮检查候选人的问题解决技能和编码技能，而设计轮测试系统设计技能，可以是高级设计（High Level Design - HLD）或低级设计（Low Level Design - LLD）。  
+> LLD 讨论类图以及给定系统的类、程序规范和其他低级细节之间的方法和关系。它也被称为面向对象设计（OOD）。  
+
+> 候选人的期望  
+> 在 LLD 面试中，他们将通过应用面向对象的设计原则和设计模式，根据你创建模块化、灵活、可维护和可重用软件的知识来评判你。这些问题（如设计停车场、设计国际象棋游戏等）是为了证明你了解如何创建优雅、可维护的面向对象代码。这些问题（有意）是非结构化和开放式的，并且没有标准答案。  
+
+> 如何准备 LLD 面试  
+> 1. 至少学习一门面向对象语言（C++/Java/Python 或 C#）  
+> 2. SOLID 等面向对象原理研究  
+> 3. 学习所有常见的设计模式及其应用  
+> 4. 探索一些开源项目并尝试了解最佳实践  
+> 5. 练习常见的 LLD 面试问题  
+
+> 如何解决面试中的 LLD 问题  
+> 1. 通过提出相关问题来澄清问题。收集完整的需求并从基本功能开始  
+> 2. 定义核心类（和对象）  
+> 3. 通过观察类/对象之间的交互来建立类/对象之间的关系  
+> 4. 尝试通过定义方法来满足所有要求  
+> 5. 应用面向对象的设计原则和设计模式，使系统可维护和可重用  
+> 6. 编写结构良好的干净代码（如果被告知要实现一个功能）  
+
+Books：《Head first object-oriented analysis and design》《Head first design patterns》《Clean Code》《Clean Architecture》《Refactoring: Improving the Design of Existing Code》《Patterns of Enterprise Application Architecture》《Design Patterns: Elements of Reusable Object-Oriented Software》  
+
+以上引用自：https://www.linkedin.com/pulse/cracking-he-low-level-design-lld-interview-shashi-bhushan-kumar/  
+  
 ## 其他面向对象设计原则
   * CARP（Composition/Aggregation Reuse Principle），设计者首先应当考虑复合/聚合，而不是继承。这个就是所谓的 Favor Composition over Inheritance，在实践中复合/聚合会带来比继承更大的利益，所以要优先考虑。
   * LoD or LKP（Law of Demeter or Least Knowlegde Principle），迪米特法则或最少知识原则，这个原则首次在 Demeter 系统中得到正式运用，所以定义为迪米特法则。即一个对象应当尽可能少的去了解其他对象。也就是又一个关于如何松耦合（Loosely-Coupled）的法则。
