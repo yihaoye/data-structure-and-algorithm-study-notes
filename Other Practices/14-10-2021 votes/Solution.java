@@ -47,7 +47,7 @@ public class Solution {
         /* Test Cases */
         
         HashMap<String, Integer> res = count(votes);
-        Map sortedRes = valueSort(res);
+        Map sortedRes = sortByValue(res);
         Set set = sortedRes.entrySet();
         Iterator i = set.iterator();
         while (i.hasNext()) {
@@ -72,7 +72,7 @@ public class Solution {
         return res;
     }
 
-    public static <K, V extends Comparable<V>> Map<K, V> valueSort(final Map<K, V> map) {
+    public static <K, V extends Comparable<V>> Map<K, V> sortByValue(final Map<K, V> map) {
         // Static Method with return type Map and extending comparator class which compares values associated with two keys
         Comparator<K> valueComparator = new Comparator<K>() {
             // return comparison results of values of two keys
@@ -87,6 +87,20 @@ public class Solution {
         Map<K, V> sorted = new TreeMap<K, V>(valueComparator);
         sorted.putAll(map);
         return sorted;
+    }
+
+    // Not in used, it is another sort option
+    public static <K, V extends Comparable<? super V>> Map<K, V> sortByValue2(Map<K, V> map) {
+        List<Map.Entry<K, V>> list = new ArrayList<>(map.entrySet());
+        list.sort(Map.Entry.comparingByValue());
+        Collections.reverse(list);
+
+        Map<K, V> result = new LinkedHashMap<>();
+        for (Map.Entry<K, V> entry : list) {
+            result.put(entry.getKey(), entry.getValue());
+        }
+
+        return result;
     }
 }
 
