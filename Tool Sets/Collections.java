@@ -24,3 +24,21 @@ Collections 类提供了一组工具方法来方便使用集合类：
     创建不可变集合；
     排序／洗牌等操作。
 */
+List<String> list1 = List.of();
+List<String> list2 = Collections.emptyList();
+// Collections.emptyMap()
+// Collections.emptySet()
+
+List<String> list1 = List.of("a");
+List<String> list2 = Collections.singletonList("a");
+// Collections.singletonMap(K, V)
+// Collections.singleton(T) // Set<T>
+
+List<String> mutable = new ArrayList<>();
+mutable.add("a");
+mutable.add("b");
+List<String> immutable = Collections.unmodifiableList(mutable);
+// Collections.unmodifiableSet(set)
+// Collections.unmodifiableMap(map)
+
+Collections.shuffle(list);
