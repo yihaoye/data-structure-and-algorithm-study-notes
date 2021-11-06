@@ -10,10 +10,10 @@
 */
 
 // 取极值、排序
-List<Integer> list = new ArrayList<>(Arrays.asList(5,10,9,3,7));
-Collections.min(list);
-Collections.max(list);
-Collections.sort(list);
+List<Integer> list = new ArrayList<>(Arrays.asList(5, 10, 9, 3, 7));
+Collections.min(list); // min(Collection, Comparator)
+Collections.max(list); // max(Collection, Comparator)
+Collections.sort(list); // sort(Collection, Comparator)
 
 int[] arr = list.stream().mapToInt(i->i).toArray();
 
@@ -54,6 +54,9 @@ synchronized (list) {
     Iterator i = list.iterator();
     while (i.hasNext()) foo(i.next());
 }
+
+// Collections.indexOfSubList(list, subList) 方法的使用(含义：查找 subList 在 list 中首次出现位置的索引)
+// Collections.lastIndexOfSubList(list, subList) 方法的使用与上例方法的使用相同
 
 // 创建空集合
 List<String> list1 = List.of();

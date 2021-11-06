@@ -64,13 +64,13 @@
 *术语表：索引 - get | 搜索 - search | 遍历 - traversal | 添加 - add | 插入 - insert | 删除 - remove | 入队 - offer | 出队 - poll | 首值 - peek*  
   
 ### 常用数据结构的一些细节补充
-* 在 Java，以上大部分数据结构属于 Collection / 集合类，参见[图解](./Java%20Collection.png)以及[详解](./集合类.md)。以下是线程安全集合类与非线程安全集合类（《Java concurrency in practice》中定义：一个不论运行时/Runtime 如何调度线程都不需要调用方提供额外的同步和协调机制还能正确地运行的类是线程安全的；但线程安全的类/数据结构通常仅指的是其独立的方法或数据是原子化/加锁的，参考[链接](https://blog.csdn.net/a158123/article/details/84948046)，另外可参考代码[案例](../Computer%20System%20Layer/并发与并行(Java)/Jenkov/RaceConditions.java)；线程不安全就是不提供数据访问保护，有可能出现多个线程先后更改数据造成所得到的数据是混乱数据）。
+* 在 Java，以上大部分数据结构属于 Collection / 集合类，参见[图解](./Java%20Collection.png)以及[详解](./集合.md)。以下是线程安全集合类与非线程安全集合类（《Java concurrency in practice》中定义：一个不论运行时/Runtime 如何调度线程都不需要调用方提供额外的同步和协调机制还能正确地运行的类是线程安全的；但线程安全的类/数据结构通常仅指的是其独立的方法或数据是原子化/加锁的，参考[链接](https://blog.csdn.net/a158123/article/details/84948046)，另外可参考代码[案例](../Computer%20System%20Layer/并发与并行(Java)/Jenkov/RaceConditions.java)；线程不安全就是不提供数据访问保护，有可能出现多个线程先后更改数据造成所得到的数据是混乱数据）。
   * LinkedList、ArrayList、HashSet 是非线程安全的，Vector 是线程安全的（Vector 类中的方法很多有 synchronied 进行修饰，这样就导致了 Vector 在效率上无法与 ArrayLst 相比），Java 中 ArrayList、LinkedList、Vector 的[区别](https://www.cnblogs.com/wanlipeng/archive/2010/10/21/1857791.html)。
   * HashMap 是非线程安全的，HashTable 是线程安全的，它俩的[详细区别](https://stackoverflow.com/questions/40471/differences-between-hashmap-and-hashtable)。
   * StringBuilder 是非线程安全的，StringBuffer 是线程安的。
 * 虽然 Java 没有提供内置的线程安全的 List 和 Set，但是可以通过 `Collections.synchronizedList(List<T> list)` 和 `Collections.synchronizedSet(Set<T> set)` 将非线程安全的 List 和 Set 转换为线程安全的 List 和 Set。
 * Map、Dictionary、Table 的[异同](https://www.zhihu.com/question/27581780)。
-* Java 的数组/array 是语言本身提供的，而 ArrayList、LinkedList、Vector(向量) 等等都是 Java Util 包基于数组实现的，参见[图解](./Java%20Util%20Collections.png)。
+* Java 的数组/array 是语言本身提供的，而 ArrayList、LinkedList、Vector(向量) 等等都是 Java Util 包基于数组实现的，参见[图解](./Java%20Util%20Collection.png)。
 * Java 的 Vector、Stack 已过时（JDK 1.0）、不建议使用（性能不佳、继承了被弃用的父类、应用了不佳的旧设计和 API），相应的可以使用 ArrayList、Deque（具备 Stack 的 LIFO 功能、相关方法，但注意只调用 push()/pop()/peek() 方法，避免调用 Deque 的其他方法，具体比如 ArrayDeque）替代。同理 Java 的 Hashtable 也被弃用，原因也是性能不佳以及继承了被弃用的父类。
 * List 是按索引顺序访问的长度可变的有序表，优先使用 ArrayList 而不是 LinkedList；当需要对数据进行多此访问的情况下选用 ArrayList，当要对数据进行多次增加删除修改时采用 LinkedList。LinkedList 是一个双向链表，没有初始化大小，也没有扩容的机制，就是一直在前面或者后面新增。
 * 使用 Iterator 访问 List 的代码比使用索引在写法上更复杂，但是通过 Iterator 遍历 List 永远是最高效的方式，并且，由于 Iterator 遍历是如此常用，所以，Java 的 for each 循环本身就使用 Iterator 遍历。实际上，只要实现了 Iterable 接口的集合类都可以直接用 for each 循环来遍历，Java 编译器本身并不知道如何遍历集合对象，但它会自动把 for each 循环变成 Iterator 的调用，原因就在于 Iterable 接口定义了一个 `Iterator<E> iterator()` 方法，强迫集合类必须返回一个 Iterator 实例。
