@@ -41,7 +41,7 @@ class Solution {
     public int minDistance(String word1, String word2) {
         /*
             答案思路 - DP，dp[i][j] 代表 word1 到 i 位置转换成 word2 到 j 位置需要最少步数。所以，当 word1[i] == word2[j]，dp[i][j] = dp[i-1][j-1]；当 word1[i] != word2[j]，dp[i][j] = min(dp[i-1][j-1], dp[i-1][j], dp[i][j-1]) + 1。其中，dp[i-1][j-1] 表示替换操作，dp[i-1][j] 表示删除操作，dp[i][j-1] 表示插入操作。
-            时间复杂度 O(N)，空间复杂度 O(N*M)
+            时间复杂度 O(N*M)，空间复杂度 O(N*M)
             参考（https://leetcode-cn.com/problems/edit-distance/solution/zi-di-xiang-shang-he-zi-ding-xiang-xia-by-powcai-3/）
         */
         int rowLen = word1.length() + 1, colLen = word2.length() + 1;

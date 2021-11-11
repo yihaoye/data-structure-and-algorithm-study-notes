@@ -282,7 +282,7 @@
 - [ ] 256	Paint House		
 - [ ] 265	Paint House II		
 - [ ] 64	Minimum Path Sum		
-- [ ] 72	Edit Distance		
+- [x] 72	Edit Distance		
 - [ ] 97	Interleaving String		
 - [ ] 174	Dungeon Game		
 - [x] 221	Maximal Square		
@@ -522,7 +522,7 @@
 - [x] 69	Sqrt(x)		
 - [x] 70	Climbing Stairs		
 - [ ] 71	Simplify Path		
-- [ ] 72	Edit Distance		
+- [x] 72	Edit Distance		
 - [ ] 74	Search a 2D Matrix		
 - [x] 75	Sort Colors		
 - [ ] 76	Minimum Window Substring		
