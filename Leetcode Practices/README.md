@@ -76,7 +76,7 @@
 - [x] 349	Intersection of Two Arrays		
 - [ ] 350	Intersection of Two Arrays II		
 - [ ] 315	Count of Smaller Numbers After Self		
-- [ ] 300	Longest Increasing Subsequence		
+- [x] 300	Longest Increasing Subsequence		
 - [ ] 354	Russian Doll Envelopes	
   
 ## String
@@ -285,7 +285,7 @@
 - [ ] 72	Edit Distance		
 - [ ] 97	Interleaving String		
 - [ ] 174	Dungeon Game		
-- [ ] 221	Maximal Square		
+- [x] 221	Maximal Square		
 - [ ] 85	Maximal Rectangle		
 - [ ] 363	Max Sum of Rectangle No Larger Than K		    TreeSet
 ### 化简（降维？）
@@ -336,7 +336,7 @@
 - [x] 349	Intersection of Two Arrays		
 - [ ] 350	Intersection of Two Arrays II		
 - [ ] 315	Count of Smaller Numbers After Self		
-- [ ] 300	Longest Increasing Subsequence		
+- [x] 300	Longest Increasing Subsequence		
 - [ ] 354	Russian Doll Envelopes	
    
 ## Matrix
@@ -604,7 +604,7 @@
 - [ ] 218	The Skyline Problem		
 - [x] 219	Contains Duplicate II		
 - [ ] 220	Contains Duplicate III		
-- [ ] 221	Maximal Square		
+- [x] 221	Maximal Square		
 - [ ] 224	Basic Calculator		
 - [ ] 225	Implement Stack using Queues		
 - [x] 226	Invert Binary Tree		
@@ -662,7 +662,7 @@
 - [ ] 297	Serialize and Deserialize Binary Tree		
 - [ ] 298	Binary Tree Longest Consecutive Sequence		
 - [x] 299	Bulls and Cows		
-- [ ] 300	Longest Increasing Subsequence		
+- [x] 300	Longest Increasing Subsequence		
 - [ ] 301	Remove Invalid Parentheses		
 - [ ] 302	Smallest Rectangle Enclosing Black Pixels		
 - [ ] 305	Number of Islands II		
