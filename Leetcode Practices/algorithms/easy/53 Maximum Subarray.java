@@ -35,7 +35,7 @@ class Solution {
         /*
             a: 思路 - DP，dp[i] 表示以 nums[i] 结尾的连续子数组的最大和
             b: 时间复杂度 O(N)，空间复杂度 O(N)
-            c: 看答案
+            c: 看答案（https://leetcode-cn.com/problems/maximum-subarray/solution/dong-tai-gui-hua-fen-zhi-fa-python-dai-ma-java-dai/）
         */
         int[] dp = new int[nums.length];
         dp[0] = nums[0];
