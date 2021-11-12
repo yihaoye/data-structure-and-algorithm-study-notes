@@ -25,7 +25,7 @@
 - [ ] 45	Jump Game II		
 - [x] 121	Best Time to Buy and Sell Stock		
 - [x] 122	Best Time to Buy and Sell Stock II		
-- [ ] 123	Best Time to Buy and Sell Stock III		
+- [x] 123	Best Time to Buy and Sell Stock III		
 - [ ] 188	Best Time to Buy and Sell Stock IV		
 - [x] 309	Best Time to Buy and Sell Stock with Cooldown		
 - [x] 11	Container With Most Water		
@@ -551,7 +551,7 @@
 - [ ] 117	Populating Next Right Pointers in Each Node II		
 - [x] 121	Best Time to Buy and Sell Stock		
 - [x] 122	Best Time to Buy and Sell Stock II		
-- [ ] 123	Best Time to Buy and Sell Stock III		
+- [x] 123	Best Time to Buy and Sell Stock III		
 - [ ] 124	Binary Tree Maximum Path Sum		
 - [x] 125	Valid Palindrome		
 - [ ] 126	Word Ladder II		
