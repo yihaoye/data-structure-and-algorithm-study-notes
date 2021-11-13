@@ -275,7 +275,7 @@
 - [x] 120	Triangle		                                很少考
 - [ ] 279	Perfect Squares		
 - [ ] 139	Word Break		
-- [ ] 375	Guess Number Higher or Lower II		
+- [x] 375	Guess Number Higher or Lower II		
 - [ ] 312	Burst Balloons		
 - [ ] 322	Coin Change		
 ### 二维
@@ -702,7 +702,7 @@
 - [ ] 364	Nested List Weight Sum II		
 - [x] 367	Valid Perfect Square		
 - [ ] 374	Guess Number Higher or Lower		
-- [ ] 375	Guess Number Higher or Lower II		
+- [x] 375	Guess Number Higher or Lower II		
 - [ ] 376	Wiggle Subsequence		
 - [ ] 377	Combination Sum IV		
 - [x] 378	Kth Smallest Element in a Sorted Matrix		
