@@ -1,5 +1,7 @@
 ## 小章目录
   
+- 概念
+  - [搜索](./搜索.md)
 - 基础
   - [常用排序算法 | Sorting Algorithms](./Common%20Sorts/README.md)
   - [枚举/穷举算法 | Enumerate](./枚举(穷举)算法.md)
