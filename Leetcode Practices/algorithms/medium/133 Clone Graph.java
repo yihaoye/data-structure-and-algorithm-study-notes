@@ -104,3 +104,40 @@ class Solution {
         return newNode;
     }
 }
+
+
+
+// My Solution:
+class Solution {
+    /*
+        思路 - BFS + HashMap（DFS 在特殊情况下可能爆栈），问题的关键在于遍历所有节点但是又要注意循环路径，因为 val 被设定为唯一，可以用一个全局 HashMap 存储节点并以 val 为 Key 标记是否遍历过了（只在第一次遍历中 push 到 queue 中）。另外克隆操作是 new 一个 Node 并给 val 和 neighbors 赋值（new ArrayList<>(...)；或使用哈希表中的对象引用）
+        时间复杂度 O(N)，空间复杂度 O(N)
+    */
+    HashMap<Integer, Node> map = new HashMap<>();
+    Queue<Node> queue = new LinkedList<Node>();
+
+    public Node cloneGraph(Node node) {
+        if (node == null) return node;
+        
+        Node res = new Node(node.val, new ArrayList<>(node.neighbors));
+        map.put(res.val, res);
+        queue.add(res);
+        while (!queue.isEmpty()) {
+            Node preNewNode = queue.poll();
+            List<Node> preOldNeighbors = preNewNode.neighbors;
+            preNewNode.neighbors = new ArrayList<>();
+            for (Node oldNode : preOldNeighbors) {
+                Node nextNewNode = null;
+                if (!map.containsKey(oldNode.val)) {
+                    nextNewNode = new Node(oldNode.val, new ArrayList<>(oldNode.neighbors));
+                    map.put(nextNewNode.val, nextNewNode);
+                    queue.add(nextNewNode);
+                } else {
+                    nextNewNode = map.get(oldNode.val);
+                }
+                preNewNode.neighbors.add(nextNewNode);
+            }
+        }
+        return res;
+    }
+}
