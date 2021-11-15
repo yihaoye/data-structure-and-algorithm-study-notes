@@ -174,7 +174,7 @@
 - [ ] 342	Power of Four		
 - [ ] 372	Super Pow		
 - [ ] 233	Number of Digit One		
-- [ ] 319	Bulb Switcher		
+- [x] 319	Bulb Switcher		
 - [x] 292	Nim Game		
 - [x] 202	Happy Number		
 - [x] 400	Nth Digit		
