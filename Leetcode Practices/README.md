@@ -418,7 +418,7 @@
 - [ ] 382	Linked List Random Node		
 - [ ] 380	Insert Delete GetRandom O(1)		
 - [ ] 381	Insert Delete GetRandom O(1) - Duplicates allowed		
-- [ ] 138	Copy List with Random Pointer	
+- [x] 138	Copy List with Random Pointer	
    
 ## Graph
 ### 基础			
@@ -560,7 +560,7 @@
 - [ ] 130	Surrounded Regions		
 - [x] 133	Clone Graph		
 - [x] 134	Gas Station		
-- [ ] 138	Copy List with Random Pointer		
+- [x] 138	Copy List with Random Pointer		
 - [ ] 139	Word Break		
 - [ ] 140	Word Break II		
 - [x] 142	Linked List Cycle II		
