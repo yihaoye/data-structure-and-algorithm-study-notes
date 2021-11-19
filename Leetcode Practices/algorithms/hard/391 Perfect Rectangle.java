@@ -43,7 +43,7 @@ rectangles[i].length == 4
 
 
 
-// Other's Solution:
+// Other's Solution: (https://leetcode-cn.com/problems/perfect-rectangle/solution/wan-mei-ju-xing-by-leetcode-solution-ty8q/)
 class Solution {
     public boolean isRectangleCover(int[][] rectangles) {
         /*
