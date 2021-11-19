@@ -394,7 +394,7 @@
 ## Bit Manipulation
 - [x] 389	Find the Difference		
 - [x] 136	Single Number		
-- [ ] 318	Maximum Product of Word Lengths		
+- [x] 318	Maximum Product of Word Lengths		
 ### 很少考			
 - [ ] 393	UTF-8 Validation		
 - [ ] 201	Bitwise AND of Numbers Range		
@@ -674,7 +674,7 @@
 - [ ] 314	Binary Tree Vertical Order Traversal		
 - [ ] 316	Remove Duplicate Letters		
 - [ ] 317	Shortest Distance from All Buildings		
-- [ ] 318	Maximum Product of Word Lengths		
+- [x] 318	Maximum Product of Word Lengths		
 - [ ] 322	Coin Change		
 - [ ] 323	Number of Connected Components in an Undirected Graph		
 - [ ] 324	Wiggle Sort II		
