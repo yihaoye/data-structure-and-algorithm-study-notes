@@ -237,7 +237,7 @@
 - [ ] 255	Verify Preorder Sequence in Binary Search Tree		                            很少考
 - [ ] 333	Largest BST Subtree		                                                        很少考
 - [ ] 222	Count Complete Tree Nodes		                                                很少考
-- [ ] 105	Construct Binary Tree from Preorder and Inorder Traversal		                很少考
+- [x] 105	Construct Binary Tree from Preorder and Inorder Traversal		                很少考
 - [ ] 106	Construct Binary Tree from Inorder and Postorder Traversal		                很少考
 - [ ] 116	Populating Next Right Pointers in Each Node		                                重要
 - [ ] 117	Populating Next Right Pointers in Each Node II		                            重要
