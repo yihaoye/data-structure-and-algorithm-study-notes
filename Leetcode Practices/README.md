@@ -188,7 +188,7 @@
 - [x] 386	Lexicographical Numbers		
 - [ ] 357	Count Numbers with Unique Digits		
 - [x] 360	Sort Transformed Array		
-- [ ] 397	Integer Replacement		
+- [x] 397	Integer Replacement		
 - [ ] 368	Largest Divisible Subset	
   
 ## Tree
