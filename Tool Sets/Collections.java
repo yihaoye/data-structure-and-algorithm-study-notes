@@ -28,6 +28,7 @@ Collections.shuffle(list);
 // 二分搜索
 int index = Collections.binarySearch(list, 7);
 // 对于非标准对象，可以自定义二分搜索的对比 binarySearch(List<? extends T> list, T key, Comparator<? super T> c)
+// 如果 list 里找不到该元素，会对该元素应插入的位置索引取反再 -1，然后返回该值，例：Collections.binarySearch({1, 2, 3, 10, 20}, 13) => -5（参考：https://www.geeksforgeeks.org/collections-binarysearch-java-examples/）
 
 // 反转顺序
 Collections.reverse(list);
