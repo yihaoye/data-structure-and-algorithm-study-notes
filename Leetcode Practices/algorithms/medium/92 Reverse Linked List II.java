@@ -11,6 +11,44 @@ Output: 1->4->3->2->5->NULL
 
 
 
+// My Solution (ArrayList):
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode reverseBetween(ListNode head, int left, int right) {
+        ListNode tmp = head, preNodeOfLeft = head;
+        List<ListNode> subList = new ArrayList<>();
+        for (int i=1; i<=right; i++) {
+            if (i >= left) subList.add(tmp);
+            if (i == left-1) preNodeOfLeft = tmp;
+            tmp = tmp.next;
+        }
+        if (left > 1) preNodeOfLeft.next = subList.get(subList.size()-1);
+        reverse(subList);
+        
+        return left == 1 ? subList.get(0) : head;
+    }
+
+    public void reverse(List<ListNode> subList) {
+        Collections.reverse(subList);
+        subList.get(subList.size()-1).next = subList.get(0).next; // preHead.next = preTail.next
+        for (int i=0; i<subList.size()-1; i++) {
+            subList.get(i).next = subList.get(i+1);
+        }
+        return;
+    }
+}
+
+
+
 // My Solution (Recursion):
 /**
  * Definition for singly-linked list.
