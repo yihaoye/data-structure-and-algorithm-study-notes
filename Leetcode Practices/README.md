@@ -413,7 +413,7 @@
 - [ ] 269	Alien Dictionary	
    
 ## Random
-- [ ] 384	Shuffle an Array		
+- [x] 384	Shuffle an Array		
 - [ ] 398	Random Pick Index		
 - [ ] 382	Linked List Random Node		
 - [ ] 380	Insert Delete GetRandom O(1)		
@@ -709,7 +709,7 @@
 - [ ] 379	Design Phone Directory		
 - [ ] 380	Insert Delete GetRandom O(1)		
 - [ ] 381	Insert Delete GetRandom O(1) - Duplicates allowed		
-- [ ] 384	Shuffle an Array		
+- [x] 384	Shuffle an Array		
 - [ ] 385	Mini Parser		
 - [x] 389	Find the Difference		
 - [ ] 394	Decode String		
