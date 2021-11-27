@@ -3,6 +3,12 @@
 如果这个位置上没有元素，它就可以直接存储在这个位置上，不用再进行任何比较了；如果这个位置上已经有元素了，就调用它的 equals 方法与新元素进行比较，相同的话就不存了，不相同就散列其它的地址。
 所以这里存在一个冲突解决的问题。这样一来实际调用 equals 方法的次数就大大降低了，几乎只需要一两次。
 
+https://www.cnblogs.com/0201zcr/p/4810813.html
+https://www.cnblogs.com/0201zcr/p/4769108.html
+当程序试图将一个 key-value 对放入 HashMap 中时，程序首先根据该 key 的 hashCode() 返回值决定该 Entry 的存储位置：如果两个 Entry 的 key 的 hashCode() 返回值相同，
+那它们的存储位置相同。如果这两个 Entry 的 key 通过 equals 比较返回 true，新添加 Entry 的 value 将覆盖集合中原有 Entry 的 value，但 key 不会覆盖。
+如果这两个 Entry 的 key 通过 equals 比较返回 false，新添加的 Entry 将与集合中原有 Entry 形成 Entry 链，而且新添加的 Entry 位于 Entry 链的头部。
+
 如果重写了 equals() 方法一定要写重写 hashcode() 方法，也就是说为什么要保证 equals() 方法比较相等的对象，其 hashcode() 方法返回值也要一样才可以。
 但是反过来，hashCode() 相等时，equals() 不一定相等（也不需要一定相等）。
 */
