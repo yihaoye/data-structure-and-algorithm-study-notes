@@ -22,14 +22,15 @@ All inputs are guaranteed to be non-empty strings.
 // Other's Solution:
 // https://leetcode.com/problems/implement-trie-prefix-tree/
 // 时间复杂度：O(L)，空间复杂度：O(prefixes) 最坏为 O(M^L) 即插入的单词均无相同前缀，M 为字符集，L 为插入单词的长度
+// 一次建树多次查询（更多详解：https://leetcode-cn.com/problems/implement-trie-prefix-tree/solution/trie-tree-de-shi-xian-gua-he-chu-xue-zhe-by-huwt/）
 class Trie {
     class TrieNode {
+        public TrieNode[] children;
+        public boolean is_word;
         public TrieNode() {
             children = new TrieNode[26];
             is_word = false;
         }
-        public boolean is_word;
-        public TrieNode[] children;
     }
     
     private TrieNode root;
@@ -44,8 +45,7 @@ class Trie {
         TrieNode p = root;
         for (int i = 0; i < word.length(); i++) {
             int index = (int)(word.charAt(i) - 'a');
-            if (p.children[index] == null)
-                p.children[index] = new TrieNode();
+            if (p.children[index] == null) p.children[index] = new TrieNode();
             p = p.children[index];
         }
         p.is_word = true;
@@ -73,7 +73,6 @@ class Trie {
         return p;
     }
 }
-
 /**
  * Your Trie object will be instantiated and called as such:
  * Trie obj = new Trie();

@@ -52,7 +52,7 @@
 6. 编码六，有时题解没通过测试时不用先急着怀疑是自己的基本思路错误，有可能只是需要再对一些 edge cases 做优化即可（例如 Leetcode Q214）。
 7. 编码七，题解中的一些灵活小技巧，比如在某些情况下可以对 char 或 string 等非数学数据类型直接互相进行 +/- 操作，可以减少代码里一些繁琐的逻辑、表达、判断等等。
 8. 编码八，尽量用工具类以省事（尤其在处理一些复杂组合的非基础算法题时），比如当前集合、容器（List、Set、Map）的内置方法，又比如 `int index = Collections.binarySearch(list, key);` [更多详见](./Tool%20Sets/Collections.java)。
-9. 编码九，熟用常用套路比如[反转链表 | Leetcode Q92](./Leetcode%20Practices/algorithms/medium/92%20Reverse%20Linked%20List%20II.java)、[前缀树]()、[并查集]()、[待补充...]() 等等。  
+9. 编码九，熟用熟背常用套路或模版比如[反转链表 | Leetcode Q92](./Leetcode%20Practices/algorithms/medium/92%20Reverse%20Linked%20List%20II.java)、[前缀树(字典树) | Leetcode 208](./Leetcode%20Practices/algorithms/medium/208%20Implement%20Trie%20(Prefix%20Tree).java)、[并查集与联合查找 | Leetcode 200 UF 解法](./Leetcode%20Practices/algorithms/medium/200%20Number%20of%20Islands.java)、[待补充...]() 等等。  
   
 #### 题型技巧
 查看[更多题型、细节技巧](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/tree/master/Cracking%20the%20Coding%20Interview)  
