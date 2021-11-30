@@ -221,7 +221,7 @@
 ### BST			
 - [x] 98	Validate Binary Search Tree		                                                preorder
 - [x] 235	Lowest Common Ancestor of a Binary Search Tree		                            preorder
-- [ ] 236	Lowest Common Ancestor of a Binary Tree		                                    postorder
+- [x] 236	Lowest Common Ancestor of a Binary Tree		                                    postorder
 - [x] 108	Convert Sorted Array to Binary Search Tree		                                binary search
 - [ ] 109	Convert Sorted List to Binary Search Tree		                                binary search
 - [ ] 173	Binary Search Tree Iterator		                                                inorder
@@ -614,7 +614,7 @@
 - [x] 231	Power of Two		
 - [ ] 232	Implement Queue using Stacks		
 - [x] 235	Lowest Common Ancestor of a Binary Search Tree		
-- [ ] 236	Lowest Common Ancestor of a Binary Tree		
+- [x] 236	Lowest Common Ancestor of a Binary Tree		
 - [x] 238	Product of Array Except Self		
 - [ ] 239	Sliding Window Maximum		
 - [ ] 240	Search a 2D Matrix II		
