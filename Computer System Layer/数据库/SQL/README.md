@@ -420,6 +420,8 @@ https://shardingsphere.apache.org/index_zh.html
 ![](./shardingsphere-proxy_v2.png)  
 
 ![](./shardingsphere-sidecar-brief.png)  
+
+![](./sharding-sphere-parsing.png)  
   
   
 ## 阿里巴巴 MySQL 规范
