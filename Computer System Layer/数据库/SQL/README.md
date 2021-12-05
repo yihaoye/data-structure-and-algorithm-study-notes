@@ -408,6 +408,18 @@ MVCC 是利用在每条数据后面加了隐藏的两列（创建版本号和删
 ### 分库分表
 数据分片方式有垂直分片和水平分片。垂直分片就是从业务角度将不同的表拆分到不同的库中，能够解决数据库数据文件过大的问题，但不能从根本上解决查询问题。水平分片就是从数据角度将一个表拆分到不同的库或表中，这样可以从根本上解决数据量过大导致的查询效率低的问题。  
 阿里开发手册建议：一个表的数据量超过 500 万或数据文件超过 2 G，就要考虑分库分表了。  
+
+**分库分表组件：ShardingSphere**  
+ShardingSphere 是一套开源的分布式数据库中间件解决方案组成的生态圈，它由 Sharding-JDBC、Sharding-Proxy 和 Sharding-Sidecar（计划中）这 3 款相互独立的产品组成。他们均提供标准化的数据分片、分布式事务和数据库治理功能，可适用于如Java同构、异构语言、云原生等各种多样化的应用场景。  
+ShardingSphere 定位为关系型数据库中间件，旨在充分合理地在分布式的场景下利用关系型数据库的计算和存储能力，而并非实现一个全新的关系型数据库。  
+https://shardingsphere.apache.org/document/current/cn/overview/  
+https://shardingsphere.apache.org/index_zh.html  
+
+![](./shardingsphere-jdbc_v3.png)  
+
+![](./shardingsphere-proxy_v2.png)  
+
+![](./shardingsphere-sidecar-brief.png)  
   
   
 ## 阿里巴巴 MySQL 规范
