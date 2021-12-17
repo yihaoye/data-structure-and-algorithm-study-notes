@@ -66,6 +66,10 @@ class Node {
 */
 class Solution {
     public Node copyRandomList(Node head) {
+        /*
+            思路 - 遍历两遍，第一遍用哈希表并使用原节点对象 toString 为 Key，Val 为新建节点对象并赋值（但不设 next 和 random 引用），第二遍时负责设 next 和 random 引用，此时使用哈希表键定位新建的其他节点即可
+            时间复杂度 O(N)，空间复杂度 O(N)
+        */
         if (head == null) return null;
         HashMap<String, Node> map = new HashMap<>();
         Node tmp = head;
