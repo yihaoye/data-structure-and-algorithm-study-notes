@@ -38,6 +38,10 @@ At most 5 * 104 calls in total will be made to reset and shuffle.
 
 // Other's Solution:
 class Solution {
+    /*
+        思路 - 随机类，遍历每个索引将其与后面随机一个索引进行 swap 操作
+        时间复杂度 O(N)，空间复杂度 O(1)
+    */
     int[] nums;
     int[] origin;
     
