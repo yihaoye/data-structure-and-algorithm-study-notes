@@ -23,6 +23,7 @@ All inputs are guaranteed to be non-empty strings.
 // https://leetcode.com/problems/implement-trie-prefix-tree/
 // 时间复杂度：O(L)，空间复杂度：O(prefixes) 最坏为 O(M^L) 即插入的单词均无相同前缀，M 为字符集，L 为插入单词的长度
 // 一次建树多次查询（更多详解：https://leetcode-cn.com/problems/implement-trie-prefix-tree/solution/trie-tree-de-shi-xian-gua-he-chu-xue-zhe-by-huwt/）
+// 硬背默写，一个前缀树节点应该有一个子树节点数组和一个标记 is_word
 class Trie {
     class TrieNode {
         public TrieNode[] children;
