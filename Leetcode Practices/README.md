@@ -226,7 +226,7 @@
 - [ ] 109	Convert Sorted List to Binary Search Tree		                                binary search
 - [ ] 173	Binary Search Tree Iterator		                                                inorder
 - [x] 230	Kth Smallest Element in a BST		                                            inorder
-- [ ] 297	Serialize and Deserialize Binary Tree		                                    BFS
+- [x] 297	Serialize and Deserialize Binary Tree		                                    BFS
 - [ ] 285	Inorder Successor in BST		                                                inorder
 - [ ] 270	Closest Binary Search Tree Value		                                        preorder
 - [ ] 272	Closest Binary Search Tree Value II		                                        inorder
@@ -659,7 +659,7 @@
 - [x] 294	Flip Game II		
 - [ ] 295	Find Median from Data Stream		
 - [ ] 296	Best Meeting Point		
-- [ ] 297	Serialize and Deserialize Binary Tree		
+- [x] 297	Serialize and Deserialize Binary Tree		
 - [ ] 298	Binary Tree Longest Consecutive Sequence		
 - [x] 299	Bulls and Cows		
 - [x] 300	Longest Increasing Subsequence		
