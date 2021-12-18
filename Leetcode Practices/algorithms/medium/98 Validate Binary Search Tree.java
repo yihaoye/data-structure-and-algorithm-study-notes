@@ -63,3 +63,32 @@ class Solution {
     }
 }
 // 参考：http://zxi.mytechroad.com/blog/tree/leetcode-98-validate-binary-search-tree/
+
+
+
+// My Solution:
+class Solution {
+    public boolean isValidBST(TreeNode root) {
+        /*
+            中序遍历 DFS，然后检查 List 是否顺序即可
+            时间复杂度 O(N)，空间复杂度 O(h) 栈
+        */
+        List<Integer> inorderList = new ArrayList<>();
+        if (root != null) inorder(root, inorderList);
+        if (inorderList.size() <= 1) return true;
+        for (int i=1; i<inorderList.size(); i++) {
+            if (inorderList.get(i) <= inorderList.get(i-1)) {
+                return false;
+            }
+        }
+        
+        return true;
+    }
+    
+    public void inorder(TreeNode node, List<Integer> inorderList) {
+        if (node.left != null) inorder(node.left, inorderList);
+        inorderList.add(node.val);
+        if (node.right != null) inorder(node.right, inorderList);
+        return;
+    }
+}
