@@ -374,7 +374,7 @@
 - [x] 155	Min Stack		
 - [ ] 232	Implement Queue using Stacks		
 - [ ] 225	Implement Stack using Queues		
-- [ ] 150	Evaluate Reverse Polish Notation		
+- [x] 150	Evaluate Reverse Polish Notation		
 - [ ] 71	Simplify Path		
 - [ ] 388	Longest Absolute File Path		
 - [ ] 394	Decode String		
@@ -566,7 +566,7 @@
 - [x] 142	Linked List Cycle II		
 - [x] 146	LRU Cache		
 - [ ] 149	Max Points on a Line		
-- [ ] 150	Evaluate Reverse Polish Notation		
+- [x] 150	Evaluate Reverse Polish Notation		
 - [ ] 152	Maximum Product Subarray		
 - [ ] 153	Find Minimum in Rotated Sorted Array		
 - [ ] 154	Find Minimum in Rotated Sorted Array II		
