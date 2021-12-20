@@ -51,6 +51,10 @@ Can you solve it without using extra space?
 public class Solution {
     public ListNode detectCycle(ListNode head) {
         // <Cracking the Coding Interview> 9.2-2.6
+        /*
+            快慢指针法
+            时间复杂度 O(N)，空间复杂度 O(1)
+        */
         ListNode slow = head, fast = head;
 
         /* 找出碰撞处，将处于链表中 LOOP_SIZE - k 步的位置 */
