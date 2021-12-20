@@ -49,7 +49,7 @@
 - [ ] 352	Data Stream as Disjoint Intervals		                    TreeMap
 ### Counter			
 - [ ] 239	Sliding Window Maximum		
-- [ ] 295	Find Median from Data Stream		
+- [x] 295	Find Median from Data Stream		
 - [x] 53	Maximum Subarray		
 - [ ] 325	Maximum Size Subarray Sum Equals k		
 - [ ] 209	Minimum Size Subarray Sum		
@@ -657,7 +657,7 @@
 - [ ] 291	Word Pattern II		
 - [x] 293	Flip Game		
 - [x] 294	Flip Game II		
-- [ ] 295	Find Median from Data Stream		
+- [x] 295	Find Median from Data Stream		
 - [ ] 296	Best Meeting Point		
 - [x] 297	Serialize and Deserialize Binary Tree		
 - [ ] 298	Binary Tree Longest Consecutive Sequence		
