@@ -455,7 +455,7 @@
 - [ ] 379	Design Phone Directory		
 - [ ] 353	Design Snake Game		
 - [x] 146	LRU Cache		
-- [ ] 355	Design Twitter		
+- [x] 355	Design Twitter		
 - [ ] 303	Range Sum Query - Immutable		
 - [ ] 304	Range Sum Query 2D - Immutable		
 - [ ] 307	Range Sum Query - Mutable		                            BIT & ST
@@ -695,7 +695,7 @@
 - [ ] 352	Data Stream as Disjoint Intervals		
 - [ ] 353	Design Snake Game		
 - [ ] 354	Russian Doll Envelopes		
-- [ ] 355	Design Twitter		
+- [x] 355	Design Twitter		
 - [x] 359	Logger Rate Limiter		
 - [ ] 361	Bomb Enemy		
 - [ ] 362	Design Hit Counter		
