@@ -458,7 +458,7 @@
 - [x] 355	Design Twitter		
 - [ ] 303	Range Sum Query - Immutable		
 - [ ] 304	Range Sum Query 2D - Immutable		
-- [ ] 307	Range Sum Query - Mutable		                            BIT & ST
+- [x] 307	Range Sum Query - Mutable		                            BIT & ST
 - [ ] 308	Range Sum Query 2D - Mutable		                        BIT & ST
    
    
@@ -666,7 +666,7 @@
 - [ ] 301	Remove Invalid Parentheses		
 - [ ] 302	Smallest Rectangle Enclosing Black Pixels		
 - [ ] 305	Number of Islands II		
-- [ ] 307	Range Sum Query - Mutable		
+- [x] 307	Range Sum Query - Mutable		
 - [ ] 308	Range Sum Query 2D - Mutable		
 - [x] 309	Best Time to Buy and Sell Stock with Cooldown		
 - [x] 311	Sparse Matrix Multiplication		
