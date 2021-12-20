@@ -372,7 +372,7 @@
 ## Stack & PriorityQueue
 ### Stack			
 - [x] 155	Min Stack		
-- [ ] 232	Implement Queue using Stacks		
+- [x] 232	Implement Queue using Stacks		
 - [ ] 225	Implement Stack using Queues		
 - [x] 150	Evaluate Reverse Polish Notation		
 - [ ] 71	Simplify Path		
@@ -612,7 +612,7 @@
 - [ ] 228	Summary Ranges		
 - [x] 230	Kth Smallest Element in a BST		
 - [x] 231	Power of Two		
-- [ ] 232	Implement Queue using Stacks		
+- [x] 232	Implement Queue using Stacks		
 - [x] 235	Lowest Common Ancestor of a Binary Search Tree		
 - [x] 236	Lowest Common Ancestor of a Binary Tree		
 - [x] 238	Product of Array Except Self		
