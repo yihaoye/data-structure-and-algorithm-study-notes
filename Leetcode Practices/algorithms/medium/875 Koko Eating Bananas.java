@@ -60,3 +60,31 @@ class Solution {
         return sum <= H;
     }
 }
+
+
+
+// Other's Solution:
+class Solution {
+    public int minEatingSpeed(int[] piles, int h) {
+        /*
+            看 topic 提示二分查找，最大值为 max(piles)，最小值为 1，在这中间求最小满足 h 的值
+            时间复杂度 O(N*logMaxValue)，空间复杂度 O(1)
+        */
+        int min = 1, max = 1;
+        for (int pile : piles) max = Math.max(max, pile);
+
+        while (min < max) {
+            int mid = min + (max - min) / 2;
+            if (getEatingHours(piles, mid) > h) min = mid + 1;
+            else max = mid;
+        }
+        
+        return min;
+    }
+    
+    public int getEatingHours(int[] piles, int k) {
+        int res = 0;
+        for (int pile : piles) res += (pile + k - 1) / k; // 向上取整（包括 % k == 0 的情况）
+        return res;
+    }
+}
