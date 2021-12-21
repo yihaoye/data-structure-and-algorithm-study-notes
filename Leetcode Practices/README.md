@@ -320,7 +320,7 @@
 - [ ] 25	Reverse Nodes in k-Group		
 - [ ] 61	Rotate List		
 - [ ] 86	Partition List		
-- [ ] 23	Merge k Sorted Lists		
+- [x] 23	Merge k Sorted Lists		
 - [ ] 147	Insertion Sort List	
    
 ## Binary Search
@@ -479,7 +479,7 @@
 - [ ] 18	4Sum		
 - [x] 20	Valid Parentheses		
 - [x] 22	Generate Parentheses		
-- [ ] 23	Merge k Sorted Lists		
+- [x] 23	Merge k Sorted Lists		
 - [x] 26	Remove Duplicates from Sorted Array		
 - [x] 27	Remove Element		
 - [x] 28	Implement strStr()		

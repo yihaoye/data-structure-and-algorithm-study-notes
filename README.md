@@ -36,7 +36,7 @@
 2. 套路二，看到处理二维时，可以考虑暴力解（DFS、BFS 以及附加记忆化搜索）、动态规划、等等待续。  
   
 #### 首先看完题目先不要急着做，进行下述几个思考阶段先
-1. 思考一，理清题目本质，决定该题是什么类型数据结构、算法相关（如队列、堆栈、树、字符串、布尔或二进制、数组、图，如回溯法、动态规划、贪婪算法、二分搜索、二进制运算、迭代递归、遍历、前缀和与差分），通常若题目没有明显处理算法暗示或思绪提供时则可以考虑暴力破解（如回溯法、递归循环穷举法或 DFS、BFS 等），又或通过题目性能要求推测考点算法 - 比如要求性能达到 logN 时即很可能要使用二分搜索算法。（记住递归可以顺序也可以反序 - 如面试金典 9.2-2.5 进阶）
+1. 思考一，理清题目本质，决定该题是什么类型数据结构、算法相关（如队列、堆栈、树、字符串、布尔或二进制、数组、图，如回溯法、动态规划、贪婪算法、二分搜索、二进制运算、迭代递归、遍历、前缀和与差分、单调栈），通常若题目没有明显处理算法暗示或思绪提供时则可以考虑暴力破解（如回溯法、递归循环穷举法或 DFS、BFS 等），又或通过题目性能要求推测考点算法 - 比如要求性能达到 logN 时即很可能要使用二分搜索算法。（记住递归可以顺序也可以反序 - 如面试金典 9.2-2.5 进阶）
 2. 思考二，是否需要做一些[预处理](./Tool%20Sets/)，如排序，又或者先做一些额外预处理比如补零数位以及遍历至尾，在从尾部往回处理（如面试金典 9.2-2.5 进阶）。这种情况往往出现在题目明显有违常规思路时，即总是有些条件、可能、边缘情况阻碍常规思路，意味着出题者可能是故意增加了一些难度需要解题者预处理。这些预处理工作即使看起来复杂且一开始不确定是否对解题有帮助也不妨试试，尽量按常规系统性方法解题（即上面所有 Leetcode 内的解题法分类如递归、动态规划等等，经验足够的话大的解题类方向通常一开始就可以定下来），可以分割困难，但不要苦思奇法。
 3. 思考三，当题目已暗示可能要进行大规模输入检测题解效率时，可以考虑进行一些预处理、动态规划思路，例子如 Leetcode Q244。
 4. 思考四，(草稿时)引入一些[数学工具、模型](./Tool%20Sets/Math.java) - 如[状态机](./Tool%20Sets/FSM(DFA).java)等等有助于理清思路与解题(例子如 Leetcode Q309，KMP 算法实现)，辅助的数学思想还可以包括且不限于加减乘除(商、余数)、开方、指数、对数、微积分(例如 Leetcode Q367 牛顿法)、素数、公约数、公倍数、概率、阶乘、数列、坐标、几何函数(sin、cos、tan)、[矩阵](./Tool%20Sets/Math.java)(例如 Leetcode Q311)、不等式、多项式、进位转换等等。
@@ -58,7 +58,7 @@
 8. 编码八，尽量用工具类以省事（尤其在处理一些复杂组合的非基础算法题时），比如当前集合、容器（List、Set、Map）的内置方法，又比如 `int index = Collections.binarySearch(list, key);` [更多详见](./Tool%20Sets/Collections.java)。  
   
 #### 预先准备
-1. 预备一，熟用熟背常用模版比如[反转链表 | Leetcode Q92](./Leetcode%20Practices/algorithms/medium/92%20Reverse%20Linked%20List%20II.java)、[前缀树(字典树) | Leetcode 208](./Leetcode%20Practices/algorithms/medium/208%20Implement%20Trie%20(Prefix%20Tree).java)、[并查集与联合查找 | Leetcode 200 UF 解法](./Leetcode%20Practices/algorithms/medium/200%20Number%20of%20Islands.java)、[树状数组 | Leetcode 307](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/BinaryIndexedTree(FenwickTree)/README.md#树状数组实现)、[滑动窗口]()、[快慢指针 | Leetcode 142](./Leetcode%20Practices/algorithms/medium/142%20Linked%20List%20Cycle%20II.java)、[待补充...]() 等等。  
+1. 预备一，熟用熟背常用模版比如[反转链表 | Leetcode Q92](./Leetcode%20Practices/algorithms/medium/92%20Reverse%20Linked%20List%20II.java)、[前缀树(字典树) | Leetcode 208](./Leetcode%20Practices/algorithms/medium/208%20Implement%20Trie%20(Prefix%20Tree).java)、[并查集与联合查找 | Leetcode 200 UF 解法](./Leetcode%20Practices/algorithms/medium/200%20Number%20of%20Islands.java)、[树状数组 | Leetcode 307](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/BinaryIndexedTree(FenwickTree)/README.md#树状数组实现)、[滑动窗口]()、[快慢指针 | Leetcode 142](./Leetcode%20Practices/algorithms/medium/142%20Linked%20List%20Cycle%20II.java)、[多路归并 | Leetcode 23](./Leetcode%20Practices/algorithms/hard/23%20Merge%20k%20Sorted%20Lists.java)、[待补充...]() 等等。  
   
 #### 题型技巧
 查看[更多题型、细节技巧](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/tree/master/Cracking%20the%20Coding%20Interview)  
