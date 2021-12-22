@@ -10,7 +10,7 @@ Output: 7 -> 0 -> 8
 
 
 
-//Others' Answer:
+// Others' Answer:
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -47,23 +47,58 @@ public class Solution {
 
 
 
-//Official Answer:
-public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-    ListNode dummyHead = new ListNode(0);
-    ListNode p = l1, q = l2, curr = dummyHead;
-    int carry = 0;
-    while (p != null || q != null) {
-        int x = (p != null) ? p.val : 0;
-        int y = (q != null) ? q.val : 0;
-        int sum = carry + x + y;
-        carry = sum / 10;
-        curr.next = new ListNode(sum % 10);
-        curr = curr.next;
-        if (p != null) p = p.next;
-        if (q != null) q = q.next;
+// Official Answer:
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode dummyHead = new ListNode(0);
+        ListNode p = l1, q = l2, curr = dummyHead;
+        int carry = 0;
+        while (p != null || q != null) {
+            int x = (p != null) ? p.val : 0;
+            int y = (q != null) ? q.val : 0;
+            int sum = carry + x + y;
+            carry = sum / 10;
+            curr.next = new ListNode(sum % 10);
+            curr = curr.next;
+            if (p != null) p = p.next;
+            if (q != null) q = q.next;
+        }
+        if (carry > 0) {
+            curr.next = new ListNode(carry);
+        }
+        return dummyHead.next;
     }
-    if (carry > 0) {
-        curr.next = new ListNode(carry);
+}
+
+
+
+// My Solution:
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        /*
+            遍历两个链表，同时使用一个进位符，若其中一个节点为空则视为 0，若两个节点都为空则停止遍历，最后根据进位符是否为 0 决定是否多创建一个节点
+            时间复杂度 O(N)，空间复杂度 O(N)
+        */
+        int carry = 0;
+        ListNode res = new ListNode(carry);
+        ListNode tmp = res;
+        
+        while (true) {
+            int val1 = l1 != null ? l1.val : 0;
+            int val2 = l2 != null ? l2.val : 0;
+            tmp.val = tmp.val + val1 + val2;
+            if (tmp.val >= 10) {
+                carry = tmp.val / 10;
+                tmp.val = tmp.val % 10;
+            }
+            if (l1 != null) l1 = l1.next;
+            if (l2 != null) l2 = l2.next;
+            if (l1 == null && l2 == null && carry == 0) break;
+            tmp.next = new ListNode(carry);
+            carry = 0;
+            tmp = tmp.next;
+        }
+        
+        return res;
     }
-    return dummyHead.next;
 }
