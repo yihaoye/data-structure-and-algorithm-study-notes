@@ -53,7 +53,7 @@ The sum of lists[i].length won't exceed 10^4.
 class Solution {
     /*
         多路归并（最小堆解） - https://leetcode-cn.com/problems/merge-k-sorted-lists/solution/4-chong-fang-fa-xiang-jie-bi-xu-miao-dong-by-sweet/
-        时间复杂度 O(logN)，空间复杂度 O(N)
+        时间复杂度 O(N*logK) - K 为指针数，空间复杂度 O(K)
     */
     public ListNode mergeKLists(ListNode[] lists) {
         Queue<ListNode> pq = new PriorityQueue<>((l1, l2) -> l1.val - l2.val);
