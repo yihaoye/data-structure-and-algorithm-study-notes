@@ -57,32 +57,33 @@ class Solution {
             时间复杂度：O(n)，空间复杂度：O(n)
         */
         long res = 0;
-        Deque<Integer> smin = new LinkedList<>();
-        Deque<Integer> smax = new LinkedList<>();
+        Deque<Integer> sMax = new LinkedList<>();
+        Deque<Integer> sMin = new LinkedList<>();
         for (int i = 0; i < nums.length; i++) {
-            while (!smin.isEmpty() && nums[smin.peek()] <= nums[i]) {
-                int j = smin.pop();
-                int l = smin.isEmpty() ? -1 : smin.peek();
+            while (!sMax.isEmpty() && nums[sMax.peek()] <= nums[i]) {
+                int j = sMax.pop();
+                int l = sMax.isEmpty() ? -1 : sMax.peek();
                 res += 1L * (i - j) * (j - l) * nums[j];
             }
-            smin.push(i);
+            sMax.push(i);
 
-            while (!smax.isEmpty() && nums[smax.peek()] >= nums[i]) {
-                int j = smax.pop();
-                int l = smax.isEmpty() ? -1 : smax.peek();
+            while (!sMin.isEmpty() && nums[sMin.peek()] >= nums[i]) {
+                int j = sMin.pop();
+                int l = sMin.isEmpty() ? -1 : sMin.peek();
                 res -= 1L * (i - j) * (j - l) * nums[j];
             }
-            smax.push(i);
+            sMin.push(i);
         }
+
         int r = nums.length;
-        while (!smin.isEmpty()) {
-            int j = smin.pop();
-            int l = smin.isEmpty() ? -1 : smin.peek();
+        while (!sMax.isEmpty()) {
+            int j = sMax.pop();
+            int l = sMax.isEmpty() ? -1 : sMax.peek();
             res += 1L * (r - j) * (j - l) * nums[j];
         }
-        while (!smax.isEmpty()) {
-            int j = smax.pop();
-            int l = smax.isEmpty() ? -1 : smax.peek();
+        while (!sMin.isEmpty()) {
+            int j = sMin.pop();
+            int l = sMin.isEmpty() ? -1 : sMin.peek();
             res -= 1L * (r - j) * (j - l) * nums[j];
         }
 
