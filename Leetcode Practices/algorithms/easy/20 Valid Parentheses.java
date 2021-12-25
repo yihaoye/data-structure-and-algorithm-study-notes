@@ -67,3 +67,22 @@ class Solution {
         return true;
     }
 }
+
+
+
+// My Solution 2:
+class Solution {
+    public boolean isValid(String s) {
+        /*
+            栈
+            时间复杂度 O(N)，空间复杂度最差为 O(N)
+        */
+        Deque<Character> stack = new LinkedList<Character>();
+        for (char c : s.toCharArray()) {
+            if (stack.isEmpty()) stack.push(c);
+            else if ((c == ')' && stack.peek() == '(') || (c == '}' && stack.peek() == '{') || (c == ']' && stack.peek() == '[')) stack.pop();
+            else stack.push(c);
+        }
+        return stack.isEmpty();
+    }
+}
