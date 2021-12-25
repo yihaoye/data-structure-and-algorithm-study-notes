@@ -72,7 +72,7 @@
 - [ ] 154	Find Minimum in Rotated Sorted Array II		
 - [ ] 162	Find Peak Element		
 - [ ] 374	Guess Number Higher or Lower		
-- [ ] 34	Find First and Last Position of Element in Sorted Array		
+- [x] 34	Find First and Last Position of Element in Sorted Array		
 - [x] 349	Intersection of Two Arrays		
 - [ ] 350	Intersection of Two Arrays II		
 - [ ] 315	Count of Smaller Numbers After Self		
@@ -332,7 +332,7 @@
 - [ ] 154	Find Minimum in Rotated Sorted Array II		
 - [ ] 162	Find Peak Element		
 - [ ] 374	Guess Number Higher or Lower		
-- [ ] 34	Find First and Last Position of Element in Sorted Array		
+- [x] 34	Find First and Last Position of Element in Sorted Array		
 - [x] 349	Intersection of Two Arrays		
 - [ ] 350	Intersection of Two Arrays II		
 - [ ] 315	Count of Smaller Numbers After Self		
@@ -487,7 +487,7 @@
 - [ ] 31	Next Permutation		
 - [ ] 32	Longest Valid Parentheses		
 - [x] 33	Search in Rotated Sorted Array		
-- [ ] 34	Find First and Last Position of Element in Sorted Array		
+- [x] 34	Find First and Last Position of Element in Sorted Array		
 - [ ] 35	Search Insert Position		
 - [ ] 36	Valid Sudoku		
 - [ ] 37	Sudoku Solver		
