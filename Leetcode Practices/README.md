@@ -377,7 +377,7 @@
 - [x] 150	Evaluate Reverse Polish Notation		
 - [ ] 71	Simplify Path		
 - [ ] 388	Longest Absolute File Path		
-- [ ] 394	Decode String		
+- [x] 394	Decode String		
 - [ ] 224	Basic Calculator		
 - [ ] 227	Basic Calculator II		
 - [ ] 385	Mini Parser		
@@ -712,6 +712,6 @@
 - [x] 384	Shuffle an Array		
 - [ ] 385	Mini Parser		
 - [x] 389	Find the Difference		
-- [ ] 394	Decode String		
+- [x] 394	Decode String		
 - [ ] 398	Random Pick Index	
   
