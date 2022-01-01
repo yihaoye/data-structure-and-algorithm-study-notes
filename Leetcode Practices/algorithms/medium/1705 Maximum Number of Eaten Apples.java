@@ -94,3 +94,37 @@ class Solution {
         }
     }
 }
+
+
+
+// Other's Solution:
+// TreeMap - https://leetcode-cn.com/problems/maximum-number-of-eaten-apples/solution/wei-rao-li-lun-tan-xin-dui-mei-ci-zhao-z-txr2/
+
+// class Solution {
+//     public:
+//         int eatenApples(vector<int>& apples, vector<int>& days) {
+//             int ans = 0;
+//             int d = 0;
+    
+//             map<int, int> m; // (expire, cnt)
+    
+//             while (d < days.size() || !m.empty()) {
+//                 if (d < days.size()) m[days[d]+d-1] += apples[d];
+                
+//                 // 尝试从map中取出一个最接近过期但是没有过期的苹果
+//                 while(!m.empty()) {
+//                     if (m.begin()->first < d || m.begin()->second == 0) m.erase(m.begin()->first);
+//                     else {
+//                         // 如果找到了 我们就吃掉它
+//                         ans++;
+//                         // 苹果数要减1
+//                         m.begin()->second--;
+//                         break;
+//                     }
+//                 }
+//                 d++;
+//             }
+    
+//             return ans;
+//         }
+//     };
