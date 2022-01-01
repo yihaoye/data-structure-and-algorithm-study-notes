@@ -29,7 +29,7 @@
 - [ ] 188	Best Time to Buy and Sell Stock IV		
 - [x] 309	Best Time to Buy and Sell Stock with Cooldown		
 - [x] 11	Container With Most Water		
-- [ ] 42	Trapping Rain Water		
+- [x] 42	Trapping Rain Water		
 - [ ] 334	Increasing Triplet Subsequence		
 - [ ] 128	Longest Consecutive Sequence		
 - [ ] 164	Maximum Gap		                                            Bucket
@@ -495,7 +495,7 @@
 - [x] 39	Combination Sum		
 - [x] 40	Combination Sum II		
 - [x] 41	First Missing Positive		
-- [ ] 42	Trapping Rain Water		
+- [x] 42	Trapping Rain Water		
 - [x] 43	Multiply Strings		
 - [ ] 44	Wildcard Matching		
 - [ ] 45	Jump Game II		
