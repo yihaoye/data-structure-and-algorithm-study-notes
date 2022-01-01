@@ -83,7 +83,8 @@ class Solution {
 // Other's Solution: https://leetcode-cn.com/problems/merge-k-sorted-lists/solution/he-bing-kge-pai-xu-lian-biao-by-leetcode-solutio-2/
 class Solution {
     /*
-        分而治之，链表两两合并
+        分而治之（类似归并 https://pic.leetcode-cn.com/6f70a6649d2192cf32af68500915d84b476aa34ec899f98766c038fc9cc54662-image.png）
+        链表两两合并
         O(kn×logk)，空间复杂度：递归会使用到 O(logk) 空间代价的栈空间。
     */
     public ListNode mergeKLists(ListNode[] lists) {
