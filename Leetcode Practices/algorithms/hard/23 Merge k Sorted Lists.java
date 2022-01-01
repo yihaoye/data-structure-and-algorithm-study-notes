@@ -84,6 +84,7 @@ class Solution {
 class Solution {
     /*
         时间复杂度：O(n)，空间复杂度：O(1)。
+        如何在 O(n) 的时间代价以及 O(1) 的空间代价完成合并？这个问题在面试中常常出现，为了达到空间代价是 O(1)，我们的宗旨是「原地调整链表元素的 next 指针完成合并」。
     */
     public ListNode mergeTwoLists(ListNode a, ListNode b) {
         if (a == null || b == null) {
