@@ -83,9 +83,24 @@ class Solution {
 // Other's Solution: https://leetcode-cn.com/problems/merge-k-sorted-lists/solution/he-bing-kge-pai-xu-lian-biao-by-leetcode-solutio-2/
 class Solution {
     /*
-        时间复杂度：O(n)，空间复杂度：O(1)。
-        如何在 O(n) 的时间代价以及 O(1) 的空间代价完成合并？这个问题在面试中常常出现，为了达到空间代价是 O(1)，我们的宗旨是「原地调整链表元素的 next 指针完成合并」。
+        分而治之，链表两两合并
+        O(kn×logk)，空间复杂度：递归会使用到 O(logk) 空间代价的栈空间。
     */
+    public ListNode mergeKLists(ListNode[] lists) {
+        return merge(lists, 0, lists.length - 1);
+    }
+
+    public ListNode merge(ListNode[] lists, int l, int r) {
+        if (l == r) {
+            return lists[l];
+        }
+        if (l > r) {
+            return null;
+        }
+        int mid = (l + r) >> 1;
+        return mergeTwoLists(merge(lists, l, mid), merge(lists, mid + 1, r));
+    }
+
     public ListNode mergeTwoLists(ListNode a, ListNode b) {
         if (a == null || b == null) {
             return a != null ? a : b;
