@@ -400,7 +400,7 @@
 - [ ] 201	Bitwise AND of Numbers Range		
 - [x] 371	Sum of Two Integers emove Element		
 - [x] 338	Counting Bits		
-- [ ] 89	Gray Code		
+- [x] 89	Gray Code		
 - [x] 268	Missing Number		
 - [x] 191	Number of 1 Bits		
 - [x] 190	Reverse Bits		
