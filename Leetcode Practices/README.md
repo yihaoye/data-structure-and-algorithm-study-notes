@@ -210,7 +210,7 @@
 ### Preorder			
 - [x] 104	Maximum Depth of Binary Tree		
 - [x] 110	Balanced Binary Tree		
-- [ ] 124	Binary Tree Maximum Path Sum		
+- [x] 124	Binary Tree Maximum Path Sum		
 - [ ] 250	Count Univalue Subtrees		
 - [ ] 366	Find Leaves of Binary Tree		
 - [ ] 337	House Robber III		                                                        postorder + preorder
@@ -552,7 +552,7 @@
 - [x] 121	Best Time to Buy and Sell Stock		
 - [x] 122	Best Time to Buy and Sell Stock II		
 - [x] 123	Best Time to Buy and Sell Stock III		
-- [ ] 124	Binary Tree Maximum Path Sum		
+- [x] 124	Binary Tree Maximum Path Sum		
 - [x] 125	Valid Palindrome		
 - [ ] 126	Word Ladder II		
 - [ ] 127	Word Ladder		
