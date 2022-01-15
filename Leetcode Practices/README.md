@@ -54,7 +54,7 @@
 - [ ] 325	Maximum Size Subarray Sum Equals k		
 - [ ] 209	Minimum Size Subarray Sum		
 - [x] 238	Product of Array Except Self		
-- [ ] 152	Maximum Product Subarray		
+- [x] 152	Maximum Product Subarray		
 - [ ] 228	Summary Ranges		
 - [ ] 163	Missing Ranges		
 ### Counter			
@@ -567,7 +567,7 @@
 - [x] 146	LRU Cache		
 - [ ] 149	Max Points on a Line		
 - [x] 150	Evaluate Reverse Polish Notation		
-- [ ] 152	Maximum Product Subarray		
+- [x] 152	Maximum Product Subarray		
 - [ ] 153	Find Minimum in Rotated Sorted Array		
 - [ ] 154	Find Minimum in Rotated Sorted Array II		
 - [x] 155	Min Stack		
