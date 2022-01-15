@@ -13,6 +13,10 @@ Explanation: There are 4 prime numbers less than 10, they are 2, 3, 5, 7.
 // Other's Solution:
 class Solution {
     public int countPrimes(int n) {
+        /*
+            看题解 - 类动态规划+排除（埃氏筛）https://leetcode-cn.com/problems/count-primes/solution/ji-shu-zhi-shu-by-leetcode-solution/，遍历时同时更新非质数的相关 dp 数组
+            时间复杂度 O(NloglogN) - 复杂的计算不要求掌握，空间复杂度 O(N)
+        */
         boolean[] notPrime = new boolean[n];
         int count = 0;
         for (int i = 2; i < n; i++) {
