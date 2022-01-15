@@ -25,8 +25,12 @@ Constraints:
 // Other's Solution: (分治法/Divide-and-conquer+Recursion - logN)
 class Solution {
     public double myPow(double x, int n) {
+        /*
+            分治法 + 特殊情况处理
+            时间复杂度 O(logN)，空间复杂度 O(logN) - 栈
+        */
         if (n == 0) return 1;
-        if (n == Integer.MIN_VALUE) { // because MIN_VALUE is -2147483648 but MAX_VALUE is 2147483647 ,so below n = -n is failed
+        if (n == Integer.MIN_VALUE) { // because MIN_VALUE is -2147483648 but MAX_VALUE is 2147483647 ,so below n = -n is failed （特殊情况，因为若参数 n == Integer.MIN_VALUE 时，n = -n 会越界赋值出错）
             x = x * x;
             n = n/2;
         }
