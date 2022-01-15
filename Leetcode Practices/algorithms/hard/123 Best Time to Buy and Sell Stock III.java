@@ -79,3 +79,33 @@ class Solution {
         return res;
     }
 }
+
+
+
+// Other's Solution:
+class Solution {
+    public int maxProfit(int[] prices) {
+        /*
+            动态规划 状态转移方程（状态机？）https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iii/solution/mai-mai-gu-piao-de-zui-jia-shi-ji-iii-by-wrnt/
+            时间复杂度 O(N)，空间复杂度 O(1)
+        */
+        int n = prices.length;
+        int buy1 = -prices[0], sell1 = 0;
+        int buy2 = -prices[0], sell2 = 0;
+        // https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iii/solution/dong-tai-gui-hua-de-jian-hua-ban-by-hero-2mwr/
+        // buy1: 在该天第一次买入股票可获得的最大收益 
+        // sell1: 在该天第一次卖出股票可获得的最大收益
+        // buy2: 在该天第二次买入股票可获得的最大收益
+        // sell2: 在该天第二次卖出股票可获得的最大收益
+        // 分别对四个变量进行相应的更新, 最后 sell2 就是最大
+        // 收益值（sell2 >= sell1）
+        // 若以上不好理解，可参考下面，由 sell2 -> buy2 -> sell1 -> buy1 的满足最优逻辑反推导，有点类似递归那样自上而下
+        for (int i = 1; i < n; ++i) {
+            buy1 = Math.max(buy1, -prices[i]); // 假设当 buy1 最终答案的第一个买入点被遍历到时，其必然是至今（i）的最小价位
+            sell1 = Math.max(sell1, buy1 + prices[i]); // 假设当 sell1 最终答案的第一个卖出点被遍历到时，其必然是与之前最小的买入价相加（与负数相加），sell1 总是至今最大第一次交易收益（因为一直用 max 函数保存最大差值，假设 [0..i] 中两点 -j+k 为该段的该种组合的最大差值，假定遍历到该最大差值的卖出点 k 时，其买入点必为当时的 buy1 即当时的最小第一次买入价位，但遍历到 i 时的最大值时使用的 buy1' 未必是当前 i 的 buy1 这个当前最小值，因为 buy1 可能在 (k, i] 段中更新了且卖出点与其差未必大于之前那个最大差值）
+            buy2 = Math.max(buy2, sell1 - prices[i]); // 假设当 buy2 最终答案的第二个买入点被遍历到时，其必然是被之前的最大的第一次交易收益减，buy2 总是至今的第二次买入股票可获得的最大收益（逻辑如上，一直用 max 函数保存最大差值，假设 [0..i] 中的三个点 -j+k-l 为该段的该种组合的最大值，假定遍历到 l 时，-j+k 必须为 [0..l] 的最大第一次交易收益，而 sell1 总是满足此要求 - 此时的 sell1 就是 [0..l] 的最大第一次交易收益）（同理，当最终答案的最优的 -j+k-l 出现时，会将其值存在 buy2 当中由 max 函数保护其传递到最后，为最后卖出点准备）
+            sell2 = Math.max(sell2, buy2 + prices[i]); // 假设当 sell2 最终答案的最后卖出点被遍历到时，其必然是与之前的最大的第二次买入股票可获得的最大收益相加，因为在此时（最后卖出点被遍历到时）buy2 一定是当时（最后卖出点被遍历到时）的第二次买入股票可获得的最大收益
+        }
+        return sell2;
+    }
+}
