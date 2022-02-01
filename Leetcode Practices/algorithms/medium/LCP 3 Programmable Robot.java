@@ -41,12 +41,14 @@ obstacles[i]不为原点或者终点
 
 
 
-// 
+// Other's Solution:
 class Solution {
     public boolean robot(String command, int[][] obstacles, int x, int y) {
         // 多次循环 找到模式
         // 新的存储坐标的方法 - 左坐标左移30 | 右坐标
         // https://leetcode-cn.com/problems/programmable-robot/solution/c-4ms-jie-da-by-yanghk/
+        // 时间：O(m+n)，其中 m = command.size()，n = obstacles.size()
+        // 空间：O(m)
         int xx=0, yy=0;
         Set<Long> ss = new HashSet<>();
         ss.add(((long)xx << 30) | yy);
