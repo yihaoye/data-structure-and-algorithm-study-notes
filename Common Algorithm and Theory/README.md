@@ -17,7 +17,7 @@
     - [前缀和, 差分| Prefix Sum, Difference](./前缀和与差分.md)
   - 中阶
     - [双指针法, 滑动窗口算法 | Two Pointer, Sliding Window](./双指针法与滑动窗口算法.md)
-    - [深度优先, 广度优先 | Depth First Search, Breadth First Search](./树图遍历.md)
+    - [深度优先, 广度优先, 树图遍历 | Depth First Search, Breadth First Search](./树图遍历.md)
     - [拓扑排序 | Topological Sorting](./拓扑排序.md) (时间复杂度 O(N))
   - 进阶
     - [A&ast;搜索算法 | A&ast; Search Algorithm](./A*搜索算法.md)
