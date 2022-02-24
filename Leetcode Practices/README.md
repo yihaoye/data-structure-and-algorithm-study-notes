@@ -123,7 +123,7 @@
 - [ ] 30	Substring with Concatenation of All Words		                        Sliding Window
 - [x] 3	    Longest Substring Without Repeating Characters		                    Sliding Window
 - [ ] 340	Longest Substring with At Most K Distinct Characters		            Sliding Window
-- [ ] 395	Longest Substring with At Least K Repeating Characters		            Sliding Window
+- [x] 395	Longest Substring with At Least K Repeating Characters		            Sliding Window
 - [x] 159	Longest Substring with At Most Two Distinct Characters		            Sliding Window
 ### Palindrome			
 - [x] 125	Valid Palindrome		
