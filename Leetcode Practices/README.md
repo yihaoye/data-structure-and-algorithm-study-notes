@@ -360,7 +360,7 @@
    
 ## DFS & BFS
 - [x] 200	Number of Islands		
-- [ ] 286	Walls and Gates		
+- [x] 286	Walls and Gates		
 - [ ] 130	Surrounded Regions		
 - [x] 339	Nested List Weight Sum		
 - [ ] 364	Nested List Weight Sum II		
@@ -649,7 +649,7 @@
 - [x] 283	Move Zeroes		
 - [ ] 284	Peeking Iterator		
 - [ ] 285	Inorder Successor in BST		
-- [ ] 286	Walls and Gates		
+- [x] 286	Walls and Gates		
 - [ ] 287	Find the Duplicate Number		
 - [ ] 288	Unique Word Abbreviation		
 - [ ] 289	Game of Life		
