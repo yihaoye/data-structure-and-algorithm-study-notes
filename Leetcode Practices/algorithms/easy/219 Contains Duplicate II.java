@@ -36,6 +36,8 @@ class Solution {
 
 // Other's Solution:
 public boolean containsNearbyDuplicate(int[] nums, int k) {
+    // 滑动窗口+哈希表
+    // 时间复杂度 O(N)，空间复杂度 O(k)
     Set<Integer> set = new HashSet<Integer>();
     for (int i = 0; i < nums.length; i++) {
         if (i > k) set.remove(nums[i-k-1]); // remove element if its distance to nums[i] is not lesser than k
