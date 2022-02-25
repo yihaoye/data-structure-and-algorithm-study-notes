@@ -387,7 +387,7 @@
 - [x] 347	Top K Frequent Elements		
 - [ ] 313	Super Ugly Number		                            很少考
 - [ ] 373	Find K Pairs with Smallest Sums		                很少考
-- [ ] 218	The Skyline Problem		
+- [x] 218	The Skyline Problem		
 - [ ] 332	Reconstruct Itinerary		
 - [ ] 341	Flatten Nested List Iterator	
    
@@ -601,7 +601,7 @@
 - [ ] 215	Kth Largest Element in an Array		
 - [ ] 216	Combination Sum III		
 - [x] 217	Contains Duplicate		
-- [ ] 218	The Skyline Problem		
+- [x] 218	The Skyline Problem		
 - [x] 219	Contains Duplicate II		
 - [x] 220	Contains Duplicate III		
 - [x] 221	Maximal Square		
