@@ -20,6 +20,7 @@
     - [深度优先, 广度优先, 树图遍历 | Depth First Search, Breadth First Search](./树图遍历.md)
     - [拓扑排序 | Topological Sorting](./拓扑排序.md) (时间复杂度 O(N))
     - [单调栈 | Monotone Stack](./单调栈.md) (时间复杂度 O(N))
+    - [滚动哈希 | Rolling Hash (Rabin-Karp)](./滚动哈希.md)
   - 进阶
     - [A&ast;搜索算法 | A&ast; Search Algorithm](./A*搜索算法.md)
     - [回溯法 | Backtracking](./NQueen.java)
