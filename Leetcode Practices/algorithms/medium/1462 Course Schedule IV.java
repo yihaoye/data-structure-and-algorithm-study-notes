@@ -93,6 +93,41 @@ class Solution {
 
 // Other's Solution:
 class Solution {
+    public List<Boolean> checkIfPrerequisite(int numCourses, int[][] prerequisites, int[][] queries) {
+        /*
+            https://leetcode-cn.com/problems/course-schedule-iv/solution/floyed-suan-fa-by-15228207-7r9k/
+            弗洛伊德算法 - 基于动态规划，A[i][j] 
+            if there is path from i to j
+        */
+        int[][] A = new int[numCourses][numCourses];
+        for (int i=0; i<numCourses; i++) Arrays.fill(A[i], 100);
+
+        for (int[] pre : prerequisites) {
+            A[pre[0]][pre[1]] = 1;
+        }
+
+        for (int k = 0; k < numCourses; k++) {
+            for (int i = 0; i < numCourses; i++) {
+                for (int j = 0; j < numCourses; j++) {
+                    A[i][j] = Math.min(A[i][j], A[i][k]+A[k][j]);
+                }
+            }
+        }
+
+        List<Boolean> result = new ArrayList<>();
+        for (int[] query : queries) {
+            int i = query[0], j = query[1];
+            if (A[i][j] != 100) result.add(true);
+            else result.add(false);
+        }
+        return result;
+    }
+}
+
+
+
+// My Solution:
+class Solution {
     Map<Integer, Set<Integer>> map = new HashMap<>();
     
     public List<Boolean> checkIfPrerequisite(int numCourses, int[][] prerequisites, int[][] queries) {
