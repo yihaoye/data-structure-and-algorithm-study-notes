@@ -49,6 +49,50 @@ ui != vi
 
 // Other's Solution:
 class Solution {
+    public List<Boolean> checkIfPrerequisite(int numCourses, int[][] prerequisites, int[][] queries) {
+        /*
+            拓扑排序（卡恩算法） - https://leetcode.com/problems/course-schedule-iv/discuss/1548205/Multiple-Approaches-oror-BFS-and-DFS-oror-C%2B%2B-Clean-Code
+            M = prerequisites.length，时间复杂度 O(numCourses*M)，空间复杂度 O(numCourses*M)
+        */
+        boolean[][] isPrerequisite = new boolean[numCourses][numCourses];
+        List<List<Integer>> adj = new ArrayList<>();
+        for (int i=0; i<numCourses; i++) adj.add(new ArrayList<>());
+        int[] indegree = new int[numCourses];
+        
+        for (int[] pre : prerequisites) {
+            adj.get(pre[0]).add(pre[1]);
+            isPrerequisite[pre[0]][pre[1]] = true;
+            indegree[pre[1]]++;
+        }
+        
+        Queue<Integer> q = new LinkedList<>();
+        for (int i=0; i<numCourses; i++) if (indegree[i] == 0) q.add(i);
+        
+        while (!q.isEmpty()) {
+            int node = q.poll();
+            for (int adjNode : adj.get(node)) {
+                for (int i=0; i<numCourses; i++) {
+                    if (isPrerequisite[i][node]) isPrerequisite[i][adjNode] = true;
+                }
+                
+                indegree[adjNode]--; 
+                if (indegree[adjNode] == 0) q.add(adjNode);
+            }
+        }
+    
+        List<Boolean> res = new ArrayList<>();
+        for (int[] query : queries) {
+            res.add(isPrerequisite[query[0]][query[1]]);
+        }
+        
+        return res;
+    }
+}
+
+
+
+// Other's Solution:
+class Solution {
     Map<Integer, Set<Integer>> map = new HashMap<>();
     
     public List<Boolean> checkIfPrerequisite(int numCourses, int[][] prerequisites, int[][] queries) {
