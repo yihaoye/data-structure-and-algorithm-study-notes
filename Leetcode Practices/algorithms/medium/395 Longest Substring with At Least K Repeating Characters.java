@@ -62,3 +62,30 @@ class Solution {
         return res;
     }
 }
+
+
+
+// Other's Solution:
+class Solution {
+    public int longestSubstring(String s, int k) {
+        /*
+            递归 - https://leetcode-cn.com/problems/longest-substring-with-at-least-k-repeating-characters/solution/jie-ben-ti-bang-zhu-da-jia-li-jie-di-gui-obla/
+            时间复杂度 O(N)，空间复杂度 O(1)
+        */
+        if (s.length() < k) return 0;
+        HashMap<Character, Integer> counter = new HashMap();
+        for (int i=0; i<s.length(); i++) {
+            counter.put(s.charAt(i), counter.getOrDefault(s.charAt(i), 0) + 1);
+        }
+        for (char c : counter.keySet()) {
+            if (counter.get(c) < k) {
+                int res = 0;
+                for (String t : s.split(String.valueOf(c))) {
+                    res = Math.max(res, longestSubstring(t, k));
+                }
+                return res;
+            }
+        }
+        return s.length();
+    }
+}
