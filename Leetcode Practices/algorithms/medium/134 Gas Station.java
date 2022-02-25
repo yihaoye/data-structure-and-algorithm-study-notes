@@ -45,6 +45,33 @@ Therefore, you can't travel around the circuit once no matter where you start.
 
 
 
+// Other's Solution:
+class Solution {
+    public int canCompleteCircuit(int[] gas, int[] cost) {
+        /*
+            https://leetcode-cn.com/problems/gas-station/solution/jia-you-zhan-by-leetcode-solution/
+            本质是模拟暴力解的数学优化版：如果 x 到不了 y+1（但能到 y），那么从 x 到 y 的任一点出发都不可能到达 y+1。因为从其中任一点出发的话，相当于从 0 开始加油，而如果从 x 出发到该点则不一定是从 0 开始加油，可能还有剩余的油。既然不从 0 开始都到不了 y+1，那么从 0 开始就更不可能到达 y+1
+            时间复杂度 O(N)，空间复杂度 O(1)
+        */
+        int n = gas.length, i = 0;
+        while (i < n) { // 从头到尾遍历每个加油站，并且检查以该加油站为起点，能否行驶一周
+            int sumOfGas = 0, sumOfCost = 0, cnt = 0; // 总共加的油，总共消费的油，记录能走过几个站点
+            while (cnt < n) { // 退出循环的条件是走过所有的站点
+                int j = (i + cnt) % n; // 加油站是环形的
+                sumOfGas += gas[j];
+                sumOfCost += cost[j];
+                if (sumOfCost > sumOfGas) break; // 如果这个站点发现油不够了
+                cnt++; // 这个站点满足情况
+            }
+            if (cnt == n) return i; // 如果能环绕一圈
+            else i = i+cnt+1; // 不行的话 从下一个站点开始 检查
+        }
+        return -1;
+    }
+}
+
+
+
 // My Solution:
 class Solution {
     public int canCompleteCircuit(int[] gas, int[] cost) {
