@@ -20,7 +20,7 @@
 - [ ] 245	Shortest Word Distance III		
 - [x] 217	Contains Duplicate		
 - [x] 219	Contains Duplicate II		                                很少考
-- [ ] 220	Contains Duplicate III		                                很少考
+- [x] 220	Contains Duplicate III		                                很少考
 - [x] 55	Jump Game		
 - [ ] 45	Jump Game II		
 - [x] 121	Best Time to Buy and Sell Stock		
@@ -603,7 +603,7 @@
 - [x] 217	Contains Duplicate		
 - [ ] 218	The Skyline Problem		
 - [x] 219	Contains Duplicate II		
-- [ ] 220	Contains Duplicate III		
+- [x] 220	Contains Duplicate III		
 - [x] 221	Maximal Square		
 - [ ] 224	Basic Calculator		
 - [ ] 225	Implement Stack using Queues		
