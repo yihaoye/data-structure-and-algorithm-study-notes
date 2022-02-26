@@ -50,3 +50,26 @@ class Solution {
         return map;
     }
 }
+
+
+
+// Other's Solution:
+class Solution {
+    public boolean isIsomorphic(String s, String t) {
+        /*
+            哈希表 - https://leetcode-cn.com/problems/isomorphic-strings/solution/tong-gou-zi-fu-chuan-by-leetcode-solutio-s6fd/
+            时间复杂度 O(N)，空间复杂度 O(M)
+        */
+        Map<Character, Character> s2t = new HashMap<Character, Character>();
+        Map<Character, Character> t2s = new HashMap<Character, Character>();
+        for (int i=0; i<s.length(); i++) {
+            char sChar = s.charAt(i), tChar = t.charAt(i);
+            if ((s2t.containsKey(sChar) && s2t.get(sChar) != tChar) || (t2s.containsKey(tChar) && t2s.get(tChar) != sChar)) {
+                return false;
+            }
+            s2t.put(sChar, tChar);
+            t2s.put(tChar, sChar);
+        }
+        return true;
+    }
+}
