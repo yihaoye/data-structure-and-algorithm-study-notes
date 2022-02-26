@@ -389,7 +389,7 @@
 - [ ] 373	Find K Pairs with Smallest Sums		                很少考
 - [x] 218	The Skyline Problem		
 - [ ] 332	Reconstruct Itinerary		
-- [ ] 341	Flatten Nested List Iterator	
+- [x] 341	Flatten Nested List Iterator	
    
 ## Bit Manipulation
 - [x] 389	Find the Difference		
@@ -686,7 +686,7 @@
 - [x] 338	Counting Bits		
 - [x] 339	Nested List Weight Sum		
 - [ ] 340	Longest Substring with At Most K Distinct Characters		
-- [ ] 341	Flatten Nested List Iterator		
+- [x] 341	Flatten Nested List Iterator		
 - [x] 346	Moving Average from Data Stream		
 - [x] 347	Top K Frequent Elements		
 - [ ] 348	Design Tic-Tac-Toe		
