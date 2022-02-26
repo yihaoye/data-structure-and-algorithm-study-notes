@@ -66,3 +66,24 @@ class Solution {
         return minRooms;
     }
 }
+
+
+
+// My Solution:
+class Solution {
+    public int minMeetingRooms(int[][] intervals) {
+        /*
+            排序+贪心+优先队列
+            时间复杂度 O(N*logN)，空间复杂度 O(N) - Java Arrays.sort
+        */
+        PriorityQueue<Integer> rooms = new PriorityQueue<>();
+        Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
+        rooms.add(intervals[0][1]);
+        for (int i=1; i<intervals.length; i++) {
+            if (rooms.peek() <= intervals[i][0]) rooms.poll();
+            rooms.add(intervals[i][1]);
+        }
+        
+        return rooms.size();
+    }
+}
