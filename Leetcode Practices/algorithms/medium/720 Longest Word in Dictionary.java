@@ -89,3 +89,30 @@ class Trie {
         return res;
     }
 }
+
+
+
+// Other's Solution:
+class Solution {
+    public String longestWord(String[] words) {
+        /*
+            排序+暴力解+哈希集 - https://leetcode-cn.com/problems/longest-word-in-dictionary/solution/ci-dian-zhong-zui-chang-de-dan-ci-by-leetcode/
+            时间复杂度：O(∑wi^2)，空间复杂度：O(∑wi^2)
+        */
+        Set<String> wordset = new HashSet();
+        for (String word: words) wordset.add(word);
+        Arrays.sort(words, (a, b) -> a.length() == b.length() ? a.compareTo(b) : b.length() - a.length());
+        for (String word: words) {
+            boolean isValidLongestWord = true;
+            for (int k = 1; k < word.length(); ++k) {
+                if (!wordset.contains(word.substring(0, k))) {
+                    isValidLongestWord = false;
+                    break;
+                }
+            }
+            if (isValidLongestWord) return word;
+        }
+
+        return "";
+    }
+}
