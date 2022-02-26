@@ -44,7 +44,7 @@
 ### Interval			
 - [ ] 57	Insert Interval		
 - [x] 56	Merge Intervals		
-- [ ] 252	Meeting Rooms		
+- [x] 252	Meeting Rooms		
 - [x] 253	Meeting Rooms II		
 - [ ] 352	Data Stream as Disjoint Intervals		                    TreeMap
 ### Counter			
@@ -624,7 +624,7 @@
 - [ ] 245	Shortest Word Distance III		
 - [ ] 249	Group Shifted Strings		
 - [ ] 251	Flatten 2D Vector		
-- [ ] 252	Meeting Rooms		
+- [x] 252	Meeting Rooms		
 - [x] 253	Meeting Rooms II		
 - [ ] 254	Factor Combinations		
 - [ ] 256	Paint House		
