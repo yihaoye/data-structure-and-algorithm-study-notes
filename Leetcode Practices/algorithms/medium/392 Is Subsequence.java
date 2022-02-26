@@ -45,3 +45,23 @@ class Solution {
         return false;
     }
 }
+
+
+
+// My Solution:
+class Solution {
+    public boolean isSubsequence(String s, String t) {
+        /*
+            思路 - 记录 s match 的位置，只能递增，当全部 match 后返回 true 否则 false
+            时间复杂度 O(N)，空间复杂度 O(1)
+        */
+        if (s.length() == 0) return true;
+        int match = 0;
+        for (int i=0; i<t.length(); i++) {
+            if (s.charAt(match) == t.charAt(i)) match++;
+            if (match == s.length()) return true;
+        }
+        
+        return false;
+    }
+}
