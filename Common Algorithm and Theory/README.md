@@ -36,5 +36,5 @@
     - [霍夫曼压缩算法 | Huffman Coding/Compression](./霍夫曼压缩算法.md)
   - 数学
   - 计算几何
-    - [扫描线 | Line Sweep]()
+    - [扫描线 | Line Sweep](./扫描线.md)
   

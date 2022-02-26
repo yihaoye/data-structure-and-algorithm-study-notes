@@ -37,3 +37,32 @@ class Solution {
         return 0;
     }
 }
+
+
+
+// Other's Solution:
+class Solution {
+    public int minMeetingRooms(int[][] intervals) {
+        /*
+            扫描线 - 将区间在x轴上画出来，并用一条垂直于x轴的线作为扫描线从左至右扫描，会很容易得出答案，即与扫描线相交的区间的数量的最大值为所求答案。步骤：1. 对所有点进行标记，区分起始点和终止点；2. 对所有点进行排序；3. 依次遍历每个点，遇到起始点+1，遇到终止点-1，并更新记录最大值。
+            用两个一维数组来做，分别保存起始时间和结束时间，然后各自排序，定义结果变量minRooms和结束时间指针endpos，然后开始遍历，如果当前起始时间start[i]小于结束时间指针的时间ends[endpos]，则结果自增1，反之结束时间指针自增1，这样可以找出重叠的时间段，从而安排新的会议室 https://techlarry.github.io/Leetcode/253.%20Meeting%20Rooms%20II/
+            时间复杂度 O(N*logN)，空间复杂度 O(N)
+        */
+        int len = intervals.length;
+        int[] starts = new int[len], ends = new int[len];
+        for (int i=0; i<len; i++) {
+            starts[i] = intervals[i][0];
+            ends[i] = intervals[i][1];
+        }
+        Arrays.sort(starts);
+        Arrays.sort(ends);
+        
+        // 扫描线段
+        int minRooms = 0, endpos = 0;
+        for (int i=0; i<len; i++) {
+            if (starts[i] < ends[endpos]) minRooms++;
+            else endpos++;
+        }
+        return minRooms;
+    }
+}
