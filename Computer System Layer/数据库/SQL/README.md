@@ -367,6 +367,33 @@ MVCC 是利用在每条数据后面加了隐藏的两列（创建版本号和删
 * 候选键（Candidate Key）：不含有多余属性的超键称为候选键，也称为最小超键（候选键属于超键，它是最小的超键，就是说如果再去掉候选键中的任何一个属性它就不再是超键了）。
 * 外键（Foreign Key）：是表中的一列，其值必须在另一个表的主键中，被用来指向到其他表格主键的关联键。  
   
+### 外键
+由于外键约束会降低数据库的性能，大部分互联网应用程序为了追求速度，并不设置外键约束，而是仅靠应用程序自身来保证逻辑的正确性。  
+  
+### 级联
+当有了外键约束的时候，必须先修改或删除副表中的所有关联数据，才能修改或删除主表。如果希望直接修改或删除主表数据，从而影响副表数据，可以使用级联操作实现。  
+级联操作要谨慎使用，因为级联操作会将数据改变或者删除。实际应用中不推荐使用级联（性能与复杂性的原因），比如阿里的 MySQL 规范里就明令禁止使用外键与级联。 
+级联更新与删除：  
+```
+在删除父表中的数据的时候，级联删除子表中的数据 on delete cascade;  
+在更新父表中的数据时候，级联更新子表中的数据 on update cascade;  
+级联操作在外键约束后面添加  
+```  
+示例：  
+```sql
+alter table t_student add
+constraint t_student_classno_fk
+foreign key(classno) references t_class(cno) on delete cascade;
+
+alter table t_student add
+constraint t_student_classno_fk
+foreign key(classno) references t_class(cno) on update cascade;
+```
+  
+参考链接：  
+[MySQL 约束和级联操作](https://www.jianshu.com/p/4517c3e13657)  
+[为什么不推荐使用外键约束](https://zhuanlan.zhihu.com/p/62020571)  
+  
   
 # 优化
 根据现网环境优化执行的难易度，在优化顺序可以按照：SQL 语句 -> 数据库表设计（比如范式、关系映射、索引、分表、数据类型等等）-> 数据库参数配置 -> 数据库存储引擎 -> 服务器硬件。通过编写高效的 SQL 语句，并以合适的方式创建表和索引，使系统始终保持良好的性能。  
