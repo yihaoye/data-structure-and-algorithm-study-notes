@@ -48,3 +48,29 @@ public class Obj {
           && val2.equals(obj.val2));
     }
 }
+
+
+
+/*
+如果以对象作为 HashMap 的 Key 时，hashCode 在当中会起到什么样的作用？
+如下示例代码，Book 对象 b1 和 b2 的传参是一样的，但是它们的 hashCode 不同。
+这是因为 b1 和 b2 是通过两次 new 得到的对象，那么它们在堆内存中属于两个不同的对象，对应的堆内存地址自然不同。
+因此，由 hashCode 标识的内存地址也就不可能相同了。
+
+如果将 key=b1, value="test" 的键值对存放在 HashMap 中，使用 b1 可以得到 "test"，而使用 b2 得到的是 null。
+这是因为存放 b1 时，HashMap 内部的 put() 会根据对象的 hashCode 计算得到它在内部 table 中的索引，然后将其存放在 table 对应索引的位置上。
+由于 b1 和 b2 两者的 hashCode 不同，那么计算得到的索引位置不同，自然使用 b2 就无法获取到 "test"。
+
+原文链接：https://blog.csdn.net/Forlogen/article/details/108000662
+*/
+HashMap<Book, String> map = new HashMap<>();
+
+Book b1 = new Book(10);
+Book b2 = new Book(10);
+
+System.out.println("b1 hashCode is: " + b1.hashCode() + " and b2 hashCode is: " + b2.hashCode());
+// b1 hashCode is: 1265094477 and b2 hashCode is: 2125039532
+
+map.put(b1, "test");
+System.out.println(map.get(b1)); // test
+System.out.println(map.get(b2)); // null
