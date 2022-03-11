@@ -454,10 +454,12 @@ Round Robin LB 的一个问题是，它不会把服务器的负载考虑在内�
 
 这里将不再继续讨论 Grok System Design 的 QuadTree 方案，采用 Geohash 方案将可以更简洁地实现 Uber 系统设计。想更深入理解可以参考[Uber 实际方案](https://medium.com/@buckhx/unwinding-uber-s-most-efficient-service-406413c5871d)  
   
+**下面是基于 Geohash 的 Uber / Uber Eat 系统设计**  
 引用：https://jiayi797.github.io/2018/01/21/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1-%E8%AE%BE%E8%AE%A1Uber/  
   
 Uber 单一地区的系统架构:  
 ![](./Uber%20Single%20Region%20Services%20Architecture.png)  
+注意，如果是 Uber Eat，架构大致类似，但是多一个 Restaurant 的客户端，而匹配最佳 Driver 时是根据 Restaurant 和 Driver 的位置来进行（不需要考虑 Customer 的位置），另外也因此匹配程序可以进行进一步优化（Driver 更新位置时更新 Restaurant 附近的 Driver 队列/池，匹配时可直接从队列/池里取出一个 Driver - 不一定是最近但是匹配效率更好）。  
 
 Uber 多地区的系统架构概况:  
 ![](./Uber%20Multi%20Regions%20Services%20Architecture.png)  
