@@ -651,9 +651,15 @@ Driver 如何获得打车请求？—— Report location 的同时，服务器�
      * 每天新增存储 - 33 videos/s * 86400s * 10min (视频长度) * 100 MB/min = 2.7 PB/day
      * 数据的备份 - 冗余：一个 region（数据中心）做 3 个备份；可用性：跨 region（数据中心）做 3 个备份；总共是 9 倍
    * 带宽估算
-     * 33 videos/sec * (10 * 60s) * 5Mbps = 99Gbps - 这里使用 5Mbps 而不是上面的数据是因为此时不用考虑分辨率转换，10 是视频均长为 10 分钟，60 是一分钟有 60秒
+     * 上传带宽 - 33 videos/sec * (10 * 60s) * 5Mbps = 99Gbps - 这里使用 5Mbps 而不是上面的数据是因为此时不用考虑分辨率转换，10 是视频均长为 10 分钟，60 是一分钟有 60秒
+     * 下载/观看带宽 - 同时用户数量： 150M DAU * 50mins / (24 * 60 mins/day) = 5.2M 个用户；带宽：5.2M * 5Mbps = 26Tbps；读写比例：26Tbps / 99Gbps = 263 : 1（即读 heavy 系统 - 决定后续 High Level 设计与扩展）
 3. System APIs
+   * uploadVideo(string apiToken, string videoTitle, string videDesc, stream videoContents) - 因为视频的处理需要比较长的时间，所以服务器会采用异步处理，用户此时去做其他事情没必要傻等，处理完系统平台会通过邮件或平台 UI 上通知上传完毕。上传过程细节如下：
+     1. 客户端发起 HTTP 请求以建立信道，此时服务端开始：a. 创建 videoID、b. 准备存储空间位置（上传目标地址如 S3）、c. 等等
+     2. 服务端返回上传目标地址，客户端开始读取 video 并分块上传到对应的地址 ![](./Youtube%20Client%20and%20Server.png)
+   * streamVideo(string apiToken, string videoId, int offset, int codec, int resolution) - cidec 是视频的编码格式（与用户设备是否支持有关），resolution（分辨率）可以自动根据当时带宽大小决定以优化观影体验。该 API 将返回一个已经位移了 offset（时间戳）的视频流。
 4. High Level 整体系统设计（架构图）
+   * 视频转码比较耗时所以需要一个消息队列进行异步处理。![](./Youtube%20Upload%20Architecture.png)
 5. 数据存储设计
 6. 扩展性
 
