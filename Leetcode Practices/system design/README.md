@@ -659,11 +659,34 @@ Driver 如何获得打车请求？—— Report location 的同时，服务器�
      2. 服务端返回上传目标地址，客户端开始读取 video 并分块上传到对应的地址，Youtube 实际上采用 HTTP 协议来分块上传视频文件 ![](./Youtube%20Client%20and%20Server.png)
    * streamVideo(string apiToken, string videoId, int offset, int codec, int resolution) - cidec 是视频的编码格式（与用户设备是否支持有关），resolution（分辨率）可以自动根据当时带宽大小决定以优化观影体验。该 API 将返回一个已经位移了 offset（时间戳）的视频流，使用的网络协议是 QUIC 或 RTMP。
 4. High Level 整体系统设计（架构图）
-   * 视频转码比较耗时所以需要一个消息队列进行异步处理。过程如下：当视频上传后，Upload Service 会往队列里添加一个视频处理任务，下游会有一个 Video Processing Service 从队列里取任务，然后从文件系统（Distributed Media Storage - 比如 S3、GFS2、HDFS）下载相应视频进行处理（转码、提取缩略图等）完后把新的视频和缩略图存放到文件系统，同时在 metadata 数据库中更新视频与缩略图的存放地址。系统对用户播放延时要求比较高，所以会把视频 push 到离用户比较近的服务器（CDN），Video Distributed Service 就是负责把视频和图片分发到 CDN 各个节点上，因为比较耗时所以也是异步进行（从 Completion Queue 取任务） ![](./Youtube%20Upload%20Architecture.png)
+   * 上传架构：视频转码比较耗时所以需要一个消息队列进行异步处理。过程如下：当视频上传后，Upload Service 会往队列里添加一个视频处理任务，下游会有一个 Video Processing Service 从队列里取任务，然后从文件系统（Distributed Media Storage - 比如 S3、GFS2、HDFS）下载相应视频进行处理（转码、提取缩略图等）完后把新的视频和缩略图存放到文件系统，同时在 metadata 数据库中更新视频与缩略图的存放地址。系统对用户播放延时要求比较高，所以会把视频 push 到离用户比较近的服务器（CDN），Video Distributed Service 就是负责把视频和图片分发到 CDN 各个节点上，因为比较耗时所以也是异步进行（从 Completion Queue 取任务） ![](./Youtube%20Upload%20Architecture.png)
+     * Video Processing Service 从文件系统下载视频并分割成小片段，然后并行同时地对它们进行解码然后再编码（变成不同的格式和分辨率），除此之外还会进行缩略图获取以及机器学习对视频内容分析等等处理。
+     * CDN 是内容分发系统（视频、图片是静态内容，非常适合 CDN 的分发），在不同地区都有服务器，CDN 通常重点使用缓存技术，通过缓存内存来服务绝大部分的内容。并不是所有视频都会分发到 CDN（CDN 容量也有限），比如冷门视频会从原数据中心 stream 给用户（热门视频由 CDN stream 给用户）。
+   * 下行（播放）架构：用户客户端播放请求通过 LB 转发给 Video Playback Service，该服务主要负责视频流的播放，与该服务协作还有一个 Host Identify Service（给定一个 video 和用户 IP 地址、设备信息，然后查找离用户最近的最适合设备与分辨率的视频的 CDN 地址，然后用户可以通过该 CDN 直接观看该视频了，如果没找到任何 CDN 地址则给出原数据中心地址），其他视频元数据如标题、描述等从 metadata 数据库中获取。![](./Youtube%20Watch%20Video%20Architecture.png)
 5. 数据存储设计
+   * 数据库表设计：
+     * User: (userID, name, email, numSubscribe...)
+     * Video Metadata: (videoID, userID, title, desc, videoAddr, thumbnailAddr, numLike, numDislike, numView...)
+     * Comment: (commentID, userID, videoID, content, time...)
+   * 数据存储选择：
+     * SQL - 适合存储 User、Video Metadata 表
+     * NoSQL - 适合非结构化数据，比如在 BigTable 里存储视频缩略图往往可以优化性能（不过实际上许多企业还是放在 File System 里）
+     * File System / Blob Storage - 特别适合存储多媒体文件（图片、音频、视频等等）。因为视频平台的数据量很大，所以 File System 需要使用分布式的文件系统比如 HDFS、GlusterFS，又或者使用 Blob Storage / Object Storage 比如 Netflix 使用 AWS S3。
 6. 扩展性
-
-
+   * 找出系统的潜在瓶颈，然后提出解决方案、优缺点分析、然后做取舍
+     * 数据分片 - 按 videoID 分片并且使用一致性哈希的方法。优势：按 videoID 而不是 userID 的好处是避免热门 up 主的问题。劣势：查询一个 user 的 videos 需要查询所有的 shards，以及单个热门视频会导致大流量集中在单个数据库（解决方案 - 拷贝视频到多个服务器上）。
+     * 数据拷贝 - Primary-secondary 配置，数据写入 Primary 然后 propagate 到所有 secondaries 节点。从 secondary 读取。优势：可用性，随时可读不影响写压力。劣势：影响了数据一致性 - 只能是最终一致性，即用户不一定能读到最新数据（在本系统可接受这个取舍）。
+     * 负载均衡 - 服务或者数据拷贝到多个机器，来服务大流量以提高系统可用性与降低延迟。
+     * 缓存 - Redis 以及 CDN 等。特别适合 read heavy 系统（视频系统读写比例是 200 : 1，是典型的 read heavy）。在任何读数据的地方都可以放缓存以减少对数据库的 hit。
+       * 需要缓存多少？采用二八原则，缓存 20% 每天读取的数据（daily read videos）。
+       * 缓存会很大，如数据库一般也需要分布到多台机器上，分布机制可采用一致性哈希方法。
+       * CDN 优化，通过分析预测，提前把客户会观看的视频推送到离用户最近的 CDN 上（可以在 off-peak 如半夜时段进行视频分发推送，降低单一时段的带宽压力）。
+       * 通过和 ISP 合作进一步优化延时，把 Cache 放到 ISP 里，当用户请求某个视频且 ISP 发现它的 Cache 里有，就可以从它的 Cache stream 给用户，好处是相比 CDN（访问 CDN 仍需通过 ISP）少一步。实例：据报道，90% 的 Netflix 视频流量都是从 ISP 里的 Cache 走的。这种办法比较适合点播网站，即视频数量较少、观看比较集中。![](./Netflix%20Caching%20Optimization%20Architecture.png)
+  
+视频系统的其他拓展功能：  
+* 推荐
+* 搜索
+* 直播（Live Stream）
 
 </details>
 
