@@ -663,7 +663,7 @@ Driver 如何获得打车请求？—— Report location 的同时，服务器�
    * streamVideo(string apiToken, string videoId, int offset, int codec, int resolution) - cidec 是视频的编码格式（与用户设备是否支持有关），resolution（分辨率）可以自动根据当时带宽大小决定以优化观影体验。该 API 将返回一个已经位移了 offset（时间戳）的视频流，使用的流媒体协议是 QUIC 或 RTMP（关于更多流媒体协议的细节，可以看下面的单独章节）。
    * searchVideo(string apiToken, string searchKey, string userLocation, string pageToken)
 4. High Level 整体系统设计（架构图）
-   * 上传架构：视频转码比较耗时所以需要一个消息队列进行异步处理。过程如下：当视频上传后，Upload Service 会往队列里添加一个视频处理任务，下游会有一个 Video Processing Service 从队列里取任务，然后从文件系统（Distributed Media Storage - 比如 S3、GFS2、HDFS、GlusterFS）下载相应视频进行处理（转码、提取缩略图等）完后把新的视频和缩略图存放到文件系统，同时在 metadata 数据库中更新视频与缩略图的存放地址。系统对用户播放延时要求比较高，所以会把视频 push 到离用户比较近的服务器（CDN），Video Distributed Service 就是负责把视频和图片分发到 CDN 各个节点上，因为比较耗时所以也是异步进行（从 Completion Queue 取任务） ![](./Youtube%20Upload%20Architecture.png)![](./Netflix%20Upload%20Architecture.png)
+   * 上传架构：视频转码比较耗时所以需要一个消息队列进行异步处理。过程如下：当视频上传后，Upload Service 会往队列里添加一个视频处理任务，下游会有一个 Video Processing Service 从队列里取任务，然后从文件系统（Distributed Media Storage - 比如 S3、HDFS、GlusterFS）下载相应视频进行处理（转码、提取缩略图等）完后把新的视频和缩略图存放到文件系统，同时在 metadata 数据库中更新视频与缩略图的存放地址。系统对用户播放延时要求比较高，所以会把视频 push 到离用户比较近的服务器（CDN），Video Distributed Service 就是负责把视频和图片分发到 CDN 各个节点上，因为比较耗时所以也是异步进行（从 Completion Queue 取任务） ![](./Youtube%20Upload%20Architecture.png)![](./Netflix%20Upload%20Architecture.png)
      * Video Processing Service 从文件系统下载视频并分割成多个小块/小片段，然后并行同时地（更快）对它们进行解码然后再编码（变成不同的设备或文件格式和分辨率），除此之外还会进行缩略图获取以及机器学习对视频内容分析等等处理。（上传的视频不会存储为单个大文件，而是存储在多个小块中，因为可能会上传大视频，处理或流式传输单个大文件会非常耗时。并且当视频以块的形式存储后，当观看者使用时无需在播放之前下载整个视频，它将从服务器请求第一个块，当该块正在播放时，客户端请求下一个块，因此块之间的延迟最小，用户可以在观看视频时获得无缝体验）![](./Youtube%20Upload%20Video%20Stored%20in%20Chunks.png)
        * 原始视频通常是一种高清格式，大小可以以 TB 为单位。Netflix 系统为支持多种设备和不同的网络速度，为每部电影或节目生成并存储了 1200 多种格式。需要将每个视频转换成不同的格式（mp4、avi、flv 等），以及每种格式的不同分辨率（例如 1080p、480p、240p 等），假设支持 i 种格式和 j 种分辨率，系统将为上传到平台的每个视频生成 i*j 个视频。这些块中的每一个的条目都将被写入元数据数据库，包括保存实际文件的分布式存储的路径。![](./Netflix%20Convert%20Formats.png)
        * 不同的内容创作者可能有不同的视频处理要求。例如，一些需要在视频添加水印，一些自己提供缩略图，一些上传高清视频，而另一些则不需要。为了支持不同的视频处理流水线并保持高并行性，可以添加某种抽象级别并让客户端程序定义要执行的任务。例如，Facebook 的流媒体视频引擎使用有向无环图 (DAG) 编程模型，该模型分阶段定义任务，以便它们可以按顺序或并行执行。视频转码过程可以采用类似的 DAG 模型来实现灵活性和并行性。![](./Video%20Process%20DAG.png)![](./Video%20Process%20DAG%202.png)
@@ -679,7 +679,7 @@ Driver 如何获得打车请求？—— Report location 的同时，服务器�
    * 数据存储选择：
      * SQL - 适合存储 User、Video Metadata 表
      * NoSQL - 适合非结构化数据，比如在 BigTable 里存储视频缩略图往往可以优化性能（不过实际上许多企业还是放在 File System 里）
-     * File System / Blob Storage - 特别适合存储多媒体文件（图片、音频、视频等等）。因为视频平台的数据量很大，所以 File System 需要使用分布式的文件系统比如 HDFS、GlusterFS，又或者使用 Blob Storage / Object Storage 比如 Netflix 使用 AWS S3。
+     * File System / Blob Storage - 特别适合存储多媒体文件（图片、音频、视频等等）。因为视频平台的数据量很大，所以 File System 需要使用分布式的文件系统比如 HDFS、GlusterFS，又或者使用 Blob Storage / Object Storage 比如 Netflix 使用 AWS S3（S3 是 Object Storage，但也是通过类似 GFS2 之类的 Blob Storage 配合缓存、元数据存储等等组件、API 服务实现的，[参考](https://www.youtube.com/watch?v=9_vScxbIQLY)）。
 6. 扩展性
    * 找出系统的潜在瓶颈，然后提出解决方案、优缺点分析、然后做取舍
      * 数据分片 - 按 videoID 分片并且使用一致性哈希的方法。优势：按 videoID 而不是 userID 的好处是避免热门 up 主的问题。劣势：查询一个 user 的 videos 需要查询所有的 shards，以及单个热门视频会导致大流量集中在单个数据库（解决方案 - 使用缓存存储热门视频或拷贝视频到多个服务器上）。
