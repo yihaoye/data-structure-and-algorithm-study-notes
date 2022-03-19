@@ -618,7 +618,9 @@ Driver 如何获得打车请求？—— Report location 的同时，服务器�
 <details>
 <summary>设计 Youtube</summary>
 
-[花花酱](https://www.youtube.com/watch?v=mp-OSK6jm1c)
+[花花酱](https://www.youtube.com/watch?v=mp-OSK6jm1c)  
+[Video Streaming System Design](https://medium.com/double-pointer/system-design-interview-video-streaming-service-e-g-netflix-or-youtube-design-adc2402e54a1)  
+  
 主要步骤：  
 1. 明确需求（功能性与非功能性）- 面试时间有限，所以挑 2-3 个重点功能进行设计（需要先和面试官达成一致）
    1. Feature 需求（功能性需求）
@@ -660,8 +662,9 @@ Driver 如何获得打车请求？—— Report location 的同时，服务器�
    * streamVideo(string apiToken, string videoId, int offset, int codec, int resolution) - cidec 是视频的编码格式（与用户设备是否支持有关），resolution（分辨率）可以自动根据当时带宽大小决定以优化观影体验。该 API 将返回一个已经位移了 offset（时间戳）的视频流，使用的网络协议是 QUIC 或 RTMP。
    * searchVideo(string apiToken, string searchKey, string userLocation, string pageToken)
 4. High Level 整体系统设计（架构图）
-   * 上传架构：视频转码比较耗时所以需要一个消息队列进行异步处理。过程如下：当视频上传后，Upload Service 会往队列里添加一个视频处理任务，下游会有一个 Video Processing Service 从队列里取任务，然后从文件系统（Distributed Media Storage - 比如 S3、GFS2、HDFS）下载相应视频进行处理（转码、提取缩略图等）完后把新的视频和缩略图存放到文件系统，同时在 metadata 数据库中更新视频与缩略图的存放地址。系统对用户播放延时要求比较高，所以会把视频 push 到离用户比较近的服务器（CDN），Video Distributed Service 就是负责把视频和图片分发到 CDN 各个节点上，因为比较耗时所以也是异步进行（从 Completion Queue 取任务） ![](./Youtube%20Upload%20Architecture.png)
-     * Video Processing Service 从文件系统下载视频并分割成小片段，然后并行同时地对它们进行解码然后再编码（变成不同的格式和分辨率），除此之外还会进行缩略图获取以及机器学习对视频内容分析等等处理。
+   * 上传架构：视频转码比较耗时所以需要一个消息队列进行异步处理。过程如下：当视频上传后，Upload Service 会往队列里添加一个视频处理任务，下游会有一个 Video Processing Service 从队列里取任务，然后从文件系统（Distributed Media Storage - 比如 S3、GFS2、HDFS、GlusterFS）下载相应视频进行处理（转码、提取缩略图等）完后把新的视频和缩略图存放到文件系统，同时在 metadata 数据库中更新视频与缩略图的存放地址。系统对用户播放延时要求比较高，所以会把视频 push 到离用户比较近的服务器（CDN），Video Distributed Service 就是负责把视频和图片分发到 CDN 各个节点上，因为比较耗时所以也是异步进行（从 Completion Queue 取任务） ![](./Youtube%20Upload%20Architecture.png)
+     * Video Processing Service 从文件系统下载视频并分割成多个小块/小片段，然后并行同时地（更快）对它们进行解码然后再编码（变成不同的设备或文件格式和分辨率），除此之外还会进行缩略图获取以及机器学习对视频内容分析等等处理。（上传的视频不会存储为单个大文件，而是存储在多个小块中，因为可能会上传大视频，处理或流式传输单个大文件会非常耗时。并且当视频以块的形式存储后，当观看者使用时无需在播放之前下载整个视频，它将从服务器请求第一个块，当该块正在播放时，客户端请求下一个块，因此块之间的延迟最小，用户可以在观看视频时获得无缝体验）![](./Youtube%20Upload%20Video%20Stored%20in%20Chunks.png)
+       * 原始视频通常是一种高清格式，大小可以以 TB 为单位。Netflix 系统为支持多种设备和不同的网络速度，为每部电影或节目生成并存储了 1200 多种格式。需要将每个视频转换成不同的格式（mp4、avi、flv 等），以及每种格式的不同分辨率（例如 1080p、480p、240p 等），假设支持 i 种格式和 j 种分辨率，系统将为上传到平台的每个视频生成 i*j 个视频。这些块中的每一个的条目都将被写入元数据数据库，包括保存实际文件的分布式存储的路径。![](./Netflix%20Convert%20Formats.png)
      * CDN 是内容分发系统（视频、图片是静态内容，非常适合 CDN 的分发），在不同地区都有服务器，CDN 通常重点使用缓存技术，通过缓存内存来服务绝大部分的内容。并不是所有视频都会分发到 CDN（CDN 容量也有限），比如冷门视频（每天只有 1-20 次观看量）会从原数据中心 stream 给用户（热门视频由 CDN stream 给用户）。
    * 下行（播放）架构：用户客户端播放请求通过 LB 转发给 Video Playback Service，该服务主要负责视频流的播放，与该服务协作还有一个 Host Identify Service（给定一个 video 和用户 IP 地址、设备信息，然后查找离用户最近的最适合设备与分辨率的视频的 CDN 地址，然后用户可以通过该 CDN 直接观看该视频了，如果没找到任何 CDN 地址则给出原数据中心地址），其他视频元数据如标题、描述等从 metadata 数据库中获取。![](./Youtube%20Watch%20Video%20Architecture.png)
 5. 数据存储设计
@@ -682,7 +685,7 @@ Driver 如何获得打车请求？—— Report location 的同时，服务器�
        * 需要缓存多少？采用二八原则，缓存 20% 每天读取的数据（daily read videos）。
        * 缓存会很大，如数据库一般也需要分布到多台机器上，分布机制可采用一致性哈希方法。
        * CDN 优化，通过分析预测，提前把客户会观看的视频推送到离用户最近的 CDN 上（可以在 off-peak 如半夜时段进行视频分发推送，降低单一时段的带宽压力）。
-       * 通过和 ISP 合作进一步优化延时，把 Cache 放到 ISP 里，当用户请求某个视频且 ISP 发现它的 Cache 里有，就可以从它的 Cache stream 给用户，好处是相比 CDN（访问 CDN 仍需通过 ISP）少一步。实例：据报道，90% 的 Netflix 视频流量都是从 ISP 里的 Cache 走的。这种办法比较适合点播网站，即视频数量较少、观看比较集中。![](./Netflix%20Caching%20Optimization%20Architecture.png)
+       * 通过和 ISP 合作进一步优化延时（Netflix Open Connect - OC Server/Appliance in ISP networks），把 Cache 放到 ISP 里，当用户请求某个视频且 ISP 发现它的 Cache 里有，就可以从它的 Cache stream 给用户，好处是相比 CDN（访问 CDN 仍需通过 ISP）少一步。实例：据报道，90% 的 Netflix 视频流量都是从 ISP 里的 Cache 走的。这种办法比较适合点播网站，即视频数量较少、观看比较集中。![](./Netflix%20Caching%20Optimization%20Architecture.png)
   
 
 **视频去重**  
@@ -693,13 +696,14 @@ Driver 如何获得打车请求？—— Report location 的同时，服务器�
 * 能源消耗：更高的存储、低效的缓存和网络使用会导致能源浪费。
   
 对于用户而言，这些情况将导致：重复搜索结果、更长的视频启动时间和视频流传输中断。  
-对于系统而言，相比于在稍后再查找处理重复视频，在用户上传视频的早期就删除重复数据更有意义。内联重复数据删除将节省大量可用于编码、传输和存储视频副本的资源。一旦任何用户开始上传视频，服务就可以运行视频匹配算法（例如，[块匹配](https://en.wikipedia.org/wiki/Block-matching_algorithm)、[相位相关](https://en.wikipedia.org/wiki/Phase_correlation)等）来查找重复项，如果发现已经有正在上传的视频的副本，可以停止上传并使用现有的副本，或者使用新上传的视频（如果它的质量更高）。如果新上传的视频是已有视频的子部分（反之亦然），可以智能地将视频分成更小的块，这样只上传那些不重复的部分。  
+对于系统而言，相比于在稍后再查找处理重复视频，在用户上传视频的早期就删除重复数据更有意义。内联重复数据删除将节省大量可用于编码、传输和存储视频副本的资源。一旦任何用户开始上传视频，服务就可以运行视频匹配算法（例如，[块匹配 | Block Matching Algorithm](https://en.wikipedia.org/wiki/Block-matching_algorithm)、[相位相关 | Phase Correlation](https://en.wikipedia.org/wiki/Phase_correlation)等）来查找重复项，如果发现已经有正在上传的视频的副本，可以停止上传并使用现有的副本，或者使用新上传的视频（如果它的质量更高）。如果新上传的视频是已有视频的子部分（反之亦然），可以智能地将视频分成更小的块，这样只上传那些不重复的部分。  
   
 视频系统的其他拓展功能：  
 * 推荐
 * 搜索
 * 直播（Live Stream）
 * 收藏
+
 
 </details>
 
