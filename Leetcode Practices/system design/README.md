@@ -660,7 +660,7 @@ Driver 如何获得打车请求？—— Report location 的同时，服务器�
    * uploadVideo(string apiToken, string videoTitle, string videDesc, stream videoContents) - 因为视频的处理需要比较长的时间，所以服务器会采用异步处理，用户此时去做其他事情没必要傻等，处理完系统平台会通过邮件或平台 UI 上通知上传完毕。上传过程细节如下：
      1. 客户端发起 HTTP 请求以建立信道，此时服务端开始：a. 创建 videoID、b. 准备存储空间位置（上传目标地址如 S3）、c. 等等
      2. 服务端返回上传目标地址，客户端开始读取 video 并分块上传到对应的地址，Youtube 实际上采用 HTTP 协议来分块上传视频文件 ![](./Youtube%20Client%20and%20Server.png)
-   * streamVideo(string apiToken, string videoId, int offset, int codec, int resolution) - cidec 是视频的编码格式（与用户设备是否支持有关），resolution（分辨率）可以自动根据当时带宽大小决定以优化观影体验。该 API 将返回一个已经位移了 offset（时间戳）的视频流，使用的流媒体协议是 QUIC 或 RTMP（关于更多流媒体协议的细节，可以看下面的单独章节）。
+   * streamVideo(string apiToken, string videoId, int offset, int codec, int resolution) - cidec 是视频的编码格式（与用户设备是否支持有关），resolution（分辨率）可以自动根据当时带宽大小决定以优化观影体验。该 API 将返回一个已经位移了 offset（时间戳）的视频流，使用的流媒体协议可以是 RTMP 之类的（关于更多流媒体协议的细节，可以看下面的单独章节）。
    * searchVideo(string apiToken, string searchKey, string userLocation, string pageToken)
 4. High Level 整体系统设计（架构图）
    * 上传架构：视频转码比较耗时所以需要一个消息队列进行异步处理。过程如下：当视频上传后，Upload Service 会往队列里添加一个视频处理任务，下游会有一个 Video Processing Service 从队列里取任务，然后从文件系统（Distributed Media Storage - 比如 S3、HDFS、GlusterFS）下载相应视频进行处理（转码、提取缩略图等）完后把新的视频和缩略图存放到文件系统，同时在 metadata 数据库中更新视频与缩略图的存放地址。系统对用户播放延时要求比较高，所以会把视频 push 到离用户比较近的服务器（CDN），Video Distributed Service 就是负责把视频和图片分发到 CDN 各个节点上，因为比较耗时所以也是异步进行（从 Completion Queue 取任务） ![](./Youtube%20Upload%20Architecture.png)![](./Netflix%20Upload%20Architecture.png)
