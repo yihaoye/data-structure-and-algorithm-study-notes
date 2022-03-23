@@ -680,7 +680,7 @@ Driver 如何获得打车请求？—— Report location 的同时，服务器�
      * SQL - 适合存储 User、Video Metadata 表
      * NoSQL - 适合非结构化数据，比如在 BigTable 里存储视频缩略图往往可以优化性能（不过实际上许多企业还是放在 File System 里）
      * File System / Blob Storage - 特别适合存储多媒体文件（图片、音频、视频等等）。因为视频平台的数据量很大，所以 File System 需要使用分布式的文件系统比如 HDFS、GlusterFS，又或者使用 Blob Storage / Object Storage 比如 Netflix 使用 AWS S3（S3 是 Object Storage，但也是通过类似 GFS2 之类的 Blob Storage 配合缓存、元数据存储等等组件、API 服务实现的，[参考](https://www.youtube.com/watch?v=9_vScxbIQLY)）。
-6. 扩展性
+6. 扩展性与优化
    * 找出系统的潜在瓶颈，然后提出解决方案、优缺点分析、然后做取舍
      * 数据分片 - 按 videoID 分片并且使用一致性哈希的方法。优势：按 videoID 而不是 userID 的好处是避免热门 up 主的问题。劣势：查询一个 user 的 videos 需要查询所有的 shards，以及单个热门视频会导致大流量集中在单个数据库（解决方案 - 使用缓存存储热门视频或拷贝视频到多个服务器上）。
      * 数据拷贝 - Primary-secondary 配置，数据写入 Primary 然后 propagate 到所有 secondaries 节点。从 secondary 读取。优势：可用性，随时可读不影响写压力。劣势：影响了数据一致性 - 只能是最终一致性，即用户不一定能读到最新数据（在本系统可接受这个取舍）。
@@ -690,6 +690,9 @@ Driver 如何获得打车请求？—— Report location 的同时，服务器�
        * 缓存会很大，如数据库一般也需要分布到多台机器上，分布机制可采用一致性哈希方法。
        * CDN 优化，通过分析预测，提前把客户会观看的视频推送到离用户最近的 CDN 上（可以在 off-peak 如半夜时段进行视频分发推送，降低单一时段的带宽压力）。
        * 通过和 ISP 合作进一步优化延时（Netflix Open Connect - OC Server/Appliance in ISP networks），把 Cache 放到 ISP 里，当用户请求某个视频且 ISP 发现它的 Cache 里有，就可以从它的 Cache stream 给用户，好处是相比 CDN（访问 CDN 仍需通过 ISP）少一步。实例：据报道，90% 的 Netflix 视频流量都是从 ISP 里的 Cache 走的。这种办法比较适合点播网站，即视频数量较少、观看比较集中。![](./Netflix%20Caching%20Optimization%20Architecture.png)
+     * 上传速度优化
+       * 并行视频上传 - 将视频作为一个整体上传是低效的，可以通过 GOP alignment 将视频分割成更小的块，这允许在上一次上传失败时快速恢复上传。客户端可以实现通过 GOP 分割视频文件以提高上传速度。![](./Youtube%20Upload%20GOP%20Alignment.png)![](./Youtube%20Upload%20GOP%20Alignment%20Client.png)
+       * 上传中心靠近用户 - 另一种提高上传速度的方法是在全球范围内建立多个上传中心，比如美国人可以上传视频到北美上传中心，中国人可以上传视频到亚洲上传中心。为此，系统使用 CDN 作为上传中心。
   
 
 **视频去重**  
