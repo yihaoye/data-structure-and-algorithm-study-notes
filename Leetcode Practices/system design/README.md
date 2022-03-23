@@ -70,7 +70,9 @@
 * Step 6: Detailed design - dig deeper into two or three components
 * Step 7: Identifying and resolving bottlenecks
   
-### System Design Basics
+<details>
+<summary>System Design Basics</summary>
+  
 During designing a large system, investing in scaling before it is needed is generally not a smart business proposition; however, some forethought into the design can save valuable time and resources in the future.  
 Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Theorem`, `Load Balancing`, `Caching`, `Data Partitioning`, `Indexes`, `Proxies`, `Queues`, `Replication`, and choosing between `SQL vs NoSQL`.  
 #### Key Characteristics of Distributed Systems
@@ -186,7 +188,11 @@ It is impossible for a distributed software system (especially data store) to si
 * Consistency - All nodes see the same data at the same time. It is achieved by updating several nodes before allowing further reads.
 * Availability - Every request gets a response on success/failure. It is achieved by replicating the data across different servers.
 * Partition tolerance - System continues to work despite message loss or partial failure.
+  
+</details>
 
+<br />
+  
 ### Practice Examples
 <details>
 <summary>Design TinyURL</summary>
@@ -693,6 +699,22 @@ Driver 如何获得打车请求？—— Report location 的同时，服务器�
      * 上传速度优化
        * 并行视频上传 - 将视频作为一个整体上传是低效的，可以通过 GOP alignment 将视频分割成更小的块，这允许在上一次上传失败时快速恢复上传。客户端可以实现通过 GOP 分割视频文件以提高上传速度。![](./Youtube%20Upload%20GOP%20Alignment.png)![](./Youtube%20Upload%20GOP%20Alignment%20Client.png)
        * 上传中心靠近用户 - 另一种提高上传速度的方法是在全球范围内建立多个上传中心，比如美国人可以上传视频到北美上传中心，中国人可以上传视频到亚洲上传中心。为此，系统使用 CDN 作为上传中心。
+     * 消息队列
+       * 另一个优化是构建一个松耦合的系统并启用高并行性。系统设计需要一些修改来实现高并行度。以下是视频从原始存储传输到 CDN 的原始流程，如图 1，表明输出取决于上一步的输入，这种依赖性使并行性变得困难。为了使系统更松耦合，引入了消息队列，在引入消息队列之前，编码模块必须等待下载模块的输出，引入消息队列后，编码模块不再需要等待下载模块的输出，如果消息队列中有事件，编码模块可以并行执行这些作业，如图 2。![](./Youtube%20System%20Design%20Couple.png)![](./Youtube%20System%20Design%20Decouple.png)
+     * 错误处理 - 构建一个高度容错的系统，可以高效处理错误并快速从错误中恢复。
+       * 可恢复的错误。对于视频片段转码失败等可恢复的错误，一般的思路是重试几次操作。如果任务继续失败并且系统认为它不可恢复，它会向客户端返回相关的错误代码。
+       * 不可恢复的错误。对于视频格式错误等不可恢复的错误，系统会停止与视频相关的正在运行的任务，并将相关的错误代码返回给客户端。
+       * Typical errors for each system component are covered by the following playbook:
+         * Upload error: retry a few times.
+         * Split video error: if older versions of clients cannot split videos by GOP alignment, the entire video is passed to the server. The job of splitting videos is done on the server-side.
+         * Transcoding error: retry
+         * Preprocessor error: regenerate DAG diagram
+         * DAG scheduler error: reschedule a task
+         * Resource manager queue down: use a replica
+         * Task worker down: retry the task on a new worker
+         * API server down: API servers are stateless so requests will be directed to a different API server.
+         * Metadata cache server down: data is replicated multiple times. If one node goes down, you can still access other nodes to fetch data. We can bring up a new cache server to replace the dead one.
+         * Metadata DB server down: Master is down. If the master is down, promote one of the slaves to act as the new master. Slave is down. If a slave goes down, you can use another slave for reads and bring up another database server to replace the dead one.
   
 
 **视频去重**  
@@ -731,7 +753,7 @@ Netflix 在三个 AWS 区域运营：一个在北弗吉尼亚州，一个在俄�
   
 Netflix 视频分发  
 分发意味着视频文件通过网络从中央位置复制并存储在世界各地的计算机上。对于 Netflix，存储视频的中心位置是 S3。CDN 背后的想法很简单：通过在全球范围内传播计算机，让视频尽可能靠近用户。当用户想要观看视频时，找到最近的带有视频的计算机并从那里流式传输到设备。每个有计算机存储视频内容的位置称为 PoP 或入网点。每个 PoP 都是提供互联网访问的物理位置。它包含服务器、路由器和其他电信设备。  
-Netflix 开发了自己的视频存储计算机系统。Netflix 称它们为 Open Connect 设备或 OCA。每个 OCA 都是一个快速的服务器，经过高度优化，可用于传输大文件，并带有大量用于存储视频的硬盘或闪存驱动器。从硬件的角度来看，OCA 没有什么特别之处。它们基于商用 PC 组件，并由各种供应商组装在定制机箱中。从软件的角度来看，OCA 使用 FreeBSD 操作系统和 NGINX 作为 Web 服务器。是的，每个 OCA 都有一个 Web 服务器。通过 NGINX 提供视频流。其他视频服务，如 YouTube 和亚马逊，在他们自己的骨干网络上提供视频。这些公司实际上建立了自己的全球网络，用于向用户提供视频。这样做非常复杂且非常昂贵。Netflix 采用了完全不同的方法来构建其 CDN。Netflix 不运营自己的网络；它也不再运营自己的数据中心。相反，互联网服务提供商 (ISP) 同意将 OCA 放入其数据中心。OCA 免费提供给 ISP 以嵌入到他们的网络中。Netflix 还将 OCA 放置在互联网交换位置 (IXP) 中或附近。ISP 是用户的互联网提供商，它可能是 Verizon、Comcast 或数千种其他服务。OCA 放置在 ISP 数据中心里可使得 Netflix 和 ISP 共赢（降低 ISP 的网络资源成本）。   
+Netflix 开发了自己的视频存储计算机系统。Netflix 称它们为 Open Connect 设备或 OCA。每个 OCA 都是一个快速的服务器，经过高度优化，可用于传输大文件，并带有大量用于存储视频的硬盘或闪存驱动器。从硬件的角度来看，OCA 没有什么特别之处。它们基于商用 PC 组件，并由各种供应商组装在定制机箱中。从软件的角度来看，OCA 使用 FreeBSD 操作系统和 NGINX 作为 Web 服务器。是的，每个 OCA 都有一个 Web 服务器。通过 NGINX 提供视频流。其他视频服务，如 YouTube 和亚马逊，在他们自己的骨干网络上提供视频。这些公司实际上建立了自己的全球网络，用于向用户提供视频。这样做非常复杂且非常昂贵。Netflix 采用了完全不同的方法来构建其 CDN。Netflix 不运营自己的网络；它也不再运营自己的数据中心。相反，互联网服务提供商 (ISP) 同意将 OCA 放入其数据中心。OCA 免费提供给 ISP 以嵌入到他们的网络中。Netflix 还将 OCA 放置在互联网交换位置 (IXP) 中或附近。ISP 是用户的互联网提供商，它可能是 Verizon、Comcast、AT&T 或数千种其他服务。OCA 放置在 ISP 数据中心里可使得 Netflix 和 ISP 共赢（降低 ISP 的网络资源成本）。   
 
 
 </details>
