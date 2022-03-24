@@ -679,9 +679,9 @@ Driver 如何获得打车请求？—— Report location 的同时，服务器�
    * 另外需要注意的是实际中上面每个架构的每一个 Service（比如 Upload Service）可以是同一个微服务的集群，并不是单独一个机器、节点、应用。
 5. 数据存储设计
    * 数据库表设计：
-     * User: (userID, name, email, numSubscribe...)
-     * Video Metadata: (videoID, userID, title, desc, videoAddr, thumbnailAddr, numLike, numDislike, numView...)
-     * Comment: (commentID, userID, videoID, content, time...)
+     * User: {VARCHAR(32) userID, VARCHAR(255) name, VARCHAR(255) email, BIGINT(20) numSubscribe...}
+     * Video Metadata: {VARCHAR(32) videoID, VARCHAR(32) userID, VARCHAR(100) title, VARCHAR(255) desc, VARCHAR(255) videoAddr, VARCHAR(255) thumbnailAddr, BIGINT(20) numLike, BIGINT(20) numDislike, BIGINT(20) numView...}
+     * Comment: {VARCHAR(32) commentID, VARCHAR(32) userID, VARCHAR(32) videoID, VARCHAR(255) content, TIMESTAMP time...}
    * 数据存储选择：
      * SQL - 适合存储 User、Video Metadata 表
      * NoSQL - 适合非结构化数据，比如在 BigTable 里存储视频缩略图往往可以优化性能（不过实际上许多企业还是放在 File System 里）
