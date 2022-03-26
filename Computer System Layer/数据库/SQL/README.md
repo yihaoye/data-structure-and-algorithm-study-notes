@@ -71,9 +71,10 @@ SQL 是`结构化查询语言`的缩写
 SQL 已经被 ANSI 组织定义为标准，但是各个不同的数据库对标准的 SQL 支持不太一致。并且，大部分数据库都在标准的 SQL 上做了扩展。也就是说，如果只使用标准 SQL，理论上所有数据库都可以支持，但如果使用某个特定数据库的扩展 SQL，换一个数据库就不能执行了。例如，Oracle 把自己扩展的 SQL 称为 PL/SQL，Microsoft 把自己扩展的 SQL 称为 T-SQL。现实情况是，如果只使用标准 SQL 的核心功能，那么所有数据库通常都可以执行。不常用的 SQL 功能，不同的数据库支持的程度都不一样。而各个数据库支持的各自扩展的功能，通常称之为方言。  
   
 SQL 语言定义了这么几种操作数据库的能力  
-* DDL（Data Definition Language）：DDL 允许用户定义数据，也就是创建表、删除表、修改表结构这些操作。通常，DDL 由数据库管理员执行。
-* DML（Data Manipulation Language）：DML 为用户提供添加、删除、更新数据的能力，这些是应用程序对数据库的日常操作。
-* DQL（Data Query Language）：DQL 允许用户查询数据，这也是通常最频繁的数据库日常操作。  
+* DDL（Data Definition Language）：数据定义语言，DDL 允许用户定义数据，对逻辑结构等有操作的，其中包括表结构，视图和索引，也包括创建表、删除表、修改表结构这些操作，例如 CREATE，DROP，ALTER 等。通常，DDL 由数据库管理员执行。
+* DML（Data Manipulation Language）：数据操纵语言，DML 为用户提供添加、删除、更新数据的能力，例如 INSERT，UPDATE，DELETE 等，这些是应用程序对数据库的日常操作，DQL 与 DML 共同构建了多数初级程序员常用的`增删改查`操作，而查询是较为特殊的一种，被划分到 DQL 中。
+* DQL（Data Query Language）：数据查询语言，DQL 允许用户查询数据，这也是通常最频繁的数据库日常操作，以 SELECT 关键字为主，各种简单查询、连接查询等都属于 DQL。
+* DCL（Data Control Language）：数据控制功能，例如 GRANT，REVOKE，COMMIT，ROLLBACK 等，对数据库安全性、完整性等有操作的，可以简单的理解为权限控制等。  
   
 </details>
 <br>
@@ -394,11 +395,20 @@ MVCC 是利用在每条数据后面加了隐藏的两列（创建版本号和删
   
   
 ## 数据库的键
-* 主键（Primary Key）：对数据库表中的每一行数据进行唯一标识。
+* 主键（Primary Key）：对数据库表中的每一行数据进行唯一标识。一个数据列只能有一个主键，且主键的取值不能缺失，即不能为空值（NULL）。
 * 次要键（Alternate/Secondary Key）：非主键的任意候选键。
-* 超键（Super Key）：在关系中能唯一标识元组的属性集称为关系模式的超键（比如一张学生信息表，学生表中含有学号或者身份证号的任意组合都为此表的超键）。
+* 超键（Super Key）：在关系中能唯一标识元组的属性集称为关系模式的超键，一个属性可以作为一个超键，多个属性组合在一起也可以作为一个超键。超键包含候选键和主键。（比如一张学生信息表，学生表中含有学号或者身份证号的任意组合都为此表的超键）
 * 候选键（Candidate Key）：不含有多余属性的超键称为候选键，也称为最小超键（候选键属于超键，它是最小的超键，就是说如果再去掉候选键中的任何一个属性它就不再是超键了）。
-* 外键（Foreign Key）：是表中的一列，其值必须在另一个表的主键中，被用来指向到其他表格主键的关联键。  
+* 外键（Foreign Key）：是表中的一列，其值必须在另一个表的主键中，被用来指向到其他表格主键的关联键。在一个表中存在的另一个表的主键称此表的外键，外键可以有重复的，可以是空值。外键是用来和其他表建立联系用的。  
+  
+### SQL 约束
+约束是一种简单地强加于表中一列或多列的限制，从而保证表中数据一致性（准确和可靠）。以下为 6 大约束：  
+* 非空约束（NOT NULL）：保证该字段值一定不为空；
+* 默认约束（DEFAULT）：保证字段有默认值；
+* 主键约束（PRIMARY KEY）：标志一列或者多列，并保证其值在表内的唯一性；
+* 外键约束（FOREIGN KEY）：限制一列或多列中的值必须被包含在另一表的外键列中，并且在级联更新或级联删除规则建立后也可以限制其他表中的可用值；
+* 唯一约束（UNIQUE）： 限制一列或多列的值，保证字段值在表内的唯一性，可以为空（主键约束是一种特殊类型的唯一约束）；
+* 检查约束（CHECK）：限制一列的可用值范围。  
   
 <details>
 <summary>外键与级联</summary>
@@ -431,6 +441,36 @@ foreign key(classno) references t_class(cno) on update cascade;
 [为什么不推荐使用外键约束](https://zhuanlan.zhihu.com/p/62020571)  
 </details>
 <br>
+  
+  
+## SQL 数据类型
+* String Data Types
+  * CHAR(size)
+  * VARCHAR(size)
+  * BINARY(size)
+  * VARBINARY(size)
+  * TEXT(size) - (其实还有 TINYTEXT、MEDIUMTEXT、LONGTEXT)
+  * BLOB(size) - (其实还有 TINYBLOB、MEDIUMBLOB、LONGBLOB)
+  * ENUM(val1, val2, val3, ...)
+  * SET(val1, val2, val3, ...)
+* Numeric Data Types
+  * BIT(size)
+  * INT(size) / INTEGER(size) - (其实还有 TINYINT(size)、SMALLINT(size)、MEDIUMINT(size)、BIGINT(size))
+  * BOOL / BOOLEAN
+  * FLOAT(size, d)
+  * DOUBLE(size, d)
+  * DECIMAL(size, d)
+* Date and Time Data Types
+  * DATE
+  * DATETIME(fsp)
+  * TIMESTAMP(fsp)
+  * TIME(fsp)	
+  * YEAR
+  
+**CHAR 与 VARCHAR 的区别**  
+* CHAR 表示定长字符串，长度是固定的，最多能存放的字符个数为 255，和编码无关；而 VARCHAR 表示可变长字符串，长度是可变的，最多能存放的字符个数为 65532；
+* 使用 CHAR 时，如果插入数据的长度小于 CHAR 的固定长度时，则用空格填充；
+* 因为固定长度，CHAR 的存取速度比 VARCHAR 快很多，同时缺点是会占用多余空间，属于空间换时间；  
   
   
 # 优化
