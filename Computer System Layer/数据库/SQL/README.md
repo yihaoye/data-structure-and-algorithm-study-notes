@@ -138,8 +138,9 @@ HAVING aggregate_function(column_name) operator value;
 根据之前的知识我们可以查出每门科目的最高分，但是要想查出取得最高分的学生信息就做不到了。这时就需要用到子查询来取得完整的信息。  
   
 什么是子查询？子查询就是嵌套在主查询中的查询。  
-子查询可以嵌套在主查询中所有位置，包括 SELECT、FROM、WHERE、GROUP BY、HAVING、ORDER BY。  
+子查询可以嵌套在主查询中所有位置，包括 SELECT、FROM、WHERE、GROUP BY、HAVING、ORDER BY、SELECT...INTO 语句、INSERT...INTO 语句、DELETE 语句、UPDATE 语句或嵌套在另一子查询中。  
 但并不是每个位置嵌套子查询都是有意义并实用的。  
+子查询是多表查询的一个重要组成部分，常常和`连接查询（关联查询）`一起使用，是多表查询的基础。  
   
 ### 在 SELECT 中嵌套
 现有表两张：一张学生表、一张班表。id 相关联  
@@ -157,7 +158,7 @@ SELECT s.student_id,s.student_name,(SELECT class_name FROM t_class c WHERE c.cla
 ![](./281743487892192.png)  
   
 ### 在 WHERE 中嵌套
-查出C语言成绩最高的学生的信息：  
+查出 C 语言成绩最高的学生的信息：  
 ```sql
 SELECT * FROM t_student WHERE student_subject='C语言' AND student_score>=ALL (SELECT student_score FROM t_student WHERE student_subject='C语言');
 ```  
@@ -183,6 +184,12 @@ SELECT * FROM t_student s1 WHERE s1.student_score >= ALL(SELECT s2.student_score
     * 子查询总共执行一次，执行完毕后后将值传递给外部查询。  
   
 相关子查询不推荐使用，因为相关子查询主查询执行一回，子查询就执行一回，十分耗费时间，尤其是当数据多的时候（前面第一个例子 SELECT 嵌套求学生对应班级名的即为相关子查询）。  
+  
+子查询还可以分为以下 4 类：  
+* 标量子查询 - 查询返回单一值的标量，如一个数字或一个字符串，是子查询中最简单的形式。
+* 列子查询 - 子查询返回的结果集是 N 行一列，该结果通常来自对表的某个字段查询返回。
+* 行子查询 - 子查询返回的结果集是一行 N 列，该结果通常是对表的某行数据进行查询而返回的结果集。
+* 表子查询 - 子查询返回的结果集是 N 行 N 列的一个表数据。  
   
 ## 组合查询
 UNION 操作符用于合并两个或多个 SELECT 语句的结果集。  
@@ -603,6 +610,19 @@ https://shardingsphere.apache.org/index_zh.html
 * 尽量避免 SQL 拼接。
 * 采用正则表达式检查。
 * 采用 **PreparedStatement**，就会将 sql 语句："select id, no from user where id=?" `预先编译好，也就是 SQL 引擎会预先进行语法分析，产生语法树，生成执行计划`，也就是说，`后面输入的参数，无论输入的是什么，都不会影响该 sql 语句的 语法结构了`，因为语法分析已经完成了，而语法分析主要是分析 sql 命令，比如 select, from, where, and, or, order by 等等。所以即使后面输入了这些 sql 命令，也不会被当成 sql 命令来执行了，因为这些 sql 命令的执行，必须先的通过语法分析，生成执行计划，既然语法分析已经完成，已经预编译过了，那么后面输入的参数，是绝对不可能作为 sql 命令来执行的，只会被当做字符串字面值参数。所以 sql 语句预编译可以防御 sql 注入。  
+  
+  
+## 删除操作
+### DROP、DELETE 与 TRUNCATE 的区别
+三种都可以表示删除，其中的细微区别之处如下：  
+|   |DROP	|DELETE	|TRUNCATE |
+|---|---|---|---|
+|SQL 语句类型	|DDL	|DML	|DDL |
+|回滚	|不可回滚	|可回滚	|不可回滚 |
+|删除内容	|从数据库中`删除表`，所有的数据行，索引和权限也会被删除	|表结构还在，删除表的`全部或者一部分数据行`	|表结构还在，删除表中的`所有数据` |
+|删除速度	|删除速度最快	|删除速度慢，需要逐行删除	|删除速度快 |
+
+因此，在不再需要一张表的时候，采用 DROP；在想删除部分数据行时候，用 DELETE；在保留表而删除所有数据的时候用 TRUNCATE。  
   
   
 ## 其他
