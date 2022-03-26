@@ -203,6 +203,8 @@ UNION ALL
 SELECT 列3 , 列4 FROM 表2;
 ```  
 组合查询并不是太实用，用的少之又少。  
+组合（联合）查询就是把多个结果集集中在一起，UNION 前的结果为基准，需要注意的是联合查询的列数要相等，相同的记录行会合并；  
+如果使用 UNION ALL，不会合并重复的记录行，所以效率更高。  
   
 ## 表联接与联接查询
 相关子查询效率低下，那怎么能将不同表的信息一起查询出来呢？这就需要用到表联接。  
@@ -251,6 +253,21 @@ SELECT w.work_name,l.work_name 领导姓名 FROM t_emp w,t_emp l WHERE w.leader_
 ```  
 结果：  
 ![](./282011580541647.png)  
+  
+交叉连接（CROSS JOIN）：  
+除了在 FROM 子句中使用`逗号间隔连接的表`外，SQL 还支持另一种被称为交叉连接的操作，它们都返回被连接的两个表所有数据行的[笛卡尔积](https://zh.wikipedia.org/wiki/%E7%AC%9B%E5%8D%A1%E5%84%BF%E7%A7%AF)，返回到的数据行数等于第一个表中符合查询条件的数据行数`乘以`第二个表中符合查询条件的数据行数。惟一的不同在于，交叉连接分开列名时，使用 CROSS JOIN 关键字而不是逗号，即以下两个表达式等价：  
+```sql
+SELECT  *  FROM  A, B
+SELECT  *  FROM  A  CROSS JOIN  B
+```  
+  
+全连接（FULL JOIN）：  
+MySQL 本身不支持全连接，但可以通过联合使用 LEFT JOIN、UNION 和 RIGHT JOIN 来实现 - 全连接，即左连接的结果+右连接的结果。  
+```sql
+SELECT * FROM A LEFT JOIN B ON A.id = B.id UNION SELECT * FROM A RIGHT JOIN B ON A.id = B.id
+```  
+  
+在项目开发过程中，使用数据库查询语句时，有很多需求都是要涉及到较为复杂或者多表的连接查询，需要关联查询实现。以上总结的是 MySQL 的 5 种关联查询（包括 UNION）。  
   
   
 ## SQL 的执行顺序
