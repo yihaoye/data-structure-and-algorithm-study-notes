@@ -666,7 +666,7 @@ Driver 如何获得打车请求？—— Report location 的同时，服务器�
    * uploadVideo(string apiToken, string videoTitle, string videDesc, stream videoContents) - 因为视频的处理需要比较长的时间，所以服务器会采用异步处理，用户此时去做其他事情没必要傻等，处理完系统平台会通过邮件或平台 UI 上通知上传完毕。上传过程细节如下：
      1. 客户端发起 HTTP 请求以建立信道，此时服务端开始：a. 创建 videoID、b. 准备存储空间位置（上传目标地址如 S3）、c. 等等
      2. 服务端返回上传目标地址，客户端开始读取 video 并分块上传到对应的地址，Youtube 实际上采用 HTTP 协议来分块上传视频文件 ![](./Youtube%20Client%20and%20Server.png)
-   * streamVideo(string apiToken, string videoId, int offset, int codec, int resolution) - codec 是视频的编码格式（与用户设备是否支持有关），resolution（分辨率）可以自动根据当时带宽大小决定以优化观影体验（参考：[基于HTTP的动态自适应流](https://zh.wikipedia.org/wiki/%E5%9F%BA%E4%BA%8EHTTP%E7%9A%84%E5%8A%A8%E6%80%81%E8%87%AA%E9%80%82%E5%BA%94%E6%B5%81)）。该 API 将返回一个已经位移了 offset（时间戳）的视频流，使用的流媒体协议可以是 RTMP 之类的（关于更多流媒体协议的细节，可以看下面的单独章节）。
+   * streamVideo(string apiToken, string videoId, int offset, int codec, int resolution) - codec 是视频的编码格式（与用户设备是否支持有关），resolution（分辨率）可以自动根据当时带宽大小决定以优化观影体验（参考：[基于 HTTP 的动态自适应流](https://zh.wikipedia.org/wiki/%E5%9F%BA%E4%BA%8EHTTP%E7%9A%84%E5%8A%A8%E6%80%81%E8%87%AA%E9%80%82%E5%BA%94%E6%B5%81)）。该 API 将返回一个已经位移了 offset（时间戳）的视频流，使用的流媒体协议可以是 RTMP 之类的（关于更多流媒体协议的细节，可以看下面的单独章节）。
    * searchVideo(string apiToken, string searchKey, string userLocation, string pageToken)
 4. High Level 整体系统设计（架构图）
    * 上传架构：视频转码比较耗时所以需要一个消息队列进行异步处理。过程如下：当视频上传后，Upload Service 会往队列里添加一个视频处理任务，下游会有一个 Video Processing Service 从队列里取任务，然后从文件系统（Distributed Media Storage - 比如 S3、HDFS、GlusterFS）下载相应视频进行处理（转码、提取缩略图等）完后把新的视频和缩略图存放到文件系统，同时在 metadata 数据库中更新视频与缩略图的存放地址。系统对用户播放延时要求比较高，所以会把视频 push 到离用户比较近的服务器（CDN），Video Distributed Service 就是负责把视频和图片分发到 CDN 各个节点上，因为比较耗时所以也是异步进行（从 Completion Queue 取任务） ![](./Youtube%20Upload%20Architecture.png)![](./Netflix%20Upload%20Architecture.png)
@@ -731,13 +731,12 @@ Driver 如何获得打车请求？—— Report location 的同时，服务器�
 **视频流式传输协议**  
 当用户在 Youtube 上观看视频时，通常视频流会立刻开始播放而不是等待整个视频下载好后再播放。下载整个视频意味着把视频复制到客户端，而流式传输（streaming）意味着客户端连续接收来自远程源视频的视频流，当用户观看流媒体视频时，客户端一次会加载一点数据，因此可以立即、连续地观看视频。  
 在讨论视频流之前，先看一个重要的概念：流协议（streaming protocol）。这是一种控制视频流数据传输的标准化方法。流行的流媒体协议有：  
-* MPEG–DASH. MPEG 代表 “Moving Picture Experts Group”， DASH 代表 "Dynamic Adaptive Streaming over HTTP".
-* Apple HLS. HLS 代表 “HTTP Live Streaming”.
-* Microsoft Smooth Streaming.
-* Adobe HTTP Dynamic Streaming (HDS).
+* MPEG–DASH：MPEG 代表 "Moving Picture Experts Group"，DASH 代表 "Dynamic Adaptive Streaming over HTTP"，中文名是**基于 HTTP 的动态自适应流**，它是一种自适应比特率流技术，也是一项国际标准，使高质量流媒体可以通过传统的 HTTP 网络服务器以互联网传递。类似苹果公司的 HTTP Live Streaming（HLS）方案，MPEG-DASH 会将内容分解成一系列小型的基于 HTTP 的文件片段，每个片段包含很短长度的可播放内容，而内容总长度可能长达数小时（例如电影或体育赛事直播）。内容将被制成多种比特率的备选片段，以提供多种比特率的版本供选用。当内容被 MPEG-DASH 客户端回放时，客户端将根据当前网络条件自动选择下载和播放哪一个备选方案。客户端将选择可及时下载的最高比特率片段进行播放，从而避免播放卡顿或重新缓冲事件。也因如此，MPEG-DASH 客户端可以无缝适应不断变化的网络条件并提供高质量的播放体验，拥有更少的卡顿与重新缓冲发生率。
+* Apple HLS：HLS 代表 "HTTP Live Streaming"
+* Microsoft Smooth Streaming
+* Adobe HTTP Dynamic Streaming (HDS)
   
 不需要完全理解甚至记住这些流协议名称，因为它们是需要特定领域知识的底层细节。重要的是要了解不同的流协议支持不同的视频编码和播放器。当设计视频流服务系统时，必须选择正确的流协议来支持面对的用例。[流媒体协议更多细节](https://archerzdip.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%E7%B3%BB%E5%88%97-%E6%B5%81%E5%AA%92%E4%BD%93%E5%8D%8F%E8%AE%AE%E7%AF%87-%E5%B8%B8%E8%A7%81%E7%9A%84%E6%B5%81%E5%AA%92%E4%BD%93%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D/)  
-
   
 视频系统的其他拓展功能：  
 * 推荐
