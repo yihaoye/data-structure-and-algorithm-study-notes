@@ -31,3 +31,23 @@ class Solution {
         return lastValid == 0;
     }
 }
+
+
+
+// Other's Solution:
+class Solution {
+    public boolean canJump(int[] nums) {
+        /*
+            贪心 - https://leetcode-cn.com/problems/jump-game/solution/55-by-ikaruga/
+            时间复杂度 O(N)，空间复杂度 O(1)
+        */
+        int k = 0; // 前n-1个元素能够跳到的最远距离
+        for (int i = 0; i <= k; i++) {
+            int temp = i + nums[i]; // 第i个元素能够跳到的最远距离
+            k = Math.max(k, temp); // 更新最远距离
+            if (k >= nums.length - 1) return true; // 如果最远距离已经大于或等于最后一个元素的下标, 则说明能跳过去,退出减少循环
+        }
+        
+        return false; // 最远距离 k 不再改变, 且没有到末尾元素
+    }
+}
