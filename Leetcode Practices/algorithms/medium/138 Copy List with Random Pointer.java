@@ -110,8 +110,9 @@ class Node {
 class Solution {
     public Node copyRandomList(Node head) {
         /*
-            https://leetcode-cn.com/problems/copy-list-with-random-pointer/solution/fu-zhi-dai-sui-ji-zhi-zhen-de-lian-biao-rblsf/
-             时间复杂度 O(N)，空间复杂度 O(1)
+            迭代 + 节点拆分 - https://leetcode-cn.com/problems/copy-list-with-random-pointer/solution/fu-zhi-dai-sui-ji-zhi-zhen-de-lian-biao-rblsf/
+            首先将该链表中每一个节点拆分为两个相连的节点，例如对于链表 A→B→C，可以将其拆分为 A→A′→B→B′→C→C′。对于任意一个原节点 S，其拷贝节点 S′ 即为其后继节点。
+            时间复杂度 O(N)，空间复杂度 O(1)
         */
         if (head == null) {
             return null;
