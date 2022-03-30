@@ -239,7 +239,7 @@
 - [x] 222	Count Complete Tree Nodes		                                                很少考
 - [x] 105	Construct Binary Tree from Preorder and Inorder Traversal		                很少考
 - [ ] 106	Construct Binary Tree from Inorder and Postorder Traversal		                很少考
-- [ ] 116	Populating Next Right Pointers in Each Node		                                重要
+- [x] 116	Populating Next Right Pointers in Each Node		                                重要
 - [ ] 117	Populating Next Right Pointers in Each Node II		                            重要
 - [ ] 314	Binary Tree Vertical Order Traversal		                                    重要
 - [ ] 96	Unique Binary Search Trees		                                                重要
@@ -547,7 +547,7 @@
 - [x] 112	Path Sum		
 - [x] 113	Path Sum II		
 - [ ] 115	Distinct Subsequences		
-- [ ] 116	Populating Next Right Pointers in Each Node		
+- [x] 116	Populating Next Right Pointers in Each Node		
 - [ ] 117	Populating Next Right Pointers in Each Node II		
 - [x] 121	Best Time to Buy and Sell Stock		
 - [x] 122	Best Time to Buy and Sell Stock II		
