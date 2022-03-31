@@ -33,7 +33,7 @@
 - [ ] 334	Increasing Triplet Subsequence		
 - [ ] 128	Longest Consecutive Sequence		
 - [ ] 164	Maximum Gap		                                            Bucket
-- [ ] 287	Find the Duplicate Number		
+- [x] 287	Find the Duplicate Number		
 - [ ] 135	Candy		                                                很少考
 - [ ] 330	Patching Array		                                        很少考
 ### 提高			
@@ -650,7 +650,7 @@
 - [ ] 284	Peeking Iterator		
 - [ ] 285	Inorder Successor in BST		
 - [x] 286	Walls and Gates		
-- [ ] 287	Find the Duplicate Number		
+- [x] 287	Find the Duplicate Number		
 - [ ] 288	Unique Word Abbreviation		
 - [ ] 289	Game of Life		
 - [x] 290	Word Pattern		
