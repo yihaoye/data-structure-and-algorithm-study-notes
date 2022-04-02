@@ -624,7 +624,7 @@ Driver 如何获得打车请求？—— Report location 的同时，服务器�
 <details>
 <summary>设计 Youtube</summary>
 
-[花花酱](https://www.youtube.com/watch?v=mp-OSK6jm1c)  
+[花花酱 Youtube 系统设计](https://www.youtube.com/watch?v=mp-OSK6jm1c)  
 [Video Streaming System Design](https://medium.com/double-pointer/system-design-interview-video-streaming-service-e-g-netflix-or-youtube-design-adc2402e54a1)  
 [Design Youtube](https://systeminterview.com/design-youtube.php)  
   
@@ -680,7 +680,7 @@ Driver 如何获得打车请求？—— Report location 的同时，服务器�
 5. 数据存储设计
    * 数据库表设计：
      * User: {VARCHAR(32) userID, VARCHAR(255) name, VARCHAR(255) email, BIGINT(20) numSubscribe...}
-     * Video Metadata: {VARCHAR(32) videoID, VARCHAR(32) userID, VARCHAR(100) title, VARCHAR(255) desc, VARCHAR(255) videoAddr, VARCHAR(255) thumbnailAddr, BIGINT(20) numLike, BIGINT(20) numDislike, BIGINT(20) numView...}
+     * Video Metadata: {VARCHAR(32) videoID, VARCHAR(32) userID, VARCHAR(100) title, VARCHAR(255) desc, VARCHAR(255) videoAddr, VARCHAR(255) thumbnailAddr, BIGINT(20) numLike, BIGINT(20) numDislike, BIGINT(20) numView...} - 其中 numLike、numDislike、numView 应该拆分到另外的表或数据库，因为它们是大数据而且写频率非常高，在做这类数据的统计时，需要用到一些相关的数据结构，比如 HyperLogLog。
      * Comment: {VARCHAR(32) commentID, VARCHAR(32) userID, VARCHAR(32) videoID, VARCHAR(255) content, TIMESTAMP time...}
    * 数据存储选择：
      * SQL - 适合存储 User、Video Metadata 表
