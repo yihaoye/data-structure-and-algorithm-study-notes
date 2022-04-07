@@ -93,7 +93,6 @@ How do you know when the crawler is done?
  */
 class Solution {
     // ConcurrentHashMap + Stream + dfs - https://leetcode.com/problems/web-crawler-multithreaded/discuss/419264/Java-Streams-+-ConcurrentHashMap-(60-ms)/1324085
-    // failed 28+16
     private Set<String> set;
     private String host;
     private HtmlParser htmlParser;
