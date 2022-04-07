@@ -287,3 +287,132 @@ CountDownLatch 允许一个或多个线程等待其他线程完成操作，即�
 ## 并行流
 [On Java 8 示例](./OnJava8/)  
 [On Java 8 详解](https://github.com/yihaoye/stem-notes/tree/master/t-programming-languages/java/Thinking%20in%20Java/On%20Java%208#%E5%B9%B6%E8%A1%8C%E6%B5%81)  
+
+## CAS 算法
+参考资料：  
+https://segmentfault.com/a/1190000021653471  
+https://www.modb.pro/db/156185  
+https://www.cnblogs.com/javastack/p/14120047.html  
+  
+### 什么是 CAS？
+CAS 全称 Compare and Swap，顾名思义，即比较再交换。该算法是一种无锁算法，可以在不加锁的前提下保证线程安全，即在没有线程被阻塞的情况下实现变量同步，因此属于非阻塞同步的范畴。  
+jdk5 增加了并发包 `java.util.concurrent.*`，其下面的类使用 CAS 算法实现了区别于 synchronouse 同步锁的一种乐观锁。JDK 5 之前 Java 语言是靠 synchronized 关键字保证同步的，这是一种独占锁，也是悲观锁。（ReentrantLock 也是悲观锁）  
+悲观锁，悲观，为了防止出现线程安全问题提前加锁同步；乐观锁，乐观，先假设不会出现线程安全问题，真出现问题之后再作处理。CAS 算法是乐观的态度，因此属于乐观锁。  
+  
+### CAS 算法理解
+对 CAS 的理解，CAS 是一种无锁算法，CAS 有 3 个操作数，内存值 V，旧的预期值（比较值）A，要修改的新值（交换值）B。当且仅当预期值 A 和内存值 V 相同时，将内存值 V 修改为 B，否则不执行任何操作。一般情况下，CAS 算法是一个自旋操作，即不断的重试直到成功为止。  
+![](./CAS%20Algorithm.jpeg)  
+
+CAS 比较与交换的伪代码可以表示为：  
+```
+do {
+       备份旧数据；
+       基于旧数据构造新数据；
+} while (!CAS( 内存地址，备份的旧数据，新数据 ))
+```
+  
+![](./CAS.png)  
+注：t1，t2 线程是同时更新同一变量 56 的值  
+因为 t1 和 t2 线程都同时去访问同一变量 56，所以他们会把主内存的值完全拷贝一份到自己的工作内存空间，所以 t1 和 t2 线程的预期值都为 56。  
+
+假设 t1 在与 t2 线程竞争中线程 t1 能去更新变量的值，而其他线程都失败。（失败的线程并不会被挂起，而是被告知这次竞争中失败，并可以再次发起尝试）。t1 线程去更新变量值改为 57，然后写到内存中。此时对于 t2 来说，内存值变为了 57，与预期值 56 不一致，就操作失败了（想改的值不再是原来的值）。  
+（上图通俗的解释是：CPU 去更新一个值，但如果想改的值不再是原来的值，操作就失败，因为很明显，有其它操作先改变了这个值。）  
+就是指当两者进行比较时，如果相等，则证明共享数据没有被修改，替换成新值，然后继续往下运行；如果不相等，说明共享数据已经被修改，放弃已经所做的操作，然后重新执行刚才的操作。容易看出 CAS 操作是基于共享数据不会被修改的假设，采用了类似于数据库的 commit-retry 的模式。当同步冲突出现的机会很少时，这种假设能带来较大的性能提升。  
+  
+### CAS 缺点
+CAS 虽然很高效的解决原子操作，但是 CAS 仍然存在三大问题。ABA 问题，循环时间长开销大和只能保证一个共享变量的原子操作。  
+#### 缺点 1：ABA 问题
+因为 CAS 需要在操作值的时候检查下值有没有发生变化，如果没有发生变化则更新，但是如果一个值原来是 A，变成了 B，又变成了 A，那么使用 CAS 进行检查时会发现它的值没有发生变化，但是实际上却变化了。ABA 问题的解决思路就是使用版本号。在变量前面追加上版本号，每次变量更新的时候把版本号加一，那么 A－B－A 就会变成 1A-2B－3A。  
+从 Java1.5 开始 JDK 的 atomic 包里提供了一个类 AtomicStampedReference 来解决 ABA 问题。这个类的 compareAndSet 方法作用是首先检查当前引用是否等于预期引用，并且当前标志是否等于预期标志，如果全部相等，则以原子方式将该引用和该标志的值设置为给定的更新值。  
+
+解决方案  
+CAS 类似于乐观锁，即每次去拿数据的时候都认为别人不会修改，所以不会上锁，但是在更新的时候会判断一下在此期间别人有没有去更新这个数据。因此解决方案也可以跟乐观锁一样：  
+* 使用版本号机制，如手动增加版本号字段
+* Java 1.5 开始，JDK 的 Atomic 包里提供了一个类 AtomicStampedReference 来解决 ABA 问题。这个类的 compareAndSet 方法的作用是首先检查当前引用是否等于预期引用，并且检查当前的标志是否等于预期标志，如果全部相等，则以原子方式将该应用和该标志的值设置为给定的更新值。
+
+#### 缺点 2：循环时间长开销大
+存在自旋开销。在概述中已经提到了，CAS 算法是一个自旋操作，拥有不撞南墙不回头的精神，在失败时会不断重试直到成功为止。但这种自旋如果长时间存在，将会对 CPU 造成很大的负担。这也就是所谓的自旋开销。  
+自旋 CAS 如果长时间不成功，会给 CPU 带来非常大的执行开销。如果 JVM 能支持处理器提供的 pause 指令那么效率会有一定的提升，pause 指令有两个作用，第一它可以延迟流水线执行指令（de-pipeline），使 CPU 不会消耗过多的执行资源，延迟的时间取决于具体实现的版本，在一些处理器上延迟时间是零。第二它可以避免在退出循环的时候因内存顺序冲突（memory order violation）而引起 CPU 流水线被清空（CPU pipeline flush），从而提高 CPU 的执行效率。  
+
+解决方案  
+* 破坏掉 for 死循环，当超过一定时间或者一定次数时，return 退出。JDK8 新增的 LongAddr，和 ConcurrentHashMap 类似的方法。当多个线程竞争时，将粒度变小，将一个变量拆分为多个变量，达到多个线程访问多个资源的效果，最后再调用 sum 把它合起来。
+* 如果 JVM 能支持处理器提供的 pause 指令，那么效率会有一定的提升。pause 指令有两个作用：第一，它可以延迟流水线执行指令（de-pipeline），使 CPU 不会消耗过多的执行资源，延迟的时间取决于具体实现的版本，在一些处理器上延迟时间是零；第二，它可以避免在循环的时候因内存顺序冲突（Memory Order Violation）而引起 CPU 流水线被清空，从而提高 CPU 的实行效率。
+
+#### 缺点 3：只能保证一个共享变量的原子操作
+当对一个共享变量执行操作时，可以使用循环 CAS 的方式来保证原子操作，但是对多个共享变量操作时，循环 CAS 就无法保证操作的原子性，这个时候就可以用锁，或者有一个取巧的办法，就是把多个共享变量合并成一个共享变量来操作。比如有两个共享变量 i＝2,j=a，合并一下 ij=2a，然后用 CAS 来操作 ij。从 Java1.5 开始 JDK 提供了 AtomicReference 类来保证引用对象之间的原子性，可以把多个变量放在一个对象里来进行 CAS 操作。  
+
+解决方案  
+* 用锁
+* 把多个共享变量合并成一个共享变量来操作。比如，有两个共享变量 i=2,j=a，合并一下 ji=2a，然后用 CAS 来操作 ij。
+* 封装成对象 - 将这些共享变量封装为一个对象之后再使用 CAS 算法进行处理。注：从 Java 1.5 开始，JDK 提供了 AtomicReference 类来保证引用对象之前的原子性，可以把多个变量放在一个对象里来进行 CAS 操作。
+
+#### 缺点 4：比较花费 CPU 资源，即使没有任何争用也会做一些无用功
+
+#### 缺点 5：会增加程序测试的复杂度，稍不注意就会出现问题
+
+### CAS 开销
+前面说过了，CAS（比较并交换）是 CPU 指令级的操作，只有一步原子操作，所以非常快。而且 CAS 避免了请求操作系统来裁定锁的问题，不用麻烦操作系统，直接在 CPU 内部就搞定了。但 CAS 就没有开销了吗？不！有 cache miss 的情况。这个问题比较复杂，首先需要了解 CPU 的硬件体系结构：  
+![](./CAS%202.png)  
+
+上图可以看到一个 8 核 CPU 计算机系统，每个 CPU 有 cache（CPU 内部的高速缓存，寄存器），管芯内还带有一个互联模块，使管芯内的两个核可以互相通信。在图中央的系统互联模块可以让四个管芯相互通信，并且将管芯与主存连接起来。数据以“缓存线”为单位在系统中传输，“缓存线”对应于内存中一个 2 的幂大小的字节块，大小通常为 32 到 256 字节之间。当 CPU 从内存中读取一个变量到它的寄存器中时，必须首先将包含了该变量的缓存线读取到 CPU 高速缓存。同样地，CPU 将寄存器中的一个值存储到内存时，不仅必须将包含了该值的缓存线读到 CPU 高速缓存，还必须确保没有其他 CPU 拥有该缓存线的拷贝。  
+比如，如果 CPU0 在对一个变量执行“比较并交换”（CAS）操作，而该变量所在的缓存线在 CPU7 的高速缓存中，就会发生以下经过简化的事件序列：  
+* CPU0 检查本地高速缓存，没有找到缓存线。
+* 请求被转发到 CPU0 和 CPU1 的互联模块，检查 CPU1 的本地高速缓存，没有找到缓存线。
+* 请求被转发到系统互联模块，检查其他三个管芯，得知缓存线被 CPU6和 CPU7 所在的管芯持有。
+* 请求被转发到 CPU6 和 CPU7 的互联模块，检查这两个 CPU 的高速缓存，在 CPU7 的高速缓存中找到缓存线。
+* CPU7 将缓存线发送给所属的互联模块，并且刷新自己高速缓存中的缓存线。
+* CPU6 和 CPU7 的互联模块将缓存线发送给系统互联模块。
+* 系统互联模块将缓存线发送给 CPU0 和 CPU1 的互联模块。
+* CPU0 和 CPU1 的互联模块将缓存线发送给 CPU0 的高速缓存。
+* CPU0 现在可以对高速缓存中的变量执行 CAS 操作了  
+  
+以上是刷新不同 CPU 缓存的开销。最好情况下的 CAS 操作消耗大概 40 纳秒，超过 60 个时钟周期。这里的“最好情况”是指对某一个变量执行 CAS 操作的 CPU 正好是最后一个操作该变量的 CPU，所以对应的缓存线已经在 CPU 的高速缓存中了，类似地，最好情况下的锁操作（一个“round trip 对”包括获取锁和随后的释放锁）消耗超过 60 纳秒，超过 100 个时钟周期。这里的“最好情况”意味着用于表示锁的数据结构已经在获取和释放锁的 CPU 所属的高速缓存中了。锁操作比 CAS 操作更加耗时，是因深入理解并行编程  
+为锁操作的数据结构中需要两个原子操作。缓存未命中消耗大概 140 纳秒，超过 200 个时钟周期。需要在存储新值时查询变量的旧值的 CAS 操作，消耗大概 300 纳秒，超过 500 个时钟周期。想想这个，在执行一次 CAS 操作的时间里，CPU 可以执行 500 条普通指令。这表明了细粒度锁的局限性。  
+
+以下是 cache miss cas 和 lock 的性能对比：  
+![](./CAS%203.png)  
+
+### CAS 算法在 JDK 中的应用
+在原子类变量中，如 java.util.concurrent.atomic 中的 AtomicXXX，都使用了这些底层的 JVM 支持为数字类型的引用类型提供一种高效的 CAS 操作，而在 java.util.concurrent 中的大多数类在实现时都直接或间接的使用了这些原子变量类。
+
+Java 1.7 中 AtomicInteger.incrementAndGet() 的实现源码为：  
+```java
+/**
+  * Atomically increments by one the current value.
+  *
+  * @return the updated value
+  */
+public final int incrementAndGet() {
+    for (;;) {
+        int current = get();
+        int next = current + 1;
+        if (compareAndSet(current, next))
+            return next;
+    }
+}
+```
+  
+```java
+/**
+  * Atomically sets the value to the given updated value
+  * if the current value {@code ==} the expected value.
+  *
+  * @param expect the expected value
+  * @param update the new value
+  * @return true if successful. False return indicates that
+  * the actual value was not equal to the expected value.
+  */
+public final boolean compareAndSet(int expect, int update) {
+    return unsafe.compareAndSwapInt(this, valueOffset, expect, update);
+}
+```
+
+以上来自参考链接：https://github.com/openjdk-mirror/jdk7u-jdk/blob/master/src/share/classes/java/util/concurrent/atomic/AtomicInteger.java  
+由此可见，AtomicInteger.incrementAndGet 的实现用了乐观锁技术，调用了类 sun.misc.Unsafe 库里面的 CAS 算法，用 CPU 指令来实现无锁自增。所以，AtomicInteger.incrementAndGet 的自增比用 synchronized 的锁效率倍增。  
+
+### CAS 与加锁方法的对比
+基于 CAS 算法的上述特点，可以总结其使用场景与 synchronized 关键字的对比区别。  
+* CAS 算法适用于读多写少的场景。这种场景下，线程间的冲突较少，自旋带来的性能损失较小，此时采用 CAS 算法，可以避免采用 synchronized 关键字而带来的线程阻塞与唤醒的开销，从而提高效率。
+* synchronized 关键字适用于写多读少的场景。这种场景下，线程间的冲突较多，CAS 算法自旋带来的性能损耗严重，此时宜采用 synchronized 关键字进行同步。
+* 读多写少是乐观的资本，写多读少是悲观的源头。
+
