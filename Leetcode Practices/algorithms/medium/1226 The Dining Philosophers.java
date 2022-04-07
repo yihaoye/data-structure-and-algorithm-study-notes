@@ -47,7 +47,6 @@ Constraints:
 // Other's Solution:
 class DiningPhilosophers {
     // 改成串行，同时间只允许 1 个就餐
-    // pass 27+22
     private ReentrantLock pickBothForks = new ReentrantLock();
 
     public DiningPhilosophers() {
