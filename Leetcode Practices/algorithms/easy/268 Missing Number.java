@@ -44,6 +44,20 @@ class Solution {
         return res;
     }
 }
+class Solution {
+    public int missingNumber(int[] nums) {
+        /*
+            位运算
+            Time: O(N), Space: O(1)
+        */
+        int xor = 0;
+        int n = nums.length;
+        for (int i = 0; i < n; i++) xor ^= nums[i];
+        for (int i = 0; i <= n; i++) xor ^= i;
+        return xor;
+    }
+}
+
 // 2.SUM
 class Solution {
     public int missingNumber(int[] nums) { //sum
