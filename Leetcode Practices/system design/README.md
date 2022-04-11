@@ -762,6 +762,13 @@ Netflix 开发了自己的视频存储计算机系统。Netflix 称它们为 Ope
 <details>
 <summary>设计 Dropbox</summary>
 
+参考：  
+Grok System Design - Design Dropbox  
+https://dropbox.tech/infrastructure/rewriting-the-heart-of-our-sync-engine  
+https://dropbox.tech/infrastructure/asynchronous-task-scheduling-at-dropbox  
+https://dropbox.tech/infrastructure/dropbox-traffic-infrastructure-edge-network  
+https://dropbox.tech/infrastructure/optimizing-web-servers-for-high-throughput-and-low-latency  
+
 云文件存储使用户能够在远程服务器上存储他们的数据。通常，这些服务器由云存储供应商维护，并通过网络（通常是互联网）提供给用户使用。用户按月为他们的云数据存储付费。类似的服务。OneDrive, Google Drive。难度等级 - 中等。  
 云文件存储服务简化了数字资源在多种设备之间的存储和交换。从使用单一的个人电脑到使用具有不同平台和操作系统的多种设备，如智能手机和平板电脑，每个设备都可以在任何时候从不同的地理位置进行便携访问。以下是此类服务的一些主要优势：  
 * 可用性。云存储服务的宗旨是随时随地提供数据。用户可以随时随地从任何设备访问他们的文件/照片。  
@@ -820,7 +827,7 @@ Netflix 开发了自己的视频存储计算机系统。Netflix 称它们为 Ope
   * 客户端应该如何处理缓慢的服务器？ - 如果服务器很忙/不响应，客户端应该指数化地退后。意思是说，如果一个服务器响应太慢，客户端应该延迟重试，而且这种延迟应该以指数形式增加。
   * 移动客户端应该立即同步远程变化吗？ - 与桌面或网络客户端不同，移动客户端通常按需同步，以节省用户的带宽和空间。
 * 元数据数据库 - 元数据数据库负责维护关于文件/群组、用户和工作空间的版本和元数据信息。元数据数据库可以是一个关系型数据库，如 MySQL，或一个 NoSQL 数据库服务，如 DynamoDB。无论数据库的类型如何，同步服务应该能够使用数据库提供一致的文件视图，特别是在多个用户同时处理同一个文件的情况下。由于 NoSQL 数据存储不支持 ACID 属性，以利于扩展性和性能，需要在同步服务的逻辑中以编程方式纳入对 ACID 属性的支持，以防选择这种数据库。然而，使用关系型数据库可以简化同步服务的实现，因为它们本身就支持 ACID 属性。元数据数据库应该存储以下对象的信息。
-   1. 分组
+   1. 分块（Chunks）
    2. 文件
    3. 用户
    4. 设备
@@ -868,6 +875,10 @@ Netflix 开发了自己的视频存储计算机系统。Netflix 称它们为 Ope
 ##### 安全、权限和文件共享
 当用户在云端存储他们的文件时，最关心的问题之一是他们数据的隐私和安全，特别是在类 Dropbox 系统中，用户可以与其他用户分享他们的文件，甚至公开与所有人分享。为了处理这个问题，将在元数据数据库中存储每个文件的权限，以反映哪些文件可以被任何用户看到或修改。  
   
+#### 其他
+Dropbox 异步任务框架 ATF：  
+![](./Dropbox-ATF.png)  
+
 
 </details>
 
