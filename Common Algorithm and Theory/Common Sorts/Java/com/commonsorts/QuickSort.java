@@ -5,30 +5,25 @@ public class QuickSort {
 		sort(a, 0, a.length - 1);
 	}
 	
-    public void sort(int[] arr, int head, int tail) {
-        if (head >= tail || arr == null || arr.length <= 1) {
-            return;
-        }
-        int i = head, j = tail, pivot = arr[(head + tail) / 2];
-        while (i <= j) {
-            while (arr[i] < pivot) {
-                ++i;
-            }
-            while (arr[j] > pivot) {
-                --j;
-            }
+    public void sort(int[] arr, int l, int r) {
+        if (l >= r || arr == null || arr.length <= 1) return;
+
+        int i = l - 1, j = r + 1, x = arr[l + (r - l) / 2];
+        while (i < j) {
+            do {
+                i++;
+            } while (arr[i] < x);
+            do {
+                j--;
+            } while (arr[j] > x);
             if (i < j) {
-                int t = arr[i];
+                int tmp = arr[i];
                 arr[i] = arr[j];
-                arr[j] = t;
-                ++i;
-                --j;
-            } else if (i == j) {
-                ++i;
+                arr[j] = tmp;
             }
         }
-        sort(arr, head, j);
-        sort(arr, i, tail);
+        sort(arr, l, j);
+        sort(arr, j + 1, r);
     }
 }
 
