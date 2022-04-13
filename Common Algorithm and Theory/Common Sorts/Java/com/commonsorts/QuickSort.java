@@ -8,7 +8,7 @@ public class QuickSort {
     public void sort(int[] arr, int l, int r) {
         if (l >= r || arr == null || arr.length <= 1) return;
 
-        int i = l - 1, j = r + 1, x = arr[l + (r - l) / 2];
+        int i = l - 1, j = r + 1, x = arr[l + (r - l) / 2]; // x is pivot
         while (i < j) {
             do {
                 i++;
