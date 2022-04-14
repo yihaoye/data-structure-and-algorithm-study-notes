@@ -39,6 +39,9 @@ n == height.length
 // Other's Solution (2 pointers): 
 class Solution {
     public int maxArea(int[] height) {
+        /*
+            Time: O(N), Space: O(1)
+        */
         int left = 0, right = height.length - 1;
         int maxArea = 0;
 
