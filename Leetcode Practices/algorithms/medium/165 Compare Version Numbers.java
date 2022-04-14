@@ -59,3 +59,32 @@ class Solution {
         return 0;
     }
 }
+
+
+
+// Other's Solution:
+class Solution {
+    public int compareVersion(String version1, String version2) {
+        /*
+            双指针 - https://leetcode-cn.com/problems/compare-version-numbers/solution/bi-jiao-ban-ben-hao-by-leetcode-solution-k6wi/
+            Time: O(N+M), Space: O(1)
+        */
+        int n = version1.length(), m = version2.length();
+        int index1 = 0, index2 = 0;
+        while (index1 < n || index2 < m) {
+            int num1 = 0, num2 = 0;
+            while (index1 < n && version1.charAt(index1) != '.') {
+                num1 = num1 * 10 + (version1.charAt(index1) - '0');
+                index1++;
+            }
+            while (index2 < m && version2.charAt(index2) != '.') {
+                num2 = num2 * 10 + (version2.charAt(index2) - '0');
+                index2++;
+            }
+            
+            index1++; index2++; // skip '.'
+            if (num1 != num2) return num1 > num2 ? 1 : -1;
+        }
+        return 0;
+    }
+}
