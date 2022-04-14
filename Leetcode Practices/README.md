@@ -383,7 +383,7 @@
 - [ ] 385	Mini Parser		
 - [ ] 84	Largest Rectangle in Histogram		
 ### PriorityQueue			
-- [ ] 215	Kth Largest Element in an Array		
+- [x] 215	Kth Largest Element in an Array		
 - [x] 347	Top K Frequent Elements		
 - [ ] 313	Super Ugly Number		                            很少考
 - [ ] 373	Find K Pairs with Smallest Sums		                很少考
@@ -598,7 +598,7 @@
 - [ ] 212	Word Search II		
 - [ ] 213	House Robber II		
 - [x] 214	Shortest Palindrome		
-- [ ] 215	Kth Largest Element in an Array		
+- [x] 215	Kth Largest Element in an Array		
 - [ ] 216	Combination Sum III		
 - [x] 217	Contains Duplicate		
 - [x] 218	The Skyline Problem		
