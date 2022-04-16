@@ -35,6 +35,7 @@
     - [联合查找算法 | Union Find Algorithm](./并查集与联合查找算法.md) (时间复杂度 O(1))
     - [布隆过滤器及其算法 | Bloom Filter](./布隆过滤器及其算法.md)
     - [HyperLogLog 算法](./HyperLogLog.md)
+    - [Count-Min Sketch 算法](./Count-Min-Sketch.md)
     - [霍夫曼压缩算法 | Huffman Coding/Compression](./霍夫曼压缩算法.md)
     - [蓄水池抽样算法 | Reservoir Sampling](./蓄水池抽样算法.md)
   - 数学
