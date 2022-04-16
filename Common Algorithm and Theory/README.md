@@ -26,6 +26,7 @@
     - [A&ast;搜索算法 | A&ast; Search Algorithm](./A*搜索算法.md)
     - [回溯法 | Backtracking](./NQueen.java)
     - [动态规划 | Dynamic Programming](./动态规划.md)
+      - [记忆化搜索 | Memory Search](./记忆化搜索.md)
     - [位运算 | Bitwise Operation](./位运算.md)
     - [迪杰斯特拉算法 | Dijkstra Algorithm](./Dijkstra算法.md)
     - [KMP算法 | Knuth–Morris–Pratt Algorithm](./KMP算法.md) (时间复杂度 O(N+M))
