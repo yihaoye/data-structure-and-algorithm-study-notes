@@ -577,3 +577,4 @@ https://mp.weixin.qq.com/s/MVxmH5r0tP6sQ9WKVLoDbw
 https://juejin.cn/post/6844903785744056333  
 https://cloud.tencent.com/developer/article/1479465  
 https://www.jianshu.com/p/55defda6dcd2  
+https://soulmachine.gitbooks.io/system-design/content/cn/bigdata/cardinality-estimation.html  
