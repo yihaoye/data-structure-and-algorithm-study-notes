@@ -19,7 +19,7 @@
 * [常用编码逻辑工具集查询手册 | Tool Sets](./Tool%20Sets/) (包括一些 Java 语言实例解析)
 * [Common Algorithm & Theory](./Common%20Algorithm%20and%20Theory/)
 * [Common Data Structure & Data Type & Implementation](./Common%20Data%20Structure%20and%20Data%20Type/) (常用数据结构、包括并发相关的数据结构的详解)
-* [计算机数学 | Computer Science Maths](./Computer%20Science%20Maths/)
+* [计算机数学 | Computer Science Maths](./Computer%20Science%20Maths/) (包括 [P/NP 问题](./Computer%20Science%20Maths/P%20vs%20NP%20vs%20NPC.md)、ACM 数论)
 * [其他关于数据结构与算法的重要心得笔记](./Other%20Practices/)
 * [Computer System Layer & Basics](./Computer%20System%20Layer/) (包括一些 [CAS、并发相关的 Java 数据结构的用例与详解](./Computer%20System%20Layer/并发与并行(Java)/) 和 [SQL 数据库详解](./Computer%20System%20Layer/数据库))
 * [Programming Languages Features](./Program%20Languages%20Features/)  
