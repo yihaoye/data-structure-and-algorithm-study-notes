@@ -6,6 +6,9 @@ https://www.algoexpert.io/systems/fundamentals
 * Storage
 * Latency And Throughput
 * Availability
+  * SLA/SLO, SLA is agreement about `How many Nines` availability guarantee between system provider (e.g. Cloud Provider AWS) and customer (e.g. Cloud User), SLO is component of SLA
+  * How many Nines? Availability = 99.999% is High Availability / HA System. Which part of system require High Availability?
+  * Redundancy, avoid single point of failure.
 * Caching
 * Proxies
 * Load Balancers
@@ -26,3 +29,4 @@ https://www.algoexpert.io/systems/fundamentals
 * API Design
 
 ![](./Latency%20And%20Throughput.png)  
+![](./High%20Availability.png)  
