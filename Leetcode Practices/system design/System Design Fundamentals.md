@@ -27,6 +27,10 @@ https://www.algoexpert.io/systems/fundamentals
 * Specialized Storage Paradigms
 * Replication And Sharding
 * Leader Election
+  * [共识机制/算法（Consensus Algorithm）](https://draveness.me/consensus/)如 Paxos、Raft
+  * 难点在于多个计算节点同时达成共识/一致性，因为分布式系统有各种非常复杂的情况：如节点失效或网络通信收到干扰甚至阻断以及运行速度的差异
+  * CAP 理论 - 不能同时保证强一致性、高可用性和分区容错性，每一个系统只能在这三种特性中选择两种
+  * 第三方实现、自定义共识机制/算法的工具：Zookeeper、Etcd（KV 数据库，保证强一致性、高可用性）
 * Peer-To-Peer Networks
   * 几种 P2P 核心算法及其优缺点（[带中心化 Tracker 服务器的 BitTorrent 协议](https://paaatrick.com/2019-07-07-network-protocol-p2p/)、[DHT 的 Kademlia 协议](https://zhuanlan.zhihu.com/p/40286711)、[Gossip 协议 - 又称流行病协议](https://zhuanlan.zhihu.com/p/41228196)）
   * ![](./Peer-To-Peer%20Networks.png)
