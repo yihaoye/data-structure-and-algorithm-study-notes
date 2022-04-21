@@ -58,7 +58,8 @@
 * 统一日志服务（log4j、logback、Kibana、CloudWatch）
 * 数据基础设施（大数据：数据仓库；数据管道：Kafka、Kinesis；数据分析）
 * 故障监控（系统监控、业务监控；Datadog、故障定位、警报等级、IM 或 oncall）(Telemetry)
-* 扩展（内部服务：包括大数据、构建交付工具、通用运行时服务类库、数据持久化、安全等）  
+* 扩展（内部服务：包括大数据、构建交付工具、通用运行时服务类库、数据持久化、安全等）
+* 点对点网络（Peer-to-peer Networks，如 VPC Peering、指数增长的高效的针对大规模目标对象的数据拷贝传输、区块链项目如 Bitcoin、等等）  
   
   
 ## Grokking System Design

@@ -8,10 +8,12 @@ https://www.algoexpert.io/systems/fundamentals
   * Disk
   * Memory
 * Latency And Throughput
+  * ![](./Latency%20And%20Throughput.png)
 * Availability
   * SLA/SLO, SLA is agreement about `How many Nines` availability guarantee between system provider (e.g. Cloud Provider AWS) and customer (e.g. Cloud User), SLO is component of SLA.
   * How many Nines? Availability = 99.999% is High Availability / HA System. Which part of system require High Availability?
   * Redundancy, avoid single point of failure.
+  * ![](./High%20Availability.png)
 * Caching
   * Can be each level of the system (e.g. client, server, db etc)
   * Write through caching / write back caching
@@ -26,6 +28,8 @@ https://www.algoexpert.io/systems/fundamentals
 * Replication And Sharding
 * Leader Election
 * Peer-To-Peer Networks
+  * 几种 P2P 核心算法及其优缺点（[带中心化 Tracker 服务器的 BitTorrent 协议](https://paaatrick.com/2019-07-07-network-protocol-p2p/)、[DHT 的 Kademlia 协议](https://zhuanlan.zhihu.com/p/40286711)、[Gossip 协议 - 又称流行病协议](https://zhuanlan.zhihu.com/p/41228196)）
+  * ![](./Peer-To-Peer%20Networks.png)
 * Polling And Streaming
 * Configuration
 * Rate Limiting
@@ -34,6 +38,3 @@ https://www.algoexpert.io/systems/fundamentals
 * MapReduce
 * Security And HTTPS
 * API Design
-
-![](./Latency%20And%20Throughput.png)  
-![](./High%20Availability.png)  
