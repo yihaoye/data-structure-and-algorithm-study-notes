@@ -84,4 +84,26 @@ public static void main(String[] args) {
 }
 ```  
   
-参考：https://www.youtube.com/watch?v=BCIYdW73-kc  
+以上参考：https://www.youtube.com/watch?v=BCIYdW73-kc  
+  
+### 运算符优先级
+#### 基本规则
+1. 一元运算符优于二元运算符
+2. 乘除加减优于大部分运算符
+3. 位运算优于逻辑运算
+
+#### Java
+
+[Java Operators](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/operators.html)
+
+|  类别   | 列表  |
+|  ----   | ----  |
+|  括号  | ()     |
+|  前后缀与一元运算符  | ++, --, !, ~, +, - |
+|  乘除加减  | *, /, +, - |
+|  位移  | >>, << |
+|  判断与比较  | >, >=, <, <=, ==,  |
+|  位运算  | &, ^, \|, &&, \|\| |
+|  逻辑运算  | &&, \|\| |
+|  三元运算符  | ? : |
+|  赋值  | =, +=, -=, ^=, >>= |
