@@ -61,6 +61,41 @@ class Solution {
 
 
 
+// My Solution (time improved):
+class Solution {
+    Set<String> set = new HashSet<>();
+    
+    public List<List<Integer>> permuteUnique(int[] nums) {
+        // 回溯法+剪枝
+        // Time: O(N!), Space(N!)
+        List<List<Integer>> res = new ArrayList<>();
+        backtrack(nums, res, new ArrayList<>());
+        return res;
+    }
+    
+    private void backtrack(int[] nums, List<List<Integer>> res, List<Integer> tmp) {
+        if (tmp.size() == nums.length) {
+            List<Integer> list = new ArrayList<>(tmp);
+            res.add(list);
+        }
+        for (int i=0; i<nums.length; i++) {
+            if (nums[i] <= 10 && nums[i] >= -10) {
+                tmp.add(nums[i]);
+                nums[i] -= 21;
+                String hash = tmp.toString();
+                if (!set.contains(hash)) {
+                    set.add(hash);
+                    backtrack(nums, res, tmp);
+                }
+                nums[i] += 21;
+                tmp.remove(tmp.size()-1);
+            }
+        }
+    }
+}
+
+
+
 // Other's Solution (better performance):
 class Solution {
     public List<List<Integer>> permuteUnique(int[] nums) {
