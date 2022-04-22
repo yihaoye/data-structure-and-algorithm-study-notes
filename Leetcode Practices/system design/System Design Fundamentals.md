@@ -27,8 +27,8 @@ https://www.algoexpert.io/systems/fundamentals
 * Specialized Storage Paradigms
 * Replication And Sharding
 * Leader Election
-  * [共识机制/算法（Consensus Algorithm）](https://draveness.me/consensus/)如 Paxos、Raft
-  * 难点在于多个计算节点同时达成共识/一致性，因为分布式系统有各种非常复杂的情况：如节点失效或网络通信收到干扰甚至阻断以及运行速度的差异
+  * [共识机制/算法（Consensus Algorithm）](https://draveness.me/consensus/)如 Paxos、Raft。[Leader Election 代码示例](./example%20questions/Leader%20Election.md)
+  * 难点在于多个计算节点同时达成共识/一致性（如拜占庭问题、非拜占庭问题），因为分布式系统有各种非常复杂的情况：如节点失效或网络通信收到干扰甚至阻断以及运行速度的差异
   * CAP 理论 - 不能同时保证强一致性、高可用性和分区容错性，每一个系统只能在这三种特性中选择两种
   * 第三方实现、自定义共识机制/算法的工具：Zookeeper、Etcd（KV 数据库，保证强一致性、高可用性）
 * Peer-To-Peer Networks
