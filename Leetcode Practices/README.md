@@ -201,7 +201,7 @@
 - [x] 100	Same Tree		
 - [x] 101	Symmetric Tree		
 - [x] 226	Invert Binary Tree		                                                        preorder + BFS
-- [ ] 257	Binary Tree Paths		
+- [x] 257	Binary Tree Paths		
 - [x] 112	Path Sum		
 - [x] 113	Path Sum II		
 - [ ] 129	Sum Root to Leaf Numbers		
@@ -628,7 +628,7 @@
 - [x] 253	Meeting Rooms II		
 - [ ] 254	Factor Combinations		
 - [ ] 256	Paint House		
-- [ ] 257	Binary Tree Paths		
+- [x] 257	Binary Tree Paths		
 - [ ] 261	Graph Valid Tree		
 - [x] 263	Ugly Number		
 - [ ] 264	Ugly Number II		
