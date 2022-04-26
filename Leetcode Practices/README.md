@@ -367,7 +367,7 @@
 - [ ] 127	Word Ladder		
 - [x] 51	N-Queens		
 - [ ] 52	N-Queens II		
-- [ ] 126	Word Ladder II	
+- [x] 126	Word Ladder II	
    
 ## Stack & PriorityQueue
 ### Stack			
@@ -554,7 +554,7 @@
 - [x] 123	Best Time to Buy and Sell Stock III		
 - [x] 124	Binary Tree Maximum Path Sum		
 - [x] 125	Valid Palindrome		
-- [ ] 126	Word Ladder II		
+- [x] 126	Word Ladder II		
 - [ ] 127	Word Ladder		
 - [ ] 128	Longest Consecutive Sequence		
 - [ ] 130	Surrounded Regions		
