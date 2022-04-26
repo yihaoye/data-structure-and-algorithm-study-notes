@@ -25,6 +25,7 @@ Constraints:
 // Other's Solution (backtrack):
 class Solution {
     public List<String> generateParenthesis(int n) {
+        // 回溯法，Time: O(N^2), Space: O(N)
         List<String> res = new ArrayList<String>();
         backtrack(res, "", 0, 0, n);
         return res;
