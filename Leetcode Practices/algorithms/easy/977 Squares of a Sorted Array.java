@@ -55,3 +55,28 @@ class Solution {
         return res;
     }
 }
+
+
+
+// Other's Solution:
+class Solution {
+    public int[] sortedSquares(int[] nums) {
+        /*
+            双指针 - https://leetcode-cn.com/problems/squares-of-a-sorted-array/solution/you-xu-shu-zu-de-ping-fang-by-leetcode-solution/
+            Time: O(N), Space: O(1) - 不计答案数组的话
+        */
+        int n = nums.length;
+        int[] res = new int[n];
+        for (int i = 0, j = n - 1, pos = n - 1; i <= j;) {
+            if (nums[i] * nums[i] > nums[j] * nums[j]) {
+                res[pos] = nums[i] * nums[i];
+                ++i;
+            } else {
+                res[pos] = nums[j] * nums[j];
+                --j;
+            }
+            --pos;
+        }
+        return res;
+    }
+}
