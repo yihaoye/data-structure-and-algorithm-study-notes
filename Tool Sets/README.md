@@ -4,6 +4,26 @@ Tool Sets 是算法解题、编码过程中常用的一些经常复用的原子�
   
 这里的模版集可用作算法解题中的工具集查询手册。  
   
+以下是模版：  
+* [数组与矩阵](./Arrays(Matrix).java)
+* [位操作](./Bitwise.java)
+* [集合](./Collections.java)
+* [Comparable](./Comparable.java)
+* [Comparator](./Comparator.java)
+* [数据类型转换](./DataTypeConversion.java)
+* [状态机](./FSM(DFA).java)
+* [HashCode](./HashCode.java)
+* [I/O 与序列化](./IO(Serializable).java)
+* [Iterator](./Iterator.java)
+* [链表节点](./LinkedListNode.java)
+* [Map 进阶操作](./Map.java)
+* [Math](./Math.java)
+* [队列](./Queue.java)
+* [正则表达式](./Regex.java)
+* [流](./Stream.java)
+* [字符串操作](./String.java)
+* [元组](./Tuple.java)
+  
 ### Java 数据类型转换
 http://interviewquestionjava.blogspot.com/2014/01/java-data-types-conversion-chart.html  
 ![](./Java%20Data%20Type%20Conversion%20Chart.jpeg)  
