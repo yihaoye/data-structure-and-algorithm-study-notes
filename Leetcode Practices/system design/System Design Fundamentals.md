@@ -38,7 +38,7 @@ https://www.algoexpert.io/systems/fundamentals
   * ![](./Peer-To-Peer%20Networks.png)
 * Polling And Streaming
   * Polling - 客户端定时请求服务端（缺点在于用户多且需要实时获取事件更新的场景下，服务端可能承担过多无效负载）
-  * Streaming / Pushing - long lived connection, i.e. 无间断地监听 socket 是否有其他机器（如服务器主动发送数据）传输过来的数据 (可供两个机器互相通讯，socket 原理上是计算机里的一个可读写文件)，场景如 Polling 的缺点场景、IM 等
+  * Streaming / Pushing - [Server-Sent Events (SSE)](https://stackoverflow.com/questions/5195452/websockets-vs-server-sent-events-eventsource)、websocket、long lived connection, i.e. 无间断地监听 socket 是否有其他机器（如服务器主动发送数据）传输过来的数据 (可供两个机器互相通讯，socket 原理上是计算机里的一个可读写文件)，场景如 Polling 的缺点场景、IM 等
 * Configuration
 * Rate Limiting
 * Logging And Monitoring

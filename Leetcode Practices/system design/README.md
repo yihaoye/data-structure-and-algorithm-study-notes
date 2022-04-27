@@ -200,19 +200,19 @@ It is impossible for a distributed software system (especially data store) to si
 <details>
 <summary>Design TinyURL</summary>
 
-[Example Implementation](./example%20questions/Design%20a%20URL%20Shortener%20(TinyURL)%20System.md)  
-* Step 1: Why do we need URL shortening? - save a lot of space when displayed, printed, messaged, or tweeted, and hiding affiliated original URLs.
-* Step 2: Requirements and Goals of the System (Functional Requirements, Non-Functional Requirements, Extended Requirements).
-* Step 3: Capacity Estimation and Constraints (Traffic estimates -> Bandwidth estimates -> Storage estimates, Memory/Cache estimates -> Summary/High Level estimates).
-* Step 4: System APIs - SOAP or REST APIs to expose the functionality of the service, definitions of the APIs with functionality, method name, params and return.
-* Step 5: Database Design - Defining the DB schema in the early stages would help to understand the data flow among various components and later would guide towards data partitioning. Choose NoSQL since no relationships between objects within requirement and easier to scale.
-* Step 6: Basic System Design and Algorithm - Encoding algorithm (e.g. MD5, SHA256, KGS etc) (concurrency problems?).
-* Step 7: Data Partitioning and Replication - come up with a partitioning scheme that would divide and store data to different DB servers (Range Based Partitioning, Hash-Based Partitioning).
-* Step 8: Cache (cache eviction policy - e.g. Least Recently Used (LRU) with LinkedHashMap).
-* Step 9: Load Balancer (Between Clients and Application servers; Between Application Servers and database servers; Between Application Servers and Cache servers) (policy - e.g. Round Robin LB).
-* Step 10: Purging or DB cleanup.
-* Step 11: Telemetry.
-* Step 12: Security and Permissions (user permission).
+* [系统设计 TinyURL 完整版](./example%20questions/Design%20a%20URL%20Shortener%20(TinyURL)%20System.md)  
+  * Step 1: Why do we need URL shortening? - save a lot of space when displayed, printed, messaged, or tweeted, and hiding affiliated original URLs.
+  * Step 2: Requirements and Goals of the System (Functional Requirements, Non-Functional Requirements, Extended Requirements).
+  * Step 3: Capacity Estimation and Constraints (Traffic estimates -> Bandwidth estimates -> Storage estimates, Memory/Cache estimates -> Summary/High Level estimates).
+  * Step 4: System APIs - SOAP or REST APIs to expose the functionality of the service, definitions of the APIs with functionality, method name, params and return.
+  * Step 5: Database Design - Defining the DB schema in the early stages would help to understand the data flow among various components and later would guide towards data partitioning. Choose NoSQL since no relationships between objects within requirement and easier to scale.
+  * Step 6: Basic System Design and Algorithm - Encoding algorithm (e.g. MD5, SHA256, KGS etc) (concurrency problems?).
+  * Step 7: Data Partitioning and Replication - come up with a partitioning scheme that would divide and store data to different DB servers (Range Based Partitioning, Hash-Based Partitioning).
+  * Step 8: Cache (cache eviction policy - e.g. Least Recently Used (LRU) with LinkedHashMap).
+  * Step 9: Load Balancer (Between Clients and Application servers; Between Application Servers and database servers; Between Application Servers and Cache servers) (policy - e.g. Round Robin LB).
+  * Step 10: Purging or DB cleanup.
+  * Step 11: Telemetry.
+  * Step 12: Security and Permissions (user permission).
 </details>
 
 
