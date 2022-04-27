@@ -8,7 +8,7 @@ Tool Sets 是算法解题、编码过程中常用的一些经常复用的原子�
 * [数组与矩阵](./Arrays(Matrix).java)
 * [位操作](./Bitwise.java)
 * Java 容器
-  * [集合类进阶操作](./Collections.java)
+  * [Collections 进阶操作](./Collections.java)
   * [Map 进阶操作](./Map.java)
 * [Comparable](./Comparable.java)
 * [Comparator](./Comparator.java)
