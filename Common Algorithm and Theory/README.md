@@ -34,11 +34,13 @@
     - [马拉车算法 | Manacher Algorithm]()
     - [最小生成树相关算法 | Minimum Spanning Tree Algorithms]()
     - [联合查找算法 | Union Find Algorithm](./并查集与联合查找算法.md) (时间复杂度 O(1))
-    - [布隆过滤器及其算法 | Bloom Filter](./布隆过滤器及其算法.md)
-    - [HyperLogLog 算法](./HyperLogLog.md)
-    - [Count-Min Sketch 算法](./Count-Min-Sketch.md)
-    - [霍夫曼压缩算法 | Huffman Coding/Compression](./霍夫曼压缩算法.md)
-    - [蓄水池抽样算法 | Reservoir Sampling](./蓄水池抽样算法.md)
+    - 系统级
+      - [蓄水池抽样算法 | Reservoir Sampling](./蓄水池抽样算法.md)
+      - [霍夫曼压缩算法 | Huffman Coding/Compression](./霍夫曼压缩算法.md)
+      - [布隆过滤器及其算法 | Bloom Filter](./布隆过滤器及其算法.md)
+      - [HyperLogLog 算法](./HyperLogLog.md)
+      - [Count-Min Sketch 算法](./Count-Min-Sketch.md)
+      - [雪花算法 | Snowflake ID](./雪花算法.md)
   - 数学
   - 计算几何
     - [扫描线 | Line Sweep](./扫描线.md)
