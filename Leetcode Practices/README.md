@@ -338,6 +338,7 @@
 - [ ] 315	Count of Smaller Numbers After Self		
 - [x] 300	Longest Increasing Subsequence		
 - [ ] 354	Russian Doll Envelopes	
+- [x] 875   Koko Eating Bananas 
    
 ## Matrix
 - [x] 48	Rotate Image		
@@ -348,7 +349,7 @@
 - [ ] 329	Longest Increasing Path in a Matrix		
 - [x] 378	Kth Smallest Element in a Sorted Matrix		
 - [ ] 74	Search a 2D Matrix		
-- [ ] 240	Search a 2D Matrix II		
+- [x] 240	Search a 2D Matrix II		
 - [ ] 370	Range Addition		
 - [ ] 79	Word Search		
 - [ ] 296	Best Meeting Point		
@@ -463,7 +464,7 @@
    
    
    
-# Leetcode 重点 250 题（建议前面 400 题全部刷完再精刷此 250 题）
+# Leetcode 重点 250+ 题（建议前面 400+ 题全部刷完再精刷此 250+ 题）
 - [x] 1	    Two Sum		
 - [x] 3	    Longest Substring Without Repeating Characters		
 - [x] 4	    Median of Two Sorted Arrays		
@@ -617,7 +618,7 @@
 - [x] 236	Lowest Common Ancestor of a Binary Tree		
 - [x] 238	Product of Array Except Self		
 - [ ] 239	Sliding Window Maximum		
-- [ ] 240	Search a 2D Matrix II		
+- [x] 240	Search a 2D Matrix II		
 - [ ] 241	Different Ways to Add Parentheses		
 - [x] 242	Valid Anagram		
 - [x] 244	Shortest Word Distance II		
@@ -714,4 +715,5 @@
 - [x] 389	Find the Difference		
 - [x] 394	Decode String		
 - [ ] 398	Random Pick Index	
+- [x] 875   Koko Eating Bananas 
   
