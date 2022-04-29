@@ -59,3 +59,45 @@ class Solution {
         return new int[]{left, right};
     }
 }
+
+
+
+// Other's Solution:
+class Solution {
+    public int[] searchRange(int[] nums, int target) {
+        /*
+            二分搜索上下边界
+            Time: O(logN)，Space: O(1)
+        */
+        int left = lowerBound(nums, target);
+        if (left == nums.length || nums[left] != target) return new int[]{-1, -1};
+        int right = upperBound(nums, target);
+        return new int[]{left, right - 1};
+    }
+    
+    private int lowerBound(int[] nums, int target) { // find first element >= target
+        int start = 0, end = nums.length;
+        while (start < end) {
+            int mid = start + (end - start) / 2;
+            if (nums[mid] >= target) {
+                end = mid;
+            } else {
+                start = mid + 1;
+            }
+        }
+        return start;
+    }
+    
+    private int upperBound(int[] nums, int target) { // find first element > target
+        int start = 0, end = nums.length;
+        while (start < end) {
+            int mid = start + (end - start) / 2;
+            if (nums[mid] > target) {
+                end = mid;
+            } else {
+                start = mid + 1;
+            }
+        }
+        return start;
+    }
+}
