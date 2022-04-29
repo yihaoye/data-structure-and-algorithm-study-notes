@@ -70,7 +70,7 @@
 - [ ] 81	Search in Rotated Sorted Array II		
 - [ ] 153	Find Minimum in Rotated Sorted Array		
 - [ ] 154	Find Minimum in Rotated Sorted Array II		
-- [ ] 162	Find Peak Element		
+- [x] 162	Find Peak Element		
 - [ ] 374	Guess Number Higher or Lower		
 - [x] 34	Find First and Last Position of Element in Sorted Array		
 - [x] 349	Intersection of Two Arrays		
@@ -330,7 +330,7 @@
 - [ ] 81	Search in Rotated Sorted Array II		
 - [ ] 153	Find Minimum in Rotated Sorted Array		
 - [ ] 154	Find Minimum in Rotated Sorted Array II		
-- [ ] 162	Find Peak Element		
+- [x] 162	Find Peak Element		
 - [ ] 374	Guess Number Higher or Lower		
 - [x] 34	Find First and Last Position of Element in Sorted Array		
 - [x] 349	Intersection of Two Arrays		
@@ -575,7 +575,7 @@
 - [x] 157	Read N Characters Given Read4		
 - [ ] 158	Read N Characters Given Read4 II - Call multiple times		
 - [ ] 161	One Edit Distance		
-- [ ] 162	Find Peak Element		
+- [x] 162	Find Peak Element		
 - [ ] 163	Missing Ranges		
 - [x] 168	Excel Sheet Column Title		
 - [x] 171	Excel Sheet Column Number		
