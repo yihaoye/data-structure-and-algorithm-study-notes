@@ -77,7 +77,7 @@
 - [ ] 350	Intersection of Two Arrays II		
 - [ ] 315	Count of Smaller Numbers After Self		
 - [x] 300	Longest Increasing Subsequence		
-- [ ] 354	Russian Doll Envelopes	
+- [x] 354	Russian Doll Envelopes	
   
 ## String
 ### 基础			
@@ -337,7 +337,7 @@
 - [ ] 350	Intersection of Two Arrays II		
 - [ ] 315	Count of Smaller Numbers After Self		
 - [x] 300	Longest Increasing Subsequence		
-- [ ] 354	Russian Doll Envelopes	
+- [x] 354	Russian Doll Envelopes	
 - [x] 875   Koko Eating Bananas 
    
 ## Matrix
@@ -695,7 +695,7 @@
 - [ ] 351	Android Unlock Patterns		
 - [ ] 352	Data Stream as Disjoint Intervals		
 - [ ] 353	Design Snake Game		
-- [ ] 354	Russian Doll Envelopes		
+- [x] 354	Russian Doll Envelopes		
 - [x] 355	Design Twitter		
 - [x] 359	Logger Rate Limiter		
 - [ ] 361	Bomb Enemy		
