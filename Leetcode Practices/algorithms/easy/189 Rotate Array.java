@@ -98,3 +98,32 @@ class Solution2 {
         you will get[5,6,7,1,2,3,4]
     */
 }
+
+
+
+// My Solution 2 (not good, since if k = N-1, then space is O(N)):
+class Solution {
+    public void rotate(int[] nums, int k) {
+        int len = nums.length;
+        k = k % len;
+        if (k == 0 || len == 1) return;
+        int[] lastKNums = new int[k];
+        for (int i=len-k, j=0; i<len; i++, j++) {
+            lastKNums[j] = nums[i];
+        }
+        
+        for (int i=len-k-1, j=len-1; i>=0; i--, j--) {
+            swap(nums, i, j);
+        }
+        
+        for (int i=0; i<k; i++) {
+            nums[i] = lastKNums[i];
+        }
+    }
+    
+    public void swap(int[] nums, int i, int j) {
+        int tmp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = tmp;
+    }
+}
