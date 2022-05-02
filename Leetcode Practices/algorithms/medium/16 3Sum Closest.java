@@ -36,7 +36,7 @@ class Solution {
         */
         Arrays.sort(nums);
         int res = nums[0] + nums[1] + nums[2];
-        for(int i=0; i<nums.length; i++) {
+        for(int i=0; i<nums.length-2; i++) {
             int start = i + 1, end = nums.length - 1;
             while(start < end) {
                 int sum = nums[i] + nums[start] + nums[end];
@@ -44,7 +44,7 @@ class Solution {
                 
                 if (sum > target) end--; // 因为数组有序，如果 sum > target 则 end--，如果 sum < target 则 start++，如果 sum == target 则说明距离为 0 直接返回结果
                 else if (sum < target) start++;
-                else return res;
+                else return res; // sum == target
             }
         }
         return res;
