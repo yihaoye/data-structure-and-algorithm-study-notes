@@ -53,3 +53,29 @@ class Solution {
         return res;
     }
 }
+
+
+
+// My Solution 2:
+class Solution {
+    public int[][] merge(int[][] intervals) {
+        // 排序
+        // Time: O(logN), Space: O(N) - resList 或 Java Arrays.sort
+        Arrays.sort(intervals, (a, b) -> a[0] - b[0]); // 升序排序
+        List<int[]> resList = new ArrayList<>();
+        for (int[] interval : intervals) {
+            int[] last = resList.size() == 0 ? null : resList.get(resList.size()-1);
+            
+            if (last == null || last[1] < interval[0]) {
+                resList.add(interval);
+                continue;
+            }
+            if (last[1] >= interval[0] && last[1] < interval[1]) {
+                last[1] = interval[1];
+            }
+        }
+        int[][] res = new int[resList.size()][2];
+        resList.toArray(res);
+        return res;
+    }
+}
