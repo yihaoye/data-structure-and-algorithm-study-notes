@@ -67,7 +67,7 @@ class Solution {
             int[] last = resList.size() == 0 ? null : resList.get(resList.size()-1);
             
             if (last == null || last[1] < interval[0]) {
-                resList.add(interval);
+                resList.add(interval.clone());
                 continue;
             }
             if (last[1] >= interval[0] && last[1] < interval[1]) {
