@@ -1,7 +1,7 @@
 # System Design Fundamentals
 
 https://www.algoexpert.io/systems/fundamentals  
-[相关代码链接](https://github.com/divas-jindal/Systems-Design)  
+[相关代码链接](https://github.com/yihaoye/stem-notes/tree/master/e-software-architecture/Systems-Design)  
 * Client—Server Model
 * Network Protocols
   * IP, TCP, HTTP/S
@@ -82,6 +82,6 @@ https://www.algoexpert.io/systems/fundamentals
   * 可靠且容错 - 当一个 Map 或 Reduce 操作失败时，只需要重新将其执行一次（中央控制器会去监控执行），但是要注意一个 Map 或 Reduce 操作应保证幂等。
   * 整个 MapReduce 实际使用中最重要最需要关心的是要执行的 Map、Reduce 程序以及它们的输入输出，因为其他具体的分布式系统的问题由 MapReduce 框架（比如 Hadoop）或库去解决。
   * 以下是应用 MapReduce 统计各字母出现次数的简单示例： ![](./MapReduce%20Example.png)
-  * [Node.js 代码示例 MapReduce 编程模型](https://github.com/divas-jindal/Systems-Design/tree/feature/dockerize-solutions/map_reduce)，其中的 `run.sh` 脚本扮演着`中央控制器`的角色。
+  * [Node.js 代码示例 MapReduce 编程模型](https://github.com/yihaoye/stem-notes/tree/master/e-software-architecture/Systems-Design/map_reduce)，其中的 `run.sh` 脚本扮演着`中央控制器`的角色。
 * Security And HTTPS
 * API Design
