@@ -19,6 +19,7 @@ Tool Sets 是算法解题、编码过程中常用的一些经常复用的原子�
 * [Iterator](./Iterator.java)
 * [链表节点](./LinkedListNode.java)
 * [数学相关操作与套路](./Math.java)
+* [Java 对象泛操作](./Object.java)
 * [队列](./Queue.java)
 * [正则表达式](./Regex.java)
 * [流](./Stream.java)

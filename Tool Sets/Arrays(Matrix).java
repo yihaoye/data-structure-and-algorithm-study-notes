@@ -7,6 +7,11 @@ int[] arrCopy1 = arr.clone();
 // or
 int[] arrCopy2 = Arrays.copyOf(arr, arr.length);
 
+// List 转换成数组
+List<Object> list = new ArrayList<>();
+Object[] lArr = new Object[list.size()];
+list.toArray(lArr);
+
 // 多维数组排序
 int[][] arrs = new int[100][100];
 Arrays.sort(arrs, (a, b) -> (a[0] == b[0]) ? (a[1] - b[1]) : (a[0] - b[0])); // 均为升序排序
