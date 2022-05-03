@@ -2,6 +2,11 @@
 int[] arr = new int[10000];
 Arrays.fill(arr, -1);
 
+// 数组复制
+int[] arrCopy1 = arr.clone();
+// or
+int[] arrCopy2 = Arrays.copyOf(arr, arr.length);
+
 // 多维数组排序
 int[][] arrs = new int[100][100];
 Arrays.sort(arrs, (a, b) -> (a[0] == b[0]) ? (a[1] - b[1]) : (a[0] - b[0])); // 均为升序排序
