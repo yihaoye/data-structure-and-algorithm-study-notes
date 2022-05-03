@@ -56,6 +56,20 @@ https://www.algoexpert.io/systems/fundamentals
   * 可以通过 Redis 来实现分布式系统的 Rate Limiting（某个微服务有多个实例，单个实例通过自己的内存实现 Rate Limiting 无法保证，因为下一相同来源请求可能被负载均衡分配到另一个实例，而该实例的内存此时未记录该请求的 header、ID 和相关次数、时间，所以不会 Rate Limiting）
   * Rate Limiting 可以根据需要设计得非常复杂，比如 指定时间里可以接指定数量请求、With Tiers 等等
 * Logging And Monitoring
+  * Logging
+    * 记录系统的真实经历事件（系统操作或用户操作），比如需要 debug 一些生产上的不好重现的事故
+    * 日志系统，会收集所有日志信息（比如 fmt.print() 或 log.info()、log.error() 这类编程语言打印的日志或报错）到一个数据库，可供工程师稍后进行回顾
+    * 日志的两种主要格式
+      * Syslog
+      * JSON
+    * 辅助日志平台如 Google Stackdriver（现更名为 Google Cloud Operations）、AWS CloudWatch 等等
+  * Monitoring
+    * 可视化地（比如 Metric）监控系统（整体或某个服务）健康、性能、状态
+    * 按不同的时间范围展示可视化
+    * 设置阀值、频率报警以及通知系统（比如 Slack）
+    * 使用数据库（比如 Time-series 数据库）
+    * 可视化工具如 Grafana
+    * 保留时间
 * Publish/Subscribe Pattern
 * MapReduce
 * Security And HTTPS
