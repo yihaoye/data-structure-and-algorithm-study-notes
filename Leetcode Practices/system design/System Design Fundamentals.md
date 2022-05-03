@@ -47,6 +47,14 @@ https://www.algoexpert.io/systems/fundamentals
     * 静态配置（与项目本地源代码放一起，通常只适合不敏感、低风险的数据，比如版本号、前端依赖）
     * 动态配置（完全与源代码分离的，比如是另外一个服务，有时可以通过 UI 界面供工程师动态地更新配置，更安全，比如存放重要的密钥，缺点是不容易测试或及时检测到变更需更复杂的设计）
 * Rate Limiting
+  * Attacks Protect
+    * DoS - 海量请求导致 Server cannot handle real request any more。
+    * DDoS - 和 DoS 不同的是第一个 D 是分布式（Distributed）的意思 - 即无法鉴别为某个组织或用户的 DoS 攻击
+  * Function/Feature
+    * VIP - identify by user, some may have higher request threshold
+  * IP, Region etc
+  * 可以通过 Redis 来实现分布式系统的 Rate Limiting（某个微服务有多个实例，单个实例通过自己的内存实现 Rate Limiting 无法保证，因为下一相同来源请求可能被负载均衡分配到另一个实例，而该实例的内存此时未记录该请求的 header、ID 和相关次数、时间，所以不会 Rate Limiting）
+  * Rate Limiting 可以根据需要设计得非常复杂，比如 指定时间里可以接指定数量请求、With Tiers 等等
 * Logging And Monitoring
 * Publish/Subscribe Pattern
 * MapReduce
