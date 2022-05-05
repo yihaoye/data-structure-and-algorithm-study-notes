@@ -85,3 +85,5 @@ https://www.algoexpert.io/systems/fundamentals
   * [Node.js 代码示例 MapReduce 编程模型](https://github.com/yihaoye/stem-notes/tree/master/e-software-architecture/Systems-Design/map_reduce)，其中的 `run.sh` 脚本扮演着`中央控制器`的角色。
 * Security And HTTPS
 * API Design
+  * 与系统设计并肩而非其子集（通常企业面试系统设计或 API 设计）
+  * 与系统设计共享许多共性

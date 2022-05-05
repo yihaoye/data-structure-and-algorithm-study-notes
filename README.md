@@ -15,7 +15,7 @@
 * [Codility Practices](./Codility%20Practices/)
 * [HackerRank Practices](./HackerRank%20Practises/) (包括一些 [Java 语言实例解析](./HackerRank%20Practises/java/))
 * [Google Code Jam Practices](./Google%20Code%20Jam/)
-* [Leetcode Practices](./Leetcode%20Practices/) (主要包含了[算法](./Leetcode%20Practices/algorithms/)、[OOD](./Leetcode%20Practices/object%20oriented%20design/) 和[系统设计](./Leetcode%20Practices/system%20design/)；算法题第一次提交 round 1 是自己的首次解答方法，第二次提交 round 2 是进行复盘复习后并添加、理解他人的更优解以及增添其他语言解题实现，round 0 则是首次答题没头绪参考他人解题思路)
+* [Leetcode Practices](./Leetcode%20Practices/) (主要包含了[算法](./Leetcode%20Practices/algorithms/)、[OOD](./Leetcode%20Practices/object%20oriented%20design/) 、[系统设计](./Leetcode%20Practices/system%20design/) 和 [API 设计](./Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md)；算法题第一次提交 round 1 是自己的首次解答方法，第二次提交 round 2 是进行复盘复习后并添加、理解他人的更优解以及增添其他语言解题实现，round 0 则是首次答题没头绪参考他人解题思路)
 * [常用编码逻辑工具集查询手册 | Tool Sets](./Tool%20Sets/) (包括一些 Java 语言实例解析)
 * [常用算法及理论 | Common Algorithm & Theory](./Common%20Algorithm%20and%20Theory/)
 * [常用数据结构、数据类型及其实现 | Common Data Structure & Data Type & Implementation](./Common%20Data%20Structure%20and%20Data%20Type/) (包括并发相关的数据结构的详解)
