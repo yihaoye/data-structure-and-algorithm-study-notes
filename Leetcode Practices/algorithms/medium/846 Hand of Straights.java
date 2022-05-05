@@ -63,3 +63,33 @@ class Solution {
         return true;
     }
 }
+
+
+
+// My Solution 2:
+class Solution {
+    public boolean isNStraightHand(int[] hand, int groupSize) {
+        /*
+            时间复杂度 O(N*logN)，空间复杂度 O(M) M - hand[i] 多少个不同的数字
+        */
+        int len = hand.length;
+        if (len % groupSize != 0) return false;
+        LinkedHashMap<Integer, Integer> lMap = new LinkedHashMap<>(); // LinkedHashMap + 后面的一次性数组排序，总性能比 TreeMap 好
+        Arrays.sort(hand);
+        for (int num : hand) {
+            lMap.put(num, lMap.getOrDefault(num, 0) + 1);
+        }
+        while (!lMap.isEmpty()) {
+            int newFirstCard = lMap.keySet().stream().findFirst().get();
+            int newFirstCardCount = lMap.get(newFirstCard);
+            for (int i=0; i<groupSize; i++) {
+                int cardCount = lMap.getOrDefault(newFirstCard + i, 0);
+                if (cardCount < newFirstCardCount) return false;
+                if (cardCount == newFirstCardCount) lMap.remove(newFirstCard + i);
+                if (cardCount > newFirstCardCount) lMap.put(newFirstCard + i, cardCount - newFirstCardCount);
+            }
+        }
+        
+        return true;
+    }
+}
