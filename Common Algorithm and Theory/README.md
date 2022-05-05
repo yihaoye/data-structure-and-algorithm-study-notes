@@ -45,4 +45,6 @@
     - [鸽巢原理 | Pigeonhole Principle](./鸽巢原理.md)
   - 计算几何
     - [扫描线 | Line Sweep](./扫描线.md)
+  - 其他
+    - [小优化技巧](./其他小优化技巧.md)
   
