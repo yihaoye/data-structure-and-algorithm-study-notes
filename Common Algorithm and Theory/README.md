@@ -42,6 +42,7 @@
       - [Count-Min Sketch 算法](./Count-Min-Sketch.md)
       - [雪花算法 | Snowflake ID](./雪花算法.md)
   - 数学
+    - [鸽巢原理 | Pigeonhole Principle](./鸽巢原理.md)
   - 计算几何
     - [扫描线 | Line Sweep](./扫描线.md)
   
