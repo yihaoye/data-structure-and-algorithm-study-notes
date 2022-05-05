@@ -443,6 +443,11 @@
 - [x] 208	Implement Trie (Prefix Tree)		
 - [ ] 212	Word Search II	
    
+## 扫描线
+- [x] 218   The Skyline Problem 
+- [x] 253   Meeting Rooms II	
+- [x] 759   Employee Free Time  
+  
 ## Design
 - [x] 359	Logger Rate Limiter		
 - [x] 346	Moving Average from Data Stream		                        Sliding Window
