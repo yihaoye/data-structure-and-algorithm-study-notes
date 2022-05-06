@@ -87,3 +87,15 @@ https://www.algoexpert.io/systems/fundamentals
 * API Design
   * 与系统设计并肩而非其子集（通常企业面试系统设计或 API 设计）
   * 与系统设计共享许多共性
+  * 网站系统、产品功能都是通过 API 构建的，有的公司提供的 API 本身就是产品（比如 Stripe），所以 API 很重要
+  * API 任意细节的设计都要谨慎（比如参数的顺序），因为依赖该 API 的用户增长后，更改和删除 API 将变得困难、麻烦，所以一些大企业对 API 设计会做许多 review、检查
+  * Pagination
+  * CRUD Operations
+  * 考核过程
+    * 询问关于系统的哪个功能、部分，询问系统规模，询问 API 消费细节
+    * 列出每个 API 概要 / outline（列出 API 所依赖的 entity、资源，比如 Twitter API 依赖 tweet 资源或 entity，又比如 Stripe 依赖支付、客户等资源或 entity。entity 的细节要包括需要哪些属性、字段），列出 API 的 endpoint、请求参数、返回响应，但是不需要实现逻辑细节（或者只需要写出一些关键逻辑）
+    * 或者写下 API in swagger format（前提是询问面试官可接受的格式与写法），[示例](https://github.com/yihaoye/stem-notes/tree/master/e-software-architecture/Systems-Design/api_design/example)
+    * 讲出 API 设计方案、决定的原因（没有对错，重在沟通）
+  * 练习方式
+    * 看大公司的 API 文件，学习如何设计（比如 Stripe）
+    * 尝试写常见公司（Stripe、Twitter 等等）的 API，然后对照实际的 API 询问设计是否更好或决策想法
