@@ -3,8 +3,11 @@ TreeMap<Integer, ArrayList<Integer>> tmap = new TreeMap<>();
 // subMap(K fromKey, boolean fromInclusive, K toKey, boolean toInclusive) Returns a view of the portion of this map whose keys range from fromKey to toKey.
 Collection<List<Integer>> lists = tmap.subMap(0, true, Integer.MAX_VALUE, true).values();
 
-// TreeMap.firstKey
+// TreeMap.firstKey()
 int firstKey = tmap.firstKey();
+
+// TreeMap.floorKey(K key) Returns the greatest key less than or equal to the given key, or null if there is no such key.
+Integer key = tmap.floorKey(100);
 
 
 
