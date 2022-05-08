@@ -43,3 +43,35 @@ class Solution {
         dfs(nums, index+1, newCombine);
     }
 }
+
+
+
+// Other's Solution:
+class Solution {
+    public List<List<Integer>> subsetsWithDup(int[] nums) {
+        Arrays.sort(nums); // 排序 - 未来好剔除重复项
+
+        List<List<Integer>> res = new ArrayList<>(), temp = null;
+        res.add(new ArrayList<Integer>());
+        for (int i=0; i<nums.length; i++) {
+            if (i > 0 && nums[i-1] == nums[i]) {
+                for (List<Integer> list : temp) list.add(nums[i]);
+            } else {
+                temp = clone(res);
+                for (List<Integer> list : temp) list.add(nums[i]);
+            }
+            res.addAll(clone(temp));
+        }
+        return res;
+    }
+    
+    private List<List<Integer>> clone(List<List<Integer>> origin) {
+        List<List<Integer>> res = new ArrayList<>();
+        for (List<Integer> originList : origin) {
+            List<Integer> copyList = new ArrayList<>();
+            for (Integer item : originList) copyList.add(item);
+            res.add(copyList);
+        }
+        return res;
+    }
+}
