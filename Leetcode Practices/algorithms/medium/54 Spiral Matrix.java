@@ -67,3 +67,34 @@ class Solution {
         return res;
     }
 }
+
+
+
+// My Solution 2:
+class Solution {
+    int[][] dirs = new int[][]{{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+
+    public List<Integer> spiralOrder(int[][] matrix) {        
+        int lastDirIndex = 0, curX = 0, curY = 0, m = matrix.length, n = matrix[0].length;
+        int[] curDir = dirs[lastDirIndex];
+        List<Integer> res = new ArrayList<>();
+        for (int i=0; i<m*n; i++) {
+            if (checkIfEdge(curX, curY, matrix, curDir)) {
+                lastDirIndex = ++lastDirIndex % 4;
+            }
+            res.add(matrix[curX][curY]);
+            matrix[curX][curY] -= 201;
+            curDir = dirs[lastDirIndex];
+            curX += curDir[0]; curY += curDir[1]; // next X; next Y
+        }
+
+        return res;
+    }
+    
+    public boolean checkIfEdge(int x, int y, int[][] matrix, int[] curDir) {
+        x += curDir[0]; y += curDir[1]; // next X; next Y
+        if (x >= matrix.length || y >= matrix[0].length || x <= -1 || y <= -1 || matrix[x][y] < -100) return true;
+
+        return false;
+     }
+}
