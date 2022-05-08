@@ -10,7 +10,7 @@
     - [双链表 | Doubly Linked List]()
     - [循环链表 | Circular Linked List]()
     - [跳表 | Skip List](./Data%20Structure%20Implementation/SkipList/) (有序链表，查找、插入、删除均为 O(logN))
-      - [ConcurrentSkipListMap](https://www.cnblogs.com/flydean/p/skiplist-concurrentskiplistmap.html)
+      - [ConcurrentSkipListMap](./Data%20Structure%20Implementation/ConcurrentSkipListMap/)
 - [队列 | Queue]()
   - [链表 | LinkedList](./Data%20Structure%20Implementation/LinkedList/) (入队/出队 O(1)，首值 O(1))
   - [优先队列 | PriorityQueue]() (遍历 O(N)，入队/出队 O(logN)，首值 O(1))
