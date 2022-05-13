@@ -100,3 +100,35 @@ class BSTIterator {
  * int param_1 = obj.next();
  * boolean param_2 = obj.hasNext();
  */
+
+
+
+// My Solution inspired by above solution:
+class BSTIterator {
+    /*
+        使用一个栈存储临时的左子树 DFS 节点队列
+        时间复杂度 O(1)，空间复杂度 O(h)
+    */
+    Deque<TreeNode> stack = new LinkedList<>();
+    
+    public BSTIterator(TreeNode root) {
+        dfsLeft(root);
+    }
+    
+    public int next() {
+        TreeNode next = stack.pop();
+        dfsLeft(next.right);
+        return next.val;
+    }
+    
+    public boolean hasNext() {
+        return !stack.isEmpty();
+    }
+    
+    private void dfsLeft(TreeNode root) {
+        while (root != null) {
+            stack.push(root);
+            root = root.left;
+        }
+    }
+}
