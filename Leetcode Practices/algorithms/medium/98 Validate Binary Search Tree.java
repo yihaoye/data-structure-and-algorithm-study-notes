@@ -75,20 +75,17 @@ class Solution {
         */
         List<Integer> inorderList = new ArrayList<>();
         if (root != null) inorder(root, inorderList);
-        if (inorderList.size() <= 1) return true;
         for (int i=1; i<inorderList.size(); i++) {
-            if (inorderList.get(i) <= inorderList.get(i-1)) {
-                return false;
-            }
+            if (inorderList.get(i) <= inorderList.get(i-1)) return false;
         }
         
         return true;
     }
     
     public void inorder(TreeNode node, List<Integer> inorderList) {
-        if (node.left != null) inorder(node.left, inorderList);
+        if (node == null) return;
+        inorder(node.left, inorderList);
         inorderList.add(node.val);
-        if (node.right != null) inorder(node.right, inorderList);
-        return;
+        inorder(node.right, inorderList);
     }
 }
