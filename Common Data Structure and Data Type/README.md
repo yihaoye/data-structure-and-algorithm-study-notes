@@ -58,8 +58,8 @@
 - [图 | Graph]()
   - [有向图 | Directed Graph]()
   - [无向图 | Undirected Graph]()
-  - [加权图 | Weighted Graph]()
-  - [二分图 | Bipartite Graph](./Data%20Structure%20Implementation/Bipartite%20Graph/)
+    - [二分图 | Bipartite Graph](./Data%20Structure%20Implementation/Bipartite%20Graph/)
+  - [加权图（有向或无向） | Weighted Graph]()
   
 以上有些数据结构可能只有 Java 提供了官方实现 [more](https://www.zhihu.com/question/325814788) ，以上总结未完待续...  
   
