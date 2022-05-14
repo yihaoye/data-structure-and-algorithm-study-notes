@@ -27,6 +27,7 @@
     - [回溯法 | Backtracking](./NQueen.java)
     - [动态规划 | Dynamic Programming](./动态规划.md)
       - [记忆化搜索 | Memory Search](./记忆化搜索.md)
+      - [弗洛伊德算法 | Floyd-Warshall Algorithm](./弗洛伊德算法.md) (时间复杂度 O(N^3))
     - [位运算 | Bitwise Operation](./位运算.md)
     - [图匹配 | Graph Match](./图匹配.md)
       - [匈牙利算法 | Hungarian Algorithm]()
