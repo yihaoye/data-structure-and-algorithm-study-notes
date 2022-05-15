@@ -1,6 +1,7 @@
 ## 小章目录
   
 - 概念
+  - [多项式时间 | Polynomial Time](./多项式时间.md)
   - [搜索](./搜索.md)
 - 算法分析工具
   - [递归树 | Recursion Tree](./递归树.md)
