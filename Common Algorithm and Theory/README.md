@@ -31,7 +31,7 @@
       - [弗洛伊德算法 | Floyd-Warshall Algorithm](./弗洛伊德算法.md) (时间复杂度 O(N^3))
     - [位运算 | Bitwise Operation](./位运算.md)
     - [图匹配 | Graph Match](./图匹配.md)
-      - [匈牙利算法 | Hungarian Algorithm](./匈牙利算法.md)
+      - [匈牙利算法 | Hungarian Algorithm](./匈牙利算法.md) (时间复杂度 O(N^3))
     - [迪杰斯特拉算法 | Dijkstra Algorithm](./Dijkstra算法.md)
     - [KMP 算法 | Knuth–Morris–Pratt Algorithm](./KMP算法.md) (时间复杂度 O(N+M))
     - [AC 自动机 | Aho–Corasick Algorithm](./AC自动机.md)
