@@ -229,7 +229,7 @@
 - [x] 297	Serialize and Deserialize Binary Tree		                                    BFS
 - [ ] 285	Inorder Successor in BST		                                                inorder
 - [ ] 270	Closest Binary Search Tree Value		                                        preorder
-- [ ] 272	Closest Binary Search Tree Value II		                                        inorder
+- [x] 272	Closest Binary Search Tree Value II		                                        inorder
 - [x] 99	Recover Binary Search Tree		                                                inorder
 ### 重要程度			
 - [x] 156	Binary Tree Upside Down		                                                    很少考
