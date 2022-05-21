@@ -41,7 +41,7 @@
       5. 输入为链表（头节点）时，可以考虑快慢指针、哈希表。注意条件：单向还是双向链表、是否有环、链表长度。
       6. 输入为树（根节点）时，可以考虑暴力解（DFS - 二叉搜索树可以重点考虑中序遍历；BFS）、递归、栈、前驱节点后继节点（若为二叉搜索树）。注意条件：是否是特殊类型的二叉树、是否平衡、节点数量。例如 LC Q98
       7. 输入为图（出发节点）时，可以考虑暴力解（DFS、BFS）、并查集、Dijkstra。注意条件：是否有环、是否是简单图、节点值的范围、节点数量。
-   2. 套路：根据描述中的关键词（或概念）判断解题方向
+   2. 套路：根据描述中的关键词/概念判断解题方向
       1. 关键词/概念：Add Up to Target - Closer-or-Equals，可以考虑哈希表、排序、双指针、回溯--要注意时间复杂度要求场景，LC--Leetcode 例如 Q1 Q15 Q39
       2. 关键词/概念：Longest/Maximum/Compare Meet-Requirement Substring/Subarray/Sublist/Subset，可以考虑 DP、双指针/滑动窗口，LC 例如 Q3 Q5 Q53 Q152 Q300 Q416
       3. 关键词/概念：Find Median，可以考虑自平衡二叉树/TreeMap、堆/优先队列，LC 例如 Q4 Q295
@@ -61,7 +61,7 @@
       17. 关键词/概念：Digit/Number/Bits Operation/Process/Transfer，可以考虑位运算，LC 例如 Q751
       18. 关键词/概念：Cycle Check，可以考虑双指针/快慢指针，LC 例如 Q141 Q142
       19. 关键词/概念：Design/Implement Basic XXX/Data-Structure，可以考虑数组、ArrayList、LinkedList、自定义对象，LC 例如 Q155 Q706 Q707；关键词/概念：Design/Implement Advance XXX/Data-Structure，可以考虑数组、ArrayList、LinkedList、自定义对象、哈希表，LC 例如 Q146 Q208
-      20. 关键词/概念：Same/One Time/Direction Max/Min/Sum/Union 或关键词/概念：Range Conflict，可以考虑扫描线，LC 例如 Q218 Q253 Q759 Q2251
+      20. 关键词/概念：Same/One Time/Direction Sum/Union 或关键词/概念：Range Conflict，可以考虑扫描线，LC 例如 Q218 Q253 Q759 Q2251
       21. 关键词/概念：Dependency Conflict/Schedule，可以考虑拓扑排序，LC 例如 Q207 Q210
       22. 关键词/概念：Fix Range Max/Min/Sum/etc，可以考虑双指针/滑动窗口、单调栈，LC 例如 Q239
       23. 关键词/概念：Last/Next Bigger/Smaller，可以考虑单调栈，LC 例如 Q503
