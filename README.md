@@ -61,7 +61,7 @@
       17. 关键词/概念：Copy/Clone，可以考虑哈希表、指针或引用，LC 例如 Q138
       18. 关键词/概念：Digit/Number/Bits Operation/Process/Transfer，可以考虑位运算，LC 例如 Q751
       19. 关键词/概念：Cycle Check，可以考虑双指针/快慢指针，LC 例如 Q141 Q142
-      20. 关键词/概念：Design/Implement Basic XXX/Data-Structure，可以考虑数组、ArrayList、LinkedList、自定义对象，LC 例如 Q155 Q706 Q707；关键词/概念：Design/Implement Advance XXX/Data-Structure，可以考虑数组、ArrayList、LinkedList、自定义对象、哈希表，LC 例如 Q146 Q208
+      20. 关键词/概念：Design/Implement Basic XXX/Data-Structure，可以考虑数组、ArrayList、LinkedList、自定义对象、指针或引用，LC 例如 Q155 Q706 Q707；关键词/概念：Design/Implement Advanced XXX/Data-Structure，可以考虑数组、ArrayList、LinkedList、自定义对象、指针或引用、哈希表、红黑树、哈希集、队列、堆/优先队列、栈，LC 例如 Q146 Q208 Q355
       21. 关键词/概念：Same/One Time/Direction Sum/Union 或关键词/概念：Range Conflict，可以考虑扫描线、堆/优先队列，LC 例如 Q218 Q253 Q759 Q2251
       22. 关键词/概念：Dependency Conflict/Schedule，可以考虑拓扑排序，LC 例如 Q207 Q210
       23. 关键词/概念：Fix Range Max/Min/Sum/etc，可以考虑双指针/滑动窗口、单调栈，LC 例如 Q239
