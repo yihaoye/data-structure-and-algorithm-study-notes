@@ -54,7 +54,7 @@
       10. 问题核心/概念：Regular Expression / Match / Find Word in XXX，可以考虑 DP、递归、字典树、哈希表，LC 例如 Q10 Q720 Q49
       11. 问题核心/概念：(Fixed) Range (Optimal/Max/Min) Value/Area/Sum/DiffSum，输入可以是树节点或线性表或 Matrix/矩阵，可以考虑双指针/滑动窗口和贪婪、DP、一维前缀和/二维前缀和、递归、单调栈，LC 例如 Q11 Q221 Q42 Q304 Q124 Q437 Q239
       12. 问题核心/概念：Stated/StateTransition/Ordered Optimal/Max/Min Calculation/Sum/DiffSum，可以考虑 DP，LC 例如 Q121 Q123 -- 买卖股票系列  Q198 Q213 Q337 -- 打家劫舍系列
-      13. 问题核心/概念：Rotate Operation，输入可以是树节点或线性表或 Matrix/矩阵，可以考虑模拟算法+标记变量、排序，LC 例如 Q48 Q189 Q226
+      13. 问题核心/概念：Rotate/Reverse Operation，输入可以是树节点或线性表或 Matrix/矩阵，可以考虑模拟算法+标记变量、排序，LC 例如 Q48 Q189 Q226 Q206
       14. 问题核心/概念：String/Word Operation/Process/Transfer，可以考虑 DP、剪枝+暴力解/递归，LC 例如 Q72
       15. 问题核心/概念：Traversal/Iterator，可以考虑暴力解/DFS/BFS，LC 例如 Q94 Q102 Q104 Q105 Q173 Q341
       16. 问题核心/概念：Copy/Clone，可以考虑哈希表、指针或引用，LC 例如 Q138
@@ -67,6 +67,8 @@
       23. 问题核心/概念：Last/Next Bigger/Smaller，可以考虑单调栈，LC 例如 Q503
       24. 问题核心/概念：Frequency Count，可以考虑哈希表、桶排序、堆/优先队列，LC 例如 Q347
       25. 问题核心/概念：(Complex) Calculate/Function Implementation，可以考虑分治法、位运算、DP，LC 例如 Q50
+      26. 问题核心/概念：Find Path/Connection，输入可以是树节点或图节点或 Matrix/矩阵，可以考虑暴力解/DFS/BFS、回溯法、模拟、DP、并查集，LC 例如 Q62 Q63 Q684
+      27. 问题核心/概念：Shape Check，输入可以是 Matrix/矩阵，可以考虑暴力解/DFS/BFS、回溯法、模拟、扫描线、并查集，LC 例如 Q200
 2. 思考二，是否需要做一些[预处理](./Tool%20Sets/)，如排序，又或者先做一些额外预处理比如补零数位以及遍历至尾，在从尾部往回处理（如面试金典 9.2-2.5 进阶）。这种情况往往出现在题目明显有违常规思路时，即总是有些条件、可能、边缘情况阻碍常规思路，意味着出题者可能是故意增加了一些难度需要解题者预处理。这些预处理工作即使看起来复杂且一开始不确定是否对解题有帮助也不妨试试，尽量按常规系统性方法解题（即上面所有 Leetcode 内的解题法分类如递归、动态规划等等，经验足够的话大的解题类方向通常一开始就可以定下来），可以分割困难，但不要苦思奇法。
 3. 思考三，当题目已暗示可能要进行大规模输入检测题解效率时，可以考虑进行一些预处理、动态规划思路，例子如 Leetcode Q244。
 4. 思考四，(草稿时)引入一些[数学工具、模型](./Tool%20Sets/Math.java) - 如[状态机](./Tool%20Sets/FSM(DFA).java)等等有助于理清思路与解题(例子如 Leetcode Q309，KMP 算法实现)，辅助的数学思想还可以包括且不限于加减乘除(商、余数)、开方、指数、对数、微积分(例如 Leetcode Q367 牛顿法)、素数、公约数、公倍数、概率、阶乘、数列、坐标、几何函数(sin、cos、tan)、[矩阵](./Tool%20Sets/Math.java)(例如 Leetcode Q311)、不等式、多项式、进位转换等等。
