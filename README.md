@@ -62,11 +62,12 @@
       18. 关键词/概念：Digit/Number/Bits Operation/Process/Transfer，可以考虑位运算，LC 例如 Q751
       19. 关键词/概念：Cycle Check，可以考虑双指针/快慢指针，LC 例如 Q141 Q142
       20. 关键词/概念：Design/Implement Basic XXX/Data-Structure，可以考虑数组、ArrayList、LinkedList、自定义对象，LC 例如 Q155 Q706 Q707；关键词/概念：Design/Implement Advance XXX/Data-Structure，可以考虑数组、ArrayList、LinkedList、自定义对象、哈希表，LC 例如 Q146 Q208
-      21. 关键词/概念：Same/One Time/Direction Sum/Union 或关键词/概念：Range Conflict，可以考虑扫描线，LC 例如 Q218 Q253 Q759 Q2251
+      21. 关键词/概念：Same/One Time/Direction Sum/Union 或关键词/概念：Range Conflict，可以考虑扫描线、堆/优先队列，LC 例如 Q218 Q253 Q759 Q2251
       22. 关键词/概念：Dependency Conflict/Schedule，可以考虑拓扑排序，LC 例如 Q207 Q210
       23. 关键词/概念：Fix Range Max/Min/Sum/etc，可以考虑双指针/滑动窗口、单调栈，LC 例如 Q239
       24. 关键词/概念：Last/Next Bigger/Smaller，可以考虑单调栈，LC 例如 Q503
       25. 关键词/概念：Frequency Count，可以考虑哈希表、桶排序、堆/优先队列，LC 例如 Q347
+      26. 关键词/概念：(Complex) Calculate/Function Implementation，可以考虑分治法、位运算、DP，LC 例如 Q50
 2. 思考二，是否需要做一些[预处理](./Tool%20Sets/)，如排序，又或者先做一些额外预处理比如补零数位以及遍历至尾，在从尾部往回处理（如面试金典 9.2-2.5 进阶）。这种情况往往出现在题目明显有违常规思路时，即总是有些条件、可能、边缘情况阻碍常规思路，意味着出题者可能是故意增加了一些难度需要解题者预处理。这些预处理工作即使看起来复杂且一开始不确定是否对解题有帮助也不妨试试，尽量按常规系统性方法解题（即上面所有 Leetcode 内的解题法分类如递归、动态规划等等，经验足够的话大的解题类方向通常一开始就可以定下来），可以分割困难，但不要苦思奇法。
 3. 思考三，当题目已暗示可能要进行大规模输入检测题解效率时，可以考虑进行一些预处理、动态规划思路，例子如 Leetcode Q244。
 4. 思考四，(草稿时)引入一些[数学工具、模型](./Tool%20Sets/Math.java) - 如[状态机](./Tool%20Sets/FSM(DFA).java)等等有助于理清思路与解题(例子如 Leetcode Q309，KMP 算法实现)，辅助的数学思想还可以包括且不限于加减乘除(商、余数)、开方、指数、对数、微积分(例如 Leetcode Q367 牛顿法)、素数、公约数、公倍数、概率、阶乘、数列、坐标、几何函数(sin、cos、tan)、[矩阵](./Tool%20Sets/Math.java)(例如 Leetcode Q311)、不等式、多项式、进位转换等等。
