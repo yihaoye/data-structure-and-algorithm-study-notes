@@ -35,40 +35,38 @@
 1. 思考一（重要），发生在面试的最开始、影响整场面试体验，先理清题目是关于哪（几）个 Topic，比如什么类型数据结构、算法相关（如队列、堆栈、树、字符串、布尔或二进制、数组、图，如回溯法、动态规划、贪婪算法、二分搜索、二进制运算、迭代递归、模拟、排序、遍历、前缀和与差分、单调栈、并查集、数学、设计），通常若题目没有明显处理算法暗示或思绪提供时则可以考虑暴力破解（如遍历、回溯法、递归循环穷举法或 DFS、BFS 等），又或通过题目性能要求推测考点算法 - 比如要求性能达到 logN 时即很可能要使用二分搜索算法。（记住递归可以顺序也可以反序 - 如面试金典 9.2-2.5 进阶）。通常只要推测出 Tag、Topic 就可极大降低做题的难度。
    1. 套路：根据输入数据判断解题方向
       1. 输入为一维数组时，可以考虑暴力解（DFS、BFS 以及附加记忆化搜索）、动态规划、双指针、滑动窗口、排序、二分搜索、二进制运算、前缀和与差分、哈希表、贪心、KMP。注意条件：元素是否唯一、是否有序、数组长度。
-      2. 输入为矩阵 Matrix、二维（比如数组）时，可以考虑暴力解（DFS、BFS 以及附加记忆化搜索）、回溯法、动态规划、并查集等等。注意条件：值的范围、是否可以修改矩阵、矩阵大小。LC 例如 Q200
+      2. 输入为 Matrix/矩阵、二维（比如数组）时，可以考虑暴力解（DFS、BFS 以及附加记忆化搜索）、回溯法、动态规划、并查集等等。注意条件：值的范围、是否可以修改矩阵、矩阵大小。LC 例如 Q200
       3. 输入为字符串时，可以考虑暴力解/递归、双指针、滑动窗口、栈、动态规划、贪心、KMP。注意条件：字符集范围、字符串长度。LC 例如 Q394 Q438 Q763
       4. 输入为数字时，可以考虑递归、二分查找。注意条件：数字是否整数、数字范围。
       5. 输入为链表（头节点）时，可以考虑快慢指针、哈希表。注意条件：单向还是双向链表、是否有环、链表长度。
       6. 输入为树（根节点）时，可以考虑暴力解（DFS - 二叉搜索树可以重点考虑中序遍历；BFS）、递归、栈、前驱节点后继节点（若为二叉搜索树）。注意条件：是否是特殊类型的二叉树、是否平衡、节点数量。LC 例如 Q98 Q230
       7. 输入为图（出发节点）时，可以考虑暴力解（DFS、BFS）、并查集、Dijkstra。注意条件：是否有环、是否是简单图、节点值的范围、节点数量。
-   2. 套路：根据描述中的关键词/概念判断解题方向
-      1. 关键词/概念：Add Up to Target - Closer-or-Equals，可以考虑哈希表、排序、双指针、回溯--要注意时间复杂度要求场景，LC--Leetcode 例如 Q1 Q15 Q39
-      2. 关键词/概念：Achieve Target can or not / Achieve Target with Max/Min，可以考虑贪婪、DP，LC 例如 Q55
-      3. 关键词/概念：Longest/Maximum/Compare Meet-Requirement Substring/Subarray/Sublist/Subset，可以考虑 DP、双指针/滑动窗口，LC 例如 Q3 Q5 Q53 Q152 Q300 Q416
-      4. 关键词/概念：Find Median，可以考虑自平衡二叉树/TreeMap、堆/优先队列，LC 例如 Q4 Q295
-      5. 关键词/概念：Sum，可以考虑模拟算法+进位符/标记变量、前缀和，LC 例如 Q2
-      6. 关键词/概念：Palindromic - 回文，可以考虑栈、双指针，LC 例如 Q20 Q131 Q234
-      7. 关键词/概念：All Possible Combinations，可以考虑剪枝+暴力解/递归/迭代、回溯法、DP/记忆化搜索，LC 例如 Q17 Q2266 Q39 Q46 Q55 Q62 Q70
-      8. 关键词/概念：Merge Multiple XXX/Data-Structure，可以考虑模拟、递归、多路归并/最小堆、排序，LC 例如 Q21 Q23 Q56
-      9.  关键词/概念：Find/Search in Sorted/Unsorted XXX/Data-Structure，可以考虑二分搜索、位运算--如果是 Find Digit，LC 例如 Q33 Q34 Q136 Q287 Q240
-      10. 关键词/概念：Regular Expression / Match / Find Word in XXX，可以考虑 DP、递归、字典树、哈希表，LC 例如 Q10 Q720 Q49
-      11. 关键词/概念：Range Max/Min Value/Area，可以考虑双指针和贪婪、DP，LC 例如 Q11 Q221
-      12. 关键词/概念：Range (Max/Min/Sum) Sum/Diff，可以考虑双指针、DP、一维前缀和/二维前缀和、递归，LC 例如 Q42 Q304 Q124 Q437
-      13. 关键词/概念：Ordered (Max/Min/Sum) Sum/Diff，可以考虑 DP，LC 例如 Q121 Q123 -- 买卖股票系列
-      14. 关键词/概念：Rotate Operation，可以考虑模拟算法、排序，LC 例如 Q48 Q189
-      15. 关键词/概念：String/Word Operation，可以考虑 DP、剪枝+暴力解/递归，LC 例如 Q72
-      16. 关键词/概念：Traversal，可以考虑暴力解/DFS/BFS，LC 例如 Q94 Q102 Q104 Q105
-      17. 关键词/概念：Copy/Clone，可以考虑哈希表、指针或引用，LC 例如 Q138
-      18. 关键词/概念：Digit/Number/Bits Operation/Process/Transfer，可以考虑位运算，LC 例如 Q751
-      19. 关键词/概念：Cycle Check，可以考虑双指针/快慢指针，LC 例如 Q141 Q142
-      20. 关键词/概念：Design/Implement Basic XXX/Data-Structure，可以考虑数组、ArrayList、LinkedList、自定义对象、指针或引用，LC 例如 Q155 Q706 Q707
-      21. 关键词/概念：Design/Implement Advanced XXX/Data-Structure，可以考虑数组、ArrayList、LinkedList、自定义对象、指针或引用、哈希表、红黑树、哈希集、队列、堆/优先队列、栈，LC 例如 Q146 Q208 Q355
-      22. 关键词/概念：Same/One Time/Direction Sum/Union 或关键词/概念：Range Conflict，可以考虑扫描线、堆/优先队列，LC 例如 Q218 Q253 Q759 Q2251
-      23. 关键词/概念：Dependency Conflict/Schedule，可以考虑拓扑排序，LC 例如 Q207 Q210
-      24. 关键词/概念：Fix Range Max/Min/Sum/etc，可以考虑双指针/滑动窗口、单调栈，LC 例如 Q239
-      25. 关键词/概念：Last/Next Bigger/Smaller，可以考虑单调栈，LC 例如 Q503
-      26. 关键词/概念：Frequency Count，可以考虑哈希表、桶排序、堆/优先队列，LC 例如 Q347
-      27. 关键词/概念：(Complex) Calculate/Function Implementation，可以考虑分治法、位运算、DP，LC 例如 Q50
+   2. 套路：根据描述中的问题核心/概念判断解题方向
+      1. 问题核心/概念：Add Up to Target - Closer-or-Equals 又称 nSum 问题，可以考虑哈希表、排序、双指针、回溯--要注意时间复杂度要求场景，LC--Leetcode 例如 Q1 Q15 Q39
+      2. 问题核心/概念：Achieve Target can or not / Achieve Target with Max/Min，可以考虑贪婪、DP，LC 例如 Q55
+      3. 问题核心/概念：Longest/Maximum/Compare Meet-Requirement Substring/Subarray/Sublist/Subset/SubXXX 又称 Optimal Substructure，可以考虑 DP、双指针/滑动窗口，LC 例如 Q3 Q5 Q53 Q152 Q300 Q416
+      4. 问题核心/概念：Find Median，可以考虑自平衡二叉树/TreeMap、堆/优先队列，LC 例如 Q4 Q295
+      5. 问题核心/概念：Number Calculation in XXX/Data-Structure，可以考虑模拟算法+进位符/标记变量、前缀和，LC 例如 Q2
+      6. 问题核心/概念：Symmetry / Palindromic / Parentheses，可以考虑栈、双指针，LC 例如 Q20 Q131 Q234
+      7. 问题核心/概念：All Possible Combinations，可以考虑剪枝+暴力解/递归/迭代、回溯法、DP/记忆化搜索，LC 例如 Q17 Q2266 Q39 Q46 Q55 Q62 Q70
+      8. 问题核心/概念：Merge Multiple XXX/Data-Structure，可以考虑模拟、递归、多路归并/最小堆、排序，LC 例如 Q21 Q23 Q56
+      9.  问题核心/概念：Find/Search in Sorted/Unsorted XXX/Data-Structure，可以考虑二分搜索、位运算--如果是 Find Digit，LC 例如 Q33 Q34 Q136 Q287 Q240
+      10. 问题核心/概念：Regular Expression / Match / Find Word in XXX，可以考虑 DP、递归、字典树、哈希表，LC 例如 Q10 Q720 Q49
+      11. 问题核心/概念：(Fixed) Range (Optimal/Max/Min) Value/Area/Sum/DiffSum，输入可以是树节点或线性表或 Matrix/矩阵，可以考虑双指针/滑动窗口和贪婪、DP、一维前缀和/二维前缀和、递归、单调栈，LC 例如 Q11 Q221 Q42 Q304 Q124 Q437 Q239
+      12. 问题核心/概念：Stated/StateTransition/Ordered Optimal/Max/Min Calculation/Sum/DiffSum，可以考虑 DP，LC 例如 Q121 Q123 -- 买卖股票系列  Q198 Q213 Q337 -- 打家劫舍系列
+      13. 问题核心/概念：Rotate Operation，输入可以是树节点或线性表或 Matrix/矩阵，可以考虑模拟算法+标记变量、排序，LC 例如 Q48 Q189 Q226
+      14. 问题核心/概念：String/Word Operation/Process/Transfer，可以考虑 DP、剪枝+暴力解/递归，LC 例如 Q72
+      15. 问题核心/概念：Traversal/Iterator，可以考虑暴力解/DFS/BFS，LC 例如 Q94 Q102 Q104 Q105 Q173 Q341
+      16. 问题核心/概念：Copy/Clone，可以考虑哈希表、指针或引用，LC 例如 Q138
+      17. 问题核心/概念：Digit/Number/Bits Operation/Process/Transfer，可以考虑位运算，LC 例如 Q751
+      18. 问题核心/概念：Cycle Check，可以考虑双指针/快慢指针，LC 例如 Q141 Q142
+      19. 问题核心/概念：Design/Implement Basic XXX/Data-Structure，可以考虑以下数据结构的组合使用：数组、ArrayList、LinkedList、自定义对象、指针或引用，LC 例如 Q155 Q706 Q707
+      20. 问题核心/概念：Design/Implement Advanced XXX/Data-Structure，可以考虑以下数据结构的组合使用：数组、ArrayList、（单向或双向）LinkedList、自定义对象、指针或引用、哈希表、红黑树、哈希集、队列、堆/优先队列、栈，LC 例如 Q146 Q208 Q355 Q432
+      21. 问题核心/概念：Same/One Time/Direction Sum/Union 或问题核心/概念：Range Conflict，可以考虑扫描线、堆/优先队列，LC 例如 Q218 Q253 Q759 Q2251
+      22. 问题核心/概念：Dependency Conflict/Schedule，可以考虑拓扑排序，LC 例如 Q207 Q210
+      23. 问题核心/概念：Last/Next Bigger/Smaller，可以考虑单调栈，LC 例如 Q503
+      24. 问题核心/概念：Frequency Count，可以考虑哈希表、桶排序、堆/优先队列，LC 例如 Q347
+      25. 问题核心/概念：(Complex) Calculate/Function Implementation，可以考虑分治法、位运算、DP，LC 例如 Q50
 2. 思考二，是否需要做一些[预处理](./Tool%20Sets/)，如排序，又或者先做一些额外预处理比如补零数位以及遍历至尾，在从尾部往回处理（如面试金典 9.2-2.5 进阶）。这种情况往往出现在题目明显有违常规思路时，即总是有些条件、可能、边缘情况阻碍常规思路，意味着出题者可能是故意增加了一些难度需要解题者预处理。这些预处理工作即使看起来复杂且一开始不确定是否对解题有帮助也不妨试试，尽量按常规系统性方法解题（即上面所有 Leetcode 内的解题法分类如递归、动态规划等等，经验足够的话大的解题类方向通常一开始就可以定下来），可以分割困难，但不要苦思奇法。
 3. 思考三，当题目已暗示可能要进行大规模输入检测题解效率时，可以考虑进行一些预处理、动态规划思路，例子如 Leetcode Q244。
 4. 思考四，(草稿时)引入一些[数学工具、模型](./Tool%20Sets/Math.java) - 如[状态机](./Tool%20Sets/FSM(DFA).java)等等有助于理清思路与解题(例子如 Leetcode Q309，KMP 算法实现)，辅助的数学思想还可以包括且不限于加减乘除(商、余数)、开方、指数、对数、微积分(例如 Leetcode Q367 牛顿法)、素数、公约数、公倍数、概率、阶乘、数列、坐标、几何函数(sin、cos、tan)、[矩阵](./Tool%20Sets/Math.java)(例如 Leetcode Q311)、不等式、多项式、进位转换等等。
