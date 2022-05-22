@@ -54,7 +54,7 @@
       10. 问题核心/概念：Regular Expression / Match / Find Word in XXX，可以考虑 DP、递归、字典树、哈希表，LC 例如 Q10 Q720 Q49
       11. 问题核心/概念：(Fixed) Range (Optimal/Max/Min) Value/Area/Sum/DiffSum，输入可以是树节点或线性表或 Matrix/矩阵，可以考虑双指针/滑动窗口和贪婪、DP、一维前缀和/二维前缀和、递归、单调栈，LC 例如 Q11 Q221 Q42 Q304 Q124 Q437 Q239
       12. 问题核心/概念：Stated/StateTransition/Ordered Optimal/Max/Min Calculation/Sum/DiffSum，可以考虑 DP，LC 例如 Q121 Q123 -- 买卖股票系列  Q198 Q213 Q337 -- 打家劫舍系列
-      13. 问题核心/概念：Rotate/Reverse Operation，输入可以是树节点或线性表或 Matrix/矩阵，可以考虑模拟算法+标记变量、排序，LC 例如 Q48 Q189 Q226 Q206
+      13. 问题核心/概念：Rotate/Reverse Operation，输入可以是树节点或线性表或 Matrix/矩阵，可以考虑模拟算法/遍历+标记变量、排序，LC 例如 Q48 Q189 Q226 Q206
       14. 问题核心/概念：String/Word Operation/Process/Transfer，可以考虑 DP、剪枝+暴力解/递归，LC 例如 Q72
       15. 问题核心/概念：Traversal/Iterator，可以考虑暴力解/DFS/BFS，LC 例如 Q94 Q102 Q104 Q105 Q173 Q341
       16. 问题核心/概念：Copy/Clone，可以考虑哈希表、指针或引用，LC 例如 Q138
