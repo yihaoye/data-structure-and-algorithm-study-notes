@@ -43,7 +43,7 @@
       7. 输入为图（出发节点）时，可以考虑暴力解（DFS、BFS）、并查集、Dijkstra。注意条件：是否有环、是否是简单图、节点值的范围、节点数量。
    2. 套路：根据描述中的问题核心/概念判断解题方向
       1. 问题核心/概念：Add Up to Target - Closer-or-Equals 又称 nSum 问题，可以考虑哈希表、排序、双指针、回溯--要注意时间复杂度要求场景，LC--Leetcode 例如 Q1 Q15 Q39
-      2. 问题核心/概念：Achieve Task/Target/Requirement can or not / Achieve Task/Target/Requirement with Max/Min/Optimal 以及类似包括背包问题或婚配问题，可以考虑贪婪、DP、基于二分图的匈牙利算法，LC 例如 Q55 Q416
+      2. 问题核心/概念：Achieve Task/Target/Requirement can or not / Achieve Task/Target/Requirement with Max/Min/Optimal / 以及类似包括背包问题或婚配问题，可以考虑贪婪、DP、基于二分图的匈牙利算法，LC 例如 Q55 Q416
       3. 问题核心/概念：Longest/Maximum Meet-Requirement Substring/Subarray/Sublist/Subset/SubXXX 又称 Optimal Substructure，可以考虑 DP、双指针/滑动窗口，LC 例如 Q3 Q5 Q53 Q152 Q300
       4. 问题核心/概念：Find Median，可以考虑自平衡二叉树/TreeMap、堆/优先队列，LC 例如 Q4 Q295
       5. 问题核心/概念：Number Calculation in XXX/Data-Structure，可以考虑模拟算法+进位符/标记变量、前缀和，LC 例如 Q2
