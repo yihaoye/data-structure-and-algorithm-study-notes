@@ -65,7 +65,7 @@
       21. 问题核心/概念：Same/One Time/Direction Sum/Union 或问题核心/概念：Range Conflict，可以考虑扫描线、堆/优先队列，LC 例如 Q218 Q253 Q759 Q2251
       22. 问题核心/概念：Dependency Conflict/Schedule，可以考虑拓扑排序，LC 例如 Q207 Q210
       23. 问题核心/概念：Last/Next Bigger/Smaller，可以考虑单调栈，LC 例如 Q503
-      24. 问题核心/概念：Frequency Count，可以考虑哈希表、桶排序、堆/优先队列，LC 例如 Q347
+      24. 问题核心/概念：Frequency Count / Ranking，可以考虑哈希表、桶排序、堆/优先队列、排序、自平衡二叉搜索树/红黑树，LC 例如 Q347
       25. 问题核心/概念：(Complex) Calculate/Function Implementation，可以考虑分治法、位运算、DP，LC 例如 Q50
       26. 问题核心/概念：Find Path/Connection，输入可以是树节点或图节点或 Matrix/矩阵，可以考虑暴力解/DFS/BFS、回溯法、模拟、DP、并查集，LC 例如 Q62 Q63 Q684
       27. 问题核心/概念：Shape Check，输入可以是 Matrix/矩阵，可以考虑暴力解/DFS/BFS、回溯法、模拟、几何/数学/by数据类型或数据结构或自定义对象以实现、扫描线、并查集，LC 例如 Q200 Q2013 Q391
