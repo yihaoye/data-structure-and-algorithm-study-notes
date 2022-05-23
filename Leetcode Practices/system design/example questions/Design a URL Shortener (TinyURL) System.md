@@ -33,7 +33,7 @@ Then the auto-incremental primary key ID is used to do the conversion: `(ID, 10)
   
 **Code for methods** (that are used to convert ID to short_url and short_url to ID):  
 ```java
-String idToShortURL(long n) {
+String idToShortURL(long id) {
     // Map to store 62 possible characters
     String validChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     char[] charMap = validChars.toCharArray();
@@ -41,9 +41,9 @@ String idToShortURL(long n) {
     StringBuilder shorturl = new StringBuilder();
 
     // Convert given integer id to a base 62 number
-    while (n) {
-        shorturl.append(charMap[n % 62]);
-        n = n / 62;
+    while (id > 0L) {
+        shorturl.append(charMap[(int) (id % 62)]);
+        id = id / 62;
     }
 
     // Reverse shortURL to complete base conversion
