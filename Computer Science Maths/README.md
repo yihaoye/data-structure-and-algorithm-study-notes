@@ -1,6 +1,9 @@
 # 理论信息学
 * [P/NP/NPC问题](./P%20vs%20NP%20vs%20NPC.md)  
   
+# 基础
+* [数学归纳法](./Mathematical%20Induction.md)
+  
 # ACM 数论
 1. 整除的性质
 2. 常见定理
