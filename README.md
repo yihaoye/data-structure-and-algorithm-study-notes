@@ -41,14 +41,14 @@
       5. 输入为链表（头节点）时，可以考虑快慢指针、哈希表。注意条件：单向还是双向链表、是否有环、链表长度。
       6. 输入为树（根节点）时，可以考虑暴力解（DFS - 二叉搜索树可以重点考虑中序遍历；BFS）、递归、栈、前驱节点后继节点（若为二叉搜索树）。注意条件：是否是特殊类型的二叉树、是否平衡、节点数量。LC 例如 Q98 Q230
       7. 输入为图（出发节点）时，可以考虑暴力解（DFS、BFS）、并查集、Dijkstra。注意条件：是否有环、是否是简单图、节点值的范围、节点数量。
-   2. 套路：根据描述中的问题核心/概念判断解题方向
+   2. 套路：根据描述中的问题核心/概念判断解题方向（*需注意，有些题可能看似符合以下多个 case，但实际上可能只是其中一个：比如在偶数 size 的递增螺旋型 matrix 中从最左上角/最小数出发且每次只能走相邻更大数，问是否能恰好 K 步到达中心/最大数 - 看似同时符合 Achieve Task can or not 和 Find Path，但实际是 Achieve Task*）
       1. 问题核心/概念：Add Up to Target - Closer-or-Equals 又称 nSum 问题，可以考虑哈希表、排序、双指针、回溯--要注意时间复杂度要求场景，LC--Leetcode 例如 Q1 Q15 Q39
-      2. 问题核心/概念：Achieve Task/Target/Requirement can or not / Achieve Task/Target/Requirement with Max/Min/Optimal / 以及类似包括背包问题或婚配问题，可以考虑贪婪、DP、基于二分图的匈牙利算法，LC 例如 Q55 Q416
+      2. 问题核心/概念：Achieve Task/Target/Requirement can or not / Achieve Task/Target/Requirement with Max/Min/Optimal / 以及类似包括背包问题或婚配问题，可以考虑贪婪、DP、基于二分图的匈牙利算法、数学、模拟，LC 例如 Q55 Q416
       3. 问题核心/概念：Longest/Maximum Meet-Requirement Substring/Subarray/Sublist/Subset/SubXXX 又称 Optimal Substructure，可以考虑 DP、双指针/滑动窗口，LC 例如 Q3 Q5 Q53 Q152 Q300
       4. 问题核心/概念：Find Median，可以考虑自平衡二叉树/TreeMap、堆/优先队列，LC 例如 Q4 Q295
       5. 问题核心/概念：Number Calculation in XXX/Data-Structure，可以考虑模拟算法+进位符/标记变量、前缀和，LC 例如 Q2
       6. 问题核心/概念：Symmetry / Palindromic / Parentheses，可以考虑栈、双指针，LC 例如 Q20 Q131 Q234
-      7. 问题核心/概念：All Possible Combinations，可以考虑剪枝+暴力解/递归/迭代、回溯法、DP/记忆化搜索，LC 例如 Q17 Q2266 Q39 Q46 Q55 Q62 Q70
+      7. 问题核心/概念：All Possible Combinations (Count)，可以考虑剪枝+暴力解/递归/迭代、回溯法、DP/记忆化搜索、数学，LC 例如 Q17 Q2266 Q39 Q46 Q55 Q62 Q70
       8. 问题核心/概念：Merge Multiple XXX/Data-Structure，可以考虑模拟、递归、多路归并/最小堆、排序，LC 例如 Q21 Q23 Q56
       9.  问题核心/概念：Find/Search in Sorted/Unsorted XXX/Data-Structure，可以考虑二分搜索、位运算--如果是 Find Digit，LC 例如 Q33 Q34 Q136 Q287 Q240
       10. 问题核心/概念：Regular Expression / Match / Find Word in XXX，可以考虑 DP、递归、字典树、哈希表，LC 例如 Q10 Q720 Q49
@@ -88,7 +88,11 @@
 6. 编码六，有时题解没通过测试时不用先急着怀疑是自己的基本思路错误，有可能只是需要再对一些 edge cases 做优化即可（例如 Leetcode Q214）。
 7. 编码七，题解中的一些灵活小技巧，比如在某些情况下可以对 char 或 string 等非数学数据类型直接互相进行 +/- 操作，可以减少代码里一些繁琐的逻辑、表达、判断等等。
 8. 编码八，尽量用工具类以省事（尤其在处理一些复杂组合的非基础算法题时），比如当前集合、容器（List、Set、Map）的内置方法，又比如 `int index = Collections.binarySearch(list, key);` [更多详见](./Tool%20Sets/Collections.java)。  
-  
+
+#### 讲解、题解时
+1. 注意有些专业术语的英语要表述正确：比如根号 M - square root of M 或 2th root of M； M^N - M to the power of N
+2. 最好题解过程中，在面板上记录并模拟每一步的处理数据的动态、状态，因为比较直观和易懂甚至有助于发现思考时的盲点
+
 #### 预先准备
 1. 预备一，熟用熟背常用模版比如[反转链表 | Leetcode Q92](./Leetcode%20Practices/algorithms/medium/92%20Reverse%20Linked%20List%20II.java)、[前缀树(字典树) | Leetcode 208](./Leetcode%20Practices/algorithms/medium/208%20Implement%20Trie%20(Prefix%20Tree).java)、[并查集与联合查找 | Leetcode 200 UF 解法](./Leetcode%20Practices/algorithms/medium/200%20Number%20of%20Islands.java)、[树状数组 | Leetcode 307](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/BinaryIndexedTree(FenwickTree)/README.md#树状数组实现)、[滑动窗口](./Common%20Algorithm%20and%20Theory/双指针法与滑动窗口算法.md)、[快慢指针 | Leetcode 142](./Leetcode%20Practices/algorithms/medium/142%20Linked%20List%20Cycle%20II.java)、[多路归并 | Leetcode 23](./Leetcode%20Practices/algorithms/hard/23%20Merge%20k%20Sorted%20Lists.java)、[单调栈 | Leetcode 503](./Common%20Algorithm%20and%20Theory/单调栈.md)、[树复原 | Leetcode 105 106](./Leetcode%20Practices/algorithms/medium/105%20Construct%20Binary%20Tree%20from%20Preorder%20and%20Inorder%20Traversal.java)、[穷举递增子序列 | Leetcode 491](./Leetcode%20Practices/algorithms/medium/491%20Increasing%20Subsequences.java)、[二分搜索 | Leetcode 34 etc](./Common%20Algorithm%20and%20Theory/二分搜索.md)、[翻转树 | Leetcode 156 226](./Leetcode%20Practices/algorithms/medium/156%20Binary%20Tree%20Upside%20Down.java)，[待补充...]() 等等。  
   
