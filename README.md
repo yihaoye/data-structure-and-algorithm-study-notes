@@ -41,7 +41,7 @@
       5. 输入为链表（头节点）时，可以考虑快慢指针、哈希表。注意条件：单向还是双向链表、是否有环、链表长度。
       6. 输入为树（根节点）时，可以考虑暴力解（DFS - 二叉搜索树可以重点考虑中序遍历；BFS）、递归、栈、前驱节点后继节点（若为二叉搜索树）。注意条件：是否是特殊类型的二叉树、是否平衡、节点数量。LC 例如 Q98 Q230
       7. 输入为图（出发节点）时，可以考虑暴力解（DFS、BFS）、并查集、Dijkstra。注意条件：是否有环、是否是简单图、节点值的范围、节点数量。
-   2. 套路：根据描述中的问题核心/概念判断解题方向（*需注意，有些题可能看似符合以下多个 case，但实际上可能只是其中一个：比如在偶数 size 的递增螺旋型 matrix 中从最左上角/最小数出发且每次只能走相邻更大数，问是否能恰好 K 步到达中心/最大数 - 看似同时符合 Achieve Task can or not 和 Find Path，但实际是 Achieve Task*）
+   2. 套路：根据描述中的问题核心/概念判断解题方向（*需注意，有些题可能看似符合以下多个 case，但实际上可能只是其中一个：比如在偶数 size 的递增螺旋型 matrix 中从最左上角/最小数出发且每次只能走相邻更大数，问是否能恰好 K 步到达中心/最大数 - 看似同时符合 Achieve Task can or not 和 Find Path，但实际是 Achieve Task。例题链接：[Spiraling Into Control](https://codingcompetitions.withgoogle.com/codejam/round/00000000008778ec)*）
       1. 问题核心/概念：Add Up to Target - Closer-or-Equals 又称 nSum 问题，可以考虑哈希表、排序、双指针、回溯--要注意时间复杂度要求场景，LC--Leetcode 例如 Q1 Q15 Q39
       2. 问题核心/概念：Achieve Task/Target/Requirement can or not / Achieve Task/Target/Requirement with Max/Min/Optimal / 以及类似包括背包问题或婚配问题，可以考虑贪婪、DP、基于二分图的匈牙利算法、数学、模拟，LC 例如 Q55 Q416
       3. 问题核心/概念：Longest/Maximum Meet-Requirement Substring/Subarray/Sublist/Subset/SubXXX 又称 Optimal Substructure，可以考虑 DP、双指针/滑动窗口，LC 例如 Q3 Q5 Q53 Q152 Q300
