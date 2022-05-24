@@ -43,15 +43,15 @@
       7. 输入为图（出发节点）时，可以考虑暴力解（DFS、BFS）、并查集、Dijkstra。注意条件：是否有环、是否是简单图、节点值的范围、节点数量。
    2. 套路：根据描述中的问题核心/概念判断解题方向（*需注意，有些题可能看似符合以下多个 case，但实际上可能只是其中一个：比如在偶数 size 的递增螺旋型 matrix 中从最左上角/最小数出发且每次只能走相邻更大数，问是否能恰好 K 步到达中心/最大数 - 看似同时符合 Achieve Task can or not 和 Find Path，但实际是 Achieve Task。例题链接：[Spiraling Into Control](https://codingcompetitions.withgoogle.com/codejam/round/00000000008778ec)*）
       1. 问题核心/概念：Add Up to Target - Closer-or-Equals 又称 nSum 问题，可以考虑哈希表、排序、双指针、回溯--要注意时间复杂度要求场景，LC--Leetcode 例如 Q1 Q15 Q39
-      2. 问题核心/概念：Achieve Task/Target/Requirement can or not / Achieve Task/Target/Requirement with Max/Min/Optimal / 以及类似包括背包问题或婚配问题，可以考虑贪婪、DP、基于二分图的匈牙利算法、数学、模拟，LC 例如 Q55 Q416
+      2. 问题核心/概念：Achieve Task/Target/Requirement can or not 或 Achieve Task/Target/Requirement with Max/Min/Optimal 或 类似包括背包问题或婚配问题，可以考虑贪婪、DP、基于二分图的匈牙利算法、数学、模拟，LC 例如 Q55 Q416
       3. 问题核心/概念：Longest/Maximum Meet-Requirement Substring/Subarray/Sublist/Subset/SubXXX 又称 Optimal Substructure，可以考虑 DP、双指针/滑动窗口，LC 例如 Q3 Q5 Q53 Q152 Q300
       4. 问题核心/概念：Find Median，可以考虑自平衡二叉树/TreeMap、堆/优先队列，LC 例如 Q4 Q295
       5. 问题核心/概念：Number Calculation in XXX/Data-Structure，可以考虑模拟算法+进位符/标记变量、前缀和，LC 例如 Q2
-      6. 问题核心/概念：Symmetry / Palindromic / Parentheses，可以考虑栈、双指针、标记变量，LC 例如 Q20 Q131 Q234 Q678
+      6. 问题核心/概念：Symmetry 或 Palindromic 或 Parentheses，可以考虑栈、双指针、标记变量，LC 例如 Q20 Q131 Q234 Q678
       7. 问题核心/概念：All Possible Combinations (Count)，可以考虑剪枝+暴力解/递归/迭代、回溯法、DP/记忆化搜索、数学，LC 例如 Q17 Q2266 Q39 Q46 Q55 Q62 Q70
       8. 问题核心/概念：Merge Multiple XXX/Data-Structure，可以考虑模拟、递归、多路归并/最小堆、排序，LC 例如 Q21 Q23 Q56
       9.  问题核心/概念：Find/Search in Sorted/Unsorted XXX/Data-Structure，可以考虑二分搜索、位运算--如果是 Find Digit，LC 例如 Q33 Q34 Q136 Q287 Q240
-      10. 问题核心/概念：Regular Expression / Match / Find Word in XXX，可以考虑 DP、递归、字典树、哈希表，LC 例如 Q10 Q720 Q49
+      10. 问题核心/概念：Regular Expression 或 Match 或 Find Word in XXX，可以考虑 DP、递归、字典树、哈希表，LC 例如 Q10 Q720 Q49
       11. 问题核心/概念：(Fixed) Range (Optimal/Max/Min) Value/Area/Sum/DiffSum，输入可以是树节点或线性表或 Matrix/矩阵，可以考虑双指针/滑动窗口和贪婪、DP、一维前缀和/二维前缀和、递归、单调栈，LC 例如 Q11 Q221 Q42 Q304 Q124 Q437 Q239 Q2104
       12. 问题核心/概念：Stated/StateTransition/Ordered Optimal/Max/Min Calculation/Sum/DiffSum，可以考虑 DP，LC 例如 Q121 Q123 -- 买卖股票系列  Q198 Q213 Q337 -- 打家劫舍系列
       13. 问题核心/概念：Rotate/Reverse/Swap Operation，输入可以是树节点或线性表或 Matrix/矩阵，可以考虑模拟算法/遍历+标记变量、排序，LC 例如 Q48 Q189 Q226 Q206
@@ -62,10 +62,10 @@
       18. 问题核心/概念：Cycle Check，可以考虑双指针/快慢指针，LC 例如 Q141 Q142
       19. 问题核心/概念：Design/Implement Basic XXX/Data-Structure，可以考虑以下数据结构的组合使用：数组、ArrayList、LinkedList、自定义对象、指针或引用，LC 例如 Q155 Q706 Q707
       20. 问题核心/概念：Design/Implement Advanced XXX/Data-Structure，可以考虑以下数据结构的组合使用：数组、ArrayList、（单向或双向）LinkedList、自定义对象、指针或引用、哈希表、红黑树、哈希集、队列、堆/优先队列、栈，LC 例如 Q146 Q208 Q355 Q432
-      21. 问题核心/概念：Same/One Time/Direction Sum/Union 或问题核心/概念：Range Conflict，可以考虑扫描线、堆/优先队列，LC 例如 Q218 Q253 Q759 Q2251
+      21. 问题核心/概念：Same/One Time/Direction Sum/Union 或 Range Conflict，可以考虑扫描线、堆/优先队列，LC 例如 Q218 Q253 Q759 Q2251
       22. 问题核心/概念：Dependency Conflict/Schedule，可以考虑拓扑排序，LC 例如 Q207 Q210
       23. 问题核心/概念：Last/Next Bigger/Smaller，可以考虑单调栈，LC 例如 Q503
-      24. 问题核心/概念：Frequency Count / Ranking，可以考虑哈希表、桶排序、堆/优先队列、排序、自平衡二叉搜索树/红黑树，LC 例如 Q347
+      24. 问题核心/概念：Frequency Count 或 Ranking，可以考虑哈希表、桶排序、堆/优先队列、排序、自平衡二叉搜索树/红黑树，LC 例如 Q347
       25. 问题核心/概念：(Complex) Calculate/Function Implementation，可以考虑分治法、位运算、DP，LC 例如 Q50
       26. 问题核心/概念：Find Path/Connection，输入可以是树节点或图节点或 Matrix/矩阵，可以考虑暴力解/DFS/BFS、回溯法、模拟、DP、并查集，LC 例如 Q62 Q63 Q684
       27. 问题核心/概念：Shape Check，输入可以是 Matrix/矩阵，可以考虑暴力解/DFS/BFS、回溯法、模拟、几何/数学/by数据类型或数据结构或自定义对象以实现、扫描线、并查集，LC 例如 Q200 Q2013 Q391
