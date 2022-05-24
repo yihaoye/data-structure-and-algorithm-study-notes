@@ -53,7 +53,7 @@ Follow-up: Could you find a solution with O(n) time complexity?
 class Solution {
     public long subArrayRanges(int[] nums) {
         /*
-            看题解，单调栈，可以考虑每个元素作为最大值出现在了多少子数组中，以及作为最小值出现在了多少子数组中，然后计算各自的贡献，不同的是最大值是正贡献，最小值是负贡献。https://leetcode-cn.com/problems/sum-of-subarray-ranges/solution/cong-on2-dao-ondan-diao-zhan-ji-suan-mei-o1op/
+            看题解，单调栈，可以考虑每个元素作为最大值出现在了多少子数组中，以及作为最小值出现在了多少子数组中，然后计算各自的贡献，不同的是最大值是正贡献，最小值是负贡献。设以 nums[i] 为最大值的子数组为 nums[l..r]，所以 nums[i] 可以作为最大值出现在 (i−left[i])*(right[i]−i) 个子数组中，这对答案产生的贡献是 (i−left[i])*(right[i]−i)*nums[i]，最小值的做法同理（贡献为负数） - https://leetcode-cn.com/problems/sum-of-subarray-ranges/solution/cong-on2-dao-ondan-diao-zhan-ji-suan-mei-o1op/
             时间复杂度：O(n)，空间复杂度：O(n)
         */
         long res = 0;
