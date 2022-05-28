@@ -48,7 +48,7 @@
       4. 问题核心/概念：Find Median，可以考虑自平衡二叉树/TreeMap、堆/优先队列，LC 例如 Q4 Q295
       5. 问题核心/概念：Number Calculation in XXX/Data-Structure/Data-Type，可以考虑模拟算法+进位符/标记变量、栈、前缀和、差分数组，LC 例如 Q2 Q224 Q227 Q43
       6. 问题核心/概念：Symmetry 或 Palindromic 或 Parentheses，可以考虑栈、双指针、标记变量，LC 例如 Q20 Q131 Q234 Q678
-      7. 问题核心/概念：All Possible Combinations (Count)，可以考虑剪枝+暴力解/递归/迭代、回溯法、DP/记忆化搜索、数学，LC 例如 Q17 Q2266 Q39 Q46 Q55 Q62 Q70
+      7. 问题核心/概念：All Possible Combinations (Count) 或 类爬楼梯问题，可以考虑剪枝+暴力解/递归/迭代、回溯法、DP/记忆化搜索、数学，LC 例如 Q17 Q2266 Q39 Q46 Q55 Q62 Q70
       8. 问题核心/概念：Merge Multiple XXX/Data-Structure，可以考虑模拟、递归、多路归并/最小堆、排序，LC 例如 Q21 Q23 Q56
       9.  问题核心/概念：Find/Search in Sorted/Unsorted XXX/Data-Structure/Data-Type，可以考虑二分搜索、位运算--如果是 Find Digit，LC 例如 Q33 Q34 Q136 Q287 Q240
       10. 问题核心/概念：Regular Expression 或 Match 或 Find Word in XXX，可以考虑 DP、递归、字典树、哈希表，LC 例如 Q10 Q720 Q49
