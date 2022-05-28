@@ -46,13 +46,13 @@
       2. 问题核心/概念：Achieve Task/Target/Requirement can or not 或 Achieve Task/Target/Requirement with Max/Min/Optimal 或 类似包括背包问题或婚配问题，可以考虑贪婪、DP、基于二分图的匈牙利算法、数学、模拟，LC 例如 Q55 Q416
       3. 问题核心/概念：Longest/Maximum Meet-Requirement Substring/Subarray/Sublist/Subset/SubXXX 又称 Optimal Substructure，可以考虑 DP、双指针/滑动窗口，LC 例如 Q3 Q5 Q53 Q152 Q300
       4. 问题核心/概念：Find Median，可以考虑自平衡二叉树/TreeMap、堆/优先队列，LC 例如 Q4 Q295
-      5. 问题核心/概念：Number Calculation in XXX/Data-Structure，可以考虑模拟算法+进位符/标记变量、前缀和，LC 例如 Q2
+      5. 问题核心/概念：Number Calculation in XXX/Data-Structure/Data-Type，可以考虑模拟算法+进位符/标记变量、栈、前缀和、差分数组，LC 例如 Q2 Q224 Q227 Q43
       6. 问题核心/概念：Symmetry 或 Palindromic 或 Parentheses，可以考虑栈、双指针、标记变量，LC 例如 Q20 Q131 Q234 Q678
       7. 问题核心/概念：All Possible Combinations (Count)，可以考虑剪枝+暴力解/递归/迭代、回溯法、DP/记忆化搜索、数学，LC 例如 Q17 Q2266 Q39 Q46 Q55 Q62 Q70
       8. 问题核心/概念：Merge Multiple XXX/Data-Structure，可以考虑模拟、递归、多路归并/最小堆、排序，LC 例如 Q21 Q23 Q56
-      9.  问题核心/概念：Find/Search in Sorted/Unsorted XXX/Data-Structure，可以考虑二分搜索、位运算--如果是 Find Digit，LC 例如 Q33 Q34 Q136 Q287 Q240
+      9.  问题核心/概念：Find/Search in Sorted/Unsorted XXX/Data-Structure/Data-Type，可以考虑二分搜索、位运算--如果是 Find Digit，LC 例如 Q33 Q34 Q136 Q287 Q240
       10. 问题核心/概念：Regular Expression 或 Match 或 Find Word in XXX，可以考虑 DP、递归、字典树、哈希表，LC 例如 Q10 Q720 Q49
-      11. 问题核心/概念：(Fixed)Range/Last/Next (Optimal/Max/Min/Bigger/Smaller) Value/Area/Sum/DiffSum，输入可以是树节点或线性表或 Matrix/矩阵，可以考虑双指针/滑动窗口和贪婪、DP、一维前缀和/二维前缀和、递归、单调栈，LC 例如 Q11 Q221 Q42 Q304 Q124 Q437 Q239 Q2104 Q503
+      11. 问题核心/概念：(Fixed)Range/Last/Next (Optimal/Max/Min/Bigger/Smaller) Value/Area/Sum/DiffSum，输入可以是树节点或线性表或 Matrix/矩阵，可以考虑双指针/滑动窗口和贪婪、DP、一维前缀和/二维前缀和、差分数组、递归、单调栈，LC 例如 Q11 Q221 Q42 Q304 Q124 Q437 Q239 Q2104 Q503
       12. 问题核心/概念：Stated/StateTransition/Ordered Optimal/Max/Min Calculation/Sum/DiffSum，可以考虑 DP，LC 例如 Q121 Q123 -- 买卖股票系列  Q198 Q213 Q337 -- 打家劫舍系列
       13. 问题核心/概念：Rotate/Reverse/Swap Operation，输入可以是树节点或线性表或 Matrix/矩阵，可以考虑模拟算法/遍历+标记变量、排序，LC 例如 Q48 Q189 Q226 Q206
       14. 问题核心/概念：String/Word Operation/Process/Transfer，可以考虑 DP、剪枝+暴力解/递归，LC 例如 Q72
