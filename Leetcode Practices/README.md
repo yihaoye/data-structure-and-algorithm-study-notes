@@ -379,7 +379,7 @@
 - [ ] 71	Simplify Path		
 - [ ] 388	Longest Absolute File Path		
 - [x] 394	Decode String		
-- [ ] 224	Basic Calculator		
+- [x] 224	Basic Calculator		
 - [ ] 227	Basic Calculator II		
 - [ ] 385	Mini Parser		
 - [ ] 84	Largest Rectangle in Histogram		
@@ -611,7 +611,7 @@
 - [x] 219	Contains Duplicate II		
 - [x] 220	Contains Duplicate III		
 - [x] 221	Maximal Square		
-- [ ] 224	Basic Calculator		
+- [x] 224	Basic Calculator		
 - [ ] 225	Implement Stack using Queues		
 - [x] 226	Invert Binary Tree		
 - [ ] 227	Basic Calculator II		
