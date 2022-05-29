@@ -45,3 +45,23 @@ class Solution {
         return dp[n-1];
     }
 }
+
+
+
+// My Solution (Improved):
+class Solution {
+    List<Integer> dp = new ArrayList<>(); // 使用 List 使得同个对象多次调用但输入不同 n 时可复用之前的 dp 数据。风险：数据量较大时，可能堆上超空间，integer 占多少比特？10^6 会比较大，通常内存不能超过 1 个 GB
+    
+    public int climbStairs(int n) {
+        if (n == 0) return 1;
+        // dp.get(i) -> how many step from 0 to i
+        if (dp.size() > n) return dp.get(n);
+        if (dp.size() <= 0) dp.add(1);
+        if (dp.size() <= 1) dp.add(1);
+        for (int i=2; i<=n; i++) {
+            dp.add(dp.get(i-1) + dp.get(i-2));
+        }
+        
+        return dp.get(n);
+    }
+}
