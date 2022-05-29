@@ -46,7 +46,7 @@
       2. 问题核心/概念：Achieve Task/Target/Requirement can or not 或 Achieve Task/Target/Requirement with Max/Min/Optimal 或 类似包括背包问题或婚配问题，可以考虑贪婪、DP、基于二分图的匈牙利算法、数学、模拟，LC 例如 Q55 Q416
       3. 问题核心/概念：Longest/Maximum Meet-Requirement Substring/Subarray/Sublist/Subset/SubXXX 又称 Optimal Substructure，可以考虑 DP、双指针/滑动窗口，LC 例如 Q3 Q5 Q53 Q152 Q300
       4. 问题核心/概念：Find Median，可以考虑自平衡二叉树/TreeMap、堆/优先队列，LC 例如 Q4 Q295
-      5. 问题核心/概念：Number Calculation in XXX/Data-Structure/Data-Type，可以考虑模拟算法+进位符/标记变量、栈、前缀和、差分数组，LC 例如 Q2 Q43 Q224 Q227 -- 基本计算器系列，可使用通用模版解
+      5. 问题核心/概念：Number Calculation in XXX/Data-Structure/Data-Type，可以考虑模拟算法+进位符/标记变量、栈、前缀和、差分数组，LC 例如 Q2 Q43 Q224 Q227 -- 基本计算器系列，可使用[通用模版解](Leetcode%20Practices/algorithms/hard/224%20Basic%20Calculator.java)
       6. 问题核心/概念：Symmetry 或 Palindromic 或 Parentheses，可以考虑栈、双指针、标记变量，LC 例如 Q20 Q131 Q234 Q678
       7. 问题核心/概念：All Possible Combinations (Count) 或 类爬楼梯问题，可以考虑剪枝+暴力解/递归/迭代、回溯法、DP/记忆化搜索、数学，LC 例如 Q17 Q2266 Q39 Q46 Q55 Q62 Q70
       8. 问题核心/概念：Merge Multiple XXX/Data-Structure，可以考虑模拟、递归、多路归并/最小堆、排序，LC 例如 Q21 Q23 Q56
