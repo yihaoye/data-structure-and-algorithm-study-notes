@@ -380,7 +380,7 @@
 - [ ] 388	Longest Absolute File Path		
 - [x] 394	Decode String		
 - [x] 224	Basic Calculator		
-- [ ] 227	Basic Calculator II		
+- [x] 227	Basic Calculator II		
 - [ ] 385	Mini Parser		
 - [ ] 84	Largest Rectangle in Histogram		
 ### PriorityQueue			
@@ -614,7 +614,7 @@
 - [x] 224	Basic Calculator		
 - [ ] 225	Implement Stack using Queues		
 - [x] 226	Invert Binary Tree		
-- [ ] 227	Basic Calculator II		
+- [x] 227	Basic Calculator II		
 - [ ] 228	Summary Ranges		
 - [x] 230	Kth Smallest Element in a BST		
 - [x] 231	Power of Two		
