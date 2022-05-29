@@ -91,9 +91,13 @@
 7. 编码七，题解中的一些灵活小技巧，比如在某些情况下可以对 char 或 string 等非数学数据类型直接互相进行 +/- 操作，可以减少代码里一些繁琐的逻辑、表达、判断等等。
 8. 编码八，尽量用工具类以省事（尤其在处理一些复杂组合的非基础算法题时），比如当前集合、容器（List、Set、Map）的内置方法，又比如 `int index = Collections.binarySearch(list, key);` [更多详见](./Tool%20Sets/Collections.java)。  
 
-#### 讲解、题解时
+#### 面试、讲解、题解时
 1. 注意有些专业术语的英语要表述正确：比如根号 M - square root of M 或 2th root of M； M^N - M to the power of N
 2. 最好题解过程中，在面板上记录并模拟每一步的处理数据的动态、状态，因为比较直观和易懂甚至有助于发现思考时的盲点
+3. 沟通尽量像日常沟通，尽量不冷场有助于面试官记录、有想法时可以直接问、与面试官互动 - 比如目前思路是否一个好的方向
+4. 尽量编码清晰、最佳代码风格规范、编码速度尽量快，注重边界处理（预判），尽量有注释
+5. 是否给出正确的解法，是否给出较优的解法，以及对 follow up 的预判
+6. 可以开头问有几道题（比如有没有 follow up），简单题开始写代码后可以代码为主解释为辅（面试官可能默认只是热身、更多是期望快速解题，所以最好不要浪费时间）
 
 #### 预先准备
 1. 预备一，熟用熟背常用模版比如[反转链表 | Leetcode Q92](./Leetcode%20Practices/algorithms/medium/92%20Reverse%20Linked%20List%20II.java)、[前缀树(字典树) | Leetcode 208](./Leetcode%20Practices/algorithms/medium/208%20Implement%20Trie%20(Prefix%20Tree).java)、[并查集与联合查找 | Leetcode 200 UF 解法](./Leetcode%20Practices/algorithms/medium/200%20Number%20of%20Islands.java)、[树状数组 | Leetcode 307](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/BinaryIndexedTree(FenwickTree)/README.md#树状数组实现)、[滑动窗口](./Common%20Algorithm%20and%20Theory/双指针法与滑动窗口算法.md)、[快慢指针 | Leetcode 142](./Leetcode%20Practices/algorithms/medium/142%20Linked%20List%20Cycle%20II.java)、[多路归并 | Leetcode 23](./Leetcode%20Practices/algorithms/hard/23%20Merge%20k%20Sorted%20Lists.java)、[单调栈 | Leetcode 503](./Common%20Algorithm%20and%20Theory/单调栈.md)、[树复原 | Leetcode 105 106](./Leetcode%20Practices/algorithms/medium/105%20Construct%20Binary%20Tree%20from%20Preorder%20and%20Inorder%20Traversal.java)、[穷举递增子序列 | Leetcode 491](./Leetcode%20Practices/algorithms/medium/491%20Increasing%20Subsequences.java)、[二分搜索 | Leetcode 34 etc](./Common%20Algorithm%20and%20Theory/二分搜索.md)、[翻转树 | Leetcode 156 226](./Leetcode%20Practices/algorithms/medium/156%20Binary%20Tree%20Upside%20Down.java)，[待补充...]() 等等。  
