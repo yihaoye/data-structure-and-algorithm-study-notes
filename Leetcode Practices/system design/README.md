@@ -951,7 +951,9 @@ Dropbox 异步任务框架 ATF：
 
 <details>
 <summary>设计 Amazon（电商/秒杀网站）</summary>
+
 转载自：https://osjobs.net/system/posts/spike-system/  
+其他参考资料：https://www.youtube.com/watch?v=2BWr0fsDSs0  
 
 现在的电商系统功能繁多，除了最基本的购买商品功能，还有物流跟踪，订单管理，社区交互等功能。不过面试中关注的主要是购买商品功能，这里将其他次要功能归类为其他业务功能，购买商品流程如下：  
 ![](./购买商品.svg)  
