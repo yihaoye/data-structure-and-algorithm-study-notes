@@ -383,6 +383,7 @@
 - [x] 227	Basic Calculator II		
 - [ ] 385	Mini Parser		
 - [ ] 84	Largest Rectangle in Histogram		
+- [x] 402   Remove K Digits 
 ### PriorityQueue			
 - [x] 215	Kth Largest Element in an Array		
 - [x] 347	Top K Frequent Elements		
