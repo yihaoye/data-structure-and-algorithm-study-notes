@@ -33,7 +33,7 @@ Constraints:
 class Solution {
     public int totalSteps(int[] nums) {
         /*
-            https://leetcode.com/problems/steps-to-make-array-non-decreasing/discuss/2085864/JavaC%2B%2BPython-Stack-%2B-DP-%2B-Explanation
+            单调栈 + DP - https://leetcode.com/problems/steps-to-make-array-non-decreasing/discuss/2085864/JavaC%2B%2BPython-Stack-%2B-DP-%2B-Explanation
             dp[i] means the number of element A[i] need to eat.
             Iterative input array A reversely,
             If A[i] is bigger than the head element A[j] of stack,

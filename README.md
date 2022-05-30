@@ -33,7 +33,7 @@
   
 #### 首先看完题目先不要急着做，进行下述几个思考阶段先
 1. 思考一（重要），发生在面试的最开始、影响整场面试体验，先理清题目是关于哪（几）个 Topic，比如什么类型数据结构、算法相关（如队列、堆栈、树、字符串、布尔或二进制、数组、图，如回溯法、动态规划、贪婪算法、二分搜索、二进制运算、迭代递归、模拟、排序、遍历、前缀和与差分、单调栈、并查集、数学、设计），通常若题目没有明显处理算法暗示或思绪提供时则可以考虑暴力破解（如遍历、回溯法、递归循环穷举法或 DFS、BFS 等），又或通过题目性能要求推测考点算法 - 比如要求性能达到 logN 时即很可能要使用二分搜索算法。（记住递归可以顺序也可以反序 - 如面试金典 9.2-2.5 进阶）。通常只要推测出 Tag、Topic 就可极大降低做题的难度。
-   1. 套路：根据输入数据（量）判断解题方向
+   1. 套路：根据输入数据（量）以及题解限制条件（时空复杂度要求）判断解题方向
       1. 输入为一维数组时，可以考虑暴力解（DFS、BFS 以及附加记忆化搜索）、动态规划、双指针、滑动窗口、排序、二分搜索、二进制运算、前缀和与差分、哈希表、贪心、KMP。注意条件：元素是否唯一、是否有序、数组长度。
       2. 输入为 Matrix/矩阵、二维（比如数组）时，可以考虑暴力解（DFS、BFS 以及附加记忆化搜索）、回溯法、动态规划、并查集等等。注意条件：值的范围、是否可以修改矩阵、矩阵大小。LC 例如 Q200
       3. 输入为字符串时，可以考虑暴力解/递归、双指针、滑动窗口、栈、动态规划、贪心、KMP。注意条件：字符集范围、字符串长度。LC 例如 Q394 Q438 Q763
@@ -42,12 +42,12 @@
       6. 输入为树（根节点）时，可以考虑暴力解（DFS - 二叉搜索树可以重点考虑中序遍历；BFS）、递归、栈、前驱节点后继节点（若为二叉搜索树）。注意条件：是否是特殊类型的二叉树、是否平衡、节点数量。LC 例如 Q98 Q230
       7. 输入为图（出发节点）时，可以考虑暴力解（DFS、BFS）、并查集、Dijkstra。注意条件：是否有环、是否是简单图、节点值的范围、节点数量。
       8. 输入量较大时，递归、DFS 可能行不通，因为可能爆栈，此时可以考虑迭代、 BFS 或动态规划等等。
-   2. 套路：根据描述中的问题核心/概念判断解题方向（*需注意，有些题可能看似符合以下多个 case，但实际上可能只是其中一个：比如在偶数 size 的递增螺旋型 matrix 中从最左上角/最小数出发且每次只能走相邻更大数，问是否能恰好 K 步到达中心/最大数 - 看似同时符合 Achieve Task can or not 和 Find Path，但实际是 Achieve Task。例题链接：[Spiraling Into Control](https://codingcompetitions.withgoogle.com/codejam/round/00000000008778ec)*）
+   2. 套路：根据描述中的问题核心/概念判断解题方向（*需注意，有些题可能看似符合以下多个 case，但实际上可能只是其中一个：比如在偶数 size 的递增螺旋型 matrix 中从最左上角/最小数出发且每次只能走相邻更大数，问是否能恰好 K 步到达中心/最大数 - 看似同时符合 Achieve Task Can-or-Not 和 Find Path，但实际是 Achieve Task - 例题链接：[Spiraling Into Control](https://codingcompetitions.withgoogle.com/codejam/round/00000000008778ec)。也有些题是确实同时符合多个 case，题解也是由这多个 case 的方法组合起来的，比如 [LC Q2289](./Leetcode%20Practices/algorithms/medium/2289%20Steps%20to%20Make%20Array%20Non-decreasing.java) 就是同时符合 Achieve Task/Target/Requirement Count 和有序，所以其题解是 DP + 单调栈*）
       1. 问题核心/概念：Add Up to Target - Closer-or-Equals 又称 nSum 问题，可以考虑哈希表、排序、双指针、回溯--要注意时间复杂度要求场景，LC--Leetcode 例如 Q1 Q15 Q39
-      2. 问题核心/概念：Achieve Task/Target/Requirement can or not 或 Achieve Task/Target/Requirement with Max/Min/Optimal 或 类似包括背包问题或婚配问题，可以考虑贪婪、DP、基于二分图的匈牙利算法、数学、模拟，LC 例如 Q55 Q416
+      2. 问题核心/概念：Achieve Task/Target/Requirement Can-or-Not/Count 或 Achieve Task/Target/Requirement with Max/Min/Optimal 或 类似包括背包问题或婚配问题，可以考虑贪婪、DP、基于二分图的匈牙利算法、数学、模拟，LC 例如 Q55 Q416
       3. 问题核心/概念：Longest/Maximum Meet-Requirement Substring/Subarray/Sublist/Subset/SubXXX 又称 Optimal Substructure，可以考虑 DP、双指针/滑动窗口，LC 例如 Q3 Q5 Q53 Q152 Q300
       4. 问题核心/概念：Find Median，可以考虑自平衡二叉树/TreeMap、堆/优先队列，LC 例如 Q4 Q295
-      5. 问题核心/概念：Number Calculation in XXX/Data-Structure/Data-Type，可以考虑模拟算法+进位符/标记变量、栈、前缀和、差分数组，LC 例如 Q2 Q43 Q224 Q227 -- 基本计算器系列，可使用[通用模版解](Leetcode%20Practices/algorithms/hard/224%20Basic%20Calculator.java)
+      5. 问题核心/概念：Number Calculation in XXX/Data-Structure/Data-Type，可以考虑模拟算法+进位符/标记变量、栈、前缀和、差分数组，LC 例如 Q2 Q43 Q224 Q227 -- 基本计算器系列，可使用[通用模版解](Leetcode%20Practices/algorithms/hard/224%20Basic%20Calculator.java) Q2288
       6. 问题核心/概念：Symmetry 或 Palindromic 或 Parentheses，可以考虑栈、双指针、标记变量，LC 例如 Q20 Q131 Q234 Q678
       7. 问题核心/概念：All Possible Combinations (Count) 或 类爬楼梯问题，可以考虑剪枝+暴力解/递归/迭代、回溯法、DP/记忆化搜索、数学，LC 例如 Q17 Q2266 Q39 Q46 Q55 Q62 Q70
       8. 问题核心/概念：Merge Multiple XXX/Data-Structure，可以考虑模拟、递归、多路归并/最小堆、排序，LC 例如 Q21 Q23 Q56
@@ -70,6 +70,7 @@
       25. 问题核心/概念：Find Path/Connection，输入可以是树节点或图节点或 Matrix/矩阵，可以考虑暴力解/DFS/BFS、回溯法、模拟、DP、并查集，LC 例如 Q62 Q63 Q684
       26. 问题核心/概念：Shape Check，输入可以是 Matrix/矩阵，可以考虑暴力解/DFS/BFS、回溯法、模拟、几何/数学/by数据类型或数据结构或自定义对象以实现、扫描线、并查集，LC 例如 Q200 Q2013 Q391
       27. 问题核心/概念：(Range) Update and Range Query/Calculation，可以考虑树状数组、线段树，LC 例如 Q307
+      28. 问题核心/概念：有序，可以考虑排序、单调栈、堆/优先队列、自平衡二叉搜索树/红黑树、二分搜索
 2. 思考二，是否需要做一些[预处理](./Tool%20Sets/)，如排序，又或者先做一些额外预处理比如补零数位以及遍历至尾，在从尾部往回处理（如面试金典 9.2-2.5 进阶）。这种情况往往出现在题目明显有违常规思路时，即总是有些条件、可能、边缘情况阻碍常规思路，意味着出题者可能是故意增加了一些难度需要解题者预处理。这些预处理工作即使看起来复杂且一开始不确定是否对解题有帮助也不妨试试，尽量按常规系统性方法解题（即上面所有 Leetcode 内的解题法分类如递归、动态规划等等，经验足够的话大的解题类方向通常一开始就可以定下来），可以分割困难，但不要苦思奇法。
 3. 思考三，当题目已暗示可能要进行大规模输入检测题解效率时，可以考虑进行一些预处理、动态规划思路，例子如 Leetcode Q244。
 4. 思考四，(草稿时)引入一些[数学工具、模型](./Tool%20Sets/Math.java) - 如[状态机](./Tool%20Sets/FSM(DFA).java)等等有助于理清思路与解题(例子如 Leetcode Q309，KMP 算法实现)，辅助的数学思想还可以包括且不限于加减乘除(商、余数)、开方、指数、对数、微积分(例如 Leetcode Q367 牛顿法)、素数、公约数、公倍数、概率、阶乘、数列、坐标、几何函数(sin、cos、tan)、[矩阵](./Tool%20Sets/Math.java)(例如 Leetcode Q311)、不等式、多项式、进位转换等等。
