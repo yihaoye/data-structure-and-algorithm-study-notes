@@ -70,7 +70,7 @@ lowbit 怎么算？如果一位一位验证的话，会形成额外的时间开�
 [树状数组代码实现 2](../../../Leetcode%20Practices/algorithms/medium/307%20Range%20Sum%20Query%20-%20Mutable.java)  
   
   
-树状数组和线段树相似，但还有一些区别：树状数组能有的操作，线段树一定有；线段树有的操作，树状数组不一定有。  
+树状数组和[线段树](./../SegmentTree/)相似，但还有一些区别：树状数组能有的操作，线段树一定有；线段树有的操作，树状数组不一定有。  
   
 ### 参考
 https://zh.wikipedia.org/wiki/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84  
