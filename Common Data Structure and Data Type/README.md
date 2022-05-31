@@ -47,8 +47,9 @@
 - [树 | Tree]()
   - [二叉搜索树 | Binary Search Tree]() (搜索 O(logN) - O(N)，插入/删除节点 O(1))
   - [平衡二叉搜索树 | Self-Balanced Binary Search Tree]()
-    - [AVL树 | AVL Tree](./Data%20Structure%20Implementation/AVL%20Tree/) (搜索 O(logN)，插入/删除节点 O(logN))
+    - [AVL树 | AVL Tree](./Data%20Structure%20Implementation/AVLTree/) (搜索 O(logN)，插入/删除节点 O(logN))
     - [红黑树 | Red-Black Tree]() (搜索 O(logN)，插入/删除节点 O(logN))
+    - [线段树 | Segment Tree](./Data%20Structure%20Implementation/SegmentTree/) (区间查询 O(logN + K)，更新 O(logN)，构建 O(N) - K is the number of reported segments)
   - [平衡搜索树 | Self-Balanced Search Tree]()
     - [B树 | B Tree]()
     - [B+树 | B Tree]()
@@ -58,7 +59,7 @@
 - [图 | Graph]()
   - [有向图 | Directed Graph]()
   - [无向图 | Undirected Graph]()
-    - [二分图 | Bipartite Graph](./Data%20Structure%20Implementation/Bipartite%20Graph/)
+    - [二分图 | Bipartite Graph](./Data%20Structure%20Implementation/BipartiteGraph/)
   - [加权图（有向或无向） | Weighted Graph]()
   
 以上有些数据结构可能只有 Java 提供了官方实现 [more](https://www.zhihu.com/question/325814788) ，以上总结未完待续...  
