@@ -10,6 +10,8 @@ https://oi-wiki.org/ds/seg/
 ## 原理与实现
 ![](./Segment%20Tree%201.png)  
 ![](./Segment%20Tree%202.png)  
+![](./Segment%20Tree%203.png)  
+![](./Segment%20Tree%204.png)  
   
 与数状数组类似但是比数状数组直观且强大  
 [线段树 Java 实现代码](./SegmentTree.java)  
