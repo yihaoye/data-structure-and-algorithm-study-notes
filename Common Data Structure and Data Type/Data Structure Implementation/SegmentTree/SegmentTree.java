@@ -2,6 +2,7 @@ class SegmentTree {
     /*
         Author: Huahua - https://zxi.mytechroad.com/blog/sp/segment-tree-sp14/
         时间复杂度 O(logN)，空间复杂度 O(N)
+        这里代码实现 val 是 sum 值，可以根据情况需要改成 min、max、其他计算值/最值等等
     */
     private int[] arr;
     private SegmentTreeNode root;
