@@ -3,6 +3,8 @@
 参考：  
 https://www.youtube.com/watch?v=rYBtViWXYeI  
 https://zxi.mytechroad.com/blog/sp/segment-tree-sp14/  
+https://zhuanlan.zhihu.com/p/106118909  
+https://zhuanlan.zhihu.com/p/174810030  
 https://zhuanlan.zhihu.com/p/34150142  
 https://cp-algorithms.com/data_structures/segment_tree.html  
 https://oi-wiki.org/ds/seg/  
@@ -22,44 +24,25 @@ https://oi-wiki.org/ds/seg/
 [线段树 Java 实现代码](./SegmentTree.java)  
   
 ### 线段树的区间更新
-上述是未优化区间更新操作的线段树实现，思考一下：区间修改，假设修改的值有 m 个，直接想到的一个办法就是执行 m 次单点更新，这时候的复杂度为 O(mlogn) 这不是所想看到的，假设所有的元素都更新，那么还不如直接重新构建整颗线段树。所以在这里用了一个优化的思想，就是延迟更新，延迟更新就是，更新的时候，不进行操作，只是标记一下这个点需要更新，在真正使用的时候才去更新，这在进行一些数据库的业务的时候，也是很重要的一个思想。在封装节点的时候，有一个成员变量前面一直没有使用，那就是 mark，现在就是使用这个成员变量的时候了。在进行区间修改的时候，把这个组成这个待修改区间的所有子区间都标记上。查找组成当前待修改区间的所有子区间的方法和查询方法是一样的，也是分三种情况。  
-为防止多次区间修改，且修改之后没有查询而造成的父子节点 mark 变量重叠错误。必须保证每时每刻被标记的节点都组成一个或多个无重叠的区间，这样就需要在添加一个操作，就是在对某个节点的子节点进行标记的时候，把本节点的已经被标记过的部分扩展到子节点中，并把本节点的权值更新为其子节点的权值的求值（最值、计算值等等），然后去除本节点的标记。  
+上述是未优化区间更新操作的线段树实现，思考一下：区间修改，假设修改的值有 m 个，直接想到的一个办法就是执行 m 次单点更新，即朴素的想法是用递归的方式一层层修改（类似于线段树的建立），但这样的时间复杂度比较高为 O(mlogn) 这不是所想看到的，假设所有的元素都更新，那么还不如直接重新构建整颗线段树。所以在这里用了一个优化的思想，就是延迟更新，延迟更新就是，更新的时候，不进行操作，只是标记一下这个点需要更新，在真正使用的时候才去更新，这在进行一些数据库的业务的时候，也是很重要的一个思想。这个标记就是懒标记（或延迟标记），懒标记是线段树的精髓所在，使用懒标记后（后面示例代码里的成员变量 mark），对于那些正好是线段树节点的区间，不继续递归下去，而是打上一个标记并更新节点值，将来要用到它的子区间的时候，再向下传递。在进行区间修改的时候，分 3 种情况：  
+1. 当前区间（代表区间的节点）与目标区间没有交集，这时直接结束递归。
+2. 当前区间（代表区间的节点）被包括在目标区间里，这时可以更新当前区间节点，别忘了乘上区间长度（比如该区间节点都加上 c，区间有 m 个节点，则该区间节点 val += c*m -- 这个例子的求值逻辑是求和如果线段树是其他求值逻辑则换成其他计算公式），然后打上懒标记（mark += d，这个标记表示`该区间上每一个点都要加上 d`，因为原来可能存在标记，所以是 += 而不是 =。叶子节点可以不打标记，因为不会再向下传递了）
+3. 当前区间（代表区间的节点）与目标区间相交，但不被完全包含于其中，这时把当前区间一分为二，进行以下处理：
+    1. 这里有个问题，当多次区间修改，且修改之后没有查询且两次修改的区间有交集但不被完全包含时，会造成的父子节点 mark 变量重叠错误。所以必须保证每时每刻线段树内被标记（懒标记不为零）的节点们都只能组成一个或多个无重叠的区间，这样就需要添加一个操作，如果当前区间（代表区间的节点）存在懒标记，要先把懒标记传递给子节点（如果求值逻辑是求和，则注意也是 +=，因为子节点原来可能存在懒标记不为零，这些子节点的值也需要相应的更新 += 传递的懒标记值乘以子节点区间长度）（这个过程并不是递归的，只往下传递一层，所以叫懒标记，以后要用再才继续传递），然后清零本节点的标记。
+    2. 传递完标记后，再递归地去处理当前区间（代表区间的节点）的左右两个子节点（即递归重复区间修改的 3 种情况直到每次递归遇到 1、2 情况而停止）。
+  
+**优化后线段树的区间查询**  
+另外区间查询时也与区间修改完全类似分 3 种情况  
+遇到情况 3 时，如果当前区间（代表区间的节点）存在懒标记，也要先把懒标记传递给子节点，完全相同的 pushDown 方法。  
+  
 ```java
 private void pushDown(int index) { // 把当前节点的标志值传给子节点
     Node node = nodes[index]; // 获取该下标的节点
-    if (node.mark!=0) {
-        nodes[(index << 1) + 1].addMark(node.mark); // 更新左子树的标志
-        nodes[(index << 1) + 2].addMark(node.mark); // 更新右子树的标志
-        nodes[(index << 1) + 1].data += node.mark; // 左子树的值加上标志值
-        nodes[(index << 1) + 2].data += node.mark; // 右子树的值加上标志值
-        node.clearMark(); // 清除当前节点的标志值
-    }
-}
-
-// 然后更新操作的代码也要改
-public void update(int index, int start, int end, int data) {
-    Node node = nodes[index]; // 获取当前的节点
-    if (node.start>end || node.end<start) return; // 如果当前的节点代表的区间和待更新的区间毫无交集，则返回不处理。
-    if (node.start>=start && node.end<=end) { // 如果当前的区间被包含在待查询的区间之内，则当前区间需要被标记上
-        node.data += data;
-        node.addMark(data);
-        return;
-    }
-    pushDown(index); //注意这里加了一句 在更新左右子树之前进行扩展操作
-    update((index<<1)+1, start, end, data);
-    update((index<<1)+2, start, end, data);
-    node.data = Math.min(nodes[(index<<1)+1].data, nodes[(index<<1)+2].data);
-}
-```  
-
-延迟更新，那么具体什么时候更新呢，就是在查询的时候。在查询的时候更新，查询操作用到什么就更新什么，这就是延迟更新。  
-```java
-public int query(int index,int start,int end) {
-    Node node = nodes[index];
-    if (node.start>end || node.end<start) return Integer.MAX_VALUE; // 当前区间和待查询区间没有交集，那么返回一个极大值
-    if (node.start>=start && node.end<=end) return node.data; // 如果当前的区间被包含在待查询的区间内则返回当前区间的最小值
-    pushDown(index); // 注意加了这一句 在返回左右子树的最小值之前，进行扩展操作
-    return Math.min(query((index<<1)+1,start,end), query((index<<1)+2,start,end)); // 递归查询左子树和右子树
+    nodes[2 * index].addMark(node.mark); // 更新左子树的标志
+    nodes[2 * index + 1].addMark(node.mark); // 更新右子树的标志
+    nodes[2 * index].data += node.mark * (nodes[2 * index].end - nodes[2 * index].start + 1); // 左子树的值加上标志值乘以子节点区间长度
+    nodes[2 * index + 1].data += node.mark * (nodes[2 * index + 1].end - nodes[2 * index + 1].start + 1); // 右子树的值加上标志值乘以子节点区间长度
+    node.clearMark(); // 清除当前节点的标志值
 }
 ```  
   
