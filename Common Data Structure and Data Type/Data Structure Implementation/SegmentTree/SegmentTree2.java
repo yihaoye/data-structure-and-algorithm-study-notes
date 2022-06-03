@@ -1,7 +1,7 @@
 // https://zhuanlan.zhihu.com/p/174810030  
 
 // 处理器 - 求值方程、更新方程
-// 包含 merge() pushDown() update()，注意 pushDown() 基于 merge() 和 update() 逻辑。而 update() 除了调用了 merge() pushDown()，其计算逻辑也基于 merge() 逻辑
+// 包含 merge() pushDown() update()，注意 pushDown() 逻辑基于 merge() 和 update() 逻辑。而 update() 除了调用了 merge() pushDown()，其计算逻辑也基于 merge() 逻辑
 public interface Handler<E> {
     // a 表示左区间的统计值/求值，b 表示有区间的统计值/求值
     // 表示如何合并两个区间的统计值，返回整个 [左区间+右区间] 的统计值/求值
@@ -65,7 +65,7 @@ public class SegmentTree<E> {
         tree[treeIndex] = handler.merge(tree[leftTreeIndex], tree[rightTreeIndex]);
     }
 
-    // 查询区间，返回区间 [queryL, queryR] 的统计值/求值
+    // 查询区间，返回区间 [queryL, queryR] 的统计值/求值。查询单点时只需使得 queryL == queryR，这里移除了之前的根据索引获取数据方法，因为需要层层遍历线段树完成 pushDown 否则直接从 data 中读是错误的
     public E query(int queryL, int queryR) {
         // 首先进行边界检查
         if (queryL < 0 || queryL > data.length || queryR < 0 || queryR > data.length || queryL > queryR) {
@@ -76,9 +76,8 @@ public class SegmentTree<E> {
 
     // 在以 treeIndex 为根的线段树中 [l, r] 的范围里，搜索区间 [queryL, queryR]
     private E query(int treeIndex, int l, int r, int queryL, int queryR) {
-        if (l == queryL && r == queryR) return tree[treeIndex];
-
         if (marks[treeIndex] != null) handler.pushDown(tree, marks, data, treeIndex, l, r);
+        if (l == queryL && r == queryR) return tree[treeIndex];
         int mid = l + (r - l) / 2;
         int leftTreeIndex = leftChild(treeIndex);
         int rightTreeIndex = rightChild(treeIndex);
@@ -136,7 +135,7 @@ public class Main {
                 if (l > r) return;
 
                 if (l == r) {
-                    data[l] = marks[treeIndex];
+                    data[l] = tree[treeIndex];
                 } else {
                     int leftTreeIndex = 2 * treeIndex + 1;
                     int rightTreeIndex = 2 * treeIndex + 2;
@@ -187,7 +186,7 @@ public class Main {
                 if (l > r) return;
 
                 if (l == r) {
-                    data[l] += marks[treeIndex];
+                    data[l] = tree[treeIndex];
                 } else {
                     int leftTreeIndex = 2 * treeIndex + 1;
                     int rightTreeIndex = 2 * treeIndex + 2;
