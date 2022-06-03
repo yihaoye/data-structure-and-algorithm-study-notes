@@ -57,7 +57,7 @@ private void pushDown(int index) { // 把当前节点的标志值传给子节点
   
 ### 进阶版实现
 首先需要两个数组，其中 data 存放原来的数据，tree 就是存放线段树节点。如果要实现懒更新，还需要另一个懒标记数组 marks。  
-基本的 API 有 getSize()：返回数组元素个数；get(int index)：根据索引获取数据。  
+基本的 API 有 getSize()：返回数组元素个数；query(int queryL, int queryR)：区间查询；update(int updateL, int updateR, E val)：区间更新。  
 其中每个元素使用泛型 E 表示，这是为了考虑可扩展性：如果数组元素不是数字，而是自定义的类，那么使用泛型就是比较好的选择。  
 
 [进阶版线段树 Java 实现代码](./SegmentTree2.java)  
