@@ -216,6 +216,7 @@ public class Main {
                 tree[treeIndex] = merge(tree[leftTreeIndex], tree[rightTreeIndex]);
             }
         });
+        
         // 查询区间 [2,5] 的和
         System.out.println(segTree.query(4, 7));
     }
