@@ -1,14 +1,31 @@
-// https://zhuanlan.zhihu.com/p/174810030
+// https://zhuanlan.zhihu.com/p/174810030  
+
+// 处理器 - 求值方程、更新方程
+// 包含 merge() pushDown() update()，注意 pushDown() 基于 merge() 和 update() 逻辑。而 update() 除了调用了 merge() pushDown()，其计算逻辑也基于 merge() 逻辑
+public interface Handler<E> {
+    // a 表示左区间的统计值/求值，b 表示有区间的统计值/求值
+    // 表示如何合并两个区间的统计值，返回整个 [左区间+右区间] 的统计值/求值
+    E merge(E a, E b);
+
+    // 对懒标记进行 pushDown，需要定义如何对
+    void pushDown(E[] tree, E[] data, E[] marks, int treeIndex, int l, int r);
+
+    // 对区间 [updateL, updateR] 进行更新，
+    // 可以是对区间所有元素直接赋值，也可以是区间元素均根据给定 val 重新计算（自增、自减、自乘等等）
+    void update(E[] tree, E[] data, E[] marks, int treeIndex, int l, int r, int updateL, int updateR, E val);
+}
+
 public class SegmentTree<E> {
-    private E[] tree; // 线段树 - nodes，存的是 val
+    private E[] tree; // 线段树 - SegmentTreeNodes，存的是 val
     private E[] data; // 数据
     private E[] marks; // 每个树节点的懒标记
-    private Merger<E> merger; // 融合器 - 求值方程
+    private Handler<E> handler; // 处理器 - 求值方程、更新方程
 
-    public SegmentTree(E[] arr, Merger<E> merger) {
-        this.merger = merger;
+    public SegmentTree(E[] arr, Handler<E> handler) {
+        this.handler = handler;
         data = (E[]) new Object[arr.length];
         tree = (E[]) new Object[arr.length * 4]; // 大小为 4 * n
+        marks = (E[]) new Object[arr.length * 4];
         for (int i = 0; i < arr.length; i++) data[i] = arr[i];
         buildSegmentTree(0, 0, data.length - 1); // 构建线段树
     }
@@ -18,18 +35,12 @@ public class SegmentTree<E> {
         return data.length;
     }
 
-    // 根据索引获取数据
-    public E get(int index) {
-        if (index < 0 || index > data.length) throw new IllegalArgumentException("Index is illegal");
-        return data[index];
-    }
-
-    //根据一个节点的索引 index，返回这个节点的左孩子的索引
+    // 根据一个节点的索引 index，返回这个节点的左孩子的索引
     private int leftChild(int index) {
         return 2 * index + 1;
     }
 
-    //根据一个节点的索引 index，返回这个节点的右孩子的索引
+    // 根据一个节点的索引 index，返回这个节点的右孩子的索引
     private int rightChild(int index) {
         return 2 * index + 2;
     }
@@ -51,10 +62,10 @@ public class SegmentTree<E> {
         // 求（右孩子）右区间的统计值/求值
         buildSegmentTree(rightTreeIndex, mid + 1, r);
         // 求当前节点 [左区间+右区间] 的统计值/求值
-        tree[treeIndex] = merger.merge(tree[leftTreeIndex], tree[rightTreeIndex]);
+        tree[treeIndex] = handler.merge(tree[leftTreeIndex], tree[rightTreeIndex]);
     }
 
-    // 查询区间，返回区间 [queryL, queryR] 的统计值
+    // 查询区间，返回区间 [queryL, queryR] 的统计值/求值
     public E query(int queryL, int queryR) {
         // 首先进行边界检查
         if (queryL < 0 || queryL > data.length || queryR < 0 || queryR > data.length || queryL > queryR) {
@@ -67,44 +78,29 @@ public class SegmentTree<E> {
     private E query(int treeIndex, int l, int r, int queryL, int queryR) {
         if (l == queryL && r == queryR) return tree[treeIndex];
 
-        // pushDown(treeIndex, r - l + 1);
+        if (marks[treeIndex] != null) handler.pushDown(tree, marks, data, treeIndex, l, r);
         int mid = l + (r - l) / 2;
         int leftTreeIndex = leftChild(treeIndex);
         int rightTreeIndex = rightChild(treeIndex);
-        // 如果左边界大于中间节点，则查询右区间
-        if (queryL > mid) return query(rightTreeIndex, mid + 1, r, queryL, queryR);
         // 如果右边界小于等于中间节点，则查询左区间
         if (queryR <= mid) return query(leftTreeIndex, l, mid, queryL, queryR);
+        // 如果左边界大于中间节点，则查询右区间
+        if (queryL > mid) return query(rightTreeIndex, mid + 1, r, queryL, queryR);
         // 如果上述两种情况都不是，则根据中间节点，拆分为两个查询区间
         E leftResult = query(leftTreeIndex, l, mid, queryL, mid);
         E rightResult = query(rightTreeIndex, mid + 1, r, mid + 1, queryR);
         // 合并左右区间的查询结果
-        return merger.merge(leftResult, rightResult);
+        return handler.merge(leftResult, rightResult);
     }
 
-    // 将 index 位置的值，更新为 e
-    public void update(int index, E e) {
-        if (index < 0 || index >= data.length) throw new IllegalArgumentException("Index is illegal");
-        
-        data[index] = e;
-        // 更新线段树相应的节点
-        updateTree(0, 0, data.length - 1, index, e);
-    }
-
-    // 在以 treeIndex 为根的线段树中，更新 index 的值为 e
-    private void updateTree(int treeIndex, int l, int r, int index, E e) {
-        // 递归终止条件
-        if (l == r) {
-            tree[treeIndex] = e;
-            return;
+    // 将 [updateL, updateR] 位置的值，更新为 val
+    public void update(int updateL, int updateR, E val) {
+        // 首先进行边界检查
+        if (updateL < 0 || updateL > data.length || updateR < 0 || updateR > data.length || updateL > updateR) {
+            throw new IllegalArgumentException("Index is illegal");
         }
-        int mid = l + (r - l) / 2;
-        int leftTreeIndex = leftChild(treeIndex);
-        int rightTreeIndex = rightChild(treeIndex);
-        if (index > mid) updateTree(rightTreeIndex, mid + 1, r, index, e);
-        else updateTree(leftTreeIndex, l, mid, index, e); // index <= mid
-
-        tree[treeIndex] = merger.merge(tree[leftTreeIndex], tree[rightTreeIndex]); // 更新当前节点
+        
+        handler.update(tree, data, marks, 0, 0, data.length - 1, updateL, updateR, val);
     }
     
     public String toString() {
@@ -128,27 +124,97 @@ public class SegmentTree<E> {
 public class Main {
     public static void main(String[] args) {
         Integer[] nums = new Integer[]{34, 65, 8, 10, 21, 86, 79, 30};
-        SegmentTree<Integer> segTree = new SegmentTree<>(nums, new Merger<Integer>() {
+        SegmentTree<Integer> segTree = new SegmentTree<>(nums, new Handler<Integer>() {
             @Override
             public Integer merge(Integer a, Integer b) {
                 // 返回 a 和 b 的最大值
                 return Math.max(a, b);
             }
+
+            @Override
+            public void pushDown(Integer[] tree, Integer[] data, Integer[] marks, int treeIndex, int l, int r) {
+                if (l > r) return;
+
+                if (l == r) {
+                    data[l] = marks[treeIndex];
+                } else {
+                    int leftTreeIndex = 2 * treeIndex + 1;
+                    int rightTreeIndex = 2 * treeIndex + 2;
+                    tree[leftTreeIndex] = marks[treeIndex];
+                    marks[leftTreeIndex] = marks[treeIndex];
+                    tree[rightTreeIndex] = marks[treeIndex];
+                    marks[rightTreeIndex] = marks[treeIndex];
+                }
+                marks[treeIndex] = null;
+            }
+
+            @Override
+            public void update(Integer[] tree, Integer[] data, Integer[] marks, int treeIndex, int l, int r, int updateL, int updateR, Integer val) { // 区间 [l, r] 全部赋值为 val
+                if (l >= updateL && r <= updateR) {
+                    tree[treeIndex] = val;
+                    marks[treeIndex] = val;
+                    return;
+                }
+                if (marks[treeIndex] != null) pushDown(tree, marks, data, treeIndex, l, r);
+                int leftTreeIndex = 2 * treeIndex + 1;
+                int rightTreeIndex = 2 * treeIndex + 2;
+                int mid = l + (r - l) / 2;
+                if (updateR <= mid) update(ree, data, marks, leftTreeIndex, l, mid, updateL, updateR, val);
+                if (updateL > mid) update(tree, data, marks, rightTreeIndex, mid + 1, r, updateL, updateR, val);
+                
+                tree[treeIndex] = merge(tree[leftTreeIndex], tree[rightTreeIndex]);
+            }
         });
+
         // 查询区间 [2,5] 的最大值
         System.out.println(segTree.query(4, 7));
     }
 }
 
-// 当然，也可以定义一个求区间内元素的和的线段树，只需要修改 merge() 方法的实现即可：
+// 当然，也可以定义一个求区间内元素的和的线段树，需要修改 merge() pushDown() update() 3 个方法的实现：
 public class Main {
     public static void main(String[] args) {
         Integer[] nums = new Integer[]{34, 65, 8, 10, 21, 86, 79, 30};
-        SegmentTree<Integer> segTree = new SegmentTree<>(nums, new Merger<Integer>() {
+        SegmentTree<Integer> segTree = new SegmentTree<>(nums, new Handler<Integer>() {
             @Override
             public Integer merge(Integer a, Integer b) {
                 // 返回 a 和 b 的和
                 return a + b;
+            }
+
+            @Override
+            public void pushDown(Integer[] tree, Integer[] data, Integer[] marks, int treeIndex, int l, int r) {
+                if (l > r) return;
+
+                if (l == r) {
+                    data[l] += marks[treeIndex];
+                } else {
+                    int leftTreeIndex = 2 * treeIndex + 1;
+                    int rightTreeIndex = 2 * treeIndex + 2;
+                    int mid = l + (r - l) / 2;
+                    tree[leftTreeIndex] += marks[treeIndex] * (mid - l + 1);
+                    marks[leftTreeIndex] += marks[treeIndex];
+                    tree[rightTreeIndex] += marks[treeIndex] * (r - mid);
+                    marks[rightTreeIndex] += marks[treeIndex];
+                }
+                marks[treeIndex] = null;
+            }
+
+            @Override
+            public void update(Integer[] tree, Integer[] data, Integer[] marks, int treeIndex, int l, int r, int updateL, int updateR, Integer val) { // 区间 [l, r] 全部自增 val
+                if (l >= updateL && r <= updateR) {
+                    tree[treeIndex] += val * (r - l + 1); // 注意：此处计算基于 merge() 逻辑
+                    marks[treeIndex] += val;
+                    return;
+                }
+                if (marks[treeIndex] != null) pushDown(tree, marks, data, treeIndex, l, r);
+                int leftTreeIndex = 2 * treeIndex + 1;
+                int rightTreeIndex = 2 * treeIndex + 2;
+                int mid = l + (r - l) / 2;
+                if (updateR <= mid) update(ree, data, marks, leftTreeIndex, l, mid, updateL, updateR, val);
+                if (updateL > mid) update(tree, data, marks, rightTreeIndex, mid + 1, r, updateL, updateR, val);
+                
+                tree[treeIndex] = merge(tree[leftTreeIndex], tree[rightTreeIndex]);
             }
         });
         // 查询区间 [2,5] 的和

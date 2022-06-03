@@ -72,3 +72,4 @@ https://zhuanlan.zhihu.com/p/174810030
 https://zhuanlan.zhihu.com/p/34150142  
 https://cp-algorithms.com/data_structures/segment_tree.html  
 https://oi-wiki.org/ds/seg/  
+https://algs4.cs.princeton.edu/99misc/SegmentTree.java.html  
