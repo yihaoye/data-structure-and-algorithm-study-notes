@@ -41,6 +41,7 @@
 - [ ] 321	Create Maximum Number		                                很少考
 - [ ] 327	Count of Range Sum		
 - [ ] 289	Game of Life		
+- [x] 406   Queue Reconstruction by Height  
 ### Interval			
 - [ ] 57	Insert Interval		
 - [x] 56	Merge Intervals		
