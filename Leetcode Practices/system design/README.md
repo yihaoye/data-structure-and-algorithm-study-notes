@@ -1154,12 +1154,47 @@ Twitter 可以让用户通过选择要关注的感兴趣的帐户来对其进行
 搜索中的图像和视频  
 搜索图像或视频时情况与推文有所不同。例如，同一张图片可能会被多次发布推文，每条推文都包含不同的关键词，这些关键词都描述了该图片。如果推文文本中的某个术语/关键词重复描述了图像，则图像很可能与该术语/关键词有关。  
   
+索引延迟  
+搜索系统的关键指标之一是索引延迟，即新信息在搜索索引中可用所需的时间。这个指标很重要，因为它决定了新结果出现的速度。并非所有搜索系统都需要快速更新其内容。例如，在仓库库存系统中，每天更新一次搜索索引可能是可以接受的。在 Twitter 这类社交网络系统上，用户总是查询正在发生的事情，所以实时搜索是必须的。  
+  
+**Elasticsearch**  
+前面讲到 Twitter 使用 MySQL 和 Lucene 构建自己的搜索引擎，实际上 Lucene 还是一个库，必须要懂一点搜索引擎原理的人才能用的好，所以后来又有人基于 Lucene 进行封装，写出了 Elasticsearch 这一开源（分布式）搜索引擎。通过 Elasticsearch，开发者可以更容易、高效地搭建、自定义属于自己的高性能搜索服务（Elasticsearch 把操作都封装成了 HTTP 的 API，只要给 Elasticsearch 发送 HTTP 请求就行。并且 Elasticsearch 支持、实现了分布式以支持海量数据、跨区的场景）。  
+Elasticsearch 类比关系型数据库：  
+|关系型数据库	|ElasticSearch  |
+|---        |---            |
+|Table	    |Index          |
+|Row	      |Document       |
+|Column	    |Field          |
+|SQL	      |DSL            |
+
+关于 Mapping：Mapping 主要用于定义索引的字段名称和数据类型以及倒排索引等相关配置，Mapping 可以系统自动推断生成，也可以由用户自己定义。  
+字段的属性：Elasticsearch 主要支持以下几种数据类型：
+- Text：存入 Elasticsearch 的时候默认情况下会进行分词，然后根据分词后的内容建立反向索引
+- Keyword：不会进行分词，直接根据字符串内容建立反向索引，全文本匹配
+- Date：日期类型
+- Integer/Floating：整数/浮点数
+- Boolean：布尔类型
+- IPv4 & IPv6
+- 特殊类型：geo_point & geo_shape & percolator
+
+ElasticSearch 内置分词器（Analyzer）有:  
+* Standard Analyzer：默认分词器，按词切换，小写处理
+* Simple Analyzer: 按照非字母切分，小写处理
+* Stop Analyzer: 小写处理，停用词过滤
+* Whitespace Analyzer：按照空格切分，不转换小写
+* Keyword Analyzer: 不分词，直接将输入当作输出
+* Patter Analyzer: 正则表达式分词
+* Language Analyzer：提供 30 多种常见语言的分词器
+* Customer Analyzer：自定义分词器
+  
 **参考链接及延伸阅读**  
 https://medium.com/airbnb-engineering/contextualizing-airbnb-by-building-knowledge-graph-b7077e268d5a  
 https://blog.twitter.com/engineering/en_us/a/2011/the-engineering-behind-twitter-s-new-search-experience  
 https://blog.twitter.com/engineering/en_us/topics/infrastructure/2020/reducing-search-indexing-latency-to-one-second  
 https://zh.wikipedia.org/zh-hans/%E5%80%92%E6%8E%92%E7%B4%A2%E5%BC%95  
 https://mednoter.com/inverted-index.html  
+https://zhuanlan.zhihu.com/p/62892586  
+https://zhuanlan.zhihu.com/p/104215274  
 
 </details>
 
