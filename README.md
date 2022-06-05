@@ -62,7 +62,7 @@
       17. 问题核心/概念：Digit/Number/Bits Operation/Process/Transfer，可以考虑位运算，LC 例如 Q751
       18. 问题核心/概念：Cycle Check，可以考虑双指针/快慢指针，LC 例如 Q141 Q142
       19. 问题核心/概念：Design/Implement Basic XXX/Data-Structure，可以考虑以下数据结构的组合使用：数组、ArrayList、LinkedList、自定义对象、指针或引用，LC 例如 Q155 Q706 Q707
-      20. 问题核心/概念：Design/Implement Advanced XXX/Data-Structure，可以考虑以下数据结构的组合使用：数组、ArrayList、（单向或双向）LinkedList、自定义对象、指针或引用、哈希表、红黑树、哈希集、队列、堆/优先队列、栈，LC 例如 Q146 Q208 Q355 Q432
+      20. 问题核心/概念：Design/Implement Advanced XXX/Data-Structure，可以考虑以下数据结构的组合使用：数组、ArrayList、（单向或双向）LinkedList、自定义对象、指针或引用、哈希表、红黑树、哈希集、队列、堆/优先队列、栈、甚至语言内置工具数据结构如 StringBuilder，LC 例如 Q146 Q208 Q355 Q432 Q2296
       21. 问题核心/概念：Same/One Time/Direction Sum/Union 或 Ranges Conflict，可以考虑扫描线、堆/优先队列，LC 例如 Q218 Q253 Q759 Q2251
       22. 问题核心/概念：Dependency Conflict/Schedule，可以考虑拓扑排序，LC 例如 Q207 Q210
       23. 问题核心/概念：Frequency Count 或 Ranking，可以考虑哈希表、桶排序、堆/优先队列、排序、自平衡二叉搜索树/红黑树，LC 例如 Q347
