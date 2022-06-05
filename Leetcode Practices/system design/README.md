@@ -1160,22 +1160,20 @@ Twitter 可以让用户通过选择要关注的感兴趣的帐户来对其进行
 **Elasticsearch**  
 前面讲到 Twitter 使用 MySQL 和 Lucene 构建自己的搜索引擎，实际上 Lucene 还是一个库，必须要懂一点搜索引擎原理的人才能用的好，所以后来又有人基于 Lucene 进行封装，写出了 Elasticsearch 这一开源（分布式）搜索引擎。通过 Elasticsearch，开发者可以更容易、高效地搭建、自定义属于自己的高性能搜索服务（Elasticsearch 把操作都封装成了 HTTP 的 API，只要给 Elasticsearch 发送 HTTP 请求就行。并且 Elasticsearch 支持、实现了分布式以支持海量数据、跨区的场景）。  
 Elasticsearch 类比关系型数据库：  
-|关系型数据库	|ElasticSearch  |
-|---        |---            |
-|Table	    |Index          |
-|Row	      |Document       |
-|Column	    |Field          |
-|SQL	      |DSL            |
+|SQL Database	|ElasticSearch  |
+|---          |---            |
+|Database     |Index          |
+|Table	      |Type           |
+|Row	        |Document       |
+|Column	      |Field          |
+|Schema	      |Mapping        |
+|SQL	        |DSL            |
 
-关于 Mapping：Mapping 主要用于定义索引的字段名称和数据类型以及倒排索引等相关配置，Mapping 可以系统自动推断生成，也可以由用户自己定义。  
-字段的属性：Elasticsearch 主要支持以下几种数据类型：
+关于 Mapping：Mapping 主要用于定义索引（Index）的字段名称和数据类型以及倒排索引等相关配置，Mapping 可以系统自动推断生成，也可以由用户自己定义。  
+关于 Type：Every Index can have multiple Types for example “user” and “blogpost”, and every Type could have its own field. A field define the name of the field itself and the type that could be for example text, numeric (integer, long, short…), keyword, array and many many others.（这里要注意 ES 新的版本已经准备移除 Type，可以认为以后一个 Index 一个 Type，上面的表格的这种类比就不太准确了）  
+这里重点注意两个数据类型：  
 - Text：存入 Elasticsearch 的时候默认情况下会进行分词，然后根据分词后的内容建立反向索引
 - Keyword：不会进行分词，直接根据字符串内容建立反向索引，全文本匹配
-- Date：日期类型
-- Integer/Floating：整数/浮点数
-- Boolean：布尔类型
-- IPv4 & IPv6
-- 特殊类型：geo_point & geo_shape & percolator
 
 ElasticSearch 内置分词器（Analyzer）有:  
 * Standard Analyzer：默认分词器，按词切换，小写处理
@@ -1186,6 +1184,116 @@ ElasticSearch 内置分词器（Analyzer）有:
 * Patter Analyzer: 正则表达式分词
 * Language Analyzer：提供 30 多种常见语言的分词器
 * Customer Analyzer：自定义分词器
+
+Index Template  
+```json
+{
+  "index_patterns": ["test*"],  // 什么样的 index 会使用这个模板
+  "order": 1,                   // 设置模板的优先级
+  "settings": { 
+    "number_of_shards": 1,      // shard 的数量
+    "number_of_replicas": 2     // replication 的数量
+  },
+  "mappings": {
+    "date_detection": false,   // 字符串的日期类型是否自动转换
+    "numeric_detection": true  // 字符串的数字类型是否自动转换
+  }
+}
+```
+
+Mapping Example  
+```json
+// 该索引包含三个字段（field），注意这里 properties 之外已经没有了 type，是新的版本
+// id，类型是 long，不支持索引搜索
+// phone，类型是 keyword，对于值为空的情况可以使用 "NULL" 字符串来搜索
+// name，类型是 text，并定义了索引级别，以及自定义的分词器
+{
+  "mappings" : {
+      "properties" : {
+        "id" : {
+          "type" : "long",
+          "index": false
+        },
+        "name" : {
+          "type" : "text",
+          "index_options": "positions",
+          "copy_to": "fullName",
+          "fields": {
+            "english_comment":{
+              "type": "text",
+              "analyzer": "english",
+              "search_analyzer": "english"
+            }
+          }
+        },
+        "phone" : {
+          "type" : "keyword",
+          "null_value": "NULL"
+        }
+      }
+    }
+}
+```  
+旧版本 create an Index, in Elasticsearch 5.6, of name products, with 2 types : item and item_price.  
+```json
+{
+ "products": {
+  "aliases": {},
+  "mappings": {
+   "item": {
+    "properties": {
+     "color": {
+      "type": "text"
+     },
+     "country": {
+      "type": "integer"
+     },
+     "country_name": {
+      "type": "text"
+     },
+     "date": {
+      "type": "date"
+     },
+     "model_id": {
+      "type": "integer"
+     },
+     "name": {
+      "type": "text"
+     }
+    }
+   },
+   "item_price": {
+    "properties": {
+     "currency": {
+      "type": "text"
+     },
+     "model_discount": {
+      "type": "float"
+     },
+     "model_id": {
+      "type": "integer"
+     },
+     "price": {
+      "type": "float"
+     }
+    }
+   }
+  },
+  "settings": {
+   "index": {
+    "creation_date": "1506334542346",
+    "number_of_shards": "5",
+    "number_of_replicas": "1",
+    "uuid": "VgmCm2CbQZyS0ZtDz4GpTA",
+    "version": {
+     "created": "5060199"
+    },
+    "provided_name": "products"
+   }
+  }
+ }
+}
+```  
   
 **参考链接及延伸阅读**  
 https://medium.com/airbnb-engineering/contextualizing-airbnb-by-building-knowledge-graph-b7077e268d5a  
@@ -1195,6 +1303,8 @@ https://zh.wikipedia.org/zh-hans/%E5%80%92%E6%8E%92%E7%B4%A2%E5%BC%95
 https://mednoter.com/inverted-index.html  
 https://zhuanlan.zhihu.com/p/62892586  
 https://zhuanlan.zhihu.com/p/104215274  
+https://medium.com/expedia-group-tech/getting-started-with-elastic-search-6af62d7df8dd  
+https://medium.com/@federicopanini/elasticsearch-6-0-removal-of-mapping-types-526a67ff772  
 
 </details>
 
