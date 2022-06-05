@@ -42,6 +42,7 @@
       - [蓄水池抽样算法 | Reservoir Sampling](./蓄水池抽样算法.md)
       - [霍夫曼压缩算法 | Huffman Coding/Compression](./霍夫曼压缩算法.md)
       - [布隆过滤器及其算法 | Bloom Filter](./布隆过滤器及其算法.md)
+      - [最小哈希 | MinHash](https://en.wikipedia.org/wiki/MinHash)
       - [HyperLogLog 算法](./HyperLogLog.md)
       - [Count-Min Sketch 算法](./Count-Min-Sketch.md)
       - [雪花算法 | Snowflake ID](./雪花算法.md)
