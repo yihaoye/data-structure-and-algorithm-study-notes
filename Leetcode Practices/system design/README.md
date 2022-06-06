@@ -1083,6 +1083,7 @@ Twitter 是最大的社交网络服务之一，这里设计一个可以存储和
 1. 什么是推特搜索？
      * Twitter 用户可以随时更新他们的状态（对应 Elasticsearch 里的 Document）。每条状态（称为 tweet）由纯文本组成，目标是设计一个可以搜索所有用户 tweet 的系统。
 2. 系统的要求和目标
+     * 读比写多，虽然推特搜索场景要求实时搜索，但索引更新仍不是立刻发生的，有一定的时间延迟（虽然这个延迟时间非常短）类似于最终一致性。
      * 假设 Twitter 有 15 亿用户，每天有 8 亿活跃用户。平均而言，Twitter 每天有 4 亿条推文。一条推文的平均大小为 300 字节。假设每天会有 5 亿次搜索。搜索查询将由多个词与 AND/OR 组合而成。需要设计一个能够有效存储和查询推文的系统。
 3. 容量估计和限制条件
      * 存储容量。由于每天有 4 亿条新推文，每条推文平均为 300 字节，需要的总存储量将是 400M * 300 => 120GB/day
@@ -1308,6 +1309,7 @@ https://zhuanlan.zhihu.com/p/104215274
 https://medium.com/expedia-group-tech/getting-started-with-elastic-search-6af62d7df8dd  
 https://medium.com/@federicopanini/elasticsearch-6-0-removal-of-mapping-types-526a67ff772  
 https://blog.csdn.net/m0_38030719/article/details/109103650  
+https://www.youtube.com/watch?v=OnjmdpxpEv0&list=PLbhaS_83B97vSWVslD63vjIi5OTYmSVrk&index=58  
 
 </details>
 
