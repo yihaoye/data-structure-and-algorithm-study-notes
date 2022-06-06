@@ -47,7 +47,7 @@
 * 业务应用和后端基础框架（MVC、IOC、ORM）
 * 缓存（本地缓存即内存中的缓存机制：ConcurrentHashMap etc；分布式缓存即单独的缓存服务：Redis、Memcached etc）
 * 数据库（SQL、NoSQL）
-* 搜索引擎（全文搜索、Elasticsearch）
+* 搜索引擎（全文搜索、ElasticSearch）
 * 消息队列（RabbitMQ、Kafka）
 * 文件存储（S3、Hadoop HDFS）（e.g. distributed file storage system for storing photos and videos）
 * 统一认证中心（用户的注册、登录验证、token 鉴权；内部信息系统用户的管理和登录鉴权；应用管理，应用的 secret 生成，应用信息的验证 - 如验证接口签名等）
@@ -1081,7 +1081,7 @@ Dropbox 异步任务框架 ATF：
 Twitter 是最大的社交网络服务之一，这里设计一个可以存储和搜索用户推文的服务 - 即推文搜索。  
   
 1. 什么是推特搜索？
-     * Twitter 用户可以随时更新他们的状态（对应 Elasticsearch 里的 Document）。每条状态（称为 tweet）由纯文本组成，目标是设计一个可以搜索所有用户 tweet 的系统。
+     * Twitter 用户可以随时更新他们的状态（对应 ElasticSearch 里的 Document）。每条状态（称为 tweet）由纯文本组成，目标是设计一个可以搜索所有用户 tweet 的系统。
 2. 系统的要求和目标
      * 读比写多，虽然推特搜索场景要求实时搜索，但索引更新仍不是立刻发生的，有一定的时间延迟（虽然这个延迟时间非常短）类似于最终一致性。
      * 假设 Twitter 有 15 亿用户，每天有 8 亿活跃用户。平均而言，Twitter 每天有 4 亿条推文。一条推文的平均大小为 300 字节。假设每天会有 5 亿次搜索。搜索查询将由多个词与 AND/OR 组合而成。需要设计一个能够有效存储和查询推文的系统。
@@ -1158,9 +1158,9 @@ Twitter 可以让用户通过选择要关注的感兴趣的帐户来对其进行
 索引延迟  
 搜索系统的关键指标之一是索引延迟，即新信息在搜索索引中可用所需的时间。这个指标很重要，因为它决定了新结果出现的速度。并非所有搜索系统都需要快速更新其内容。例如，在仓库库存系统中，每天更新一次搜索索引可能是可以接受的。在 Twitter 这类社交网络系统上，用户总是查询正在发生的事情，所以实时搜索是必须的。  
   
-**Elasticsearch**  
-前面讲到 Twitter 使用 MySQL 和 Lucene 构建自己的搜索引擎，实际上 Lucene 还是一个库，必须要懂一点搜索引擎原理的人才能用的好，所以后来又有人基于 Lucene 进行封装，写出了 Elasticsearch 这一开源（分布式）搜索引擎。通过 Elasticsearch，开发者可以更容易、高效地搭建、自定义属于自己的高性能搜索服务（Elasticsearch 把操作都封装成了 HTTP 的 API，只要给 Elasticsearch 发送 HTTP 请求就行。并且 Elasticsearch 支持、实现了分布式以支持海量数据、跨区的场景）。  
-Elasticsearch 类比关系型数据库：  
+**ElasticSearch**  
+前面讲到 Twitter 使用 MySQL 和 Lucene 构建自己的搜索引擎，实际上 Lucene 还是一个库，必须要懂一点搜索引擎原理的人才能用的好，所以后来又有人基于 Lucene 进行封装，写出了 ElasticSearch 这一开源（分布式）搜索引擎。通过 ElasticSearch，开发者可以更容易、高效地搭建、自定义属于自己的高性能搜索服务（ElasticSearch 把操作都封装成了 HTTP 的 API，只要给 ElasticSearch 发送 HTTP 请求就行。并且 ElasticSearch 支持、实现了分布式以支持海量数据、跨区的场景）。  
+ElasticSearch 类比关系型数据库：  
 |SQL Database	|ElasticSearch  |
 |---          |---            |
 |Database     |Index          |
@@ -1173,10 +1173,10 @@ Elasticsearch 类比关系型数据库：
 关于 Mapping：Mapping 主要用于定义索引（Index）的字段名称和数据类型以及倒排索引等相关配置，Mapping 可以系统自动推断生成，也可以由用户自己定义。  
 关于 Type：Every Index can have multiple Types for example “user” and “blogpost”, and every Type could have its own field. A field define the name of the field itself and the type that could be for example text, numeric (integer, long, short…), keyword, array and many many others.（这里要注意 ES 新的版本已经准备移除 Type，可以认为以后一个 Index 一个 Type，上面的表格的这种类比就不太准确了）  
 这里重点注意两个数据类型：  
-- Text：存入 Elasticsearch 的时候默认情况下会进行分词，然后根据分词后的内容建立反向索引
+- Text：存入 ElasticSearch 的时候默认情况下会进行分词，然后根据分词后的内容建立反向索引
 - Keyword：不会进行分词，直接根据字符串内容建立反向索引，全文本匹配
 
-关于 Document（文档）：文档是 Elasticsearch 中可被搜索的最小单位，文档由多个字段的值组成，通过序列化 JSON 格式保存在 Elasticsearch 中，每一个文档都有唯一的 ID。例如个人的简历、歌曲的详情等等都可以存储在文档中。  
+关于 Document（文档）：文档是 ElasticSearch 中可被搜索的最小单位，文档由多个字段的值组成，通过序列化 JSON 格式保存在 ElasticSearch 中，每一个文档都有唯一的 ID。例如个人的简历、歌曲的详情等等都可以存储在文档中。  
 
 ElasticSearch 内置分词器（Analyzer）有:  
 * Standard Analyzer：默认分词器，按词切换，小写处理
@@ -1237,7 +1237,7 @@ Mapping Example
     }
 }
 ```  
-旧版本 create an Index, in Elasticsearch 5.6, of name products, with 2 types : item and item_price.  
+旧版本 create an Index, in ElasticSearch 5.6, of name products, with 2 types : item and item_price.  
 ```json
 {
  "products": {
