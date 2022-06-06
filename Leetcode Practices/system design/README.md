@@ -1337,3 +1337,19 @@ https://www.youtube.com/watch?v=OnjmdpxpEv0&list=PLbhaS_83B97vSWVslD63vjIi5OTYmS
 ## 一些面试小技巧
 ### QPS 计算
 * 1 million per day == 12 per second
+
+### Storage 计算
+以下为常用存储单位，每个之间为 1024（~1000）倍的比例，比如 1KB = 1024B，如此类推（除了第一个 Byte 可缩写成 B，它代表、等于 8 个比特/Bit，Bit 可缩写成 b，Bit 即一位二进制位仅表示 0 或 1，为最小单元）  
+|Name	|Equal To	|Size(In Bytes) |
+|--   |--       |--             |
+|Byte	|8 Bits	  |1  |
+|Kilo Byte	|1024 Bytes	|1024 |
+|Mega Byte	|1,024 Kilobytes	|1,048,576  |
+|Giga Byte	|1,024 Megabytes	|1,073,741,824  |
+|Tera Byte	|1,024 Gigabytes	|1,099,511,627,776  |
+|Peta Byte	|1,024 Terabytes	|1,125,899,906,842,624  |
+|Exa Byte	|1,024 Petabytes	|1,152,921,504,606,846,976  |
+|Zetta Byte	|1,024 Exabytes	|1,180,591,620,717,411,303,424  |
+|Yotta Byte	|1,024 Zettabytes	|1,208,925,819,614,629,174,706,176  |
+
+参考：https://www.geeksforgeeks.org/understanding-file-sizes-bytes-kb-mb-gb-tb-pb-eb-zb-yb/  
