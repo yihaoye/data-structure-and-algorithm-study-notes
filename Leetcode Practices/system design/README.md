@@ -1081,7 +1081,7 @@ Dropbox 异步任务框架 ATF：
 Twitter 是最大的社交网络服务之一，这里设计一个可以存储和搜索用户推文的服务 - 即推文搜索。  
   
 1. 什么是推特搜索？
-     * Twitter 用户可以随时更新他们的状态。每条状态（称为 tweet）由纯文本组成，目标是设计一个可以搜索所有用户 tweet 的系统。
+     * Twitter 用户可以随时更新他们的状态（对应 Elasticsearch 里的 Document）。每条状态（称为 tweet）由纯文本组成，目标是设计一个可以搜索所有用户 tweet 的系统。
 2. 系统的要求和目标
      * 假设 Twitter 有 15 亿用户，每天有 8 亿活跃用户。平均而言，Twitter 每天有 4 亿条推文。一条推文的平均大小为 300 字节。假设每天会有 5 亿次搜索。搜索查询将由多个词与 AND/OR 组合而成。需要设计一个能够有效存储和查询推文的系统。
 3. 容量估计和限制条件
@@ -1174,6 +1174,8 @@ Elasticsearch 类比关系型数据库：
 这里重点注意两个数据类型：  
 - Text：存入 Elasticsearch 的时候默认情况下会进行分词，然后根据分词后的内容建立反向索引
 - Keyword：不会进行分词，直接根据字符串内容建立反向索引，全文本匹配
+
+关于 Document（文档）：文档是 Elasticsearch 中可被搜索的最小单位，文档由多个字段的值组成，通过序列化 JSON 格式保存在 Elasticsearch 中，每一个文档都有唯一的 ID。例如个人的简历、歌曲的详情等等都可以存储在文档中。  
 
 ElasticSearch 内置分词器（Analyzer）有:  
 * Standard Analyzer：默认分词器，按词切换，小写处理
@@ -1305,6 +1307,7 @@ https://zhuanlan.zhihu.com/p/62892586
 https://zhuanlan.zhihu.com/p/104215274  
 https://medium.com/expedia-group-tech/getting-started-with-elastic-search-6af62d7df8dd  
 https://medium.com/@federicopanini/elasticsearch-6-0-removal-of-mapping-types-526a67ff772  
+https://blog.csdn.net/m0_38030719/article/details/109103650  
 
 </details>
 
