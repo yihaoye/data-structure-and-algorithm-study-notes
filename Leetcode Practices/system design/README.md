@@ -1353,3 +1353,6 @@ https://www.youtube.com/watch?v=OnjmdpxpEv0&list=PLbhaS_83B97vSWVslD63vjIi5OTYmS
 |Yotta Byte	|1,024 Zettabytes	|1,208,925,819,614,629,174,706,176  |
 
 参考：https://www.geeksforgeeks.org/understanding-file-sizes-bytes-kb-mb-gb-tb-pb-eb-zb-yb/  
+
+### 数量单位中英对照
+![](./数量单位中英对照.jpeg)  
