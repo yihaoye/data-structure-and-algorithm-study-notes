@@ -1359,12 +1359,16 @@ https://www.youtube.com/watch?v=OnjmdpxpEv0&list=PLbhaS_83B97vSWVslD63vjIi5OTYmS
 参考：https://www.geeksforgeeks.org/understanding-file-sizes-bytes-kb-mb-gb-tb-pb-eb-zb-yb/  
 
 * 1 Million * 1B => 10^6 * 1B => 1MB
-* 1000 Million * 1B => 1 Billion * 1B => 10^9 * 1B => 1GB
-* 1000 Billion * 1B => 1 Trillion * 1B => 10^12 * 1B => 1TB
-* 1000 Trillion * 1B => 10^15 * 1B => 1PB
+* 1000 Million * 1B => 1 Billion * 1B => 10^9 * 1B => 1 Million * 1KB => 1GB
+* 1000 Billion * 1B => 1 Trillion * 1B => 10^12 * 1B => 1 Billion * 1KB => 1TB
+* 1000 Trillion * 1B => 10^15 * 1B => 1 Trillion * 1KB => 1PB
 
 #### ID 设计
+* [UUID 是 16B/字节](https://blog.csdn.net/qq_41655115/article/details/106885421)
+* 8B/字节 ID（纯数字）可以表示 2^8^8 => 2^64 => 1.8*10^19 => 18 Quintillion
 * 5B/字节 ID（纯数字）可以表示 2^8^5 => 2^40 => 10^12 => 1000 Billion => 10000 亿 => 1 兆
+* 4B/字节 ID（纯数字）可以表示 2^8^4 => 2^32 => 4 Billion => 40 亿
+* 3B/字节 ID（纯数字）可以表示 2^8^3 => 2^24 => 15 Million => 1500 万
 
 ### 数量单位中英对照
 ![](./数量单位中英对照.jpeg)  
