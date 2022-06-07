@@ -1101,6 +1101,8 @@ Twitter 是最大的社交网络服务之一，这里设计一个可以存储和
          * sort（number）- 可选的排序模式。最新的优先（0 - 默认），最佳匹配（1），最喜欢（2）。
          * page_token（string）- 这个 token 将指定应该被返回的结果的页面。
        * 返回：（JSON）一个包含符合搜索查询的推文列表信息的 JSON。每个结果条目可以有用户 ID 和姓名、推文文本、推文 ID、创建时间、点赞数量等。
+       * 逻辑：（should follow high level design）
+         * ![](./Twitter%20Search%20API%20Logic.png)
 5. 高层设计
      * 在高层次上，需要将所有的状态存储在数据库中，同时建立一个索引服务，可以跟踪哪个词出现在哪条推文中。这个索引将帮助快速找到用户试图搜索的推文。![](./Twitter%20Search%20Status.png)
 6. 组件细节设计
@@ -1300,6 +1302,9 @@ Mapping Example
  }
 }
 ```  
+  
+**Google or Bing**  
+常规搜索引擎会有所不同，其中还需要包括爬虫系统/写系统（在下一例题介绍）。另外用户搜索一些特定词时如天气、地理、算数等等特殊信息时，首页置顶会有专属区域直接给出相关针对性信息，再往下才是一系列匹配搜索的网页链接。这些特定词可以通过人工智能如 NLP 技术进行收集处理分析并最终按需生成它们的专属区信息展示。  
   
 **参考链接及延伸阅读**  
 https://medium.com/airbnb-engineering/contextualizing-airbnb-by-building-knowledge-graph-b7077e268d5a  
