@@ -34,8 +34,8 @@
   
 ### 系统学习
 * [Grok System Design Tutorial](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Leetcode%20Practices/system%20design/grok_system_design_interview.pdf)
-* [System-Design-Primer](https://github.com/donnemartin/system-design-primer)  
 * [System Design Fundamentals](./System%20Design%20Fundamentals.md)
+* [System-Design-Primer](https://github.com/donnemartin/system-design-primer)  
   
 ### 系统主要大类（其他系统皆可从中找到类似）
 ![](./System%20Category.png)  
@@ -92,7 +92,10 @@ Include:
 * Serviceability or Manageability - how easy to operate and maintain. simplicity and speed with which a system can be repaired or maintained.
   * If the time to fix a failed system increases, then availability will decrease.
   * Ease of diagnosing and understanding problems when they occur, ease of making updates or modifications, and how simple the system is to operate.
-
+  
+#### Consistent Hashing
+[一致性哈希详解](./一致性哈希.md)  
+  
 #### Load Balancing
 LB helps to spread the traffic across a cluster of servers to improve responsiveness and availability of applications, websites or databases. It also keeps track of the status of all the resources while distributing requests. (Between the user and the web server; Between web servers and an internal platform layer, like application servers or cache servers; Between internal platform layer and database)  
 * Benefits of Load Balancing
@@ -191,9 +194,6 @@ It is impossible for a distributed software system (especially data store) to si
 * Consistency - All nodes see the same data at the same time. It is achieved by updating several nodes before allowing further reads.
 * Availability - Every request gets a response on success/failure. It is achieved by replicating the data across different servers.
 * Partition tolerance - System continues to work despite message loss or partial failure.
-  
-#### 一致性哈希
-https://bbs.huaweicloud.com/blogs/333158?utm_source=luntan&utm_medium=bbs-ex&utm_campaign=other&utm_content=content  
   
 </details>
 
@@ -1112,7 +1112,7 @@ Twitter 是最大的社交网络服务之一，这里设计一个可以存储和
         * 基于单词的分片。在建立索引时，将遍历一条推文中的所有单词，并计算每个单词的哈希值，以找到它将被索引的服务器。为了找到包含某个特定单词的所有推文，必须只查询包含这个单词的服务器。这种方法有几个问题：1. 如果一个词变得很热，怎么办？那么持有该词的服务器上就会有大量的查询，这种高负荷会影响系统的服务性能。2. 随着时间的推移，一些词与其他词相比，最终会存储大量的 TweetID，因此，在推文不断增长的同时，保持词的均匀分布是相当棘手的。为了从这些情况中恢复过来，必须重新划分数据或使用一致哈希。
         * 基于推文对象的分片。在存储时，将把 TweetID 传递给系统的哈希函数，以找到对应的索引服务器，并在该服务器上对该 Tweet 的所有单词进行索引。当查询一个特定的词时，必须查询所有的索引服务器，而每个索引服务器将返回一组 TweetID。会有一个中心服务器将汇总这些结果，将其返回给用户。![](./Twitter%20Search%20Index.png)
 7. 故障容错
-     * 当一个索引服务器宕机时，会发生什么？可以在每个服务器上都有一个次要的副本，如果主服务器宕机，它可以在故障转移后接管控制权。主服务器和次服务器都将拥有相同的索引副本。如果主服务器和次服务器同时宕机怎么办？这时必须分配一个新的服务器并在其上重建相同的索引。怎样才能做到这一点呢？因为不知道这台服务器上保存了哪些词/推文。如果系统使用 "基于推文对象的分片"，那么粗暴的解决方案就是遍历整个数据库，并使用系统的哈希函数过滤推文 ID，以找出所有需要的推文，这些推文将被保存在这台服务器上，这么做是因为[一致性哈希](https://bbs.huaweicloud.com/blogs/333158?utm_source=luntan&utm_medium=bbs-ex&utm_campaign=other&utm_content=content)只是提供了推文 ID 到服务器编号的映射，没有提供反方向的服务器编号到其负责的推文集合的映射。这将是低效的，而且在服务器重建期间，系统将无法提供任何查询，因此用户也会错过一些本应可以看到的推文。
+     * 当一个索引服务器宕机时，会发生什么？可以在每个服务器上都有一个次要的副本，如果主服务器宕机，它可以在故障转移后接管控制权。主服务器和次服务器都将拥有相同的索引副本。如果主服务器和次服务器同时宕机怎么办？这时必须分配一个新的服务器并在其上重建相同的索引。怎样才能做到这一点呢？因为不知道这台服务器上保存了哪些词/推文。如果系统使用 "基于推文对象的分片"，那么粗暴的解决方案就是遍历整个数据库，并使用系统的哈希函数过滤推文 ID，以找出所有需要的推文，这些推文将被保存在这台服务器上，这么做是因为[一致性哈希](./一致性哈希.md)只是提供了推文 ID 到服务器编号的映射，没有提供反方向的服务器编号到其负责的推文集合的映射。这将是低效的，而且在服务器重建期间，系统将无法提供任何查询，因此用户也会错过一些本应可以看到的推文。
      * 如何才能有效地检索到索引服务器编号和所负责推文集合之间的映射？必须建立另一个索引 - 将所有的索引服务器编号映射到其负责的 TweetID 们（类似一致性哈希的反向索引）。系统的 Index-Builder 服务器可以保存这些信息。将需要建立一个 HashTable，其中的 "键" 是索引服务器的编号，"值" 将是一个 HashSet，包含所有保存在该索引服务器的 TweetID。请注意，将所有的 TweetID 保存在一个 HashSet 中：这将使系统能够快速地从索引中添加/删除 Tweet。因此，现在每当索引服务器需要重建自己时，它可以简单地要求索引生成器服务器提供它需要存储的所有推文，然后获取这些推文来建立索引。这种方法肯定会很快。另外还应该有一个索引生成器服务器的副本，以实现容错。
 8. 缓存
      * 为了处理热门推文，可以在数据库前面引入一个缓冲区。可以使用 Memcached，它可以在内存中存储所有这些热门推文。应用服务器在访问后端数据库之前，可以快速检查缓存中是否有该推文。根据客户的使用模式，可以调整需要多少个缓存服务器。对于缓存的驱逐策略，最近使用最少的（LRU）似乎适合本系统。
@@ -1346,15 +1346,15 @@ https://www.youtube.com/watch?v=OnjmdpxpEv0&list=PLbhaS_83B97vSWVslD63vjIi5OTYmS
 以下为常用存储单位，每个之间为 1024（~1000）倍的比例，比如 1KB = 1024B，如此类推（除了第一个 Byte 可缩写成 B，它代表、等于 8 个比特/Bit，Bit 可缩写成 b，Bit 即一位二进制位仅表示 0 或 1，为最小单元）  
 |Name	|Equal To	|Size(In Bytes) |
 |--   |--       |--             |
-|Byte	|8 Bits	  |1  |
-|Kilo Byte	|1024 Bytes	|1024 |
-|Mega Byte	|1,024 Kilobytes	|1,048,576  |
-|Giga Byte	|1,024 Megabytes	|1,073,741,824  |
-|Tera Byte	|1,024 Gigabytes	|1,099,511,627,776  |
-|Peta Byte	|1,024 Terabytes	|1,125,899,906,842,624  |
-|Exa Byte	|1,024 Petabytes	|1,152,921,504,606,846,976  |
-|Zetta Byte	|1,024 Exabytes	|1,180,591,620,717,411,303,424  |
-|Yotta Byte	|1,024 Zettabytes	|1,208,925,819,614,629,174,706,176  |
+|Byte	|8 Bits	  |1              |
+|KiloByte	|1024 Bytes	|1024     |
+|MegaByte	|1,024 KiloBytes	|1,048,576  |
+|GigaByte	|1,024 MegaBytes	|1,073,741,824  |
+|TeraByte	|1,024 GigaBytes	|1,099,511,627,776  |
+|PetaByte	|1,024 TeraBytes	|1,125,899,906,842,624  |
+|ExaByte	|1,024 PetaBytes	|1,152,921,504,606,846,976  |
+|ZettaByte	|1,024 ExaBytes	|1,180,591,620,717,411,303,424  |
+|YottaByte	|1,024 ZettaBytes	|1,208,925,819,614,629,174,706,176  |
 
 参考：https://www.geeksforgeeks.org/understanding-file-sizes-bytes-kb-mb-gb-tb-pb-eb-zb-yb/  
 
