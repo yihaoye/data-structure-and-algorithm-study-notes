@@ -1363,5 +1363,8 @@ https://www.youtube.com/watch?v=OnjmdpxpEv0&list=PLbhaS_83B97vSWVslD63vjIi5OTYmS
 * 1000 Billion * 1B => 1 Trillion * 1B => 10^12 * 1B => 1TB
 * 1000 Trillion * 1B => 10^15 * 1B => 1PB
 
+#### ID 设计
+* 5B/字节 ID（纯数字）可以表示 2^8^5 => 2^40 => 10^12 => 1000 Billion => 10000 亿 => 1 兆
+
 ### 数量单位中英对照
 ![](./数量单位中英对照.jpeg)  
