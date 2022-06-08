@@ -41,7 +41,8 @@
       5. 输入为链表（头节点）时，可以考虑快慢指针、哈希表。注意条件：单向还是双向链表、是否有环、链表长度。
       6. 输入为树（根节点）时，可以考虑暴力解（DFS - 二叉搜索树可以重点考虑中序遍历；BFS）、递归、栈、前驱节点后继节点（若为二叉搜索树）。注意条件：是否是特殊类型的二叉树、是否平衡、节点数量。LC 例如 Q98 Q230
       7. 输入为图（出发节点）时，可以考虑暴力解（DFS、BFS）、并查集、Dijkstra。注意条件：是否有环、是否是简单图、节点值的范围、节点数量。
-      8. 输入量较大时，递归、DFS 可能行不通，因为可能爆栈，此时可以考虑迭代、 BFS 或动态规划等等。
+      8. 输入量较大时，递归、DFS 可能行不通，因为可能爆栈，此时可以考虑迭代、 BFS（如果数据类型溢出也要小心注意）或动态规划等等。
+      9. 题解限制条件：如果题目给出（或者可以问出）极端初始值的对应响应/返回值，则很有可能是 DP、数学归纳法（因为 DP、数学归纳法通常需要给定一个初始值设定）。
    2. 套路：根据描述中的问题核心/概念判断解题方向（*需注意，有些题可能看似符合以下多个 case，但实际上可能只是其中一个：比如在偶数 size 的递增螺旋型 matrix 中从最左上角/最小数出发且每次只能走相邻更大数，问是否能恰好 K 步到达中心/最大数 - 看似同时符合 Achieve Task Can-or-Not 和 Find Path，但实际是 Achieve Task - 例题链接：[Spiraling Into Control](https://codingcompetitions.withgoogle.com/codejam/round/00000000008778ec)。也有些题是确实同时符合多个 case，题解也是由这多个 case 的方法组合起来的，比如 [LC Q2289](./Leetcode%20Practices/algorithms/medium/2289%20Steps%20to%20Make%20Array%20Non-decreasing.java) 就是同时符合 Achieve Task/Target/Requirement Count 和有序，所以其题解是 DP + 单调栈。有一些题符合一个 case，但可能需要 case 推荐解法的多个组合起来进行解，比如 [LC Q406](./Leetcode%20Practices/algorithms/medium/406%20Queue%20Reconstruction%20by%20Height.java) 符合 Customized 有序，需要 2D 排序 + 贪心。也有一些题符合某些 case 但是比较特殊就也可以用推荐之外的解法做，比如 [longgest rg substring](./Other%20Practices/04-06-2022%20mock.java)*）
       1. 问题核心/概念：Add Up to Target - Closer-or-Equals 又称 nSum 问题，可以考虑哈希表、排序、双指针、回溯--要注意时间复杂度要求场景，LC--Leetcode 例如 Q1 Q15 Q39
       2. 问题核心/概念：Achieve Task/Target/Requirement Can-or-Not/Count 或 Achieve Task/Target/Requirement with Max/Min/Optimal 或 类似包括背包问题或婚配问题，可以考虑贪婪、DP、基于二分图的匈牙利算法、数学、模拟，LC 例如 Q55 Q416
