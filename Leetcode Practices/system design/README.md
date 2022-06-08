@@ -195,6 +195,9 @@ It is impossible for a distributed software system (especially data store) to si
 * Availability - Every request gets a response on success/failure. It is achieved by replicating the data across different servers.
 * Partition tolerance - System continues to work despite message loss or partial failure.
   
+#### Service Meltdown, Service Downgrade and Service Circuit Breaker
+[服务降级与服务熔断](./服务降级与服务熔断.md)  
+  
 </details>
 
 <br />
