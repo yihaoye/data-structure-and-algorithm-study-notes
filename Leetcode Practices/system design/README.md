@@ -38,8 +38,19 @@
 * [System-Design-Primer](https://github.com/donnemartin/system-design-primer)  
   
 ### 系统主要大类（其他系统皆可从中找到类似）
+<details>
+<summary>System Category</summary>
+
 ![](./System%20Category.png)  
 ![](./System%20Category%202.png)  
+
+</details>
+<br />
+  
+### 系统设计模式
+系统设计也有设计模式（类似 OOD 的设计模式），就像算法需要掌握数据结构，系统设计也需要掌握系统设计模式，因为这些都是最佳实践、通常比自己创造想象的要来得稳健。  
+具体设计模式：https://docs.microsoft.com/en-us/azure/architecture/patterns/  
+<br />
   
 ### 系统通用基础设施
 摘录：https://www.cnblogs.com/ilinuxer/p/6697015.html  
