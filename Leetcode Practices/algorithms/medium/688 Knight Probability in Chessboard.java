@@ -35,6 +35,36 @@ Constraints:
 
 
 
+// Other's Solution:
+class Solution {
+    int[][] nextSteps = new int[][]{{-1,-2},{-1,2},{1,-2},{1,2},{-2,1},{-2,-1},{2,1},{2,-1}};
+    
+    public double knightProbability(int n, int k, int row, int column) {
+        // DP 定义 dp[i][j][p] 为从位置 (i, j) 出发，使用步数不超过 p 步，最后仍在棋盘内的概率 - https://leetcode.cn/problems/knight-probability-in-chessboard/solution/gong-shui-san-xie-jian-dan-qu-jian-dp-yu-st8l/
+        // Time: O(k*N^2), Space: O(k*N^2)
+        double[][][] dp = new double[n][n][k + 1];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                dp[i][j][0] = 1;
+            }
+        }
+        for (int p = 1; p <= k; p++) {
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    for (int[] nextStep : nextSteps) {
+                        int nx = i + nextStep[0], ny = j + nextStep[1];
+                        if (nx < 0 || nx >= n || ny < 0 || ny >= n) continue;
+                        dp[i][j][p] += dp[nx][ny][p - 1] / 8;
+                    }
+                }
+            }
+        }
+        return dp[row][column][k];
+    }
+}
+
+
+
 // My Solution:
 import java.math.BigDecimal;
 
