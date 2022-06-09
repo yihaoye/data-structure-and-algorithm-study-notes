@@ -282,7 +282,7 @@
 ### 二维
 - [ ] 256	Paint House		
 - [ ] 265	Paint House II		
-- [ ] 64	Minimum Path Sum		
+- [x] 64	Minimum Path Sum		
 - [x] 72	Edit Distance		
 - [ ] 97	Interleaving String		
 - [ ] 174	Dungeon Game		
@@ -522,7 +522,7 @@
 - [ ] 59	Spiral Matrix II		
 - [ ] 60	Permutation Sequence		
 - [x] 62	Unique Paths		
-- [ ] 64	Minimum Path Sum		
+- [x] 64	Minimum Path Sum		
 - [ ] 65	Valid Number		
 - [x] 66	Plus One		
 - [x] 67	Add Binary		

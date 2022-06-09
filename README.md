@@ -45,7 +45,7 @@
       9. 题解限制条件：如果题目给出（或者可以问出）极端初始值的对应响应/返回值，则很有可能是 DP、数学归纳法（因为 DP、数学归纳法通常需要给定一个初始值设定）。
    2. 套路：根据描述中的问题核心/概念判断解题方向（*需注意，有些题可能看似符合以下多个 case，但实际上可能只是其中一个：比如在偶数 size 的递增螺旋型 matrix 中从最左上角/最小数出发且每次只能走相邻更大数，问是否能恰好 K 步到达中心/最大数 - 看似同时符合 Achieve Task Can-or-Not 和 Find Path，但实际是 Achieve Task - 例题链接：[Spiraling Into Control](https://codingcompetitions.withgoogle.com/codejam/round/00000000008778ec)。也有些题是确实同时符合多个 case，题解也是由这多个 case 的方法组合起来的，比如 [LC Q2289](./Leetcode%20Practices/algorithms/medium/2289%20Steps%20to%20Make%20Array%20Non-decreasing.java) 就是同时符合 Achieve Task/Target/Requirement Count 和有序，所以其题解是 DP + 单调栈。有一些题符合一个 case，但可能需要 case 推荐解法的多个组合起来进行解，比如 [LC Q406](./Leetcode%20Practices/algorithms/medium/406%20Queue%20Reconstruction%20by%20Height.java) 符合 Customized 有序，需要 2D 排序 + 贪心。也有一些题符合某些 case 但是比较特殊就也可以用推荐之外的解法做，比如 [longgest rg substring](./Other%20Practices/04-06-2022%20mock.java)*）
       1. 问题核心/概念：Add Up to Target - Closer-or-Equals 又称 nSum 问题，可以考虑哈希表、排序、双指针、回溯--要注意时间复杂度要求场景，LC--Leetcode 例如 Q1 Q15 Q39
-      2. 问题核心/概念：Achieve Task/Target/Requirement Can-or-Not/Count 或 Achieve Task/Target/Requirement with Max/Min/Optimal 或 类似包括背包问题或婚配问题，可以考虑贪婪、DP、基于二分图的匈牙利算法、数学、模拟，LC 例如 Q55 Q416
+      2. 问题核心/概念：Achieve Task/Target/Requirement Can-or-Not/Count 或 Achieve Task/Target/Requirement with Max/Min/Optimal 或 类似包括背包问题或婚配问题，可以考虑贪婪、DP、基于二分图的匈牙利算法、数学、模拟，LC 例如 Q55 Q416 Q64
       3. 问题核心/概念：Longest/Maximum Meet-Requirement Substring/Subarray/Sublist/Subset/SubXXX 又称 Optimal Substructure，可以考虑 DP、双指针/滑动窗口，LC 例如 Q3 Q5 Q53 Q152 Q300 Q1048
       4. 问题核心/概念：Find Median，可以考虑自平衡二叉树/TreeMap、堆/优先队列，LC 例如 Q4 Q295
       5. 问题核心/概念：Number Calculation in XXX/Data-Structure/Data-Type，可以考虑模拟算法+进位符/标记变量、栈、前缀和、差分数组，LC 例如 Q2 Q43 Q224 Q227 -- 基本计算器系列，可使用[通用模版解](Leetcode%20Practices/algorithms/hard/224%20Basic%20Calculator.java) Q2288
@@ -54,7 +54,7 @@
       8. 问题核心/概念：Merge Multiple XXX/Data-Structure，可以考虑模拟、递归、多路归并/最小堆、排序，LC 例如 Q21 Q23 Q56
       9.  问题核心/概念：Find/Search in Sorted/Unsorted XXX/Data-Structure/Data-Type，可以考虑二分搜索、位运算--如果是 Find Digit，LC 例如 Q33 Q34 Q136 Q287 Q240
       10. 问题核心/概念：Regular Expression 或 Match 或 Find Word in XXX，可以考虑 DP、递归、字典树、哈希表、KMP，LC 例如 Q10 Q720 Q49
-      11. 问题核心/概念：(Fixed)Range/Last/Next (Optimal/Max/Min/Bigger/Smaller) Value/Area/Sum/DiffSum，输入可以是树节点或线性表或 Matrix/矩阵，可以考虑双指针/滑动窗口和贪婪、DP、一维前缀和/二维前缀和、差分数组、递归、单调栈，LC 例如 Q11 Q221 Q42 Q304 Q124 Q437 Q239 Q2104 Q503
+      11. 问题核心/概念：(Fixed)Range/Last/Next (Optimal/Max/Min/Bigger/Smaller) Value/Area/Sum/DiffSum，输入可以是树节点或线性表或 Matrix/矩阵，可以考虑双指针/滑动窗口和贪婪、DP、一维前缀和/二维前缀和、差分数组、递归、单调栈，LC 例如 Q11 Q221 Q42 Q304 Q124 Q437 Q239 Q2104 Q503 Q64
       12. 问题核心/概念：Stated/StateTransition/Ordered Optimal/Max/Min Calculation/Sum/DiffSum，可以考虑 DP，LC 例如 Q121 Q123 -- 买卖股票系列  Q198 Q213 Q337 -- 打家劫舍系列
       13. 问题核心/概念：Rotate/Reverse/Swap Operation，输入可以是树节点或线性表或 Matrix/矩阵，可以考虑模拟算法/遍历+标记变量、排序，LC 例如 Q48 Q189 Q226 Q206
       14. 问题核心/概念：String/Word Operation/Process/Transfer，可以考虑 DP、剪枝+暴力解/递归，LC 例如 Q72
