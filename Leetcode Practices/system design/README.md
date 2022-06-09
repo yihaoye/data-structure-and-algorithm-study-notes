@@ -49,7 +49,18 @@
   
 ### 系统设计模式
 系统设计也有设计模式（类似 OOD 的设计模式），就像算法需要掌握数据结构，系统设计也需要掌握系统设计模式，因为这些都是最佳实践、通常比自己创造想象的要来得稳健。  
-具体设计模式：https://docs.microsoft.com/en-us/azure/architecture/patterns/  
+主要的系统设计模式：https://docs.microsoft.com/zh-cn/azure/architecture/patterns/  
+* [代表/大使模式](https://docs.microsoft.com/zh-cn/azure/architecture/patterns/ambassador) - 创建代表客户服务或应用程序发送网络请求的帮助程序服务。
+* [防损层/反腐层模式](https://docs.microsoft.com/zh-cn/azure/architecture/patterns/anti-corruption-layer) - 在现代应用程序与旧系统之间实施外观或适配器层。
+  * 在不共享相同语义的不同子系统之间实施外观或适配器层。此层转换一个子系统向另一个子系统发出的请求。
+  * 大多数应用程序依赖于其他系统的某些数据或功能。例如，旧版应用程序迁移到新式系统时，可能仍需要现有的旧的资源。新功能必须能够调用旧系统。逐步迁移尤其如此，随着时间推移，较大型应用程序的不同功能迁移到新式系统中。
+* [异步 Request-Reply 模式](https://docs.microsoft.com/zh-cn/azure/architecture/patterns/async-request-reply) - 在后端处理需要是异步处理但前端仍需要明确响应的情况下，将后端处理与前端主机分离。
+  * 解决方法类似使用 HTTP 轮询。 
+* [用于前端的后端模式](https://docs.microsoft.com/zh-cn/azure/architecture/patterns/backends-for-frontends) - 创建单独的后端服务，供特定的前端应用程序或接口使用。
+* [隔层模式](https://docs.microsoft.com/zh-cn/azure/architecture/patterns/bulkhead) - 将应用程序的元素隔离到池中，这样，如果一个元素发生故障，其他元素可继续工作。
+  * 一个使用者可以使用每个请求的资源同时向多个服务发送请求。当使用者向配置不当或无响应的服务发送请求时，可能无法及时释放客户端请求所用的资源。随着不断地向服务发送请求，这些资源可能会耗尽。例如，客户端的连接池可能会耗尽。此时，使用者向其他服务发出的请求会受到影响。最终，使用者不再能够向其他服务（而不仅仅是原始的无响应服务）发送请求。
+* [缓存端模式](https://docs.microsoft.com/zh-cn/azure/architecture/patterns/cache-aside) - 将数据按需从数据存储加载到缓存（如 Redis）中。
+* To Be Continue ...
 <br />
   
 ### 系统通用基础设施
