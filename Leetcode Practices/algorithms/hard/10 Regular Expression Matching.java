@@ -46,7 +46,7 @@ It is guaranteed for each appearance of the character '*', there will be a previ
 
 
 
-// Other's Solution (DP - 时间复杂度 O(N*M)):
+// Other's Solution (DP - 时间复杂度 O(N*M)，空间复杂度 O(N*M)):
 class Solution {
     public boolean isMatch(String s, String p) {
         // corner case
