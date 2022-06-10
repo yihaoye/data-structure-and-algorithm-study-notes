@@ -16,6 +16,7 @@ Tool Sets 是算法解题、编码过程中常用的一些经常复用的原子�
 * [状态机相关](./FSM(DFA).java)
 * [HashCode](./HashCode.java)
 * [I/O 与 Serializable（序列化与反序列化）](./IO(Serializable).java)
+* [状态压缩](./StateCompression.java)
 * [Iterator](./Iterator.java)
 * [链表节点](./LinkedListNode.java)
 * [数学相关操作与套路](./Math.java)
