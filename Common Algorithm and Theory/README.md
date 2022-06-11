@@ -33,6 +33,7 @@
       - [前缀和, 差分, 树状数组, 线段树 | Prefix Sum, Difference, Binary Indexed Tree, Segment Tree](./前缀和与差分.md)
       - [记忆化搜索 | Memory Search](./记忆化搜索.md)
       - [弗洛伊德算法 | Floyd-Warshall Algorithm](./弗洛伊德算法.md) (时间复杂度 O(N^3))
+      - [Kadane 算法 | Kadane's Algorithm](./Kadane算法.md) (时间复杂度 O(N))
     - [KMP 算法 | Knuth–Morris–Pratt Algorithm](./KMP算法.md) (时间复杂度 O(N+M))
     - [AC 自动机 | Aho–Corasick Algorithm](./AC自动机.md)
     - [马拉车算法 | Manacher Algorithm]()
