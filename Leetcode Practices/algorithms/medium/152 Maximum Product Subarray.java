@@ -47,3 +47,30 @@ class Solution {
         return res;
     }
 }
+
+
+
+// My Solution 2:
+class Solution {
+    public int maxProduct(int[] nums) {
+        /*
+            数学（前缀积），遍历时计算前缀积，同时维护一个当前最小正前缀积（初始值为 1）和当前最大负前缀积（初始值也为 1，若 nums[0] < 0 则为 nums[0]），然后用当前前缀积除以其中一个求较大值、然后再与 res 对比，然后如果当前前缀积比维护值的其中一个更优则替换，但因为最小正前缀积必然总是等于 1 且 num 为整形所以不用更新，但是这个过程有一个特殊情况需要使前缀积跳过重来 - 即当上一个数为 0 时全部维护值应重置且 preProduct[i] = nums[i]。
+            Time: O(N), Space: O(N)
+        */
+        int n = nums.length, minPositive = 1, maxNegative = nums[0] < 0 ? nums[0] : 1, res = nums[0];
+        int[] preProduct = new int[n];
+        preProduct[0] = nums[0];
+        for (int i=1; i<n; i++) {
+            preProduct[i] = preProduct[i-1] * nums[i];
+            if (nums[i-1] == 0) {
+                maxNegative = 1;
+                preProduct[i] = nums[i];
+            }
+            int tmpRes = Math.max(preProduct[i]/minPositive, preProduct[i]/maxNegative);
+            res = Math.max(res, tmpRes);
+            if (preProduct[i] < 0 && (preProduct[i] > maxNegative || maxNegative > 0)) maxNegative = preProduct[i];
+        }
+        
+        return res;
+    }
+}
