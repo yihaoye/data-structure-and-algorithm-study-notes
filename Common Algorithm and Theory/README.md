@@ -15,7 +15,6 @@
     - [分治法 | Divide-and-Conquer Algorithm](./分治法.md) (时间复杂度不固定，比如若是指数分解则为 O(loga N)，若是线性分解则为 O(N)，其他分解情况下亦有可能是其他大 O)
     - [二分搜索 | Binary Search](./二分搜索.md) (时间复杂度 O(logN))
     - [倍增法 | Binary Lifting](./倍增法.md)
-    - [前缀和, 差分| Prefix Sum, Difference](./前缀和与差分.md)
   - 中阶
     - [双指针法, 滑动窗口算法 | Two Pointer, Sliding Window](./双指针法与滑动窗口算法.md)
     - [深度优先, 广度优先, 树图遍历 | Depth First Search, Breadth First Search](./树图遍历.md)
@@ -28,6 +27,7 @@
     - [回溯法 | Backtracking](./NQueen.java)
     - [动态规划 | Dynamic Programming](./动态规划.md)
       - [记忆化搜索 | Memory Search](./记忆化搜索.md)
+      - [前缀和, 差分| Prefix Sum, Difference](./前缀和与差分.md)
       - [弗洛伊德算法 | Floyd-Warshall Algorithm](./弗洛伊德算法.md) (时间复杂度 O(N^3))
     - [位运算 | Bitwise Operation](./位运算.md)
     - [图匹配 | Graph Match](./图匹配.md)
