@@ -31,6 +31,8 @@ Define base case:
 s0[0] = 0; // At the start, you don't have any stock if you just rest
 s1[0] = -prices[0]; // After buy, you should have -prices[0] profit. Be positive!
 s2[0] = Integer.MIN_VALUE; // Lower base case
+
+Time: O(N), Space: O(N)
 */
 class Solution {
     public int maxProfit(int[] prices) {
