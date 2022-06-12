@@ -44,20 +44,20 @@
       8. 输入量较大时，递归、DFS 可能行不通，因为可能爆栈，此时可以考虑迭代、 BFS 或动态规划等等（但是仍要小心数据类型溢出情况，例如 [LC Q688](./Leetcode%20Practices/algorithms/medium/688%20Knight%20Probability%20in%20Chessboard.java)）。
       9. 题解限制条件：如果题目给出（或者可以问出）极端初始值的对应响应/返回值，则很有可能是 DP、数学归纳法（因为 DP、数学归纳法通常需要给定一个初始值设定）。
    2. 套路：根据描述中的问题核心/概念判断解题方向（*需注意，有些题可能看似符合以下多个 case，但实际上可能只是其中一个：比如在偶数 size 的递增螺旋型 matrix 中从最左上角/最小数出发且每次只能走相邻更大数，问是否能恰好 K 步到达中心/最大数 - 看似同时符合 Achieve Task Can-or-Not 和 Find Path，但实际是 Achieve Task - 例题链接：[Spiraling Into Control](https://codingcompetitions.withgoogle.com/codejam/round/00000000008778ec)。也有些题是确实同时符合多个 case，题解也是由这多个 case 的方法组合起来的，比如 [LC Q2289](./Leetcode%20Practices/algorithms/medium/2289%20Steps%20to%20Make%20Array%20Non-decreasing.java) 就是同时符合 Achieve Task/Target/Requirement Count 和有序，所以其题解是 DP + 单调栈。有一些题符合一个 case，但可能需要 case 推荐解法的多个组合起来进行解，比如 [LC Q406](./Leetcode%20Practices/algorithms/medium/406%20Queue%20Reconstruction%20by%20Height.java) 符合 Customized 有序，需要 2D 排序 + 贪心。也有一些题符合某些 case 但是比较特殊就也可以用推荐之外的解法做，比如 [longgest rg substring](./Other%20Practices/04-06-2022%20mock.java)*）
-      1. 问题核心/概念：Add Up to Target - Closer-or-Equals 又称 nSum 问题，可以考虑哈希表、排序、双指针、回溯--要注意时间复杂度要求场景，LC--Leetcode 例如 Q1 Q15 Q39
-      2. 问题核心/概念：Achieve Task/Target/Requirement Can-or-Not/Count 或 Achieve Task/Target/Requirement with Max/Min/Optimal 或 类似包括背包问题或婚配问题，可以考虑贪婪、DP、基于二分图的匈牙利算法、数学、模拟，LC 例如 Q55 Q416 Q64
-      3. 问题核心/概念：Longest/Maximum Meet-Requirement Substring/Subarray/Sublist/Subset/SubXXX 又称 Optimal Substructure，可以考虑 DP、双指针/滑动窗口，LC 例如 Q3 Q5 Q53 Q152 Q300 Q1048
-      4. 问题核心/概念：Find Median，可以考虑自平衡二叉树/TreeMap、堆/优先队列，LC 例如 Q4 Q295
-      5. 问题核心/概念：Number Calculation in XXX/Data-Structure/Data-Type，可以考虑模拟算法+进位符/标记变量、栈、前缀和、差分数组，LC 例如 Q2 Q43 Q224 Q227 -- 基本计算器系列，可使用[通用模版解](Leetcode%20Practices/algorithms/hard/224%20Basic%20Calculator.java) Q2288
-      6. 问题核心/概念：Symmetry 或 Palindromic 或 Parentheses，可以考虑栈、双指针、标记变量，LC 例如 Q20 Q131 Q234 Q678
-      7. 问题核心/概念：All Possible Combinations (Count) 或 类爬楼梯问题，可以考虑剪枝+暴力解/递归/迭代、回溯法、DP/记忆化搜索、数学，LC 例如 Q17 Q2266 Q39 Q46 Q55 Q62 [Q70](./Leetcode%20Practices/algorithms/easy/70%20Climbing%20Stairs.java)
-      8. 问题核心/概念：Merge Multiple XXX/Data-Structure，可以考虑模拟、递归、多路归并/最小堆、排序，LC 例如 Q21 Q23 Q56
-      9.  问题核心/概念：Find/Search in Sorted/Unsorted XXX/Data-Structure/Data-Type，可以考虑二分搜索、位运算--如果是 Find Digit，LC 例如 Q33 Q34 Q136 Q287 Q240
+      1. 问题核心/概念：Add Up to Target - Closer-or-Equals 又称 nSum 问题，可以考虑哈希表、排序、双指针、回溯--要注意时间复杂度要求场景，LC--Leetcode 例如 Q1 [Q15](./Leetcode%20Practices/algorithms/medium/15%203Sum.java) Q39
+      2. 问题核心/概念：Achieve Task/Target/Requirement Can-or-Not/Count 或 Achieve Task/Target/Requirement with Max/Min/Optimal 或 类似包括背包问题或婚配问题，可以考虑贪婪、DP、基于二分图的匈牙利算法、数学、模拟，LC 例如 [Q55](./Leetcode%20Practices/algorithms/medium/55%20Jump%20Game.java) [Q416](Leetcode%20Practices/algorithms/medium/416%20Partition%20Equal%20Subset%20Sum.java) Q64
+      3. 问题核心/概念：Longest/Maximum Meet-Requirement Substring/Subarray/Sublist/Subset/SubXXX 又称 Optimal Substructure，可以考虑 DP、双指针/滑动窗口，LC 例如 [Q3](Leetcode%20Practices/algorithms/medium/3%20Longest%20Substring%20Without%20Repeating%20Characters.java) Q5 Q53 Q152 Q300 Q1048
+      4. 问题核心/概念：Find Median，可以考虑自平衡二叉树/TreeMap、堆/优先队列，LC 例如 [Q4](./Leetcode%20Practices/algorithms/hard/4%20Median%20of%20Two%20Sorted%20Arrays.java) Q295
+      5. 问题核心/概念：Number Calculation in XXX/Data-Structure/Data-Type，可以考虑模拟算法+进位符/标记变量、栈、前缀和、差分数组，LC 例如 [Q2](./Leetcode%20Practices/algorithms/medium/2%20Add%20Two%20Numbers.java) Q43 Q224 Q227 -- 基本计算器系列，可使用[通用模版解](Leetcode%20Practices/algorithms/hard/224%20Basic%20Calculator.java) Q2288
+      6. 问题核心/概念：Symmetry 或 Palindromic 或 Parentheses，可以考虑栈、双指针、标记变量，LC 例如 [Q20](./Leetcode%20Practices/algorithms/easy/20%20Valid%20Parentheses.java) Q131 Q234 Q678
+      7. 问题核心/概念：All Possible Combinations (Count) 或 类爬楼梯问题，可以考虑剪枝+暴力解/递归/迭代、回溯法、DP/记忆化搜索、数学，LC 例如 [Q17](./Leetcode%20Practices/algorithms/medium/17%20Letter%20Combinations%20of%20a%20Phone%20Number.java) Q2266 Q39 Q46 Q55 Q62 [Q70](./Leetcode%20Practices/algorithms/easy/70%20Climbing%20Stairs.java)
+      8. 问题核心/概念：Merge Multiple XXX/Data-Structure，可以考虑模拟、递归、多路归并/最小堆、排序，LC 例如 [Q21](./Leetcode%20Practices/algorithms/easy/21%20Merge%20Two%20Sorted%20Lists.java) Q23 Q56
+      9.  问题核心/概念：Find/Search in Sorted/Unsorted XXX/Data-Structure/Data-Type，可以考虑二分搜索、位运算--如果是 Find Digit，LC 例如 Q33 Q34 [Q136](./Leetcode%20Practices/algorithms/medium/136%20Single%20Number.cpp) Q287 Q240
       10. 问题核心/概念：Regular Expression 或 Match 或 Find Word in XXX，可以考虑 DP、递归、字典树、哈希表、KMP，LC 例如 Q10 Q720 Q49
       11. 问题核心/概念：(Fixed)Range/Last/Next (Optimal/Max/Min/Bigger/Smaller) Value/Area/Sum/DiffSum，输入可以是树节点或线性表或 Matrix/矩阵，可以考虑双指针/滑动窗口和贪婪、DP、一维前缀和/二维前缀和、差分数组、递归、单调栈，LC 例如 Q11 Q221 Q42 Q304 Q124 Q437 Q239 Q2104 Q503 Q64
       12. 问题核心/概念：Stated/StateTransition/Ordered Optimal/Max/Min Calculation/Sum/DiffSum，可以考虑 DP，LC 例如 Q121 Q123 -- 买卖股票系列  Q198 Q213 Q337 -- 打家劫舍系列
       13. 问题核心/概念：Rotate/Reverse/Swap Operation，输入可以是树节点或线性表或 Matrix/矩阵，可以考虑模拟算法/遍历+标记变量、排序，LC 例如 Q48 Q189 Q226 Q206
-      14. 问题核心/概念：String/Word Operation/Process/Transfer，可以考虑 DP、剪枝+暴力解/递归，LC 例如 Q72
+      14. 问题核心/概念：String/Word Operation/Process/Transfer，可以考虑 DP、剪枝+暴力解/递归，LC 例如 [Q72](./Leetcode%20Practices/algorithms/hard/72%20Edit%20Distance.java)
       15. 问题核心/概念：Traversal/Iterator，可以考虑暴力解/DFS/BFS，LC 例如 Q94 Q102 Q104 Q105 Q173 Q341
       16. 问题核心/概念：Copy/Clone，可以考虑哈希表、指针或引用，LC 例如 Q138
       17. 问题核心/概念：Digit/Number/Bits Operation/Process/Transfer，可以考虑位运算，LC 例如 Q751
@@ -71,7 +71,7 @@
       25. 问题核心/概念：Find Path/Connection，输入可以是树节点或图节点或 Matrix/矩阵，可以考虑暴力解/DFS/BFS、回溯法、模拟、DP、并查集，LC 例如 Q62 Q63 Q684
       26. 问题核心/概念：Shape Check，输入可以是 Matrix/矩阵，可以考虑暴力解/DFS/BFS、回溯法、模拟、几何/数学/by数据类型或数据结构或自定义对象以实现、扫描线、并查集，LC 例如 Q200 Q2013 Q391
       27. 问题核心/概念：(Range) Update and Range Query/Calculation，可以考虑树状数组、线段树，LC 例如 Q307
-      28. 问题核心/概念：(Customized) 有序，可以考虑排序、单调栈、堆/优先队列、自平衡二叉搜索树/红黑树、贪心、二分搜索
+      28. 问题核心/概念：(Customized) 有序，可以考虑排序、单调栈、堆/优先队列、自平衡二叉搜索树/红黑树、贪心、二分搜索，LC 例如 Q406
 2. 思考二，是否需要做一些[预处理](./Tool%20Sets/)，如排序，又或者先做一些额外预处理比如补零数位以及遍历至尾，在从尾部往回处理（如面试金典 9.2-2.5 进阶）。这种情况往往出现在题目明显有违常规思路时，即总是有些条件、可能、边缘情况阻碍常规思路，意味着出题者可能是故意增加了一些难度需要解题者预处理。这些预处理工作即使看起来复杂且一开始不确定是否对解题有帮助也不妨试试，尽量按常规系统性方法解题（即上面所有 Leetcode 内的解题法分类如递归、动态规划等等，经验足够的话大的解题类方向通常一开始就可以定下来），可以分割困难，但不要苦思奇法。
 3. 思考三，当题目已暗示可能要进行大规模输入检测题解效率时，可以考虑进行一些预处理、动态规划思路，例子如 Leetcode Q244。
 4. 思考四，(草稿时)引入一些[数学工具、模型](./Tool%20Sets/Math.java) - 如[状态机](./Tool%20Sets/FSM(DFA).java)等等有助于理清思路与解题(例子如 Leetcode Q309，KMP 算法实现)，辅助的数学思想还可以包括且不限于加减乘除(商、余数)、开方、指数、对数、微积分(例如 Leetcode Q367 牛顿法)、素数、公约数、公倍数、概率、阶乘、数列、坐标、几何函数(sin、cos、tan)、[矩阵](./Tool%20Sets/Math.java)(例如 Leetcode Q311)、不等式、多项式、进位转换等等。
