@@ -33,7 +33,7 @@
   
 #### 首先看完题目先不要急着做，进行下述几个思考阶段先
 1. 思考一（重要），发生在面试的最开始、影响整场面试体验，先理清题目是关于哪（几）个 Topic，比如什么类型数据结构、算法相关（如队列、堆栈、树、字符串、布尔或二进制、数组、图，如回溯法、动态规划、贪婪算法、二分搜索、二进制运算、迭代递归、模拟、排序、遍历、前缀和与差分、单调栈、并查集、数学、设计），通常若题目没有明显处理算法暗示或思绪提供时则可以考虑暴力破解（如遍历、回溯法、递归循环穷举法或 DFS、BFS 等），又或通过题目性能要求推测考点算法 - 比如要求性能达到 logN 时即很可能要使用二分搜索算法。（记住递归可以顺序也可以反序 - 如面试金典 9.2-2.5 进阶）。通常只要推测出 Tag、Topic 就可极大降低做题的难度。
-   1. 套路：根据输入数据（量）以及题解限制条件（时空复杂度要求）判断解题方向
+   1. 套路：根据输入数据（参数值、量）以及题解限制条件（时空复杂度要求）判断解题方向
       1. 输入为一维数组时，可以考虑暴力解（DFS、BFS 以及附加记忆化搜索）、动态规划、双指针、滑动窗口、排序、二分搜索、二进制运算、前缀和与差分、哈希表、贪心、KMP。注意条件：元素是否唯一、是否有序、数组长度。
       2. 输入为 Matrix/矩阵、二维（比如数组）时，可以考虑暴力解（DFS、BFS 以及附加记忆化搜索）、回溯法、动态规划、并查集等等。注意条件：值的范围、是否可以修改矩阵、矩阵大小。LC 例如 Q200
       3. 输入为字符串时，可以考虑暴力解/递归、双指针、滑动窗口、栈、动态规划、贪心、KMP。注意条件：字符集范围、字符串长度。LC 例如 Q394 Q438 Q763
@@ -41,11 +41,11 @@
       5. 输入为链表（头节点）时，可以考虑快慢指针、哈希表。注意条件：单向还是双向链表、是否有环、链表长度。
       6. 输入为树（根节点）时，可以考虑暴力解（DFS - 二叉搜索树可以重点考虑中序遍历；BFS）、递归、栈、前驱节点后继节点（若为二叉搜索树）。注意条件：是否是特殊类型的二叉树、是否平衡、节点数量。LC 例如 Q98 Q230
       7. 输入为图（出发节点）时，可以考虑暴力解（DFS、BFS）、并查集、Dijkstra。注意条件：是否有环、是否是简单图、节点值的范围、节点数量。
-      8. 输入量较大时，递归、DFS 可能行不通，因为可能爆栈，此时可以考虑迭代、 BFS 或动态规划等等（但是仍要小心数据类型溢出情况，例如 [LC Q688](./Leetcode%20Practices/algorithms/medium/688%20Knight%20Probability%20in%20Chessboard.java)）。
+      8. 输入参数值较大时，递归、DFS 可能行不通，因为可能[爆栈](./Computer%20System%20Layer/内存与程序.md#关于爆栈)，此时可以考虑迭代、BFS 或动态规划等等（但是仍要小心标记变量数据类型溢出情况，例如 [LC Q688](./Leetcode%20Practices/algorithms/medium/688%20Knight%20Probability%20in%20Chessboard.java)）；相反地，如果审题时发现输入参数（主要是决定递归深度）的值不大甚至出奇的小（比如个位数），则很有可能迭代、动态规划很难做，直接给一个递归、DFS、回溯法解就可以了（例如 [LC Q2305](./Leetcode%20Practices/algorithms/medium/2305%20Fair%20Distribution%20of%20Cookies.java)），再不济可以剪枝优化试试。
       9. 题解限制条件：如果题目给出（或者可以问出）极端初始值的对应响应/返回值，则很有可能是 DP、数学归纳法（因为 DP、数学归纳法通常需要给定一个初始值设定）。
    2. 套路：根据描述中的问题核心/概念判断解题方向（*需注意，有些题可能看似符合以下多个 case，但实际上可能只是其中一个：比如在偶数 size 的递增螺旋型 matrix 中从最左上角/最小数出发且每次只能走相邻更大数，问是否能恰好 K 步到达中心/最大数 - 看似同时符合 Achieve Task Can-or-Not 和 Find Path，但实际是 Achieve Task - 例题链接：[Spiraling Into Control](https://codingcompetitions.withgoogle.com/codejam/round/00000000008778ec)。也有些题是确实同时符合多个 case，题解也是由这多个 case 的方法组合起来的，比如 [LC Q2289](./Leetcode%20Practices/algorithms/medium/2289%20Steps%20to%20Make%20Array%20Non-decreasing.java) 就是同时符合 Achieve Task/Target/Requirement Count 和有序，所以其题解是 DP + 单调栈。有一些题符合一个 case，但可能需要 case 推荐解法的多个组合起来进行解，比如 [LC Q406](./Leetcode%20Practices/algorithms/medium/406%20Queue%20Reconstruction%20by%20Height.java) 符合 Customized 有序，需要 2D 排序 + 贪心。也有一些题符合某些 case 但是比较特殊就也可以用推荐之外的解法做，比如 [longgest rg substring](./Other%20Practices/04-06-2022%20mock.java)*）
       1. 问题核心/概念：Add Up to Target - Closer-or-Equals 又称 nSum 问题，可以考虑哈希表、排序、双指针、回溯--要注意时间复杂度要求场景，LC--Leetcode 例如 Q1 [Q15](./Leetcode%20Practices/algorithms/medium/15%203Sum.java) Q39
-      2. 问题核心/概念：Achieve Task/Target/Requirement Can-or-Not/Count 或 Achieve Task/Target/Requirement with Max/Min/Optimal 或 类似包括背包问题或婚配问题，可以考虑贪婪、DP、基于二分图的匈牙利算法、数学、模拟，LC 例如 [Q55](./Leetcode%20Practices/algorithms/medium/55%20Jump%20Game.java) [Q416](Leetcode%20Practices/algorithms/medium/416%20Partition%20Equal%20Subset%20Sum.java) Q64
+      2. 问题核心/概念：Achieve Task/Target/Requirement Can-or-Not/Count 或 Achieve Task/Target/Requirement with Max/Min/Optimal 或 类似包括背包问题或婚配问题，可以考虑贪婪、DP、基于二分图的匈牙利算法、数学、模拟、暴力解/DFS/回溯法，LC 例如 [Q55](./Leetcode%20Practices/algorithms/medium/55%20Jump%20Game.java) [Q416](Leetcode%20Practices/algorithms/medium/416%20Partition%20Equal%20Subset%20Sum.java) Q64
       3. 问题核心/概念：Longest/Maximum Meet-Requirement Substring/Subarray/Sublist/Subset/SubXXX 又称 Optimal Substructure，可以考虑 DP、双指针/滑动窗口，LC 例如 [Q3](Leetcode%20Practices/algorithms/medium/3%20Longest%20Substring%20Without%20Repeating%20Characters.java) Q5 Q53 Q152 Q300 Q1048
       4. 问题核心/概念：Find Median，可以考虑自平衡二叉树/TreeMap、堆/优先队列，LC 例如 [Q4](./Leetcode%20Practices/algorithms/hard/4%20Median%20of%20Two%20Sorted%20Arrays.java) Q295
       5. 问题核心/概念：Number Calculation in XXX/Data-Structure/Data-Type，可以考虑模拟算法+进位符/标记变量、栈、前缀和、差分数组，LC 例如 [Q2](./Leetcode%20Practices/algorithms/medium/2%20Add%20Two%20Numbers.java) Q43 Q224 Q227 -- 基本计算器系列，可使用[通用模版解](Leetcode%20Practices/algorithms/hard/224%20Basic%20Calculator.java) Q2288
