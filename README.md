@@ -101,6 +101,7 @@
 4. 尽量编码清晰、最佳代码风格规范、编码速度尽量快，注重边界处理（预判），尽量有注释
 5. 是否给出正确的解法，是否给出较优的解法，以及对 follow up 的预判
 6. 可以开头问有几道题（比如有没有 follow up），简单题开始写代码后可以代码为主解释为辅（面试官可能默认只是热身、更多是期望快速解题，所以最好不要浪费时间）
+7. [白板（文本文件）上绘图技巧](./白板绘图.md)
 
 #### 预先准备
 1. 预备一，熟用熟背常用模版比如[反转链表 | Leetcode Q92](./Leetcode%20Practices/algorithms/medium/92%20Reverse%20Linked%20List%20II.java)、[前缀树(字典树) | Leetcode 208](./Leetcode%20Practices/algorithms/medium/208%20Implement%20Trie%20(Prefix%20Tree).java)、[并查集与联合查找 | Leetcode 200 UF 解法](./Leetcode%20Practices/algorithms/medium/200%20Number%20of%20Islands.java)、[树状数组 | Leetcode 307](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/BinaryIndexedTree(FenwickTree)/README.md#树状数组实现)、[滑动窗口](./Common%20Algorithm%20and%20Theory/双指针法与滑动窗口算法.md)、[快慢指针 | Leetcode 142](./Leetcode%20Practices/algorithms/medium/142%20Linked%20List%20Cycle%20II.java)、[多路归并 | Leetcode 23](./Leetcode%20Practices/algorithms/hard/23%20Merge%20k%20Sorted%20Lists.java)、[单调栈 | Leetcode 503](./Common%20Algorithm%20and%20Theory/单调栈.md)、[树复原 | Leetcode 105 106](./Leetcode%20Practices/algorithms/medium/105%20Construct%20Binary%20Tree%20from%20Preorder%20and%20Inorder%20Traversal.java)、[穷举递增子序列 | Leetcode 491](./Leetcode%20Practices/algorithms/medium/491%20Increasing%20Subsequences.java)、[二分搜索 | Leetcode 34 etc](./Common%20Algorithm%20and%20Theory/二分搜索.md)、[翻转树 | Leetcode 156 226](./Leetcode%20Practices/algorithms/medium/156%20Binary%20Tree%20Upside%20Down.java)，[待补充...]() 等等。  
