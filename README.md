@@ -50,7 +50,7 @@
       4. 问题核心/概念：Find Median，可以考虑自平衡二叉树/TreeMap、堆/优先队列，LC 例如 [Q4](./Leetcode%20Practices/algorithms/hard/4%20Median%20of%20Two%20Sorted%20Arrays.java) Q295
       5. 问题核心/概念：Number Calculation in XXX/Data-Structure/Data-Type，可以考虑模拟算法+进位符/标记变量、栈、前缀和、差分数组，LC 例如 [Q2](./Leetcode%20Practices/algorithms/medium/2%20Add%20Two%20Numbers.java) Q43 Q224 Q227 -- 基本计算器系列，可使用[通用模版解](Leetcode%20Practices/algorithms/hard/224%20Basic%20Calculator.java) Q2288
       6. 问题核心/概念：Symmetry 或 Palindromic 或 Parentheses，可以考虑栈、双指针、标记变量，LC 例如 [Q20](./Leetcode%20Practices/algorithms/easy/20%20Valid%20Parentheses.java) Q131 Q234 Q678
-      7. 问题核心/概念：All Possible Combinations (Count) 或 类爬楼梯问题，可以考虑剪枝+暴力解/递归/迭代、回溯法、DP/记忆化搜索、数学，LC 例如 [Q17](./Leetcode%20Practices/algorithms/medium/17%20Letter%20Combinations%20of%20a%20Phone%20Number.java) Q2266 Q39 Q46 Q55 Q62 [Q70](./Leetcode%20Practices/algorithms/easy/70%20Climbing%20Stairs.java)
+      7. 问题核心/概念：All Possible Combinations (Count) 或 类爬楼梯问题，可以考虑剪枝+暴力解/递归/迭代、回溯法、DP/记忆化搜索、(组合)数学，LC 例如 [Q17](./Leetcode%20Practices/algorithms/medium/17%20Letter%20Combinations%20of%20a%20Phone%20Number.java) Q2266 Q39 Q46 Q55 Q62 [Q70](./Leetcode%20Practices/algorithms/easy/70%20Climbing%20Stairs.java)
       8. 问题核心/概念：Merge Multiple XXX/Data-Structure，可以考虑模拟、递归、多路归并/最小堆、排序，LC 例如 [Q21](./Leetcode%20Practices/algorithms/easy/21%20Merge%20Two%20Sorted%20Lists.java) Q23 Q56
       9.  问题核心/概念：Find/Search in Sorted/Unsorted XXX/Data-Structure/Data-Type，可以考虑二分搜索、位运算--如果是 Find Digit，LC 例如 Q33 Q34 [Q136](./Leetcode%20Practices/algorithms/medium/136%20Single%20Number.cpp) Q287 Q240
       10. 问题核心/概念：Regular Expression 或 Match 或 Find Word in XXX，可以考虑 DP、递归、字典树、哈希表、KMP，LC 例如 Q10 Q720 Q49
@@ -74,7 +74,7 @@
       28. 问题核心/概念：(Customized) 有序，可以考虑排序、单调栈、堆/优先队列、自平衡二叉搜索树/红黑树、贪心、二分搜索，LC 例如 Q406
 2. 思考二，是否需要做一些[预处理](./Tool%20Sets/)，如排序，又或者先做一些额外预处理比如补零数位以及遍历至尾，在从尾部往回处理（如面试金典 9.2-2.5 进阶）。这种情况往往出现在题目明显有违常规思路时，即总是有些条件、可能、边缘情况阻碍常规思路，意味着出题者可能是故意增加了一些难度需要解题者预处理。这些预处理工作即使看起来复杂且一开始不确定是否对解题有帮助也不妨试试，尽量按常规系统性方法解题（即上面所有 Leetcode 内的解题法分类如递归、动态规划等等，经验足够的话大的解题类方向通常一开始就可以定下来），可以分割困难，但不要苦思奇法。
 3. 思考三，当题目已暗示可能要进行大规模输入检测题解效率时，可以考虑进行一些预处理、动态规划思路，例子如 Leetcode Q244。
-4. 思考四，(草稿时)引入一些[数学工具、模型](./Tool%20Sets/Math.java) - 如[状态机](./Tool%20Sets/FSM(DFA).java)等等有助于理清思路与解题(例子如 Leetcode Q309，KMP 算法实现)，辅助的数学思想还可以包括且不限于加减乘除(商、余数)、开方、指数、对数、微积分(例如 Leetcode Q367 牛顿法)、素数、公约数、公倍数、概率、阶乘、数列、坐标、几何函数(sin、cos、tan)、[矩阵](./Tool%20Sets/Math.java)(例如 Leetcode Q311)、不等式、多项式、进位转换等等。
+4. 思考四，(草稿时)引入一些[数学工具、模型](./Tool%20Sets/Math.java) - 如[状态机](./Tool%20Sets/FSM(DFA).java)等等有助于理清思路与解题(例子如 Leetcode Q309，KMP 算法实现)，辅助的数学思想还可以包括且不限于加减乘除(商、余数)、开方、指数、对数、微积分(例如 Leetcode Q367 牛顿法)、素数、公约数、公倍数、概率、阶乘、组合数学(例如 Leetcode Q62)、数列、坐标、几何函数(sin、cos、tan)、[矩阵](./Tool%20Sets/Math.java)(例如 Leetcode Q311)、不等式、多项式、进位转换等等。
 5. 思考五，有时有些题目未必是完整使用某个算法来解题，有可能只是使用该算法的一部分或其某个某些工具（例如 Leetcode Q459 Q1392 只使用 KMP 的 Partial Match Table）。
 6. 思考六，有些问题或子问题未必需要使用正式的算法或计算处理（即使有适用的算法也未必是效率最好的），很可能仅需简单地 hard coding 一些预备数据（特别是当这些问题的可能的结果/子结果的集合是有限的、在不大的区间时），然后再基于这些预备数据简单处理一下即可给出答案（比如问题：随机产生多个 4 位数字的 PIN 码且每个码都是独一无二的且每个码都符合连续两位不能相同连续三位不能递增，其解决方案即 hard coding 一个包含所有合规的 PINs 的数组，然后再通过随机函数从中不重叠地选取即可，但是也有一些面试情况希望给出产生这些 PIN 的算法，见[实例](./Other%20Practices/15-05-2021%20pin%20generator/)）。此种方法也可与某些算法（如动态规划）结合使用。
 7. 思考七，当一些题目要求在 O(N) 时间复杂度 O(1) 空间复杂度等苛刻条件内完成时，可能需要通过一些特别的适用于该题情况的方法（比如位运算）而不是先排序再处理或基于哈希表数组等工具的惯常做法（例如 Leetcode Q136 Q137）。又比如如何在 O(1) 的空间代价完成两两链表合并或反转，这个问题在面试中常常出现，为了达到空间代价是 O(1)，通常宗旨是原地调整链表元素的 next 指针完成合并或反转。
