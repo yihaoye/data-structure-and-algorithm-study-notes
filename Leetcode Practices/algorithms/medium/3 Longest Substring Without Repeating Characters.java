@@ -53,3 +53,29 @@ public class Solution {
         return ans;
     }
 }
+
+
+
+// My Solution:
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+        // two pointer + hashmap
+        // Time: O(N), Space: O(1) - count of unique chars is constant
+        if (s.length() == 0) return 0;
+        Map<Character, Integer> map = new HashMap<>();
+        int l = 0, r = 0, res = 1;
+        map.put(s.charAt(l), l);
+        while (++r < s.length()) {
+            if (l == r) continue;
+
+            if (map.containsKey(s.charAt(r)) && map.get(s.charAt(r)) >= l) { // move left pointer to the one whch is after next index of previous duplicate char's index
+                l = map.get(s.charAt(r)) + 1;
+            } else {
+                res = Math.max(res, r - l + 1);
+            }
+            map.put(s.charAt(r), r);
+        }
+
+        return res;
+    }
+}
