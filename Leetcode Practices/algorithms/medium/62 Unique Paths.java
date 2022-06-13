@@ -42,3 +42,21 @@ class Solution {
         return mem[m-1][n-1];
     }
 }
+
+
+
+// Other's Solution:
+class Solution {
+    public int uniquePaths(int m, int n) {
+        // 组合数学 - https://leetcode.cn/problems/unique-paths/solution/bu-tong-lu-jing-by-leetcode-solution-hzjf/
+        // 从左上角到右下角的过程中，需要移动 m + n - 2 次，其中有 m - 1 次向下移动，n - 1 次向右移动。因此路径的总数，就等于从 m + n - 2 次移动中选择 m − 1 次向下移动的方案数，即组合数：
+        // ans = ((m + n - 2)! / (n - 1)!) / (m - 1)!
+        // 但是直接算阶乘会在数字太大的时候数据溢出，所以需要一些变动
+        // Time: O(min(m, n)), Space: O(1)
+        long ans = 1;
+        for (int x = n, y = 1; y < m; ++x, ++y) {
+            ans = ans * x / y;
+        }
+        return (int) ans;
+    }
+}
