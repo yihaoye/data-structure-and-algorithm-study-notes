@@ -3,6 +3,7 @@
   
 # 基础
 * [数学归纳法](./Mathematical%20Induction.md)
+* [排列组合](./Combinatorics.md)
   
 # ACM 数论
 1. 整除的性质
