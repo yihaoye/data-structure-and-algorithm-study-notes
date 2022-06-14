@@ -34,7 +34,7 @@
 - [ ] 128	Longest Consecutive Sequence		
 - [ ] 164	Maximum Gap		                                            Bucket
 - [x] 287	Find the Duplicate Number		
-- [ ] 135	Candy		                                                很少考
+- [x] 135	Candy		                                                很少考
 - [ ] 330	Patching Array		                                        很少考
 ### 提高			
 - [x] 4	    Median of Two Sorted Arrays		                            很少考
