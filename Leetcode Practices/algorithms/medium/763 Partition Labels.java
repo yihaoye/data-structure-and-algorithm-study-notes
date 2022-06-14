@@ -77,3 +77,48 @@ class Solution {
         return -1;
     }
 }
+
+
+
+// My Solution 2:
+class Solution {
+    public List<Integer> partitionLabels(String s) {
+        // 贪心 + 双指针（为每个出现的字符）
+        // Time: O(N), Space: O(1)
+        
+        // 双指针：遍历第一遍构建一个链散列表，键为字符，值为该字符的最左端和最右端的索引（一个 2 元素数组即可，即代表该字符的 range），且因为链散列表按键的创建顺序，所以保证了每个键的左端索引按序递增（为后面的贪婪逻辑提供便利）
+        Map<Character, int[]> charRangeMap = new LinkedHashMap<>();
+        for (int i=0; i<s.length(); i++) {
+            char curChar = s.charAt(i);
+            if (charRangeMap.containsKey(curChar)) {
+                int[] range = charRangeMap.get(curChar);
+                range[1] = i; // reference update
+            } else {
+                int[] range = new int[]{i, i};
+                charRangeMap.put(curChar, range);
+            }
+        }
+        
+        List<Integer> res = new ArrayList<>();
+        // 贪婪：找出有重叠的区域，然后合并为一个区域，然后再找有没有重叠区域直到没有然后输出这一个区域，然后再找下一个
+        int[] lastRange = null;
+        for (int[] curRange : charRangeMap.values()) {
+            if (lastRange == null) {
+                lastRange = curRange;
+                continue;
+            }
+            
+            if (lastRange[1] < curRange[0]) {
+                res.add(lastRange[1] - lastRange[0] + 1);
+                lastRange = curRange;
+            } else if (lastRange[1] < curRange[1]) {
+                lastRange[1] = curRange[1]; // reference update
+            }
+        }
+        if (lastRange != null) {
+            res.add(lastRange[1] - lastRange[0] + 1);
+        }
+        
+        return res;
+    }
+}
