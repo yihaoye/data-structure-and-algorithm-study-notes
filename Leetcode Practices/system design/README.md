@@ -1381,13 +1381,19 @@ https://medium.com/double-pointer/system-design-interview-search-engine-edb66b64
 <details>
 <summary>设计（高频）Trading（交易）系统</summary>
 
-前置知识：[FIX 协议](./FIX协议.md)  
+高频交易是指从那些人们无法利用的极为短暂的市场变化中寻求获利的计算机化交易。比如，某种证券买入价和卖出价差价的微小变化，或者某只股票在不同交易所之间的微小价差。这种交易的速度如此之快，以至于有些交易机构将自己的服务器群组 (server farms) 安置到了离交易所的计算机很近的地方，以缩短交易指令到达交易所的距离。  
+
+**高频交易系统定义**：1. 交易指令完全由电脑发送，对市场数据的响应延时在微秒级。2. 系统由专用的软硬件组成，研发时需要大量计算机专家级的工作。3. 系统的硬件需要放在离交易所主机很近的位置上，所谓 co-location，并且得到专门的准入许可证，交易指令直接发送至交易所（而不是通过券商中转）。符合以上三点的，就可以叫做高频交易系统。  
+  
+**重要的前置知识：[FIX 协议](./FIX协议.md)**  
 
 参考资料（How do I design high-frequency trading systems and its architecture）：  
 https://www.linkedin.com/pulse/how-do-i-design-high-frequency-trading-systems-its-part-silahian/  
 https://www.linkedin.com/pulse/how-do-i-design-high-frequency-trading-systems-its-part-silahian-1/  
 https://www.linkedin.com/pulse/how-do-i-design-high-frequency-trading-systems-its-part-silahian-2/  
-
+https://www.onixs.biz/fix-protocol.html  
+https://www.zhihu.com/question/19839828/answer/28434795  
+  
 为了拥有一个完整的系统，还需要涵盖其他部分，它们可能是像网络通信、交换机/路由器、专门的服务器、FPGA、系统操作的调整如内核绕过等。但是这里将更多地关注软件设计和它的架构。  
 这类交易系统的最佳实践会根据不同的因素：如市场，合规性等等而可能会有所不同，但对于任何交易系统来说，一些基本要素将保持不变。  
 
