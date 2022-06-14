@@ -1378,6 +1378,20 @@ https://medium.com/double-pointer/system-design-interview-search-engine-edb66b64
 </details>
 
 
+<details>
+<summary>设计（高频）Trading（交易）系统</summary>
+
+前置知识：[FIX 协议](./FIX协议.md)  
+
+参考资料（How do I design high-frequency trading systems and its architecture）：  
+https://www.linkedin.com/pulse/how-do-i-design-high-frequency-trading-systems-its-part-silahian/  
+https://www.linkedin.com/pulse/how-do-i-design-high-frequency-trading-systems-its-part-silahian-1/  
+
+
+
+</details>
+
+
 
 <br />
   
