@@ -1452,6 +1452,17 @@ https://www.zhihu.com/question/19839828/answer/28434795
 
 结论是，这部分是系统中最敏感的东西，使用**忙碌/等待或旋转模式**这种技术会给系统带来最好的延迟。  
   
+架构草图（未定案）：  
+![](./Tarding%20System%20Architecture%20Draft%20Diagram.png)  
+  
+#### 数据模型
+应该与 C2C 的 ecommerce 类似：  
+表设计：  
+* User 表：ID, Balance, ...
+* Order 表：OrderID, UserID, StockID(ProductID), Type/Action, Price, Status, ...
+* Transaction 表：BuyOrderID, SellOrderID, ...
+* Stock（Product）表：StockID(ProductID), StockName(ProductName), LastPrice(AvgPrice), ...
+  
 #### 进阶阅读
 * [CME Group Trading Services](https://www.cmegroup.com/confluence/display/EPICSANDBOX/Trading+Services)  
 
