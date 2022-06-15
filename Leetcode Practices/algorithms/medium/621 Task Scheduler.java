@@ -25,7 +25,8 @@ The integer n is in the range [0, 100].
 // Other's Solution 1:
 public class Solution {
     public int leastInterval(char[] tasks, int n) {
-        // 数学 - https://leetcode.com/problems/task-scheduler/discuss/104496/concise-Java-Solution-O(N)-time-O(26)-space
+        // 数学/桶思想 - https://leetcode.cn/problems/task-scheduler/solution/tong-zi-by-popopop/
+        // https://leetcode.com/problems/task-scheduler/discuss/104496/concise-Java-Solution-O(N)-time-O(26)-space
         // (maxCharLen - 1) * (n + 1) + sameMaxCharLenCount is frame size
         // when inserting chars, the frame might be "burst", then tasks.length takes precedence
         // when sameMaxCharLenCount > n, the frame is already full at construction, the following is still valid.
