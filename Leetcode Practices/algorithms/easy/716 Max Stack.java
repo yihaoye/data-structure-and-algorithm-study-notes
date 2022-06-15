@@ -47,7 +47,7 @@ Follow up: Could you come up with a solution that supports O(1) for each top cal
 // Other's Solution:
 class MaxStack {
     /*
-        双向链表+平衡树（failed 25+30） - https://leetcode-cn.com/problems/max-stack/solution/max-stack-by-leetcode/
+        双向链表+平衡树 - https://leetcode-cn.com/problems/max-stack/solution/max-stack-by-leetcode/
         时间复杂度：top 操作为 O(1)，其余操作为 O(logN)，空间复杂度：O(N)
     */
     TreeMap<Integer, List<Node>> btMap; // 平衡树
