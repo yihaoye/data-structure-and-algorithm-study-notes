@@ -25,16 +25,17 @@ The integer n is in the range [0, 100].
 // Other's Solution 1:
 public class Solution {
     public int leastInterval(char[] tasks, int n) {
-        int[] storage = new int[26];
-        for (char c : tasks) {
-            storage[(c - 'A')]++;
-        }
-        int max = 0;
-        int count = 1;
-        for (int num : storage) {
-            if (num == 0) {
-                continue;
-            }
+        // 数学 - https://leetcode.com/problems/task-scheduler/discuss/104496/concise-Java-Solution-O(N)-time-O(26)-space
+        // (maxCharLen - 1) * (n + 1) + sameMaxCharLenCount is frame size
+        // when inserting chars, the frame might be "burst", then tasks.length takes precedence
+        // when sameMaxCharLenCount > n, the frame is already full at construction, the following is still valid.
+        // Time: O(N), Space: O(1)
+        int[] record = new int[26];
+        for (char task : tasks) record[(task-'A')]++;
+
+        int max = 0, count = 1;
+        for (int num : record) {
+            if (num == 0) continue;
             if (max < num) {
                 max = num;
                 count = 1;
@@ -42,8 +43,7 @@ public class Solution {
                 count++;
             }
         }
-        int space = (n + 1) * (max - 1) + count;
-        return (space < tasks.length) ? tasks.length : space;
+        return Math.max(tasks.length, (n + 1) * (max - 1) + count);
     }
 }
 
@@ -154,5 +154,43 @@ class Solution {
             }
         }
         return res;
+    }
+}
+
+
+
+// My Solution 3:
+class Solution {
+    public int leastInterval(char[] tasks, int n) {
+        // 贪婪 + 记录每个字符的上次使用时间（挑剩余次数更多的可选字符优先处理）
+        // 需要先遍历一次进行记录，后续需要实时排序（首先根据剩余任务次数，如果最高次数有相同的就找更早前使用的），但因为字符数量不多就暴力找即可不用排序
+        // Time: O(N), Space: O(1)
+        int[][] dict = new int[26][2]; // [char: {lastUsedTime, taskLeftCount}, ...]
+        for (char task : tasks) {
+            dict[task-'A'][0] = -101;
+            dict[task-'A'][1]++;
+        }
+        
+        int k = 0, res = 0;
+        while (!updateBestChar(dict, ++k, n)) res++;
+        
+        return res;
+    }
+    
+    private boolean updateBestChar(int[][] dict, int k, int n) { // update best char's lastUsedTime and taskLeftCount
+        boolean allUsed = true;
+        int bestCharIndex = -1;
+        for (int i=0; i<dict.length; i++) {
+            if (dict[i][1] != 0) allUsed = false;
+            if (dict[i][0] + n < k && dict[i][1] > 0) {
+                if (bestCharIndex == -1 || dict[i][1] > dict[bestCharIndex][1] || (dict[i][1] == dict[bestCharIndex][1] && dict[i][0] < dict[bestCharIndex][0])) bestCharIndex = i;
+            }
+        }
+        if (bestCharIndex != -1) {
+            dict[bestCharIndex][0] = k;
+            dict[bestCharIndex][1]--;
+        }
+        
+        return allUsed;
     }
 }
