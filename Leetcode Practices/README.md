@@ -62,7 +62,7 @@
 - [x] 88	Merge Sorted Array		
 - [x] 75	Sort Colors		
 - [x] 283	Move Zeroes		
-- [ ] 376	Wiggle Subsequence		
+- [x] 376	Wiggle Subsequence		
 - [x] 280	Wiggle Sort		
 - [ ] 324	Wiggle Sort II		
 - [x] 278	First Bad Version		
@@ -191,6 +191,7 @@
 - [x] 360	Sort Transformed Array		
 - [x] 397	Integer Replacement		
 - [ ] 368	Largest Divisible Subset	
+- [x] 621   Task Scheduler  
   
 ## Tree
 ### 基础			
@@ -711,7 +712,7 @@
 - [x] 367	Valid Perfect Square		
 - [ ] 374	Guess Number Higher or Lower		
 - [x] 375	Guess Number Higher or Lower II		
-- [ ] 376	Wiggle Subsequence		
+- [x] 376	Wiggle Subsequence		
 - [ ] 377	Combination Sum IV		
 - [x] 378	Kth Smallest Element in a Sorted Matrix		
 - [ ] 379	Design Phone Directory		
@@ -723,4 +724,5 @@
 - [x] 394	Decode String		
 - [ ] 398	Random Pick Index	
 - [x] 875   Koko Eating Bananas 
+- [x] 621   Task Scheduler  
   
