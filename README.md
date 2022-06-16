@@ -36,7 +36,7 @@
    1. 套路：根据输入数据（参数值、量）以及题解限制条件（时空复杂度要求）判断解题方向
       1. 输入为一维数组时，可以考虑暴力解（DFS、BFS 以及附加记忆化搜索）、动态规划、双指针、滑动窗口、排序、二分搜索、二进制运算、前缀和与差分、哈希表、贪心、KMP。注意条件：元素是否唯一、是否有序、数组长度。
       2. 输入为 Matrix/矩阵、二维（比如数组）时，可以考虑暴力解（DFS、BFS 以及附加记忆化搜索）、回溯法、动态规划、并查集等等。注意条件：值的范围、是否可以修改矩阵、矩阵大小。LC 例如 Q200
-      3. 输入为字符串时，可以考虑暴力解/递归、双指针、滑动窗口、栈、动态规划、贪心、KMP。注意条件：字符集范围、字符串长度。LC 例如 Q394 Q438 Q763
+      3. 输入为字符串时，可以考虑暴力解/递归、双指针、滑动窗口、栈、动态规划、贪心、KMP。注意条件：字符集范围、字符串长度。LC 例如 Q394 Q438 Q763 Q214 Q1392
       4. 输入为数字时，可以考虑递归、二分查找。注意条件：数字是否整数、数字范围。
       5. 输入为链表（头节点）时，可以考虑快慢指针、哈希表。注意条件：单向还是双向链表、是否有环、链表长度。
       6. 输入为树（根节点）时，可以考虑暴力解（DFS - 二叉搜索树可以重点考虑中序遍历；BFS）、递归、栈、前驱节点后继节点（若为二叉搜索树）。注意条件：是否是特殊类型的二叉树、是否平衡、节点数量。LC 例如 Q98 Q230
@@ -53,24 +53,24 @@
       7. 问题核心/概念：All Possible Combinations (Count) 或 类爬楼梯问题，可以考虑剪枝+暴力解/递归/迭代、回溯法、DP/记忆化搜索、(组合)数学，LC 例如 [Q17](./Leetcode%20Practices/algorithms/medium/17%20Letter%20Combinations%20of%20a%20Phone%20Number.java) Q2266 Q39 Q46 Q55 Q62 [Q70](./Leetcode%20Practices/algorithms/easy/70%20Climbing%20Stairs.java)
       8. 问题核心/概念：Merge Multiple XXX/Data-Structure，可以考虑模拟、递归、多路归并/最小堆、排序，LC 例如 [Q21](./Leetcode%20Practices/algorithms/easy/21%20Merge%20Two%20Sorted%20Lists.java) Q23 Q56
       9.  问题核心/概念：Find/Search in Sorted/Unsorted XXX/Data-Structure/Data-Type，可以考虑二分搜索、位运算--如果是 Find Digit，LC 例如 Q33 Q34 [Q136](./Leetcode%20Practices/algorithms/medium/136%20Single%20Number.cpp) Q287 Q240
-      10. 问题核心/概念：Regular Expression 或 Match 或 Find Word in XXX，可以考虑 DP、递归、字典树、哈希表、KMP，LC 例如 Q10 Q720 Q49
-      11. 问题核心/概念：(Fixed)Range/Last/Next (Optimal/Max/Min/Bigger/Smaller) Value/Area/Sum/DiffSum，输入可以是树节点或线性表或 Matrix/矩阵，可以考虑双指针/滑动窗口和贪婪、DP、一维前缀和/二维前缀和、差分数组、递归、单调栈，LC 例如 Q11 Q221 Q42 Q304 Q124 Q437 Q239 Q2104 Q503 Q64
+      10. 问题核心/概念：Regular Expression 或 Match 或 Find Word in XXX，可以考虑 DP、递归、字典树、哈希表、KMP，LC 例如 [Q10](./Leetcode%20Practices/algorithms/hard/10%20Regular%20Expression%20Matching.java) Q720 Q49
+      11. 问题核心/概念：(Fixed)Range/Last/Next (Optimal/Max/Min/Bigger/Smaller) Value/Area/Sum/DiffSum，输入可以是树节点或线性表或 Matrix/矩阵，可以考虑双指针/滑动窗口和贪婪、DP、一维前缀和/二维前缀和、差分数组、递归、单调栈，LC 例如 [Q11](./Leetcode%20Practices/algorithms/medium/11%20Container%20With%20Most%20Water.java) Q221 Q42 Q304 Q124 Q437 Q239 Q2104 Q503 Q64
       12. 问题核心/概念：Stated/StateTransition/Ordered Optimal/Max/Min Calculation/Sum/DiffSum，可以考虑 DP，LC 例如 Q121 Q123 -- 买卖股票系列  Q198 Q213 Q337 -- 打家劫舍系列
       13. 问题核心/概念：Rotate/Reverse/Swap Operation，输入可以是树节点或线性表或 Matrix/矩阵，可以考虑模拟算法/遍历+标记变量、排序，LC 例如 Q48 Q189 Q226 Q206
       14. 问题核心/概念：String/Word Operation/Process/Transfer，可以考虑 DP、剪枝+暴力解/递归，LC 例如 [Q72](./Leetcode%20Practices/algorithms/hard/72%20Edit%20Distance.java)
       15. 问题核心/概念：Traversal/Iterator，可以考虑暴力解/DFS/BFS，LC 例如 Q94 Q102 Q104 Q105 Q173 Q341
       16. 问题核心/概念：Copy/Clone，可以考虑哈希表、指针或引用，LC 例如 Q138
       17. 问题核心/概念：Digit/Number/Bits Operation/Process/Transfer，可以考虑位运算，LC 例如 Q751
-      18. 问题核心/概念：Cycle Check，可以考虑双指针/快慢指针，LC 例如 Q141 Q142
-      19. 问题核心/概念：Design/Implement Basic XXX/Data-Structure，可以考虑以下数据结构的组合使用：数组、ArrayList、LinkedList、自定义对象、指针或引用，LC 例如 Q155 Q706 Q707
-      20. 问题核心/概念：Design/Implement Advanced XXX/Data-Structure，可以考虑以下数据结构的组合使用：数组、ArrayList、（单向或双向）LinkedList、自定义对象、指针或引用、哈希表、红黑树、哈希集、队列、堆/优先队列、栈、甚至语言内置工具类如 StringBuilder 等等，LC 例如 Q146 Q208 Q355 Q432 Q2296
-      21. 问题核心/概念：Same/One Time/Direction Sum/Union 或 Ranges Conflict，可以考虑扫描线、堆/优先队列，LC 例如 Q218 Q253 Q759 Q2251
-      22. 问题核心/概念：Dependency Conflict/Schedule，可以考虑拓扑排序，LC 例如 Q207 Q210
+      18. 问题核心/概念：Cycle Check，可以考虑双指针/快慢指针，LC 例如 [Q141](./Leetcode%20Practices/algorithms/easy/141%20Linked%20List%20Cycle.java) Q142
+      19. 问题核心/概念：Design/Implement Basic XXX/Data-Structure，可以考虑以下数据结构的组合使用：数组、ArrayList、LinkedList、自定义对象、指针或引用，LC 例如 Q155 [Q706](./Leetcode%20Practices/algorithms/easy/706%20Design%20HashMap.java) Q707
+      20. 问题核心/概念：Design/Implement Advanced XXX/Data-Structure，可以考虑以下数据结构的组合使用：数组、ArrayList、（单向或双向）LinkedList、自定义对象、指针或引用、哈希表、红黑树、哈希集、队列、堆/优先队列、栈、甚至语言内置工具类如 StringBuilder 等等，LC 例如 [Q146](./Leetcode%20Practices/algorithms/medium/146%20LRU%20Cache.java) Q208 [Q355](./Leetcode%20Practices/algorithms/medium/355%20Design%20Twitter.java) Q432 Q2296
+      21. 问题核心/概念：Same/One Time/Direction Sum/Union 或 Ranges Conflict，可以考虑扫描线、堆/优先队列，LC 例如 [Q218](./Leetcode%20Practices/algorithms/hard/218%20The%20Skyline%20Problem.java) Q253 Q759 Q2251
+      22. 问题核心/概念：Dependency Conflict/Schedule，可以考虑拓扑排序，LC 例如 [Q207](./Leetcode%20Practices/algorithms/medium/207%20Course%20Schedule.java) Q210
       23. 问题核心/概念：Frequency Count 或 Ranking，可以考虑哈希表、桶排序、堆/优先队列、排序、自平衡二叉搜索树/红黑树，LC 例如 Q347
       24. 问题核心/概念：(Complex) Calculate/Function Implementation，可以考虑分治法、位运算、DP，LC 例如 Q50
       25. 问题核心/概念：Find Path/Connection，输入可以是树节点或图节点或 Matrix/矩阵，可以考虑暴力解/DFS/BFS、回溯法、模拟、DP、并查集，LC 例如 Q62 Q63 Q684
-      26. 问题核心/概念：Shape Check，输入可以是 Matrix/矩阵，可以考虑暴力解/DFS/BFS、回溯法、模拟、几何/数学/by数据类型或数据结构或自定义对象以实现、扫描线、并查集，LC 例如 Q200 Q2013 Q391
-      27. 问题核心/概念：(Range) Update and Range Query/Calculation，可以考虑树状数组、线段树，LC 例如 Q307
+      26. 问题核心/概念：Shape Check，输入可以是 Matrix/矩阵，可以考虑暴力解/DFS/BFS、回溯法、模拟、几何/数学/by数据类型或数据结构或自定义对象以实现、扫描线、并查集，LC 例如 [Q200](./Leetcode%20Practices/algorithms/medium/200%20Number%20of%20Islands.java) Q2013 Q391
+      27. 问题核心/概念：(Range) Update and Range Query/Calculation，可以考虑树状数组、线段树，LC 例如 [Q307](Leetcode%20Practices/algorithms/medium/307%20Range%20Sum%20Query%20-%20Mutable.java)
       28. 问题核心/概念：(Customized) 有序，可以考虑排序、单调栈、堆/优先队列、自平衡二叉搜索树/红黑树、贪心、二分搜索，LC 例如 Q406
 2. 思考二，是否需要做一些[预处理](./Tool%20Sets/)，如排序，又或者先做一些额外预处理比如补零数位以及遍历至尾，在从尾部往回处理（如面试金典 9.2-2.5 进阶）。这种情况往往出现在题目明显有违常规思路时，即总是有些条件、可能、边缘情况阻碍常规思路，意味着出题者可能是故意增加了一些难度需要解题者预处理。这些预处理工作即使看起来复杂且一开始不确定是否对解题有帮助也不妨试试，尽量按常规系统性方法解题（即上面所有 Leetcode 内的解题法分类如递归、动态规划等等，经验足够的话大的解题类方向通常一开始就可以定下来），可以分割困难，但不要苦思奇法。
 3. 思考三，当题目已暗示可能要进行大规模输入检测题解效率时，可以考虑进行一些预处理、动态规划思路，例子如 Leetcode Q244。
