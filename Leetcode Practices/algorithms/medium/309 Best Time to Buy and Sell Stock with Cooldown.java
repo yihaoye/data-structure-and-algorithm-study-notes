@@ -14,6 +14,25 @@ Explanation: transactions = [buy, sell, cooldown, buy, sell]
 
 
 
+// My Solution:
+class Solution {
+    public int maxProfit(int[] prices) {
+        // DP (state machine)
+        // Time: O(N), Space: O(1)
+        int readyToBuy = 0, oneStock = -prices[0], cooling = 0; // 初始值，每个变量的值意味着在该状态的 max profit
+        for (int i=1; i<prices.length; i++) {
+            int nextReadyToBuy = Math.max(readyToBuy, cooling);
+            cooling = oneStock + prices[i];
+            oneStock = Math.max(oneStock, readyToBuy - prices[i]);
+            readyToBuy = nextReadyToBuy;
+        }
+        
+        return Math.max(readyToBuy, cooling);
+    }
+}
+
+
+
 // Other's Solution (DP by State Machine thinking):
 /*
 ![](https://assets.leetcode.com/users/npvinhphat/image_1560663201.png)
