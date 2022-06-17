@@ -72,3 +72,28 @@ class Solution {
         return true;
     }
 }
+
+
+
+// My Solution:
+class Solution {
+    public boolean lemonadeChange(int[] bills) {
+        // order matter, use 2 buckets to store 5, 10 count, 20 is useless no need to count
+        // greedy, if recieve 20 try 10+5 otherwise 5+5+5, when recieve 10 always return 5
+        // Time: O(N), Space: O(1)
+        int fiveCount = 0, tenCount = 0;
+        for (int bill : bills) {
+            if (bill == 5) fiveCount++;
+            if (bill == 10) {
+                if (fiveCount-- <= 0) return false;
+                tenCount++;
+            }
+            if (bill == 20) {
+                if (tenCount > 0 && fiveCount-- > 0) tenCount--;
+                else if (fiveCount >= 3) fiveCount -= 3;
+                else return false;
+            }
+        }
+        return true;
+    }
+}
