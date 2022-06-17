@@ -39,6 +39,38 @@ Constraints:
 
 
 
+// My Solution (DP state machine):
+// 参考 Leetcode Q188 题解，把 k 改成 2 即可
+class Solution {
+    public int maxProfit(int[] prices) {
+        // Time: O(N), Space: O(1)
+        int k = 2; // 与 Q188 唯一不同处
+        int[] sold = new int[k+1], buy = new int[k+1];
+        Arrays.fill(sold, Integer.MIN_VALUE);
+        Arrays.fill(buy, Integer.MIN_VALUE);
+        int res = 0;
+        for (int i=0; i<prices.length; i++) {
+            for (int j=Math.min((i+1)/2, k); j>=0; j--) { // j=Math.min((i+1)/2, k) 因为 i 较少时可能根本达不到 k
+                if (j == 0) {
+                    sold[j] = 0;
+                    buy[j] = Math.max(buy[j], -prices[i]);
+                    continue;
+                }
+                
+                int soldThisTime = buy[j-1] + prices[i]; // sold at prices[i] with j-1 transaction max profit
+                if (soldThisTime > sold[j]) sold[j] = soldThisTime;
+                else buy[j] = Math.max(buy[j], sold[j] - prices[i]);
+                
+                res = Math.max(res, sold[j]);
+            }
+        }
+        
+        return res;
+    }
+}
+
+
+
 // My Solution (DP):
 class Solution {
     public int maxProfit(int[] prices) {
