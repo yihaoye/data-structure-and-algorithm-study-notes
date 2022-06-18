@@ -6,6 +6,8 @@ Arrays.fill(arr, -1);
 int[] arrCopy1 = arr.clone();
 // or
 int[] arrCopy2 = Arrays.copyOf(arr, arr.length);
+// 子数组复制
+int[] subArr = Arrays.copyOfRange(arr, i, j);
 
 // List 转换成数组
 List<Object> list = new ArrayList<>();

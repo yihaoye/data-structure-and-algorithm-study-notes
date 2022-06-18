@@ -64,7 +64,7 @@
       18. 问题核心/概念：Cycle Check，可以考虑双指针/快慢指针，LC 例如 [Q141](./Leetcode%20Practices/algorithms/easy/141%20Linked%20List%20Cycle.java) Q142
       19. 问题核心/概念：Design/Implement Basic XXX/Data-Structure，可以考虑以下数据结构的组合使用：数组、ArrayList、LinkedList、自定义对象、指针或引用，LC 例如 Q155 [Q706](./Leetcode%20Practices/algorithms/easy/706%20Design%20HashMap.java) Q707
       20. 问题核心/概念：Design/Implement Advanced XXX/Data-Structure，可以考虑以下数据结构的组合使用：数组、ArrayList、（单向或双向）LinkedList、自定义对象、指针或引用、哈希表、红黑树、哈希集、队列、堆/优先队列、栈、甚至语言内置工具类如 StringBuilder 等等，LC 例如 [Q146](./Leetcode%20Practices/algorithms/medium/146%20LRU%20Cache.java) Q208 [Q355](./Leetcode%20Practices/algorithms/medium/355%20Design%20Twitter.java) Q432 Q2296
-      21. 问题核心/概念：Same/One Time/Direction Sum/Union 或 Ranges Conflict，可以考虑扫描线、堆/优先队列，LC 例如 [Q218](./Leetcode%20Practices/algorithms/hard/218%20The%20Skyline%20Problem.java) Q253 Q759 Q2251
+      21. 问题核心/概念：Same/One Time/Direction Sum/Union 或 Ranges Conflict，可以考虑扫描线、堆/优先队列、排序，LC 例如 [Q218](./Leetcode%20Practices/algorithms/hard/218%20The%20Skyline%20Problem.java) Q253 Q759 Q2251 Q56
       22. 问题核心/概念：Dependency Conflict/Schedule，可以考虑拓扑排序，LC 例如 [Q207](./Leetcode%20Practices/algorithms/medium/207%20Course%20Schedule.java) Q210
       23. 问题核心/概念：Frequency Count 或 Ranking，可以考虑哈希表、桶排序、堆/优先队列、排序、自平衡二叉搜索树/红黑树，LC 例如 Q347
       24. 问题核心/概念：(Complex) Calculate/Function Implementation，可以考虑分治法、位运算、DP，LC 例如 Q50

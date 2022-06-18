@@ -75,3 +75,35 @@ class Solution {
         return root;
     }
 }
+
+// 递归复制子数组写法，性能没那么好但更直白少出错
+class Solution {    
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        if (preorder.length == 0) return null;
+        TreeNode root = new TreeNode(preorder[0]);
+        
+        int inIndex = -1;
+        for (int i=0; i<inorder.length; i++) if (inorder[i] == preorder[0]) inIndex = i;
+        
+        root.left = buildTree(Arrays.copyOfRange(preorder, 1, inIndex+1), Arrays.copyOfRange(inorder, 0, inIndex));
+        root.right = buildTree(Arrays.copyOfRange(preorder, inIndex+1, preorder.length), Arrays.copyOfRange(inorder, inIndex+1, inorder.length));
+        return root;
+    }
+}
+
+// Follow Up
+// 给定一个二叉树的前序遍历和中序遍历，要求返回反转以后的前序遍历，可以在不重构树的情况下达成（即之前递归构建树时，不是返回构建子树节点，而是返回子树的反转的前序遍历，并且是右边数组为左子树的反转前序遍历，另一边也一样）
+class Solution {    
+    public List<Integer> reversePreOrder(int[] preorder, int[] inorder) {
+        List<Integer> res = new ArrayList<>();
+        if (preorder.length == 0) return res;
+        res.add(preorder[0]);
+        
+        int inIndex = -1;
+        for (int i=0; i<inorder.length; i++) if (inorder[i] == preorder[0]) inIndex = i;
+        
+        res.addAll(reversePreOrder(Arrays.copyOfRange(preorder, inIndex+1, preorder.length), Arrays.copyOfRange(inorder, inIndex+1, inorder.length))); // new left（先加的就是新左）use old right subtree's preorder and inorder
+        res.addAll(reversePreOrder(Arrays.copyOfRange(preorder, 1, inIndex+1), Arrays.copyOfRange(inorder, 0, inIndex))); // new right（后加的就是新右）use old left subtree's preorder and inorder
+        return res;
+    }
+}
