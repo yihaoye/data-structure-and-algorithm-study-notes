@@ -36,6 +36,7 @@
 - [x] 287	Find the Duplicate Number		
 - [x] 135	Candy		                                                很少考
 - [ ] 330	Patching Array		                                        很少考
+- [x] 560   Subarray Sum Equals K   
 ### 提高			
 - [x] 4	    Median of Two Sorted Arrays		                            很少考
 - [ ] 321	Create Maximum Number		                                很少考
