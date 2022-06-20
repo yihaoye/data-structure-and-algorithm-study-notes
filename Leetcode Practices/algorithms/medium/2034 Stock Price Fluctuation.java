@@ -103,3 +103,50 @@ class StockPrice {
  * int param_3 = obj.maximum();
  * int param_4 = obj.minimum();
  */
+
+
+
+// My Solution:
+class StockPrice {
+    TreeMap<Integer, Record> tMap;
+    TreeSet<Record> tSet;
+
+    public StockPrice() {
+        // TreeMap<timestamp, Record> + TreeSet<Record>(sorted by Record.price) + Record{timestamp, price}
+        // Time: O(logN), Space: O(N)
+        tMap = new TreeMap<>();
+        tSet = new TreeSet<>((r1, r2) -> r1.price == r2.price ? r1.timestamp - r2.timestamp : r1.price - r2.price); // 为什么需要特殊处理 r1.price == r2.price 的情况：https://leetcode.com/problems/stock-price-fluctuation/discuss/1544678/Java-solution-failing-test-case-11/1351441
+    }
+    
+    public void update(int timestamp, int price) {
+        Record record = tMap.getOrDefault(timestamp, new Record(timestamp, price));
+        if (tMap.containsKey(timestamp)) {
+            tSet.remove(record);
+            record.price = price;
+        }
+        tMap.put(timestamp, record);
+        tSet.add(record);
+    }
+    
+    public int current() {
+        return tMap.lastEntry().getValue().price;
+    }
+    
+    public int maximum() {
+        return tSet.last().price;
+    }
+    
+    public int minimum() {
+        return tSet.first().price;
+    }
+    
+    class Record {
+        public int timestamp;
+        public int price;
+        
+        public Record(int timestamp, int price) {
+            this.timestamp = timestamp;
+            this.price = price;
+        }
+    }
+}
