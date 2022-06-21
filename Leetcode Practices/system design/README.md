@@ -41,6 +41,23 @@
 <details>
 <summary>System Category</summary>
 
+参考：https://interview-science.org/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/%E5%BA%94%E7%94%A8%E5%88%86%E7%B1%BB  
+|类型	|例子	|业务特点	|核心需求	|解决方案
+|---  |---  |---  |---  |---
+|News Feed	|Twitter<br/>Instagram<br/>TikTok<br/>Pinterest<br/>Flickr<br/>RSS 类系统<br/>其他涉及订阅，关注的多对多信息流系统  |读远多于写<br/>差异化的多对多关系  |读：响应时间<br/>写：高效上传  |根据用户情况使用混合策略（Fanout，Native）<br/>异步上传，分块上传
+|IM	|WhatsApp<br/>Facebook Messenger<br/>WeChat<br/>LINE<br/>Telegram |读写比例均衡<br/>小范围（固定）的一对一/多对多关系 |低延迟<br/>消息有序性<br/>持久化 |特定的应用协议：MQTT, AMQP, XMPP<br/>消息序号<br/>日志追加型数据库
+|Live	|Facebook Live<br/>Twitch<br/>Zoom<br/>Google Meets<br/>Microsoft Teams |读写比例均衡<br/>无法预缓存，无法预料流量<br/>流式数据<br/>惊群效应  |低延迟<br/>自动扩容与收缩<br/>支撑热门 Live  |特定的应用协议：RTMPS, WebRTC<br/>基础组件自动伸缩<br/>热门 Live 使用多级缓存
+|Video	|YouTube<br/>Netflix<br/>Disney Plus<br/>HBO Max<br/>Hulu |读远多于写<br/>流式数据  |读：响应时间<br/>自适应网络速度<br/>支撑热门视频<br/>高可用  |边缘节点与 CDN 内容分发<br/>应用协议网络自适应<br/>热门视频使用多级缓存，缓存预热，缓存淘汰策略<br/>Replication 与 Failover
+|GEO Base	|Uber<br/>Uber Eats<br/>Grab<br/>Lyft<br/>Waymo |多边关系（用户，服务者，平台）<br/>区域搜索<br/>双方匹配 |合理一对一匹配<br/>维护在线状态  |Geohash 算法，S2 算法，后台定期更新排名<br/>状态维护：heartbeat, Websocket
+|Shopping	|Amazon<br/>eBay<br/>Etsy<br/>AliExpress<br/>Snapdeal |下单的事务流程复杂<br/>秒杀与拍卖场景<br/>库存管理 |高一致性，避免重复下单，避免超卖少卖<br/>秒杀下的高可用  |幂等与事务，消息队列，乐观锁与悲观锁<br/>服务降级与限流
+|File Sync	|Google Drive<br/>Microsoft One Drive<br/>Dropbox<br/>Sync.Com<br/>iDrive |多端/多用户文件同步<br/>频繁更新<br/>文件层级与数量多<br/>循环依赖 |高可用与一致性<br/>高效读写  |Rsync 算法<br/>本地文件与云端对比，只获取所需更新。异步上传，分片上传，增量更新
+|Search	|Google Search<br/>Bing<br/>Airbnb Search<br/>Twitter Search  |无法预料搜索类型<br/>搜索关键字分散<br/>内容多 |读：响应时间<br/>匹配与排名  |缓存热门搜索<br/>Trie Tree 与 Reverse Index<br/>语义分析，PageRank, Panda algorithm<br/>图数据库
+|Share	|TinyURL<br/>Bitly<br/>Shorby<br/>Pastebin  |一对一关系<br/>权限管理<br/>过期时间 |读：响应时间 |预生成 URL<br/>缓存策略
+|Ranking	|Twitter Top Hashtags<br/>Spotify Top K Music |实时排序耗时<br/>数据动态变化  |读：响应时间 |每隔一段时间预计算<br/>近似统计算法
+|Trading	|Robinhood<br/>Webull<br/>TradeStation  |下单的事务流程复杂<br/>高频率  |读：响应时间<br/>写：写入时间<br/>高一致性 |消息队列，乐观锁与悲观锁<br/>幂等与事务
+|CPU-bound	|LeetCode<br/>Video Editor  |依赖 CPU 资源  |任务处理时间 |分治策略<br/>MapReduce<br/>异步处理通知
+|Infrastructure	|Message queue<br/>Object Storage<br/>Logging<br/>Monitoring  |使用方便<br/>功能适用度高  |高可用性<br/>高扩展性  |冗余备份以及快速恢复
+
 ![](./System%20Category.png)  
 ![](./System%20Category%202.png)  
 
