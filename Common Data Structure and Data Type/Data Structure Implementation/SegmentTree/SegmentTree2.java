@@ -1,4 +1,5 @@
 // https://zhuanlan.zhihu.com/p/174810030  
+// Leetcode Q2286
 
 // 处理器 - 求值方程、更新方程
 // 包含 merge() pushDown() update()，注意 pushDown() 逻辑基于 merge() 和 update() 逻辑。而 update() 除了调用了 merge() pushDown()，其计算逻辑也基于 merge() 逻辑
@@ -92,7 +93,7 @@ public class SegmentTree<E> {
         return handler.merge(leftResult, rightResult);
     }
 
-    // 将 [updateL, updateR] 位置的值，更新为 val
+    // 将 [updateL, updateR] 位置的值，更新为 val 或对 val 进行计算
     public void update(int updateL, int updateR, E val) {
         // 首先进行边界检查
         if (updateL < 0 || updateL > data.length || updateR < 0 || updateR > data.length || updateL > updateR) {
@@ -154,18 +155,22 @@ public class Main {
                     marks[treeIndex] = val;
                     return;
                 }
-                if (marks[treeIndex] != null) pushDown(tree, marks, data, treeIndex, l, r);
+                if (marks[treeIndex] != null) pushDown(tree, data, marks, treeIndex, l, r);
                 int leftTreeIndex = 2 * treeIndex + 1;
                 int rightTreeIndex = 2 * treeIndex + 2;
                 int mid = l + (r - l) / 2;
-                if (updateR <= mid) update(ree, data, marks, leftTreeIndex, l, mid, updateL, updateR, val);
+                if (updateR <= mid) update(tree, data, marks, leftTreeIndex, l, mid, updateL, updateR, val);
                 if (updateL > mid) update(tree, data, marks, rightTreeIndex, mid + 1, r, updateL, updateR, val);
+                if (updateL <= mid && mid < updateR) {
+                    update(tree, data, marks, leftTreeIndex, l, mid, updateL, updateR, val);
+                    update(tree, data, marks, rightTreeIndex, mid + 1, r, updateL, updateR, val);
+                }
                 
                 tree[treeIndex] = merge(tree[leftTreeIndex], tree[rightTreeIndex]);
             }
         });
 
-        // 查询区间 [2,5] 的最大值
+        // 查询区间 [4, 7] 的最大值
         System.out.println(segTree.query(4, 7));
     }
 }
@@ -206,18 +211,22 @@ public class Main {
                     marks[treeIndex] += val;
                     return;
                 }
-                if (marks[treeIndex] != null) pushDown(tree, marks, data, treeIndex, l, r);
+                if (marks[treeIndex] != null) pushDown(tree, data, marks, treeIndex, l, r);
                 int leftTreeIndex = 2 * treeIndex + 1;
                 int rightTreeIndex = 2 * treeIndex + 2;
                 int mid = l + (r - l) / 2;
                 if (updateR <= mid) update(ree, data, marks, leftTreeIndex, l, mid, updateL, updateR, val);
                 if (updateL > mid) update(tree, data, marks, rightTreeIndex, mid + 1, r, updateL, updateR, val);
+                if (updateL <= mid && mid < updateR) {
+                    update(tree, data, marks, leftTreeIndex, l, mid, updateL, updateR, val);
+                    update(tree, data, marks, rightTreeIndex, mid + 1, r, updateL, updateR, val);
+                }
                 
                 tree[treeIndex] = merge(tree[leftTreeIndex], tree[rightTreeIndex]);
             }
         });
         
-        // 查询区间 [2,5] 的和
+        // 查询区间 [4, 7] 的和
         System.out.println(segTree.query(4, 7));
     }
 }
