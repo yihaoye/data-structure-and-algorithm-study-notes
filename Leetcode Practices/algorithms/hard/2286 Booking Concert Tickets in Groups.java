@@ -49,27 +49,29 @@ At most 5 * 104 calls in total will be made to gather and scatter.
 import java.lang.reflect.Array;
 
 interface Handler<E> {
-    E merge(E a, E b);
+    E merge(E a, E b, E defaultVal);
 
-    void pushDown(E[] tree, E[] data, E[] marks, int treeIndex, int l, int r);
+    void pushDown(E[] tree, E[] data, E[] marks, E defaultVal, int treeIndex, int l, int r);
 
-    void update(E[] tree, E[] data, E[] marks, int treeIndex, int l, int r, int updateL, int updateR, E val);
+    void update(E[] tree, E[] data, E[] marks, E defaultVal, int treeIndex, int l, int r, int updateL, int updateR, E val);
 }
 
 class SegmentTree<E> {
     private E[] tree; // 线段树 - SegmentTreeNodes，存的是 val
     private E[] data; // 数据
     private E[] marks; // 每个树节点的懒标记
+    private E defaultVal; // E 的空默认值（空值、0 或空字符串等等）
     private Handler<E> handler; // 处理器 - 求值方程、更新方程
 
-    public SegmentTree(Class<E> clazz, E[] arr, Handler<E> handler) {
+    public SegmentTree(Class<E> clazz, E[] arr, E defaultVal, Handler<E> handler) {
         this.handler = handler;
+        this.defaultVal = defaultVal;
         data = (E[]) Array.newInstance(clazz, arr.length);
         tree = (E[]) Array.newInstance(clazz, arr.length * 4); // 大小为 4 * arr.len
         marks = (E[]) Array.newInstance(clazz, arr.length * 4);
-        Arrays.fill(data, 0);
-        Arrays.fill(tree, 0);
-        Arrays.fill(marks, 0);
+        Arrays.fill(data, defaultVal);
+        Arrays.fill(tree, defaultVal);
+        Arrays.fill(marks, defaultVal);
         for (int i = 0; i < arr.length; i++) data[i] = arr[i];
         buildSegmentTree(0, 0, data.length - 1); // 构建线段树
     }
@@ -97,7 +99,7 @@ class SegmentTree<E> {
         int mid = l + (r - l) / 2;
         buildSegmentTree(leftTreeIndex, l, mid);
         buildSegmentTree(rightTreeIndex, mid + 1, r);
-        tree[treeIndex] = handler.merge(tree[leftTreeIndex], tree[rightTreeIndex]);
+        tree[treeIndex] = handler.merge(tree[leftTreeIndex], tree[rightTreeIndex], defaultVal);
     }
 
     public E query(int queryL, int queryR) {
@@ -108,7 +110,7 @@ class SegmentTree<E> {
     }
 
     private E query(int treeIndex, int l, int r, int queryL, int queryR) {
-        if ((int) marks[treeIndex] != 0) handler.pushDown(tree, data, marks, treeIndex, l, r);
+        if (marks[treeIndex] != defaultVal) handler.pushDown(tree, data, marks, defaultVal, treeIndex, l, r);
         if (l == queryL && r == queryR) return tree[treeIndex];
         int mid = l + (r - l) / 2;
         int leftTreeIndex = leftChild(treeIndex);
@@ -117,7 +119,7 @@ class SegmentTree<E> {
         if (queryL > mid) return query(rightTreeIndex, mid + 1, r, queryL, queryR);
         E leftResult = query(leftTreeIndex, l, mid, queryL, mid);
         E rightResult = query(rightTreeIndex, mid + 1, r, mid + 1, queryR);
-        return handler.merge(leftResult, rightResult);
+        return handler.merge(leftResult, rightResult, defaultVal);
     }
 
     public void update(int updateL, int updateR, E val) {
@@ -125,7 +127,7 @@ class SegmentTree<E> {
             throw new IllegalArgumentException("Index is illegal");
         }
 
-        handler.update(tree, data, marks, 0, 0, data.length - 1, updateL, updateR, val);
+        handler.update(tree, data, marks, defaultVal, 0, 0, data.length - 1, updateL, updateR, val);
     }
 }
 
@@ -139,15 +141,16 @@ class BookMyShow {
         this.n = n;
         this.m = m;
         seats = new Integer[n*m];
-        Arrays.fill(seats, 0);
-        segTree = new SegmentTree<>(Integer.class, seats, new Handler<Integer>() {
+        Integer defaultVal = 0;
+        Arrays.fill(seats, defaultVal);
+        segTree = new SegmentTree<>(Integer.class, seats, defaultVal, new Handler<Integer>() {
             @Override
-            public Integer merge(Integer a, Integer b) {
+            public Integer merge(Integer a, Integer b, Integer defaultVal) {
                 return a + b;
             }
 
             @Override
-            public void pushDown(Integer[] tree, Integer[] data, Integer[] marks, int treeIndex, int l, int r) {
+            public void pushDown(Integer[] tree, Integer[] data, Integer[] marks, Integer defaultVal, int treeIndex, int l, int r) {
                 if (l > r) return;
 
                 if (l == r) {
@@ -161,28 +164,28 @@ class BookMyShow {
                     tree[rightTreeIndex] += marks[treeIndex] * (r - mid);
                     marks[rightTreeIndex] += marks[treeIndex];
                 }
-                marks[treeIndex] = 0;
+                marks[treeIndex] = defaultVal;
             }
 
             @Override
-            public void update(Integer[] tree, Integer[] data, Integer[] marks, int treeIndex, int l, int r, int updateL, int updateR, Integer val) { // 区间 [l, r] 全部自增 val（在这题里，编写调用逻辑只对区间全为 0 的区间自增 1）
+            public void update(Integer[] tree, Integer[] data, Integer[] marks, Integer defaultVal, int treeIndex, int l, int r, int updateL, int updateR, Integer val) { // 区间 [l, r] 全部自增 val（在这题里，编写调用逻辑只对区间全为 0 的区间自增 1）
                 if (l >= updateL && r <= updateR) {
                     tree[treeIndex] += val * (r - l + 1); // 注意：此处计算基于 merge() 逻辑
                     marks[treeIndex] += val;
                     return;
                 }
-                if (marks[treeIndex] != 0) pushDown(tree, data, marks, treeIndex, l, r);
+                if (marks[treeIndex] != defaultVal) pushDown(tree, data, marks, defaultVal, treeIndex, l, r);
                 int leftTreeIndex = 2 * treeIndex + 1;
                 int rightTreeIndex = 2 * treeIndex + 2;
                 int mid = l + (r - l) / 2;
-                if (updateR <= mid) update(tree, data, marks, leftTreeIndex, l, mid, updateL, updateR, val);
-                if (updateL > mid) update(tree, data, marks, rightTreeIndex, mid + 1, r, updateL, updateR, val);
+                if (updateR <= mid) update(tree, data, marks, defaultVal, leftTreeIndex, l, mid, updateL, updateR, val);
+                if (updateL > mid) update(tree, data, marks, defaultVal, rightTreeIndex, mid + 1, r, updateL, updateR, val);
                 if (updateL <= mid && mid < updateR) {
-                    update(tree, data, marks, leftTreeIndex, l, mid, updateL, updateR, val);
-                    update(tree, data, marks, rightTreeIndex, mid + 1, r, updateL, updateR, val);
+                    update(tree, data, marks, defaultVal, leftTreeIndex, l, mid, updateL, updateR, val);
+                    update(tree, data, marks, defaultVal, rightTreeIndex, mid + 1, r, updateL, updateR, val);
                 }
 
-                tree[treeIndex] = merge(tree[leftTreeIndex], tree[rightTreeIndex]);
+                tree[treeIndex] = merge(tree[leftTreeIndex], tree[rightTreeIndex], defaultVal);
             }
         });
     }
@@ -243,3 +246,4 @@ class BookMyShow {
  * int[] param_1 = obj.gather(k,maxRow);
  * boolean param_2 = obj.scatter(k,maxRow);
  */
+ 
