@@ -467,7 +467,7 @@
 - [ ] 353	Design Snake Game		
 - [x] 146	LRU Cache		
 - [x] 355	Design Twitter		
-- [ ] 303	Range Sum Query - Immutable		
+- [x] 303	Range Sum Query - Immutable		
 - [x] 304	Range Sum Query 2D - Immutable		
 - [x] 307	Range Sum Query - Mutable		                            BIT & ST
 - [ ] 308	Range Sum Query 2D - Mutable		                        BIT & ST
