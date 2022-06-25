@@ -19,4 +19,5 @@
 
 
 # Read from the file file.txt and output all valid phone numbers to stdout.
+# Other's Solution:
 grep -P '^(\d{3}-|\(\d{3}\) )\d{3}-\d{4}$' file.txt # https://leetcode.com/problems/valid-phone-numbers/discuss/55481/Three-different-solutions-using-grep-sed-and-awk
