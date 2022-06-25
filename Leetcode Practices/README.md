@@ -101,7 +101,7 @@
 - [ ] 249	Group Shifted Strings		
 - [ ] 87	Scramble String		
 - [ ] 179	Largest Number		                                                    很少考
-- [ ] 6	    ZigZag Conversion		                                                很少考
+- [x] 6	    ZigZag Conversion		                                                很少考
 - [ ] 161	One Edit Distance		
 - [x] 38	Count and Say		
 - [ ] 358	Rearrange String k Distance Apart		
