@@ -461,7 +461,7 @@
 - [ ] 284	Peeking Iterator		
 - [ ] 251	Flatten 2D Vector		
 - [ ] 288	Unique Word Abbreviation		
-- [ ] 170	Two Sum III - Data structure design		
+- [x] 170	Two Sum III - Data structure design		
 - [ ] 348	Design Tic-Tac-Toe		
 - [ ] 379	Design Phone Directory		
 - [ ] 353	Design Snake Game		
