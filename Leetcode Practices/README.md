@@ -58,7 +58,7 @@
 - [x] 238	Product of Array Except Self		
 - [x] 152	Maximum Product Subarray		
 - [ ] 228	Summary Ranges		
-- [ ] 163	Missing Ranges		
+- [x] 163	Missing Ranges		
 ### Counter			
 - [x] 88	Merge Sorted Array		
 - [x] 75	Sort Colors		
@@ -587,7 +587,7 @@
 - [ ] 158	Read N Characters Given Read4 II - Call multiple times		
 - [ ] 161	One Edit Distance		
 - [x] 162	Find Peak Element		
-- [ ] 163	Missing Ranges		
+- [x] 163	Missing Ranges		
 - [x] 168	Excel Sheet Column Title		
 - [x] 171	Excel Sheet Column Number		
 - [x] 173	Binary Search Tree Iterator		
