@@ -4,6 +4,14 @@ LSM 树 (Log-Structured-Merge-Tree) 的名字往往会给初识者一个错误�
 
 LSM 树的核心特点是利用顺序写来提高写性能，但因为分层 (此处分层是指的分为内存和文件两部分) 的设计会稍微降低读性能，但是通过牺牲小部分读性能换来高性能写，使得 LSM 树成为非常流行的存储结构。  
 
-参考：  
+## LSM 树的核心思想
+![](./LSMTree%20Architecture.jpeg)  
+如上图所示，LSM 树有以下三个重要组成部分：  
+* MemTable
+* Immutable MemTable
+* SSTable (Sorted String Table)
+  
+
+## 参考
 * https://zhuanlan.zhihu.com/p/181498475
 * https://www.modb.pro/db/379790
