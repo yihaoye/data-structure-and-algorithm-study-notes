@@ -62,6 +62,8 @@ private void pushDown(int index) { // 把当前节点的标志值传给子节点
 
 [进阶版线段树 Java 实现代码](./SegmentTree2.java)  
   
+其他参考实现：https://github.com/EndlessCheng/codeforces-go/blob/master/copypasta/segment_tree.go  
+  
 ## 二维线段树
 ToDo...  
   

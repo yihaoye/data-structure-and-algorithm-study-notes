@@ -45,6 +45,89 @@ At most 5 * 104 calls in total will be made to gather and scatter.
 
 
 
+// Other's Solution:
+class BookMyShow {
+    int n, m;
+    int[] min;
+    long[] sum;
+
+    public BookMyShow(int n, int m) {
+        // 线段树+二分搜索 - https://leetcode.cn/problems/booking-concert-tickets-in-groups/solution/by-endlesscheng-okcu/
+        // Time: 初始化线段树需要 O(N), Space: O(N)
+        this.n = n;
+        this.m = m;
+        min = new int[n * 4]; // min[o] 区间 (i.e. 以 o 为根节点的区间 [down, up]) 排上的单排观众数（或称已占用位置数）的最小值 min
+        sum = new long[n * 4]; // sum[o] 区间 (i.e. 以 o 为根节点的区间 [down, up]) 排上的总人数（总已占用位置数）
+    }
+
+    public int[] gather(int k, int maxRow) { // Time: O(logN)
+        int i = index(1, 1, n, maxRow + 1, m - k);
+        if (i == 0) return new int[]{}; // 不存在
+        var used = (int) query_sum(1, 1, n, i, i); // 看这一排有多少个人了
+        add(1, 1, n, i, k); // 在第 i 排占据 k 个座位
+        return new int[]{i - 1, used};
+    }
+
+    public boolean scatter(int k, int maxRow) { // Time: O((N+q)*logN)，这里 q 为 gather 和 scatter 的调用次数之和
+        if ((long) (maxRow + 1) * m - query_sum(1, 1, n, 1, maxRow + 1) < k) return false; // 剩余座位不足 k 个
+
+        // 从第一个没有坐满的排开始占座，借助 index 找到最先符合的这一排，只要不满就都得查询，所以限制参数是 m - 1
+        for (var i = index(1, 1, n, maxRow + 1, m - 1); ; ++i) {
+            var left_seats = m - (int) query_sum(1, 1, n, i, i);
+            if (k <= left_seats) { // 剩余人数不够坐后面的排
+                add(1, 1, n, i, k);
+                return true;
+            }
+            k -= left_seats;
+            add(1, 1, n, i, left_seats);
+        }
+    }
+
+    // 将 idx 排上的占用值增加 val
+    void add(int o, int down, int up, int idx, int val) {
+        if (down == up) {
+            min[o] += val;
+            sum[o] += val;
+            return;
+        }
+        var mid = (down + up) / 2;
+        if (idx <= mid) add(o * 2, down, mid, idx, val);
+        else add(o * 2 + 1, mid + 1, up, idx, val);
+
+        // 以下两者相当于 pushup，本题没有 pushdown，因为 pushdown 用于区间更新的时候才需要 lazy 标记
+        min[o] = Math.min(min[o * 2], min[o * 2 + 1]);
+        sum[o] = sum[o * 2] + sum[o * 2 + 1];
+    }
+
+    // 返回区间 [DOWN,UP] 排内的已有人数（已占用位置数）的和
+    long query_sum(int o, int down, int up, int DOWN, int UP) { // DOWN 和 UP 在整个递归过程中均不变，将其大写，视作常量
+        if (DOWN <= down && up <= UP) return sum[o];
+        var sum = 0L;
+        var mid = (down + up) / 2;
+        if (DOWN <= mid) sum += query_sum(o * 2, down, mid, DOWN, UP);
+        if (UP > mid) sum += query_sum(o * 2 + 1, mid + 1, up, DOWN, UP);
+        return sum;
+    }
+
+    // 返回有 >= val 个空位置的最低一排，不存在时返回 0（本题解排数从 1 算起，故 0 为找不到有效排）
+    int index(int o, int down, int up, int UP, int val) { // UP 在整个递归过程中均不变，将其大写，视作常量
+        if (min[o] > val) return 0; // 说明整个区间的元素值都大于 val
+        if (down == up) return down; // 二分终止条件
+        var mid = (down + up) / 2;
+        if (min[o * 2] <= val) return index(o * 2, down, mid, UP, val); // 如果左子树（下方的排）的最小值符合，往左子树搜，优先往左子树搜
+        if (mid < UP) return index(o * 2 + 1, mid + 1, up, UP, val); // 否则往右子树（上方的排）搜
+        return 0; // 其余情况，不合法，返回 0
+    }
+}
+/**
+ * Your BookMyShow object will be instantiated and called as such:
+ * BookMyShow obj = new BookMyShow(n, m);
+ * int[] param_1 = obj.gather(k,maxRow);
+ * boolean param_2 = obj.scatter(k,maxRow);
+ */
+
+
+
 // My Solution (线段树+二分搜索): (大部分测试用例能通过，但当中间计算值大于 int 类型则无能为力，因为本方法通过数组实现线段树而非链式存储)
 import java.lang.reflect.Array;
 
