@@ -33,3 +33,4 @@ def max_subarray(A):
 ## 类似例题
 [Leetcode 53](./../Leetcode%20Practices/algorithms/easy/53%20Maximum%20Subarray.java)  
 [Leetcode 152](./../Leetcode%20Practices/algorithms/medium/152%20Maximum%20Product%20Subarray.java)  
+[Leetcode 2321](./../Leetcode%20Practices/algorithms/hard/2321%20Maximum%20Score%20Of%20Spliced%20Array.java)  
