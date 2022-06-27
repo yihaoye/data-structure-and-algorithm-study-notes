@@ -51,6 +51,21 @@ class Solution {
         return res;
     }
 }
+// 以上解法由以下解法简化而来
+class Solution {
+    public long getDescentPeriods(int[] prices) {
+        // Time: O(N), Space: O(N)
+        long[] dp = new long[prices.length];
+        dp[0] = 1L;
+        long res = 0L;
+        res += dp[0];
+        for (int i=1; i<prices.length; i++) {
+            dp[i] = (prices[i-1] - prices[i] == 1L) ? dp[i-1] + 1L : 1L;
+            res += dp[i];
+        }
+        return res;
+    }
+}
 // 以上解法由下面的思路简化而来
 // dp[i] -> ith element 最长的平滑下降区间 3,2,1 -> 3: dp[i] = (prices[i-1] - prices[i] == 1) ? dp[i-1]+1 : 1;
 // hasmap<3, count> <1, count> ... key max 平滑下降区间
