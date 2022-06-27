@@ -40,7 +40,7 @@ All the values of nums are unique.
 // My Solution:
 class Solution {
     public List<String> findMissingRanges(int[] nums, int lower, int upper) {
-        // 标记变量
+        // 旗帜变量
         // Time: O(N), Space: O(1)
         Integer missLeft = null, lastNum = Integer.MIN_VALUE;
         List<String> res = new ArrayList<>();

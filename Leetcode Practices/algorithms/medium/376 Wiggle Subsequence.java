@@ -40,7 +40,7 @@ Follow up: Could you solve this in O(n) time?
 // My Solution:
 class Solution {
     public int wiggleMaxLength(int[] nums) {
-        // 标记变量
+        // 旗帜变量
         // lastNegLen - 上一次 diff 为负数的最大长度, lastPosLen - 上一次 diff 为正数的最大长度
         // if (curDiff > 0) lastPosLen = Math.max(lastNegLen + 1, lastPosLen);
         // if (curDiff < 0) lastNegLen = Math.max(lastPosLen + 1, lastNegLen);
