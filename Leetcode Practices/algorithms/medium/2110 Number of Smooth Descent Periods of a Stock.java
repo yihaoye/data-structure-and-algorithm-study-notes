@@ -67,7 +67,7 @@ class Solution {
     }
 }
 // 以上解法由下面的思路简化而来
-// dp[i] -> ith element 最长的平滑下降区间 3,2,1 -> 3: dp[i] = (prices[i-1] - prices[i] == 1) ? dp[i-1]+1 : 1;
+// dp[i] -> 以 ith element 为结尾的最长的平滑下降区间 3,2,1 -> 3: dp[i] = (prices[i-1] - prices[i] == 1) ? dp[i-1]+1 : 1;
 // hasmap<3, count> <1, count> ... key max 平滑下降区间
 // 最长的平滑下降区间若为 len 的组合数 -> len: (1) + len-1: (len-(len-1)+1) + len-2: (len-(len-2)+1) + ... + len-i: (i+1) + 1: (len) -> 比如最长区间为 3 时的组合数 = 3: (1) + 2: (2) + 1: (3) = 1 + 2 + 3 = 6
 // [3,2,1,4,3, 1] -> [1,2,3,1,2,1] (dp[0] = 1)
