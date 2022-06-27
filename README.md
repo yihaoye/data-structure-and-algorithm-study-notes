@@ -87,6 +87,14 @@
 花花酱刷题题目列表：https://bit.ly/2E8yBHq  
 刷题或面试的[编程语言选择](./Program%20Languages%20Features/)：有传言 Google 的工程师说是尽量使用 C++ 和 Java 实现，另外一亩三分地上的讨论也是建议尽量使用 C++ 或 Java。  
   
+[养成 6 个习惯](https://www.youtube.com/watch?v=AvcJ9VcQweI)：  
+1. 结构化（系统化、有条理地刷题，形成知识图谱）
+2. 记笔记
+3. 复习
+4. 精益求精、深化理解（尽可能优化代码）
+5. 没 BUG
+6. 写代码速度快
+  
 [高效地刷 LC](https://www.youtube.com/watch?v=fyf-GRH1Ceo)：  
 1. 不用全做，做過幾題後集中在想解題的算法即可，全作時間上不允許，要記得看討論看別人的解法
 2. 主要集中做難度 medium 就可以了，因为 medium 會了 easy 通常也行了，而近年来 FLAG 等大公司也较少考 hard 了（就算考也是当 bonus，而且一般不要求最优解，可以暴力解出也就可以了）
