@@ -12,6 +12,25 @@ If you have figured out the O(n) solution, try coding another solution using the
 */
 
 
+
+// Other's Solution:
+class Solution {
+    public int maxSubArray(int[] nums) {
+        // Kadane 算法
+        // Time: O(N), Space: O(1)
+        int n = nums.length, maxSum = Integer.MIN_VALUE, maxEnd = 0;
+        for (int i=0; i<n; i++) {
+            maxEnd = maxEnd + nums[i];
+            maxSum = Math.max(maxSum, maxEnd);
+            if (maxEnd < 0) maxEnd = 0;
+        }
+        
+        return maxSum;
+    }
+}
+
+
+
 // Solution under help:
 class Solution {
     public int maxSubArray(int[] nums) {
