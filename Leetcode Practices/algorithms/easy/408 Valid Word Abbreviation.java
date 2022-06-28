@@ -26,6 +26,31 @@ Return false.
 
 
 
+// My Solution:
+class Solution {
+    public boolean validWordAbbreviation(String word, String abbr) {
+        // 单指针
+        // Time: O(N), Space: O(1)
+        int curDigit = 0;
+        for (int i=0, j=0; i<abbr.length();) {
+            if (curDigit == 0 && abbr.charAt(i) == '0') return false;
+            if (Character.isDigit(abbr.charAt(i))) {
+                curDigit = curDigit * 10 + (abbr.charAt(i) - '0');
+                i++;
+            } else {
+                if (curDigit != 0) j += curDigit;
+                if (j >= word.length() || word.charAt(j) != abbr.charAt(i)) return false;
+                curDigit = 0;
+                i++; j++;
+            }
+            if ((i == abbr.length() && j == word.length()-curDigit)) return true;
+            if ((i == abbr.length() && j != word.length()) || (i != abbr.length() && j == word.length())) return false;
+        }
+        
+        return true;
+    }
+}
+
 
 
 //My Solution: (not checked by leetcode check machine yet)
