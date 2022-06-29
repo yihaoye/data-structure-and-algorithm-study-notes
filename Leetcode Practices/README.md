@@ -217,6 +217,9 @@
 - [ ] 250	Count Univalue Subtrees		
 - [ ] 366	Find Leaves of Binary Tree		
 - [x] 337	House Robber III		                                                        postorder + preorder
+### DFS
+- [x] 437   Path Sum III    
+- [x] 863   All Nodes Distance K in Binary Tree 
 ### BFS			
 - [x] 107	Binary Tree Level Order Traversal II		
 - [x] 103	Binary Tree Zigzag Level Order Traversal		
