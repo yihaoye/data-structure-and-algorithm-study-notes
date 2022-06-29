@@ -57,7 +57,7 @@
 - [ ] 209	Minimum Size Subarray Sum		
 - [x] 238	Product of Array Except Self		
 - [x] 152	Maximum Product Subarray		
-- [ ] 228	Summary Ranges		
+- [x] 228	Summary Ranges		
 - [x] 163	Missing Ranges		
 ### Counter			
 - [x] 88	Merge Sorted Array		
@@ -624,7 +624,7 @@
 - [ ] 225	Implement Stack using Queues		
 - [x] 226	Invert Binary Tree		
 - [x] 227	Basic Calculator II		
-- [ ] 228	Summary Ranges		
+- [x] 228	Summary Ranges		
 - [x] 230	Kth Smallest Element in a BST		
 - [x] 231	Power of Two		
 - [x] 232	Implement Queue using Stacks		
