@@ -88,3 +88,34 @@ class Solution {
         return root;
     }
 }
+
+
+
+// My Solution:
+class Solution {
+    public Node connect(Node root) {
+        /*
+            BFS - 默认 Queue 第一层放入根节点与一个 NULL，每次遇到 NULL 就再往 Queue 里放入一个 NULL，如果是 valid 的树节点则把其左右子节点放入 Queue，并且遍历 Queue 时总是记录上一个遍历的树节点，将其 next 指针指向现在正在遍历的节点，如果上一个是 NULL 则不设置 next 指针
+            时间复杂度 O(N)，空间复杂度 O(N)
+        */
+        if (root == null) return root;
+        
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        queue.add(null);
+        Node preNode = null;
+        while (!queue.isEmpty()) {
+            Node curNode = queue.poll();
+            if (preNode != null) preNode.next = curNode;
+            if (curNode == null) {
+                if (!queue.isEmpty()) queue.add(null);
+            } else {
+                if (curNode.left != null) queue.add(curNode.left);
+                if (curNode.right != null) queue.add(curNode.right);
+            }
+            preNode = curNode;
+        }
+        
+        return root;
+    }
+}
