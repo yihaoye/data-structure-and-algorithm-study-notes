@@ -263,7 +263,7 @@
 - [ ] 254	Factor Combinations		
 - [x] 46	Permutations		
 - [x] 47	Permutations II		
-- [ ] 31	Next Permutation		                        String
+- [x] 31	Next Permutation		                        String
 - [ ] 60	Permutation Sequence		                    String
 - [ ] 291	Word Pattern II		
 - [x] 17	Letter Combinations of a Phone Number		
@@ -499,7 +499,7 @@
 - [x] 27	Remove Element		
 - [x] 28	Implement strStr()		
 - [x] 29	Divide Two Integers		
-- [ ] 31	Next Permutation		
+- [x] 31	Next Permutation		
 - [ ] 32	Longest Valid Parentheses		
 - [x] 33	Search in Rotated Sorted Array		
 - [x] 34	Find First and Last Position of Element in Sorted Array		
