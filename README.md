@@ -171,30 +171,30 @@ https://blog.csdn.net/qq_40688707/article/details/80602064
   
 #### ACM 的正确入门方式是什么
 > 一般的入门顺序：  
-> 1. C语言的基本语法(或者直接开C++也行，当一个java选手可能会更受欢迎，并且以后工作好找，但是难度有点大)，【参考书籍：刘汝佳的《算法竞赛入门经典》，C++入门可以考虑《c++ primer plus》，java选手可以考虑《think in java》or中文版《java编程思想》，请远离谭浩强...】可以选择切一些特别水的题巩固以及适应一下ACM中常见的输入输出格式...例如杭电著名的100题 [Problem Set](https://link.zhihu.com/?target=http%3A//acm.hdu.edu.cn/listproblem.php%3Fvol%3D11)  
+> 1. C语言的基本语法(或者直接开C++也行，当一个java选手可能会更受欢迎，并且以后工作好找，但是难度有点大)，【参考书籍：刘汝佳的《算法竞赛入门经典》，C++入门可以考虑《c++ primer plus》，java选手可以考虑《think in java》or中文版《java编程思想》，请远离谭浩强...】可以选择切一些特别水的题巩固以及适应一下ACM中常见的输入输出格式...例如杭电著名的100题 [Problem Set](http://acm.hdu.edu.cn/listproblem.php?vol=11)  
 > 2. 一些基本算法和数据结构(队列 栈 树 图 并查集 堆 DFS BFS 最短路 最小生成树 拓扑排序 动态规划 贪心 搜索 KMP 哈希 Trie AC自动机 快速幂 逆元 费马小定理 欧拉函数 素数筛 分解质因数)你可以找两个小伙伴一起分工合作，各自认领专题【参考书籍：刘汝佳《算法竞赛入门经典第二版》or《算法竞赛训练手册》，《算法导论》】这时候可以刷的题就多了，你可以选择一些专题进行突破，学习一下技巧 例如  
-> [kuangbin带你飞](https://link.zhihu.com/?target=http%3A//vjudge.net/contest/65959%23overview)专题一 简单搜索  
-> [kuangbin带你飞](https://link.zhihu.com/?target=http%3A//vjudge.net/contest/66569%23overview)专题四 最短路练习  
-> [kuangbin带你飞](https://link.zhihu.com/?target=http%3A//vjudge.net/contest/66964%23overview)专题五 并查集  
-> [kuangbin带你飞](https://link.zhihu.com/?target=http%3A//vjudge.net/contest/66965%23overview)专题六 最小生成树  
-> [kuangbin带你飞](https://link.zhihu.com/?target=http%3A//vjudge.net/contest/68966%23overview)专题十二 基础DP1  
-> [kuangbin带你飞](https://link.zhihu.com/?target=http%3A//vjudge.net/contest/70017%23overview)专题十四 数论基础  
-> [kuangbin带你飞](https://link.zhihu.com/?target=http%3A//vjudge.net/contest/70325%23overview)专题十六 KMP & 扩展KMP & Manacher  
-> [kuangbin带你飞](https://link.zhihu.com/?target=http%3A//vjudge.net/contest/70326%23overview)专题十七 AC自动机如果这些你和你的小伙伴都能熟悉掌握，并且能够尽快写出来，那么没有意外的话就可以在网络赛中拿到现场赛的门票（当然还得看出题人的风格...）  
+> [kuangbin带你飞](http://vjudge.net/contest/65959#overview)专题一 简单搜索  
+> [kuangbin带你飞](http://vjudge.net/contest/66569#overview)专题四 最短路练习  
+> [kuangbin带你飞](http://vjudge.net/contest/66964#overview)专题五 并查集  
+> [kuangbin带你飞](http://vjudge.net/contest/66965#overview)专题六 最小生成树  
+> [kuangbin带你飞](http://vjudge.net/contest/68966#overview)专题十二 基础DP1  
+> [kuangbin带你飞](http://vjudge.net/contest/70017#overview)专题十四 数论基础  
+> [kuangbin带你飞](http://vjudge.net/contest/70325#overview)专题十六 KMP & 扩展KMP & Manacher  
+> [kuangbin带你飞](http://vjudge.net/contest/70326#overview)专题十七 AC自动机如果这些你和你的小伙伴都能熟悉掌握，并且能够尽快写出来，那么没有意外的话就可以在网络赛中拿到现场赛的门票（当然还得看出题人的风格...）  
 > 3. 一些进阶的算法以及复杂一些的数据结构（树状数组 线段树 平衡树 后缀数组 二分图匹配 网络流 费用流 割点 桥 强联通 双联通 最近公共祖先 四大DP(数位dp 区间dp 状压dp 概率dp)  博弈论SG函数 ）  
 > 【参考资料：各种博客......】  
-> [kuangbin带你飞](https://link.zhihu.com/?target=http%3A//vjudge.net/contest/66989%23overview)专题七 线段树  
-> [kuangbin带你飞](https://link.zhihu.com/?target=http%3A//vjudge.net/contest/67418%23overview)专题九 连通图  
-> [kuangbin带你飞](https://link.zhihu.com/?target=http%3A//vjudge.net/contest/68127%23overviews)专题十 匹配问题  
-> [kuangbin带你飞](https://link.zhihu.com/?target=http%3A//vjudge.net/contest/68128%23overview)专题十一 网络流  
-> [kuangbin带你飞](https://link.zhihu.com/?target=http%3A//vjudge.net/contest/70324%23overview)专题十五 数位DP  
-> [kuangbin带你飞](https://link.zhihu.com/?target=http%3A//vjudge.net/contest/70655%23overview)专题十八 后缀数组  
-> [kuangbin带你飞](https://link.zhihu.com/?target=http%3A//vjudge.net/contest/76505%23overviews)专题二十一 概率&期望  
-> [kuangbin带你飞](https://link.zhihu.com/?target=http%3A//vjudge.net/contest/77874%23overview)专题二十二 区间DP  
+> [kuangbin带你飞](http://vjudge.net/contest/66989#overview)专题七 线段树  
+> [kuangbin带你飞](http://vjudge.net/contest/67418#overview)专题九 连通图  
+> [kuangbin带你飞](http://vjudge.net/contest/68127#overviews)专题十 匹配问题  
+> [kuangbin带你飞](http://vjudge.net/contest/68128#overview)专题十一 网络流  
+> [kuangbin带你飞](http://vjudge.net/contest/70324#overview)专题十五 数位DP  
+> [kuangbin带你飞](http://vjudge.net/contest/70655#overview)专题十八 后缀数组  
+> [kuangbin带你飞](http://vjudge.net/contest/76505#overviews)专题二十一 概率&期望  
+> [kuangbin带你飞](http://vjudge.net/contest/77874#overview)专题二十二 区间DP  
 > 这些掌握之后在现场赛中拿到牌子应该就没什么问题了，发挥出色还能拿到银牌。。。不过如果遇到比较凶残的赛区...  
-> 4. 这时候如果开始组队了，就可以去刷一些套题了，例如 [Contests - Virtual Judge](https://link.zhihu.com/?target=http%3A//vjudge.net/contest%23contestType%3D1%26contestRunningStatus%3D3%26contestOpenness%3D0%26title%3D%26manager%3D) 这里每一场比赛都是过去真实发生的录像，你可以 clone 之后和自己的队友一起实操一下。  
+> 4. 这时候如果开始组队了，就可以去刷一些套题了，例如 [Contests - Virtual Judge](http://vjudge.net/contest#contestType=1&contestRunningStatus=3&contestOpenness=0&title=&manager=) 这里每一场比赛都是过去真实发生的录像，你可以 clone 之后和自己的队友一起实操一下。  
 > 5. 更高深的技巧，更复杂的数据结构（树链剖分，动态树，可持久化线段树，DLX，后缀自动机，回文树，斜率优化/单调队列优化/四边形优化DP，插头dp，莫比乌斯反演......）这部分最能体现人与人的差异了...智商碾压一般就在这部分。而要想拿到金牌，一般来说这些知识都要尽可能掌握。【参考资料：各种论文，解题报告】这部分的题目比较杂，因此请自行去vjudge上查找....  
-> 6. 同 4，并且中国国内的比赛如果已经满足不了你，你可以去 https://icpcarchive.ecs.baylor.edu/index.php 或者 [Gym - Codeforces](https://link.zhihu.com/?target=http%3A//codeforces.com/gyms) 上找到全世界的区域赛的题目，不过题解就不怎么保证了...也许你会觉得性价比很低，学这么多东西，才"有可能”拿到牌子，但是收获的不一定是物质的牌子，还有学习过程的苦辣酸甜的经历（例如各种 WA TLE RE MLE 之后的一次AC），还有和基友一起并肩作战切套题的同甘共苦，而且还锻炼了自己的学习能力（善用百度，谷歌，维基百科）。  
+> 6. 同 4，并且中国国内的比赛如果已经满足不了你，你可以去 https://icpcarchive.ecs.baylor.edu/index.php 或者 [Gym - Codeforces](http://codeforces.com/gyms) 上找到全世界的区域赛的题目，不过题解就不怎么保证了...也许你会觉得性价比很低，学这么多东西，才"有可能”拿到牌子，但是收获的不一定是物质的牌子，还有学习过程的苦辣酸甜的经历（例如各种 WA TLE RE MLE 之后的一次AC），还有和基友一起并肩作战切套题的同甘共苦，而且还锻炼了自己的学习能力（善用百度，谷歌，维基百科）。  
 > 再补充一下：这些算法都是说着容易，但是灵活搭配用起来难，然后还能在一定时间内写出来，并顺利通过数据测试拿到AC更难。  
 > 由于大家手上的模板越来越强大，区域赛一般都不会出现裸的模板题了，一旦出现，肯定就是被大家骂回家的存在。所以在综合训练的过程中，尽量选择需要动脑的题目，不要一昧追求直接贴一个模板上来 AC 走人特别爽的题目。  
 > 一般比较需要动脑的题目类型：贪心，动态规划（最好需要加上优化的），组合数学（推组合数公式，各种等价变换），图论（网络流，最短路，匹配）的各种建图过程。。。虽然说年轻人要少水群，多做题，才能进 Finals——kuangbin 但是一直闭门单刷也不是一件好事，还是要和大家多多交流心得，这样才能避免自己陷入一个瓶颈。  
