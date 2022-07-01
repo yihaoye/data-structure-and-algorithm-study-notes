@@ -60,3 +60,15 @@ public long factorial(int n) {
     }
     return fact;
 }
+
+
+
+// GCD 最大公约数
+public int gcd(int a, int b) { //（欧几里得算法 - https://zh.wikipedia.org/zh-hans/%E8%BC%BE%E8%BD%89%E7%9B%B8%E9%99%A4%E6%B3%95）
+    while (b != 0) {
+        int temp = b;
+        b = a % b;
+        a = temp;
+    }
+    return a;
+}
