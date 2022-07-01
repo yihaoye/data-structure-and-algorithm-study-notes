@@ -4,6 +4,7 @@
 # 基础
 * [数学归纳法](./Mathematical%20Induction.md)
 * [排列组合](./Combinatorics.md)
+* [算法常用数学工具](./../Tool%20Sets/Math.java)
   
 # ACM 数论
 1. 整除的性质
