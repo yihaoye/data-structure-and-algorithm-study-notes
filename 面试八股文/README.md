@@ -1,5 +1,5 @@
 # 面试八股文
-## Java
+## Java 高频
 * Java 中垃圾回收机制中如何判断对象需要回收？常见的 GC 回收算法有哪些？ （中等）
 * HashMap 与 ConcurrentHashMap 的实现原理是怎样的？ConcurrentHashMap 是如何保证线程安全的？ （中等）
 * HashMap 和 HashTable 的区别是什么？   （简单）
