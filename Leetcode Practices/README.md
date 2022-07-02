@@ -380,7 +380,7 @@
 ### Stack			
 - [x] 155	Min Stack		
 - [x] 232	Implement Queue using Stacks		
-- [ ] 225	Implement Stack using Queues		
+- [x] 225	Implement Stack using Queues		
 - [x] 150	Evaluate Reverse Polish Notation		
 - [ ] 71	Simplify Path		
 - [ ] 388	Longest Absolute File Path		
@@ -621,7 +621,7 @@
 - [x] 220	Contains Duplicate III		
 - [x] 221	Maximal Square		
 - [x] 224	Basic Calculator		
-- [ ] 225	Implement Stack using Queues		
+- [x] 225	Implement Stack using Queues		
 - [x] 226	Invert Binary Tree		
 - [x] 227	Basic Calculator II		
 - [x] 228	Summary Ranges		
