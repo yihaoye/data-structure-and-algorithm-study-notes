@@ -362,7 +362,7 @@
 - [ ] 361	Bomb Enemy		
 - [ ] 317	Shortest Distance from All Buildings		
 - [ ] 302	Smallest Rectangle Enclosing Black Pixels		
-- [ ] 36	Valid Sudoku		
+- [x] 36	Valid Sudoku		
 - [ ] 37	Sudoku Solver	
    
 ## DFS & BFS
@@ -504,7 +504,7 @@
 - [x] 33	Search in Rotated Sorted Array		
 - [x] 34	Find First and Last Position of Element in Sorted Array		
 - [x] 35	Search Insert Position		
-- [ ] 36	Valid Sudoku		
+- [x] 36	Valid Sudoku		
 - [ ] 37	Sudoku Solver		
 - [x] 38	Count and Say		
 - [x] 39	Combination Sum		
