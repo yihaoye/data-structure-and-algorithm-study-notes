@@ -295,7 +295,7 @@
 - [ ] 85	Maximal Rectangle		
 - [ ] 363	Max Sum of Rectangle No Larger Than K		    TreeSet
 ### 化简（降维？）
-- [ ] 198	House Robber		
+- [x] 198	House Robber		
 - [ ] 213	House Robber II		
 - [x] 276	Paint Fence		
 - [ ] 91	Decode Ways		
@@ -599,7 +599,7 @@
 - [x] 188	Best Time to Buy and Sell Stock IV		
 - [x] 189	Rotate Array		
 - [x] 191	Number of 1 Bits		
-- [ ] 198	House Robber		
+- [x] 198	House Robber		
 - [x] 200	Number of Islands		
 - [ ] 201	Bitwise AND of Numbers Range		
 - [x] 202	Happy Number		
