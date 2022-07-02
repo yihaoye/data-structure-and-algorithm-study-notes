@@ -72,4 +72,4 @@ public int gcd(int a, int b) { //（欧几里得算法 - https://zh.wikipedia.or
     }
     return a;
 }
-// 证明过程：https://www.youtube.com/watch?v=WGO4Tqx5owg
+// 证明过程：https://www.youtube.com/watch?v=WGO4Tqx5owg（包括贝祖定理）

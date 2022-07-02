@@ -161,7 +161,7 @@
 - [x] 69	Sqrt(x)		
 - [x] 50	Pow(x, n)		
 - [x] 367	Valid Perfect Square		
-- [ ] 365	Water and Jug Problem		
+- [x] 365	Water and Jug Problem		
 - [x] 204	Count Primes		
 ### Sum			
 - [x] 1	    Two Sum		
