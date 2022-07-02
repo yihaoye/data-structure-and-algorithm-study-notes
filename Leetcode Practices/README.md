@@ -285,7 +285,7 @@
 - [ ] 312	Burst Balloons		
 - [ ] 322	Coin Change		
 ### 二维
-- [ ] 256	Paint House		
+- [x] 256	Paint House		
 - [ ] 265	Paint House II		
 - [x] 64	Minimum Path Sum		
 - [x] 72	Edit Distance		
@@ -642,7 +642,7 @@
 - [x] 252	Meeting Rooms		
 - [x] 253	Meeting Rooms II		
 - [ ] 254	Factor Combinations		
-- [ ] 256	Paint House		
+- [x] 256	Paint House		
 - [x] 257	Binary Tree Paths		
 - [ ] 261	Graph Valid Tree		
 - [x] 263	Ugly Number		
