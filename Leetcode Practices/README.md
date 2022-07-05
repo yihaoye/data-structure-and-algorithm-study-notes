@@ -449,7 +449,7 @@
 ## Trie
 - [ ] 211	Add and Search Word - Data structure design		
 - [x] 208	Implement Trie (Prefix Tree)		
-- [ ] 212	Word Search II	
+- [x] 212	Word Search II	
    
 ## 扫描线
 - [x] 218   The Skyline Problem 
@@ -610,7 +610,7 @@
 - [ ] 209	Minimum Size Subarray Sum		
 - [ ] 210	Course Schedule II		
 - [ ] 211	Add and Search Word - Data structure design		
-- [ ] 212	Word Search II		
+- [x] 212	Word Search II		
 - [x] 213	House Robber II		
 - [x] 214	Shortest Palindrome		
 - [x] 215	Kth Largest Element in an Array		
