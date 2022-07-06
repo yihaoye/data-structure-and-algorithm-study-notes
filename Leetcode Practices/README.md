@@ -459,7 +459,7 @@
 ## Design
 - [x] 359	Logger Rate Limiter		
 - [x] 346	Moving Average from Data Stream		                        Sliding Window
-- [ ] 362	Design Hit Counter		
+- [x] 362	Design Hit Counter		
 - [ ] 281	Zigzag Iterator		
 - [ ] 284	Peeking Iterator		
 - [ ] 251	Flatten 2D Vector		
@@ -713,7 +713,7 @@
 - [x] 355	Design Twitter		
 - [x] 359	Logger Rate Limiter		
 - [ ] 361	Bomb Enemy		
-- [ ] 362	Design Hit Counter		
+- [x] 362	Design Hit Counter		
 - [ ] 364	Nested List Weight Sum II		
 - [x] 367	Valid Perfect Square		
 - [ ] 374	Guess Number Higher or Lower		
