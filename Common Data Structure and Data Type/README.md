@@ -58,7 +58,7 @@
   - [字典树 | Trie](./Data%20Structure%20Implementation/Trie/)
   - [并查集 | Disjoint-Set/Union-Find Forest](./../Common%20Algorithm%20and%20Theory/并查集与联合查找算法.md)
   - [LSM 树 | Log-Structured Merge-Tree](./Data%20Structure%20Implementation/LSMTree/)
-- [图 | Graph]()
+- [图 | Graph](./Data%20Structure%20Implementation/Graph/)
   - [有向图 | Directed Graph]()
   - [无向图 | Undirected Graph]()
     - [二分图 | Bipartite Graph](./Data%20Structure%20Implementation/BipartiteGraph/)
