@@ -8,4 +8,4 @@
 
 https://www.cnblogs.com/cuish/p/3760041.html  
 
-或者采用对象的形式表示：[示例](./../../../Common%20Algorithm%20and%20Theory/树图遍历.md)  
+或者采用对象的形式表示：[示例](./../../../Common%20Algorithm%20and%20Theory/树图遍历.md#图遍历)  
