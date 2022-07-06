@@ -418,7 +418,7 @@
    
 ## Topological Sort
 - [x] 207	Course Schedule		
-- [ ] 210	Course Schedule II		
+- [x] 210	Course Schedule II		
 - [ ] 269	Alien Dictionary	
    
 ## Random
@@ -608,7 +608,7 @@
 - [x] 207	Course Schedule		
 - [x] 208	Implement Trie (Prefix Tree)		
 - [ ] 209	Minimum Size Subarray Sum		
-- [ ] 210	Course Schedule II		
+- [x] 210	Course Schedule II		
 - [ ] 211	Add and Search Word - Data structure design		
 - [x] 212	Word Search II		
 - [x] 213	House Robber II		
