@@ -36,27 +36,27 @@ void add(int a, int b, int c) {
 
 适用于边数较少的稀疏图使用，当边数量接近点的数量，即 m≈n 时，可定义为稀疏图。  
 ```java
-int[] he = new int[N], e = new int[M], ne = new int[M], w = new int[M];
+int[] head = new int[N], edge = new int[M], nextEdge = new int[M], weight = new int[M];
 int idx;
 
 void add(int a, int b, int c) {
-    e[idx] = b;
-    ne[idx] = he[a];
-    he[a] = idx;
-    w[idx] = c;
+    edge[idx] = b;
+    nextEdge[idx] = head[a];
+    head[a] = idx;
+    weight[idx] = c;
     idx++;
 }
 ```
 首先 idx 是用来对边进行编号的，然后对存图用到的几个数组作简单解释：  
-* he 数组：存储是某个节点所对应的边的集合（链表）的头结点；
-* e 数组：由于访问某一条边指向的节点；
-* ne 数组：由于是以链表的形式进行存边，该数组就是用于找到下一条边；
-* w 数组：用于记录某条边的权重为多少。
+* head 数组：存储是某个节点所对应的边的集合（链表）的头结点；
+* edge 数组：由于访问某一条边指向的节点；
+* nextEdge 数组：由于是以链表的形式进行存边，该数组就是用于找到下一条边；
+* weight 数组：用于记录某条边的权重为多少。
 
 因此当我们想要遍历所有由 a 点发出的边时，可以使用如下方式：
 ```java
-for (int i = he[a]; i != -1; i = ne[i]) {
-    int b = e[i], c = w[i]; // 存在由 a 指向 b 的边，权重为 c
+for (int i = head[a]; i != -1; i = nextEdge[i]) {
+    int b = edge[i], c = weight[i]; // 存在由 a 指向 b 的边，权重为 c
 }
 ```
 
