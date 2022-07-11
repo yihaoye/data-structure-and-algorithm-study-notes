@@ -44,7 +44,7 @@
 - [ ] 289	Game of Life		
 - [x] 406   Queue Reconstruction by Height  
 ### Interval			
-- [ ] 57	Insert Interval		
+- [x] 57	Insert Interval		
 - [x] 56	Merge Intervals		
 - [x] 252	Meeting Rooms		
 - [x] 253	Meeting Rooms II		
@@ -526,7 +526,7 @@
 - [x] 54	Spiral Matrix		
 - [x] 55	Jump Game		
 - [x] 56	Merge Intervals		
-- [ ] 57	Insert Interval		
+- [x] 57	Insert Interval		
 - [ ] 59	Spiral Matrix II		
 - [ ] 60	Permutation Sequence		
 - [x] 62	Unique Paths		
