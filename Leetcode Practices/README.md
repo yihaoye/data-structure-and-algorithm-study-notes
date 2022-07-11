@@ -391,6 +391,7 @@
 - [ ] 84	Largest Rectangle in Histogram		
 - [x] 402   Remove K Digits 
 - [x] 496   Next Greater Element I  
+- [x] 456   132 Pattern 
 ### PriorityQueue			
 - [x] 215	Kth Largest Element in an Array		
 - [x] 347	Top K Frequent Elements		
