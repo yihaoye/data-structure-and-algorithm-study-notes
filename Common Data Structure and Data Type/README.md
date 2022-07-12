@@ -169,7 +169,7 @@ ConcurrentSkipListMap | O(log n) |   O(log n)  | O(1)     | Skip List
   - [有符号整型 | Signed Integer]()
   - [无符号整型 | Unsigned Integer]()
 - [浮点型 | Float]()
-- [字符串 | String]()
+- [字符串 | String](./Data%20Type/String/README.md)
 - [字符 | Character]()  
   
 以上总结未完待续...  
