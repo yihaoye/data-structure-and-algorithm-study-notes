@@ -44,7 +44,7 @@
 * 什么是 golang 内存逃逸
 
 ## MySQL 高频
-* 为什么InnoDB表必须有主键，并且推荐使用整型的自增主键？
+* 为什么 InnoDB 表必须有主键，并且推荐使用整型的自增主键？
 
 
 以上部分参考：https://osjobs.net/topk/  
