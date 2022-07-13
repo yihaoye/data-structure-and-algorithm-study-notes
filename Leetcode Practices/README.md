@@ -382,7 +382,7 @@
 - [x] 232	Implement Queue using Stacks		
 - [x] 225	Implement Stack using Queues		
 - [x] 150	Evaluate Reverse Polish Notation		
-- [ ] 71	Simplify Path		
+- [x] 71	Simplify Path		
 - [ ] 388	Longest Absolute File Path		
 - [x] 394	Decode String		
 - [x] 224	Basic Calculator		
@@ -537,7 +537,7 @@
 - [ ] 68	Text Justification		
 - [x] 69	Sqrt(x)		
 - [x] 70	Climbing Stairs		
-- [ ] 71	Simplify Path		
+- [x] 71	Simplify Path		
 - [x] 72	Edit Distance		
 - [ ] 74	Search a 2D Matrix		
 - [x] 75	Sort Colors		
