@@ -51,3 +51,27 @@ class Solution {
         return res;
     }
 }
+
+
+
+// My Solution:
+class Solution {
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> res = new ArrayList<>();
+        Queue<TreeNode> q = new LinkedList<>();
+        if (root != null) q.offer(root);
+        while (!q.isEmpty()) {
+            List<Integer> subRes = new ArrayList<>();
+            Queue<TreeNode> tmpQ = new LinkedList<>();
+            while (!q.isEmpty()) {
+                TreeNode preNode = q.poll();
+                subRes.add(preNode.val);
+                if (preNode.left != null) tmpQ.offer(preNode.left);
+                if (preNode.right != null) tmpQ.offer(preNode.right);
+            }
+            res.add(subRes);
+            q = tmpQ;
+        }
+        return res;
+    }
+}
