@@ -1,4 +1,5 @@
 # 面试八股文
+
 ## Java 高频
 * Java 中垃圾回收机制中如何判断对象需要回收？常见的 GC 回收算法有哪些？ （中等）
 * HashMap 与 ConcurrentHashMap 的实现原理是怎样的？ConcurrentHashMap 是如何保证线程安全的？ （中等）
@@ -39,4 +40,11 @@
 * 简述 Java 中 final 关键字的作用
 * 简述动态代理与静态代理
 
-以上参考：https://osjobs.net/topk/  
+## Golang 高频
+* 什么是 golang 内存逃逸
+
+## MySQL 高频
+* 为什么InnoDB表必须有主键，并且推荐使用整型的自增主键？
+
+
+以上部分参考：https://osjobs.net/topk/  
