@@ -534,7 +534,7 @@ Round Robin LB 的一个问题是，它不会把服务器的负载考虑在内�
   
 **办法是每次有司机报告他们的位置时，并不立即修改 QuadTree。** 如果不在司机每次更新时更新 QuadTree，它就会有一些旧数据，不能正确反映司机的当前位置。但是，建立 QuadTree 的目的是为了有效寻找附近的司机（或地方）。由于所有活跃的司机每三秒钟报告一次他们的位置，因此树上发生的更新将比查询附近的司机多得多。那么可以把所有司机报告的最新位置保存在一个哈希表中，并减少更新 QuadTree 的频率 - 保证司机的当前位置将在 15 秒内反映在 QuadTree 上，同时，维护一个哈希表（DriverLocationHT），该表将存储司机报告的当前位置。
 
-这里将不再继续讨论 Grok System Design 的 QuadTree 方案，采用 Geohash 方案将可以更简洁地实现 Uber 系统设计。想更深入理解可以参考[Uber 实际方案](https://medium.com/@buckhx/unwinding-uber-s-most-efficient-service-406413c5871d)  
+这里将不再继续讨论 Grok System Design 的 QuadTree 方案，采用 Geohash 方案将可以更简洁地实现 Uber 系统设计。想更深入理解可以参考[Uber 实际方案](https://medium.com/@buckhx/unwinding-uber-s-most-efficient-service-406413c5871d) 和 [高效的多维空间点索引算法 — Geohash 和 Google S2](https://halfrost.com/go_spatial_search/)  
   
 **下面是基于 Geohash 的 Uber / Uber Eat 系统设计**  
 引用：https://jiayi797.github.io/2018/01/21/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1-%E8%AE%BE%E8%AE%A1Uber/  
