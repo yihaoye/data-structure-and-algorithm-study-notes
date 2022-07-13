@@ -14,6 +14,55 @@ Output: "dcbabcd"
 
 
 // Other's Solution:
+class Solution {
+    public String shortestPalindrome(String s) {
+        // KMP - https://leetcode.com/problems/shortest-palindrome/discuss/60113/Clean-KMP-solution-with-super-detailed-explanation
+        String temp = s + "#" + new StringBuilder(s).reverse().toString();
+        int[] table = getTable(temp);
+
+        return new StringBuilder(s.substring(table[table.length - 1])).reverse().toString() + s; // get the maximum palin part in s starts from 0
+    }
+
+    public int[] getTable(String s) {
+        int[] table = new int[s.length()]; // get lookup table - PMT
+
+        // pointer that points to matched char in prefix part
+
+        int index = 0;
+        // skip index 0, we will not match a string with itself
+        for (int i = 1; i < s.length(); i++) {
+            if (s.charAt(index) == s.charAt(i)) {
+                // we can extend match in prefix and postfix
+                table[i] = table[i-1] + 1;
+                index++;
+            } else {
+                // match failed, we try to match a shorter substring
+
+                // by assigning index to table[i-1], we will shorten the match string length, and jump to the 
+                // prefix part that we used to match postfix ended at i - 1
+                index = table[i-1];
+
+                while (index > 0 && s.charAt(index) != s.charAt(i)) {
+                    // we will try to shorten the match string length until we revert to the beginning of match (index 1)
+                    index = table[index-1];
+                }
+
+                // when we are here may either found a match char or we reach the boundary and still no luck
+                // so we need check char match
+                if (s.charAt(index) == s.charAt(i)) {
+                    // if match, then extend one char 
+                    index++;
+                }
+                table[i] = index;
+            }
+        }
+        return table;
+    }
+}
+
+
+
+// Other's Solution:
 public class Solution {
     public String shortestPalindrome(String s) {
         if(s.length()<=1) return s;
@@ -35,7 +84,7 @@ public class Solution {
 
 
 
-// My Solution (KMP):
+// My Solution (KMP - DFA):
 class Solution {
     private int[][] dfa; // the KMP automoton
     private String pat;
@@ -95,5 +144,35 @@ class Solution {
         }
         if (j == m) return true;
         return false;
+    }
+}
+
+
+
+// My Solution (Time Limit Exceeded):
+class Solution {
+    public String shortestPalindrome(String s) {
+        // 双指针
+        int left = 0, right = s.length()-1;
+        StringBuilder res = new StringBuilder();
+        for (; right >= left; right--) {
+            if (isPalindrome(s, left, right)) {
+                for (int i=s.length()-1; i>right; i--) {
+                    res.append(s.charAt(i));
+                }
+                res.append(s);
+                return res.toString();
+            }
+        }
+        return res.toString();
+    }
+    
+    private boolean isPalindrome(String s, int left, int right) {
+        while (left < right) {
+            if (s.charAt(left) != s.charAt(right)) return false;
+            left++;
+            right--;
+        }
+        return true;
     }
 }
