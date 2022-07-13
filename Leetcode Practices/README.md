@@ -357,7 +357,7 @@
 - [ ] 74	Search a 2D Matrix		
 - [x] 240	Search a 2D Matrix II		
 - [ ] 370	Range Addition		
-- [ ] 79	Word Search		
+- [x] 79	Word Search		
 - [ ] 296	Best Meeting Point		
 - [ ] 361	Bomb Enemy		
 - [ ] 317	Shortest Distance from All Buildings		
@@ -544,7 +544,7 @@
 - [ ] 76	Minimum Window Substring		
 - [x] 77	Combinations		
 - [x] 78	Subsets		
-- [ ] 79	Word Search		
+- [x] 79	Word Search		
 - [x] 80	Remove Duplicates from Sorted Array II		
 - [ ] 81	Search in Rotated Sorted Array II		
 - [x] 82	Remove Duplicates from Sorted List II		
