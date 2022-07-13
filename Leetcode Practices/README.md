@@ -76,7 +76,7 @@
 - [ ] 374	Guess Number Higher or Lower		
 - [x] 34	Find First and Last Position of Element in Sorted Array		
 - [x] 349	Intersection of Two Arrays		
-- [ ] 350	Intersection of Two Arrays II		
+- [x] 350	Intersection of Two Arrays II		
 - [ ] 315	Count of Smaller Numbers After Self		
 - [x] 300	Longest Increasing Subsequence		
 - [x] 354	Russian Doll Envelopes	
@@ -340,7 +340,7 @@
 - [ ] 374	Guess Number Higher or Lower		
 - [x] 34	Find First and Last Position of Element in Sorted Array		
 - [x] 349	Intersection of Two Arrays		
-- [ ] 350	Intersection of Two Arrays II		
+- [x] 350	Intersection of Two Arrays II		
 - [ ] 315	Count of Smaller Numbers After Self		
 - [x] 300	Longest Increasing Subsequence		
 - [x] 354	Russian Doll Envelopes	
@@ -706,7 +706,7 @@
 - [x] 346	Moving Average from Data Stream		
 - [x] 347	Top K Frequent Elements		
 - [ ] 348	Design Tic-Tac-Toe		
-- [ ] 350	Intersection of Two Arrays II		
+- [x] 350	Intersection of Two Arrays II		
 - [ ] 351	Android Unlock Patterns		
 - [ ] 352	Data Stream as Disjoint Intervals		
 - [ ] 353	Design Snake Game		
