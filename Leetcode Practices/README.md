@@ -434,7 +434,8 @@
 ### 基础			
 - [x] 133	Clone Graph		
 - [x] 399	Evaluate Division		
-- [ ] 310	Minimum Height Trees		
+- [ ] 310	Minimum Height Trees	
+- [x] 743   Network Delay Time	
 ### 图形学			
 - [ ] 149	Max Points on a Line		
 - [ ] 335	Self Crossing		                                    很少考
@@ -732,4 +733,5 @@
 - [ ] 398	Random Pick Index	
 - [x] 875   Koko Eating Bananas 
 - [x] 621   Task Scheduler  
+- [x] 743   Network Delay Time	
   
