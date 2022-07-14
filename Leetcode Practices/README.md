@@ -448,7 +448,7 @@
 - [ ] 305	Number of Islands II	
    
 ## Trie
-- [ ] 211	Add and Search Word - Data structure design		
+- [x] 211	Add and Search Word - Data structure design		
 - [x] 208	Implement Trie (Prefix Tree)		
 - [x] 212	Word Search II	
    
@@ -610,7 +610,7 @@
 - [x] 208	Implement Trie (Prefix Tree)		
 - [ ] 209	Minimum Size Subarray Sum		
 - [x] 210	Course Schedule II		
-- [ ] 211	Add and Search Word - Data structure design		
+- [x] 211	Add and Search Word - Data structure design		
 - [x] 212	Word Search II		
 - [x] 213	House Robber II		
 - [x] 214	Shortest Palindrome		

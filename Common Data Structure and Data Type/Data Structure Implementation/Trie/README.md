@@ -20,6 +20,9 @@ Trie 的核心思想是空间换时间，利用字符串的公共前缀来降低
 [C++ 代码实现](Trie.cpp)  
 [Java 代码实现](../../../Leetcode%20Practices/algorithms/medium/208%20Implement%20Trie%20(Prefix%20Tree).java)  
   
+### 其他例题
+* [Leetcode Q211](./../../../Leetcode%20Practices/algorithms/medium/211%20Design%20Add%20and%20Search%20Words%20Data%20Structure.java)  
+  
 ## 应用
 检索字符串  
 字典树最基础的应用——查找一个字符串是否在“字典”中出现过。  
