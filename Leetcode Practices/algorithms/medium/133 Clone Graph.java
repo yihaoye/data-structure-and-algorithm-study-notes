@@ -141,3 +141,33 @@ class Solution {
         return res;
     }
 }
+
+
+
+// Other's Solution:
+class Solution {
+    public Node cloneGraph(Node node) {
+        // BFS + HashMap
+        // 时间复杂度 O(N)，空间复杂度 O(N)
+        if (node == null) return node;
+
+        HashMap<Node, Node> visited = new HashMap();
+
+        Queue<Node> queue = new LinkedList<Node> ();
+        queue.add(node);
+        visited.put(node, new Node(node.val, new ArrayList())); // 克隆第一个节点并存储到哈希表中
+
+        while (!queue.isEmpty()) {
+            Node n = queue.remove();
+            for (Node neighbor: n.neighbors) {
+                if (!visited.containsKey(neighbor)) {
+                    visited.put(neighbor, new Node(neighbor.val, new ArrayList())); // 如果没有被访问过，就克隆并存储在哈希表中
+                    queue.add(neighbor); // 将邻居节点加入队列中
+                }
+                visited.get(n).neighbors.add(visited.get(neighbor)); // 更新当前节点的邻居列表
+            }
+        }
+
+        return visited.get(node);
+    }
+}
