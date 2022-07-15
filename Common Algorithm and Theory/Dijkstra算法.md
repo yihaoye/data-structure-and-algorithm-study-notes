@@ -7,3 +7,8 @@ Dijkstra (迪杰斯特拉) 算法是典型的单源最短路径算法，用于�
 ## 代码示例与经典例题
 [Leetcode Q743](./../Leetcode%20Practices/algorithms/medium/743%20Network%20Delay%20Time.java)  
 
+## 进阶
+### Bellman Ford 算法
+https://zh.wikipedia.org/wiki/%E8%B4%9D%E5%B0%94%E6%9B%BC-%E7%A6%8F%E7%89%B9%E7%AE%97%E6%B3%95  
+
+[代码实现示例](https://leetcode.cn/problems/network-delay-time/solution/gong-shui-san-xie-yi-ti-wu-jie-wu-chong-oghpz/)  
