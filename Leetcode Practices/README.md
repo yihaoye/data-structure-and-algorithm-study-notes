@@ -444,7 +444,7 @@
 - [ ] 223	Rectangle Area		                                    很少考
    
 ## Union Find
-- [ ] 261	Graph Valid Tree		
+- [x] 261	Graph Valid Tree		
 - [ ] 323	Number of Connected Components in an Undirected Graph		
 - [ ] 305	Number of Islands II	
    
@@ -646,7 +646,7 @@
 - [ ] 254	Factor Combinations		
 - [x] 256	Paint House		
 - [x] 257	Binary Tree Paths		
-- [ ] 261	Graph Valid Tree		
+- [x] 261	Graph Valid Tree		
 - [x] 263	Ugly Number		
 - [ ] 264	Ugly Number II		
 - [ ] 265	Paint House II		
