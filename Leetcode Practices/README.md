@@ -31,7 +31,7 @@
 - [x] 11	Container With Most Water		
 - [x] 42	Trapping Rain Water		
 - [ ] 334	Increasing Triplet Subsequence		
-- [ ] 128	Longest Consecutive Sequence		
+- [x] 128	Longest Consecutive Sequence		
 - [ ] 164	Maximum Gap		                                            Bucket
 - [x] 287	Find the Duplicate Number		
 - [x] 135	Candy		                                                很少考
@@ -575,7 +575,7 @@
 - [x] 125	Valid Palindrome		
 - [x] 126	Word Ladder II		
 - [ ] 127	Word Ladder		
-- [ ] 128	Longest Consecutive Sequence		
+- [x] 128	Longest Consecutive Sequence		
 - [ ] 130	Surrounded Regions		
 - [x] 133	Clone Graph		
 - [x] 134	Gas Station		
