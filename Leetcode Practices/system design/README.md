@@ -256,11 +256,12 @@ Software/Hardware acts as intermediary for requests from clients seeking resourc
   * Reasons to use SQL database
     * need to ensure ACID compliance reduces anomalies and protects the integrity of db (for many e-commerce and financial applications, an ACID- compliant database remains the preferred option)
     * data is structured and unchanging
+  * ![](./How%20to%20Select%20SQL%20DB.jpeg)
   * Reasons to use NoSQL database (Big data contributes to NoSQL databases' succeed)
     * Storing large volumes of data that often have little to no structure
     * Making the most of cloud computing and storage, requires data to be easily spread across multiple servers to scale up
     * Rapid development - quick iterations of system which require making frequent updates to the data structure without much downtime between versions
-  * ![](./How%20to%20Select%20Database.jpeg)
+  * ![](./How%20to%20Select%20NoSQL%20DB.jpeg)
 
 参考：https://pingcap.medium.com/how-to-efficiently-choose-the-right-database-for-your-applications-20a109abced3  
 
