@@ -21,7 +21,7 @@
       - [回溯法 | Backtracking](./NQueen.java)
     - [拓扑排序 | Topological Sorting](./拓扑排序.md) (时间复杂度 O(N))
     - [单调栈 | Monotone Stack](./单调栈.md) (时间复杂度 O(N))
-    - [滚动哈希 | Rolling Hash (Rabin-Karp)](./滚动哈希.md)
+    - [滚动哈希 | Rolling Hash (Rabin-Karp)](./滚动哈希.md) (时间复杂度 O(N+M))
     - [快速选择 (霍尔选择算法) | Quickselect (Randomized Selection)](./快速选择.md)
     - [位运算 | Bitwise Operation](./位运算.md)
   - 进阶
