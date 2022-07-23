@@ -45,3 +45,8 @@ class Solution {
         return waiting[0].size();
     }
 }
+
+
+
+// My Solution (not implemented):
+// HashMap + ArrayList + Binary Search + Greedy
