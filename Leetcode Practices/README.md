@@ -233,7 +233,7 @@
 - [x] 173	Binary Search Tree Iterator		                                                inorder
 - [x] 230	Kth Smallest Element in a BST		                                            inorder
 - [x] 297	Serialize and Deserialize Binary Tree		                                    BFS
-- [ ] 285	Inorder Successor in BST		                                                inorder
+- [x] 285	Inorder Successor in BST		                                                inorder
 - [ ] 270	Closest Binary Search Tree Value		                                        preorder
 - [x] 272	Closest Binary Search Tree Value II		                                        inorder
 - [x] 99	Recover Binary Search Tree		                                                inorder
@@ -667,7 +667,7 @@
 - [ ] 282	Expression Add Operators		
 - [x] 283	Move Zeroes		
 - [ ] 284	Peeking Iterator		
-- [ ] 285	Inorder Successor in BST		
+- [x] 285	Inorder Successor in BST		
 - [x] 286	Walls and Gates		
 - [x] 287	Find the Duplicate Number		
 - [ ] 288	Unique Word Abbreviation		
