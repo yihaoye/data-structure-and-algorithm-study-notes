@@ -1,3 +1,4 @@
+## P vs NP vs NPC
 ```
     什么是P问题、NP问题和NPC问题
     这或许是众多OIer最大的误区之一。
@@ -68,3 +69,9 @@ nbsp;└───┘    │                ┌─→┤AND ├──→输出
 ```  
 Matrix67原创  
 转载自：http://www.matrix67.com/blog/archives/105  
+
+## Leetcode NP 例题
+* [LC 416 分割等和子集](./../Leetcode%20Practices/algorithms/medium/416%20Partition%20Equal%20Subset%20Sum.java)
+* [LC 474 一和零]()
+* [LC 494 目标和]()
+* [LC 1049 最后一块石头的重量 II]()
