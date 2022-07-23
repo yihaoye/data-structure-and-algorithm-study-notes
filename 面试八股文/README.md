@@ -41,7 +41,7 @@
 * 简述动态代理与静态代理
 
 ## Golang 高频
-* [什么是 golang 内存逃逸](https://zhuanlan.zhihu.com/p/113643434)
+* [什么是 golang 内存逃逸](./../Computer%20System%20Layer/内存与程序.md#内存逃逸)
 
 ## MySQL 高频
 * [为什么 InnoDB 表必须有主键，并且推荐使用整型的自增主键？](https://blog.csdn.net/weixin_41699562/article/details/104139458)
