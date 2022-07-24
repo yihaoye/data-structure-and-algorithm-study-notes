@@ -30,19 +30,19 @@ s and words[i] consist of only lowercase English letters.
 // Other's Solution:
 class Solution {
     public int numMatchingSubseq(String s, String[] words) {
-        // https://leetcode.com/problems/number-of-matching-subsequences/discuss/117634/Efficient-and-simple-go-through-words-in-parallel-with-explanation
+        // 订阅发布设计模式 - https://leetcode.com/problems/number-of-matching-subsequences/discuss/117634/Efficient-and-simple-go-through-words-in-parallel-with-explanation
         // Time: O(N+M)
-        Queue<int[]>[] waiting = new Queue[128];
-        for (int c = 0; c <= 'z'; c++) waiting[c] = new LinkedList();
-        for (int i = 0; i < words.length; i++) waiting[words[i].charAt(0)].add(new int[]{i, 1});
+        Queue<int[]>[] subs = new Queue[128];
+        for (int c = 0; c <= 'z'; c++) subs[c] = new LinkedList();
+        for (int i = 0; i < words.length; i++) subs[words[i].charAt(0)].add(new int[]{i, 1});
         for (char c : s.toCharArray()) {
-            int loopTime = waiting[c].size();
+            int loopTime = subs[c].size();
             while (loopTime-- > 0) {
-                int[] advance = waiting[c].poll();
-                waiting[advance[1] < words[advance[0]].length() ? words[advance[0]].charAt(advance[1]++) : 0].add(advance);
+                int[] pub = subs[c].poll();
+                subs[pub[1] < words[pub[0]].length() ? words[pub[0]].charAt(pub[1]++) : 0].add(pub);
             }
         }
-        return waiting[0].size();
+        return subs[0].size();
     }
 }
 
