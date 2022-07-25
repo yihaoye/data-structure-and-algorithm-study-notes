@@ -324,7 +324,7 @@
 - [x] 142	Linked List Cycle II		
 - [x] 148	Sort List		
 - [ ] 25	Reverse Nodes in k-Group		
-- [ ] 61	Rotate List		
+- [x] 61	Rotate List		
 - [x] 86	Partition List		
 - [x] 23	Merge k Sorted Lists		
 - [ ] 147	Insertion Sort List	
