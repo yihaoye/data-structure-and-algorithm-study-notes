@@ -1501,6 +1501,32 @@ https://www.zhihu.com/question/19839828/answer/28434795
 </details>
 
 
+<details>
+<summary>设计 Web Crawler</summary>
+
+参考来源：https://www.youtube.com/watch?v=_NyVaxEIYGo  
+
+### Scenario 场景 + Service 服务
+* 功能性要求
+  * 只爬取/Crawl HTML 内容 - 延伸再包含图片、视频等多媒体内容
+  * 只支持 HTTP 协议 - 延伸再包含 FTP 等其他协议
+* 非功能性要求
+  * Scalability - 爬取整个 web，将要获取 millions 文件
+  * Extensibility - 最好模块化，容易拓展支持其他新的功能比如支持新的文件类型
+
+### 带宽与存储
+* Assumption
+  * 30 billion 网页 (URL) - 30 天内爬完
+  * 每个网页有 100 KB 大小（纯 HTML），另外还需要 0.5 KB 存元数据
+* 存储估计
+  * 30B * (100KB + 0.5KB) = 3.02PB
+* 带宽估计
+  * Crawl 速度 - 30B / (30 days * 86400 s/day) = 11574 pages/second
+  * 下载带宽 - 11574 pages/second * (100KB + 0.5KB) / page = 1.16GB/s (i.e. 9.3Gbps)
+
+</details>
+
+
 
 <br />
   
