@@ -1524,6 +1524,16 @@ https://www.zhihu.com/question/19839828/answer/28434795
   * Crawl 速度 - 30B / (30 days * 86400 s/day) = 11574 pages/second
   * 下载带宽 - 11574 pages/second * (100KB + 0.5KB) / page = 1.16GB/s (i.e. 9.3Gbps)
 
+### High Level Design
+整个网络就像一张图，爬取的过程就如图的遍历过程。而首先需要给定一些起始爬取的点（seed URLs）  
+然后执行以下步骤：  
+1. Pick 一个 URL，爬取对应的网页
+2. 处理下载下来的网页，比如存到数据库并添加索引
+3. 从下载下来的网页里解析抽取未访问过的 URL，加到待爬取的队列里（URL Frontier）
+4. 重新回到第 1 个步骤循环
+
+![](./Web%20Crawler%20High%20Level%20Design.png)  
+
 </details>
 
 
