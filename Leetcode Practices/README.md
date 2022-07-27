@@ -215,7 +215,7 @@
 - [x] 110	Balanced Binary Tree		
 - [x] 124	Binary Tree Maximum Path Sum		
 - [ ] 250	Count Univalue Subtrees		
-- [ ] 366	Find Leaves of Binary Tree		
+- [x] 366	Find Leaves of Binary Tree		
 - [x] 337	House Robber III		                                                        postorder + preorder
 ### DFS
 - [x] 437   Path Sum III    
