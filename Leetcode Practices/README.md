@@ -368,7 +368,7 @@
 ## DFS & BFS
 - [x] 200	Number of Islands		
 - [x] 286	Walls and Gates		
-- [ ] 130	Surrounded Regions		
+- [x] 130	Surrounded Regions		
 - [x] 339	Nested List Weight Sum		
 - [ ] 364	Nested List Weight Sum II		
 - [ ] 127	Word Ladder		
@@ -576,7 +576,7 @@
 - [x] 126	Word Ladder II		
 - [ ] 127	Word Ladder		
 - [x] 128	Longest Consecutive Sequence		
-- [ ] 130	Surrounded Regions		
+- [x] 130	Surrounded Regions		
 - [x] 133	Clone Graph		
 - [x] 134	Gas Station		
 - [x] 138	Copy List with Random Pointer		
