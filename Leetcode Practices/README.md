@@ -248,7 +248,7 @@
 - [x] 116	Populating Next Right Pointers in Each Node		                                重要
 - [x] 117	Populating Next Right Pointers in Each Node II		                            重要
 - [ ] 314	Binary Tree Vertical Order Traversal		                                    重要
-- [ ] 96	Unique Binary Search Trees		                                                重要
+- [x] 96	Unique Binary Search Trees		                                                重要
 - [x] 95	Unique Binary Search Trees II		                                            很少考
 - [ ] 331	Verify Preorder Serialization of a Binary Tree		                            很少考
   
@@ -556,7 +556,7 @@
 - [x] 88	Merge Sorted Array		
 - [x] 90	Subsets II		
 - [ ] 91	Decode Ways		
-- [ ] 96	Unique Binary Search Trees		
+- [x] 96	Unique Binary Search Trees		
 - [x] 98	Validate Binary Search Tree		
 - [x] 101	Symmetric Tree		
 - [x] 104	Maximum Depth of Binary Tree		
