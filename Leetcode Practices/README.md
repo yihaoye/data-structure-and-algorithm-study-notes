@@ -354,7 +354,7 @@
 - [x] 311	Sparse Matrix Multiplication		
 - [ ] 329	Longest Increasing Path in a Matrix		
 - [x] 378	Kth Smallest Element in a Sorted Matrix		
-- [ ] 74	Search a 2D Matrix		
+- [x] 74	Search a 2D Matrix		
 - [x] 240	Search a 2D Matrix II		
 - [ ] 370	Range Addition		
 - [x] 79	Word Search		
@@ -542,7 +542,7 @@
 - [x] 70	Climbing Stairs		
 - [x] 71	Simplify Path		
 - [x] 72	Edit Distance		
-- [ ] 74	Search a 2D Matrix		
+- [x] 74	Search a 2D Matrix		
 - [x] 75	Sort Colors		
 - [ ] 76	Minimum Window Substring		
 - [x] 77	Combinations		
