@@ -280,7 +280,7 @@
 - [x] 63	Unique Paths II		
 - [x] 120	Triangle		                                很少考
 - [ ] 279	Perfect Squares		
-- [ ] 139	Word Break		
+- [x] 139	Word Break		
 - [x] 375	Guess Number Higher or Lower II		
 - [ ] 312	Burst Balloons		
 - [ ] 322	Coin Change		
@@ -580,7 +580,7 @@
 - [x] 133	Clone Graph		
 - [x] 134	Gas Station		
 - [x] 138	Copy List with Random Pointer		
-- [ ] 139	Word Break		
+- [x] 139	Word Break		
 - [ ] 140	Word Break II		
 - [x] 142	Linked List Cycle II		
 - [x] 146	LRU Cache		
