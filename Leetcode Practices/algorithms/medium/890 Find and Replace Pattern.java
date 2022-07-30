@@ -45,14 +45,13 @@ class Solution {
     }
     
     // s[0]*31^(n-1) + s[1]*31^(n-2) + ... + s[n-1]
+    // https://hg.openjdk.java.net/jdk7u/jdk7u6/jdk/file/8c2c5d63a17e/src/share/classes/java/lang/String.java#l1436
     public int hash(String str) {
         int res = 0, len = str.length(), nextMapInt = 0;
         Map<Character, Integer> cMap = new HashMap<>();
         for (char c : str.toCharArray()) {
             if (!cMap.containsKey(c)) cMap.put(c, nextMapInt++);
-            
-            res += Math.pow(cMap.get(c) * 31, len--) % mod;
-            res %= mod;
+            res = (res * 31 % mod + cMap.get(c)) % mod;
         }
         return res;
     }
