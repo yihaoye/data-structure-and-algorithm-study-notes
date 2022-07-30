@@ -56,3 +56,31 @@ class Solution {
         return res;
     }
 }
+
+
+
+// My Solution 2: (性能稍微不如上面的 Solution)
+class Solution {
+    public List<String> findAndReplacePattern(String[] words, String pattern) {
+        // 自定义哈希 - 把所有第一个出现的字母映射为 a，第二个映射为 b，如此类推
+        List<String> res = new ArrayList<>();
+        int pHash = hash(pattern);
+        for (String word : words) {
+            if (pHash == hash(word)) res.add(word);
+        }
+        return res;
+    }
+    
+    public int hash(String str) {
+        StringBuilder strB = new StringBuilder();
+        Map<Character, Character> cMap = new HashMap<>();
+        char nextMapChar = 'a';
+        for (char c : str.toCharArray()) {
+            if (!cMap.containsKey(c)) {
+                cMap.put(c, nextMapChar++);
+            }
+            strB.append(cMap.get(c));
+        }
+        return strB.toString().hashCode();
+    }
+}
