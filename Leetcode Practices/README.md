@@ -73,7 +73,7 @@
 - [ ] 153	Find Minimum in Rotated Sorted Array		
 - [ ] 154	Find Minimum in Rotated Sorted Array II		
 - [x] 162	Find Peak Element		
-- [ ] 374	Guess Number Higher or Lower		
+- [x] 374	Guess Number Higher or Lower		
 - [x] 34	Find First and Last Position of Element in Sorted Array		
 - [x] 349	Intersection of Two Arrays		
 - [x] 350	Intersection of Two Arrays II		
@@ -337,7 +337,7 @@
 - [ ] 153	Find Minimum in Rotated Sorted Array		
 - [ ] 154	Find Minimum in Rotated Sorted Array II		
 - [x] 162	Find Peak Element		
-- [ ] 374	Guess Number Higher or Lower		
+- [x] 374	Guess Number Higher or Lower		
 - [x] 34	Find First and Last Position of Element in Sorted Array		
 - [x] 349	Intersection of Two Arrays		
 - [x] 350	Intersection of Two Arrays II		
@@ -720,7 +720,7 @@
 - [x] 362	Design Hit Counter		
 - [ ] 364	Nested List Weight Sum II		
 - [x] 367	Valid Perfect Square		
-- [ ] 374	Guess Number Higher or Lower		
+- [x] 374	Guess Number Higher or Lower		
 - [x] 375	Guess Number Higher or Lower II		
 - [x] 376	Wiggle Subsequence		
 - [ ] 377	Combination Sum IV		
