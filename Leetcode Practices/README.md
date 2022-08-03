@@ -364,6 +364,7 @@
 - [ ] 302	Smallest Rectangle Enclosing Black Pixels		
 - [x] 36	Valid Sudoku		
 - [ ] 37	Sudoku Solver	
+- [x] 1275  Find Winner on a Tic Tac Toe Game   
    
 ## DFS & BFS
 - [x] 200	Number of Islands		
