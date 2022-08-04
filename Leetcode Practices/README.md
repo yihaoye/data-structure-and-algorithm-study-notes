@@ -102,7 +102,7 @@
 - [ ] 87	Scramble String		
 - [ ] 179	Largest Number		                                                    很少考
 - [x] 6	    ZigZag Conversion		                                                很少考
-- [ ] 161	One Edit Distance		
+- [x] 161	One Edit Distance		
 - [x] 38	Count and Say		
 - [ ] 358	Rearrange String k Distance Apart		
 - [ ] 316	Remove Duplicate Letters		
@@ -593,7 +593,7 @@
 - [x] 155	Min Stack		
 - [x] 157	Read N Characters Given Read4		
 - [ ] 158	Read N Characters Given Read4 II - Call multiple times		
-- [ ] 161	One Edit Distance		
+- [x] 161	One Edit Distance		
 - [x] 162	Find Peak Element		
 - [x] 163	Missing Ranges		
 - [x] 168	Excel Sheet Column Title		
