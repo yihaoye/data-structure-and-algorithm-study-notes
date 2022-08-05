@@ -259,7 +259,7 @@
 - [x] 39	Combination Sum		
 - [x] 40	Combination Sum II		
 - [ ] 216	Combination Sum III		
-- [ ] 377	Combination Sum IV		                        Dynamic Programming
+- [x] 377	Combination Sum IV		                        Dynamic Programming
 - [ ] 254	Factor Combinations		
 - [x] 46	Permutations		
 - [x] 47	Permutations II		
@@ -724,7 +724,7 @@
 - [x] 374	Guess Number Higher or Lower		
 - [x] 375	Guess Number Higher or Lower II		
 - [x] 376	Wiggle Subsequence		
-- [ ] 377	Combination Sum IV		
+- [x] 377	Combination Sum IV		
 - [x] 378	Kth Smallest Element in a Sorted Matrix		
 - [ ] 379	Design Phone Directory		
 - [x] 380	Insert Delete GetRandom O(1)		
