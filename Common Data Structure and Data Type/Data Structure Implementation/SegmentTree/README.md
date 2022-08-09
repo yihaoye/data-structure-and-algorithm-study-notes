@@ -24,7 +24,7 @@
   
 ### 简易版实现
 与数状数组类似但是比数状数组直观且强大  
-[简易版线段树 Java 实现代码](./SegmentTree1.java)  
+[简易版线段树 Java 实现代码 实现1](./SegmentTree1.java)  
   
 ### 线段树的区间更新
 上述是未优化区间更新操作的线段树实现，思考一下：区间修改，假设修改的值有 m 个，直接想到的一个办法就是执行 m 次单点更新，即朴素的想法是用递归的方式一层层修改（类似于线段树的建立），但这样的时间复杂度比较高为 O(mlogN) 这不是所想看到的，假设所有的元素都更新，那么还不如直接重新构建整颗线段树。所以在这里用了一个优化的思想，就是延迟更新，延迟更新就是，更新的时候，不进行操作，只是标记一下这个点需要更新，在真正使用的时候才去更新，这在进行一些数据库的业务的时候，也是很重要的一个思想。这个标记就是懒标记（或延迟标记），懒标记是线段树的精髓所在，使用懒标记后（后面示例代码里的成员变量 mark），对于那些正好是线段树节点的区间，不继续递归下去，而是打上一个标记并更新节点值，将来要用到它的子区间的时候，再向下传递。通过懒惰更新，时间复杂度降为了 O(logN)。在进行区间修改的时候，分 3 种情况：  
@@ -60,9 +60,16 @@ private void pushDown(int index) { // 把当前节点的标志值传给子节点
 基本的 API 有 getSize()：返回数组元素个数；query(int queryL, int queryR)：区间查询；update(int updateL, int updateR, E val)：区间更新。  
 其中每个元素使用泛型 E 表示，这是为了考虑可扩展性：如果数组元素不是数字，而是自定义的类，那么使用泛型就是比较好的选择。  
 
-[进阶版线段树 Java 实现代码](./SegmentTree2.java)  
+[进阶版线段树 Java 实现代码 实现2](./SegmentTree2.java)  
   
-其他参考实现：https://github.com/EndlessCheng/codeforces-go/blob/master/copypasta/segment_tree.go  
+### 动态开点线段树
+用处：一般线段树开局直接 4*N 的空间，然而当 N 很大时，4 倍空间会消耗很多，这时考虑用动态开点线段树，用多少开多少，跟 c++ 的 new 差不多（[引用出处](https://www.acwing.com/blog/content/309/)）。  
+以及[重点参考](https://leetcode.cn/problems/my-calendar-ii/solution/by-lfool-nodi/)。  
+
+[动态开点线段树 - Java 实现代码 实现3](./SegmentTree3.java)  
+  
+### 其他参考实现
+https://github.com/EndlessCheng/codeforces-go/blob/master/copypasta/segment_tree.go  
   
 ## 二维线段树
 ToDo...  
