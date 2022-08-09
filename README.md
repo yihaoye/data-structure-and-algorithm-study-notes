@@ -61,7 +61,7 @@
 8. 尽量用工具类以省事（尤其在处理一些复杂组合的非基础算法题时），比如当前集合、容器（List、Set、Map）的内置方法，又比如 `int index = Collections.binarySearch(list, key);` [更多详见](./Tool%20Sets/Collections.java)。
 9. 有些题目答案较大时会要求取模即可，要注意，有时计算中间的变量应使用 int 然后 % 1000000007（比如 Leetcode Q907），而有时中间变量则应使用 long 然后 % 1000000007L（比如 Leetcode Q2320），或者 MOD 也可以写成 `(int) 1e9 + 7` 或 `(long) 1e9 + 7`，建议所有情况还是使用 long 比较保险（比如 Leetcode Q823）。另外还要注意在中间计算时如果当前就有溢出风险时就要取一次模，但有时[一些情况下过早取模也会出错](https://blog.51cto.com/u_15067234/4216624)（比如：取模与其他计算操作顺序不正确，又或者用 max 比较很大数据时先取模等等）。
 10. 一些算法编码时的最佳实践：
-    * [使用 `grid[y][x]` 而不是 `grid[x][y]`](https://www.youtube.com/watch?v=P50r4CDeUYw)  
+    * [使用 `grid[y][x]` 而不是 `grid[x][y]`，又或者可以命名为 `grid[r][c]`](https://www.youtube.com/watch?v=P50r4CDeUYw)  
 
 #### 面试、讲解、题解时
 1. 注意有些专业术语的英语要表述正确：比如根号 M - square root of M 或 2th root of M； M^N - M to the power of N
