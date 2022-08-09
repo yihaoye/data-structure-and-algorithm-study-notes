@@ -247,7 +247,7 @@
 - [x] 106	Construct Binary Tree from Inorder and Postorder Traversal		                很少考
 - [x] 116	Populating Next Right Pointers in Each Node		                                重要
 - [x] 117	Populating Next Right Pointers in Each Node II		                            重要
-- [ ] 314	Binary Tree Vertical Order Traversal		                                    重要
+- [x] 314	Binary Tree Vertical Order Traversal		                                    重要
 - [x] 96	Unique Binary Search Trees		                                                重要
 - [x] 95	Unique Binary Search Trees II		                                            很少考
 - [ ] 331	Verify Preorder Serialization of a Binary Tree		                            很少考
@@ -691,7 +691,7 @@
 - [x] 309	Best Time to Buy and Sell Stock with Cooldown		
 - [x] 311	Sparse Matrix Multiplication		
 - [ ] 312	Burst Balloons		
-- [ ] 314	Binary Tree Vertical Order Traversal		
+- [x] 314	Binary Tree Vertical Order Traversal		
 - [ ] 316	Remove Duplicate Letters		
 - [ ] 317	Shortest Distance from All Buildings		
 - [x] 318	Maximum Product of Word Lengths		
