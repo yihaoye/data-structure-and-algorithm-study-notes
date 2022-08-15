@@ -35,7 +35,7 @@ slots2[i][0] < slots2[i][1]
 class Solution {
     public List<Integer> minAvailableDuration(int[][] slots1, int[][] slots2, int duration) {
         // 双指针
-        // Time: O(N*logN) - 排序决定, Space: O(logN) - 排序决定
+        // Time: O(N*logN) - 排序决定, Space: O(N) - 排序决定（非基本类型）
         List<Integer> res = new ArrayList<>();
         Arrays.sort(slots1, (a, b) -> (a[0] == b[0]) ? (a[1] - b[1]) : (a[0] - b[0]));
         Arrays.sort(slots2, (a, b) -> (a[0] == b[0]) ? (a[1] - b[1]) : (a[0] - b[0]));

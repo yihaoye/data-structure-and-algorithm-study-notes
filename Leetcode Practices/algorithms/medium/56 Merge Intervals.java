@@ -60,7 +60,7 @@ class Solution {
 class Solution {
     public int[][] merge(int[][] intervals) {
         // 排序
-        // Time: O(logN), Space: O(N) - resList 或 Java Arrays.sort
+        // Time: O(logN), Space: O(N) - resList 或 Java Arrays.sort（非基本类型）
         Arrays.sort(intervals, (a, b) -> a[0] - b[0]); // 升序排序
         List<int[]> resList = new ArrayList<>();
         for (int[] interval : intervals) {

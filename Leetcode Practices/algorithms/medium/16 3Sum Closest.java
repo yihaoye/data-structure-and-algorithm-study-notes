@@ -32,7 +32,7 @@ class Solution {
     public int threeSumClosest(int[] nums, int target) {
         /*
             看题解，排序+双指针，https://leetcode-cn.com/problems/3sum-closest/solution/hua-jie-suan-fa-16-zui-jie-jin-de-san-shu-zhi-he-b/
-            时间复杂度 O(N^2)，空间复杂度 O(N) - Java Arrays.sort
+            时间复杂度 O(N^2)，空间复杂度 O(logN) - Java Arrays.sort（基本类型）
         */
         Arrays.sort(nums);
         int res = nums[0] + nums[1] + nums[2];

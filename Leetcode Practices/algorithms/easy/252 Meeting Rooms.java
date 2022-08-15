@@ -27,7 +27,7 @@ class Solution {
     public boolean canAttendMeetings(int[][] intervals) {
         /*
             检查是否有重叠，按每个元素数组的元素1排序，然后遍历一次，若下一个数组的元素1小于前一个数组的元素2，则失败
-            时间复杂度 O(N*logN)，空间复杂度 O(N) - Java Arrays.sort
+            时间复杂度 O(N*logN)，空间复杂度 O(N) - Java Arrays.sort（非基本类型）
         */
         Arrays.sort(intervals, (a, b) -> Integer.compare(a[0], b[0]));
         for (int i=0; i<intervals.length-1; i++) {
