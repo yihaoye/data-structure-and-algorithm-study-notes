@@ -24,7 +24,8 @@
   * Tim 排序
     * 是一种混合稳定的排序算法，源自合并排序和插入排序，旨在较好地处理真实世界中各种各样的数据。它使用了 Peter Mcllroy 的 "乐观排序和信息理论上复杂性" 中的技术，由 Tim Peters 实现。该算法通过查找已经排好序的数据子序列，在此基础上对剩余部分更有效地排序。该算法通过不断地将特定子序列（称为一个 run ）与现有的 run 合并，直到满足某些条件为止来达成的更有效的排序。该算法广泛应用于业界如 JDK 集合里的内置排序方法。
     
-  
+关于 Java 的 Arrays.sort，如果元素是基本类型，则空间复杂度是 O(logN)，如果元素不是基本类型，则空间复杂度是 O(N)。参考 [链接 1](https://www.reddit.com/r/leetcode/comments/rt4h12/what_is_the_space_runtime_complexity_of_java/)、[链接 2](https://en.wikipedia.org/wiki/Timsort)。  
+
   
 ## 各排序图解
   
