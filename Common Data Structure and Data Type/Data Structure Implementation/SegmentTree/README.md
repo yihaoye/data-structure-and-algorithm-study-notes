@@ -79,6 +79,7 @@ ToDo...
 [Leetcode 2286](./../../../Leetcode%20Practices/algorithms/hard/2286%20Booking%20Concert%20Tickets%20in%20Groups.java)  
 [Leetcode 731](./../../../Leetcode%20Practices/algorithms/medium/731%20My%20Calendar%20II.java)  
 [Leetcode 732](./../../../Leetcode%20Practices/algorithms/hard/732%20My%20Calendar%20III.java)  
+[Leetcode 993](./../../../Leetcode%20Practices/algorithms/easy/993%20Number%20of%20Recent%20Calls.java)  
   
 ## 参考
 https://www.youtube.com/watch?v=rYBtViWXYeI  
