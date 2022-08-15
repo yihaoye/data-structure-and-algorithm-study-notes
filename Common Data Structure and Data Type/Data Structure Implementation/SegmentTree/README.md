@@ -68,6 +68,8 @@ private void pushDown(int index) { // 把当前节点的标志值传给子节点
 
 [动态开点线段树 - Java 实现代码 实现3](./SegmentTree3.java)  
   
+[动态开点线段树 - Java 实现代码 实现4 推荐使用模版](./SegmentTree4.java)  
+  
 ### 其他参考实现
 https://github.com/EndlessCheng/codeforces-go/blob/master/copypasta/segment_tree.go  
   
