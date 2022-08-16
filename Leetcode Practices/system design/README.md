@@ -1541,7 +1541,23 @@ https://www.zhihu.com/question/19839828/answer/28434795
 * 存储空间 - 30B * 64bit = 240 GB（可以存到内存里面，也可以通过硬盘+缓存实现）
 
 #### URL 过滤
-...  
+* URL Filters
+  * 黑名单
+  * 机器人屏蔽 - 因为有的网站不希望被爬虫消耗资源。
+    * 网站会在 robots.txt 文件里声明、定规则，哪些 URL 可爬取、哪些 URL 不可爬取。
+    * 本地可以缓存一份 robots.txt 文件，这样可以减少重复地下载该文件
+  * URL 地址去重
+    * URL 标准化（比如大写变小写、相对路径变成绝对路径等等）
+    * 可以使用 URL 指纹来去重
+
+#### DNS Resolver
+* DNS 解析
+  * 把 URL 地址转换成服务器的 IP 地址以访问
+* 如果有大量的 URL 需要去爬取，则 DNS 解析部分可能带来性能瓶颈，解决方案是在本地建立一个 DNS 服务器缓存以前的查询结果，这样就不用每次都去外部 DNS 解析器处查询，减少其压力。
+
+#### Detailed Component Design
+* Crawling Policies
+ToDo...  
 
 </details>
 
