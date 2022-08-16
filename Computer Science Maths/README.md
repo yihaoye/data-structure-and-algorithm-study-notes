@@ -36,3 +36,5 @@
 9. 离散对数
   
 原文链接：https://blog.csdn.net/weixin_43093481/article/details/82229718  
+
+其他参考：https://www.desgard.com/algo/  
