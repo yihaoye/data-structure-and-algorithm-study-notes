@@ -10,7 +10,7 @@ class SegmentTree { // 求范围内和
     /**
      * 线段树的结点
      */
-    static class Node {
+    class Node {
         private int leftX; // 左范围
         private int rightX; // 右范围
         private int sum; // 范围内的总和
@@ -122,7 +122,7 @@ class SegmentTree { // 求范围内的最大值
     /**
      * 线段树的结点
      */
-    static class Node {
+    class Node {
         private int leftX; // 左范围
         private int rightX; // 右范围
         private int maxValue; // 范围内的最大值
