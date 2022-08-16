@@ -29,7 +29,7 @@ class SegmentTree { // 求范围内和
         if (root.rightX < left || right < root.leftX) {
             return 0;
         }
-        // 修改的区间包含当前结点
+        // 查询的区间包含当前结点
         if (left <= root.leftX && root.rightX <= right) {
             return root.sum;
         } else {
@@ -132,6 +132,30 @@ class SegmentTree { // 求范围内的最大值
         public Node(int leftX, int rightX) {
             this.leftX = leftX;
             this.rightX = rightX;
+        }
+    }
+
+    /**
+     * 区间求值
+     *
+     * @param root  树的根
+     * @param left  左边界
+     * @param right 右边界
+     */
+    public int query(Node root, int left, int right) {
+        // 不在范围内 直接返回
+        if (root.rightX < left || right < root.leftX) {
+            return 0;
+        }
+        // 查询的区间包含当前结点
+        if (left <= root.leftX && root.rightX <= right) {
+            return root.maxValue;
+        } else {
+            lazyCreate(root); // 动态开点
+            pushDown(root); // 下传 lazy
+            int l = query(root.leftChild, left, right); // 求左子树
+            int r = query(root.rightChild, left, right); // 求右子树
+            return Math.max(l, r);
         }
     }
 
