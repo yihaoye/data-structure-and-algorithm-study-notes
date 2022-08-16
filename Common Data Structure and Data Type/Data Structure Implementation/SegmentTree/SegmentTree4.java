@@ -1,3 +1,7 @@
+// 参考：https://leetcode.cn/problems/my-calendar-iii/solution/wo-de-ri-cheng-an-pai-biao-by-jiang-hui-yac60/
+
+
+
 class SegmentTree { // 求范围内和
     
     private Node root;
