@@ -76,6 +76,9 @@ https://github.com/EndlessCheng/codeforces-go/blob/master/copypasta/segment_tree
 ## 二维线段树
 ToDo...  
   
+## zkw线段树
+ToDo...  
+  
 ## 例题
 [Leetcode 307](./../../../Leetcode%20Practices/algorithms/medium/307%20Range%20Sum%20Query%20-%20Mutable.java)  
 [Leetcode 2286](./../../../Leetcode%20Practices/algorithms/hard/2286%20Booking%20Concert%20Tickets%20in%20Groups.java)  
