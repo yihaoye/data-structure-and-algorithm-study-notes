@@ -393,6 +393,7 @@
 - [x] 402   Remove K Digits 
 - [x] 496   Next Greater Element I  
 - [x] 456   132 Pattern 
+- [x] 739   Daily Temperatures  
 ### PriorityQueue			
 - [x] 215	Kth Largest Element in an Array		
 - [x] 347	Top K Frequent Elements		
@@ -738,4 +739,5 @@
 - [x] 621   Task Scheduler  
 - [x] 743   Network Delay Time	
 - [x] 785   Is Graph Bipartite? 
+- [x] 739   Daily Temperatures  
   
