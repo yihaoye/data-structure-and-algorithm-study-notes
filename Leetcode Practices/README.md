@@ -372,7 +372,7 @@
 - [x] 130	Surrounded Regions		
 - [x] 339	Nested List Weight Sum		
 - [ ] 364	Nested List Weight Sum II		
-- [ ] 127	Word Ladder		
+- [x] 127	Word Ladder		
 - [x] 51	N-Queens		
 - [ ] 52	N-Queens II		
 - [x] 126	Word Ladder II	
@@ -576,7 +576,7 @@
 - [x] 124	Binary Tree Maximum Path Sum		
 - [x] 125	Valid Palindrome		
 - [x] 126	Word Ladder II		
-- [ ] 127	Word Ladder		
+- [x] 127	Word Ladder		
 - [x] 128	Longest Consecutive Sequence		
 - [x] 130	Surrounded Regions		
 - [x] 133	Clone Graph		
