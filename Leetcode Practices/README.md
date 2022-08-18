@@ -279,7 +279,7 @@
 - [x] 62	Unique Paths		
 - [x] 63	Unique Paths II		
 - [x] 120	Triangle		                                很少考
-- [ ] 279	Perfect Squares		
+- [x] 279	Perfect Squares		
 - [x] 139	Word Break		
 - [x] 375	Guess Number Higher or Lower II		
 - [ ] 312	Burst Balloons		
@@ -664,7 +664,7 @@
 - [x] 276	Paint Fence		
 - [x] 277	Find the Celebrity		
 - [x] 278	First Bad Version		
-- [ ] 279	Perfect Squares		
+- [x] 279	Perfect Squares		
 - [x] 280	Wiggle Sort		
 - [ ] 282	Expression Add Operators		
 - [x] 283	Move Zeroes		
