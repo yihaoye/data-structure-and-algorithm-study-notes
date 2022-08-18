@@ -53,7 +53,7 @@ class Solution {
             while (!queue.isEmpty()) {
                 String preWord = queue.poll();
                 for (String word : wordSet) {
-                    if (check(preWord, word) == 1) {
+                    if (check(preWord, word)) {
                         if (endWord.equals(word)) return res + 1;
                         tmpQueue.offer(word);
                         removes.add(word);
@@ -66,11 +66,12 @@ class Solution {
         return 0;
     }
     
-    public int check(String str1, String str2) {
+    public boolean check(String str1, String str2) {
         int diff = 0;
         for (int i=0; i<str1.length(); i++) {
             if (str1.charAt(i) != str2.charAt(i)) diff++;
+            if (diff > 1) return false;
         }
-        return diff;
+        return diff == 1 ? true : false;
     }
 }
