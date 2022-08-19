@@ -101,7 +101,7 @@ class Solution {
                         removes.add(word);
                     }
                 }
-                    wordSet.removeAll(removes);
+                wordSet.removeAll(removes);
             }
             queue = tmpQueue;
         }
@@ -115,5 +115,67 @@ class Solution {
             if (diff > 1) return false; // 性能优化
         }
         return diff == 1 ? true : false;
+    }
+}
+
+
+
+// My Solution 2: (TLE)
+class Solution {
+    public Set<Long> xorSet;
+    
+    public int ladderLength(String beginWord, String endWord, List<String> wordList) {
+        // BFS + hash + bit operation (xor) + HashSet
+        Set<Long> wordHashCodes = new HashSet<>();
+        for (String word : wordList) {
+            wordHashCodes.add(hash(word));
+        }
+        
+        Long endWordHashCode = hash(endWord);
+        if (!wordHashCodes.contains(endWordHashCode)) return 0;
+        Long beginWordHashCode = hash(beginWord);
+        
+        xorSet = new HashSet<>();
+        for (long i=1L; i<=31L; i++) {
+            for (long j=0L, k=i; j<10L; j++, k=k<<5) 
+                xorSet.add(k);
+        }
+        
+        int res = 0;
+        Queue<Long> queue = new LinkedList<>();
+        queue.offer(beginWordHashCode);
+        while (!queue.isEmpty()) {
+            res++;
+            Queue<Long> tmpQueue = new LinkedList<>();
+            while (!queue.isEmpty()) {
+                Long preWordHashCode = queue.poll();
+                for (Long wordHashCode : wordHashCodes) {
+                    if (oneCharDiff(preWordHashCode, wordHashCode)) {
+                        if (endWordHashCode.equals(wordHashCode)) return res + 1;
+                        tmpQueue.offer(wordHashCode);
+                    }
+                }
+            }
+            for (Long used : tmpQueue) {
+                wordHashCodes.remove(used);
+            }
+            queue = tmpQueue;
+        }
+        return 0;
+    }
+    
+    public long hash(String word) {
+        int len = word.length();
+        long hashCode = 0L;
+        for (int i=0; i<10 && i<len; i++) {
+            hashCode = hashCode << 5 | (long) (word.charAt(i) - 'a');
+        }
+        return hashCode;
+    }
+    
+    public boolean oneCharDiff(long hash1, long hash2) {
+        long xor = hash1 ^ hash2;
+        if (xorSet.contains(xor)) return true;
+        return false;
     }
 }
