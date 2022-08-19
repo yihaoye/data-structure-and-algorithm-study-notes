@@ -120,7 +120,7 @@ class Solution {
 
 
 
-// My Solution 2: (TLE)
+// My Solution 2:
 class Solution {
     public Set<Long> xorSet;
     
@@ -146,20 +146,19 @@ class Solution {
         queue.offer(beginWordHashCode);
         while (!queue.isEmpty()) {
             res++;
-            Queue<Long> tmpQueue = new LinkedList<>();
-            while (!queue.isEmpty()) {
+            int qSize = queue.size();
+            Set<Long> removes = new HashSet<>();
+            while (qSize-- > 0) {
                 Long preWordHashCode = queue.poll();
                 for (Long wordHashCode : wordHashCodes) {
                     if (oneCharDiff(preWordHashCode, wordHashCode)) {
                         if (endWordHashCode.equals(wordHashCode)) return res + 1;
-                        tmpQueue.offer(wordHashCode);
+                        removes.add(wordHashCode);
+                        queue.offer(wordHashCode);
                     }
                 }
+                wordHashCodes.removeAll(removes);
             }
-            for (Long used : tmpQueue) {
-                wordHashCodes.remove(used);
-            }
-            queue = tmpQueue;
         }
         return 0;
     }
