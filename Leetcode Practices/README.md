@@ -462,6 +462,9 @@
 - [x] 253   Meeting Rooms II	
 - [x] 759   Employee Free Time  
   
+## 双指针
+- [x] 438   Find All Anagrams in a String   
+  
 ## Design
 - [x] 359	Logger Rate Limiter		
 - [x] 346	Moving Average from Data Stream		                        Sliding Window
@@ -741,4 +744,5 @@
 - [x] 785   Is Graph Bipartite? 
 - [x] 739   Daily Temperatures  
 - [x] 787   Cheapest Flights Within K Stops 
+- [x] 438   Find All Anagrams in a String   
   
