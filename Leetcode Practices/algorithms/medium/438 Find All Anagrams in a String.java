@@ -61,3 +61,107 @@ class Solution {
         return list;
     }
 }
+
+
+
+// My Solution: (Sliding Window solution, inspired from https://www.jianshu.com/p/869f6d00d962)
+class Solution {
+    public List<Integer> findAnagrams(String s, String p) {
+        List<Integer> res = new ArrayList<>();
+        char[] sArr = s.toCharArray(), pArr = p.toCharArray();
+        if (sArr.length < pArr.length) return res;
+        
+        Map<Character, Integer> map = new HashMap<>(), cMap = new HashMap<>();
+        for (char c : pArr) {
+            map.put(c, map.get(c) != null ? map.get(c)+1 : 1);
+        }
+        cMap.putAll(map);
+        
+        int len = sArr.length, begin = 0, end = 0, count = map.size();
+        while (end < len) {
+            if (cMap.get(sArr[end]) == null) {
+                end++;
+                begin = end;
+                count = cMap.size();
+                cMap.putAll(map);
+            } else if (cMap.get(sArr[end]) == 0) {
+                while (sArr[end] != sArr[begin]) {
+                    if (cMap.get(sArr[begin]) == 0) count++;
+                    cMap.put(sArr[begin], cMap.get(sArr[begin])+1);
+                    begin++;
+                }
+                count++;
+                cMap.put(sArr[begin], cMap.get(sArr[begin])+1);
+                begin++;
+            } else { 
+                cMap.put(sArr[end], cMap.get(sArr[end])-1);
+                if (cMap.get(sArr[end]) == 0) count--;
+                if (count == 0) {
+                    res.add(begin);
+                    if (cMap.get(sArr[begin]) == 0) count++;
+                    cMap.put(sArr[begin], cMap.get(sArr[begin])+1);
+                    begin++;
+                }
+                end++;
+            }
+        }
+        
+        return res;
+    }
+}
+
+
+
+// My Solution 2: (TLE)
+class Solution {
+    public List<Integer> findAnagrams(String s, String p) {
+        // 滑动窗口（定长双指针）+ 哈希表
+        List<Integer> res = new ArrayList<>();
+        if (p.length() > s.length()) return res;
+
+        Map<Character, Integer> cMap = new HashMap<>();
+        for (char c : p.toCharArray()) {
+            cMap.put(c, cMap.getOrDefault(c, 0) + 1);
+        }
+
+        int left = 0, right = p.length() - 1;
+        while (right < s.length()) {
+            left = process(s, left, right, cMap, res);
+            right = left + p.length() - 1;
+        }
+
+        return res;
+    }
+
+    public int process(String s, int left, int right, Map<Character, Integer> cMap, List<Integer> res) {
+        Map<Character, List<Integer>> visitedMap = new HashMap<>();
+        for (int i=left; i<=right; i++) {
+            if (!cMap.containsKey(s.charAt(i))) {
+                putBackMap(cMap, visitedMap);
+                return i + 1;
+            }
+
+            int cCount = cMap.getOrDefault(s.charAt(i), 0);
+            if (cCount == 0) {
+                putBackMap(cMap, visitedMap);
+                return visitedMap.get(s.charAt(i)).get(0) + 1; // find first s.charAt(i) index
+            }
+            
+            cMap.put(s.charAt(i), cCount - 1);
+            List<Integer> charIdxs = visitedMap.getOrDefault(s.charAt(i), new ArrayList<>());
+            charIdxs.add(i);
+            visitedMap.put(s.charAt(i), charIdxs);
+        }
+        res.add(left);
+        putBackMap(cMap, visitedMap);
+
+        return left + 1;
+    }
+    
+    public void putBackMap(Map<Character, Integer> cMap, Map<Character, List<Integer>> visitedMap) {
+        for (Map.Entry<Character, List<Integer>> entry : visitedMap.entrySet()) { // put back all
+            cMap.put(entry.getKey(), cMap.get(entry.getKey()) + entry.getValue().size());
+        }
+        return;
+    }
+}
