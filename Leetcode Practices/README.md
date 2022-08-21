@@ -465,6 +465,9 @@
 ## 双指针
 - [x] 438   Find All Anagrams in a String   
   
+## 贪心
+- [x] 871   Minimum Number of Refueling Stops 
+  
 ## Design
 - [x] 359	Logger Rate Limiter		
 - [x] 346	Moving Average from Data Stream		                        Sliding Window
