@@ -12,6 +12,8 @@ https://www.cnblogs.com/cuish/p/3760041.html
   
 或者采用对象的形式表示：[树图遍历代码示例](./../../../Common%20Algorithm%20and%20Theory/树图遍历.md#图遍历)  
   
+如需要快速定位起始点，比如 burning tree 问题，也可以使用哈希表 `HashMap<Node, Collection<Adjacent_Node>>`，然后 BFS 过程中可以使用哈希集记录访问过的点 `HashSet<Node>` 以去重复访问：[例题 2385](./../../../Leetcode%20Practices/algorithms/medium/2385%20Amount%20of%20Time%20for%20Binary%20Tree%20to%20Be%20Infected.java)  
+  
 # 存图方式（讲解二）
 三种常见「存图」方式。  
 
