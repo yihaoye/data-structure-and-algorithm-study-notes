@@ -1578,8 +1578,14 @@ URL Frontier 主要是存储一堆待访问的 URL。它有 2 个接口：
 
 上图中 Front Queue 实现了选择策略，为 URL 优先级进行了排序（Prioritizer 根据 URL 重要性或上次被访问距今间隔时间等等来评定，然后根据评定的优先级插到对应的队列里面）。  
 Back Queue 则实现了礼貌性策略，控制了对一个网站访问的频率（politeness router 协同一个 mapping table 把同一个网站 / Host Name 的子网页 / URL 只插入到特定的一个 Queue 中，比如 Amazon 的 URLs 只放进 B1、Facebook 的 URLs 只放进 B2 等等，然后后续的 politeness selector 协同一个以上次访问时间戳排序的堆 / heap 可以控制读取队列的速度）。  
+![](./Web%20Crawler%20Mapping%20Table.png)  
   
-ToDo...  
+#### Fault Tolerance（容错性） & Scalability（扩展性）
+* 扩展性
+  * Database sharding
+  * Consistent hashing
+* 容错性
+  * Server replacement
 
 </details>
 
