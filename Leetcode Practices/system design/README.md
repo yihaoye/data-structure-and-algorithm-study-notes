@@ -845,6 +845,23 @@ Netflix 开发了自己的视频存储计算机系统。Netflix 称它们为 Ope
 
 
 <details>
+<summary>设计 Facebook Live</summary>
+
+参考来源：https://www.youtube.com/watch?v=IO4teCbHvZw  
+
+![](./Facebook%20Live%20Architecture.png)  
+1. 直播端使用 RTMPS 协议发送直播数据到边缘节点（POP）
+2. POP 发送数据到数据中心（DC）
+3. DC 将数据编码成不同的清晰度并进行持久化存储
+4. 播放端通过 MPEG-DASH / RTMPS 协议接收直播数据
+
+RTMPS 协议介绍  
+RTMPS 协议就是为视频直播设置的，1) 它能够保证低延迟。2) 它在工业上已经被广泛应用，所以能够重用已有的客户端和服务端的库。3) 它基于 TCP 协议能够与 Facebook 的网络架构兼容。4) 应用大小在 100k 左右。  
+
+</details>
+
+
+<details>
 <summary>设计 Dropbox</summary>
 
 参考：  
