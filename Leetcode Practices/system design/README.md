@@ -847,7 +847,9 @@ Netflix 开发了自己的视频存储计算机系统。Netflix 称它们为 Ope
 <details>
 <summary>设计 Facebook Live</summary>
 
-参考来源：https://www.youtube.com/watch?v=IO4teCbHvZw  
+参考来源：  
+https://www.youtube.com/watch?v=IO4teCbHvZw  
+https://osjobs.net/system/posts/facebook-live/  
 
 #### High Level Architecture
 ![](./Facebook%20Live%20Architecture.png)  
