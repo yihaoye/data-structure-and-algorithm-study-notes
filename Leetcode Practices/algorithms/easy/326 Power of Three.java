@@ -8,9 +8,17 @@ Could you do it without using any loop / recursion?
 
 
 
+// Other's Solution:
+class Solution {
+    public boolean isPowerOfThree(int n) {
+        // solution without loops/recursion: 1162261467 is 3^19,  3^20 is bigger than int  
+        return n > 0 && 1162261467 %n == 0;
+    }
+}
 
 
-//My Solution:
+
+// My Solution:
 public class Solution {
     public boolean isPowerOfThree(int n) {
         while(n>=3){
@@ -48,7 +56,7 @@ public class Solution {
 
 
 
-//Other's funny solution:
+// Other's funny solution:
 /*
 Base Conversion:
 
@@ -77,7 +85,7 @@ We will use the regular expression above for checking if the string starts with 
 and contains nothing else "$".
 */
 
-//Java:
+// Java:
 public class Solution {
     public boolean isPowerOfThree(int n) {
         return Integer.toString(n, 3).matches("^10*$");
