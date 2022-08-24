@@ -1,4 +1,11 @@
 # Behavior Question
+# 思维工具
+[Untools: Tools for better thinking](./untool.md)  
+* Systems Thinking
+* Decision Making
+* Problem Solving
+* Communication
+  
 ## BQ 概况
 ![](./Behavior%20Question.png)  
   
