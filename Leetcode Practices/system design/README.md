@@ -850,6 +850,8 @@ Netflix 开发了自己的视频存储计算机系统。Netflix 称它们为 Ope
 参考来源：  
 https://www.youtube.com/watch?v=IO4teCbHvZw  
 https://osjobs.net/system/posts/facebook-live/  
+https://www.infoq.cn/article/kkylzqazdomqdkwxgxgv  
+https://zh.wikipedia.org/zh-hans/%E6%83%8A%E7%BE%A4%E9%97%AE%E9%A2%98  
 
 #### High Level Architecture
 ![](./Facebook%20Live%20Architecture.png)  
@@ -894,8 +896,16 @@ RTMPS 协议就是为视频直播设置的，1) 它能够保证低延迟。2) �
 * 使用短时间的数据缓存来解决直播端不稳定，瞬间断线的问题
 * 根据网络质量自动降级为音频直播以及播放
 
-**惊群效应**  
+**惊群效应 (Thundering Herd)**  
 当多个播放端向同一个 POP 请求直播数据的时候，如果数据不在缓存中，这时候只有一个请求 A 会到 DC 中请求数据，其他请求会等待结果。但是如果请求 A 超时没有返回数据的话，所有请求会一起向 DC 访问数据，这时候就会加大 DC 的压力。解决这个问题的方法就是通过实际的情况来调整请求超时的时间。这个时间如果太长的话会带来直播的延迟，太短的话会经常触发惊群效应。  
+
+在其他计算机科学语境中，惊群效应是指多进程（多线程）在同时阻塞等待同一个事件的时候（休眠状态），如果等待的这个事件发生，那么他就会唤醒等待的所有进程（或者线程），但是最终却只能有一个进程（线程）获得这个时间的“控制权”，对该事件进行处理，而其他进程（线程）获取“控制权”失败，只能重新进入休眠状态，这种现象和性能浪费（严重的系统上下文切换代价）就叫做惊群效应。  
+解决办法还包括：  
+* 不希望把所有进程都唤醒，就采用定点唤醒某一个进程的做法。
+* 尽量避免进程上下文切换。
+
+C10K 问题（Concurrent 10,000 Connections），指服务器同时支持上万个客户端连接的问题。可用 Linux 的 epoll，FreeBSD 的 kqueue，Solaris 的 /dev/poll 来解决。  
+C10M 问题，是千万级并发实现。Linux 上通常用 epoll实现。  
 
 </details>
 
