@@ -94,10 +94,10 @@ class RouterImpl implements Router { // 解决方案：类字典树+哈希表
             else nextNode = curNode.children.get(pathArr[curIndex]);
 
             if (nextNode == null) return null;
-            return find(String[] pathArr, int curIndex+1, TrieNode nextNode);
+            return find(pathArr, curIndex+1, nextNode);
         } else {
             for (TrieNode nextNode : curNode.children.values()) {
-                TrieNode findNode = find(String[] pathArr, int curIndex+1, TrieNode nextNode);
+                TrieNode findNode = find(pathArr, curIndex+1, nextNode);
                 if (findNode != null) return findNode;
             }
             return null;
