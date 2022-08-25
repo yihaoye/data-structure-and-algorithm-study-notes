@@ -488,6 +488,7 @@
 - [x] 307	Range Sum Query - Mutable		                            BIT & ST
 - [ ] 308	Range Sum Query 2D - Mutable		                        BIT & ST
 - [x] 460   LFU Cache   
+- [x] 1166  Design File System  
    
    
    

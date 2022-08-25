@@ -1,3 +1,5 @@
+// 与 Leetcode Q1166 类似
+
 //interface Router {
 //    // register a route,
 //    fun withRoute(path:String, result:String) :Unit;
