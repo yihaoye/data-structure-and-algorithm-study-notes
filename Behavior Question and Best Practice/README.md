@@ -1,10 +1,4 @@
 # Behavior Question
-# 思维工具
-[Untools: Tools for better thinking](./untools.md)  
-* Systems Thinking
-* Decision Making
-* Problem Solving
-* Communication
   
 ## BQ 概况
 ![](./Behavior%20Question.png)  
@@ -28,6 +22,13 @@ Keep at least 3 project examples/stories which better to be large scale.
   * [Leadership Principles](https://www.amazon.jobs/en/principles)
   * 3 Main Product interest Amazon: AWS、Digital Product、Retailer  
   
+# 思维工具
+[Untools: Tools for better thinking](./untools.md)  
+* Systems Thinking
+* Decision Making
+* Problem Solving
+* Communication
+
 # Best Practice 工作实践
 * [软件复杂度](./软件复杂度.md)
 * [降低软件复杂性一般原则和方法](./降低软件复杂性一般原则和方法.md)
