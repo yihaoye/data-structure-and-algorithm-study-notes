@@ -41,7 +41,7 @@
 - [x] 4	    Median of Two Sorted Arrays		                            很少考
 - [ ] 321	Create Maximum Number		                                很少考
 - [ ] 327	Count of Range Sum		
-- [ ] 289	Game of Life		
+- [x] 289	Game of Life		
 - [x] 406   Queue Reconstruction by Height  
 ### Interval			
 - [x] 57	Insert Interval		
@@ -680,7 +680,7 @@
 - [x] 286	Walls and Gates		
 - [x] 287	Find the Duplicate Number		
 - [ ] 288	Unique Word Abbreviation		
-- [ ] 289	Game of Life		
+- [x] 289	Game of Life		
 - [x] 290	Word Pattern		
 - [ ] 291	Word Pattern II		
 - [x] 293	Flip Game		
