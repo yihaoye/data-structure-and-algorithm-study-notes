@@ -1,6 +1,6 @@
 # Behavior Question
 # 思维工具
-[Untools: Tools for better thinking](./untool.md)  
+[Untools: Tools for better thinking](./untools.md)  
 * Systems Thinking
 * Decision Making
 * Problem Solving
