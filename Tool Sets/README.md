@@ -11,6 +11,7 @@ Tool Sets 是算法解题、编码过程中常用的一些经常复用的原子�
 * Java 容器
   * [Collections 进阶操作](./Collections.java)
   * [Map 进阶操作](./Map.java)
+* [Clone 与 Copy](./Clone(Copy).java)
 * [Comparable](./Comparable.java)
 * [Comparator](./Comparator.java)
 * [数据类型转换](./DataTypeConversion.java)
