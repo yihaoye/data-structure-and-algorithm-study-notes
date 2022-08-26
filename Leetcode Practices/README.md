@@ -408,7 +408,7 @@
 - [x] 136	Single Number		
 - [x] 318	Maximum Product of Word Lengths		
 ### 很少考			
-- [ ] 393	UTF-8 Validation		
+- [x] 393	UTF-8 Validation		
 - [ ] 201	Bitwise AND of Numbers Range		
 - [x] 371	Sum of Two Integers emove Element		
 - [x] 338	Counting Bits		
