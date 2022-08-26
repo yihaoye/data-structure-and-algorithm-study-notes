@@ -58,13 +58,13 @@
   - [字典树 | Trie](./Data%20Structure%20Implementation/Trie/)
   - [并查集 | Disjoint-Set/Union-Find Forest](./../Common%20Algorithm%20and%20Theory/并查集与联合查找算法.md)
   - [LSM 树 | Log-Structured Merge-Tree](./Data%20Structure%20Implementation/LSMTree/)
-  - [生成树 | Spanning Tree]()
-    - [最小生成树 | Minimum Spanning Tree]()
 - [图 | Graph](./Data%20Structure%20Implementation/Graph/)
   - [有向图 | Directed Graph]()
   - [无向图 | Undirected Graph]()
     - [二分图 | Bipartite Graph](./Data%20Structure%20Implementation/BipartiteGraph/)
   - [加权图（有向或无向）| Weighted Graph]()
+  - [生成树 | Spanning Tree]()
+    - [最小生成树 | Minimum Spanning Tree]()
   
 以上有些数据结构可能只有 Java 提供了官方实现 [more](https://www.zhihu.com/question/325814788) ，以上总结未完待续...  
   
