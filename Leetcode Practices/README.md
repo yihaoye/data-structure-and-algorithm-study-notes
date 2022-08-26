@@ -371,7 +371,7 @@
 - [x] 286	Walls and Gates		
 - [x] 130	Surrounded Regions		
 - [x] 339	Nested List Weight Sum		
-- [ ] 364	Nested List Weight Sum II		
+- [x] 364	Nested List Weight Sum II		
 - [x] 127	Word Ladder		
 - [x] 51	N-Queens		
 - [ ] 52	N-Queens II		
@@ -728,7 +728,7 @@
 - [x] 359	Logger Rate Limiter		
 - [ ] 361	Bomb Enemy		
 - [x] 362	Design Hit Counter		
-- [ ] 364	Nested List Weight Sum II		
+- [x] 364	Nested List Weight Sum II		
 - [x] 367	Valid Perfect Square		
 - [x] 374	Guess Number Higher or Lower		
 - [x] 375	Guess Number Higher or Lower II		
