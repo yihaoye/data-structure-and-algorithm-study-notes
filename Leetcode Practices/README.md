@@ -327,7 +327,7 @@
 - [x] 61	Rotate List		
 - [x] 86	Partition List		
 - [x] 23	Merge k Sorted Lists		
-- [ ] 147	Insertion Sort List	
+- [x] 147	Insertion Sort List	
    
 ## Binary Search
 - [x] 278	First Bad Version		
