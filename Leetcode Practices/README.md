@@ -293,7 +293,7 @@
 - [ ] 174	Dungeon Game		
 - [x] 221	Maximal Square		
 - [ ] 85	Maximal Rectangle		
-- [ ] 363	Max Sum of Rectangle No Larger Than K		    TreeSet
+- [x] 363	Max Sum of Rectangle No Larger Than K		    TreeSet
 ### 化简（降维？）
 - [x] 198	House Robber		
 - [x] 213	House Robber II		
