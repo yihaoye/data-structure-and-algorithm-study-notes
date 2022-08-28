@@ -489,6 +489,7 @@
 - [ ] 308	Range Sum Query 2D - Mutable		                        BIT & ST
 - [x] 460   LFU Cache   
 - [x] 1166  Design File System  
+- [x] 706   Design HashMap  
    
    
    
@@ -751,4 +752,5 @@
 - [x] 787   Cheapest Flights Within K Stops 
 - [x] 438   Find All Anagrams in a String   
 - [x] 721   Accounts Merge  
+- [x] 706   Design HashMap  
   
