@@ -907,6 +907,8 @@ RTMPS 协议就是为视频直播设置的，1) 它能够保证低延迟。2) �
 C10K 问题（Concurrent 10,000 Connections），指服务器同时支持上万个客户端连接的问题。可用 Linux 的 epoll，FreeBSD 的 kqueue，Solaris 的 /dev/poll 来解决。  
 C10M 问题，是千万级并发实现。Linux 上通常用 epoll 实现。  
 
+![](./Facebook%20Live%20System%20Design%20Mock.png)  
+
 </details>
 
 
