@@ -602,7 +602,7 @@ https://shardingsphere.apache.org/index_zh.html
 ![](./sharding-sphere-parsing.png)  
   
 #### 更多分库分表细节
-[数据库相关系统设计、分库分表](../../Leetcode%20Practices/system%20design/数据库分库分表.md)  
+[数据库相关系统设计、分库分表](./../../../Leetcode%20Practices/system%20design/数据库数据建模分库分表.md)  
   
   
 ## 阿里巴巴 MySQL 规范
