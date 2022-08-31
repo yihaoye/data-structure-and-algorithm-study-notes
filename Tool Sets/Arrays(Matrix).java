@@ -24,8 +24,37 @@ String[][] arr2 = new String[][]{{"a", "a"}};
 Arrays.equals(arr1, arr2); // Return false - comparing two dimensional arrays, which means the elements of these arrays are themselves arrays. Therefore, when the elements are compared (using Object's equals), false is returned, since Object's equals compares Object references.
 Arrays.deepEquals(arr1, arr2); // Returns true if the two specified arrays are deeply equal to one another. Unlike the equals(Object [], Object []) method, this method is appropriate for use with nested arrays of arbitrary depth.
 
-// ToDo: 二维迷宫探索（上下左右并有界线检查）
+// 二维迷宫探索（上下左右并有界线检查）
+class Solution {
+    private int N, M;
+    private int[][] directions = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+    private boolean[][] visited;
 
+    public void main(int[][] matrix) {
+        this.M = matrix.length;
+        this.N = matrix[0].length;
+        this.visited = new int[M][N];
+    }
+
+    private void dfs(int[][] matrix, int x, int y) {
+        if (visited[y][x]) return;
+        visited[y][x] = true;
+
+        // process...
+
+        for (int[] direction : this.directions) {
+            int newX = x + direction[0];
+            int newY = y + direction[1];
+            if (isValid(newX, newY, this.N, this.M)) {
+                dfs(matrix, newX, newY);
+            }
+        }
+    }
+
+    private boolean isValid(int x, int y, int maxX, int maxY) {
+        return x >= 0 && x < maxX && y >= 0 && y < maxY;
+    }
+}
 
 // ToDo: 二维迷宫探索（上下左右并有界线以及障碍检查）
 
