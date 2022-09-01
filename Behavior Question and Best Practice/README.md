@@ -23,11 +23,12 @@ Keep at least 3 project examples/stories which better to be large scale.
   * 3 Main Product interest Amazon: AWS、Digital Product、Retailer  
   
 # 思维工具
-[Untools: Tools for better thinking](./untools.md)  
-* Systems Thinking
-* Decision Making
-* Problem Solving
-* Communication
+* [六西格玛](https://zh.wikipedia.org/zh-hans/%E5%85%AD%E6%A8%99%E6%BA%96%E5%B7%AE)
+* [Untools: Tools for better thinking](./untools.md)  
+  * Systems Thinking
+  * Decision Making
+  * Problem Solving
+  * Communication
 
 # Best Practice 工作实践
 * [软件复杂度](./软件复杂度.md)
