@@ -8,6 +8,8 @@
 ## 回答策略
 `S*T*A*R` - Situation, Task, Action, Results  
 Keep at least 3 project examples/stories which better to be large scale.  
+
+[如何描述 Work Experience 和 Project Experience](https://www.youtube.com/watch?v=WSoN8ZMiXTc)  
   
 ## 项目讨论的框架
 * Context: 简要描述项目背景，为什么要做，意义和影响何在。让面试官快速了解。
