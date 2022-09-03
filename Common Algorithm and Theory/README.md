@@ -41,6 +41,7 @@
     - [最小生成树相关算法 | Minimum Spanning Tree Algorithms]()
     - [联合查找算法（并查集） | Union Find Algorithm](./并查集与联合查找算法.md) (时间复杂度 O(1))
     - 系统级
+      - [字典树算法 | Trie Algorithm]()
       - [蓄水池抽样算法 | Reservoir Sampling](./蓄水池抽样算法.md)
       - [霍夫曼压缩算法 | Huffman Coding/Compression](./霍夫曼压缩算法.md)
       - [布隆过滤器及其算法 | Bloom Filter](./布隆过滤器及其算法.md)
@@ -48,6 +49,16 @@
       - [HyperLogLog 算法](./HyperLogLog.md)
       - [Count-Min Sketch 算法](./Count-Min-Sketch.md)
       - [雪花算法 | Snowflake ID](./雪花算法.md)
+      - [一致性哈希 | Consistent Hashing]()
+      - [Frugal Streaming 算法]()
+      - [Geohash 算法, S2 Geometry 算法]()
+      - [漏桶算法, 令牌桶算法 | Leaky Bucket, Token Bucket]()
+      - [Loosy Counting 算法]()
+      - [OT 算法 | Operational Transformation]()
+      - [四叉树算法, R 树算法 | Quadtree, Rtree]()
+      - [光线投射算法 | Ray Casting]()
+      - [倒排索引算法 | Reverse Index]()
+      - [Rsync 算法]()
   - 数学
     - [鸽巢原理 | Pigeonhole Principle](./鸽巢原理.md)
   - 计算几何
