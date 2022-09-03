@@ -283,6 +283,13 @@ SELECT * FROM A LEFT JOIN B ON A.id = B.id UNION SELECT * FROM A RIGHT JOIN B ON
 在项目开发过程中，使用数据库查询语句时，有很多需求都是要涉及到较为复杂或者多表的连接查询，需要关联查询实现。以上总结的是 MySQL 的 5 种关联查询（包括 UNION）。  
   
   
+## 其他实用 SQL 函数
+select 查询数据时，同时动态地在结果里添加自增字段（table 里没有的）的方法  
+```sql
+SELECT ROW_NUMBER() OVER(ORDER BY field1 ASC, field2 DESC) AS customized_id, field1, field2 FROM table1;
+```
+  
+  
 ## SQL 的执行顺序
 第一步：执行 FROM  
 第二步：WHERE 条件过滤  
