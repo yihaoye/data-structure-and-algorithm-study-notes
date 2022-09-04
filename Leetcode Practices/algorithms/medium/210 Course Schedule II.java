@@ -73,3 +73,62 @@ class Solution {
         return false;
     }
 }
+
+
+
+// My Solution 2:
+class Solution {
+    Map<Integer, Set<Integer>> indegree; // <itemA, <pre-requestA-of-itemA, pre-requestB-of-itemA, ...>>
+	Map<Integer, Set<Integer>> outdegree; // <pre-requestA, <itemA-relys-pre-requestA, itemB-relys-pre-requestA, ...>>
+    
+    public int[] findOrder(int numCourses, int[][] prerequisites) {
+        // 拓扑排序（卡恩算法）
+        indegree = new HashMap<>();
+		outdegree = new HashMap<>();
+
+		for (int[] edge : prerequisites) {
+			outdegree.computeIfAbsent(edge[1], x -> new HashSet<>()).add(edge[0]);
+			outdegree.computeIfAbsent(edge[0], x -> new HashSet<>());
+
+			indegree.computeIfAbsent(edge[0], x -> new HashSet<>()).add(edge[1]);
+			indegree.computeIfAbsent(edge[1], x -> new HashSet<>());
+		}
+        while (numCourses-- > 0) {
+            outdegree.computeIfAbsent(numCourses, x -> new HashSet<>());
+            indegree.computeIfAbsent(numCourses, x -> new HashSet<>());
+        }
+        
+        List<Integer> sortedList = topoSort();
+        return sortedList.stream().mapToInt(i->i).toArray();
+    }
+
+	public int findAvailableNode() { // available node means node has no pre-request
+		for (Map.Entry<Integer, Set<Integer>> entry : indegree.entrySet()) {
+			if (entry.getValue().size() == 0) return entry.getKey();
+		}
+		return -1;
+	}
+
+	public boolean removeNode(int node) { // normally this is used for remove pre-request
+		if (!outdegree.containsKey(node)) return false;
+		Set<Integer> relyers = outdegree.get(node);
+		for (int relyer : relyers) {
+			indegree.get(relyer).remove(node);
+		}
+		outdegree.remove(node);
+		indegree.remove(node);
+		return true;
+	}
+
+	public List<Integer> topoSort() {
+		List<Integer> sortedList = new ArrayList<>();
+		while (indegree.size() > 0) {
+			int nextAvailable = findAvailableNode();
+			if (nextAvailable == -1) return new ArrayList<>(); // Graph has at least one cycle. Topological sorting is not possible
+			sortedList.add(nextAvailable);
+			removeNode(nextAvailable);
+		}
+
+		return sortedList;
+	}
+}
