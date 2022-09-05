@@ -61,6 +61,7 @@
       - [Rsync 算法]()
   - 数学
     - [鸽巢原理 | Pigeonhole Principle](./鸽巢原理.md)
+    - [取模运算 | Modulo](./取模运算.md)
   - 计算几何
     - [扫描线 | Line Sweep](./扫描线.md)
   - 其他常见优化思想、技巧
