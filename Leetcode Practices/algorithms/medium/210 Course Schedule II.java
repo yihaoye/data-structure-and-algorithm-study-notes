@@ -132,3 +132,44 @@ class Solution {
 		return sortedList;
 	}
 }
+
+
+
+// My Solution 3:
+class Solution {
+    int[] indegree; // 一维整数数组，元素里记录的是 itemA 的 pre-request 个数
+	Map<Integer, Set<Integer>> outdegree; // <pre-requestA, <itemA-relys-pre-requestA, itemB-relys-pre-requestA, ...>>
+    
+    public int[] findOrder(int numCourses, int[][] prerequisites) {
+		indegree = new int[numCourses];
+		outdegree = new HashMap<>();
+
+		for (int[] edge : prerequisites) {
+			indegree[edge[0]]++;
+
+			outdegree.computeIfAbsent(edge[1], x -> new HashSet<>()).add(edge[0]);
+			outdegree.computeIfAbsent(edge[0], x -> new HashSet<>());
+		}
+        
+        List<Integer> sortedList = topoSort();
+        return sortedList.stream().mapToInt(i->i).toArray();
+    }
+
+	private List<Integer> topoSort() {
+		List<Integer> sortedList = new ArrayList<>();
+
+		Queue<Integer> queue = new LinkedList<>();
+		for (int i=0; i<indegree.length; i++)
+			if (indegree[i] == 0) queue.offer(i);
+
+		while (!queue.isEmpty()) {
+			int cur = queue.poll();
+			sortedList.add(cur);
+			for (int nei : outdegree.getOrDefault(cur, new HashSet<>()))
+				if (--indegree[nei] == 0) queue.offer(nei);
+		}
+		if (sortedList.size() != indegree.length) return new ArrayList<>();
+
+		return sortedList;
+	}
+}
