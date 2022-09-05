@@ -295,6 +295,7 @@
 - [ ] 85	Maximal Rectangle		
 - [x] 363	Max Sum of Rectangle No Larger Than K		    TreeSet
 - [x] 712   Minimum ASCII Delete Sum for Two Strings    
+- [x] 1143  Longest Common Subsequence  
 ### 化简（降维？）
 - [x] 198	House Robber		
 - [x] 213	House Robber II		
@@ -754,4 +755,5 @@
 - [x] 438   Find All Anagrams in a String   
 - [x] 721   Accounts Merge  
 - [x] 706   Design HashMap  
+- [x] 1143  Longest Common Subsequence  
   
