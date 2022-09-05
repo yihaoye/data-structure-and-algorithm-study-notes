@@ -193,6 +193,7 @@
 - [x] 397	Integer Replacement		
 - [ ] 368	Largest Divisible Subset	
 - [x] 621   Task Scheduler  
+- [x] 2400  Number of Ways to Reach a Position After Exactly k Steps    
   
 ## Tree
 ### 基础			
@@ -756,4 +757,5 @@
 - [x] 721   Accounts Merge  
 - [x] 706   Design HashMap  
 - [x] 1143  Longest Common Subsequence  
+- [x] 2400  Number of Ways to Reach a Position After Exactly k Steps    
   
