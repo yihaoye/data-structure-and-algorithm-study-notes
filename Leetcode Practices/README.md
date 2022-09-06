@@ -425,7 +425,7 @@
 ## Topological Sort
 - [x] 207	Course Schedule		
 - [x] 210	Course Schedule II		
-- [ ] 269	Alien Dictionary	
+- [x] 269	Alien Dictionary	
    
 ## Random
 - [x] 384	Shuffle an Array		
@@ -667,7 +667,7 @@
 - [ ] 264	Ugly Number II		
 - [ ] 265	Paint House II		
 - [x] 268	Missing Number		
-- [ ] 269	Alien Dictionary		
+- [x] 269	Alien Dictionary		
 - [ ] 270	Closest Binary Search Tree Value		
 - [ ] 271	Encode and Decode Strings		
 - [ ] 273	Integer to English Words		
