@@ -49,7 +49,7 @@
       - [HyperLogLog 算法](./HyperLogLog.md)
       - [Count-Min Sketch 算法](./Count-Min-Sketch.md)
       - [雪花算法 | Snowflake ID](./雪花算法.md)
-      - [一致性哈希 | Consistent Hashing]()
+      - [一致性哈希 | Consistent Hashing](./../Leetcode%20Practices/system%20design/一致性哈希.md)
       - [Frugal Streaming 算法]()
       - [Geohash 算法, S2 Geometry 算法]()
       - [漏桶算法, 令牌桶算法 | Leaky Bucket, Token Bucket]()
