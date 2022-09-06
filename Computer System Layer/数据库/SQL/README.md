@@ -298,10 +298,30 @@ SELECT ROW_NUMBER() OVER(ORDER BY field1 ASC, field2 DESC) AS customized_id, fie
 第五步：HAVING 条件过滤  
 第六步：执行 ORDER BY 排序  
   
+### SQL 中 AND 与 OR 优先级
+例:  
+```sql
+select from test where condition1 or condition2 and condition3;
+```  
+其执行效果与下面的 sql 等价：  
+```sql
+select from test where condition1 or (condition2 and condition3);
+```  
+
+故可以得出结论：AND 级别高于 OR
+
+多个 AND 和 OR 混用也是这个道理，相当于把 AND 看成乘号 (*), 把 OR 看成加号 (+)，这样 SQL 的执行顺序就一目了然了。
+
+最后还是建议严格按照业务逻辑写 SQL，必要的时候毫不吝啬使用括号，就像上面的情况，如果逻辑是：condition1 且 condition2 或者 condition3，那么请写成：  
+```sql
+select * from test where (condition1 and condition2) or condition3
+```  
+这样既不会出错，也方便以后查看代码。  
   
 参考链接：  
 https://www.cnblogs.com/ghost-xyx/p/3811036.html  
 https://www.cnblogs.com/ghost-xyx/p/3813688.html  
+http://jellybins.github.io/2014/06/14/SQL%E4%B8%ADand%E4%B8%8Eor%E4%BC%98%E5%85%88%E7%BA%A7%E6%AF%94%E8%BE%83/  
   
   
 ## 什么是事务
