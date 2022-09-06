@@ -41,7 +41,7 @@
     - [最小生成树相关算法 | Minimum Spanning Tree Algorithms]()
     - [联合查找算法（并查集） | Union Find Algorithm](./并查集与联合查找算法.md) (时间复杂度 O(1))
     - 系统级
-      - [字典树算法 | Trie Algorithm]()
+      - [字典树算法 | Trie Algorithm](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/Trie/README.md)
       - [蓄水池抽样算法 | Reservoir Sampling](./蓄水池抽样算法.md)
       - [霍夫曼压缩算法 | Huffman Coding/Compression](./霍夫曼压缩算法.md)
       - [布隆过滤器及其算法 | Bloom Filter](./布隆过滤器及其算法.md)
