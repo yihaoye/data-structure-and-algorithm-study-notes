@@ -60,3 +60,50 @@ class Solution {
         return prev;
     }
 }
+
+
+
+// My Solution:
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        // 栈
+        // Time: O(N), Space: O(1)
+        Deque<ListNode> stack = new LinkedList<>();
+        if (head != null) stack.offer(head);
+        ListNode tmpLast = null, tmpNext = null;
+        while (!stack.isEmpty()) {
+            ListNode last = stack.pop();
+            tmpNext = last.next;
+            last.next = tmpLast;
+            if (tmpNext != null) stack.offer(tmpNext);
+            tmpLast = last;
+        }
+        
+        return tmpLast;
+    }
+}
+// 上面的解法可简化为如下
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        // 栈思想 Time: O(N), Space: O(1)
+        ListNode tmpLast = null, tmpNext = head;
+        while (tmpNext != null) {
+            ListNode last = tmpNext;
+            tmpNext = last.next;
+            last.next = tmpLast;
+            tmpLast = last;
+        }
+        
+        return tmpLast;
+    }
+}
