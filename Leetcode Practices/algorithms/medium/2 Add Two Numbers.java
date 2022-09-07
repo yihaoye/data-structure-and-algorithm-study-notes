@@ -102,3 +102,33 @@ class Solution {
         return res;
     }
 }
+
+
+
+// My Solution 2:
+class Solution {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode res = new ListNode(0);
+        ListNode tmp = res;
+        int flag = 0;
+        
+        while (l1 != null || l2 != null || flag != 0) {
+            if (l1 != null) {
+                flag += l1.val;
+                l1 = l1.next;
+            }
+            if (l2 != null) {
+                flag += l2.val;
+                l2 = l2.next;
+            }
+            tmp.val = flag % 10;
+            flag = flag / 10;
+            if (l1 != null || l2 != null || flag != 0) {
+                tmp.next = new ListNode(0);
+                tmp = tmp.next;
+            }
+        }
+        
+        return res;
+    }
+}
