@@ -217,3 +217,75 @@ public class LRUCache {
  * int param_1 = obj.get(key);
  * obj.put(key,value);
  */
+
+
+
+// My Solution 2:
+class LRUCache {
+    private Node head, tail;
+    private Map<Integer, Node> map;
+    private static int capacity;
+
+    public LRUCache(int capacity) {
+        head = new Node(null, null);
+        tail = new Node(null, null);
+        head.next = tail;
+        tail.prep = head;
+        map = new HashMap<>();
+        this.capacity = capacity;
+    }
+    
+    public int get(int key) {
+        if (map.containsKey(key)) {
+            remove(map.get(key));
+            addHead(map.get(key));
+            return map.get(key).val;
+        }
+        return -1;
+    }
+    
+    public void put(int key, int value) {
+        if (map.containsKey(key)) {
+            remove(map.get(key));
+            addHead(map.get(key));
+            map.get(key).val = value;
+        } else {
+            if (--capacity < 0) {
+                map.remove(tail.prep.key);
+                remove(tail.prep);
+            }
+            Node insert = new Node(key, value);
+            addHead(insert);
+            map.put(key, insert);
+        }
+    }
+    
+    class Node {
+        Integer key;
+        Integer val;
+        Node next = null;
+        Node prep = null;
+        
+        public Node (Integer key, Integer val) {
+            this.key = key;
+            this.val = val;
+        }
+    }
+    
+    private Node remove(Node remove) {
+        Node prep = remove.prep;
+        prep.next = remove.next;
+        prep.next.prep = prep;
+        
+        remove.prep = null;
+        remove.next = null;
+        return remove;
+    }
+    
+    private void addHead(Node insert) {
+        insert.next = head.next;
+        insert.next.prep = insert;
+        insert.prep = head;
+        head.next = insert;
+    }
+}
