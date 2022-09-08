@@ -2,6 +2,7 @@
 ## 针对面试
 * [Object Oriented Design 实战步骤](./object%20oriented%20design%20practical%20steps/)
 * [Grok Object Oriented Design Tutorial](./grok%20object%20oriented%20design%20interview)（即 [educative.io](https://www.educative.io/courses/grokking-the-object-oriented-design-interview) OOD 课程）
+* [High Level Design vs Low Level Design | HLD vs LLD | System Design Concepts](https://www.youtube.com/watch?v=H703ErIrby8)
 * [设计模式](./design%20pattern/)
 * 面向对象设计专题班（文泰来 / 九章算法），目录如下（[链接](https://www.youtube.com/watch?v=oaUVVBOhyJw) 仅能免费看第一部分）
   * 面向对象设计入门 Introduction to Object Oriented Design（高频 OOD 面试题 - 电梯设计 Elevator Design）
