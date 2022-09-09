@@ -65,6 +65,7 @@
 ## 安全高频
 
 ## 系统设计高频
+* [[微服務] 什麼是 gRPC，架構上為什麼要使用 gRPC](https://www.youtube.com/watch?v=qEB3yFzETVs)
 
 ## Redis 高频
 
