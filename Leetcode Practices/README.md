@@ -209,7 +209,7 @@
 - [x] 112	Path Sum		
 - [x] 113	Path Sum II		
 - [ ] 129	Sum Root to Leaf Numbers		
-- [ ] 298	Binary Tree Longest Consecutive Sequence		
+- [x] 298	Binary Tree Longest Consecutive Sequence		
 - [x] 111	Minimum Depth of Binary Tree		
 ### Preorder			
 - [x] 104	Maximum Depth of Binary Tree		
@@ -693,7 +693,7 @@
 - [x] 295	Find Median from Data Stream		
 - [ ] 296	Best Meeting Point		
 - [x] 297	Serialize and Deserialize Binary Tree		
-- [ ] 298	Binary Tree Longest Consecutive Sequence		
+- [x] 298	Binary Tree Longest Consecutive Sequence		
 - [x] 299	Bulls and Cows		
 - [x] 300	Longest Increasing Subsequence		
 - [ ] 301	Remove Invalid Parentheses		
