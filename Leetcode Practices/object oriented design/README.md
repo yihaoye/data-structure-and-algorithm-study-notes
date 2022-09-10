@@ -14,6 +14,13 @@
           * [L 里氏替换原则](./SOLID/LiskovSubstitution.java):    任何一个子类或派生类应该可以替换它们的基类或父类（参考契约式设计）（通常与 I 接口隔离原则互为表里）。
           * [I 接口隔离原则](./SOLID/InterfaceSeggregation.java):    多个特定客户端接口要好于一个宽泛用途的接口（不应该强迫一个类实现它用不上的接口）（通常与 L 里氏替换原则互为表里）。
           * [D 依赖反转原则](./SOLID/DependencyInversion.java):    抽象不应该依赖于具体实现，具体实现应该依赖于抽象。High level 实体不应该依赖于 Low level 实体。
+        * 6 步解题法
+          * Clarify requirement - 问清楚那些是必须的，那些可以不用考虑
+          * Define class (core object) - 整个时间中一共会出现那些类？
+          * Define field (properties) - 每个类有那些filed？
+          * Define method, how data flow works - 这些类与类之间是如何交互的？ (inheritance为了好扩展, abstraction)
+          * Implementing 核心关键 method - above all no implementation, only definition
+          * Optimize with design pattern - 炫技时间，trade off show time 注意这是锦上添花，不写也可以过
         * 5C 解题法  
 ![](./5c.svg)  
       * 设计模式讲解 Design Pattern - Strategy
