@@ -254,6 +254,8 @@
 - [ ] 331	Verify Preorder Serialization of a Binary Tree		                            很少考
   
 ## Backtracking
+- [x] 37	Sudoku Solver	
+- [x] 51	N-Queens		
 - [x] 78	Subsets		
 - [x] 90	Subsets II		
 - [x] 77	Combinations		
@@ -366,7 +368,7 @@
 - [ ] 317	Shortest Distance from All Buildings		
 - [ ] 302	Smallest Rectangle Enclosing Black Pixels		
 - [x] 36	Valid Sudoku		
-- [ ] 37	Sudoku Solver	
+- [x] 37	Sudoku Solver	
 - [x] 1275  Find Winner on a Tic Tac Toe Game   
    
 ## DFS & BFS
@@ -523,7 +525,7 @@
 - [x] 34	Find First and Last Position of Element in Sorted Array		
 - [x] 35	Search Insert Position		
 - [x] 36	Valid Sudoku		
-- [ ] 37	Sudoku Solver		
+- [x] 37	Sudoku Solver		
 - [x] 38	Count and Say		
 - [x] 39	Combination Sum		
 - [x] 40	Combination Sum II		
