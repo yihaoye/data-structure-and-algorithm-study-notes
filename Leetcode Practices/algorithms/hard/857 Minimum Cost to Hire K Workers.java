@@ -41,9 +41,9 @@ class Solution {
         double res = Double.MAX_VALUE, qsum = 0;
         PriorityQueue<Double> pq = new PriorityQueue<>();
         for (double[] worker : workers) {
+            if (pq.size() == K) qsum += pq.poll();
             qsum += worker[1];
             pq.add(-worker[1]);
-            if (pq.size() > K) qsum += pq.poll();
             if (pq.size() == K) res = Math.min(res, qsum * worker[0]);
         }
         return res;
