@@ -121,7 +121,7 @@
 - [ ] 68	Text Justification		
 - [ ] 65	Valid Number		
 ### Substring			
-- [ ] 76	Minimum Window Substring		                                        Sliding Window
+- [x] 76	Minimum Window Substring		                                        Sliding Window
 - [ ] 30	Substring with Concatenation of All Words		                        Sliding Window
 - [x] 3	    Longest Substring Without Repeating Characters		                    Sliding Window
 - [ ] 340	Longest Substring with At Most K Distinct Characters		            Sliding Window
@@ -560,7 +560,7 @@
 - [x] 72	Edit Distance		
 - [x] 74	Search a 2D Matrix		
 - [x] 75	Sort Colors		
-- [ ] 76	Minimum Window Substring		
+- [x] 76	Minimum Window Substring		
 - [x] 77	Combinations		
 - [x] 78	Subsets		
 - [x] 79	Word Search		
