@@ -59,6 +59,11 @@
       - [光线投射算法 | Ray Casting]()
       - [倒排索引算法 | Reverse Index]()
       - [Rsync 算法]()
+      - [共识机制/算法 | Consensus Algorithm]()
+      - [P2P 核心算法]()
+        - [BitTorrent 协议]()
+        - [DHT 的 Kademlia 协议]()
+        - [Gossip 协议/流行病协议]()
   - 数学
     - [鸽巢原理 | Pigeonhole Principle](./鸽巢原理.md)
     - [取模运算 | Modulo](./取模运算.md)
