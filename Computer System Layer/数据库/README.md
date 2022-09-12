@@ -16,4 +16,7 @@
 更多参考：https://stackoverflow.com/a/28669163/6481829  
 
 ## 数据库应用相关
-[Apache Doris 在美团外卖数仓中的应用实践](https://tech.meituan.com/2020/04/09/doris-in-meituan-waimai.html)  
+* [Apache Doris 在美团外卖数仓中的应用实践](https://tech.meituan.com/2020/04/09/doris-in-meituan-waimai.html)
+* 设计数据库架构（谷歌）
+  * [关于架构](https://cloud.google.com/spanner/docs/schema-and-data-model)
+  * [架构设计最佳做法](https://cloud.google.com/spanner/docs/schema-design)
