@@ -275,6 +275,7 @@
 - [ ] 282	Expression Add Operators		
 - [ ] 140	Word Break II		
 - [ ] 351	Android Unlock Patterns	
+- [x] 679   24 Game 
    
 ## Dynamic Programming
 ### 一维			
@@ -760,4 +761,5 @@
 - [x] 706   Design HashMap  
 - [x] 1143  Longest Common Subsequence  
 - [x] 2400  Number of Ways to Reach a Position After Exactly k Steps    
+- [x] 679   24 Game 
   
