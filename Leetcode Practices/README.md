@@ -379,7 +379,7 @@
 - [x] 364	Nested List Weight Sum II		
 - [x] 127	Word Ladder		
 - [x] 51	N-Queens		
-- [ ] 52	N-Queens II		
+- [x] 52	N-Queens II		
 - [x] 126	Word Ladder II	
    
 ## Stack & PriorityQueue
@@ -540,7 +540,7 @@
 - [x] 49	Group Anagrams		
 - [x] 50	Pow(x, n)		
 - [x] 51	N-Queens		
-- [ ] 52	N-Queens II		
+- [x] 52	N-Queens II		
 - [x] 53	Maximum Subarray		
 - [x] 54	Spiral Matrix		
 - [x] 55	Jump Game		
