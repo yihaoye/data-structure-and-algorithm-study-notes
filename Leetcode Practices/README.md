@@ -306,7 +306,7 @@
 - [x] 276	Paint Fence		
 - [ ] 91	Decode Ways		
 - [x] 10	Regular Expression Matching		
-- [ ] 44	Wildcard Matching	
+- [x] 44	Wildcard Matching	
    
 ## LinkedList
 ### 基础			
@@ -533,7 +533,7 @@
 - [x] 41	First Missing Positive		
 - [x] 42	Trapping Rain Water		
 - [x] 43	Multiply Strings		
-- [ ] 44	Wildcard Matching		
+- [x] 44	Wildcard Matching		
 - [x] 45	Jump Game II		
 - [x] 46	Permutations		
 - [x] 47	Permutations II		
