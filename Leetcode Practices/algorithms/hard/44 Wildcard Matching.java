@@ -39,30 +39,30 @@ class Solution {
         // 2D DP
         // boolean[][] dp - dp[i][j] == true means s[0-i] match p[0-j]
         int sLen = s.length(), pLen = p.length();
+        boolean[] onlyStar = new boolean[pLen]; // onlyStar[i] means p[0..i] only contains star *
+        for (int j=0; j<pLen; j++) {
+            if (p.charAt(j) != '*') break;
+            onlyStar[j] = true;
+        }
         
         // edge cases
-        if (sLen == 0) {
-            for (char c : p.toCharArray()) if (c != '*') return false;
-            return true;
-        }
+        if (sLen == 0 && pLen == 0) return true;
+        if (sLen == 0) return onlyStar[pLen-1];
         if (pLen == 0) return false; // 唯一可能 true 的 sLen == 0 已经在前面处理了
         
         boolean[][] dp = new boolean[sLen][pLen];
+        boolean[][] prefixOrRow = new boolean[sLen][pLen]; // 前缀或，dp[0..i][j] 只要有一个为 true，则 prefixOrRow[i][j] 就为 true
         for (int i=0; i<sLen; i++) {
             for (int j=0; j<pLen; j++) {
                 if (p.charAt(j) == '*') {
                     if (j == 0) dp[i][j] = true;
-                    else {
-                        for (int k=0; k<=i; k++) dp[i][j] |= dp[k][j-1] || dp[k][j]; // core logic 还可以改善性能
-                    }
+                    else dp[i][j] = prefixOrRow[i][j] || prefixOrRow[i][j-1]; // core logic
                 } else if (p.charAt(j) == '?' || p.charAt(j) == s.charAt(i)) {
                     if (i > 0 && j > 0) dp[i][j] = dp[i-1][j-1];
                     if (i == 0 && j == 0) dp[i][j] = true;
-                    if (i == 0 && j > 0) {
-                        dp[i][j] = dp[i][j-1]; // 必须 p[0..j-1] 均是 *。同时 i > 0 && j == 0 不可能因为只能是 * 已经被上面的逻辑覆盖，这里不可能
-                        for (int l=0; l<j; l++) if (p.charAt(l) != '*') dp[i][j] = false;
-                    }
+                    if (i == 0 && j > 0 && onlyStar[j-1]) dp[i][j] = dp[i][j-1]; // 必须 p[0..j-1] 均是 *。同时 i > 0 && j == 0 不可能因为只能是 * 已经被上面的逻辑覆盖，这里不可能
                 }
+                prefixOrRow[i][j] = dp[i][j] || (i > 0 ? prefixOrRow[i-1][j] : false);
             }
         }
         
@@ -78,23 +78,20 @@ class Solution {
         // https://leetcode.com/problems/wildcard-matching/discuss/17810/Linear-runtime-and-constant-space-solution
         int s = 0, p = 0, match = 0, starIdx = -1;            
         while (s < str.length()) {
-            if (p < pattern.length()  && (pattern.charAt(p) == '?' || str.charAt(s) == pattern.charAt(p))){ // advancing both pointers
+            if (p < pattern.length() && (pattern.charAt(p) == '?' || str.charAt(s) == pattern.charAt(p))) { // advancing both pointers
                 s++; p++;
             } else if (p < pattern.length() && pattern.charAt(p) == '*') { // * found, only advancing pattern pointer
-                starIdx = p;
+                starIdx = p++;
                 match = s;
-                p++;
             } else if (starIdx != -1) { // last pattern pointer was *, advancing string pointer
                 p = starIdx + 1;
-                match++;
-                s = match;
+                s = ++match;
             } else {
                 return false; // current pattern pointer is not star, last patter pointer was not *, characters do not match
             }
         }
 
-        // check for remaining characters in pattern
-        while (p < pattern.length() && pattern.charAt(p) == '*') p++;
+        while (p < pattern.length() && pattern.charAt(p) == '*') p++; // check for remaining characters in pattern
 
         return p == pattern.length();
     }
