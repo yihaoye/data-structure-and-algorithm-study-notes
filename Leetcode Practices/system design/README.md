@@ -35,7 +35,8 @@
 ## 系统学习
 * [Grok System Design Tutorial](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Leetcode%20Practices/system%20design/grok_system_design_interview.pdf)
 * [System Design Fundamentals](./System%20Design%20Fundamentals.md)
-* [System-Design-Primer](https://github.com/donnemartin/system-design-primer)  
+* [System-Design-Primer](https://github.com/donnemartin/system-design-primer)
+* [Scalability Architecture](https://github.com/binhnguyennus/awesome-scalability#architecture)
   
 ## 系统主要大类（其他系统皆可从中找到类似）
 <details>
