@@ -1458,6 +1458,10 @@ Mapping Example
   
 **Algolia**  
 比较简单的系统还可以直接使用、集成已有的关于搜索 SaaS 服务，比如 Algolia 等等。  
+
+**其他相关技术**
+* [Tf-idf](https://zh.wikipedia.org/wiki/Tf-idf)
+* [H index](https://zh.wikipedia.org/wiki/H%E6%8C%87%E6%95%B0)
   
 **参考链接及延伸阅读**  
 https://medium.com/airbnb-engineering/contextualizing-airbnb-by-building-knowledge-graph-b7077e268d5a  
