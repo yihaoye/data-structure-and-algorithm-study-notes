@@ -74,6 +74,7 @@ private void pushDown(int index) { // 把当前节点的标志值传给子节点
 https://github.com/EndlessCheng/codeforces-go/blob/master/copypasta/segment_tree.go  
   
 ## 二维线段树
+[浅谈二维线段树](https://www.cnblogs.com/TheRoadToTheGold/p/8151375.html)  
 ToDo...  
   
 ## zkw线段树
