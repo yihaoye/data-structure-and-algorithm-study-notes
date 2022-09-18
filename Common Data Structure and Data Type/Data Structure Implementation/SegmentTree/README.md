@@ -75,8 +75,20 @@ https://github.com/EndlessCheng/codeforces-go/blob/master/copypasta/segment_tree
   
 ## 二维线段树
 [浅谈二维线段树](https://www.cnblogs.com/TheRoadToTheGold/p/8151375.html)  
+[线段树套线段树](https://oi-wiki.org/ds/seg-in-seg/)  
+[树套树学习笔记](https://www.cnblogs.com/Flying2018/p/13615844.html)  
+
+二维线段树，即用线段树维护一个矩阵  
+有两种实现方式：  
+1. 原一维线段树的基础上，每一个节点都是一个线段树，代表第二维
+2. 四分法转化为一维线段树
+
+第一种方法单次操作的时间复杂度是 `logN^2`，第二种方法最差可以退化到 `N`。  
+第二种方法本质上是四叉的一维线段树。  
+时间复杂度第一种更优，建议第一种方法。空间复杂度两种都一样。  
+
 ToDo...  
-  
+
 ## zkw线段树
 ToDo...  
   
