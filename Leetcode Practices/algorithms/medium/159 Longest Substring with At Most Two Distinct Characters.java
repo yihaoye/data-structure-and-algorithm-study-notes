@@ -110,3 +110,28 @@ finally, we update j pointing to the new spot (index before first index of last 
 
 As you can see the key idea here is that we can update substring starting point by only keeping track of the last spot where character changes.
 */
+
+
+
+// My Solution 2:
+class Solution {
+    public int lengthOfLongestSubstringTwoDistinct(String s) {
+        // Two pointer + HashMap
+        int left = 0, right = 0, res = 1;
+        Map<Character, Integer> count = new HashMap<>();
+        count.put(s.charAt(left), 1);
+        while (true) {
+            if (count.size() > 2) {
+                int lCnt = count.get(s.charAt(left));
+                if (lCnt == 1) count.remove(s.charAt(left));
+                else count.put(s.charAt(left), lCnt - 1);
+                left++;
+            } else {
+                res = Math.max(res, right - left + 1);
+                if (++right < s.length()) count.put(s.charAt(right), count.getOrDefault(s.charAt(right), 0) + 1);
+                else break;
+            }
+        }
+        return res;
+    }
+}
