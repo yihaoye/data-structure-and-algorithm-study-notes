@@ -37,15 +37,18 @@ Follow up: Could you solve this in O(n) time?
 
 
 
-// My Solution:
+// Other's Solution:
 class Solution {
     public int wiggleMaxLength(int[] nums) {
-        // 旗帜变量
-        // lastNegLen - 上一次 diff 为负数的最大长度, lastPosLen - 上一次 diff 为正数的最大长度
-        // if (curDiff > 0) lastPosLen = Math.max(lastNegLen + 1, lastPosLen);
-        // if (curDiff < 0) lastNegLen = Math.max(lastPosLen + 1, lastNegLen);
-        // 同时维护一个 res = Math.max(lastNegLen, lastPosLen);
-        // Time: O(N), Space: O(1)
+        /*
+         动态规划 - https://leetcode.cn/problems/wiggle-subsequence/solution/tan-xin-si-lu-qing-xi-er-zheng-que-de-ti-jie-by-lg/
+         假设 up[i] 表示 nums[0:i] 中最后两个数字递增的最长摆动序列长度，down[i] 表示 nums[0:i] 中最后两个数字递减的最长摆动序列长度，只有一个数字时默认为 1。
+            1. nums[i+1] > nums[i]
+                假设 down[i] 表示的最长摆动序列的最远末尾元素下标正好为 i，遇到新的上升元素后，up[i+1] = down[i] + 1 ，这是因为 up 一定从 down 中产生（初始除外），并且 down[i] 此时最大。
+                假设 down[i] 表示的最长摆动序列的最远末尾元素下标小于 i，设为 j，那么 nums[j:i] 一定是递增的，因为若完全递减，最远元素下标等于 i，若波动，那么 down[i] > down[j]。由于 nums[j:i] 递增，down[j:i] 一直等于 down[j] ，依然满足 up[i+1] = down[i] + 1 。
+            2. nums[i+1] < nums[i]，类似第一种情况
+            3. nums[i+1] == nums[i]，新的元素不能用于任何序列，保持不变
+        */
         int n = nums.length;
         if (n < 2) return n;
         int lastNegLen = nums[1] - nums[0] >= 0 ? 1 : 2, lastPosLen = nums[1] - nums[0] <= 0 ? 1 : 2; // 为什么初始值为 2 的情况？因为下面的遍历从 i=2 出发，且 nums[1] - nums[0] > 0 时 i=1 时 lastNegLen 必为 2
