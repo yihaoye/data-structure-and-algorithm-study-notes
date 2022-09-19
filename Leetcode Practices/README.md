@@ -456,7 +456,7 @@
 ## Union Find
 - [x] 261	Graph Valid Tree		
 - [ ] 323	Number of Connected Components in an Undirected Graph		
-- [ ] 305	Number of Islands II	
+- [x] 305	Number of Islands II	
 - [x] 721   Accounts Merge  
    
 ## Trie
@@ -701,7 +701,7 @@
 - [x] 300	Longest Increasing Subsequence		
 - [ ] 301	Remove Invalid Parentheses		
 - [ ] 302	Smallest Rectangle Enclosing Black Pixels		
-- [ ] 305	Number of Islands II		
+- [x] 305	Number of Islands II		
 - [x] 307	Range Sum Query - Mutable		
 - [ ] 308	Range Sum Query 2D - Mutable		
 - [x] 309	Best Time to Buy and Sell Stock with Cooldown		
