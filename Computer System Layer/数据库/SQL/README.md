@@ -283,6 +283,35 @@ SELECT * FROM A LEFT JOIN B ON A.id = B.id UNION SELECT * FROM A RIGHT JOIN B ON
 在项目开发过程中，使用数据库查询语句时，有很多需求都是要涉及到较为复杂或者多表的连接查询，需要关联查询实现。以上总结的是 MySQL 的 5 种关联查询（包括 UNION）。  
   
   
+## 多表查询
+https://www.liaoxuefeng.com/wiki/1177760294764384/1179664013849760  
+SELECT 查询不但可以从一张表查询数据，还可以从多张表同时查询数据。查询多张表的语法是：SELECT * FROM <表1> <表2>。
+
+例如，同时从 students 表和 classes 表的“乘积”，即查询数据，可以这么写：
+```sql
+FROM students, classes:
+SELECT * FROM students, classes;
+```  
+这种一次查询两个表的数据，查询的结果也是一个二维表，它是 students 表和 classes 表的“乘积”，即 students 表的每一行与 classes 表的每一行都两两拼在一起返回。结果集的列数是 students 表和 classes 表的列数之和，行数是 students 表和 classes 表的行数之积。  
+这种多表查询又称笛卡尔查询，使用笛卡尔查询时要非常小心，由于结果集是目标表的行数乘积，对两个各自有 100 行记录的表进行笛卡尔查询将返回 1 万条记录，对两个各自有 1 万行记录的表进行笛卡尔查询将返回 1 亿条记录。  
+上述查询的结果集有两列 id 和两列 name，两列 id 是因为其中一列是 students 表的 id，而另一列是 classes 表的 id，但是在结果集中，不好区分。两列 name 同理  
+要解决这个问题，仍然可以利用投影查询的“设置列的别名”来给两个表各自的 id 和 name 列起别名：  
+注意，多表查询时，要使用 表名.列名 这样的方式来引用列和设置别名，这样就避免了结果集的列名重复问题。但是，用 表名.列名 这种方式列举两个表的所有列实在是很麻烦，所以 SQL 还允许给表设置一个别名：  
+```sql
+SELECT
+    s.id sid,
+    s.name,
+    s.gender,
+    s.score,
+    c.id cid,
+    c.name cname
+FROM students s, classes c;
+```  
+注意到 FROM 子句给表设置别名的语法是 FROM <表名1> <别名1>, <表名2> <别名2>。这样用别名 s 和 c 分别表示 students 表和 classes 表。  
+多表查询也是可以添加 WHERE 条件的。  
+使用多表查询可以获取 M x N 行记录；多表查询的结果集可能非常巨大，要小心使用。  
+  
+  
 ## 其他实用 SQL 函数
 select 查询数据时，同时动态地在结果里添加自增字段（table 里没有的）的方法  
 ```sql
