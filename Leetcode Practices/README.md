@@ -442,7 +442,7 @@
 ### 基础			
 - [x] 133	Clone Graph		
 - [x] 399	Evaluate Division		
-- [ ] 310	Minimum Height Trees	
+- [x] 310	Minimum Height Trees	
 - [x] 743   Network Delay Time	
 ### 图形学			
 - [ ] 149	Max Points on a Line		
