@@ -20,6 +20,33 @@
 
 
 
+// 方案五
+// 贪心+优先队列/最大堆
+// Time: O(Math.max(res*logN, N*logN)) - 最差情况即不能完成时为 O(M) 或更小
+// Space: O(N)
+public class Solution {
+    public static int minTime(List<Integer> abilities, Long processes) {
+        int res = 0;
+        PriorityQueue<Long> pq = new PriorityQueue<>((a, b) -> b.compareTo(a));
+        for (Integer ability : abilities) pq.offer(new Long(ability));
+
+        while (processes > 0L && !pq.isEmpty()) {
+            Long maxL = pq.poll();
+            processes -= maxL;
+            if (maxL >= 2) pq.offer(maxL / 2);
+            res++;
+        }
+
+        return processes > 0L ? -1 : res;
+    }
+
+    public static void main() {
+        // ...
+    }
+}
+
+
+
 // 方案一
 // 一开始的思路是排序加贪婪算法，每次排序得出最大能力值的处理器然后用 processes 减去该值，然后把该处理器能力值减半，
 // 然后重复上述过程直到 processes <= 0，返回循环的次数即是最小时间。
@@ -169,4 +196,4 @@ public class Solution {
 
 
 // 总结
-// 若 N >> M 时使用方案四，若 M >> N 时使用方案三
+// 若 N >> M 时使用方案四，若 M >> N 时使用方案三。（更新：采用方案五最简洁明了且性能最好）
