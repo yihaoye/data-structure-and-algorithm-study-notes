@@ -63,8 +63,9 @@ public long factorial(int n) {
 
 
 
-// GCD 最大公约数（注意 a、b 任意一个都不能等于 0，即 a != 0 && b != 0 才能使用该函数计算）
+// GCD 最大公约数
 public int gcd(int a, int b) { //（欧几里得算法 - https://zh.wikipedia.org/zh-hans/%E8%BC%BE%E8%BD%89%E7%9B%B8%E9%99%A4%E6%B3%95）
+    if (a == 0) return b; // 若 a 或 b 的任意一个为 0，则最大公约数就是另一个数
     while (b != 0) {
         int temp = b;
         b = a % b;
@@ -73,3 +74,4 @@ public int gcd(int a, int b) { //（欧几里得算法 - https://zh.wikipedia.or
     return a;
 }
 // 证明过程：https://www.youtube.com/watch?v=WGO4Tqx5owg（包括贝祖定理）
+// 若是求 3 个或更多个数的最大公约数，则方法是先对头两个数求出其最大公约数，然后再以该最大公约数与第 3 个数作为 a、b 求第二轮的最大公约数，如此类推。
