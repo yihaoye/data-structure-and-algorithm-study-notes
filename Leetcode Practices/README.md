@@ -445,7 +445,7 @@
 - [x] 310	Minimum Height Trees	
 - [x] 743   Network Delay Time	
 ### 图形学			
-- [ ] 149	Max Points on a Line		
+- [x] 149	Max Points on a Line		
 - [ ] 335	Self Crossing		                                    很少考
 - [ ] 356	Line Reflection		                                    很少考
 - [x] 391	Perfect Rectangle		                                很少考
@@ -601,7 +601,7 @@
 - [ ] 140	Word Break II		
 - [x] 142	Linked List Cycle II		
 - [x] 146	LRU Cache		
-- [ ] 149	Max Points on a Line		
+- [x] 149	Max Points on a Line		
 - [x] 150	Evaluate Reverse Polish Notation		
 - [x] 152	Maximum Product Subarray		
 - [ ] 153	Find Minimum in Rotated Sorted Array		
