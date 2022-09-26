@@ -269,7 +269,7 @@ SELECT w.work_name,l.work_name 领导姓名 FROM t_emp w,t_emp l WHERE w.leader_
 ![](./282011580541647.png)  
   
 **交叉连接（CROSS JOIN）**：  
-除了在 FROM 子句中使用`逗号间隔连接的表`外，SQL 还支持另一种被称为交叉连接的操作，它们都返回被连接的两个表所有数据行的[笛卡尔积](https://zh.wikipedia.org/wiki/%E7%AC%9B%E5%8D%A1%E5%84%BF%E7%A7%AF)，返回到的数据行数等于第一个表中符合查询条件的数据行数`乘以`第二个表中符合查询条件的数据行数。惟一的不同在于，交叉连接分开列名时，使用 CROSS JOIN 关键字而不是逗号，即以下两个表达式等价：  
+除了在 FROM 子句中使用`逗号间隔连接的表`外，SQL 还支持另一种被称为交叉连接的操作，它们都返回被连接的两个表所有数据行的[笛卡尔积 / Cartesian Product](https://zh.wikipedia.org/wiki/%E7%AC%9B%E5%8D%A1%E5%84%BF%E7%A7%AF)，返回到的数据行数等于第一个表中符合查询条件的数据行数`乘以`第二个表中符合查询条件的数据行数。惟一的不同在于，交叉连接分开列名时，使用 CROSS JOIN 关键字而不是逗号，即以下两个表达式等价：  
 ```sql
 SELECT  *  FROM  A, B
 SELECT  *  FROM  A  CROSS JOIN  B
