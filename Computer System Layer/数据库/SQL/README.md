@@ -233,7 +233,8 @@ Union VS Join:
 现在有如下两张表：  
 ![](./281926560709208.png)  
 ![](./281926198981725.png)  
-内联接：  
+
+**内联接**：  
 内联接是指两个表中某一行相关的列值匹配时，这一行才会出现在表中。比如 t_student._fk 与 t_class._infor 相同时才会出行该行，其他的行剔除。  
 ```sql
 SELECT * FROM t_student INNER JOIN t_class ON t_class._infor = t_student._fk;
@@ -245,7 +246,7 @@ SELECT * FROM t_student s,t_class c WHERE c._infor = s._fk
 ```
 此写法也是用的最多的。  
   
-外联接：  
+**外联接**：  
 分为左外联接与右处联接。  
 外联接是指不管有没有匹配，被定义了外联接的表数据都要出现在结果中。比如左外联接，那么在 JOIN 左边的表就被定义为外联接，那么此表中所有数据都会出现在查询结果中。  
 注意班级表中的四班是没有学生的，所以在内联接之后理所当然的被剔除了。现在以外联接做示例：  
@@ -256,7 +257,7 @@ SELECT * FROM t_student s RIGHT JOIN t_class c ON s._fk=c._infor;
 ![](./281954257733735.png)  
 这就是外联接的用法，通常用在想要的数据匹配不上时。  
   
-自联接：  
+**自联接**：  
 自联接属于内联接或外联接的一种特例，自联接所联接的表均是来自同一张。  
 ![](./282008167895581.png)  
 上表中，6个人均属于某公司的员工。区别是李四为张三和王五的领导，张八为赵六和孙七的领导。leader_id与work_id相关联。  
@@ -267,25 +268,15 @@ SELECT w.work_name,l.work_name 领导姓名 FROM t_emp w,t_emp l WHERE w.leader_
 结果：  
 ![](./282011580541647.png)  
   
-交叉连接（CROSS JOIN）：  
+**交叉连接（CROSS JOIN）**：  
 除了在 FROM 子句中使用`逗号间隔连接的表`外，SQL 还支持另一种被称为交叉连接的操作，它们都返回被连接的两个表所有数据行的[笛卡尔积](https://zh.wikipedia.org/wiki/%E7%AC%9B%E5%8D%A1%E5%84%BF%E7%A7%AF)，返回到的数据行数等于第一个表中符合查询条件的数据行数`乘以`第二个表中符合查询条件的数据行数。惟一的不同在于，交叉连接分开列名时，使用 CROSS JOIN 关键字而不是逗号，即以下两个表达式等价：  
 ```sql
 SELECT  *  FROM  A, B
 SELECT  *  FROM  A  CROSS JOIN  B
 ```  
-  
-全连接（FULL JOIN）：  
-MySQL 本身不支持全连接，但可以通过联合使用 LEFT JOIN、UNION 和 RIGHT JOIN 来实现 - 全连接，即左连接的结果+右连接的结果。  
-```sql
-SELECT * FROM A LEFT JOIN B ON A.id = B.id UNION SELECT * FROM A RIGHT JOIN B ON A.id = B.id
-```  
-  
-在项目开发过程中，使用数据库查询语句时，有很多需求都是要涉及到较为复杂或者多表的连接查询，需要关联查询实现。以上总结的是 MySQL 的 5 种关联查询（包括 UNION）。  
-  
-  
-## 多表查询
+
 https://www.liaoxuefeng.com/wiki/1177760294764384/1179664013849760  
-SELECT 查询不但可以从一张表查询数据，还可以从多张表同时查询数据。查询多张表的语法是：SELECT * FROM <表1> <表2>。
+多表查询：SELECT 查询不但可以从一张表查询数据，还可以从多张表同时查询数据。查询多张表的语法是：SELECT * FROM <表1> <表2>。
 
 例如，同时从 students 表和 classes 表的“乘积”，即查询数据，可以这么写：
 ```sql
@@ -310,6 +301,14 @@ FROM students s, classes c;
 注意到 FROM 子句给表设置别名的语法是 FROM <表名1> <别名1>, <表名2> <别名2>。这样用别名 s 和 c 分别表示 students 表和 classes 表。  
 多表查询也是可以添加 WHERE 条件的。  
 使用多表查询可以获取 M x N 行记录；多表查询的结果集可能非常巨大，要小心使用。  
+  
+**全连接（FULL JOIN）**：  
+MySQL 本身不支持全连接，但可以通过联合使用 LEFT JOIN、UNION 和 RIGHT JOIN 来实现 - 全连接，即左连接的结果+右连接的结果。  
+```sql
+SELECT * FROM A LEFT JOIN B ON A.id = B.id UNION SELECT * FROM A RIGHT JOIN B ON A.id = B.id
+```  
+  
+在项目开发过程中，使用数据库查询语句时，有很多需求都是要涉及到较为复杂或者多表的连接查询，需要关联查询实现。以上总结的是 MySQL 的 5 种关联查询（包括 UNION）。  
   
   
 ## 其他实用 SQL 函数
