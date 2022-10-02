@@ -309,9 +309,9 @@ SELECT * FROM A LEFT JOIN B ON A.id = B.id UNION SELECT * FROM A RIGHT JOIN B ON
 ```  
   
 在项目开发过程中，使用数据库查询语句时，有很多需求都是要涉及到较为复杂或者多表的连接查询，需要关联查询实现。以上总结的是 MySQL 的 5 种关联查询（包括 UNION）。  
-
-
-## 窗口函数
+  
+  
+## 窗口函数（Windows Function）
 ### 窗口函数有什么用？
 在日常工作中，经常会遇到需要在每组内排名，比如下面的业务需求：  
 > 排名问题：每个部门按业绩来排名
@@ -329,12 +329,10 @@ SELECT * FROM A LEFT JOIN B ON A.id = B.id UNION SELECT * FROM A RIGHT JOIN B ON
 
 那么语法中的<窗口函数>都有哪些呢？  
 <窗口函数>的位置，可以放以下两种函数：  
+1. 专用窗口函数，包括后面要讲到的 rank, dense_rank, row_number 等专用窗口函数。
+2. 聚合函数，如 sum. avg, count, max, min 等
 
-1） 专用窗口函数，包括后面要讲到的rank, dense_rank, row_number等专用窗口函数。
-
-2） 聚合函数，如sum. avg, count, max, min等
-
-因为窗口函数是对where或者group by子句处理后的结果进行操作，所以窗口函数原则上只能写在select子句中。
+因为窗口函数是对 where 或者 group by 子句处理后的结果进行操作，所以窗口函数原则上只能写在 select 子句中。  
   
   
 ## 其他实用 SQL 函数
