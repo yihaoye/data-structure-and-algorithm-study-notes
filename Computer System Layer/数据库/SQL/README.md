@@ -312,6 +312,8 @@ SELECT * FROM A LEFT JOIN B ON A.id = B.id UNION SELECT * FROM A RIGHT JOIN B ON
   
   
 ## 窗口函数（Windows Function）
+以下摘抄自：https://zhuanlan.zhihu.com/p/92654574  
+
 ### 窗口函数有什么用？
 在日常工作中，经常会遇到需要在每组内排名，比如下面的业务需求：  
 > 排名问题：每个部门按业绩来排名
@@ -333,6 +335,69 @@ SELECT * FROM A LEFT JOIN B ON A.id = B.id UNION SELECT * FROM A RIGHT JOIN B ON
 2. 聚合函数，如 sum. avg, count, max, min 等
 
 因为窗口函数是对 where 或者 group by 子句处理后的结果进行操作，所以窗口函数原则上只能写在 select 子句中。  
+
+### 如何使用？
+接下来，就结合实例，给大家介绍几种窗口函数的用法。  
+
+#### 专用窗口函数 rank
+如果想在每个班级内按成绩排名，得到下面的结果。  
+![](./windows-function-1.png)  
+
+以班级“1”为例，这个班级的成绩“95”排在第1位，这个班级的“83”排在第4位。上面这个结果确实按要求在每个班级内，按成绩排名了。  
+
+得到上面结果的 sql 语句代码如下：  
+```sql
+select *, rank() over (partition by 班级 order by 成绩 desc) as ranking
+from 班级表
+```
+来解释下这个 sql 语句里的 select 子句。rank 是排序的函数。要求是“每个班级内按成绩排名”，这句话可以分为两部分：  
+1. 每个班级内：按班级分组 - partition by用来对表分组。在这个例子中，所以我们指定了按“班级”分组（partition by 班级）
+2. 按成绩排名 - order by子句的功能是对分组后的结果进行排序，默认是按照升序（asc）排列。在本例中（order by 成绩 desc）是按成绩这一列排序，加了 desc 关键词表示降序排列。
+
+通过下图，就可以理解 partiition by（分组）和 order by（在组内排序）的作用了。  
+![](./windows-function-2.png)  
+
+窗口函数具备了之前学过的 group by 子句分组的功能和 order by 子句排序的功能。那么，为什么还要用窗口函数呢？  
+**这是因为，group by 分组汇总后改变了表的行数，一行只有一个类别。而 partiition by 和 rank 函数不会减少原表中的行数。**  
+![](./windows-function-3.png)  
+
+为什么叫“窗口”函数呢？这是因为 partition by 分组后的结果称为“窗口”，这里的窗口不是家里的门窗，而是表示“范围”的意思。  
+简单来说，窗口函数有以下功能：  
+1. 同时具有分组和排序的功能
+2. 不减少原表的行数
+3. 语法：```<窗口函数> over (partition by <用于分组的列名> order by <用于排序的列名>)```
+
+#### 其他专用窗口函数
+专用窗口函数 rank, dense_rank, row_number 有什么区别呢？可以看以下例子：  
+```sql
+select *,
+  rank() over (order by 成绩 desc) as ranking,
+  dense_rank() over (order by 成绩 desc) as dese_rank,
+  row_number() over (order by 成绩 desc) as row_num
+from 班级表
+```  
+得到结果：  
+![](./windows-function-4.png)  
+
+最后，需要强调的一点是：在上述的这三个专用窗口函数中，函数后面的括号不需要任何参数，保持 () 空着就可以。另外 partition 子句可是省略，省略就是不指定分组。  
+
+### 聚合函数作为窗口函数
+聚和窗口函数和上面提到的专用窗口函数用法完全相同，只需要把聚合函数写在窗口函数的位置即可，但是函数后面括号里面不能为空，需要指定聚合的列名。  
+来看一下窗口函数是聚合函数时，会出来什么结果：  
+```sql
+select *,
+  sum(成绩) over (order by 学号) as current_sum,
+  avg(成绩) over (order by 学号) as current_avg,
+  count(成绩) over (order by 学号) as current_count,
+  max(成绩) over (order by 学号) as current_max,
+  min(成绩) over (order by 学号) as current_min
+from 班级表
+```  
+得到结果：  
+![](./windows-function-5.png)  
+
+如上图，聚合函数 sum 在窗口函数中，是对自身记录、及位于自身记录以上的数据进行求和的结果。比如 0004 号，在使用 sum 窗口函数后的结果，是对 0001，0002，0003，0004 号的成绩求和，若是 0005 号，则结果是 0001号~0005 号成绩的求和，以此类推。  
+不仅是 sum 求和，平均、计数、最大最小值，也是同理，都是针对自身记录、以及自身记录之上的所有数据进行计算，现在再结合刚才得到的结果。  
   
   
 ## 其他实用 SQL 函数
