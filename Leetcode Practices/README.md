@@ -290,6 +290,7 @@
 - [x] 375	Guess Number Higher or Lower II		
 - [ ] 312	Burst Balloons		
 - [ ] 322	Coin Change		
+- [x] 877   Stone Game  
 ### 二维
 - [x] 256	Paint House		
 - [ ] 265	Paint House II		
@@ -766,4 +767,5 @@
 - [x] 679   24 Game 
 - [x] 1232  Check If It Is a Straight Line  
 - [x] 1266  Minimum Time Visiting All Points    
+- [x] 877   Stone Game  
   
