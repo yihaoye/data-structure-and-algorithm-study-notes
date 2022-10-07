@@ -824,11 +824,22 @@ https://shardingsphere.apache.org/index_zh.html
   
 ## Control Flow Function
 ### CASE WHEN
+```sql
+CASE
+    WHEN condition1 THEN result1
+    WHEN condition2 THEN result2
+    WHEN conditionN THEN resultN
+    ELSE result
+END;
+```  
 ToDo...
 
 
 ## Regular Expressions
-ToDo...
+```sql
+SELECT column_lists FROM table_name WHERE field_name REGEXP 'pattern';
+```  
+ToDo...  
 
 
 ## 其他 (Misc)
