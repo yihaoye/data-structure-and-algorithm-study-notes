@@ -852,6 +852,19 @@ SELECT * FROM cte_name;
 WITH RECURSIVE cte_name (column_names) AS (subquery)   
 SELECT * FROM cte_name;
 ```  
+
+Some of the essential points related to the recursive CTE are:  
+* It is defined by using the WITH RECURSIVE clause.
+* A recursive CTE must contain a terminating condition.
+* We will use the recursive CTE for series generation and traversal of hierarchical or tree-structured data.
+
+Benefits of using CTE:  
+* It provides better readability of the query.
+* It increases the performance of the query.
+* The CTE allows us to use it as an alternative to the VIEW concept
+* It can also be used as chaining of CTE for simplifying the query.
+* It can also be used to implement recursive queries easily.
+
 ToDo...  
 
 ### 使用 EXPLAIN 分析 SQL 性能  
