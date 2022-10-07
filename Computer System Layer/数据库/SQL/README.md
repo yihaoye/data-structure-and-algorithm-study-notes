@@ -824,16 +824,24 @@ https://shardingsphere.apache.org/index_zh.html
   
 ## Control Flow Function
 ### CASE WHEN
-// ToDo...
+ToDo...
 
 
 ## Regular Expressions
-// ToDo...
+ToDo...
 
 
 ## 其他 (Misc)
 ### MySQL Common Table Expression (CTE)
 https://www.javatpoint.com/mysql-common-table-expression  
+```sql
+WITH cte_name (column_names) AS (query)   
+SELECT * FROM cte_name;
+
+WITH RECURSIVE cte_name (column_names) AS (subquery)   
+SELECT * FROM cte_name;
+```  
+ToDo...  
 
 ### 使用 EXPLAIN 分析 SQL 性能  
 参考：  
