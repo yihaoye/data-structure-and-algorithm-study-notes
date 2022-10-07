@@ -165,7 +165,7 @@
 - [x] 204	Count Primes		
 ### Sum			
 - [x] 1	    Two Sum		
-- [ ] 167	Two Sum II - Input array is sorted		
+- [x] 167	Two Sum II - Input array is sorted		
 - [x] 15	3Sum		
 - [x] 16	3Sum Closest		                                                            很少考
 - [x] 259	3Sum Smaller		                                                            很少考
