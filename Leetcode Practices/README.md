@@ -195,6 +195,7 @@
 - [x] 621   Task Scheduler  
 - [x] 2400  Number of Ways to Reach a Position After Exactly k Steps    
 - [x] 1232  Check If It Is a Straight Line  
+- [x] 1266  Minimum Time Visiting All Points    
   
 ## Tree
 ### 基础			
@@ -764,4 +765,5 @@
 - [x] 2400  Number of Ways to Reach a Position After Exactly k Steps    
 - [x] 679   24 Game 
 - [x] 1232  Check If It Is a Straight Line  
+- [x] 1266  Minimum Time Visiting All Points    
   
