@@ -25,8 +25,13 @@ For example, return the following Ids for the above Weather table:
 
 
 
-# Other's Solution:
-# Write your MySQL query statement below
+/* Other's Solution: */
 select W1.Id 
 from Weather W1, Weather W2 
 where W1.Temperature > W2.Temperature and TO_DAYS(W1.Date)-TO_DAYS(W2.Date)=1
+
+
+
+/* My Solution */
+SELECT w2.id FROM
+Weather w1 INNER JOIN Weather w2 ON DATEDIFF(w1.recordDate, w2.recordDate) = -1 AND w1.temperature < w2.temperature;
