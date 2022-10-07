@@ -566,6 +566,21 @@ MVCC 是利用在每条数据后面加了隐藏的两列（创建版本号和删
 如果不同程序并发存取多个表，尽量约定以相同的顺序访问表，可以大大降低死锁机会；  
 在同一个事务中，尽可能做到一次锁定所需要的所有资源，减少死锁产生概率；  
 对于非常容易产生死锁的业务部分，可以尝试使用升级锁定颗粒度，通过表级锁定来减少死锁产生的概率。  
+
+### 锁语法
+https://www.javatpoint.com/mysql-table-locking  
+```sql
+LOCK TABLES table_name [READ | WRITE];
+
+LOCK TABLE info_table READ;
+
+LOCK TABLES tab_name1 [READ | WRITE],   
+            tab_name2 [READ | WRITE], ...... ;
+```
+
+```sql
+UNLOCK TABLES;
+```
   
   
 ## 数据库的键
@@ -807,7 +822,19 @@ https://shardingsphere.apache.org/index_zh.html
 因此，在不再需要一张表的时候，采用 DROP；在想删除部分数据行时候，用 DELETE；在保留表而删除所有数据的时候用 TRUNCATE。  
   
   
-## 其他
+## Control Flow Function
+### CASE WHEN
+// ToDo...
+
+
+## Regular Expressions
+// ToDo...
+
+
+## 其他 (Misc)
+### MySQL Common Table Expression (CTE)
+https://www.javatpoint.com/mysql-common-table-expression  
+
 ### 使用 EXPLAIN 分析 SQL 性能  
 参考：  
 * [MySQL 性能优化神器 Explain 使用分析](https://segmentfault.com/a/1190000008131735)
