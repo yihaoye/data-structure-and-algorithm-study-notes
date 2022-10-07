@@ -196,6 +196,7 @@
 - [x] 2400  Number of Ways to Reach a Position After Exactly k Steps    
 - [x] 1232  Check If It Is a Straight Line  
 - [x] 1266  Minimum Time Visiting All Points    
+- [x] 1401  Circle and Rectangle Overlapping    
   
 ## Tree
 ### 基础			
@@ -768,4 +769,5 @@
 - [x] 1232  Check If It Is a Straight Line  
 - [x] 1266  Minimum Time Visiting All Points    
 - [x] 877   Stone Game  
+- [x] 1401  Circle and Rectangle Overlapping    
   
