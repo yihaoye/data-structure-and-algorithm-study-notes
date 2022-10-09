@@ -865,6 +865,9 @@ Benefits of using CTE:
 * It can also be used as chaining of CTE for simplifying the query.
 * It can also be used to implement recursive queries easily.
 
+例题：  
+* [Leetcode Q1384](./../../../Leetcode%20Practices/database/hard/1384%20Total%20Sales%20Amount%20by%20Year.sql)
+
 ToDo...  
 
 ### 使用 EXPLAIN 分析 SQL 性能  
