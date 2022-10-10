@@ -26,7 +26,7 @@ root is guaranteed to be a valid binary search tree.
 
 
 
-// My Solution:
+// Other's Solution:
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
