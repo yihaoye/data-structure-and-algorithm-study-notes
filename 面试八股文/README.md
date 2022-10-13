@@ -14,13 +14,11 @@
 ## Java 高频
 * Java 中垃圾回收机制中如何判断对象需要回收？常见的 GC 回收算法有哪些？ （中等）
 * HashMap 与 ConcurrentHashMap 的实现原理是怎样的？ConcurrentHashMap 是如何保证线程安全的？ （中等）
-* HashMap 和 HashTable 的区别是什么？   （简单）
 * Synchronized 关键字底层是如何实现的？它与 Lock 相比优缺点分别是什么？ （中等）
 * HashMap 实现原理，为什么使用红黑树？  （中等）
 * 简述 Java 的反射机制及其应用场景  （简单）
 * Synchronized，Volatile，可重入锁的不同使用场景及优缺点    （困难）
 * 简述 BIO, NIO, AIO 的区别  （困难）
-* HashMap 1.7 / 1.8 的实现区别  （简单）
 * Java 类的加载流程是怎样的？什么是双亲委派机制？  （简单）
 * JMM 中内存模型是怎样的？什么是指令序列重排序？  （中等）
 * JVM 内存是如何对应到操作系统内存的？  （中等）
@@ -64,6 +62,7 @@
 
 ## 网络高频
 * [计算机网络面试突击](https://juejin.cn/post/6932001161532669960)
+* [TCP 三次握手]()
 
 ## 安全高频
 
@@ -73,6 +72,8 @@
 ## Redis 高频
 
 ## Nginx 高频
+* [Nginx epoll 模型]()
+* [Nginx 多进程模型是如何实现高并发的]()
 
 ## Kafka 高频
 
