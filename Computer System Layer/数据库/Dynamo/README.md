@@ -213,27 +213,45 @@ Dynamo 使用一个类似于法定人数系统的一致性协议 (Quorum Systems
 * 一般来说，W 的低值和 R 的低值会增加不一致的风险，因为即使大多数副本没有处理，写请求也会被视为成功并返回给客户端。这也为持久性引入了一个脆弱的窗口，即使只在少数节点上被持久化，写请求仍被成功返回给客户端。
 * 对于读和写操作，请求被转发到第一个 N 健康的节点。
 
-
 ### put() 过程
-Dynamo 的 put() 请求将经历以下步骤。  
+Dynamo 的 put() 请求将经历以下步骤：  
+1. 协调器生成一个新的数据版本和矢量时钟组件。
+2. 将新数据保存在本地。
+3. 从偏好列表中向排名最高 N-1 的健康节点发送写请求。
+4. 在收到 W-1 确认后，put() 操作可被认为是成功了。
 
-协调器生成一个新的数据版本和矢量时钟组件。
-将新数据保存在本地。
-向N-1发送写请求
-N-1
- 从偏好列表中排名最高的健康节点。
-在收到W-1
-W-1
- 确认。
-'get()'过程
-Dynamo的get()请求将经历以下步骤。
+### get() 过程
+Dynamo 的 get() 请求将经历以下步骤：  
+1. 协调器从偏好列表中的 N-1 个排名最高的健康节点请求数据版本。
+2. 等待直到 R-1 回应。
+3. 协调员通过一个矢量时钟处理因果数据版本。
+4. 将所有相关的数据版本返回给调用者。
 
-协调者从N-1请求数据版本
-N-1
- 偏好列表中排名最高的健康节点。
-等待，直到R-1
-R-1
- 回应。
-协调员通过一个矢量时钟处理因果数据版本。
-将所有相关的数据版本返回给调用者。
+
+
+
+# Dynamo: Amazon’s Highly Available Key-value Store
+[Original Paper](./amazon-dynamo-sosp2007.pdf)  
+
+## 重点
+### 简介
+* the reliability and scalability of a system is dependent on how its application state is managed.
+  * Amazon uses a highly decentralized, loosely coupled, service oriented architecture consisting of hundreds of services. In this environment there is a particular need for storage technologies that are always available. 
+* Dynamo is used to manage the state of services that have very high reliability requirements and need tight control over the tradeoffs between availability, consistency, cost-effectiveness and performance. 
+  * Amazon’s platform has a very diverse set of applications with different storage requirements. A select set of applications requires a storage technology that is flexible enough to let application designers configure their data store appropriately based on these tradeoffs to achieve high availability and guaranteed performance in the most cost effective manner. 
+* Some service only need primary-key access to a data store, the common pattern of using a relational database would lead to inefficiencies and limit scale and availability.
+* With Dynamo, the consistency among replicas during updates is maintained by a quorum-like technique and a decentralized replica synchronization protocol (gossip based distributed failure detection and membership protocol).
+* The main contribution of this work for the research community is the evaluation of how different techniques can be combined to provide a single highly-available system.
+
+### 背景
+* Traditionally production systems store their state in relational databases. For many of the more common usage patterns of state persistence, however, a relational database is a solution that is far from ideal. Most of these services only store and retrieve data by primary key and do not require the complex querying and management functionality offered by an RDBMS.
+#### System Assumptions and Requirements
+* Query Model: simple read and write operations to a data item that is uniquely identified by a key. State is stored as binary objects (i.e., blobs) identified by unique keys. 
+  * Dynamo targets applications that need to store objects that are relatively small (usually less than 1 MB). 
+* ACID: Dynamo does not provide any isolation guarantees and permits only single key updates. 
+#### Service Level Agreements (SLA)
+* To guarantee that the application can deliver its functionality in a bounded time, each and every dependency in the platform needs to deliver its functionality with even tighter bounds. Clients and services engage in a Service Level Agreement (SLA), a formally negotiated contract where a client and a service agree on several system-related characteristics. 
+* In Amazon’s decentralized service oriented infrastructure, SLAs play an important role. For example a page request to one of the e-commerce sites typically requires the rendering engine to construct its response by sending requests to over 150 services. These services often have multiple dependencies, which frequently are other services ![](./Service-oriented%20architecture%20of%20Amazon's%20platform.png)  
+#### Design Considerations
+
 
