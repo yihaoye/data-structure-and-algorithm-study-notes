@@ -260,8 +260,12 @@ Dynamo 的 get() 请求将经历以下步骤：
   * Dynamo targets applications that need to store objects that are relatively small (usually less than 1 MB). 
 * ACID: Dynamo does not provide any isolation guarantees and permits only single key updates. 
 #### Service Level Agreements (SLA)
-* To guarantee that the application can deliver its functionality in a bounded time, each and every dependency in the platform needs to deliver its functionality with even tighter bounds. Clients and services engage in a Service Level Agreement (SLA), a formally negotiated contract where a client and a service agree on several system-related characteristics. 
-* In Amazon’s decentralized service oriented infrastructure, SLAs play an important role. For example a page request to one of the e-commerce sites typically requires the rendering engine to construct its response by sending requests to over 150 services. These services often have multiple dependencies, which frequently are other services ![](./Service-oriented%20architecture%20of%20Amazon's%20platform.png)  
+* 为了保证应用程序可以在有限的时间内交付其功能，平台中的每个依赖项都需要以更严格的边界交付其功能。客户和服务参与服务水平协议 (SLA)，这是一份正式协商的合同，其中客户端和服务端就几个与系统相关的特征达成一致。 
+* 在亚马逊去中心化的面向服务的基础设施中，SLA 发挥着重要作用。例如，对电子商务站点之一的页面请求通常需要渲染引擎通过向 150 多个服务发送请求并组合构建它们的响应。这些服务通常有多个依赖关系，这些依赖关系通常是其他服务 ![](./Service-oriented%20architecture%20of%20Amazon's%20platform.png)  
 #### Design Considerations
+*商业系统中使用的数据复制算法传统上执行同步副本协调，以提供高度一致的数据访问接口。为了实现这种级别的一致性，这些算法被迫在某些故障场景下权衡数据的可用性。例如，不是处理答案正确性的不确定性，而是在绝对确定它是正确的之前使数据不可用。从非常早期的复制数据库工作中可以看出，在处理网络故障的可能性时，强一致性和高数据可用性不能同时实现。*
+* 对于容易出现服务器和网络故障的系统，可以通过使用乐观复制技术来提高可用性，其中允许更改在后台传播到副本，并且可以容忍并发、断开连接的工作。
+* 一个重要的设计考虑是决定何时执行解决更新冲突的过程，即是否应该在读取或写入期间解决冲突。许多传统数据存储在写入期间执行冲突解决，并保持读取复杂性简单。在此类系统中，如果数据存储在给定时间无法到达所有（或大部分）副本，则可能会拒绝写入。与之相对的，Dynamo 针对 "始终可写" 的数据存储（即高度可用于写入的数据存储）来设计。
+* 下一个设计选择是谁执行冲突解决过程。这可以由数据存储或应用程序完成。如果冲突解决是由数据存储完成的，那么它的选择是相当有限的，在这种情况下，数据存储只能使用简单的策略（例如 "最后写入获胜"）来解决冲突更新。另一方面，由于应用程序知道数据模式，它可以决定最适合其客户体验的冲突解决方法。
 
 
