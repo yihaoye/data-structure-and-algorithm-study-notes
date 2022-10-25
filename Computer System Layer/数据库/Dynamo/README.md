@@ -245,13 +245,13 @@ Dynamo 的 get() 请求将经历以下步骤：
 
 ## 重点
 ### 简介
-* the reliability and scalability of a system is dependent on how its application state is managed.
-  * Amazon uses a highly decentralized, loosely coupled, service oriented architecture consisting of hundreds of services. In this environment there is a particular need for storage technologies that are always available. 
-* Dynamo is used to manage the state of services that have very high reliability requirements and need tight control over the tradeoffs between availability, consistency, cost-effectiveness and performance. 
-  * Amazon’s platform has a very diverse set of applications with different storage requirements. A select set of applications requires a storage technology that is flexible enough to let application designers configure their data store appropriately based on these tradeoffs to achieve high availability and guaranteed performance in the most cost effective manner. 
-* Some service only need primary-key access to a data store, the common pattern of using a relational database would lead to inefficiencies and limit scale and availability.
-* With Dynamo, the consistency among replicas during updates is maintained by a quorum-like technique and a decentralized replica synchronization protocol (gossip based distributed failure detection and membership protocol).
-* The main contribution of this work for the research community is the evaluation of how different techniques can be combined to provide a single highly-available system.
+* 系统的可靠性和可扩展性取决于其应用程序状态的管理方式。
+  * Amazon 使用由数百个服务组成的高度分散、松散耦合、面向服务的架构。在这种环境中，特别需要始终可用的存储技术。
+* Dynamo 用于管理有非常高的可靠性要求的服务或者需要可以严格控制可用性、一致性、成本效益、性能之间的权衡改变的服务。
+  * 亚马逊的平台有一组非常多样化的应用程序，具有不同的存储要求。一组选定的应用程序需要一种足够灵活的存储技术，以使应用程序设计人员能够根据这些折衷适当地配置其数据存储，从而以最具成本效益的方式实现高可用性和保证性能。
+* 某些服务只需要对数据存储进行主键访问，使用关系数据库的常见模式会导致效率低下并限制可扩展性和可用性。
+* 使用 Dynamo，更新期间副本之间的一致性通过类似仲裁的技术和分散的副本同步协议（基于 gossip 的分布式故障检测和成员资格协议）来维护。
+* 这项工作对研究界的主要贡献是评估如何组合不同的技术以提供单一的高可用性系统。
 
 ### 背景
 * Traditionally production systems store their state in relational databases. For many of the more common usage patterns of state persistence, however, a relational database is a solution that is far from ideal. Most of these services only store and retrieve data by primary key and do not require the complex querying and management functionality offered by an RDBMS.
@@ -325,4 +325,21 @@ Dynamo 中的故障检测用于避免在 get() 和 put() 操作期间以及在�
 ### 实现
 在 Dynamo 中，每个存储节点都具有三个主要的软件组件：请求协调、成员资格和故障检测以及本地持久性引擎。  
 Dynamo 的本地持久性组件允许插入不同的存储引擎。正在使用的引擎有如 MySQL 和具有持久性后备存储的内存缓冲区。设计可插拔持久性组件的主要原因是选择最适合应用程序访问模式的存储引擎。应用程序根据其对象大小分布选择 Dynamo 的本地持久性引擎。  
+请求协调组件建立在事件驱动的消息传递基板之上，其中消息处理管道被分成多个阶段，类似于 SEDA 架构。每个客户端请求都会导致在接收客户端请求的节点上创建一个状态机（具体与第一个教程类似）。  
 
+### 经验教训
+实践与配置（与第一个教程类似）。  
+如果 W 设置为 1，那么只要系统中至少有一个节点可以成功处理写入请求，系统就永远不会拒绝写入请求。但是，W 和 R 的低值会增加不一致的风险，因为写入请求被视为成功并返回给客户端，即使它们没有被大多数副本处理。当写入请求成功返回到客户端时，即使它仅在少数节点上持久化，这也会引入持久性漏洞窗口。  
+#### Balancing Performance and Durability
+#### 确保均匀的负载分布
+ToDo...  
+* Strategy 1: T random tokens per node and partition by token value
+* Strategy 2: T random tokens per node and equal sized partitions
+* Strategy 3: Q/S tokens per node, equal-sized partitions
+* ToDo...  
+#### 不同版本：何时和多少？
+ToDo...（与第一个教程类似）
+#### 客户端驱动或服务器驱动协调
+ToDo...（与第一个教程类似）
+#### 平衡后台与前台任务
+ToDo...  
