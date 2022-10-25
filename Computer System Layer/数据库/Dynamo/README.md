@@ -254,11 +254,11 @@ Dynamo 的 get() 请求将经历以下步骤：
 * 这项工作对研究界的主要贡献是评估如何组合不同的技术以提供单一的高可用性系统。
 
 ### 背景
-* Traditionally production systems store their state in relational databases. For many of the more common usage patterns of state persistence, however, a relational database is a solution that is far from ideal. Most of these services only store and retrieve data by primary key and do not require the complex querying and management functionality offered by an RDBMS.
+* 传统上，生产系统将其状态存储在关系数据库中。然而，对于状态持久化的许多更常见的使用模式，关系数据库是一种远非理想的解决方案。这些服务中的大多数仅通过主键存储和检索数据，不需要 RDBMS 提供的复杂查询和管理功能。
 #### System Assumptions and Requirements
-* Query Model: simple read and write operations to a data item that is uniquely identified by a key. State is stored as binary objects (i.e., blobs) identified by unique keys. 
-  * Dynamo targets applications that need to store objects that are relatively small (usually less than 1 MB). 
-* ACID: Dynamo does not provide any isolation guarantees and permits only single key updates. 
+* 查询模型：对由键唯一标识的数据项进行简单的读写操作。状态（State）存储为由唯一键标识的二进制对象（即 blob）。
+  * Dynamo 针对需要存储相对较小（通常小于 1 MB）对象的应用程序。
+* ACID：Dynamo 不提供任何隔离保证，只允许单键更新。
 #### Service Level Agreements (SLA)
 * 为了保证应用程序可以在有限的时间内交付其功能，平台中的每个依赖项都需要以更严格的边界交付其功能。客户和服务参与服务水平协议 (SLA)，这是一份正式协商的合同，其中客户端和服务端就几个与系统相关的特征达成一致。 
 * 在亚马逊去中心化的面向服务的基础设施中，SLA 发挥着重要作用。例如，对电子商务站点之一的页面请求通常需要渲染引擎通过向 150 多个服务发送请求并组合构建它们的响应。这些服务通常有多个依赖关系，这些依赖关系通常是其他服务 ![](./Service-oriented%20architecture%20of%20Amazon's%20platform.png)  
@@ -342,4 +342,7 @@ ToDo...（与第一个教程类似）
 #### 客户端驱动或服务器驱动协调
 ToDo...（与第一个教程类似）
 #### 平衡后台与前台任务
-ToDo...  
+除了正常的前台 put/get 操作外，每个节点还执行不同类型的后台任务，用于副本同步和数据切换（由于 hinted 或添加/删除节点），而且有必要确保后台任务仅在常规关键操作未受到显着影响时运行。为此，后台任务需要与准入控制机制相结合。每个后台任务都使用这个控制器来保留资源（例如数据库）的运行时切片，在所有后台任务之间共享。采用基于监控的前台任务性能的反馈机制来更改后台任务可用的切片数量。准入控制器在执行“前台”放置/获取操作时不断监视资源访问的行为。监控的方面包括磁盘操作的延迟、由于锁争用和事务超时导致的数据库访问失败以及请求队列等待时间。
+#### 讨论
+对于想要使用 Dynamo 的新应用程序，需要在开发的初始阶段进行一些分析，以选择适合业务案例的正确冲突解决机制。  
+Dynamo 采用完全会员模型，其中每个节点都知道其对等节点托管的数据。为此，每个节点都主动与系统中的其他节点 gossips（闲聊）完整的路由表。该模型适用于包含数百个节点的系统。然而，将这样的设计扩展到运行数万个节点并非易事，因为维护路由表的开销随着系统大小的增加而增加。这个限制可以通过向 Dynamo 引入分层扩展来克服。不过，O(1) DHT 系统可积极解决这个问题。  
