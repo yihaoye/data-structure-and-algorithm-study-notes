@@ -32,6 +32,28 @@ Constraints:
 
 
 
+// Other's Solution:
+class Solution {
+    public boolean checkSubarraySum(int[] nums, int k) {
+        // 前缀和 + 数学 + HashMap - https://leetcode.com/problems/continuous-subarray-sum/discuss/99499/Java-O(n)-time-O(k)-space
+        // https://zhuanlan.zhihu.com/p/106199221
+        // 原理 - (x + j*k) mod k = x
+        Map<Integer, Integer> map = new HashMap<>(){{ put(0, -1); }};
+        int runningSum = 0;
+        for (int i=0; i<nums.length; i++) {
+            runningSum += nums[i];
+            runningSum %= k;
+            
+            Integer prev = map.get(runningSum);
+            if (prev != null && i - prev > 1) return true;
+            map.putIfAbsent(runningSum, i);
+        }
+        return false;
+    }
+}
+
+
+
 // My Solution:
 class Solution {
     public boolean checkSubarraySum(int[] nums, int k) {
