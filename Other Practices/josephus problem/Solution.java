@@ -7,12 +7,11 @@ class Solution {
         // f(1, K) = 1
         // f(N, K) = (f(N-1, K) + K) % N
         // 迭代、DP 而不是递归，可使 Time: O(N), Space: O(1)
-        int[] dp = new int[N];
-        dp[0] = 1; // f(1, K)
+        int dp = 1; // f(1, K) = 1（编号从 1 开始所以 f(1, K) = 1，若从 0 开始则为 f(1, K) = 0）
         for (int i=1; i<N; i++) {
-            dp[i] = (dp[i-1] + K) % i;
+            dp = (dp + K) % i;
         }
 
-        return dp[N-1];
+        return dp;
     }
 }
