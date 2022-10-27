@@ -30,7 +30,7 @@
 - [x] 309	Best Time to Buy and Sell Stock with Cooldown		
 - [x] 11	Container With Most Water		
 - [x] 42	Trapping Rain Water		
-- [ ] 334	Increasing Triplet Subsequence		
+- [x] 334	Increasing Triplet Subsequence		
 - [x] 128	Longest Consecutive Sequence		
 - [ ] 164	Maximum Gap		                                            Bucket
 - [x] 287	Find the Duplicate Number		
@@ -720,7 +720,7 @@
 - [ ] 324	Wiggle Sort II		
 - [ ] 325	Maximum Size Subarray Sum Equals k		
 - [ ] 329	Longest Increasing Path in a Matrix		
-- [ ] 334	Increasing Triplet Subsequence		
+- [x] 334	Increasing Triplet Subsequence		
 - [ ] 336	Palindrome Pairs		
 - [x] 337	House Robber III		
 - [x] 338	Counting Bits		
