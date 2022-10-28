@@ -1675,6 +1675,15 @@ Back Queue 则实现了礼貌性策略，控制了对一个网站访问的频率
 
 
 <details>
+<summary>设计分布式 KV 数据库（Dynamo）</summary>
+
+[Dynamo](./../../Computer%20System%20Layer/数据库/Dynamo/README.md)
+
+</details>
+
+
+
+<details>
 <summary>设计分布式 Job Scheduler</summary>
 转载自：https://leetcode.com/discuss/general-discussion/1082786/System-Design%3A-Designing-a-distributed-Job-Scheduler-or-Many-interesting-concepts-to-learn  
 
@@ -1690,6 +1699,21 @@ Back Queue 则实现了礼貌性策略，控制了对一个网站访问的频率
 * 可用性：应该总是可以调度和执行作业->（动态）水平扩展
 * 作业不得多次执行（或应将此类发生降至最低）
 
+领域分析：概念  
+可以定义稍后可以转换为数据模型的域模型（Schema 的数据库模型或 ZooKeeper 的模型）：  
+* Job：
+  * 表示要执行的 Job
+  * 属性：Id, Name, JobExecutorClass, Priority, Running, LastStartTime, LastEndTime, LastExecutor, Data (Parameters)
+* 触发器（基于 Quartz Scheduler 使用的概念）：
+  * 定义何时执行作业
+  * 可以定义不同的触发器，例如：OneTimeTrigger、CronTrigger
+  * 根据类型，有如下属性：Id, Type, StartTime, EndTime, OneTime, Cronjob, Interval
+* 执行人：
+  * 是单个 Job Executor/Worker 节点
+  * 可以具有如下属性：Id (e.g. IP-based), LastHeartBeat
+
+注：一个 Job 可以有多个 Trigger  
+...
 </details>
 
 
