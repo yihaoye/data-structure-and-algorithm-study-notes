@@ -1685,21 +1685,22 @@ Back Queue 则实现了礼貌性策略，控制了对一个网站访问的频率
 
 <details>
 <summary>设计分布式 Job Scheduler</summary>
+作业调度系统  
 转载自：https://leetcode.com/discuss/general-discussion/1082786/System-Design%3A-Designing-a-distributed-Job-Scheduler-or-Many-interesting-concepts-to-learn  
 
-功能要求（可能会有所不同，但假设如下）：  
+#### 功能要求（可能会有所不同，但假设如下）：
 * 一个 job 可以被其他服务/微服务安排一次或多次执行（cron job）
 * 对于每个 job，可以指定一个类，该类继承一些接口，如 IJob，以便稍后在执行作业时可以在工作节点上调用该接口方法。（例如，该类可以存在于工作节点上的 .jar 文件中）。 
 * job 执行结果存储，可查询
 
-非功能要求（同样，可能会有所不同，但假设如下）：  
+#### 非功能要求（同样，可能会有所不同，但假设如下）：
 * 可扩展性：每天可以安排和运行数千甚至数百万个 job/作业
 * 持久性：作业不能丢失 -> 需要持久化作业
 * 可靠性：作业执行不能比预期晚很多或丢弃 -> 需要一个容错系统
 * 可用性：应该总是可以调度和执行作业->（动态）水平扩展
 * 作业不得多次执行（或应将此类发生降至最低）
 
-领域分析：概念  
+#### 领域分析：概念
 可以定义稍后可以转换为数据模型的域模型（Schema 的数据库模型或 ZooKeeper 的模型）：  
 * Job：
   * 表示要执行的 Job
@@ -1713,7 +1714,15 @@ Back Queue 则实现了礼貌性策略，控制了对一个网站访问的频率
   * 可以具有如下属性：Id (e.g. IP-based), LastHeartBeat
 
 注：一个 Job 可以有多个 Trigger  
-...
+
+#### HLD (High Level Design)
+![](./Distributed%20Job%20Scheduler%20System%20HLD.png)  
+
+想要调度（非）循环作业的微服务：可以发送消息（或 Kafka 术语中的 produce）给相应的 Kafka 队列（确切地说是一个 topic）。  
+
+**作业调度服务**：消费消息（即入队的作业请求）。并将生成一个唯一的 ID，例如雪花 ID。根据该 ID（例如通过散列），他们决定作业（Job）将进入哪个数据库分区（Database Partition）。他们根据对应的数据库分区中的消息创建 Job 和其 Trigger 记录。  
+**RDBMS**：这里选择了 RDBMS，因为稍后需要 ACID 属性，即事务。数据库被分片成足够数量的分片来分配负载和数据。以半同步的方式对每个分区使用主动被动/主从复制。一个 Slave/Follower 将同步跟随，而其他的将异步接收 Replication Stream。这样，可以确保至少有一个 Slave 保存最新数据，以防 Master 失败（如网络分区、服务器中断等故障因素），并且 Slave 将被提升为新的 Leader。  
+
 </details>
 
 
