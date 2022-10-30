@@ -1685,6 +1685,7 @@ Back Queue 则实现了礼貌性策略，控制了对一个网站访问的频率
 
 <details>
 <summary>设计分布式 Job Scheduler</summary>
+
 作业调度系统  
 转载自：https://leetcode.com/discuss/general-discussion/1082786/System-Design%3A-Designing-a-distributed-Job-Scheduler-or-Many-interesting-concepts-to-learn  
 
@@ -1748,6 +1749,12 @@ Back Queue 则实现了礼貌性策略，控制了对一个网站访问的频率
 
 **其他问题和担忧**：  
 不可靠的时钟/时间：在分布式系统中，有不可靠的时钟和时间（比如由于请求 NTP 时间时的无限延迟，因为使用的是 packet-switched networks/分组交换网络，通常不是 circuit-switched networks/电路交换网络），不可靠的 NTP 服务器（即 Time server/时间服务器），石英时钟会产生偏移量等问题。当想要可靠地调度 Jobs 并在正确的时间执行它们时，时钟和时间起着重要的作用。因此，需要确保节点上的时间是同步的并且不会相差太大。实现这一目标的一种方法是使用多个 NTP 服务器并过滤掉那些偏差很大的服务器。另一种更可靠但成本更高的方法是在数据中心使用原子钟。  
+
+#### System APIs
+* String createAndRunJob() - 创建并执行下一个可准备执行的 Job，返回它的 ID
+* String checkFailure() - 查询出现故障的 Executor，并返回其正在执行的 JobID 如果没有则为空
+* String createTrigger(String TriggerType, JSON Config) - 创建 Trigger 并返回其 ID
+* Boolean updateTrigger(String TriggerID, String TriggerType, JSON Config) - 更新已有的 Trigger
 
 </details>
 
