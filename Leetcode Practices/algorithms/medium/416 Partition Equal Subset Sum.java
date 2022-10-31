@@ -41,8 +41,8 @@ public class Solution {
 
         if (nums[0] <= target) dp[nums[0]] = true;
         for (int i = 1; i < len; i++) {
-            for (int j = target; nums[i] <= j; j--) {
-                if (dp[target]) return true;
+            for (int j = target; nums[i] <= j; j--) { // 为什么是从 target-- 而不是 nums[i]++？因为后者会对后面 nums[i]++ 有影响
+                if (dp[target]) return true; // 提前返回答案，提升性能
                 dp[j] = dp[j] || dp[j - nums[i]];
             }
         }
