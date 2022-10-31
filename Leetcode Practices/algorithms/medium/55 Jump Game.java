@@ -51,3 +51,19 @@ class Solution {
         return false; // 最远距离 k 不再改变, 且没有到末尾元素
     }
 }
+
+
+
+// My Solution:
+class Solution {
+    public boolean canJump(int[] nums) {
+        // 贪心
+        int nextStart = 0, max = nums[0], end = nums.length-1;
+        while (nextStart < max && nextStart < end) {
+            nextStart++;
+            max = Math.max(max, nextStart + nums[nextStart]);
+        }
+        
+        return max >= end;
+    }
+}
