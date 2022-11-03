@@ -52,6 +52,8 @@
 ## Golang 高频
 * [什么是 golang 内存逃逸](./../Computer%20System%20Layer/内存与程序.md#内存逃逸)
 * [go routine 和 thread、process 区别](https://huweicai.com/process-thread-goroutine/)
+* panic 相关 - [panic](https://www.yiibai.com/go/golang-panic.html)、[panic 和 recover](https://draveness.me/golang/docs/part2-foundation/ch05-keyword/golang-panic-recover/)
+* [上下文 Context](https://draveness.me/golang/docs/part3-runtime/ch06-concurrency/golang-context/)
 
 ## MySQL 高频
 * [为什么 InnoDB 表必须有主键，并且推荐使用整型的自增主键？](https://blog.csdn.net/weixin_41699562/article/details/104139458)
@@ -59,6 +61,7 @@
 * [MySQL 索引背后的数据结构及算法原理](https://blog.codinglabs.org/articles/theory-of-mysql-index.html)
 
 ## 操作系统（Linux & bash）高频
+* [进程、线程、协程的区别](./../Computer%20System%20Layer/进程与线程.md)
 
 ## 网络高频
 * [计算机网络面试突击](https://juejin.cn/post/6932001161532669960)
