@@ -11,6 +11,34 @@ Output: 1->4->3->2->5->NULL
 
 
 
+// My Solution:
+class Solution {
+    public ListNode reverseBetween(ListNode head, int left, int right) {
+        ListNode dummy = new ListNode(0, head);
+        ListNode tmp = dummy;
+        int len = right - left + 1;
+        while (--left > 0) tmp = tmp.next;
+        tmp.next = reverseList(tmp.next, len);
+        
+        return dummy.next;
+    }
+
+    public ListNode reverseList(ListNode head, int len) {
+        // 栈思想 Time: O(N), Space: O(1)
+        ListNode tmpLast = null, tmpNext = head;
+        while (tmpNext != null && len-- > 0) {
+            ListNode last = tmpNext;
+            tmpNext = last.next;
+            last.next = tmpLast;
+            tmpLast = last;
+        }
+        if (head != null) head.next = tmpNext;
+        return tmpLast;
+    }
+}
+
+
+
 // My Solution (ArrayList):
 /**
  * Definition for singly-linked list.
