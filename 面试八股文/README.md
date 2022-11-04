@@ -84,12 +84,17 @@
 * [[微服務] 什麼是 gRPC，架構上為什麼要使用 gRPC](https://www.youtube.com/watch?v=qEB3yFzETVs)
 
 ## Redis 高频
+* [redis 有哪些数据类型？可以应用在什么场景？](https://cloud.tencent.com/developer/article/1975464)
+* [redis 的过期键的删除策略有哪些？](https://cloud.tencent.com/developer/article/1975464)
+* [缓存穿透、缓存击穿、缓存雪崩是什么？怎么解决呢？](https://cloud.tencent.com/developer/article/1975464)
 
 ## Nginx 高频
 * [Nginx epoll 模型]()
 * [Nginx 多进程模型是如何实现高并发的]()
 
 ## Kafka 高频
+* [kafka 架构](https://cloud.tencent.com/developer/article/1853417)
+* [如何确定当前能读到哪一条消息](https://cloud.tencent.com/developer/article/1853417)
 
 ## Docker 高频
 
