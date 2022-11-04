@@ -62,6 +62,16 @@
 
 ## 操作系统（Linux & bash）高频
 * [进程、线程、协程的区别](./../Computer%20System%20Layer/进程与线程.md)
+* [Linux 目录结构](https://zhuanlan.zhihu.com/p/496602829)
+* [Linux 使用的进程间通信方式](https://juejin.cn/post/7069591460730896414#heading-9)
+* [Linux 有哪些系统日志文件](https://juejin.cn/post/7069591460730896414#heading-10)
+* [什么是 root 帐户](https://juejin.cn/post/7069591460730896414#heading-13)
+* [grep](https://juejin.cn/post/7069591460730896414#heading-21)
+* [sed](https://juejin.cn/post/7069591460730896414#heading-22)
+* [awk](https://juejin.cn/post/7069591460730896414#heading-23)
+* [bash 文件管理命令](https://juejin.cn/post/7069591460730896414#heading-38)
+* [bash 网络通讯命令](https://juejin.cn/post/7069591460730896414#heading-67)
+* [bash 系统管理命令](https://juejin.cn/post/7069591460730896414#heading-73)
 
 ## 网络高频
 * [计算机网络面试突击](https://juejin.cn/post/6932001161532669960)
