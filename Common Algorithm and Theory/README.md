@@ -30,7 +30,7 @@
     - [图匹配 | Graph Match](./图匹配.md)
       - [匈牙利算法 | Hungarian Algorithm](./匈牙利算法.md) (时间复杂度 O(N^3))
     - [迪杰斯特拉算法 | Dijkstra Algorithm](./Dijkstra算法.md)
-    - [动态规划, 状态机 | Dynamic Programming, State Machine](./动态规划与状态机.md)
+    - [动态规划, 状态机, 规则引擎 | Dynamic Programming, State Machine, Rule Engine](./动态规划与状态机.md)
       - [前缀和, 差分, 树状数组, 线段树 | Prefix Sum, Difference, Binary Indexed Tree, Segment Tree](./前缀和与差分.md)
       - [记忆化搜索 | Memory Search](./记忆化搜索.md)
       - [弗洛伊德算法 | Floyd-Warshall Algorithm](./弗洛伊德算法.md) (时间复杂度 O(N^3))
