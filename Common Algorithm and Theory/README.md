@@ -39,7 +39,7 @@
     - [AC 自动机 | Aho–Corasick Algorithm](./AC自动机.md)
     - [马拉车算法 | Manacher Algorithm]()
     - [最小生成树相关算法 | Minimum Spanning Tree Algorithms]()
-    - [联合查找算法（并查集） | Union Find Algorithm](./并查集与联合查找算法.md) (时间复杂度 O(1))
+    - [联合查找算法（并查集） | Union Find Algorithm](./并查集与联合查找算法.md) (时间复杂度 O(a(N)) - a(N) 为反阿克曼函数，对于大部分 N，a(N) 均小于 5，所以并查集的时间复杂度也可视为 O(1))
     - 系统级
       - [字典树算法 | Trie Algorithm](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/Trie/README.md)
       - [蓄水池抽样算法 | Reservoir Sampling](./蓄水池抽样算法.md)
