@@ -398,7 +398,7 @@
 - [x] 394	Decode String		
 - [x] 224	Basic Calculator		
 - [x] 227	Basic Calculator II		
-- [ ] 385	Mini Parser		
+- [x] 385	Mini Parser		
 - [ ] 84	Largest Rectangle in Histogram		
 - [x] 402   Remove K Digits 
 - [x] 496   Next Greater Element I  
@@ -750,7 +750,7 @@
 - [x] 380	Insert Delete GetRandom O(1)		
 - [ ] 381	Insert Delete GetRandom O(1) - Duplicates allowed		
 - [x] 384	Shuffle an Array		
-- [ ] 385	Mini Parser		
+- [x] 385	Mini Parser		
 - [x] 389	Find the Difference		
 - [x] 394	Decode String		
 - [ ] 398	Random Pick Index	
