@@ -49,7 +49,7 @@
   - [二叉搜索树 | Binary Search Tree]() (搜索 O(logN) - O(N)，插入/删除节点 O(1))
   - [平衡二叉搜索树 | Self-Balanced Binary Search Tree]()
     - [AVL树 | AVL Tree](./Data%20Structure%20Implementation/AVLTree/) (搜索 O(logN)，插入/删除节点 O(logN))
-    - [红黑树 | Red-Black Tree]() (搜索 O(logN)，插入/删除节点 O(logN))
+    - [红黑树 | Red-Black Tree](./Data%20Structure%20Implementation/RedBlackTree/README.md) (搜索 O(logN)，插入/删除节点 O(logN))
     - [线段树 | Segment Tree](./Data%20Structure%20Implementation/SegmentTree/) (区间查询 O(logN + K)，更新 O(logN)，构建 O(N) - K is the number of reported segments)
   - [平衡搜索树 | Self-Balanced Search Tree]()
     - [B 树 | B Tree]()
