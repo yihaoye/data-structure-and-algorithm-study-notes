@@ -4,4 +4,4 @@
 * [在线工具网](https://www.zxgj.cn/m/zhishang)
 * [assessmentday](https://www.assessmentday.co.uk/)
 
-待补充...  
+不好准备，建议熟悉考试风格以及提升阅读、读题速度即可。  
