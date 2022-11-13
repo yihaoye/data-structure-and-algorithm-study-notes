@@ -2,7 +2,7 @@
 ![](./红黑树规则.png)  
 
 ## 原理及实现
-https://www.cnblogs.com/skywang12345/p/3624343.html  
+https://www.cnblogs.com/skywang12345/p/3245399.html  
 [Java 实现](./RBTree.java)  
 
 ## 其他参考

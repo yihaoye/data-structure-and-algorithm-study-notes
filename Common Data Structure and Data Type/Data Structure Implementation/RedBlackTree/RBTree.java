@@ -43,7 +43,7 @@ public class RBTree<T extends Comparable<T>> {
     }
 
     /* 核心部分 */
-    
+
     /*
      * 对红黑树的节点(x)进行左旋转
      *
@@ -157,9 +157,10 @@ public class RBTree<T extends Comparable<T>> {
                     tmp = parent;
                     parent = node;
                     node = tmp;
+                } else {
+                    // Case 3条件：叔叔是黑色，且当前节点是左孩子。
                 }
 
-                // Case 3条件：叔叔是黑色，且当前节点是左孩子。
                 setBlack(parent);
                 setRed(gparent);
                 rightRotate(gparent);
@@ -181,9 +182,10 @@ public class RBTree<T extends Comparable<T>> {
                     tmp = parent;
                     parent = node;
                     node = tmp;
+                } else {
+                    // Case 3条件：叔叔是黑色，且当前节点是右孩子。
                 }
 
-                // Case 3条件：叔叔是黑色，且当前节点是右孩子。
                 setBlack(parent);
                 setRed(gparent);
                 leftRotate(gparent);
