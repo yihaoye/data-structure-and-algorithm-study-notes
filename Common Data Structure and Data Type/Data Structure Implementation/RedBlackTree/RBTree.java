@@ -152,9 +152,8 @@ public class RBTree<T extends Comparable<T>> {
 
                 // Case 2条件：叔叔是黑色，且当前节点是右孩子，下面if内处理以转变成 Case 3
                 if (parent.right == node) {
-                    RBTNode<T> tmp;
                     leftRotate(parent);
-                    tmp = parent;
+                    RBTNode<T> tmp = parent;
                     parent = node;
                     node = tmp;
                 }
@@ -176,9 +175,8 @@ public class RBTree<T extends Comparable<T>> {
 
                 // Case 2条件：叔叔是黑色，且当前节点是左孩子，下面if内处理以转变成 Case 3
                 if (parent.left == node) {
-                    RBTNode<T> tmp;
                     rightRotate(parent);
-                    tmp = parent;
+                    RBTNode<T> tmp = parent;
                     parent = node;
                     node = tmp;
                 }
@@ -417,26 +415,9 @@ public class RBTree<T extends Comparable<T>> {
         if ((node = search(mRoot, key)) != null) remove(node);
     }
 
-    /*
-     * 销毁红黑树
-     */
-    private void destroy(RBTNode<T> tree) {
-        if (tree == null) return;
-
-        if (tree.left != null) destroy(tree.left);
-        if (tree.right != null) destroy(tree.right);
-
-        tree = null;
-    }
-
-    public void clear() {
-        destroy(mRoot);
-        mRoot = null;
-    }
 
 
-
-    /* 非核心部分 */
+    /* 次核心部分 */
 
     private RBTNode<T> parentOf(RBTNode<T> node) {
         return node != null ? node.parent : null;
@@ -614,6 +595,23 @@ public class RBTree<T extends Comparable<T>> {
         }
 
         return y;
+    }
+
+    /*
+     * 销毁红黑树
+     */
+    private void destroy(RBTNode<T> tree) {
+        if (tree == null) return;
+
+        if (tree.left != null) destroy(tree.left);
+        if (tree.right != null) destroy(tree.right);
+
+        tree = null;
+    }
+
+    public void clear() {
+        destroy(mRoot);
+        mRoot = null;
     }
 
     /*
