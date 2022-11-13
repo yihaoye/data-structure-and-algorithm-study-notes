@@ -75,3 +75,16 @@ public int gcd(int a, int b) { //（欧几里得算法 - https://zh.wikipedia.or
 }
 // 证明过程：https://www.youtube.com/watch?v=WGO4Tqx5owg（包括贝祖定理）
 // 若是求 3 个或更多个数的最大公约数，则方法是先对头两个数求出其最大公约数，然后再以该最大公约数与第 3 个数作为 a、b 求第二轮的最大公约数，如此类推。例题如 Leetcode Q149。
+
+
+
+// LCM 最小公倍数 - https://stackoverflow.com/a/4202114/6481829
+public long lcm(long a, long b) {
+    return a * b / gcd(a, b); // https://zh.wikipedia.org/wiki/%E6%9C%80%E5%B0%8F%E5%85%AC%E5%80%8D%E6%95%B8#JAVA
+}
+
+public long lcm(long[] input) {
+    long result = input[0];
+    for (int i = 1; i < input.length; i++) result = lcm(result, input[i]);
+    return result;
+}
