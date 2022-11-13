@@ -251,7 +251,7 @@ public class RBTree<T extends Comparable<T>> {
             this.mRoot = y;            // 如果 “x的父亲” 是空节点，则将y设为根节点
         } else {
             if (x.parent.left == x) x.parent.left = y;    // 如果 x是它父节点的左孩子，则将y设为“x的父节点的左孩子”
-            else x.parent.right = y;                      // 如果 x是它父节点的左孩子，则将y设为“x的父节点的左孩子”
+            else x.parent.right = y;                      // 如果 x是它父节点的右孩子，则将y设为“x的父节点的右孩子”
         }
 
         // 将 “x” 设为 “y的左孩子”
