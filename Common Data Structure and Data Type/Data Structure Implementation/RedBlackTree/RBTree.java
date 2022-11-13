@@ -150,17 +150,16 @@ public class RBTree<T extends Comparable<T>> {
                     continue;
                 }
 
-                // Case 2条件：叔叔是黑色，且当前节点是右孩子
+                // Case 2条件：叔叔是黑色，且当前节点是右孩子，下面if内处理以转变成 Case 3
                 if (parent.right == node) {
                     RBTNode<T> tmp;
                     leftRotate(parent);
                     tmp = parent;
                     parent = node;
                     node = tmp;
-                } else {
-                    // Case 3条件：叔叔是黑色，且当前节点是左孩子。
                 }
 
+                // Case 3条件：叔叔是黑色，且当前节点是左孩子。
                 setBlack(parent);
                 setRed(gparent);
                 rightRotate(gparent);
@@ -175,17 +174,16 @@ public class RBTree<T extends Comparable<T>> {
                     continue;
                 }
 
-                // Case 2条件：叔叔是黑色，且当前节点是左孩子
+                // Case 2条件：叔叔是黑色，且当前节点是左孩子，下面if内处理以转变成 Case 3
                 if (parent.left == node) {
                     RBTNode<T> tmp;
                     rightRotate(parent);
                     tmp = parent;
                     parent = node;
                     node = tmp;
-                } else {
-                    // Case 3条件：叔叔是黑色，且当前节点是右孩子。
                 }
-
+                
+                // Case 3条件：叔叔是黑色，且当前节点是右孩子。
                 setBlack(parent);
                 setRed(gparent);
                 leftRotate(gparent);
