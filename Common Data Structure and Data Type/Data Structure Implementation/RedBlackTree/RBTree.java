@@ -248,30 +248,28 @@ public class RBTree<T extends Comparable<T>> {
      * 目的是将它重新塑造成一颗红黑树。
      *
      * 参数说明：
-     *     node 待修正的节点
+     *     node 待修正的节点 - 需要调整的节点而不是被删的节点
+     *     parent 即 node 的父节点
      */
     private void removeFixUp(RBTNode<T> node, RBTNode<T> parent) {
         RBTNode<T> other;
 
-        while ((node == null || isBlack(node)) && (node != this.mRoot)) { // node 为黑色节点（任何时候删除红色节点无需再后续继续修复）且不为根节点
-            if (parent.left == node) {
+        while ((node == null || isBlack(node)) && (node != this.mRoot)) { // 直到浮出一个红色节点上来，因为后面需要将其改成黑色节点
+            if (parent.left == node) { // 当前节点为其父节点的左孩子
                 other = parent.right;
-                if (isRed(other)) {
-                    // Case 1: x（即删除节点node）的兄弟w是红色的
+                if (isRed(other)) { // Case 1: x（即当前节点node）的兄弟w是红色的
                     setBlack(other);
-                    setRed(parent);
-                    leftRotate(parent);
+                    setRed(parent); // parent 之前肯定为黑，因为 other 之前是红色的
+                    leftRotate(parent); // other 代替原 parent 的位置
                     other = parent.right;
                 }
 
-                if ((other.left == null || isBlack(other.left)) && (other.right == null || isBlack(other.right))) {
-                    // Case 2: x的兄弟w是黑色，且w的俩个孩子也都是黑色的
+                if ((other.left == null || isBlack(other.left)) && (other.right == null || isBlack(other.right))) { // Case 2: x的兄弟w是黑色，且w的俩个孩子也都是黑色的
                     setRed(other);
                     node = parent;
                     parent = parentOf(node);
                 } else {
-                    if (other.right == null || isBlack(other.right)) {
-                        // Case 3: x的兄弟w是黑色的，并且w的左孩子是红色，右孩子为黑色。
+                    if (other.right == null || isBlack(other.right)) { // Case 3: x的兄弟w是黑色的，并且w的左孩子是红色，右孩子为黑色。
                         setBlack(other.left);
                         setRed(other);
                         rightRotate(other);
@@ -285,24 +283,21 @@ public class RBTree<T extends Comparable<T>> {
                     node = this.mRoot;
                     break;
                 }
-            } else {
+            } else { // 当前节点为其父节点的右孩子
                 other = parent.left;
-                if (isRed(other)) {
-                    // Case 1: x的兄弟w是红色的
+                if (isRed(other)) { // Case 1: x的兄弟w是红色的
                     setBlack(other);
                     setRed(parent);
                     rightRotate(parent);
                     other = parent.left;
                 }
 
-                if ((other.left == null || isBlack(other.left)) && (other.right == null || isBlack(other.right))) {
-                    // Case 2: x的兄弟w是黑色，且w的俩个孩子也都是黑色的
+                if ((other.left == null || isBlack(other.left)) && (other.right == null || isBlack(other.right))) { // Case 2: x的兄弟w是黑色，且w的俩个孩子也都是黑色的
                     setRed(other);
                     node = parent;
                     parent = parentOf(node);
                 } else {
-                    if (other.left == null || isBlack(other.left)) {
-                        // Case 3: x的兄弟w是黑色的，并且w的左孩子是红色，右孩子为黑色。
+                    if (other.left == null || isBlack(other.left)) { // Case 3: x的兄弟w是黑色的，并且w的左孩子是红色，右孩子为黑色。
                         setBlack(other.right);
                         setRed(other);
                         leftRotate(other);
@@ -319,7 +314,7 @@ public class RBTree<T extends Comparable<T>> {
             }
         }
 
-        if (node != null) setBlack(node);
+        if (node != null) setBlack(node); // 触发调用 removeFixUp 的被删掉的必是黑色节点，所以这里把一个红色节点补回黑色节点即可
     }
 
     /*
@@ -357,13 +352,11 @@ public class RBTree<T extends Comparable<T>> {
             // 保存"取代节点"的颜色
             color = colorOf(replace);
 
-            // "被删除节点"是"它的后继节点的父节点"
             parent = parentOf(replace); // 注意这里不等于 parentOf(node)
-            if (parent == node) {
+            if (parent == node) { // "被删除节点"是"它的后继节点的父节点"
                 parent = replace;
             } else {
-                // child不为空
-                if (child != null) setParent(child, parent);
+                if (child != null) setParent(child, parent); // child不为空
                 parent.left = child;
 
                 replace.right = node.right;
@@ -375,9 +368,9 @@ public class RBTree<T extends Comparable<T>> {
             replace.left = node.left;
             node.left.parent = replace;
 
-            if (color == BLACK) removeFixUp(child, parent); // 只有删除黑色节点才需要修复，任何时候删除红色节点都不需要修复红黑树
+            if (color == BLACK) removeFixUp(child, parent); // 只有删除黑色节点（node）才需要修复，任何时候删除红色节点都不需要修复红黑树
 
-            node = null;
+            node = null; // node 已从树中删除，移除引用触发 GC
             return;
         }
 
@@ -399,8 +392,8 @@ public class RBTree<T extends Comparable<T>> {
             this.mRoot = child;
         }
 
-        if (color == BLACK) removeFixUp(child, parent); // 只有删除黑色节点才需要修复，任何时候删除红色节点都不需要修复红黑树
-        node = null;
+        if (color == BLACK) removeFixUp(child, parent); // 只有删除黑色节点（node）才需要修复，任何时候删除红色节点都不需要修复红黑树
+        node = null; // node 已从树中删除，移除引用触发 GC
     }
 
     /*
