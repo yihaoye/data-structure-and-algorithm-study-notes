@@ -244,7 +244,7 @@ public class RBTree<T extends Comparable<T>> {
     /*
      * 红黑树删除修正函数
      *
-     * 在从红黑树中删除插入节点之后(红黑树失去平衡)，再调用该函数；
+     * 在从红黑树中删除节点之后(红黑树失去平衡)，再调用该函数；
      * 目的是将它重新塑造成一颗红黑树。
      *
      * 参数说明：
@@ -375,7 +375,7 @@ public class RBTree<T extends Comparable<T>> {
             replace.left = node.left;
             node.left.parent = replace;
 
-            if (color == BLACK) removeFixUp(child, parent);
+            if (color == BLACK) removeFixUp(child, parent); // 只有删除黑色节点才需要修复，任何时候删除红色节点都不需要修复红黑树
 
             node = null;
             return;
@@ -399,7 +399,7 @@ public class RBTree<T extends Comparable<T>> {
             this.mRoot = child;
         }
 
-        if (color == BLACK) removeFixUp(child, parent);
+        if (color == BLACK) removeFixUp(child, parent); // 只有删除黑色节点才需要修复，任何时候删除红色节点都不需要修复红黑树
         node = null;
     }
 
