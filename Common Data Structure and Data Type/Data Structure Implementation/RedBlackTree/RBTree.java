@@ -354,11 +354,11 @@ public class RBTree<T extends Comparable<T>> {
             // child是"取代节点"的右孩子，也是需要"调整的节点"。
             // "取代节点"肯定不存在左孩子！因为它是一个后继节点。
             child = replace.right;
-            parent = parentOf(replace);
             // 保存"取代节点"的颜色
             color = colorOf(replace);
 
             // "被删除节点"是"它的后继节点的父节点"
+            parent = parentOf(replace); // 注意这里不等于 parentOf(node)
             if (parent == node) {
                 parent = replace;
             } else {
@@ -378,9 +378,10 @@ public class RBTree<T extends Comparable<T>> {
             if (color == BLACK) removeFixUp(child, parent);
 
             node = null;
-            return ;
+            return;
         }
 
+        // 被删除节点的"左右孩子至少有一个为空"的情况。
         if (node.left != null) child = node.left;
         else child = node.right;
 
