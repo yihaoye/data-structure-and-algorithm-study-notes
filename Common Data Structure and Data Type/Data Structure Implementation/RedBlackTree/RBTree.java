@@ -253,11 +253,11 @@ public class RBTree<T extends Comparable<T>> {
     private void removeFixUp(RBTNode<T> node, RBTNode<T> parent) {
         RBTNode<T> other;
 
-        while ((node == null || isBlack(node)) && (node != this.mRoot)) {
+        while ((node == null || isBlack(node)) && (node != this.mRoot)) { // node 为黑色节点（任何时候删除红色节点无需再后续继续修复）且不为根节点
             if (parent.left == node) {
                 other = parent.right;
                 if (isRed(other)) {
-                    // Case 1: x的兄弟w是红色的
+                    // Case 1: x（即删除节点node）的兄弟w是红色的
                     setBlack(other);
                     setRed(parent);
                     leftRotate(parent);
