@@ -271,7 +271,7 @@ public class RBTree<T extends Comparable<T>> {
                     node = parent;
                     parent = parentOf(node);
                 } else {
-                    if (other.right == null || isBlack(other.right)) { // Case 3: x的兄弟w是黑色的，并且w的左孩子是红色，右孩子为黑色。
+                    if (other.right == null || isBlack(other.right)) { // Case 3: x的兄弟w是黑色的，并且w的左孩子是红色，右孩子为黑色。在这个 if 内处理转换成 Case 4
                         setBlack(other.left);
                         setRed(other);
                         rightRotate(other);
@@ -320,17 +320,17 @@ public class RBTree<T extends Comparable<T>> {
     }
 
     /*
-     * 删除结点(node)，并返回被删除的结点
+     * 删除结点(node)
      *
      * 参数说明：
      *     node 删除的结点
      */
     private void remove(RBTNode<T> node) {
-        RBTNode<T> child, parent;
+        RBTNode<T> child, parent; // child 为被删除节点node或取代节点replace（replace被替换到被删除的node的位置，所以等于replace原来所在的位置被删除了）的子节点，亦即被实际删除的树位置的补
         boolean color;
 
         // 被删除节点的"左右孩子都不为空"的情况。
-        if ((node.left != null) && (node.right != null) ) {
+        if ((node.left != null) && (node.right != null)) {
             // 被删节点的后继节点。(称为"取代节点")
             // 用它来取代"被删节点"的位置，然后再将"被删节点"去掉。
             RBTNode<T> replace = node;
@@ -355,9 +355,9 @@ public class RBTree<T extends Comparable<T>> {
             color = colorOf(replace);
 
             parent = parentOf(replace); // 注意这里不等于 parentOf(node)
-            if (parent == node) { // "被删除节点"是"它的后继节点的父节点"
+            if (parent == node) { // 当"被删除节点"是"它的后继节点的父节点"
                 parent = replace;
-            } else {
+            } else { // 当"被删除节点"不是"它的后继节点的父节点"
                 if (child != null) setParent(child, parent); // child不为空
                 parent.left = child;
 
@@ -386,11 +386,10 @@ public class RBTree<T extends Comparable<T>> {
 
         if (child != null) child.parent = parent;
 
-        // "node节点"不是根节点
-        if (parent != null) {
+        if (parent != null) { // 当"node节点"不是根节点
             if (parent.left == node) parent.left = child;
             else parent.right = child;
-        } else {
+        } else { // 当"node节点"是根节点
             this.mRoot = child;
         }
 
