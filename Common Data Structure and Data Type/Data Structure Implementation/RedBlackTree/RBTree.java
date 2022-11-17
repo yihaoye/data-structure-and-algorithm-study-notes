@@ -254,14 +254,16 @@ public class RBTree<T extends Comparable<T>> {
     private void removeFixUp(RBTNode<T> node, RBTNode<T> parent) {
         RBTNode<T> other;
 
-        while ((node == null || isBlack(node)) && (node != this.mRoot)) { // 直到浮出一个红色节点上来，因为后面需要将其改成黑色节点
+        while ((node == null || isBlack(node)) && (node != this.mRoot)) { // 直到 浮出/一直追溯到 一个红色节点或根节点上来才退出 while 循环，因为 while 后面需要将其改成黑色节点
+            // 进来本 while block 说明当前节点 node 为黑色且不为根节点
+            
             if (parent.left == node) { // 当前节点为其父节点的左孩子
                 other = parent.right;
-                if (isRed(other)) { // Case 1: x（即当前节点node）的兄弟w是红色的
+                if (isRed(other)) { // Case 1: x（即当前节点node）的兄弟w是红色的，在这个 if 内处理转换成其他 Case 2、3、4
                     setBlack(other);
                     setRed(parent); // parent 之前肯定为黑，因为 other 之前是红色的
                     leftRotate(parent); // other 代替原 parent 的位置
-                    other = parent.right;
+                    other = parent.right; // parent 左旋后获取 node 的新兄弟节点（必然是黑色或空节点，因为原兄弟节点即其父节点之前是红色）
                 }
 
                 if ((other.left == null || isBlack(other.left)) && (other.right == null || isBlack(other.right))) { // Case 2: x的兄弟w是黑色，且w的俩个孩子也都是黑色的
@@ -283,7 +285,7 @@ public class RBTree<T extends Comparable<T>> {
                     node = this.mRoot;
                     break;
                 }
-            } else { // 当前节点为其父节点的右孩子
+            } else { // 当前节点为其父节点的右孩子，其实下面部分逻辑与上面完全对称地一样
                 other = parent.left;
                 if (isRed(other)) { // Case 1: x的兄弟w是红色的
                     setBlack(other);
@@ -314,7 +316,7 @@ public class RBTree<T extends Comparable<T>> {
             }
         }
 
-        if (node != null) setBlack(node); // 触发调用 removeFixUp 的被删掉的必是黑色节点，所以这里把一个红色节点补回黑色节点即可
+        if (node != null) setBlack(node); // 触发调用 removeFixUp 的被删掉的必是黑色节点，所以这里把一个红色节点补回黑色节点即可、或者根节点无论红黑设置成黑色
     }
 
     /*
