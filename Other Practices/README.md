@@ -17,6 +17,14 @@
 </details>
 
 <details>
+<summary>Oracle</summary>
+</details>
+
+<details>
+<summary>Square</summary>
+</details>
+
+<details>
 <summary>Shopify</summary>
 
 https://www.xiakexing.me/forum.php?mod=viewthread&tid=22030  
@@ -37,6 +45,10 @@ Session 3: Pair Programming with a Engineering Manager. 出了题目是是这个
 
 <details>
 <summary>Workday</summary>
+</details>
+
+<details>
+<summary>Xero</summary>
 </details>
 
 <details>
