@@ -9,6 +9,14 @@
 </details>
 
 <details>
+<summary>Canva</summary>
+</details>
+
+<details>
+<summary>Google</summary>
+</details>
+
+<details>
 <summary>Shopify</summary>
 
 https://www.xiakexing.me/forum.php?mod=viewthread&tid=22030  
@@ -24,5 +32,13 @@ Session 3: Pair Programming with a Engineering Manager. 出了题目是是这个
 </details>
 
 <details>
+<summary>Tiktok</summary>
+</details>
+
+<details>
 <summary>Workday</summary>
+</details>
+
+<details>
+<summary>Zendesk</summary>
 </details>
