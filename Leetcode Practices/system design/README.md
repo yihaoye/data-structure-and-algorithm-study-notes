@@ -1669,6 +1669,7 @@ Back Queue 则实现了礼貌性策略，控制了对一个网站访问的频率
 
 * [谷歌排名系统](https://osjobs.net/system/posts/google-board/)
 * [Heavy Hitter](https://serhatgiydiren.github.io/system-design-interview-top-k-problem-heavy-hitters)
+* [System Design Interview - Top K Problem (Heavy Hitters)](https://www.youtube.com/watch?v=kx-XDoPjoHw)
 
 </details>
 
