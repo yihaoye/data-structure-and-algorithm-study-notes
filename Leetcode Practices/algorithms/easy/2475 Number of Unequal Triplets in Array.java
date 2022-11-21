@@ -37,6 +37,26 @@ Constraints:
 class Solution {
     public int unequalTriplets(int[] A) {
         // https://leetcode.com/problems/number-of-unequal-triplets-in-array/discuss/2833367/JavaC%2B%2BPython-One-Pass-O(n)
+        /*
+            Iterate the input one by one,
+            count[a] counts the frequency of element a we have seen.
+            pair is the number of pairwise distinct pair
+            trips is the number of pairwise distinct triplet.
+
+            So for every element A[i],
+            There are already pairs
+            among them pairs_with_a = count[A[i]] * (i - count[A[i]]) pairs contains A[i]
+            so pairs_without_a = pairs - pairs_with_a
+            and A[i] can combine new_triplets_with_a = pairs_without_a
+            So that we update trips.
+
+            For pairs, will be easier if you get the above process,
+            we update pairs += i - count[A[i]]
+
+            Also need to update count[A[i]] += 1
+
+            After all, we simply return triplets.
+        */
         int trips = 0, pairs = 0, count[] = new int[1001];
         for (int i = 0; i < A.length; ++i) {
             trips += pairs - count[A[i]] * (i - count[A[i]]);
