@@ -65,7 +65,7 @@
   - [无向图 | Undirected Graph]()
     - [二分图 | Bipartite Graph](./Data%20Structure%20Implementation/BipartiteGraph/)
   - [加权图（有向或无向）| Weighted Graph]()
-  - [生成树 | Spanning Tree]()
+  - [生成树 | Spanning Tree](./Data%20Structure%20Implementation/SpanningTree/README.md)
     - [最小生成树 | Minimum Spanning Tree](./Data%20Structure%20Implementation/MinimumSpanningTree/README.md)
   
 以上有些数据结构可能只有 Java 提供了官方实现 [more](https://www.zhihu.com/question/325814788) ，以上总结未完待续...  
