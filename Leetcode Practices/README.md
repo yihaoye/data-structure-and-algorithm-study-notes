@@ -456,6 +456,8 @@
 - [ ] 223	Rectangle Area		                                    很少考  
 ### 二分图  
 - [x] 785   Is Graph Bipartite? 
+### 最小生成树
+- [x] 1135  Connecting Cities With Minimum Cost 
    
 ## Union Find
 - [x] 261	Graph Valid Tree		

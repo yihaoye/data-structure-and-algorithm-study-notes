@@ -77,5 +77,5 @@ print(cost)
 ```
 
 ## 例题
-* [Leetcode Q1135]()
+* [Leetcode Q1135](./../../../Leetcode%20Practices/algorithms/medium/1135%20Connecting%20Cities%20With%20Minimum%20Cost.java)
 * [Leetcode Q1168]()
