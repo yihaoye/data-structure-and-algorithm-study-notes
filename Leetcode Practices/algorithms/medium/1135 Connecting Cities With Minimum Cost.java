@@ -61,3 +61,65 @@ class Solution {
         return cost;
     }
 }
+
+
+
+// My Solution 2 (MST - Kruskal Algorithm):
+class Solution {
+    public int minimumCost(int n, int[][] connections) {
+        Arrays.sort(connections, (a, b) -> a[2] - b[2]);        
+        UnionFindSet ufs = new UnionFindSet(n);
+        int cost = 0, unionCnt = 0;
+        for (int[] conn : connections) {
+            int u = conn[0] - 1; int v = conn[1] - 1; int w = conn[2];
+            int ru = ufs.find(u); int rv = ufs.find(v);
+            if (ru == rv) continue;
+            ufs.union(ru, rv);
+            unionCnt++;
+            cost += w;
+        }
+        if (unionCnt != n-1) return -1;
+        
+        return cost;
+    }
+    
+    /* 并查集 */
+    class UnionFindSet {
+        private int[] parents_;
+        private int[] ranks_;
+
+        public UnionFindSet(int n) {
+            parents_ = new int[n + 1];
+            ranks_ = new int[n + 1];
+            for (int i = 0; i < parents_.length; ++i) {
+                parents_[i] = i;
+                ranks_[i] = 1;
+            }
+        }
+
+        public boolean union(int u, int v) {
+            int pu = find(u);
+            int pv = find(v);
+            if (pu == pv) return false;
+
+            if (ranks_[pv] > ranks_[pu])
+                parents_[pu] = pv;
+            else if (ranks_[pu] > ranks_[pv])
+                parents_[pv] = pu;
+            else {
+                parents_[pv] = pu;
+                ranks_[pu] += 1;
+            }
+
+            return true;
+        }
+
+        public int find(int u) {
+            while (parents_[u] != u) {
+                parents_[u] = parents_[parents_[u]];
+                u = parents_[u];
+            }
+            return u;
+        }
+    }
+}
