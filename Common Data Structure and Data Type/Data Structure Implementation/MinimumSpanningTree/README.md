@@ -12,13 +12,13 @@ https://www.youtube.com/watch?v=wmW8G8SrXDs
 
 ## Prim 算法
 原理：贪心 + 优先队列  
-Time: O(ElogV), Space: O(V+E)  
+Time: O(E*logV), Space: O(V+E)  
 
 ![](./mst2.png)  
 
 ```java
 class Solution {
-    public int mst(int n, int[][] edges) {
+    public int mst(int n, int[][] edges) { // n nodes, edge [nodeA, nodeB, weight]
         Map<Integer, List<int[]>> graph = new HashMap<>();
         for (int[] edge : edges) {
             graph.computeIfAbsent(edge[0], x -> new ArrayList<>()).add(new int[]{edge[1], edge[2]});
@@ -27,7 +27,7 @@ class Solution {
         PriorityQueue<int[]> pq = new PriorityQueue<>((a, b) -> a[1] - b[1]);
         int res = 0;
         Set<Integer> visited = new HashSet<>();
-        pq.offer(new int[]{1, 0});
+        pq.offer(new int[]{0, 0}); // [startNode, startWeight]
         while (!pq.isEmpty()) {
             int[] edge = pq.poll();
             int curNode = edge[0]; int curWeight = edge[1];
@@ -47,18 +47,18 @@ class Solution {
 
 ## Kruskal 算法
 原理：并查集  
-Time: O(ElogV), Space: O(V+E)  
+Time: O(E*logV), Space: O(V+E)  
 
 ![](./mst3.png)  
 
 ```java
 class Solution {
-    public int mst(int n, int[][] edges) {
-        Arrays.sort(edges, (a, b) -> a[2] - b[2]);        
+    public int mst(int n, int[][] edges) { // n nodes, edge [nodeA, nodeB, weight]
+        Arrays.sort(edges, (a, b) -> a[2] - b[2]);
         UnionFindSet ufs = new UnionFindSet(n);
         int res = 0, unionCnt = 0;
         for (int[] edge : edges) {
-            int u = edge[0] - 1; int v = edge[1] - 1; int w = edge[2];
+            int u = edge[0]; int v = edge[1]; int w = edge[2];
             int ru = ufs.find(u); int rv = ufs.find(v);
             if (ru == rv) continue;
             ufs.union(ru, rv);
