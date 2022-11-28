@@ -114,4 +114,4 @@ class Solution {
 
 ## 例题
 * [Leetcode Q1135](./../../../Leetcode%20Practices/algorithms/medium/1135%20Edgeecting%20Cities%20With%20Minimum%20Cost.java)
-* [Leetcode Q1168]()
+* [Leetcode Q1168](./../../../Leetcode%20Practices/algorithms/hard/1168%20Optimize%20Water%20Distribution%20in%20a%20Village.java)
