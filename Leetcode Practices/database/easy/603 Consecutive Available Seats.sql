@@ -54,3 +54,13 @@ WHERE free = 1 AND (
     OR
     seat_id + 1 IN (SELECT seat_id FROM cinema WHERE free = 1)
 );
+
+
+
+/* Other's Solution 2 - https://leetcode.com/problems/consecutive-available-seats/discuss/103815/AC-using-self-join*/
+select distinct a.seat_id
+from cinema a
+join cinema b
+on abs(a.seat_id - b.seat_id) = 1
+and a.free=true and b.free=true
+order by a.seat_id;
