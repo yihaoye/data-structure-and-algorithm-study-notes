@@ -40,7 +40,7 @@
 ### 提高			
 - [x] 4	    Median of Two Sorted Arrays		                            很少考
 - [ ] 321	Create Maximum Number		                                很少考
-- [ ] 327	Count of Range Sum		
+- [x] 327	Count of Range Sum		
 - [x] 289	Game of Life		
 - [x] 406   Queue Reconstruction by Height  
 ### Interval			
