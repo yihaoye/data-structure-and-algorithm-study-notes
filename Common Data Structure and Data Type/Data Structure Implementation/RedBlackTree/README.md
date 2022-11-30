@@ -120,6 +120,11 @@ x是“黑+黑”节点，x的兄弟节点是黑色；x的兄弟节点的右孩�
 
 
 
+## 例题
+* [Leetcode Q414](./../../../Leetcode%20Practices/algorithms/easy/414%20Third%20Maximum%20Number.java)
+
+
+
 ## 其他参考
 https://ivanzz1001.github.io/records/post/data-structure/2018/06/24/ds-red-black-tree  
 https://tech.meituan.com/2016/12/02/redblack-tree.html  
