@@ -26,6 +26,139 @@ The answer is guaranteed to fit in a 32-bit integer.
 
 
 
+// My Solution 3:
+class Solution {
+    long shift = (long) 1e10 / 2;
+    
+    public int countRangeSum(int[] nums, int lower, int upper) {
+        // prefix sum + segment tree
+        int n = nums.length, res = 0;
+        
+        long sum = 0L;
+        SegmentTree sgt = new SegmentTree();
+        
+        for (int i=0; i<n; i++) {
+            sum += nums[i];
+            if (lower <= sum && sum <= upper) res++;
+            res += sgt.query(sgt.root, sum-upper+shift, sum-lower+shift); // dp[i] - dp[j] >= lower, dp[i] - dp[j] <= upper
+            sgt.update(sgt.root, sum+shift, sum+shift, 1);
+        }
+        
+        return res;
+    }
+}
+
+public class SegmentTree { // 求范围内和 - 在这里其实也就是统计
+    
+    public Node root;
+
+    public SegmentTree() {
+        // 线段树
+        root = new Node(0L, (long) 1e10);
+    }
+    
+    /**
+     * 线段树的结点
+     */
+    class Node {
+        private long leftX; // 左范围
+        private long rightX; // 右范围
+        private long sum; // 范围内的总和
+        private long lazy; // 懒标记
+        Node leftChild, rightChild; // 左子树和右子树
+
+        public Node(long leftX, long rightX) {
+            this.leftX = leftX;
+            this.rightX = rightX;
+        }
+    }
+    
+    // 区间求值
+    public long query(Node root, long left, long right) {
+        // 不在范围内 直接返回
+        long rightX = root.rightX; long leftX = root.leftX;
+        if (root.rightX < left || right < root.leftX) {
+            return 0L;
+        }
+        // 查询的区间包含当前结点
+        if (left <= root.leftX && root.rightX <= right) {
+            return root.sum;
+        } else {
+            lazyCreate(root); // 动态开点
+            pushDown(root); // 下传 lazy
+            long l = query(root.leftChild, left, right); // 求左子树
+            long r = query(root.rightChild, left, right); // 求右子树
+            return l + r;
+        }
+    }
+
+    /**
+     * 区间更新
+     *
+     * @param root  树的根
+     * @param left  左边界
+     * @param right 右边界
+     * @param value 更新值
+     */
+    public void update(Node root, long left, long right, int value) {
+        // 不在范围内 直接返回
+        if (root.rightX < left || right < root.leftX) {
+            return;
+        }
+        // 修改的区间包含当前结点
+        if (left <= root.leftX && root.rightX <= right) {
+            root.sum += value * (root.rightX - root.leftX + 1);
+            root.lazy += value;
+        } else {
+            lazyCreate(root); // 动态开点
+            pushDown(root); // 下传 lazy
+            update(root.leftChild, left, right, value); // 更新左子树
+            update(root.rightChild, left, right, value); // 更新右子树
+            pushUp(root); // 上传结果
+        }
+    }
+
+    /**
+     * 创建左右子树
+     *
+     * @param root
+     */
+    public void lazyCreate(Node root) {
+        if (root.leftChild == null) {
+            root.leftChild = new Node(root.leftX, root.leftX + (root.rightX - root.leftX) / 2);
+        }
+        if (root.rightChild == null) {
+            root.rightChild = new Node(root.leftX + (root.rightX - root.leftX) / 2 + 1, root.rightX);
+        }
+    }
+
+    /**
+     * 下传 lazy
+     *
+     * @param root
+     */
+    public void pushDown(Node root) {
+        if (root.lazy > 0) {
+            root.leftChild.sum += root.lazy * (root.leftChild.rightX - root.leftChild.leftX + 1);
+            root.leftChild.lazy += root.lazy;
+            root.rightChild.sum += root.lazy * (root.rightChild.rightX - root.rightChild.leftX + 1);
+            root.rightChild.lazy += root.lazy;
+            root.lazy = 0;
+        }
+    }
+
+    /**
+     * 上传结果
+     *
+     * @param root
+     */
+    public void pushUp(Node root) {
+        root.sum = root.leftChild.sum + root.rightChild.sum;
+    }
+}
+
+
+
 // My Solution 1: (TLE)
 class Solution {
     public int countRangeSum(int[] nums, int lower, int upper) {
