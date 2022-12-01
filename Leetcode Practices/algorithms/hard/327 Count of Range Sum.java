@@ -26,7 +26,7 @@ The answer is guaranteed to fit in a 32-bit integer.
 
 
 
-// My Solution: (TLE)
+// My Solution 1: (TLE)
 class Solution {
     public int countRangeSum(int[] nums, int lower, int upper) {
         // prefix sum + customized red black tree
@@ -248,5 +248,42 @@ public class RBTree<T extends Comparable<T>> {
 
     public int dfs(T fromKey, T toKey) {
         return dfs(mRoot, fromKey, toKey);
+    }
+}
+
+
+
+// My Solution 2: (TLE)
+class Solution {
+    public int countRangeSum(int[] nums, int lower, int upper) {
+        // prefix sum + treeset + object
+        int n = nums.length, res = 0;
+        
+        long sum = 0L;
+        TreeSet<Num> tSet = new TreeSet<>();
+        
+        for (int i=0; i<n; i++) {
+            sum += nums[i];
+            if (lower <= sum && sum <= upper) res++;
+            res += tSet.subSet(new Num(sum-upper, 0), true, new Num(sum-lower, n), true).size(); // dp[i] - dp[j] >= lower, dp[i] - dp[j] <= upper
+            tSet.add(new Num(sum, i));
+        }
+        
+        return res;
+    }
+    
+    class Num implements Comparable<Num> {
+        long val;
+        int idx;
+        
+        public Num(long val, int idx) {
+            this.val = val;
+            this.idx = idx;
+        }
+        
+        @Override
+        public int compareTo(Num otherNum) {
+            return Long.compare(this.val, otherNum.val) == 0 ? this.idx - otherNum.idx : Long.compare(this.val, otherNum.val);
+        }
     }
 }

@@ -55,7 +55,7 @@
       - [B 树 | B Tree]()
       - [B+ 树 | B Tree]()
       - [2–3 树 | 2-3 Tree]()
-    - [线段树 | Segment Tree](./Data%20Structure%20Implementation/SegmentTree/) (区间查询 O(logN + K)，更新 O(logN)，构建 O(N) - K is the number of reported segments)
+    - [线段树 | Segment Tree](./Data%20Structure%20Implementation/SegmentTree/README.md) (区间查询 O(logN + K)，更新 O(logN)，构建 O(N) - K is the number of reported segments)
   - [字典树 | Trie](./Data%20Structure%20Implementation/Trie/)
   - [并查集 | Disjoint-Set/Union-Find Forest](./../Common%20Algorithm%20and%20Theory/并查集与联合查找算法.md)
   - [LSM 树 | Log-Structured Merge-Tree](./Data%20Structure%20Implementation/LSMTree/README.md)
