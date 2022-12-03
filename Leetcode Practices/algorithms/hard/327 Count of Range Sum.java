@@ -28,7 +28,7 @@ The answer is guaranteed to fit in a 32-bit integer.
 
 // My Solution 3:
 class Solution {
-    long shift = (long) 1e10 / 2;
+    long shift = (long) 1e10 / 2; // offset
     
     public int countRangeSum(int[] nums, int lower, int upper) {
         // prefix sum + segment tree
