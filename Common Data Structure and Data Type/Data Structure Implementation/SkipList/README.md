@@ -194,3 +194,7 @@ Google 开源的 key/value 存储引擎 LevelDB 以及 Facebook 基于 LevelDB �
 
 
 以上转载自：https://www.jianshu.com/p/9d8296562806
+
+
+## 更多阅读资料
+https://www.cnblogs.com/wangbiaoneu/archive/2013/04/27/skiplist.html  
