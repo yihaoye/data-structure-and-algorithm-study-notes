@@ -18,8 +18,10 @@ public class SkipList {
 
   public Node find(int value) {
     Node p = head;
+    // 从最大层开始查找，找到前一节点，通过--i，移动到下层再开始查找
     for (int i = levelCount - 1; i >= 0; --i) {
       while (p.forwards[i] != null && p.forwards[i].data < value) {
+        // 找到前一节点
         p = p.forwards[i];
       }
     }
@@ -32,15 +34,21 @@ public class SkipList {
   }
 
   public void insert(int value) {
-    int level = randomLevel();
+    int level = randomLevel(); // 随机一个层数
     Node newNode = new Node();
     newNode.data = value;
-    newNode.maxLevel = level;
-    Node update[] = new Node[level];
+    newNode.maxLevel = level; // 表示从最大层到低层，都要有节点数据
+    Node update[] = new Node[level]; // 记录要更新的层数，表示新节点要更新到哪几层
     for (int i = 0; i < level; ++i) {
       update[i] = head;
     }
 
+    /**
+      *
+      * 1，说明：层是从下到上的，这里最下层编号是0，最上层编号是15
+      * 2，这里没有从已有数据最大层（编号最大）开始找，（而是随机层的最大层）导致有些问题。
+      *    如果数据量为1亿，随机level=1 ，那么插入时间复杂度为O（n）
+      */
     // record every level largest value which smaller than insert value in update[]
     Node p = head;
     for (int i = level - 1; i >= 0; --i) {
