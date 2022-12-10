@@ -100,6 +100,7 @@ https://www.algoexpert.io/systems/fundamentals
   * 练习方式
     * 看大公司的 API 文件，学习如何设计（比如 [Stripe](https://stripe.com/docs/api)、[Google](https://cloud.google.com/apis)、[Twitter](https://developer.twitter.com/en/docs/twitter-api)）
     * 尝试写常见公司（Google、Stripe、Twitter、Uber、Youtube 等等）的 API，然后对照实际的 API 询问自己的设计是否更好或决策想法
+  * ![](./REST%20API%20Design.jpeg)
   
   
 ## 补充
