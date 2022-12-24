@@ -141,8 +141,7 @@
 * Step 6: Detailed design - dig deeper into two or three components
 * Step 7: Identifying and resolving bottlenecks
   
-<details>
-<summary>System Design Basics</summary>
+## System Design Basics
   
 During designing a large system, investing in scaling before it is needed is generally not a smart business proposition; however, some forethought into the design can save valuable time and resources in the future.  
 Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Theorem`, `Load Balancing`, `Caching`, `Data Partitioning`, `Indexes`, `Proxies`, `Queues`, `Replication`, and choosing between `SQL vs NoSQL`.  
@@ -161,119 +160,28 @@ Include:
   * If the time to fix a failed system increases, then availability will decrease.
   * Ease of diagnosing and understanding problems when they occur, ease of making updates or modifications, and how simple the system is to operate.
   
-### Consistent Hashing
-[一致性哈希详解](./一致性哈希.md)  
+### [Consistent Hashing](./一致性哈希.md)  
   
-### Load Balancing
-LB helps to spread the traffic across a cluster of servers to improve responsiveness and availability of applications, websites or databases. It also keeps track of the status of all the resources while distributing requests. (Between the user and the web server; Between web servers and an internal platform layer, like application servers or cache servers; Between internal platform layer and database)  
-* Benefits of Load Balancing
-* Load Balancing Algorithms (Health Checks)
-  * Least Connection Method
-  * Least Response Time Method
-  * Least Bandwidth Method
-  * Round Robin Method
-  * Weighted Round Robin Method
-  * IP Hash
-* Redundant Load Balancers (LB can be a single point of failure; to overcome this, a second LB can be connected to the first to form a cluster)
+### [Load Balancing](./Load%20Balancing.md)
 
-### Caching
-Caches are used in almost every layer of computing: hardware, operating systems, web browsers, web applications, and more (can exist at all levels in architecture), but are often found at the level nearest to the front end. It is like short-term memory and fast.  
-* Application server cache - If it is not in the cache, the requesting node will query the data from disk (faster than going to network storage), However, if LB randomly distributes requests across nodes, same request will go to different nodes, thus increasing cache misses. Two overcoming choices are global caches and distributed caches.
-* Content Distribution Network (CDN) - CDNs are a kind of cache that comes into play for sites serving large amounts of static media. If content not locally available, CDN will query back-end servers for the file, cache it locally and serve it to user. Above can be done by Nginx.
-* Cache Invalidation - cache require some maintenance for keeping cache coherent with the source of truth (e.g., database).
-  * Write-through cache - data is written into the cache and the corresponding database at the same time.
-  * Write-around cache - data is written directly to permanent storage, bypassing the cache.
-  * Write-back cache - data is written to cache alone and completion is immediately confirmed to the client. The write to the permanent storage is done after specified intervals or under certain conditions.
-* Cache eviction policies
-  * First In First Out (FIFO)
-  * Last In First Out (LIFO)
-  * Least Recently Used (LRU)
-  * Most Recently Used (MRU)
-  * Least Frequently Used (LFU)
-  * Random Replacement (RR)
+### [Caching](./Caching.md)
 
-### Sharding or Data Partitioning
-Data partitioning (aka sharding) is a technique to break up a big database into many smaller parts. It improve the manageability, performance, availability, load balancing of an application and less scale cost.  
-* Partitioning Methods
-  * Horizontal partitioning - same feature data distribute diff servers (e.g. design twitter db sharding)
-  * Vertical Partitioning - divide data to store tables related to a specific feature in their own server (but this single server approach is not practical when feature data grow large, it will finally need to be Horizontal partitioning).
-  * Directory Based Partitioning - create a lookup service which knows your current partitioning scheme and abstracts it away from the DB access code. Directory server holds the mapping between each tuple key to its DB server, loosely coupled that allow change partitioning scheme without affect application.
-* Partitioning Criteria
-  * Key or Hash-based partitioning
-  * List partitioning
-  * Round-robin partitioning
-  * Composite partitioning - combine any of the above partitioning schemes to devise a new scheme.
-* Common Problems of Sharding
-  * Joins and [Denormalization](https://blog.csdn.net/zbuger/article/details/51026791) [[wiki]](https://en.wikipedia.org/wiki/Denormalization)
-  * Referential integrity - foreign keys
-  * Rebalancing - change sharding scheme
+### [Sharding or Data Partitioning](./Sharding%20or%20Data%20Partitioning.md)
 
-### Indexes
-Databases operations performance, faster to search through the table and find the row or rows wanted.  
-* Example: A library catalog
-* How do Indexes decrease write performance? - index speed up data retrieval but slow down data insertion/update/delete (update the index). (unnecessary indexes should be avoided and indexes no longer used should be removed. Adding indexes is to improving read query performance, so if table is write heavy and rarely read, index may not be added)
+### [Indexes](./Indexes.md)
 
-### Proxies
-Software/Hardware acts as intermediary for requests from clients seeking resources from other servers. Typically used to filter, log, transform requests (by adding/removing headers, encrypting/decrypting, or compressing a resource). Another advantage of a proxy server is its cache can serve many similar requests.  
-* Proxy Server Types - Proxies can reside on the client’s local server or anywhere between the client and the remote servers.
-  * Open Proxy
-    * Anonymous Proxy
-    * Trаnspаrent Proxy - able to cаche the websіtes.
-  * Reverse Proxy - retrieves resources from one or more servers then returned to client as originated from the proxy server itself
+### [Proxies](./Proxies.md)
 
 ### Redundancy and Replication
 * Redundancy - backup or failover to avoid single points of failure
 * Replication - sharing information to ensure consistency between redundant resources (e.g. db master-slave relationship)
 
-### SQL vs NoSQL
-* SQL - structured and predefined schemas
-* NoSQL
-  * 子分类
-    * Key-Value Stores - The 'key' is an
-  attribute name which is linked to a 'value' (e.g. Redis and Dynamo)
-    * Document Databases - different structured data is stored in documents in collections (instead of rows in a table) (e.g. MongoDB)
-    * Wide-Column Databases - each row doesn’t have to have the same number of columns. e.g. Cassandra and HBase, Wide-Column DB best suited for analyzing large datasets
-    * Graph Databases - data saved in graph structures with nodes (entities), properties (information about the entities), and lines (connections between the entities). e.g. Neo4J
-  * 缓存数据库、KV 或 Column 数据库、文档数据库的区别：
-    * 缓存数据库用于 read heavy 且读性能高且不需要持久化存储
-    * KV 或 Column 数据库用于 read heavy 且读性能高且需要持久化存储需要简单 schema（与文档数据库的主要区别是实际上该类数据库更新 Value/Columns 时把 Value 的数据 -- 字符串读出来转换成对象然后再更新后再写回去）
-    * 文档数据库用于需要持久化存储且灵活 schema 且支持 ACID 操作且支持相当复杂的 Query、Operation、比 Column 数据库更好的二级索引支持等等
-* High level differences between SQL and NoSQL
-  * Storage
-    * SQL row represents an entity and each column represents a data point about that entity
-  * Schema
-    * SQL each record conforms to a fixed schema
-    * NoSQL schemas are dynamic, 'columns' can be added on the fly
-  * Querying
-    * SQL apply structured query language for defining and manipulating the data
-    * NoSQL apply UnQL (Unstructured Query Language), different databases have different syntax for using UnQL.
-  * Scalability
-    * SQL, in most common situations, are vertically scalable, horizontal scale is challenging and time-consuming
-    * NoSQL, horizontally scalable, many NoSQL tech also distribute data across servers automatically.
-  * Reliability or ACID Compliancy (Atomicity, Consistency, Isolation, Durability)
-    * SQL mostly are ACID compliant.
-    * NoSQL mostly sacrifice ACID compliance for performance and scalability.
-* SQL vs NoSQL Which one to use? - there’s no one-size-fits-all solution
-  * Reasons to use SQL database
-    * need to ensure ACID compliance reduces anomalies and protects the integrity of db (for many e-commerce and financial applications, an ACID- compliant database remains the preferred option)
-    * data is structured and unchanging
-  * ![](./How%20to%20Select%20SQL%20DB.jpeg)
-  * Reasons to use NoSQL database (Big data contributes to NoSQL databases' succeed)
-    * Storing large volumes of data that often have little to no structure
-    * Making the most of cloud computing and storage, requires data to be easily spread across multiple servers to scale up
-    * Rapid development - quick iterations of system which require making frequent updates to the data structure without much downtime between versions
-  * ![](./How%20to%20Select%20NoSQL%20DB.jpeg)
+### [SQL vs NoSQL](./SQL%20vs%20NoSQL.md)
 
-参考：https://pingcap.medium.com/how-to-efficiently-choose-the-right-database-for-your-applications-20a109abced3  
+### [CAP Theorem](./CAP.md)
 
-### CAP Theorem
-[CAP](./CAP.md)
-
-### Service Meltdown, Service Downgrade and Service Circuit Breaker
-[服务降级与服务熔断](./服务降级与服务熔断.md)  
+### [Service Meltdown, Service Downgrade and Service Circuit Breaker](./服务降级与服务熔断.md)  
   
-</details>
-
 <br />
   
 ## Practice Examples
