@@ -80,8 +80,9 @@
 ## 安全高频
 * [对称加密与非对称加密]()
 
-## 系统设计高频
+## 系统设计、DevOps 高频
 * [[微服務] 什麼是 gRPC，架構上為什麼要使用 gRPC](https://www.youtube.com/watch?v=qEB3yFzETVs)
+* [CI 服务有什么用途](https://www.modb.pro/db/404626)
 
 ## Redis 高频
 * [redis 有哪些数据类型？可以应用在什么场景？](https://cloud.tencent.com/developer/article/1975464)
@@ -97,7 +98,18 @@
 * [如何确定当前能读到哪一条消息](https://cloud.tencent.com/developer/article/1853417)
 
 ## Docker 高频
-
+* [Dockerfile 配置文件中的 COPY 和 ADD 指令有什么不同](https://www.modb.pro/db/404626)
+* [Docker Image 是什么](https://www.modb.pro/db/404626)
+* [Docker Container 是什么](https://www.modb.pro/db/404626)
+* [Docker Hub 什么概念](https://www.modb.pro/db/404626)
+* [Docker 容器可能存在的运行阶段](https://www.modb.pro/db/404626)
+* [Dockerfile 配置文件中最常用的指令](https://www.modb.pro/db/404626)
+* [什么类型的应用（无状态性或有状态性）更适合 Docker 容器技术](https://www.modb.pro/db/404626)
+* [基本 Docker 应用流程](https://www.modb.pro/db/404626)
+* [Docker Image 和 Docker Layer 有什么不同](https://www.modb.pro/db/404626)
+* [[Docker Compose 是什么](https://www.modb.pro/db/404626)
+* [Docker 群（Swarm）是什么](https://www.modb.pro/db/404626)
+* [在使用 Docker 技术的产品中如何监控其运行](https://www.modb.pro/db/404626)
 
 
 以上部分参考：https://osjobs.net/topk/  
