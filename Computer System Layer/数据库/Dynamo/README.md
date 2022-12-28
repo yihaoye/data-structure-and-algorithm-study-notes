@@ -398,4 +398,5 @@ Dynamo 采用完全会员模型，其中每个节点都知道其对等节点托�
 
 
 # Others
-[Distributed system | 从 Amazon Dynamo 看分布式系统](https://www.youtube.com/watch?v=2UkujoUul4w)  
+* [Distributed system | 从 Amazon Dynamo 看分布式系统](https://www.youtube.com/watch?v=2UkujoUul4w)
+* [Cassandra | Dynamo 的一个实现案例](./../../../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/LSMTree/README.md#Cassandra)

@@ -54,3 +54,35 @@ LSM 树原理把一棵大树拆分成 N 棵小树，它首先写入内存中，�
 ## 参考
 * https://zhuanlan.zhihu.com/p/181498475
 * https://www.modb.pro/db/379790
+
+
+
+# Cassandra
+这里以 Cassandra 为例子更详细地描述 LSM 树  
+
+写入：  
+![](./Cassandra%20Write.png)  
+传统的数据库的写入（包括 INSERT、UPDATE、Delete），通常是一个读后写的过程。而 Cassandra 的写入，是没有先读这个动作的，这也是它快的根本原因。一旦使用了 IF NOT EXIST 之类的语法，那么它的写入性能也就会要受损。  
+
+读取：  
+![](./Cassandra%20Read.png)  
+Cassandra 的每次查询，都会把所有重的 KEY 读出来，但是永远会以最新的 Timestamps 为准。这就解决了把所有的修改，都变成写入的问题。但是，这么干有两大显而易见问题。第一，数据会无限的膨胀，吃掉磁盘。第二，数据膨胀会带来查询需要读出的重复数据增加，无限的膨胀则会无限的增加，读取性能就会受损。  
+
+架构（单个节点内）：  
+![](./Cassandra%20Architecture.png)  
+只要一个数据库不是内存数据库，那它永远都要面对它最大的性能瓶颈，磁盘 IO。许多概念，比如 Cache、列存储、索引等等，他们优化性能的本质都指向一处，减少磁盘 IO。而对于 SSTable 的读取，其实才是影响性能的关键步骤。  
+
+来看一下，SSTable 到底是什么，它的读取是什么样子的。根据 SSTable 的访问顺序来看，在 3.0 版本中，SSTable 包含以下这么几个文件：  
+* Filter.db 这是 SSTable 的 Bloom 过滤器，简单的讲，它告诉你，你要的 Key，在这里有没有。Bloom 过滤器的工作方式是将数据集中的值映射到位数组，并使用散列函数将较大的数据集压缩为摘要字符串。根据定义，摘要使用的内存量比原始数据少得多。它速度快，可能误报，但不会漏。简言之，有可能告诉你有，但是没有。但绝不会告诉没有，却有。这里划一个重点，Cassandra 会维护一个 Bloom filter 的副本在内存里面。所以，这一步不一定会有实际 IO。在书上也提到，如果加大内存，是可以减少 Bloom 过滤器误报的情况。
+* Summary.db，这里是索引的抽样，用来加速读取的。
+* Index.db，提供 Data.db 里的行列偏移量。
+* CompressionInfo.db 提供有关 Data.db 文件压缩的元数据。这里值得关注的是，它用了 Compression 这个词，猜测，如果 Data.db 里面采用了压缩算法，比如说字典压缩之类的，那么这个文件里面应该就会存储字典数据，或者类似的 Compress 相关的元素据。这也就是为什么这个文件，在访问流程中是不可绕过的。因为一旦 Data.db 的数据进行了压缩，那就必须依靠相关的元数据来解压缩数据。从图上可以看出，这个元数据在内存中，相对性能会比较快。
+* Data.db 是存储实际数据的文件，是 Cassandra 备份机制保留的唯一文件。它是唯一的真实数据，其他的都是辅助数据。比如索引可以重建，字典可以重建等等。
+* Digest.adler32 是 Data.db 校验用的。
+* Statistics.db 存储 nodetool tablehistograms 命令使用的有关 SSTable 的统计信息。
+* TOC.txt 列出此 SSTable 的文件组件。
+
+其中 1-5 是跟 SSTable 访问数据性能相关的文件。如果 Cache 是 ALL 的情况下，Cassandra 在通常都可以在内存访问之后，直接定位到 SSTable 的具体文件和数据所在偏移量中去。相对于传统数据库，B 树索引层层向下，遇到没有的索引块就要 IO。这个性能应该还是非常可观的。  
+
+## 参考来源
+https://www.infoq.cn/article/j0mfq1cntskbk5rbdpvl  
