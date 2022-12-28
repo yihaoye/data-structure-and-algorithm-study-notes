@@ -107,7 +107,7 @@
 * [什么类型的应用（无状态性或有状态性）更适合 Docker 容器技术](https://www.modb.pro/db/404626)
 * [基本 Docker 应用流程](https://www.modb.pro/db/404626)
 * [Docker Image 和 Docker Layer 有什么不同](https://www.modb.pro/db/404626)
-* [[Docker Compose 是什么](https://www.modb.pro/db/404626)
+* [Docker Compose 是什么](https://www.cnblogs.com/sparkdev/p/9753793.html)
 * [Docker 群（Swarm）是什么](https://www.modb.pro/db/404626)
 * [在使用 Docker 技术的产品中如何监控其运行](https://www.modb.pro/db/404626)
 
