@@ -92,7 +92,9 @@ https://www.algoexpert.io/systems/fundamentals
 * 网站系统、产品功能都是通过 API 构建的，有的公司提供的 API 本身就是产品（比如 Stripe），所以 API 很重要
 * API 任意细节的设计都要谨慎（比如参数的顺序），因为依赖该 API 的用户增长后，更改和删除 API 将变得困难、麻烦，所以一些大企业（如 Google）对 API 设计会做许多 review、检查
 * 背景知识：HTTP、JSON、YAML、ACL（Access-Control List）
-* 关键知识：Pagination、CRUD Operations
+* 关键知识：
+  * [Pagination](https://www.youtube.com/watch?v=poqTHxtDXwU&list=PLl-K7zZEsYLluG5MCVEzXAQ7ACZBCuZgZ&index=8)
+  * CRUD Operations
 * 考核过程
   * 询问关于系统的哪个功能、部分，询问系统规模，询问 API 消费细节
   * 列出每个 API 概要 / outline（列出 API 所依赖的 entity、资源，比如 Twitter API 依赖 tweet 资源或 entity，又比如 Stripe 依赖支付、客户等资源或 entity。entity 的细节要包括需要哪些属性、字段及其数据类型），列出 API 的 endpoint、请求参数（必要或可选）、返回响应，但是不需要实现逻辑细节（或者只需要写出一些关键逻辑）
