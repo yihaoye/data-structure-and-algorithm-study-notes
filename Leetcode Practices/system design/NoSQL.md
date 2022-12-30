@@ -107,6 +107,9 @@ https://aws.amazon.com/cn/nosql/columnar/
   * Apache Cassandra
   * Apache HBase
 </details>
+
+[为什么列存储数据库读取速度会比传统的行数据库快](https://www.zhihu.com/question/29380943/answer/1755250021)  
+
 <br/>
 
 ### 其他
