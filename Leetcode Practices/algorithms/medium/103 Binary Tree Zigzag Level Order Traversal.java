@@ -80,3 +80,53 @@ class Solution {
         return res;
     }
 }
+
+
+
+// My Solution 2:
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public List<List<Integer>> zigzagLevelOrder(TreeNode root) {
+        // BFS + Deque
+        List<List<Integer>> res = new ArrayList<>();
+        Deque<TreeNode> deque = new LinkedList<>();
+        if (root != null) deque.offer(root);
+        boolean evenLayer = false; // next layer start from 1, root is layer 0
+        while (!deque.isEmpty()) {
+            Deque<TreeNode> tmp = new LinkedList<>();
+            List<Integer> list = new ArrayList<>();
+            while (!deque.isEmpty()) {
+                TreeNode lastLayerNode = null;
+                if (evenLayer) {
+                    lastLayerNode = deque.pollFirst();
+                    if (lastLayerNode.right != null) tmp.offer(lastLayerNode.right);
+                    if (lastLayerNode.left != null) tmp.offer(lastLayerNode.left);
+                } else {
+                    lastLayerNode = deque.pollLast();
+                    if (lastLayerNode.left != null) tmp.offerFirst(lastLayerNode.left);
+                    if (lastLayerNode.right != null) tmp.offerFirst(lastLayerNode.right);
+                }
+                list.add(lastLayerNode.val);
+            }
+            deque = tmp;
+            evenLayer = !evenLayer;
+            res.add(list);
+        }
+
+        return res;
+    }
+}
