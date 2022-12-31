@@ -2,6 +2,7 @@
   
 - [数组 | Array]() (索引 O(1)，遍历 O(N)，插入/删除节点 O(N))
   - [树状数组 | Binary Indexed Tree](../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/BinaryIndexedTree(FenwickTree)/README.md) (单点修改、区间查询均为 O(logN))
+  - [ST 表 | Sparse Table](https://hrbust-acm-team.gitbooks.io/acm-book/content/data_structure/ds_part6.html)
 - [线性表 | Linear List]()
   - [顺序表 | ArrayList]() (索引 O(1)，遍历 O(N)，添加节点 O(1)，插入/删除节点 O(N))
   - [向量 | Vector](./Data%20Structure%20Implementation/Vector/) (索引 O(1)，遍历 O(N)，添加节点 O(1)，插入/删除节点 O(N))
