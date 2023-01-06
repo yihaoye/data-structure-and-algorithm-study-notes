@@ -844,6 +844,23 @@ ToDo...
 
 ## 其他 (Misc)
 ### MySQL Common Table Expression (CTE)
+https://www.cnblogs.com/careyson/archive/2011/12/12/2284740.html  
+对于 SELECT 查询语句来说，通常情况下，为了使 SQL 代码更加简洁和可读，在一个查询中引用另外的结果集都是通过视图而不是子查询来进行分解的。但是，视图是作为系统对象存在数据库中，那对于结果集仅仅需要在存储过程或是用户自定义函数中使用一次的时候，使用视图就显得有些奢侈了。  
+公用表表达式（Common Table Expression) 是许多数据库有的版本特性。CTE 可以看作是一个临时的结果集，可以在接下来的一个 SELECT、INSERT、UPDATE、DELETE、MERGE 语句中被多次引用。使用公用表达式可以让语句更加清晰简练。  
+
+公用表达式的定义非常简单，只包含三部分：  
+* 公用表表达式的名字（在 WITH 之后）
+* 所涉及的列名（可选）
+* 一个 SELECT 语句(紧跟 AS 之后)
+
+```sql
+WITH expression_name [ ( column_name [,...n] ) ] 
+AS 
+( CTE_query_definition ) 
+```
+  
+按照是否递归，可以将公用表（CTE）表达式分为递归公用表表达式和非递归公用表表达式。  
+
 https://www.javatpoint.com/mysql-common-table-expression  
 ```sql
 WITH cte_name (column_names) AS (query)   
@@ -859,11 +876,12 @@ Some of the essential points related to the recursive CTE are:
 * We will use the recursive CTE for series generation and traversal of hierarchical or tree-structured data.
 
 Benefits of using CTE:  
-* It provides better readability of the query.
+* It provides better readability of the query. (可以在一个语句中多次引用公用表表达式 CTE)
 * It increases the performance of the query.
-* The CTE allows us to use it as an alternative to the VIEW concept
+* The CTE allows us to use it as an alternative to the VIEW concept (当不需要将结果集作为视图被多个地方引用时，CTE可以使其更加简洁)
 * It can also be used as chaining of CTE for simplifying the query.
-* It can also be used to implement recursive queries easily.
+* It can also be used to implement recursive queries easily. (可以定义递归公用表表达式 CTE)
+* GROUP BY 语句可以直接作用于子查询所得的标量列
 
 例题：  
 * [Leetcode Q1384](./../../../Leetcode%20Practices/database/hard/1384%20Total%20Sales%20Amount%20by%20Year.sql)
