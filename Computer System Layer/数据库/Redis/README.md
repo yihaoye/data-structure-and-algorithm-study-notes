@@ -172,3 +172,21 @@ Z1 可以发送到 B 的写入量有一个最大窗口：如果经过足够的�
 节点超时结束后，主节点被认为发生故障，可以由其副本之一替换。类似地，在节点超时过去但主节点无法感知大多数其他主节点的情况下，它会进入错误状态并停止接受写入。  
 
 参考：https://redis.io/docs/management/scaling/  
+
+
+
+# Redis 使用案例
+转载自：https://twitter.com/alexxubyte/status/1610678713087295490/photo/1  
+![](./Redis%20Use%20Cases.jpeg)  
+
+Redis 不仅仅是缓存，还应用于以下场景：  
+* Session - 可以使用 Redis 在不同的服务之间共享用户会话（Session）数据。
+* Cache - 可以使用 Redis 来缓存对象或页面，尤其是热点数据。
+* Distributed lock - 可以使用 Redis 字符串来获取分布式服务之间的锁。
+* Counter - 可以计算文章的点赞数或阅读数。
+* Rate limiter - 可以对特定用户 IP 应用速率限制。
+* Global ID generator - 可以使用 Redis Int 作为全局 ID。
+* Shopping cart - 可以使用 Redis Hash 来表示购物车中的键值对。
+* Calculate user retention - 可以用 Bitmap 来表示每天的用户登录，计算用户留存。
+* Message queue - 可以将 List 用于消息队列。
+* Ranking - 可以使用 ZSet（跳表实现）对文章进行排序。
