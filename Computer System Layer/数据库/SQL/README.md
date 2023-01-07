@@ -568,6 +568,13 @@ MVCC 是利用在每条数据后面加了隐藏的两列（创建版本号和删
 对于非常容易产生死锁的业务部分，可以尝试使用升级锁定颗粒度，通过表级锁定来减少死锁产生的概率。  
 
 ### 锁语法
+* [史上最全 MySQL 各种锁详解](https://juejin.cn/post/6931752749545553933)
+* [MySQL 数据库的锁 --- 六种分类 - 14 种锁详细介绍](https://blog.csdn.net/Dhaihaihai/article/details/110454553)
+* [SELECT FOR UPDATE 1](https://zhuanlan.zhihu.com/p/143866444)
+* [SELECT FOR UPDATE 2](https://www.cnblogs.com/goloving/p/13590955.html)
+* [SELECT FOR UPDATE 3](https://stackoverflow.com/a/16425603/6481829)
+* [Difference between LOCK IN SHARE MODE and FOR UPDATE](https://www.youtube.com/watch?v=d6LsfSqj8U0)
+
 https://www.javatpoint.com/mysql-table-locking  
 ```sql
 LOCK TABLES table_name [READ | WRITE];
