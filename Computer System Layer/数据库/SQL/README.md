@@ -634,6 +634,7 @@ Unlock tables;
 * [Difference between LOCK IN SHARE MODE and FOR UPDATE](https://www.youtube.com/watch?v=d6LsfSqj8U0)
 
 https://www.javatpoint.com/mysql-table-locking  
+**显示地加表级锁**  
 ```sql
 LOCK TABLES table_name [READ | WRITE];
 
@@ -646,6 +647,23 @@ LOCK TABLES tab_name1 [READ | WRITE],
 ```sql
 UNLOCK TABLES;
 ```
+
+InnoDB 的加锁方法
+* 意向锁是 InnoDB 自动加的，不需要用户干预；
+* 对于 UPDATE、DELETE 和 INSERT 语句，InnoDB 会自动给涉及的数据集加上排他锁；
+* 对于普通的 SELECT 语句，InnoDB 不会加任何锁；事务可以通过以下语句显示给记录集添加共享锁或排他锁：
+  * 共享锁（S）：```select * from table_name where ... lock in share mode```。此时其他 session 仍然可以查询记录，并也可以对该记录加 share mode 的共享锁。但是如果当前事务需要对该记录进行更新操作，则很有可能造成死锁。
+  * 排他锁（X）：```select * from table_name where ... for update```。其他 session 可以查询记录，但是不能对该记录加共享锁或排他锁，只能等待锁释放后在加锁。
+
+**select for update**  
+在执行这个 select 查询语句的时候，会将对应的索引访问条目加上排他锁（X 锁），也就是说这个语句对应的锁就相当于 update 带来的效果；  
+使用场景：为了让确保自己查找到的数据一定是最新数据，并且查找到后的数据值允许自己来修改，此时就需要用到 select for update 语句；  
+性能分析：select for update 语句相当于一个 update 语句。在业务繁忙的情况下，如果事务没有及时地 commit 或者 rollback 可能会造成事务长时间的等待，从而影响数据库的并发使用效率。
+
+**select lock in share mode**  
+in share mode 子句的作用就是将查找的数据加上一个 share 锁，这个就是表示其他的事务只能对这些数据进行简单的 select 操作，而不能进行 DML 操作。  
+使用场景：为了确保自己查询的数据不会被其他事务正在修改，也就是确保自己查询到的数据是最新的数据，并且不允许其他事务来修改数据。与 select for update 不同的是，本事务在查找完之后不一定能去更新数据，因为有可能其他事务也对同数据集使用了 in share mode 的方式加上了 S 锁；  
+性能分析：select lock in share mode 语句是一个给查找的数据上一个共享锁（S 锁）的功能，它允许其他的事务也对该数据上 S 锁，但是不能够允许对该数据进行修改。如果不及时的 commit 或者 rollback 也可能会造成大量的事务等待。  
   
   
 ## 数据库的键
