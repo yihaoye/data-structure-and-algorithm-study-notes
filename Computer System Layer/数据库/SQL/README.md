@@ -493,6 +493,22 @@ https://www.developerastrid.com/sql/sql-transaction/
 使用简单的 ROLLBACK 和 COMMIT 语句，就可以写入或撤销整个事务。但是，只对简单的事务才能这样做，复杂的事务可能需要部分提交或回退。  
 要支持回退部分事务，必须在事务处理块中的合适位置放置占位符。这样，如果需要回退，可以回退到某个占位符。  
 在 SQL 中，这些占位符称为保留点。在 MariaDB、MySQL 和 Oracle 中创建占位符，可使用 SAVEPOINT 语句。  
+https://www.tutorialspoint.com/mysql/mysql_savepoint.htm  
+```sql
+START TRANSACTION;
+
+SELECT * FROM EMP;
+UPDATE EMP SET AGE = AGE + 1;
+
+SAVEPOINT samplesavepoint;
+
+INSERT INTO EMP ('Mac', 'Mohan', 26, 'M', 2000);
+
+ROLLBACK TO SAVEPOINT samplesavepoint;
+COMMIT;
+```  
+提示：保留点越多越好  
+可以在 SQL 代码中设置任意多的保留点，越多越好。为什么呢？因为保留点越多，就越能灵活地进行回退。  
   
 ### 保证隔离性
 数据的隔离机制，同时只能有一个事务在修改 A，一个修改完了，另一个才来修改，这通过对数据 A 加上互斥锁来实现。  
