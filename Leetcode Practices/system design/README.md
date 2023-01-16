@@ -1685,6 +1685,22 @@ Back Queue 则实现了礼貌性策略，控制了对一个网站访问的频率
   
 To Be Continue ...  
 
+## 数据模型与查询语言（Data Model and Query）
+* 数据模型
+  * 关系模型
+  * 文档模型
+  * 图数据模型
+
+* 查询语言
+  * 命令式查询
+    * IMS 和 CODASYL
+    * 常用的编程语言
+  * 声明式查询
+    * SQL
+  * MapReduce 查询
+  
+To Be Continue ...  
+
 # 一些面试小技巧
 ## QPS 计算
 * 1 million per day == 12 per second
