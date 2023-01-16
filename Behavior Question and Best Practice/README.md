@@ -22,7 +22,9 @@ Keep at least 3 project examples/stories which better to be large scale.
 ## 各公司的特点
 * Amazon
   * [Leadership Principles](https://www.amazon.jobs/en/principles)
-  * 3 Main Product interest Amazon: AWS、Digital Product、Retailer  
+  * 3 Main Product interest Amazon: AWS、Digital Product、Retailer
+* Stripe
+  * [Search and Quick Use, Trace and Real Problem Solve Skill](https://medium.com/@SantalTech/no-leetcode-the-stripe-interview-experience-cf1b29e6f55d)  
   
 # 思维工具
 * [六西格玛](https://zh.wikipedia.org/zh-hans/%E5%85%AD%E6%A8%99%E6%BA%96%E5%B7%AE)
