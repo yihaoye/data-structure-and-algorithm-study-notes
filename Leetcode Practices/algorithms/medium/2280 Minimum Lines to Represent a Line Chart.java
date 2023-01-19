@@ -40,7 +40,7 @@ All dayi are distinct.
 // My Solution:
 class Solution {
     public int minimumLines(int[][] stockPrices) {
-        // 数学(坐标系) + 对象 + HashSet
+        // 参考 LC Q149 数学(坐标系) + 对象 + HashSet
         Arrays.sort(stockPrices, (a, b) -> Integer.compare(a[0], b[0])); // stockPrices 并不保证 x 横坐标有序
         Set<Slope> set = new HashSet<>();
         for (int i=1; i<stockPrices.length; i++) {
@@ -102,5 +102,20 @@ class Solution {
             a = temp;
         }
         return a;
+    }
+}
+
+
+
+// Other's Solution:
+class Solution {
+    public int minimumLines(int[][] A) {
+        // https://leetcode.com/problems/minimum-lines-to-represent-a-line-chart/solutions/2062141/java-c-python-compare-slopes-cross-product/?orderBy=most_votes
+        int n = A.length, res = n - 1;
+        Arrays.sort(A, (a, b) -> Integer.compare(a[0], b[0]));
+        for (int i = 1; i < n - 1; ++i)
+            if (1L * (A[i][0] - A[i - 1][0]) * (A[i + 1][1] - A[i][1]) == 1L * (A[i + 1][0] - A[i][0]) * (A[i][1] - A[i - 1][1]))
+                res--;
+        return res;
     }
 }
