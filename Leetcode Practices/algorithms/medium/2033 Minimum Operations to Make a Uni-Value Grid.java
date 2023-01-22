@@ -49,10 +49,10 @@ class Solution {
     public int minOperations(int[][] grid, int x) {
         // 数学(中位数) - https://leetcode.cn/problems/minimum-operations-to-make-a-uni-value-grid/solution/zhong-wei-shu-by-endlesscheng-p0vj/
         /*
-            假设要让所有元素均为 yy，设小于 yy 的元素有 pp 个，大于 yy 的元素有 qq 个，可以发现：
-                * 若 p<qp<q，yy 每增加 xx，操作数就可以减小 q-pq−p；
-                * 若 p>qp>q，yy 每减小 xx，操作数就可以减小 p-qp−q；
-            因此 p=qp=q 时可以让总操作数最小，此时 yy 为所有元素的中位数。
+            假设要让所有元素均为 y，设小于 y 的元素有 p 个，大于 y 的元素有 q 个，可以发现：
+                * 若 p<q，y 每增加 x，操作数就可以减小 q−p；
+                * 若 p>q，y 每减小 x，操作数就可以减小 p−q；
+            因此 p=q 时可以让总操作数最小，此时 y 为所有元素的中位数。
         */
         int n = grid.length, m = grid[0].length, i = 0;
         int[] arr = new int[m*n];
