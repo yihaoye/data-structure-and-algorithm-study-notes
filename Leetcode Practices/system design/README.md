@@ -1704,6 +1704,8 @@ To Be Continue ...
 To Be Continue ...  
 
 # 一些面试小技巧
+[Back-Of-The-Envelope Estimation / Capacity Planning (ByteByteGo)](https://www.youtube.com/watch?v=UC5xf8FbdJc)  
+
 ## QPS 计算
 * 1 million per day == 12 per second
 * 100GB per day ~= 1MB per second
