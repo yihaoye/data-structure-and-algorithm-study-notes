@@ -239,6 +239,8 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 <details>
 <summary>Design Twitter</summary>
 
+![](./Twitter%20System%20Architecture.jpeg)  
+
 [花花酱讲解](https://www.youtube.com/watch?v=PMCdWr6ejpw)
 * Step 1: What is Twitter?
 * Step 2: Requirements and Goals of the System (Functional Requirements, Non-Functional Requirements, Extended Requirements).
