@@ -1704,8 +1704,8 @@ To Be Continue ...
 To Be Continue ...  
 
 # 一些面试小技巧
-[Back-Of-The-Envelope Estimation / Capacity Planning (ByteByteGo)](https://www.youtube.com/watch?v=UC5xf8FbdJc)  
-
+**[(重要) Back-Of-The-Envelope Estimation / Capacity Planning (ByteByteGo)](https://www.youtube.com/watch?v=UC5xf8FbdJc)**  
+  
 ## QPS 计算
 * 1 million per day == 12 per second
 * 100GB per day ~= 1MB per second
@@ -1732,7 +1732,7 @@ To Be Continue ...
 * 1000 Trillion * 1B => 10^15 * 1B => 1 Trillion * 1KB => 1PB
 
 ### ID 设计
-* [UUID 是 16B/字节](https://blog.csdn.net/qq_41655115/article/details/106885421)
+* [UUID 是 16B/字节](https://blog.csdn.net/qq_41655115/article/details/106885421) 可以表示 2^128 => 3.4*10^38 => 340 Undecillion
 * 8B/字节 ID（纯数字）可以表示 2^8^8 => 2^64 => 1.8*10^19 => 18 Quintillion
 * 5B/字节 ID（纯数字）可以表示 2^8^5 => 2^40 => 10^12 => 1000 Billion => 10000 亿 => 1 兆
 * 4B/字节 ID（纯数字）可以表示 2^8^4 => 2^32 => 4 Billion => 40 亿
