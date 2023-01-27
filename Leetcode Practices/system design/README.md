@@ -1712,17 +1712,17 @@ To Be Continue ...
 
 ## Storage 计算
 以下为常用存储单位，每个之间为 1024（~1000）倍的比例，比如 1KB = 1024B，如此类推（除了第一个 Byte 可缩写成 B，它代表、等于 8 个比特/Bit，Bit 可缩写成 b，Bit 即一位二进制位仅表示 0 或 1，为最小单元）  
-|Name	|Equal To	|Size(In Bytes) |
-|--   |--       |--             |
-|Byte	|8 Bits	  |1              |
-|KiloByte	|1024 Bytes	|1024     |
-|MegaByte	|1,024 KiloBytes	|1,048,576  |
-|GigaByte	|1,024 MegaBytes	|1,073,741,824  |
-|TeraByte	|1,024 GigaBytes	|1,099,511,627,776  |
-|PetaByte	|1,024 TeraBytes	|1,125,899,906,842,624  |
-|ExaByte	|1,024 PetaBytes	|1,152,921,504,606,846,976  |
-|ZettaByte	|1,024 ExaBytes	|1,180,591,620,717,411,303,424  |
-|YottaByte	|1,024 ZettaBytes	|1,208,925,819,614,629,174,706,176  |
+|Name	|Equal To	|Size(In Bytes) |Scientific Notation   |
+|--   |--       |--             |-- |
+|Byte	|8 Bits	  |1              |1 B |
+|KiloByte	|1024 Bytes	|1024     |~10^3 B |
+|MegaByte	|1,024 KiloBytes	|1,048,576  |~10^6 B |
+|GigaByte	|1,024 MegaBytes	|1,073,741,824  |~10^9 B |
+|TeraByte	|1,024 GigaBytes	|1,099,511,627,776  |~10^12 B |
+|PetaByte	|1,024 TeraBytes	|1,125,899,906,842,624  |~10^15 B |
+|ExaByte	|1,024 PetaBytes	|1,152,921,504,606,846,976  |~10^18 B |
+|ZettaByte	|1,024 ExaBytes	|1,180,591,620,717,411,303,424  |~10^21 B |
+|YottaByte	|1,024 ZettaBytes	|1,208,925,819,614,629,174,706,176  |~10^24 B |
 
 参考：https://www.geeksforgeeks.org/understanding-file-sizes-bytes-kb-mb-gb-tb-pb-eb-zb-yb/  
 
