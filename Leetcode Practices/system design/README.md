@@ -1705,6 +1705,19 @@ To Be Continue ...
 
 # 一些面试小技巧
 **[(重要) Back-Of-The-Envelope Estimation / Capacity Planning (ByteByteGo)](https://www.youtube.com/watch?v=UC5xf8FbdJc)**  
+* 请求负载
+  * ![](./back-of-the-envelope%20estimation%200.png)
+  * ![](./back-of-the-envelope%20estimation%201.png)
+  * ![](./back-of-the-envelope%20estimation%202.png)
+  * ![](./back-of-the-envelope%20estimation%203.png)
+  * ![](./back-of-the-envelope%20estimation%204.png)
+  * ![](./back-of-the-envelope%20estimation%205.png)
+  * ![](./back-of-the-envelope%20estimation%206.png)
+  * ![](./back-of-the-envelope%20estimation%207.png)
+* 存储负载
+  * ![](./back-of-the-envelope%20estimation%208.png)
+  * ![](./back-of-the-envelope%20estimation%209.png)
+  * ![](./back-of-the-envelope%20estimation%2010.png)
   
 ## QPS 计算
 * 1 million per day == 12 per second
