@@ -279,6 +279,7 @@
 - [ ] 140	Word Break II		
 - [ ] 351	Android Unlock Patterns	
 - [x] 679   24 Game 
+- [x] 1947  Maximum Compatibility Score Sum 
    
 ## Dynamic Programming
 ### 一维			
