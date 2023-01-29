@@ -88,3 +88,17 @@ public long lcm(long[] input) {
     for (int i = 1; i < input.length; i++) result = lcm(result, input[i]);
     return result;
 }
+
+
+
+// 高效 x^n - k （并且对 10^9+7 取模）参考 https://leetcode.com/problems/count-collisions-of-monkeys-on-a-polygon/solutions/3111664/java-c-python-should-be-pow-2-n-4/?orderBy=most_votes
+// Time O(logn), Space O(1)
+public int fast_power(int x, int n, int k) {
+    long res = 1, base = x, mod = (long) 1e9 + 7;
+    while (n > 0) {
+        if (n % 2 == 1) res = res * base % mod;
+        base = base * base % mod;
+        n /= 2; // or n >>= 1;
+    }
+    return (int) ((res - k + mod) % mod);
+}
