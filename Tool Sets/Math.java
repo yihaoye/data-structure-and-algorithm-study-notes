@@ -102,3 +102,12 @@ public int fast_power(int x, int n, int k) {
     }
     return (int) ((res - k + mod) % mod);
 }
+
+// 31 位内包括 31 高效求 2^n
+public int power2(n) {
+    return 1 << n;
+}
+// 63 位内包括 63 高效求 2^n
+public long power2(n) {
+    return 1L << n;
+}
