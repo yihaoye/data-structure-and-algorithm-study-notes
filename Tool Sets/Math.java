@@ -111,3 +111,8 @@ public int power2(n) {
 public long power2(n) {
     return 1L << n;
 }
+
+
+
+// 计算 loga(b)
+double x = Math.log(b) / Math.log(a);
