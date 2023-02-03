@@ -123,3 +123,8 @@ class Solution {
         return res;
     }
 }
+
+
+
+// 求一个数的二进制的最高有效位（即最高的 1 在哪）
+int n = (int) (Math.log(num) / Math.log(2));
