@@ -13,7 +13,7 @@
 * [行为型问题与工作实践 | Behavior Question & Best Practice](./Behavior%20Question%20and%20Best%20Practice/)
 * [Topcoder](./Topcoder/)
 * [Codility Practices](./Codility%20Practices/)
-* [HackerRank Practices](./HackerRank%20Practises/) (包括一些 [Java 语言实例解析](./HackerRank%20Practises/java/))
+* [HackerRank Practices](./HackerRank%20Practises/) (包括一些 [Java 语言实例解析](./HackerRank%20Practises/java/)、[Linux Bash](./HackerRank%20Practises/bash/))
 * [Google Code Jam Practices](./Google%20Code%20Jam/)
 * [Leetcode Practices](./Leetcode%20Practices/) (主要包含了[算法](./Leetcode%20Practices/algorithms/)、[SQL](./Leetcode%20Practices/database/)、[OOD](./Leetcode%20Practices/object%20oriented%20design/) 、[系统设计](./Leetcode%20Practices/system%20design/) 和 [API 设计](./Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md#api-design)；算法题第一次提交 round 1 是自己的首次解答方法，第二次提交 round 2 是进行复盘复习后并添加、理解他人的更优解以及增添其他语言解题实现，round 0 则是首次答题没头绪参考他人解题思路)
   * **[重点：分类分析套路](./分析套路.md)**
