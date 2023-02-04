@@ -5,6 +5,9 @@
 * [重要：数据库相关系统设计、分库分表](../../Leetcode%20Practices/system%20design/数据库数据建模分库分表.md)
 * [Redis 基本功](./Redis/)
 
+## 数据库相关的数据结构
+![](./Data%20Structures%20that%20Power%20Database.PNG)  
+
 ## 数据库引擎
 ![](./mysql-change-storage-engine.png)  
 
