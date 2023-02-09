@@ -118,7 +118,7 @@
 ### 提高			
 - [x] 157	Read N Characters Given Read4		
 - [ ] 158	Read N Characters Given Read4 II - Call multiple times		
-- [ ] 68	Text Justification		
+- [x] 68	Text Justification		
 - [ ] 65	Valid Number		
 ### Substring			
 - [x] 76	Minimum Window Substring		                                        Sliding Window
@@ -563,7 +563,7 @@
 - [ ] 65	Valid Number		
 - [x] 66	Plus One		
 - [x] 67	Add Binary		
-- [ ] 68	Text Justification		
+- [x] 68	Text Justification		
 - [x] 69	Sqrt(x)		
 - [x] 70	Climbing Stairs		
 - [x] 71	Simplify Path		
