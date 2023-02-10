@@ -277,7 +277,7 @@
 - [ ] 320	Generalized Abbreviation		
 - [ ] 93	Restore IP Addresses		                    很少考
 - [ ] 282	Expression Add Operators		
-- [ ] 140	Word Break II		
+- [x] 140	Word Break II		
 - [ ] 351	Android Unlock Patterns	
 - [x] 679   24 Game 
 - [x] 1947  Maximum Compatibility Score Sum 
@@ -607,7 +607,7 @@
 - [x] 134	Gas Station		
 - [x] 138	Copy List with Random Pointer		
 - [x] 139	Word Break		
-- [ ] 140	Word Break II		
+- [x] 140	Word Break II		
 - [x] 142	Linked List Cycle II		
 - [x] 146	LRU Cache		
 - [x] 149	Max Points on a Line		
