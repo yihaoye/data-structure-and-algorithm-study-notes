@@ -38,7 +38,7 @@ class Solution {
         // https://leetcode.com/problems/satisfiability-of-equality-equations/solutions/234486/java-c-python-easy-union-find/?orderBy=most_votes
         for (int i = 0; i < 26; ++i) uf[i] = i;
         for (String e : equations)
-            if (e.charAt(1) == '=') uf[find(e.charAt(0) - 'a')] = find(e.charAt(3) - 'a');
+            if (e.charAt(1) == '=') uf[find(e.charAt(0) - 'a')] = find(e.charAt(3) - 'a'); // 简易 UNION，不用引入、考虑 rank[]，因为最多 26 个节点所以即使不优化高度也没问题
         for (String e : equations)
             if (e.charAt(1) == '!' && find(e.charAt(0) - 'a') == find(e.charAt(3) - 'a')) return false;
         return true;
