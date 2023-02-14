@@ -291,7 +291,7 @@
 - [x] 279	Perfect Squares		
 - [x] 139	Word Break		
 - [x] 375	Guess Number Higher or Lower II		
-- [ ] 312	Burst Balloons		
+- [x] 312	Burst Balloons		
 - [ ] 322	Coin Change		
 - [x] 877   Stone Game  
 - [x] 818   Race Car    
@@ -715,7 +715,7 @@
 - [ ] 308	Range Sum Query 2D - Mutable		
 - [x] 309	Best Time to Buy and Sell Stock with Cooldown		
 - [x] 311	Sparse Matrix Multiplication		
-- [ ] 312	Burst Balloons		
+- [x] 312	Burst Balloons		
 - [x] 314	Binary Tree Vertical Order Traversal		
 - [ ] 316	Remove Duplicate Letters		
 - [ ] 317	Shortest Distance from All Buildings		
