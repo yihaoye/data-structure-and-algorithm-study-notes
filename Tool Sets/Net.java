@@ -1,3 +1,56 @@
+import java.net.*;
+import java.util.*;
+import java.util.regex.*;
+import java.io.*;
+
+public class Net { // 该类只展示了 GET 和简单的 JSON Parse，POST 请下拉看另一个类
+    public static void main(String args[]) {
+      try {
+            // https://www.youtube.com/watch?v=zZoboXqsCNw
+
+            URL url = new URL("https://api.coindesk.com/v1/bpi/currentprice.json");
+
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.connect();
+
+            // Check if connect is made
+            int responseCode = conn.getResponseCode();
+
+            // 200 OK
+            if (responseCode != 200) {
+                throw new RuntimeException("HttpResponseCode: " + responseCode);
+            } else {
+                StringBuilder informationString = new StringBuilder();
+                Scanner scanner = new Scanner(url.openStream());
+
+                while (scanner.hasNext()) {
+                    informationString.append(scanner.nextLine());
+                }
+                // Close the scanner
+                scanner.close();
+
+                System.out.println(informationString); // {"time":{"updated":"Feb 15, 2023 11:15:00 UTC","updatedISO":"2023-02-15T11:15:00+00:00","updateduk":"Feb 15, 2023 at 11:15 GMT"},"disclaimer":"This data was produced from the CoinDesk Bitcoin Price Index (USD). Non-USD currency data converted using hourly conversion rate from openexchangerates.org","chartName":"Bitcoin","bpi":{"USD":{"code":"USD","symbol":"&#36;","rate":"22,242.3013","description":"United States Dollar","rate_float":22242.3013},"GBP":{"code":"GBP","symbol":"&pound;","rate":"18,585.4890","description":"British Pound Sterling","rate_float":18585.489},"EUR":{"code":"EUR","symbol":"&euro;","rate":"21,667.2488","description":"Euro","rate_float":21667.2488}}}
+                
+                // json parse - not perfect
+                Map<String, String> json = new HashMap<>();
+                Pattern pattern = Pattern.compile("\"([A-Za-z0-9]+)\":\"([A-Za-z0-9]+)\"");
+                Matcher matcher = pattern.matcher(informationString);
+                while (matcher.find()) {
+                    json.put(matcher.group(1), matcher.group(2));
+                }
+                System.out.println(json); // {code=EUR, chartName=Bitcoin, description=Euro}
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+
+
 // 链接：https://juejin.cn/post/7158840048970891278
 /**
     在Java项目中调用第三方接口的方式有：
@@ -86,58 +139,5 @@ public class HttpUrlConnectionToInterface { // 通过JDK网络类Java.net.HttpUR
 　　　　 *　　　　　　http://api.showji.com/Locating/www.showji.com.aspx?m=手机号&output=json&callback=querycallback
          */
         doPostOrGet("https://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=13026194071", "");
-    }
-}
-
-
-
-
-
-import java.net.*;
-import java.util.*;
-import java.util.regex.*;
-import java.io.*;
-
-public class Net {
-    public static void main(String args[]) {
-      try {
-            // https://www.youtube.com/watch?v=zZoboXqsCNw
-
-            URL url = new URL("https://api.coindesk.com/v1/bpi/currentprice.json");
-
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("GET");
-            conn.connect();
-
-            // Check if connect is made
-            int responseCode = conn.getResponseCode();
-
-            // 200 OK
-            if (responseCode != 200) {
-                throw new RuntimeException("HttpResponseCode: " + responseCode);
-            } else {
-                StringBuilder informationString = new StringBuilder();
-                Scanner scanner = new Scanner(url.openStream());
-
-                while (scanner.hasNext()) {
-                    informationString.append(scanner.nextLine());
-                }
-                // Close the scanner
-                scanner.close();
-
-                System.out.println(informationString); // {"time":{"updated":"Feb 15, 2023 11:15:00 UTC","updatedISO":"2023-02-15T11:15:00+00:00","updateduk":"Feb 15, 2023 at 11:15 GMT"},"disclaimer":"This data was produced from the CoinDesk Bitcoin Price Index (USD). Non-USD currency data converted using hourly conversion rate from openexchangerates.org","chartName":"Bitcoin","bpi":{"USD":{"code":"USD","symbol":"&#36;","rate":"22,242.3013","description":"United States Dollar","rate_float":22242.3013},"GBP":{"code":"GBP","symbol":"&pound;","rate":"18,585.4890","description":"British Pound Sterling","rate_float":18585.489},"EUR":{"code":"EUR","symbol":"&euro;","rate":"21,667.2488","description":"Euro","rate_float":21667.2488}}}
-                
-                // json parse - not perfect
-                Map<String, String> json = new HashMap<>();
-                Pattern pattern = Pattern.compile("\"([A-Za-z0-9]+)\":\"([A-Za-z0-9]+)\"");
-                Matcher matcher = pattern.matcher(informationString);
-                while (matcher.find()) {
-                    json.put(matcher.group(1), matcher.group(2));
-                }
-                System.out.println(json); // {code=EUR, chartName=Bitcoin, description=Euro}
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 }
