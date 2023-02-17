@@ -264,6 +264,8 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 <details>
 <summary>Designing an API Rate Limiter</summary>
 
+具体代码实现可参考 [Java 实现 RateLimiter](https://github.com/code4wt/RateLimiter)  
+
 * Step 1: Rate Limiter 限制用户发送的请求数量。单个服务每秒可处理的请求是有限的，因此需要机制限制实体（用户、设备、IP 等）单个时间内的请求、事件执行数量。
   * 比如用户每秒可发 1 个消息、用户每天允许 3 次失败的信用卡交易、同一 IP 每天最多可创建 20 个账户
 * Step 2: 为什么需要 API Rate Limiter？在应用层面上避免 DDoS 攻击、暴力破解密码的尝试、暴力大数量的信用卡交易等等，此类攻击通常难以预判、并会使服务、应用、API 宕机。另外该机制还可以用于防止收入损失、降低基础设施成本、阻止垃圾邮件和阻止在线骚扰，以下是细节好处：
