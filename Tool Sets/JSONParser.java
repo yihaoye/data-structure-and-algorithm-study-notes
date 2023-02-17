@@ -1,5 +1,6 @@
 // copy from https://github.com/code4wt/JSONParser
 // reference https://www.cnblogs.com/nullllun/p/8358146.html
+// 简易版可参考 LC Q385 Mini Parser
 import java.util.*;
 import java.io.*;
 
