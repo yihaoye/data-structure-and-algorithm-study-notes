@@ -1,9 +1,10 @@
+// 可以参考 https://restful-api.dev/
 import java.net.*;
 import java.util.*;
 import java.util.regex.*;
 import java.io.*;
 
-public class Net { // 该类只展示了 GET 和简单的 JSON Parse，POST 请下拉看另一个类
+public class Net { // 该类只展示了 GET 和简单的 JSON Parse，POST 请下拉看另两个类
     public static void main(String args[]) {
       try {
             // https://www.youtube.com/watch?v=zZoboXqsCNw
@@ -45,6 +46,69 @@ public class Net { // 该类只展示了 GET 和简单的 JSON Parse，POST 请�
             e.printStackTrace();
         }
     }
+}
+
+
+
+
+
+// https://sqa.stackexchange.com/questions/47097/free-sites-for-testing-post-rest-api-calls
+import java.net.*;
+import java.util.*;
+import javax.net.ssl.*;
+import java.io.*;
+
+public class Net {
+    public static void main(String[] args) {
+        try {
+            // URL url = new URL("https://httpbin.org/post");
+            // HttpURLConnection httpConnection = (HttpURLConnection) url.openConnection();
+            // httpConnection.setRequestMethod("POST");
+            // httpConnection.setDoOutput(true);
+            // OutputStream os = httpConnection.getOutputStream();
+            // String jsonText = "{\"name\":\"AppleMacBookPro16\",\"data\":{\"year\":2019,\"price\":1849.99,\"CPUmodel\":\"IntelCorei9\",\"Harddisksize\":\"1TB\"}}";
+            // os.write(jsonText.getBytes());
+            // os.flush();
+            // os.close();
+
+            // int responseCode = httpConnection.getResponseCode();
+            // System.out.println(responseCode);
+
+            // if (responseCode == HttpURLConnection.HTTP_OK) {
+            //     BufferedReader br = new BufferedReader(new InputStreamReader(httpConnection.getInputStream()));
+            //     String input;
+            //     StringBuffer response = new StringBuffer();
+
+            //     while ((input = br.readLine()) != null) {
+            //         response.append(input);
+            //     }
+            //     br.close();
+            //     String responseJson = response.toString();
+            //     System.out.println(responseJson);
+            // }
+
+            String body = "{\"name\": \"Apple iPad Air\", \"data\": { \"Generation\": \"4th\", \"Price\": \"519.99\", \"Capacity\": \"256 GB\" }}";
+            URL url = new URL("https://api.restful-api.dev/objects");
+            HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
+            conn.setRequestMethod("POST");
+            conn.setDoOutput(true);
+            conn.setRequestProperty("Content-Type", "application/json");
+            conn.setRequestProperty("User-Agent", "Mozilla/5.0");
+
+            try (DataOutputStream dos = new DataOutputStream(conn.getOutputStream())) {
+                dos.writeBytes(body);
+            }
+
+            try (BufferedReader bf = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
+                String line;
+                while ((line = bf.readLine()) != null) {
+                    System.out.println(line);
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+	}
 }
 
 
