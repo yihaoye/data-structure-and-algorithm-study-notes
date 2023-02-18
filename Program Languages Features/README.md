@@ -23,6 +23,10 @@ ToDo ...
   
 ## 编程语言间的差别
 有的的语言有组合数计算的 API，比如 Python、Go，有的没有比如 Java、C++。  
+
+[弱类型、强类型、动态类型、静态类型语言及其区别](https://cloud.tencent.com/developer/article/1332131)  
+![](./弱类型、强类型、动态类型、静态类型语言.jpeg)  
+
 To Be Continue ...  
   
 ### 内置工具对比
