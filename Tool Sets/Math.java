@@ -63,6 +63,22 @@ public long factorial(int n) {
 
 
 
+// 组合计算
+long MOD = (long) 1e9 + 7;
+long[][] dp = new long[maxN][maxN];
+public long combination(int n, int k) { // Binomial Coefficient - C(n, k)
+    if (dp[n][k] != 0) return dp[n][k]; // 记忆化搜索优化性能
+    // base cases
+    if (k > n) return 0;
+    if (k == 0 || k == n) return 1;
+    // recursive
+    long res = (combination(n - 1, k - 1) + combination(n - 1, k)) % MOD;
+    dp[n][k] = res;
+    return res;
+}
+
+
+
 // GCD 最大公约数
 public int gcd(int a, int b) { //（欧几里得算法 - https://zh.wikipedia.org/zh-hans/%E8%BC%BE%E8%BD%89%E7%9B%B8%E9%99%A4%E6%B3%95）
     if (a == 0) return b; // 若 a 或 b 的任意一个为 0，则最大公约数就是另一个数
