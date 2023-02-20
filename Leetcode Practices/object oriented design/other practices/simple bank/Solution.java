@@ -9,12 +9,12 @@ public class Solution {
         Long aliceANZAccId = anz.createAccount(alice.name); // create an account and return account id - like get a bank card
 
         anz.deposit(aliceANZAccId, 30.0); // simulate insert the card or id and deposit
-        System.out.println(anz.getAccountBalance(aliceANZAccId));
-        System.out.println(anz.getTotalBalance());
+        anz.getAccountBalance(aliceANZAccId);
+        anz.getTotalBalance();
 
         anz.withdraw(aliceANZAccId, 20.0); // simulate insert the card and withdraw
-        System.out.println(anz.getAccountBalance(aliceANZAccId));
-        System.out.println(anz.getTotalBalance());
+        anz.getAccountBalance(aliceANZAccId);
+        anz.getTotalBalance();
 
         try {
             anz.withdraw(aliceANZAccId, 11.0);
@@ -27,14 +27,14 @@ public class Solution {
         Long bobANZAccId = anz.createAccount(bob.name);
 
         anz.deposit(bobANZAccId, 50.0);
-        System.out.println(anz.getAccountBalance(aliceANZAccId));
-        System.out.println(anz.getAccountBalance(bobANZAccId));
-        System.out.println(anz.getTotalBalance());
+        anz.getAccountBalance(aliceANZAccId);
+        anz.getAccountBalance(bobANZAccId);
+        anz.getTotalBalance();
 
         anz.withdraw(bobANZAccId, 10.5);
-        System.out.println(anz.getAccountBalance(aliceANZAccId));
-        System.out.println(anz.getAccountBalance(bobANZAccId));
-        System.out.println(anz.getTotalBalance());
+        anz.getAccountBalance(aliceANZAccId);
+        anz.getAccountBalance(bobANZAccId);
+        anz.getTotalBalance();
     }
 }
 
@@ -47,7 +47,8 @@ static class Bank {
     private BankCode bankCode;
     private double totalBalance; // should apply BigDecimal for more standard scenario
     private Map<Long, Account> accounts; // <accountId, account>
-    private Long accIdInc; // accountId should apply UUID.randomUUID().toString() for more standard scenario
+    // private Map<Long, Set<Account>> customersAccounts; // <customerId, <accountA, accountB, ...>> a customer may have several accounts, the field could support find customer accounts
+    private Long accIdInc; // accountId can apply UUID.randomUUID().toString() for some standard scenario
 
     public Bank(BankCode bankCode) {
         this.bankCode = bankCode;
@@ -61,6 +62,7 @@ static class Bank {
     }
 
     public double getTotalBalance() {
+        System.out.println("Bank " + BankCode + " remain total balance: " + this.totalBalance);
         return this.totalBalance;
     }
 
@@ -69,6 +71,7 @@ static class Bank {
         if (account == null) {
             throw new RuntimeException("Account does not exist.");
         }
+        System.out.println("Account " + accountId + " remain balance: " + account.getBalance());
         return account.getBalance();
     }
 
@@ -137,6 +140,7 @@ static class Account {
 
 static class Customer {
     private String name;
+    // private Long customerId; // unique id for customer
 
     public Customer(String name) {
         this.name = name;
