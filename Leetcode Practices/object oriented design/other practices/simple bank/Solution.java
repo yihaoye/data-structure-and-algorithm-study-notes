@@ -36,130 +36,128 @@ public class Solution {
         anz.getAccountBalance(bobANZAccId);
         anz.getTotalBalance();
     }
-}
 
 
+    /**
+        ./model/
+    */
+    static class Bank {
+        private BankCode bankCode;
+        private double totalBalance; // should apply BigDecimal for more standard scenario
+        private Map<Long, Account> accounts; // <accountId, account>
+        // private Map<Long, Set<Account>> customersAccounts; // <customerId, <accountA, accountB, ...>> a customer may have several accounts, the field could support find customer accounts
+        private Long accIdInc; // accountId can apply UUID.randomUUID().toString() for some standard scenario
 
-/**
-    ./model/
- */
-static class Bank {
-    private BankCode bankCode;
-    private double totalBalance; // should apply BigDecimal for more standard scenario
-    private Map<Long, Account> accounts; // <accountId, account>
-    // private Map<Long, Set<Account>> customersAccounts; // <customerId, <accountA, accountB, ...>> a customer may have several accounts, the field could support find customer accounts
-    private Long accIdInc; // accountId can apply UUID.randomUUID().toString() for some standard scenario
-
-    public Bank(BankCode bankCode) {
-        this.bankCode = bankCode;
-        this.totalBalance = 0.0;
-        this.accounts = new HashMap<>();
-        this.accIdInc = 0L;
-    }
-
-    public BankCode getBankCode() {
-        return bankCode;
-    }
-
-    public double getTotalBalance() {
-        System.out.println("Bank " + BankCode + " remain total balance: " + this.totalBalance);
-        return this.totalBalance;
-    }
-
-    public double getAccountBalance(Long accountId) {
-        Account account = accounts.get(accountId);
-        if (account == null) {
-            throw new RuntimeException("Account does not exist.");
+        public Bank(BankCode bankCode) {
+            this.bankCode = bankCode;
+            this.totalBalance = 0.0;
+            this.accounts = new HashMap<>();
+            this.accIdInc = 0L;
         }
-        System.out.println("Account " + accountId + " remain balance: " + account.getBalance());
-        return account.getBalance();
-    }
 
-    public double withdraw(Long accountId, double withdrawAmount) {
-        Account account = accounts.get(accountId);
-        if (account == null) {
-            throw new RuntimeException("Account does not exist.");
+        public BankCode getBankCode() {
+            return bankCode;
         }
-        double accountBalance = account.getBalance();
-        if (accountBalance < withdrawAmount) {
-            throw new RuntimeException("Account balance cannot be negative.");
+
+        public double getTotalBalance() {
+            System.out.println("Bank " + BankCode + " remain total balance: " + this.totalBalance);
+            return this.totalBalance;
         }
-        account.setBalance(accountBalance - withdrawAmount);
-        this.totalBalance -= withdrawAmount;
-        return withdrawAmount;
-    }
 
-    public void deposit(Long accountId, double depositAmount) {
-        Account account = accounts.get(accountId);
-        if (account == null) {
-            throw new RuntimeException("Account does not exist.");
+        public double getAccountBalance(Long accountId) {
+            Account account = accounts.get(accountId);
+            if (account == null) {
+                throw new RuntimeException("Account does not exist.");
+            }
+            System.out.println("Account " + accountId + " remain balance: " + account.getBalance());
+            return account.getBalance();
         }
-        if (depositAmount < 0.0) {
-            throw new RuntimeException("Deposit cannot be negative.");
+
+        public double withdraw(Long accountId, double withdrawAmount) {
+            Account account = accounts.get(accountId);
+            if (account == null) {
+                throw new RuntimeException("Account does not exist.");
+            }
+            double accountBalance = account.getBalance();
+            if (accountBalance < withdrawAmount) {
+                throw new RuntimeException("Account balance cannot be negative.");
+            }
+            account.setBalance(accountBalance - withdrawAmount);
+            this.totalBalance -= withdrawAmount;
+            return withdrawAmount;
         }
-        double accountBalance = account.getBalance();
-        account.setBalance(accountBalance + depositAmount);
-        this.totalBalance += depositAmount;
-    }
 
-    public Long createAccount(String customerName) {
-        Account account = new Account(customerName);
-        accounts.put(accIdInc, account);
-        return accIdInc++;
-    }
-}
-
-static class Account {
-    private String customerName;
-    private double balance; // should apply BigDecimal for more standard scenario
-
-    public Account(String customerName) {
-        this.customerName = customerName;
-        this.balance = 0.0;
-    }
-
-    public String getCustomerName() {
-        return customerName;
-    }
-
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
-    }
-
-    public double getBalance() {
-        return balance;
-    }
-
-    public void setBalance(double balance) {
-        if (balance < 0.0) {
-            throw new RuntimeException("Account balance cannot be negative.");
+        public void deposit(Long accountId, double depositAmount) {
+            Account account = accounts.get(accountId);
+            if (account == null) {
+                throw new RuntimeException("Account does not exist.");
+            }
+            if (depositAmount < 0.0) {
+                throw new RuntimeException("Deposit cannot be negative.");
+            }
+            double accountBalance = account.getBalance();
+            account.setBalance(accountBalance + depositAmount);
+            this.totalBalance += depositAmount;
         }
-        this.balance = balance;
-    }
-}
 
-static class Customer {
-    private String name;
-    // private Long customerId; // unique id for customer
-
-    public Customer(String name) {
-        this.name = name;
+        public Long createAccount(String customerName) {
+            Account account = new Account(customerName);
+            accounts.put(accIdInc, account);
+            return accIdInc++;
+        }
     }
 
-    public String getName() {
-        return name;
+    static class Account {
+        private String customerName;
+        private double balance; // should apply BigDecimal for more standard scenario
+
+        public Account(String customerName) {
+            this.customerName = customerName;
+            this.balance = 0.0;
+        }
+
+        public String getCustomerName() {
+            return customerName;
+        }
+
+        public void setCustomerName(String customerName) {
+            this.customerName = customerName;
+        }
+
+        public double getBalance() {
+            return balance;
+        }
+
+        public void setBalance(double balance) {
+            if (balance < 0.0) {
+                throw new RuntimeException("Account balance cannot be negative.");
+            }
+            this.balance = balance;
+        }
     }
 
-    public void setName(String name) {
-        this.name = name;
+    static class Customer {
+        private String name;
+        // private Long customerId; // unique id for customer
+
+        public Customer(String name) {
+            this.name = name;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
     }
-}
 
 
-
-/**
-    ./utils/
- */
-public enum BankCode {
-    ANZ, ASB, UNKNOWN
+    /**
+        ./utils/
+    */
+    public static enum BankCode {
+        ANZ, ASB, UNKNOWN
+    }
 }
