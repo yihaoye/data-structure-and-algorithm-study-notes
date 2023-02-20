@@ -78,3 +78,7 @@ mutable.add("b");
 List<String> immutable = Collections.unmodifiableList(mutable);
 // Collections.unmodifiableSet(set)
 // Collections.unmodifiableMap(map)
+
+// 检查两个指定的 collection 是否不相交。如果两个指定的集合没有相同的元素，则返回 true
+Collections.disjoint(hashsetA, hashsetB);
+Collections.disjoint(listA, listB);
