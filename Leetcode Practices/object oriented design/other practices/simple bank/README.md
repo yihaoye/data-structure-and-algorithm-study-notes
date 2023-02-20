@@ -9,6 +9,5 @@ The test includes a basic usage case:
 1. Customer deposit $30 to her new account, then account balance and bank total balance remain $30
 2. Customer withdraw $20, then account balance and bank total balance remain $10
 3. Customer try to withdraw $11, then exception throw out and say "not enough balance"
-
-ToDo:   
+  
 Another test is needed to be implemented for test multiple customer operation still works well.  

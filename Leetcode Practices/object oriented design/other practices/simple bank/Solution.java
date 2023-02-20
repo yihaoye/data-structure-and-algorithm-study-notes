@@ -3,13 +3,16 @@ import java.math.*;
 
 public class Solution {
     public static void main(String[] args) {
-        // test ...
+        // test 1 test alice
         Bank anz = new Bank(BankCode.ANZ);
         Customer alice = new Customer("Alice");
-        Long aliceANZAccId = anz.createAccount(alice.name);
+        Long aliceANZAccId = anz.createAccount(alice.name); // create an account and return account id - like get a bank card
 
-        anz.deposit(aliceANZAccId, 30.0);
-        anz.withdraw(aliceANZAccId, 20.0);
+        anz.deposit(aliceANZAccId, 30.0); // simulate insert the card or id and deposit
+        System.out.println(anz.getAccountBalance(aliceANZAccId));
+        System.out.println(anz.getTotalBalance());
+
+        anz.withdraw(aliceANZAccId, 20.0); // simulate insert the card and withdraw
         System.out.println(anz.getAccountBalance(aliceANZAccId));
         System.out.println(anz.getTotalBalance());
 
@@ -18,6 +21,20 @@ public class Solution {
         } catch(Exception e) {
             System.out.println(e.getMessage());
         }
+
+        // test 2 test multiple customers operation
+        Customer bob = new Customer("Bob");
+        Long bobANZAccId = anz.createAccount(bob.name);
+
+        anz.deposit(bobANZAccId, 50.0);
+        System.out.println(anz.getAccountBalance(aliceANZAccId));
+        System.out.println(anz.getAccountBalance(bobANZAccId));
+        System.out.println(anz.getTotalBalance());
+
+        anz.withdraw(bobANZAccId, 10.5);
+        System.out.println(anz.getAccountBalance(aliceANZAccId));
+        System.out.println(anz.getAccountBalance(bobANZAccId));
+        System.out.println(anz.getTotalBalance());
     }
 }
 
@@ -28,9 +45,9 @@ public class Solution {
  */
 static class Bank {
     private BankCode bankCode;
-    private double totalBalance; // should apply BigDecimal for more standard cases
+    private double totalBalance; // should apply BigDecimal for more standard scenario
     private Map<Long, Account> accounts; // <accountId, account>
-    private Long accIdInc; 
+    private Long accIdInc; // accountId should apply UUID.randomUUID().toString() for more standard scenario
 
     public Bank(BankCode bankCode) {
         this.bankCode = bankCode;
@@ -91,7 +108,7 @@ static class Bank {
 
 static class Account {
     private String customerName;
-    private double balance;
+    private double balance; // should apply BigDecimal for more standard scenario
 
     public Account(String customerName) {
         this.customerName = customerName;
