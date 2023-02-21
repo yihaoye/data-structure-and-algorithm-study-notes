@@ -1,5 +1,8 @@
 // 摘录：https://www.liaoxuefeng.com/wiki/1252599548343744/1281319577321505
+// https://refactoringguru.cn/design-patterns/observer
 /*
+观察者模式亦称：事件订阅者、监听者、Event-Subscriber、Listener、Observer，其允许定义一种订阅机制，可在对象事件发生时通知多个 “观察” 该对象的其他对象。
+
 定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新。
 
 观察者模式（Observer）又称发布-订阅模式（Publish-Subscribe：Pub/Sub）。

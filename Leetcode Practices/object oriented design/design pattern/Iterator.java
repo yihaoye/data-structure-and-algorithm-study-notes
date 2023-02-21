@@ -1,6 +1,8 @@
 // https://www.liaoxuefeng.com/wiki/1252599548343744/1281319524892705
+// https://refactoringguru.cn/design-patterns/iterator
 /*
 提供一种方法顺序访问一个聚合对象中的各个元素，而又不需要暴露该对象的内部表示。
+迭代器模式即能在不暴露集合底层表现形式 （列表、 栈和树等） 的情况下遍历集合中所有的元素。
 
 迭代器模式（Iterator）实际上在 Java 的集合类中已经广泛使用了。以 List 为例，要遍历 ArrayList，即使知道它的内部存储了一个 Object[] 数组，也不应该直接使用数组索引去遍历，因为这样需要了解集合内部的存储结构。
 如果使用 Iterator 遍历，那么，ArrayList 和 LinkedList 都可以以一种统一的接口来遍历：
