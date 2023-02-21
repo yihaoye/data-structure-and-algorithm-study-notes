@@ -1,5 +1,7 @@
 这里只列举比较重要的常用的设计模式。  
 
+推荐阅读材料：https://refactoringguru.cn/design-patterns/catalog  
+
 ## 创建型模式
 创建型模式关注点是如何创建对象，其核心思想是要把对象的创建和使用相分离，这样使得两者能相对独立地变换。  
 * [工厂方法 | Factory](./Factory.java)
