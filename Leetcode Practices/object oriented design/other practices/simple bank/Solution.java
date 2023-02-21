@@ -82,6 +82,8 @@ public class Solution {
             if (accountBalance < withdrawAmount) {
                 throw new RuntimeException("Account balance cannot be negative.");
             }
+
+            /* could apply synchronized block to implement Concurrency Control for next 2 operations if needed */
             account.setBalance(accountBalance - withdrawAmount);
             this.totalBalance -= withdrawAmount;
             System.out.println("Account " + accountId + " (" + account.customerName + ") withdraw: $" + withdrawAmount);
@@ -97,6 +99,8 @@ public class Solution {
                 throw new RuntimeException("Deposit cannot be negative.");
             }
             double accountBalance = account.getBalance();
+
+            /* could apply synchronized block to implement Concurrency Control for next 2 operations if needed */
             account.setBalance(accountBalance + depositAmount);
             this.totalBalance += depositAmount;
             System.out.println("Account " + accountId + " (" + account.customerName + ") deposit: $" + depositAmount);
