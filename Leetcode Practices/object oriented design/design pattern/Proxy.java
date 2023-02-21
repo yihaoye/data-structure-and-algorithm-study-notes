@@ -1,7 +1,9 @@
 // https://www.liaoxuefeng.com/wiki/1252599548343744/1281319432618017
 // https://www.cnblogs.com/qlqwjy/p/7550609.html
+// https://refactoringguru.cn/design-patterns/proxy
 /*
 为其他对象提供一种代理以控制对这个对象的访问。
+代理模式能够提供对象的替代品或其占位符。代理控制着对于原对象的访问，并允许在将请求提交给对象前后进行一些处理，比如打日志、鉴权等等。
 
 代理模式，即 Proxy，它和 Adapter 模式很类似。
 回顾 Adapter 模式，它用于把 A 接口转换为 B 接口
