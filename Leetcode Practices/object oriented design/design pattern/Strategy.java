@@ -1,4 +1,5 @@
 // 摘录：https://www.liaoxuefeng.com/wiki/1252599548343744/1281319606681634
+// https://refactoringguru.cn/design-patterns/strategy
 /*
 定义一系列的算法，把它们一个个封装起来，并且使它们可相互替换。本模式使得算法可独立于使用它的客户而变化。
 
