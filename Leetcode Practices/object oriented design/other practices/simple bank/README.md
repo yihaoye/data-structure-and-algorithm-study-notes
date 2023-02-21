@@ -6,11 +6,11 @@ Models:
 * Customer - real customer, who can execute create bank account, withdraw, deposit operations
 
 ## Unit Tests
-To run the tests, just simply run the run.sh bash script in the same folder.  
+To run the code and tests, just simply type `sh run.sh` command in the same directory.  
 
 The test includes a basic usage case:   
-1. Customer deposit $30 to her new account, then account balance and bank total balance remain $30
-2. Customer withdraw $20, then account balance and bank total balance remain $10
-3. Customer try to withdraw $11, then exception throw out and say "not enough balance"
+1. Customer Alice deposit $30 to her new account, then account balance and bank total balance remain $30
+2. Customer Alice withdraw $20, then account balance and bank total balance remain $10
+3. Customer Alice try to withdraw $11, then exception throw out and say "not enough balance"
   
 Another test is needed to be implemented for test multiple customer operation still works well.  
