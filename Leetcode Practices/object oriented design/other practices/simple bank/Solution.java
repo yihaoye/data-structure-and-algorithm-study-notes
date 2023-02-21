@@ -45,7 +45,7 @@ public class Solution {
         private BankCode bankCode;
         private double totalBalance; // should apply BigDecimal for more standard scenario
         private Map<Long, Account> accounts; // <accountId, account>
-        // private Map<Long, Set<Account>> customersAccounts; // <customerId, <accountA, accountB, ...>> a customer may have several accounts, the field could support find customer accounts
+        // private Map<Long, Set<Account>> customersAccounts; // <customerId, <accountA, accountB, ...>> a customer may have several accounts, the field could support advance service i.e. find customer accounts
         private Long accIdInc; // accountId can apply UUID.randomUUID().toString() for some standard scenario
 
         public Bank(BankCode bankCode) {
@@ -56,11 +56,11 @@ public class Solution {
         }
 
         public BankCode getBankCode() {
-            return bankCode;
+            return this.bankCode;
         }
 
         public double getTotalBalance() {
-            System.out.println("Bank " + BankCode + " remain total balance: " + this.totalBalance);
+            System.out.println("Bank " + this.bankCode + " remain total balance: " + this.totalBalance);
             return this.totalBalance;
         }
 
@@ -69,7 +69,7 @@ public class Solution {
             if (account == null) {
                 throw new RuntimeException("Account does not exist.");
             }
-            System.out.println("Account " + accountId + " remain balance: " + account.getBalance());
+            System.out.println("Account " + accountId + " (" + account.customerName + ") remain balance: " + account.getBalance());
             return account.getBalance();
         }
 
@@ -84,6 +84,7 @@ public class Solution {
             }
             account.setBalance(accountBalance - withdrawAmount);
             this.totalBalance -= withdrawAmount;
+            System.out.println("Account " + accountId + " (" + account.customerName + ") withdraw: $" + withdrawAmount);
             return withdrawAmount;
         }
 
@@ -98,11 +99,13 @@ public class Solution {
             double accountBalance = account.getBalance();
             account.setBalance(accountBalance + depositAmount);
             this.totalBalance += depositAmount;
+            System.out.println("Account " + accountId + " (" + account.customerName + ") deposit: $" + depositAmount);
         }
 
         public Long createAccount(String customerName) {
             Account account = new Account(customerName);
             accounts.put(accIdInc, account);
+            System.out.println("Customer " + customerName + " create an account: " + accIdInc);
             return accIdInc++;
         }
     }
@@ -117,7 +120,7 @@ public class Solution {
         }
 
         public String getCustomerName() {
-            return customerName;
+            return this.customerName;
         }
 
         public void setCustomerName(String customerName) {
@@ -125,7 +128,7 @@ public class Solution {
         }
 
         public double getBalance() {
-            return balance;
+            return this.balance;
         }
 
         public void setBalance(double balance) {
@@ -145,7 +148,7 @@ public class Solution {
         }
 
         public String getName() {
-            return name;
+            return this.name;
         }
 
         public void setName(String name) {
@@ -157,7 +160,7 @@ public class Solution {
     /**
         ./utils/
     */
-    public static enum BankCode {
+    public enum BankCode {
         ANZ, ASB, UNKNOWN
     }
 }
