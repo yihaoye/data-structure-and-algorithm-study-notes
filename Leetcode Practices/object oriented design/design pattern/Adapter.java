@@ -1,4 +1,9 @@
 // 引用：https://www.liaoxuefeng.com/wiki/1252599548343744/1281319245971489
+/**
+适配器模式是 Adapter，也称 Wrapper，是指如果一个接口需要 B 接口，但是待传入的对象却是 A 接口，怎么办？
+
+举个例子。如果去美国，我们随身带的电器是无法直接使用的，因为美国的插座标准和中国不同，所以，需要一个适配器
+ */
 public class Task implements Callable<Long> {
     private long num;
     public Task(long num) {
