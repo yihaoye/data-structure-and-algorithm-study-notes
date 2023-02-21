@@ -76,7 +76,7 @@ public class Solution {
             System.out.println("Account " + accountId + " (" + account.customerName + ") deposit: $" + depositAmount);
         }
 
-        public Long createAccount(String customerName) {
+        public Long createAccount(String customerName) { // consider Dependency Injection way for improvement if needed - public Long registerAccount(Account account) {...} + account created by Factory etc
             Account account = new Account(customerName);
             accounts.put(accIdInc, account);
             System.out.println("Customer " + customerName + " create an account: " + accIdInc + " in bank " + bankCode);
