@@ -1031,6 +1031,7 @@ Benefits of using CTE:
 
 例题：  
 * [Leetcode Q1384](./../../../Leetcode%20Practices/database/hard/1384%20Total%20Sales%20Amount%20by%20Year.sql)
+* [Leetcode Q1767 - 创建原本不存在的临时表](./../../../Leetcode%20Practices/database/hard/1767%20Find%20the%20Subtasks%20That%20Did%20Not%20Execute.sql)
 
 ToDo...  
 
