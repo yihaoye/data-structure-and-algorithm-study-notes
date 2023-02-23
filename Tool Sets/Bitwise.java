@@ -128,3 +128,9 @@ class Solution {
 
 // 求一个数的二进制的最高有效位（即最高的 1 在哪）
 int n = (int) (Math.log(num) / Math.log(2));
+
+
+
+// 计算一个整数的二进制表示有几个 1
+int num = 3;
+int bitCnt = Integer.bitCount(num);
