@@ -157,6 +157,20 @@ public class CollectionToStream {
 同样，针对 Float 和 Double 也有类似名字的操作。
 */
 
+import java.util.*;
+import java.util.stream.*;
+public class StreamToCollection {
+    public static void main(String[] args) {
+        Map<String, String> map = new HashMap<>();
+        // map.put("", ""); // ...
+        List<String> list = map.entrySet().stream()
+                                        .filter(e -> e.getValue().startsWith("test"))
+                                        .map(Map.Entry::getKey)
+                                        .collect(Collectors.toList());
+    }
+}
+
+
 // 随机数流
 // streams/RandomGenerators.java
 import java.util.*;
