@@ -404,7 +404,20 @@ from 班级表
 select 查询数据时，同时动态地在结果里添加自增字段（table 里没有的）的方法  
 ```sql
 SELECT ROW_NUMBER() OVER(ORDER BY field1 ASC, field2 DESC) AS customized_id, field1, field2 FROM table1;
+```  
+
+
+## SQL 变量
+```sql
+DECLARE @A INT /* DECLARE statement is optional, you can without this line and just use following two */
+SET @A=3
+SELECT @A=col1，@B=col2 FROM TABLE1
+```  
+```sql
+(SELECT @C := 0, @D := 1) INIT
 ```
+### 例题
+* [LC Q178](./../../../Leetcode%20Practices/database/medium/178%20Rank%20Scores.sql)  
   
   
 ## SQL 的执行顺序

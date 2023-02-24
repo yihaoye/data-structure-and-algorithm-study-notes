@@ -31,11 +31,12 @@ For example, given the above Scores table, your query should generate the follow
 
 
 
-# Other's Solution:
+/* Other's Solution: */
+/* First one uses two variables, one for the current rank and one for the previous score. */
 SELECT
-  Score,
-  @rank := @rank + (@prev <> (@prev := Score)) Rank
+  score,
+  @rank := @rank + (@prev <> (@prev := score)) `rank`
 FROM
   Scores,
-  (SELECT @rank := 0, @prev := -1) init
-ORDER BY Score desc
+  (SELECT @rank := 0, @prev := -1) INIT
+ORDER BY score DESC;
