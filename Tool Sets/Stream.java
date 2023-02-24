@@ -1,5 +1,12 @@
 /**
 https://www.liaoxuefeng.com/wiki/1252599548343744/1322402873081889
+
+Stream 不同于 java.io 的 InputStream 和 OutputStream，它代表的是任意 Java 对象的序列。两者对比如下：
+
+        |java.io	                |java.util.stream
+存储	 |顺序读写的 byte 或 char	   |顺序输出的任意 Java 对象实例
+用途	 |序列化至文件或网络	        |内存计算／业务逻辑
+
 Stream 和 Collections/List 不一样，Collections/List 存储的每个元素都是已经存储在内存中的某个 Java 对象，而 Stream 输出的元素可能并没有预先存储在内存中，而是实时计算出来的。
 
 换句话说，Collections 的用途是操作一组已存在的 Java 对象，而 Stream 实现的是惰性计算，两者对比如下：
@@ -14,6 +21,19 @@ List<BigInteger> list = ??? // 全体自然数?
 但是，用 Stream 可以做到。写法如下：
 Stream<BigInteger> naturals = createNaturalStream(); // 全体自然数
  */
+
+
+
+// 总结一下 Stream 的特点：它可以“存储”有限个或无限个元素。这里的存储打了个引号，是因为元素有可能已经全部存储在内存中，也有可能是根据需要实时计算出来的。
+// Stream 的另一个特点是，一个 Stream 可以轻易地转换为另一个 Stream，而不是修改原 Stream 本身。
+// 最后，真正的计算通常发生在最后结果的获取，也就是惰性计算。
+Stream<BigInteger> naturals = createNaturalStream(); // 不计算
+Stream<BigInteger> s2 = naturals.map(BigInteger::multiply); // 不计算
+Stream<BigInteger> s3 = s2.limit(100); // 不计算
+s3.forEach(System.out::println); // 计算
+// 惰性计算的特点是：一个 Stream 转换为另一个 Stream 时，实际上只存储了转换规则，并没有任何计算发生。
+// 以上代码也可以写成链式，效果也是一样的。
+// 因此，Stream API 的基本用法就是：创建一个 Stream，然后做若干次转换，最后调用一个求值方法获取真正计算的结果。
 
 
 
