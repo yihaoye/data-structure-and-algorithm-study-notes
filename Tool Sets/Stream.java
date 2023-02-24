@@ -1,3 +1,22 @@
+/**
+https://www.liaoxuefeng.com/wiki/1252599548343744/1322402873081889
+Stream 和 Collections/List 不一样，Collections/List 存储的每个元素都是已经存储在内存中的某个 Java 对象，而 Stream 输出的元素可能并没有预先存储在内存中，而是实时计算出来的。
+
+换句话说，Collections 的用途是操作一组已存在的 Java 对象，而 Stream 实现的是惰性计算，两者对比如下：
+        |java.util.List	            |java.util.stream
+元素	|已分配并存储在内存	            |可能未分配，实时计算
+用途	|操作一组已存在的 Java 对象	    |惰性计算
+
+Stream 看上去有点不好理解，但举个例子就明白了。
+
+如果要表示一个全体自然数的集合，显然，用 Collections/List 是不可能写出来的，因为自然数是无限的，内存再大也没法放到 Collections/List 中：
+List<BigInteger> list = ??? // 全体自然数?
+但是，用 Stream 可以做到。写法如下：
+Stream<BigInteger> naturals = createNaturalStream(); // 全体自然数
+ */
+
+
+
 // streams/StreamOf.java
 import java.util.stream.*;
 public class StreamOf {
