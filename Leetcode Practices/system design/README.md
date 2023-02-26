@@ -115,7 +115,7 @@
 * 业务应用和后端基础框架（MVC、IOC、ORM）
 * 缓存（本地缓存即内存中的缓存机制：ConcurrentHashMap etc；分布式缓存即单独的缓存服务：Redis、Memcached etc）
 * 数据库（SQL、NoSQL）
-* 搜索引擎（全文搜索、ElasticSearch）
+* 搜索引擎（全文搜索、ElasticSearch、MySQL）
 * 消息队列（RabbitMQ、Kafka）[阅读材料](http://www.52im.net/thread-1979-1-1.html)
 * 文件存储（S3、Hadoop HDFS）（e.g. distributed file storage system for storing photos and videos）
 * 统一认证中心（用户的注册、登录验证、token 鉴权；内部信息系统用户的管理和登录鉴权；应用管理，应用的 secret 生成，应用信息的验证 - 如验证接口签名等）
@@ -124,7 +124,7 @@
 * 服务治理框架（REST API、RPC）
 * 统一调度中心（定时调度 cron job，如定时抓取数据、刷新状态等）
 * 统一日志服务（log4j、logback、Kibana、CloudWatch）
-* 数据基础设施（大数据：数据仓库；数据管道：Kafka、Kinesis；数据分析）
+* 数据基础设施（大数据：Hadoop、Spark、数据仓库；数据管道：Kafka、Kinesis；数据分析：Hadoop、Spark、Tableau、Python、SAS、Excel）
 * 故障监控（系统监控、业务监控；Datadog、故障定位、警报等级、IM 或 oncall）(Telemetry)
 * 扩展（内部服务：包括大数据、构建交付工具、通用运行时服务类库、数据持久化、安全等）
 * 分布式一致性与选举算法/共识机制
