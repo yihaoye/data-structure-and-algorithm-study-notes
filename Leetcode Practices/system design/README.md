@@ -1584,6 +1584,20 @@ Back Queue 则实现了礼貌性策略，控制了对一个网站访问的频率
 
 
 <details>
+<summary>设计酒店预订系统</summary>
+
+Example: Booking.com, Airbnb  
+参考材料：  
+* https://medium.com/nerd-for-tech/system-design-architecture-for-hotel-booking-apps-like-airbnb-oyo-6efb4f4dddd7
+* https://www.youtube.com/watch?v=YyOXt2MEkv4
+  
+![](./Hotel%20Booking%20System%20Design.png)  
+
+</details>
+
+
+
+<details>
 <summary>设计分布式 KV 数据库（Dynamo）</summary>
 
 [Dynamo](./../../Computer%20System%20Layer/数据库/Dynamo/README.md)
