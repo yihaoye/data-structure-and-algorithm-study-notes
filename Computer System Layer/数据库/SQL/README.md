@@ -953,7 +953,27 @@ https://shardingsphere.apache.org/index_zh.html
 * 主键不可修改。
 * 业务字段不可用于主键。
 * 相比整型，更推荐使用字符串类型（UUID）作为主键类型。  
-  
+
+
+## SQL 优化
+参考：https://dbaplus.cn/news-155-4717-1.html  
+* 尽量避免使用子查询
+* 用 IN 来替换 OR
+* 读取适当的记录 LIMIT M,N，而不要读多余的记录
+* 禁止不必要的 Order By 排序
+* 总和查询可以禁止排重用 Union All
+* 避免随机取记录
+* 将多次插入换成批量 Insert 插入
+* 只返回必要的列，用具体的字段列表代替 Select * 语句
+* 区分 in 和 exists
+* 优化 Group By 语句 - 尽量让 Group By 过程用上表的索引，确认方法是 explain 结果里没有 Using temporary 和 Using filesort；
+* 尽量使用数字型字段
+* 优化 Join 语句
+
+### 索引的优化/如何避免索引失效
+* 最佳左前缀法则
+* 不在索引列上做任何操作
+
   
 ## 服务器硬件性能影响的常见因素
 * CPU：一般情况下 CPU 资源不会是性能瓶颈的直接原因；MySQL 不支持多 CPU 对同一 SQL 并发处理。
