@@ -2,6 +2,7 @@
 - [ ] Design True Caller	
 - [ ] Design Snake and Ladder Game	
 - [ ] Design Bill Sharing/Expense Sharing like Splitwise
+- [x] Design Airline Management System
 - [x] Design Amazon Service	(Stratagy Design Pattern for notifications)
 - [ ] Design Vehicle / Car Rental Application like Zoomcar
 - [ ] Design Distributed Id Generation like Twitter Snowflake id	
@@ -9,9 +10,10 @@
 - [ ] Cab Booking like Uber, Ola	
 - [x] Design Parking Lot System
 - [ ] Design Chess Game	
+- [x] Design Blackjack
 - [x] Stack Overflow
 - [x] LFU
-- [x] Design an Online Book Reader System	(Library)
+- [x] Design an Online Book Reader System (Library)
 - [ ] Design an Online Hotel Booking System	(Decorator Design Pattern)
 - [ ] Design a Logistics System	
 - [x] Design Tic Tac Toe
@@ -28,4 +30,5 @@
 - [ ] Uber Eats / DoorDash / Swiggy
 - [x] LRU
 - [x] Stack and Queue
+- [x] Design a Simple Bank System
 
