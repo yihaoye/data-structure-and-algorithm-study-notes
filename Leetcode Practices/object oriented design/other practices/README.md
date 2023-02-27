@@ -1,0 +1,31 @@
+# Practice Examples
+- [ ] Design True Caller	
+- [ ] Design Snake and Ladder Game	
+- [ ] Design Bill Sharing/Expense Sharing like Splitwise
+- [x] Design Amazon Service	(Stratagy Design Pattern for notifications)
+- [ ] Design Vehicle / Car Rental Application like Zoomcar
+- [ ] Design Distributed Id Generation like Twitter Snowflake id	
+- [ ] Implement a Logger	
+- [ ] Cab Booking like Uber, Ola	
+- [x] Design Parking Lot System
+- [ ] Design Chess Game	
+- [x] Stack Overflow
+- [x] LFU
+- [x] Design an Online Book Reader System	(Library)
+- [ ] Design an Online Hotel Booking System	(Decorator Design Pattern)
+- [ ] Design a Logistics System	
+- [x] Design Tic Tac Toe
+- [ ] Design a Configuration Management System
+- [ ] Design a Vending Machine
+- [ ] Design Maps Navigator Client for different transportation types (OOD)
+- [x] Design a Json Parser from scratch	
+- [ ] Design Elevator	
+- [x] Design ATM (Factory Design Pattern)
+- [ ] CricInfo / Cricbuzz
+- [ ] TikTok
+- [ ] Pinterest
+- [x] Movie Ticket Booking
+- [ ] Uber Eats / DoorDash / Swiggy
+- [x] LRU
+- [x] Stack and Queue
+
