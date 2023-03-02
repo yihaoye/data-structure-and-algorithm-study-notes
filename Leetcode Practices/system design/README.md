@@ -1593,6 +1593,9 @@ Example: Booking.com, Airbnb
   
 ![](./Hotel%20Booking%20System%20Design.png)  
 
+Other's Design  
+![](./Hotel%20Booking%20System%20Design%202.png)  
+
 OOD 还可以参考 [Hotel Management System](./../object%20oriented%20design/grok%20object%20oriented%20design%20interview/4.%20Source%20Codes/Hotel%20Management%20System/)  
 
 </details>
