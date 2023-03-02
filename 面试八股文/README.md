@@ -82,7 +82,7 @@
 
 ## 系统设计、DevOps 高频
 * [[微服務] 什麼是 gRPC，架構上為什麼要使用 gRPC](https://www.youtube.com/watch?v=qEB3yFzETVs)
-* [RPC 与 REST 区别](https://www.cnblogs.com/wongbingming/p/11086773.html)
+* RPC 与 REST 区别与选择 - [解答一](https://www.cnblogs.com/wongbingming/p/11086773.html)、[解答二](https://zhuanlan.zhihu.com/p/102760613)
 * [CI 服务有什么用途](https://www.modb.pro/db/404626)
 
 ## Redis 高频
