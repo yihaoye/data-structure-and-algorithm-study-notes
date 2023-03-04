@@ -1603,6 +1603,17 @@ OOD 还可以参考 [Hotel Management System](./../object%20oriented%20design/gr
 
 
 <details>
+<summary>设计 ML pipeline 系统</summary>
+
+参考：https://towardsdatascience.com/architecting-a-machine-learning-pipeline-a847f094d1c7  
+
+![](./ML%20Pipeline%20System%20Architecture.png)  
+
+</details>
+
+
+
+<details>
 <summary>设计分布式 KV 数据库（Dynamo）</summary>
 
 [Dynamo](./../../Computer%20System%20Layer/数据库/Dynamo/README.md)
