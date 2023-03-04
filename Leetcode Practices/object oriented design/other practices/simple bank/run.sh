@@ -1,5 +1,8 @@
 #!/bin/bash
 
-# javac -d ./bin/main/java/ ./src/main/java/com/bank/*.java ./src/main/java/com/bank/*/*.java
-javac -sourcepath ./src/main/java/ -d ./bin/test/java/ ./src/test/java/com/bank/*.java
-java -enableassertions -classpath ./bin/test/java/ com.bank.SolutionTest
+mkdir ./bin
+cd ./bin
+javac -d . ../src/main/java/com/bank/*.java ../src/main/java/com/bank/*/*.java
+javac -d . ../src/test/java/com/bank/*.java
+java -enableassertions com.bank.SolutionTest
+cd ..
