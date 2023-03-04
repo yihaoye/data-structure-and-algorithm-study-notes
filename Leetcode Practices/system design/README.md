@@ -1609,6 +1609,8 @@ OOD 还可以参考 [Hotel Management System](./../object%20oriented%20design/gr
 
 ![](./ML%20Pipeline%20System%20Architecture.png)  
 
+相关：[特征工程](https://aws.amazon.com/cn/blogs/china/feature-engineering-of-the-final-version-of-data-centric-ai-lecture-1/)  
+
 </details>
 
 
