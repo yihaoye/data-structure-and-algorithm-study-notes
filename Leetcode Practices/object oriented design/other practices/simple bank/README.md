@@ -25,6 +25,7 @@ Tests include the following test cases:
 ```
 TestSingleAccountOperation - include edge cases like withdraw negative amount
 TestMultipleAccountsOperations - include deposit/withdraw non-integer amount
+TestInvalidAccountOperations - non-exist account operations check
 ```
 
 ## Unit Tests

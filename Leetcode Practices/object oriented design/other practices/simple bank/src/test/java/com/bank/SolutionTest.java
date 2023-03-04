@@ -10,6 +10,7 @@ public class SolutionTest {
         // test method include object creation and behaviour
         testSingleAccountOperations();
         testMultipleAccountsOperations();
+        testInvalidAccountOperations();
     }
 
     public static final String CUSTOMER_A = "Alice";
@@ -70,5 +71,22 @@ public class SolutionTest {
         assert asb.getAccountBalance(customerBASBAccId).equals(depositB1);
         assert asb.getAccountBalance(customerCASBAccId).equals(depositC1.subtract(depositC2));
         assert asb.getTotalBalance().equals(depositB1.add(depositC1).subtract(depositC2));
+    }
+
+    public static void testInvalidAccountOperations() { // test 3 test non-exist account operations
+        Bank asb = new Bank(BankCode.ASB);
+        Long fakeASBAccId = 10L;
+
+        try {
+            asb.deposit(fakeASBAccId, BigDecimal.valueOf(10.0));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        try {
+            asb.withdraw(fakeASBAccId, BigDecimal.valueOf(10.0));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 }
