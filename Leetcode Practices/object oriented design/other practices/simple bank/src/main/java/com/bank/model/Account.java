@@ -1,8 +1,6 @@
-package model;
+package com.bank.model;
 
-import java.util.*;
 import java.math.*;
-import utils.*;
 
 public class Account {
     private String customerName;

@@ -1,6 +1,15 @@
 # Simple Bank
 
-Written in Java. The source code include all the classes and methods in Solution.java, the structure looks like following:  
+Project structure:  
+```
+src/
+    main/
+        java/
+    test/
+        java/
+```
+  
+Written in Java. The source code include all the classes and methods, the main structure looks like following:  
 ```
 ./model/
     Bank - OneToMany relationship with bank account and store its total balance
@@ -8,12 +17,15 @@ Written in Java. The source code include all the classes and methods in Solution
     Customer - real customer, who can execute create bank account, withdraw, deposit operations
 ./utils/
     BankCode
-./test/
-    TestSingleAccountOperation - include edge cases like withdraw negative amount
-    TestMultipleAccountsOperations - include deposit/withdraw non-integer amount
 Solution(Main)
 ```
 For engineering/production way, should split the `model` part into 3 package: `dao`, `service`, `model` and import them, exception should use customize exception class instead of simple RuntimeException.  
+
+Tests include the following test cases:  
+```
+TestSingleAccountOperation - include edge cases like withdraw negative amount
+TestMultipleAccountsOperations - include deposit/withdraw non-integer amount
+```
 
 ## Unit Tests
 To run the code and tests, just simply type `sh run.sh` command in the same directory.  

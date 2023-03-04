@@ -1,19 +1,17 @@
+package com.bank;
+
 import java.util.*;
 import java.math.*;
-import model.*;
-import utils.*;
+import com.bank.model.*;
+import com.bank.utils.*;
 
-public class Solution {
+public class SolutionTest {
     public static void main(String[] args) {
         // test method include object creation and behaviour
         testSingleAccountOperations();
         testMultipleAccountsOperations();
     }
 
-
-    /**
-        ./test/
-     */
     public static final String CUSTOMER_A = "Alice";
     public static final String CUSTOMER_B = "Ana";
     public static final String CUSTOMER_C = "Bob";
@@ -23,13 +21,15 @@ public class Solution {
         Customer customerA = new Customer(CUSTOMER_A);
         Long customerAANZAccId = anz.createAccount(customerA.getName()); // create an account and return account id - like get a bank card
 
-        anz.deposit(customerAANZAccId, BigDecimal.valueOf(30.0)); // simulate insert the card or id and deposit
+        BigDecimal depositA1 = BigDecimal.valueOf(30.0);
+        anz.deposit(customerAANZAccId, depositA1); // simulate insert the card or id and deposit
         anz.getAccountBalance(customerAANZAccId);
-        anz.getTotalBalance();
+        assert anz.getTotalBalance().equals(depositA1);
 
-        anz.withdraw(customerAANZAccId, BigDecimal.valueOf(20.0)); // simulate insert the card and withdraw
+        BigDecimal depositA2 = BigDecimal.valueOf(20.0);
+        anz.withdraw(customerAANZAccId, depositA2); // simulate insert the card and withdraw
         anz.getAccountBalance(customerAANZAccId);
-        anz.getTotalBalance();
+        assert anz.getTotalBalance().equals(depositA1.subtract(depositA2));
 
         try {
             anz.withdraw(customerAANZAccId, BigDecimal.valueOf(11.0));
@@ -57,15 +57,18 @@ public class Solution {
         Customer customerC = new Customer(CUSTOMER_C);
         Long customerCASBAccId = asb.createAccount(customerC.getName());
 
-        asb.deposit(customerBASBAccId, BigDecimal.valueOf(22.2));
-        asb.deposit(customerCASBAccId, BigDecimal.valueOf(50.0));
-        asb.getAccountBalance(customerBASBAccId);
-        asb.getAccountBalance(customerCASBAccId);
-        asb.getTotalBalance();
+        BigDecimal depositB1 = BigDecimal.valueOf(22.2);
+        asb.deposit(customerBASBAccId, depositB1);
+        BigDecimal depositC1 = BigDecimal.valueOf(50);
+        asb.deposit(customerCASBAccId, depositC1);
+        assert asb.getAccountBalance(customerBASBAccId).equals(depositB1);
+        assert asb.getAccountBalance(customerCASBAccId).equals(depositC1);
+        assert asb.getTotalBalance().equals(depositB1.add(depositC1));
 
-        asb.withdraw(customerCASBAccId, BigDecimal.valueOf(10.5));
-        asb.getAccountBalance(customerBASBAccId);
-        asb.getAccountBalance(customerCASBAccId);
-        asb.getTotalBalance();
+        BigDecimal depositC2 = BigDecimal.valueOf(10.5);
+        asb.withdraw(customerCASBAccId, depositC2);
+        assert asb.getAccountBalance(customerBASBAccId).equals(depositB1);
+        assert asb.getAccountBalance(customerCASBAccId).equals(depositC1.subtract(depositC2));
+        assert asb.getTotalBalance().equals(depositB1.add(depositC1).subtract(depositC2));
     }
 }

@@ -1,8 +1,4 @@
-package model;
-
-import java.util.*;
-import java.math.*;
-import utils.*;
+package com.bank.model;
 
 public class Customer {
     private String name;
