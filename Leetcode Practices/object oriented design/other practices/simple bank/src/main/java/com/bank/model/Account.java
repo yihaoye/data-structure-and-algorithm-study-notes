@@ -1,6 +1,7 @@
 package com.bank.model;
 
 import java.math.*;
+import com.bank.exception.*;
 
 public class Account {
     private String customerName;
@@ -25,7 +26,7 @@ public class Account {
 
     public void setBalance(BigDecimal balance) {
         if (balance.compareTo(BigDecimal.ZERO) < 0) {
-            throw new RuntimeException("Account balance cannot be negative.");
+            throw new OperationException("Account balance cannot be negative.");
         }
         this.balance = balance;
     }

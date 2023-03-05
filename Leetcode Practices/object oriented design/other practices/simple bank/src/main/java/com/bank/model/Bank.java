@@ -3,6 +3,7 @@ package com.bank.model;
 import java.util.*;
 import java.math.*;
 import com.bank.utils.*;
+import com.bank.exception.*;
 
 public class Bank {
     private BankCode bankCode;
@@ -30,7 +31,7 @@ public class Bank {
     public BigDecimal getAccountBalance(Long accountId) {
         Account account = accounts.get(accountId);
         if (account == null) {
-            throw new RuntimeException(String.format("Account %d does not exist.", accountId));
+            throw new DataAccessException(String.format("Account %d does not exist.", accountId));
         }
         System.out.println(String.format("Account %d (%s) remain balance: $%s", accountId, account.getCustomerName(), account.getBalance()));
         return account.getBalance();
@@ -38,17 +39,17 @@ public class Bank {
 
     public BigDecimal withdraw(Long accountId, BigDecimal withdrawAmount) {
         if (withdrawAmount.compareTo(BigDecimal.ZERO) <= 0) {
-            throw new RuntimeException("Withdraw amount should be positive.");
+            throw new OperationException("Withdraw amount should be positive.");
         }
 
         Account account = accounts.get(accountId);
         if (account == null) {
-            throw new RuntimeException(String.format("Account %d does not exist.", accountId));
+            throw new DataAccessException(String.format("Account %d does not exist.", accountId));
         }
 
         BigDecimal accountBalance = account.getBalance();
         if (accountBalance.compareTo(withdrawAmount) < 0) {
-            throw new RuntimeException("Account balance insufficient to withdraw.");
+            throw new OperationException("Account balance insufficient to withdraw.");
         }
 
         /* could apply synchronized(this) block to implement atomic operation for next 2 operations if needed */
@@ -60,12 +61,12 @@ public class Bank {
 
     public void deposit(Long accountId, BigDecimal depositAmount) {
         if (depositAmount.compareTo(BigDecimal.ZERO) <= 0) {
-            throw new RuntimeException("Deposit amount should be positive.");
+            throw new OperationException("Deposit amount should be positive.");
         }
 
         Account account = accounts.get(accountId);
         if (account == null) {
-            throw new RuntimeException(String.format("Account %d does not exist.", accountId));
+            throw new DataAccessException(String.format("Account %d does not exist.", accountId));
         }
 
         BigDecimal accountBalance = account.getBalance();
