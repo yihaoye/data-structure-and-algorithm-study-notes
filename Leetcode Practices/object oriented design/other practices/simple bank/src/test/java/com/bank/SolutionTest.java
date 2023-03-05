@@ -26,14 +26,14 @@ public class SolutionTest {
         BigDecimal depositA1 = BigDecimal.valueOf(30.0);
         anz.deposit(customerAANZAccId, depositA1); // simulate insert the card or id and deposit
         BigDecimal totalBalance = depositA1;
-        assert anz.getAccountBalance(customerAANZAccId).equals(depositA1);
+        assert anz.getAccountBalance(customerAANZAccId).equals(depositA1) : String.format("Failed: Account %d balance should be %s but is %s", customerAANZAccId, depositA1, anz.getAccountBalance(customerAANZAccId));
         assert anz.getTotalBalance().equals(totalBalance) : String.format("Failed: %s total balance should be %s but is %s", anz.getBankCode(), totalBalance, anz.getTotalBalance());
 
         BigDecimal depositA2 = BigDecimal.valueOf(20.0);
         anz.withdraw(customerAANZAccId, depositA2); // simulate insert the card and withdraw
         totalBalance = totalBalance.subtract(depositA2);
         assert anz.getAccountBalance(customerAANZAccId).equals(totalBalance);
-        assert anz.getTotalBalance().equals(totalBalance) : String.format("Failed: %s total balance should be %s but is %s", anz.getBankCode(), totalBalance, anz.getTotalBalance());
+        assert anz.getTotalBalance().equals(totalBalance);
 
         try {
             anz.withdraw(customerAANZAccId, BigDecimal.valueOf(11.0));

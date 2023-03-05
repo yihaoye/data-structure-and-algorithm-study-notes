@@ -15,6 +15,9 @@ Written in Java. The source code include all the classes and methods, the main s
     Bank - OneToMany relationship with bank account and store its total balance
     Account - bank account, which represent customer information (balance, customer name) in a particular bank
     Customer - real customer, who can execute create bank account, withdraw, deposit operations
+./exception/
+    DataAccessException
+    OperationException
 ./utils/
     BankCode
 Solution(Main)
