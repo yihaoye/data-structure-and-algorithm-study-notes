@@ -24,13 +24,15 @@ public class SolutionTest {
 
         BigDecimal depositA1 = BigDecimal.valueOf(30.0);
         anz.deposit(customerAANZAccId, depositA1); // simulate insert the card or id and deposit
-        anz.getAccountBalance(customerAANZAccId);
-        assert anz.getTotalBalance().equals(depositA1);
+        BigDecimal totalBalance = depositA1;
+        assert anz.getAccountBalance(customerAANZAccId).equals(depositA1);
+        assert anz.getTotalBalance().equals(totalBalance) : String.format("Failed: %s total balance should be %s but is %s", anz.getBankCode(), totalBalance, anz.getTotalBalance());
 
         BigDecimal depositA2 = BigDecimal.valueOf(20.0);
         anz.withdraw(customerAANZAccId, depositA2); // simulate insert the card and withdraw
-        anz.getAccountBalance(customerAANZAccId);
-        assert anz.getTotalBalance().equals(depositA1.subtract(depositA2));
+        totalBalance = totalBalance.subtract(depositA2);
+        assert anz.getAccountBalance(customerAANZAccId).equals(totalBalance);
+        assert anz.getTotalBalance().equals(totalBalance) : String.format("Failed: %s total balance should be %s but is %s", anz.getBankCode(), totalBalance, anz.getTotalBalance());
 
         try {
             anz.withdraw(customerAANZAccId, BigDecimal.valueOf(11.0));
@@ -62,15 +64,17 @@ public class SolutionTest {
         asb.deposit(customerBASBAccId, depositB1);
         BigDecimal depositC1 = BigDecimal.valueOf(50);
         asb.deposit(customerCASBAccId, depositC1);
-        assert asb.getAccountBalance(customerBASBAccId).equals(depositB1);
-        assert asb.getAccountBalance(customerCASBAccId).equals(depositC1);
-        assert asb.getTotalBalance().equals(depositB1.add(depositC1));
+        assert asb.getAccountBalance(customerBASBAccId).equals(depositB1) : String.format("Failed: Account %d balance should be %s but is %s", customerBASBAccId, depositB1, asb.getAccountBalance(customerBASBAccId));
+        assert asb.getAccountBalance(customerCASBAccId).equals(depositC1) : String.format("Failed: Account %d balance should be %s but is %s", customerCASBAccId, depositC1, asb.getAccountBalance(customerCASBAccId));
+        BigDecimal totalBalance = depositB1.add(depositC1);
+        assert asb.getTotalBalance().equals(totalBalance) : String.format("Failed: %s total balance should be %s but is %s", asb.getBankCode(), totalBalance, asb.getTotalBalance());
 
         BigDecimal depositC2 = BigDecimal.valueOf(10.5);
         asb.withdraw(customerCASBAccId, depositC2);
-        assert asb.getAccountBalance(customerBASBAccId).equals(depositB1);
-        assert asb.getAccountBalance(customerCASBAccId).equals(depositC1.subtract(depositC2));
-        assert asb.getTotalBalance().equals(depositB1.add(depositC1).subtract(depositC2));
+        assert asb.getAccountBalance(customerBASBAccId).equals(depositB1) : String.format("Failed: Account %d balance should be %s but is %s", customerBASBAccId, depositB1, asb.getAccountBalance(customerBASBAccId));
+        assert asb.getAccountBalance(customerCASBAccId).equals(depositC1.subtract(depositC2)) : String.format("Failed: Account %d balance should be %s but is %s", customerCASBAccId, depositC1.subtract(depositC2), asb.getAccountBalance(customerCASBAccId));
+        totalBalance = totalBalance.subtract(depositC2);
+        assert asb.getTotalBalance().equals(totalBalance) : String.format("Failed: %s total balance should be %s but is %s", asb.getBankCode(), totalBalance, asb.getTotalBalance());
     }
 
     public static void testInvalidAccountOperations() { // test 3 test non-exist account operations

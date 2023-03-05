@@ -23,16 +23,16 @@ public class Bank {
     }
 
     public BigDecimal getTotalBalance() {
-        System.out.println("Bank " + this.bankCode + " remain total balance: $" + this.totalBalance);
+        System.out.println(String.format("Bank %s remain total balance: $%s", this.bankCode, this.totalBalance));
         return this.totalBalance;
     }
 
     public BigDecimal getAccountBalance(Long accountId) {
         Account account = accounts.get(accountId);
         if (account == null) {
-            throw new RuntimeException("Account does not exist.");
+            throw new RuntimeException(String.format("Account %d does not exist.", accountId));
         }
-        System.out.println("Account " + accountId + " (" + account.getCustomerName() + ") remain balance: $" + account.getBalance());
+        System.out.println(String.format("Account %d (%s) remain balance: $%s", accountId, account.getCustomerName(), account.getBalance()));
         return account.getBalance();
     }
 
@@ -43,7 +43,7 @@ public class Bank {
 
         Account account = accounts.get(accountId);
         if (account == null) {
-            throw new RuntimeException("Account does not exist.");
+            throw new RuntimeException(String.format("Account %d does not exist.", accountId));
         }
 
         BigDecimal accountBalance = account.getBalance();
@@ -54,7 +54,7 @@ public class Bank {
         /* could apply synchronized(this) block to implement atomic operation for next 2 operations if needed */
         account.setBalance(accountBalance.subtract(withdrawAmount));
         this.totalBalance = this.totalBalance.subtract(withdrawAmount); // withdraw operation only check Account balance but not bank total balance since if Account balance is always not negative then bank total balance will not be negative.
-        System.out.println("Account " + accountId + " (" + account.getCustomerName() + ") withdraw: $" + withdrawAmount);
+        System.out.println(String.format("Account %d (%s) withdraw: $%s", accountId, account.getCustomerName(), withdrawAmount));
         return withdrawAmount;
     }
 
@@ -65,20 +65,20 @@ public class Bank {
 
         Account account = accounts.get(accountId);
         if (account == null) {
-            throw new RuntimeException("Account does not exist.");
+            throw new RuntimeException(String.format("Account %d does not exist.", accountId));
         }
 
         BigDecimal accountBalance = account.getBalance();
         /* could apply synchronized(this) block to implement atomic operation for next 2 operations if needed */
         account.setBalance(accountBalance.add(depositAmount));
         this.totalBalance = this.totalBalance.add(depositAmount);
-        System.out.println("Account " + accountId + " (" + account.getCustomerName() + ") deposit: $" + depositAmount);
+        System.out.println(String.format("Account %d (%s) deposit: $%s", accountId, account.getCustomerName(), depositAmount));
     }
 
     public Long createAccount(String customerName) { // apply CustomerDTO for improvement or consider Dependency Injection way for improvement if needed - public Long registerAccount(Account account) {...} + Account is interface + accountImpl instance created by Factory etc
         Account account = new Account(customerName);
         accounts.put(accIdInc, account);
-        System.out.println("Customer " + customerName + " create an account: " + accIdInc + " in bank " + bankCode);
+        System.out.println(String.format("Customer %s create an account: %d in bank %s", customerName, accIdInc, bankCode));
         return accIdInc++;
     }
 }
