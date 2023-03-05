@@ -19,7 +19,7 @@ Written in Java. The source code include all the classes and methods, the main s
     BankCode
 Solution(Main)
 ```
-For engineering/production way, should split the `model` part into 3 package: `dao`, `service`, `model` and import them, exception should use customize exception class instead of simple RuntimeException.  
+For engineering/production way, should split the `model` part into 3 package: `dao`, `service`, `model` and import them.  
 
 Tests include the following test cases:  
 ```
