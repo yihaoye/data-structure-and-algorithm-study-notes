@@ -84,3 +84,7 @@ Arrays.sort(array, primaryComparator);
 Collections.sort(list, secondaryComparator);  // This must come first!
 Collections.sort(list, primaryComparator);
 // Both of above methods are guaranteed to be stable.
+
+
+
+// 动态 compare，比如根据一个不能预先确定的属性数组一一对比，可以参考上面的 Arrays.sort(sArray, new StringComparator()); + Leetcode Q1366

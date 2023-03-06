@@ -29,3 +29,7 @@ public static void main(String[] args) {
     Collections.sort(objs);
     System.out.println("After Sorting : " + objs);
 }
+
+
+
+// 动态 compareTo，比如根据一个不能预先确定的属性数组一一对比，可以参考 Leetcode Q1366
