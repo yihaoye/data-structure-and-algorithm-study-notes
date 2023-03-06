@@ -6,6 +6,7 @@ import java.util.regex.*;
 
 public class Solution {
 
+    // Leetcode Q1366
     // winner
     // recieve list of vote(vote point: 3,2,1 up to 3 diff candidates name can be 0,1,2), 
     // return list of name(string) with total points in order
