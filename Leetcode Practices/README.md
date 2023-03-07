@@ -495,7 +495,7 @@
 - [x] 170	Two Sum III - Data structure design		
 - [ ] 348	Design Tic-Tac-Toe		
 - [ ] 379	Design Phone Directory		
-- [ ] 353	Design Snake Game		
+- [x] 353	Design Snake Game		
 - [x] 146	LRU Cache		
 - [x] 355	Design Twitter		
 - [x] 303	Range Sum Query - Immutable		
@@ -738,7 +738,7 @@
 - [x] 350	Intersection of Two Arrays II		
 - [ ] 351	Android Unlock Patterns		
 - [ ] 352	Data Stream as Disjoint Intervals		
-- [ ] 353	Design Snake Game		
+- [x] 353	Design Snake Game		
 - [x] 354	Russian Doll Envelopes		
 - [x] 355	Design Twitter		
 - [x] 359	Logger Rate Limiter		
