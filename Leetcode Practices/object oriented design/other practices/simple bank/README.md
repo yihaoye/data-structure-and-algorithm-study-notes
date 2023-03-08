@@ -46,3 +46,6 @@ The second test include multiple customers operations cases:
 * The Account withdraw operation will check Account balance but not bank total balance since if Account balance is always not negative then bank total balance will not be negative.
 * Customer may have multiple Account in different Bank, so relationship between Bank and Account is OneToMany, and relationship between Customer and Account is OneToMany as well. To get all Bank Account for a particular Customer, we could applied the comment part customerId (customer unique ID for example social ID or email address etc) and Bank's customersAccounts to retrieve them.
 
+## Other Functions
+Retrieve a list of every deposit and withdrawal for an account (or customer).  
+

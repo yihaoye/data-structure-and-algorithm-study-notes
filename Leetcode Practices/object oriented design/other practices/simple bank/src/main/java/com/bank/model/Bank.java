@@ -54,6 +54,7 @@ public class Bank {
 
         /* could apply synchronized(this) block to implement atomic operation for next 2 operations if needed */
         account.setBalance(accountBalance.subtract(withdrawAmount));
+        account.addWithdrawalRecord(withdrawAmount);
         this.totalBalance = this.totalBalance.subtract(withdrawAmount); // withdraw operation only check Account balance but not bank total balance since if Account balance is always not negative then bank total balance will not be negative.
         System.out.println(String.format("Account %d (%s) withdraw: $%s", accountId, account.getCustomerName(), withdrawAmount));
         return withdrawAmount;
@@ -72,6 +73,7 @@ public class Bank {
         BigDecimal accountBalance = account.getBalance();
         /* could apply synchronized(this) block to implement atomic operation for next 2 operations if needed */
         account.setBalance(accountBalance.add(depositAmount));
+        account.addDepositRecord(depositAmount);
         this.totalBalance = this.totalBalance.add(depositAmount);
         System.out.println(String.format("Account %d (%s) deposit: $%s", accountId, account.getCustomerName(), depositAmount));
     }
@@ -81,5 +83,9 @@ public class Bank {
         accounts.put(accIdInc, account);
         System.out.println(String.format("Customer %s create an account: %d in bank %s", customerName, accIdInc, bankCode));
         return accIdInc++;
+    }
+
+    public Account getAccount(Long accountId) {
+        return accounts.get(accountId);
     }
 }

@@ -2,6 +2,7 @@ package com.bank;
 
 import java.util.*;
 import java.math.*;
+import java.time.*;
 import com.bank.model.*;
 import com.bank.utils.*;
 import com.bank.exception.*;
@@ -12,6 +13,7 @@ public class SolutionTest {
         testSingleAccountOperations();
         testMultipleAccountsOperations();
         testInvalidAccountOperations();
+        testAccountOperationsLog();
     }
 
     public static final String CUSTOMER_A = "Alice";
@@ -92,6 +94,33 @@ public class SolutionTest {
             asb.withdraw(fakeASBAccId, BigDecimal.valueOf(10.0));
         } catch (Exception e) {
             System.out.println(e.getMessage());
+        }
+    }
+
+    public static void testAccountOperationsLog() {
+        Bank anz = new Bank(BankCode.ANZ);
+        Customer customerA = new Customer(CUSTOMER_A);
+        Long customerAANZAccId = anz.createAccount(customerA.getName());
+
+        BigDecimal depositA1 = BigDecimal.valueOf(30.0);
+        anz.deposit(customerAANZAccId, depositA1);
+        BigDecimal withdrawA1 = BigDecimal.valueOf(20.0);
+        anz.withdraw(customerAANZAccId, withdrawA1);
+
+        BigDecimal depositA2 = BigDecimal.valueOf(10.0);
+        anz.deposit(customerAANZAccId, depositA2);
+        BigDecimal depositA3 = BigDecimal.valueOf(25.0);
+        anz.deposit(customerAANZAccId, depositA3);
+
+        Account acc1 = anz.getAccount(customerAANZAccId);
+        if (acc1 != null) {
+            List<Transaction> tmpDeposits = acc1.getDepositHistory();
+            System.out.println("mutable deposit history: " + tmpDeposits);
+            tmpDeposits.add(new Transaction(TransactionType.DEPOSIT, BigDecimal.valueOf(100.0), LocalDateTime.now()));
+            System.out.println("mutable deposit history: " + tmpDeposits);
+
+            System.out.println("original deposit history: " + acc1.getDepositHistory());
+            System.out.println("original withdarw history: " + acc1.getWithdrawHistory());
         }
     }
 }
