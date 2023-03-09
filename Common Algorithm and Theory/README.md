@@ -63,7 +63,7 @@
       - [共识机制/算法 (分布式选举问题) | Consensus Algorithm]()
         - 崩溃容错协议 | CFT
           - Paxos、Raft、ZAB、[Quorum](./Quorum算法.md)
-        - 拜占庭容错 | BFT [1](https://www.bilibili.com/read/cv14498545)、[2](https://cloud.tencent.com/developer/news/580379)、[3](https://learnku.com/articles/56919)
+        - 拜占庭容错 | BFT (Ref: [1](https://www.bilibili.com/read/cv14498545)、[2](https://cloud.tencent.com/developer/news/580379)、[3](https://learnku.com/articles/56919))
           - PBFT、Hotstuff
       - [P2P 核心算法]()
         - [BitTorrent 协议]()
