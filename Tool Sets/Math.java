@@ -132,3 +132,24 @@ public long power2(n) {
 
 // 计算 loga(b)
 double x = Math.log(b) / Math.log(a);
+
+
+
+// 质因数分解
+public Set<Integer> prime_factorization(int num) {
+    int n = (int) Math.sqrt(num);
+    Set<Integer> primes = new HashSet<>();
+    for (int i=2; i<=n; i+=1+(i%2)) { // num 分解质因素
+        if (num < i) break;
+        if (num % i == 0) {
+            primes.add(i);
+            while (num % i == 0) num /= i;
+        }
+    }
+    if (num > 1) primes.add(num);
+}
+
+
+
+// 计算 n 内的质数
+// Leetcode Q204
