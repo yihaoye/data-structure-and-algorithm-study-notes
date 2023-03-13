@@ -153,16 +153,17 @@ During designing a large system, investing in scaling before it is needed is gen
 Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Theorem`, `Load Balancing`, `Caching`, `Data Partitioning`, `Indexes`, `Proxies`, `Queues`, `Replication`, and choosing between `SQL vs NoSQL`.  
 
 ### Key Characteristics of Distributed Systems
-* **Scalability** - the capability of a system, process, or a network to continuously evolve/grow and manage increased demand.
+* **Scalability** - the capability of a system, process, or a network to continuously evolve/grow and manage increased demand. (相关组件与手段：负载均衡、自动扩展、分库分表、数据备份)
   * <small>Horizontal Scaling - Add more servers (e.g. Cassandra and MongoDB easy to scale horizontally).</small>
   * <small>Vertical Scaling - Add more resource/power (CPU, RAM, Storage etc) to same server (e.g. MySQL easy to scale vertically) (scaling involves downtime).</small>
-* **Reliability** - the probability a system will fail in a given period.
-* **Availability** - the time a system remains operational to perform its required function in a specific period.
+* **Reliability** - the probability a system will fail in a given period. （相关组件与手段： API 网关、测试、CI/CD 与回滚、故障监控与 failover/故障转移、服务降级）
+  * 故障分类 - DDIA 里故障的分类可以分为三大类：硬件故障、软件错误、人为错误。
+* **Availability** - the time a system remains operational to perform its required function in a specific period. (相关组件与手段：负载均衡、故障监控与 failover/故障转移、数据备份)
   * <small>Reliability Vs Availability - If a system is reliable, it is available. However, if it is available, it is not necessarily reliable. high reliability contributes to high availability, but it is possible to achieve a high availability even with an unreliable product by minimizing repair time and ensuring that spares are always available when they are needed.</small>
-* **Efficiency** - Two standard measures of efficiency are response time (or latency) and the throughput (or bandwidth). The two measures correspond to the following unit costs:
+* **Efficiency** - Two standard measures of efficiency are response time (or latency) and the throughput (or bandwidth). （相关组件与手段：CDN、异步处理耗时任务如消息队列、缓存、读写分离、索引、分页）. The two measures correspond to the following unit costs:
   * <small>Number of messages globally sent by the nodes of the system regardless of the message size.</small>
   * <small>Size of messages representing the volume of data exchanges.</small>
-* **Serviceability or Manageability** - how easy to operate and maintain. simplicity and speed with which a system can be repaired or maintained.
+* **Serviceability or Manageability** - how easy to operate and maintain. simplicity and speed with which a system can be repaired or maintained. （相关组件与手段：日志系统、CI/CD）
   * <small>If the time to fix a failed system increases, then availability will decrease.</small>
   * <small>Ease of diagnosing and understanding problems when they occur, ease of making updates or modifications, and how simple the system is to operate.</small>
   
