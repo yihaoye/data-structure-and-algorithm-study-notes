@@ -18,7 +18,8 @@
 ### 4S 分析法
 * Scenario：场景 - 需要设计哪些（核心）功能（询问面试官、也可以自己想），需要承受多大的访问量？
 * Service：服务 - 逻辑处理的整合，对于同一类问题的逻辑处理可以归并到一个服务中。这一步实际上就是将整个系统细分为若干个小的服务。
-* Storage：存储 - 最重要的部分。根据每个服务的数据特性选择合适的存储结构，然后细化数据表结构。系统设计中可以选择的存储结构一般有三大类（数据库系统，文件系统，缓存系统）。其中数据库系统又分为关系型数据库（[SQL Database](./../../HackerRank%20Practises/sql/README.md)）和非关系型数据库（[NoSQL Database](./NoSQL.md)）。数据库表设计部分可以参考、基于 OOD 的设计、知识。
+* Storage：存储 - 最重要的部分。根据每个服务的数据特性选择合适的存储结构，然后细化数据表结构。系统设计中可以选择的存储结构一般有三大类（数据库系统，文件系统，缓存系统）。其中数据库系统又分为关系型数据库（[SQL Database](./../../HackerRank%20Practises/sql/README.md)）和非关系型数据库（[NoSQL Database](./NoSQL.md)）。
+  * 数据库表设计部分可以参考、基于 [OOD、数据模型的设计、知识](https://youtu.be/8TE2DvpKxvA?t=151)，即如果数据模型本身是可高度结构化的，就可以使用 SQL，如果数据模型根据情况可能不统一，则可以使用 NoSQL。
 * Scale：扩展 - 主要分两部分，一个是优化，包括解决设计缺陷，更多功能设计以及一些特殊情况如何处理；另一个是维护，包括系统的鲁棒性和扩展性，比如有一台服务器/数据库挂了怎么办？如果有流量暴增，如何扩展？  
   
 最后，系统设计面试中需要注意的点：  
@@ -163,7 +164,7 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 * **Efficiency** - Two standard measures of efficiency are response time (or latency) and the throughput (or bandwidth). （相关组件与手段：CDN、异步处理耗时任务如消息队列、缓存、读写分离、索引、分页）. The two measures correspond to the following unit costs:
   * <small>Number of messages globally sent by the nodes of the system regardless of the message size.</small>
   * <small>Size of messages representing the volume of data exchanges.</small>
-* **Serviceability or Manageability** - how easy to operate and maintain. simplicity and speed with which a system can be repaired or maintained. （相关组件与手段：日志系统、CI/CD）
+* **Serviceability or Manageability** - how easy to operate and maintain. simplicity and speed with which a system can be repaired or maintained. （相关组件与手段：日志系统、CI/CD、统一配置中心、应用框架、IaC、版本管理、标准制定如协议、解耦）
   * <small>If the time to fix a failed system increases, then availability will decrease.</small>
   * <small>Ease of diagnosing and understanding problems when they occur, ease of making updates or modifications, and how simple the system is to operate.</small>
   
