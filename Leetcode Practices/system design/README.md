@@ -157,7 +157,7 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 * **Scalability** - the capability of a system, process, or a network to continuously evolve/grow and manage increased demand. (相关组件与手段：负载均衡、自动扩展、分库分表、数据备份)
   * <small>Horizontal Scaling - Add more servers (e.g. Cassandra and MongoDB easy to scale horizontally).</small>
   * <small>Vertical Scaling - Add more resource/power (CPU, RAM, Storage etc) to same server (e.g. MySQL easy to scale vertically) (scaling involves downtime).</small>
-* **Reliability** - the probability a system will fail in a given period. （相关组件与手段： API 网关、测试、CI/CD 与回滚、故障监控与 failover/故障转移、服务降级），故障分类 - DDIA 里故障的分类可以分为三大类：硬件故障、软件错误、人为错误 - [来源参考](https://xie.infoq.cn/article/a83e33394a05086a1514c2826)。
+* **Reliability** - the probability a system will fail in a given period. （相关组件与手段： API 网关、测试、CI/CD 与回滚、故障监控与 failover/故障转移、服务降级），故障分类 - DDIA 里故障的分类可以分为三大类：硬件故障、软件错误、人为错误 - [来源参考](https://xie.infoq.cn/article/a83e33394a05086a1514c2826)。Reliability 指标有两个：MTTF（Mean Time To Failure）平均故障前的时间，即系统平均能够正常运行多长时间才发生一次故障，系统的可靠性越高，MTTF 越长；MTTR（Mean Time To Repair）平均修复时间，即从故障出现到故障修复的这段时间，这段时间越短越好。
   * 硬件故障
     * 过去一般通过增加冗余度来提高单台机器的可靠性（比如磁盘可以做 RAID，服务器可以双路电源、备用发电机等）。现代系统一般都通过云平台使用大量的机器，硬件故障也变得非常常见。
     * 所以优选考虑已经不在是硬件冗余，因为硬件故障是随机的、相互独立的，大量硬件不可能同时发生失效。所以现在一般是通过系统设计（Design for failure）来降低单台机器失效对系统的影响。
