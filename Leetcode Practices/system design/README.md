@@ -157,8 +157,17 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 * **Scalability** - the capability of a system, process, or a network to continuously evolve/grow and manage increased demand. (相关组件与手段：负载均衡、自动扩展、分库分表、数据备份)
   * <small>Horizontal Scaling - Add more servers (e.g. Cassandra and MongoDB easy to scale horizontally).</small>
   * <small>Vertical Scaling - Add more resource/power (CPU, RAM, Storage etc) to same server (e.g. MySQL easy to scale vertically) (scaling involves downtime).</small>
-* **Reliability** - the probability a system will fail in a given period. （相关组件与手段： API 网关、测试、CI/CD 与回滚、故障监控与 failover/故障转移、服务降级）
-  * 故障分类 - DDIA 里故障的分类可以分为三大类：硬件故障、软件错误、人为错误。
+* **Reliability** - the probability a system will fail in a given period. （相关组件与手段： API 网关、测试、CI/CD 与回滚、故障监控与 failover/故障转移、服务降级），故障分类 - DDIA 里故障的分类可以分为三大类：硬件故障、软件错误、人为错误 - [来源参考](https://xie.infoq.cn/article/a83e33394a05086a1514c2826)。
+  * 硬件故障
+    * 过去一般通过增加冗余度来提高单台机器的可靠性（比如磁盘可以做 RAID，服务器可以双路电源、备用发电机等）。现代系统一般都通过云平台使用大量的机器，硬件故障也变得非常常见。
+    * 所以优选考虑已经不在是硬件冗余，因为硬件故障是随机的、相互独立的，大量硬件不可能同时发生失效。所以现在一般是通过系统设计（Design for failure）来降低单台机器失效对系统的影响。
+  * 软件故障
+    * 性能问题。资源不够，比如 CPU 时间、内存、硬盘空间或者网络带宽。
+    * 错误输入。对输入没有做安全校验和异常捕获导致系统崩溃。比如输入的格式、参数类型错误。
+    * 依赖服务慢，无响应。比如查询数据超时。
+    * 级联故障。一个组件小问题引发其它组件级联故障。
+  * 人为错误
+    * 系统总是在更新和修改，运维过程中就配置错误是导致服务中断的首要因数。
 * **Availability** - the time a system remains operational to perform its required function in a specific period. (相关组件与手段：负载均衡、故障监控与 failover/故障转移、数据备份)
   * <small>Reliability Vs Availability - If a system is reliable, it is available. However, if it is available, it is not necessarily reliable. high reliability contributes to high availability, but it is possible to achieve a high availability even with an unreliable product by minimizing repair time and ensuring that spares are always available when they are needed.</small>
 * **Efficiency** - Two standard measures of efficiency are response time (or latency) and the throughput (or bandwidth). （相关组件与手段：CDN、异步处理耗时任务如消息队列、缓存、读写分离、索引、分页）. The two measures correspond to the following unit costs:
