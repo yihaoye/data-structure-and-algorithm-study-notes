@@ -683,6 +683,7 @@ Unlock tables;
 * [SELECT FOR UPDATE 1](https://zhuanlan.zhihu.com/p/143866444)
 * [SELECT FOR UPDATE 2](https://www.cnblogs.com/goloving/p/13590955.html)
 * [SELECT FOR UPDATE 3](https://stackoverflow.com/a/16425603/6481829)
+* [JDBC with FOR UPDATE](https://blog.csdn.net/weixin_47514459/article/details/121911043)
 * [Difference between LOCK IN SHARE MODE and FOR UPDATE](https://www.youtube.com/watch?v=d6LsfSqj8U0)
 
 https://www.javatpoint.com/mysql-table-locking  
