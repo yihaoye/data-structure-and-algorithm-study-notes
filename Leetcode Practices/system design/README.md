@@ -1807,3 +1807,9 @@ To Be Continue ...
 
 ## 数量单位中英对照
 ![](./数量单位中英对照.jpeg)  
+
+
+
+# 其他
+* [事件驱动型架构](https://cloud.google.com/eventarc/docs/event-driven-architectures?hl=zh-cn)
+
