@@ -62,14 +62,17 @@ public class App {
     }
 
     public List<TrafficRecord> mostCountRecords(int topK) {
+        if (this.sortedRecords == null || this.sortedRecords.size() < topK) return new ArrayList<>();
         return this.sortedRecords.subList(0, topK);
     }
 
     public Map<String, Integer> getDateCount() {
+        if (this.dateCount == null) return new LinkedHashMap<>();
         return this.dateCount;
     }
 
     public BigInteger getTotalCount() {
+        if (this.totalCount == null) return BigInteger.ZERO;
         return this.totalCount;
     }
 
