@@ -22,11 +22,11 @@ public class App {
     }
 
     public void processFile(String filePath) {
-        List<TrafficRecord> originRecords = new ArrayList<>();
-        List<TrafficRecord> sortedRecords = new ArrayList<>();
-        Map<String, Integer> dateCount = new LinkedHashMap<>();
-        BigInteger totalCount = BigInteger.ZERO;
-        
+        this.originRecords = new ArrayList<>();
+        this.sortedRecords = new ArrayList<>();
+        this.dateCount = new LinkedHashMap<>();
+        this.totalCount = BigInteger.ZERO;
+
         if (filePath == null || filePath.length() == 0) {
             System.out.println("file path is empty.");
             return;
