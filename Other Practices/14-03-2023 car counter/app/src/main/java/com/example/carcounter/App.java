@@ -12,16 +12,21 @@ import com.example.carcounter.model.*;
 public class App {
     private final String ISO_8601 = "yyyy-MM-dd'T'HH:mm:ss";
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern(ISO_8601);
-    private List<TrafficRecord> originRecords = new ArrayList<>();
-    private List<TrafficRecord> sortedRecords = new ArrayList<>();
-    private Map<String, Integer> dateCount = new LinkedHashMap<>(); // According to real world, Integer should be enough for counting car traffic per day, apply Long or BigInteger if needed
-    private BigInteger totalCount = BigInteger.ZERO;
+    private List<TrafficRecord> originRecords;
+    private List<TrafficRecord> sortedRecords;
+    private Map<String, Integer> dateCount; // According to real world, Integer should be enough for counting car traffic per day, apply Long or BigInteger if needed
+    private BigInteger totalCount;
 
     public static void main(String[] args) {
         // ...
     }
 
     public void processFile(String filePath) {
+        List<TrafficRecord> originRecords = new ArrayList<>();
+        List<TrafficRecord> sortedRecords = new ArrayList<>();
+        Map<String, Integer> dateCount = new LinkedHashMap<>();
+        BigInteger totalCount = BigInteger.ZERO;
+        
         if (filePath == null || filePath.length() == 0) {
             System.out.println("file path is empty.");
             return;
