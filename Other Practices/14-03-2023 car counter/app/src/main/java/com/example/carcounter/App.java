@@ -10,21 +10,26 @@ import com.example.carcounter.exception.*;
 import com.example.carcounter.model.*;
 
 public class App {
-    private final String ISO_8601 = "yyyy-MM-dd'T'HH:mm:ss";
-    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern(ISO_8601);
-    private List<TrafficRecord> originRecords;
-    private List<TrafficRecord> sortedRecords;
-    private Map<String, Integer> dateCount; // According to real world, Integer should be enough for counting car traffic per day, apply Long or BigInteger if needed
-    private BigInteger totalCount;
+    private String ISO_8601 = "yyyy-MM-dd'T'HH:mm:ss";
+    private DateTimeFormatter formatter = DateTimeFormatter.ofPattern(ISO_8601);
+    private List<TrafficRecord> originRecords = new ArrayList<>();
+    private List<TrafficRecord> sortedRecords = new ArrayList<>();
+    private Map<String, Integer> dateCount = new LinkedHashMap<>(); // According to real world, Integer should be enough for counting car traffic per day, apply Long or BigInteger if needed
+    private BigInteger totalCount = BigInteger.ZERO;
 
     public static void main(String[] args) {
         // ...
     }
 
     public void processFile(String filePath) {
-        this.originRecords = new ArrayList<>();
-        this.sortedRecords = new ArrayList<>();
-        this.dateCount = new LinkedHashMap<>();
+        processFile(filePath, this.ISO_8601);
+    }
+
+    public void processFile(String filePath, String format) {
+        this.formatter = DateTimeFormatter.ofPattern(format);
+        this.originRecords.clear();
+        this.sortedRecords.clear();
+        this.dateCount.clear();
         this.totalCount = BigInteger.ZERO;
 
         if (filePath == null || filePath.length() == 0) {
@@ -62,17 +67,15 @@ public class App {
     }
 
     public List<TrafficRecord> mostCountRecords(int topK) {
-        if (this.sortedRecords == null || this.sortedRecords.size() < topK) return new ArrayList<>();
-        return this.sortedRecords.subList(0, topK);
+        if (this.sortedRecords.isEmpty()) return new ArrayList<>();
+        return this.sortedRecords.subList(0, Math.min(this.sortedRecords.size(), topK));
     }
 
     public Map<String, Integer> getDateCount() {
-        if (this.dateCount == null) return new LinkedHashMap<>();
-        return this.dateCount;
+        return new LinkedHashMap<>(this.dateCount);
     }
 
     public BigInteger getTotalCount() {
-        if (this.totalCount == null) return BigInteger.ZERO;
         return this.totalCount;
     }
 
