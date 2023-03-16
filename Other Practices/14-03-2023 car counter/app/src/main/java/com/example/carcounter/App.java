@@ -10,7 +10,7 @@ import com.example.carcounter.exception.*;
 import com.example.carcounter.model.*;
 
 public class App {
-    private String ISO_8601 = "yyyy-MM-dd'T'HH:mm:ss";
+    private final String ISO_8601 = "yyyy-MM-dd'T'HH:mm:ss";
     private DateTimeFormatter formatter = DateTimeFormatter.ofPattern(ISO_8601);
     private List<TrafficRecord> originRecords = new ArrayList<>();
     private List<TrafficRecord> sortedRecords = new ArrayList<>();
