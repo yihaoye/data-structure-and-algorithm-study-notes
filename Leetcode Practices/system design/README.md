@@ -1812,4 +1812,6 @@ To Be Continue ...
 
 # 其他
 * [事件驱动型架构](https://cloud.google.com/eventarc/docs/event-driven-architectures?hl=zh-cn)
-
+* [什么是流处理](https://cloud.tencent.com/developer/article/1657451)
+* [什么是流数据](https://aws.amazon.com/cn/what-is/streaming-data/)
+* [深入理解 Java 中的流 (Stream)](https://cloud.tencent.com/developer/article/1479298)
