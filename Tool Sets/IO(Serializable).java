@@ -1,3 +1,7 @@
+// 系统学习 Java IO - https://www.cnblogs.com/czwbig/p/10007201.html
+
+
+
 // https://www.liaoxuefeng.com/wiki/1252599548343744/1298366845681698
 /*
 序列化是指把一个Java对象变成二进制内容，本质上就是一个byte[]数组。
