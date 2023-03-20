@@ -1126,7 +1126,7 @@ https://www.cnblogs.com/ZkbFighting/p/8099141.html
   * 法则 2，应该将经常使用的 SELECT 语句做成视图。
 
 视图的缺点：  
-* 性能差（这一点并不一定，比如经过 DBA 优化的视图可能比一些工程师写的非优化的 SQL 语句要好，[另外现代数据库也对视图有一定的优化](https://stackoverflow.com/questions/529259/do-database-views-affect-query-performance)，但理论上视图应该与原表性能基本一致）
+* 性能差（这一点并不一定，[比如经过 DBA 优化的视图可能比一些工程师写的非优化的 SQL 语句要好](https://stackoverflow.com/questions/439056/is-a-view-faster-than-a-simple-query)，[另外现代数据库也对视图有一定的优化](https://stackoverflow.com/questions/529259/do-database-views-affect-query-performance)，但理论上视图应该与原表性能基本一致）
 * 修改限制
 
 #### 创建视图的方法
