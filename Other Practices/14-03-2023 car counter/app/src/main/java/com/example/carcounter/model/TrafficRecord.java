@@ -3,8 +3,8 @@ package com.example.carcounter.model;
 import java.time.LocalDateTime;
 
 public class TrafficRecord implements Comparable<TrafficRecord> {
-    LocalDateTime startTime;
-    Integer carNum;
+    private LocalDateTime startTime;
+    private Integer carNum;
 
     public TrafficRecord(LocalDateTime startTime, Integer carNum) {
         this.startTime = startTime;

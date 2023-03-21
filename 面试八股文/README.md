@@ -48,6 +48,7 @@
 * 什么是公平锁？什么是非公平锁？  （简单）
 * 简述 Java 中 final 关键字的作用
 * 简述动态代理与静态代理
+* [Java IO](https://www.cnblogs.com/czwbig/p/10007201.html)
 
 ## Golang 高频
 * [什么是 golang 内存逃逸](./../Computer%20System%20Layer/内存与程序.md#内存逃逸)
