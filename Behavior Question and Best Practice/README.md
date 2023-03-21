@@ -1,6 +1,8 @@
 # Behavior Question
   
 ## BQ 概况
+[如何高效准备 BQ 面试](https://www.youtube.com/watch?v=-xUHMCXxu8w)  
+
 ![](./Behavior%20Question.png)  
   
 以上参考：https://www.youtube.com/watch?v=opTHQMqQcvc  
