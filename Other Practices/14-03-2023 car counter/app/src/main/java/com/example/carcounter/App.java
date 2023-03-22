@@ -60,7 +60,7 @@ public class App {
             }
             Collections.sort(this.sortedRecords);
             reader.close();
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
