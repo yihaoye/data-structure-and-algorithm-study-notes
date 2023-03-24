@@ -17,7 +17,7 @@
 * Synchronized 关键字底层是如何实现的？它与 Lock 相比优缺点分别是什么？ （中等）
 * HashMap 实现原理，为什么使用红黑树？  （中等）
 * 简述 Java 的反射机制及其应用场景  （简单）
-* Synchronized，Volatile，可重入锁的不同使用场景及优缺点    （困难）
+* Synchronized，Volatile（及其实现原理），可重入锁的不同使用场景及优缺点    （困难）
 * 简述 BIO, NIO, AIO 的区别  （困难）
 * Java 类的加载流程是怎样的？什么是双亲委派机制？  （简单）
 * JMM 中内存模型是怎样的？什么是指令序列重排序？  （中等）
@@ -26,11 +26,8 @@
 * Java 线程间有多少通信方式？  （简单）
 * Java 中接口和抽象类的区别  （简单）
 * 简述 ArrayList 与 LinkedList 的底层实现以及常见操作的时间复杂度  （简单）
-* String，StringBuffer，StringBuilder 之间有什么区别？
 * hashcode 和 equals 方法的联系  （简单）
-* == 和 equals() 的区别？
 * Java 常见锁有哪些？ReetrantLock 是怎么实现的？  （中等）
-* volatile 关键字解决了什么问题，它的实现原理是什么？  （中等）
 * ThreadLocal 实现原理是什么？  （简单）
 * 简述 CAS 原理，什么是 ABA 问题，怎么解决？  （简单）
 * 简述 Spring 的初始化流程  （中等）
@@ -44,9 +41,7 @@
 * 简述 Spring AOP 的原理
 * MVC 模型和 MVVM 模型的区别  （中等）
 * 简述使用协程的优点
-* Java 编译后的 .class 文件包含了什么内容？
 * 什么是公平锁？什么是非公平锁？  （简单）
-* 简述 Java 中 final 关键字的作用
 * 简述动态代理与静态代理
 * [Java IO](https://www.cnblogs.com/czwbig/p/10007201.html)
 
@@ -56,10 +51,11 @@
 * panic 相关 - [panic](https://www.yiibai.com/go/golang-panic.html)、[panic 和 recover](https://draveness.me/golang/docs/part2-foundation/ch05-keyword/golang-panic-recover/)
 * [上下文 Context](https://draveness.me/golang/docs/part3-runtime/ch06-concurrency/golang-context/)
 
-## MySQL 高频
+## 数据库高频
 * [为什么 InnoDB 表必须有主键，并且推荐使用整型的自增主键？](https://blog.csdn.net/weixin_41699562/article/details/104139458)
 * ORM N+1 问题 - [解答一](https://segmentfault.com/a/1190000039421843)、[解答二](https://www.cnblogs.com/google4y/p/3455534.html)、[解答三](https://zhuanlan.zhihu.com/p/27323883)
-* [MySQL 索引背后的数据结构及算法原理](https://blog.codinglabs.org/articles/theory-of-mysql-index.html)
+* [MySQL 索引背后的数据结构及算法原理 / B+树](https://blog.codinglabs.org/articles/theory-of-mysql-index.html)
+* [LSM 树]()
 
 ## 操作系统（Linux & bash）高频
 * [进程、线程、协程的区别](./../Computer%20System%20Layer/进程与线程.md)
@@ -80,11 +76,13 @@
 
 ## 安全高频
 * [对称加密与非对称加密]()
+* [实际工程项目中应用密匙如何存取]()
 
 ## 系统设计、DevOps 高频
 * [[微服務] 什麼是 gRPC，架構上為什麼要使用 gRPC](https://www.youtube.com/watch?v=qEB3yFzETVs)
 * RPC 与 REST 区别与选择 - [解答一](https://www.cnblogs.com/wongbingming/p/11086773.html)、[解答二](https://zhuanlan.zhihu.com/p/102760613)
 * [CI 服务有什么用途](https://www.modb.pro/db/404626)
+* [服务降级、服务熔断]()
 
 ## Redis 高频
 * [redis 有哪些数据类型？可以应用在什么场景？](https://cloud.tencent.com/developer/article/1975464)
@@ -112,6 +110,14 @@
 * [Docker Compose 是什么](https://www.cnblogs.com/sparkdev/p/9753793.html)
 * [Docker 群（Swarm）是什么](https://www.modb.pro/db/404626)
 * [在使用 Docker 技术的产品中如何监控其运行](https://www.modb.pro/db/404626)
+
+## 前端高频
+* [什么是 React 及其基本设计理念]()
+* [React Hooks]()
+* [什么是 JSX](https://legacy.reactjs.org/docs/introducing-jsx.html)
+* [什么是 Virtual DOM 以及为什么使用它](https://juejin.cn/post/6844903953499422727)
+* [什么是 Fiber](https://juejin.cn/post/7106148927606358030)
+* [JavaScript 异步、非阻塞]()
 
 
 以上部分参考：https://osjobs.net/topk/  
