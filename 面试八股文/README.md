@@ -116,6 +116,7 @@
 * [React Hooks]()
 * [什么是 JSX](https://legacy.reactjs.org/docs/introducing-jsx.html)
 * [什么是 Virtual DOM 以及为什么使用它](https://juejin.cn/post/6844903953499422727)
+* [React Virtual DOM 的 diff 算法](https://juejin.cn/post/7005846199479566344)
 * [什么是 Fiber](https://juejin.cn/post/7106148927606358030)
 * [JavaScript 异步、非阻塞]()
 
