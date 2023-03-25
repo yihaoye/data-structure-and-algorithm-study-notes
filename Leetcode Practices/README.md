@@ -292,7 +292,7 @@
 - [x] 139	Word Break		
 - [x] 375	Guess Number Higher or Lower II		
 - [x] 312	Burst Balloons		
-- [ ] 322	Coin Change		
+- [x] 322	Coin Change		
 - [x] 877   Stone Game  
 - [x] 818   Race Car    
 ### 二维
@@ -720,7 +720,7 @@
 - [ ] 316	Remove Duplicate Letters		
 - [ ] 317	Shortest Distance from All Buildings		
 - [x] 318	Maximum Product of Word Lengths		
-- [ ] 322	Coin Change		
+- [x] 322	Coin Change		
 - [ ] 323	Number of Connected Components in an Undirected Graph		
 - [ ] 324	Wiggle Sort II		
 - [ ] 325	Maximum Size Subarray Sum Equals k		
