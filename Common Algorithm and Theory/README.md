@@ -35,6 +35,7 @@
       - [倍增法 | Binary Lifting](./倍增法.md)
       - [弗洛伊德算法 | Floyd-Warshall Algorithm](./弗洛伊德算法.md) (时间复杂度 O(N^3))
       - [Kadane 算法 | Kadane's Algorithm](./Kadane算法.md) (时间复杂度 O(N))
+      - [词法分析 | Lexical Analysis](https://zh.wikipedia.org/wiki/%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90)
     - [KMP 算法 | Knuth–Morris–Pratt Algorithm](./KMP算法.md) (时间复杂度 O(N+M))
     - [AC 自动机 | Aho–Corasick Algorithm](./AC自动机.md)
     - [马拉车算法 | Manacher Algorithm]()
