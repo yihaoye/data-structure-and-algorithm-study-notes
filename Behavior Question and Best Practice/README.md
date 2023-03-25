@@ -5,7 +5,11 @@
 
 ![](./Behavior%20Question.png)  
   
-以上参考：https://www.youtube.com/watch?v=opTHQMqQcvc  
+以上参考：  
+* https://www.youtube.com/watch?v=opTHQMqQcvc  
+* https://www.youtube.com/watch?v=-xUHMCXxu8w  
+* https://www.youtube.com/watch?v=hU6BVxtGd5g  
+* https://www.youtube.com/watch?v=0xKLVJuBRCU  
   
 ## 回答策略
 `S*T*A*R` - Situation, Task, Action, Results  
