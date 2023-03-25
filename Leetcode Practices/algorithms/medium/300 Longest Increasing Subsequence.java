@@ -31,6 +31,30 @@ Follow up: Can you come up with an algorithm that runs in O(n log(n)) time compl
 
 
 
+// Other's Solution:
+class Solution {
+    public int lengthOfLIS(int[] nums) {
+        // https://leetcode.com/problems/longest-increasing-subsequence/solutions/74824/java-python-binary-search-o-nlogn-time-with-explanation/?orderBy=most_votes
+        // 耐心排序（贪心+动态规划+二分查找）
+        // Time: O(N*logN)
+        int[] tails = new int[nums.length];
+        int size = 0;
+        for (int x : nums) {
+            int i = 0, j = size;
+            while (i != j) {
+                int m = (i + j) / 2;
+                if (tails[m] < x) i = m + 1;
+                else j = m;
+            }
+            tails[i] = x;
+            if (i == size) ++size;
+        }
+        return size;
+    }
+}
+
+
+
 // My Solution:
 class Solution {
     public int lengthOfLIS(int[] nums) {
