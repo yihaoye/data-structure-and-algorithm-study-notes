@@ -40,6 +40,7 @@
   - [并发散列表 | ConcurrentHashMap]() (索引搜索 O(1)，插入/删除节点 O(1))
   - [链散列表 | LinkedHashMap]() (按插入顺序的散列表，索引搜索 O(1)，插入/删除节点 O(1))
   - [树状映射表 | TreeMap]() (索引搜索 O(logN)，插入/删除节点 O(logN))
+  - [双向表 | BiMap](./Data%20Structure%20Implementation/BiMap/BiMap.java)
   - [枚举表 | EnumMap](./Data%20Structure%20Implementation/EnumMap/README.md) (索引搜索 O(1))
 - [集合 | Set]()
   - [散列集 | HashSet]() (索引搜索 O(1)，插入/删除节点 O(1))
