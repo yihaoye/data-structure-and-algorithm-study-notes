@@ -1785,6 +1785,30 @@ OOD 还可以参考 [Hotel Management System](./../object%20oriented%20design/gr
 
 
 
+<details>
+<summary>设计点赞系统（Facebook/TikTok/Twitter/Youtube Like）</summary>
+
+[Twitter Likes Count Design | Youtube Views Count Design | Near Realtime Counter System Design](https://www.youtube.com/watch?v=0V-Ns9vovzE)  
+简而言之，就是使用关系数据库并创建 3 个 Table：
+* Post {post_id, user_id}
+* Like {like_id, post_id, user_id}
+* User {user_id}
+
+另外要注意规模大了之后如何分库分表。
+
+</details>
+
+
+
+<details>
+<summary>设计日活统计系统（或月活等等去重统计）</summary>
+
+重点（也即难点）在于大数据的统计去重同时保证时空效率，同理意味着所有类似功能的系统均可以使用这一方法 - [HyperLogLog](./../../Common%20Algorithm%20and%20Theory/HyperLogLog.md)  
+
+</details>
+
+
+
 <br />
   
   
