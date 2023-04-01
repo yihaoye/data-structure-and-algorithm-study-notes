@@ -10,6 +10,15 @@ import java.util.concurrent.locks.LockSupport;
 import com.example.ratelimiter.exception.RejectException;
 import com.example.ratelimiter.util.TimestampHolder;
 
+/**
+漏桶算法面对限流，就更加的柔性，不存在直接的粗暴拒绝。
+
+原理很简单，可以认为就是注水漏水的过程。往漏桶中以任意速率流入水，以固定的速率流出水。当水超过桶的容量时，会被溢出，也就是被丢弃。因为桶容量是不变的，保证了整体的速率。
+    * 流入的水滴，可以看作是访问系统的请求，这个流入速率是不确定的。
+    * 桶的容量一般表示系统所能处理的请求数。
+    * 如果桶的容量满了，就达到限流的阀值，就会丢弃水滴（拒绝请求）
+    * 流出的水滴，是恒定过滤的，对应服务按照固定的速率处理请求。
+ */
 public class LeakyBucketLimiterImpl implements RateLimiter {
 
     private static final int DEFAULT_RATE_LIMIT_PER_SECOND = Integer.MAX_VALUE;

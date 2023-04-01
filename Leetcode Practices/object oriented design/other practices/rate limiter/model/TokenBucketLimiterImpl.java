@@ -9,6 +9,15 @@ import java.util.concurrent.TimeUnit;
 import com.example.ratelimiter.util.TimestampHolder;
 import com.example.ratelimiter.exception.RejectException;
 
+/**
+面对突发流量的时候，可以使用令牌桶算法限流
+
+令牌桶算法原理：
+    * 有一个令牌管理员，根据限流大小，定速往令牌桶里放令牌。
+    * 如果令牌数量满了，超过令牌桶容量的限制，那就丢弃。
+    * 系统在接受到一个用户请求时，都会先去令牌桶要一个令牌。如果拿到令牌，那么就处理这个请求的业务逻辑。
+    * 如果拿不到令牌，就直接拒绝这个请求。
+ */
 public class TokenBucketLimiterImpl implements RateLimiter {
 
     private static final int DEFAULT_RATE_LIMIT_PER_SECOND = Integer.MAX_VALUE;

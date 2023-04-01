@@ -6,6 +6,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 import com.example.ratelimiter.exception.RejectException;
 import com.example.ratelimiter.util.TimestampHolder;
 
+/**
+固定窗口限流算法
+
+首先维护一个计数器，将单位时间段当做一个窗口，计数器记录这个窗口接收请求的次数。
+    * 当次数少于限流阀值，就允许访问，并且计数器+1
+    * 当次数大于限流阀值，就拒绝访问。
+    * 当前的时间窗口过去之后，计数器清零。
+ */
 public class RateCounterImpl implements RateLimiter {
 
     private static final int DEFAULT_RATE_LIMIT_PER_SECOND = Integer.MAX_VALUE;
