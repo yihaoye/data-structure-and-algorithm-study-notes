@@ -77,7 +77,6 @@ class Logger {
     
     public boolean shouldPrintMessage(int timestamp, String message) {
         int gap = timestamp - lastTimestamp, loop = timestamp - lastTimestamp;
-        Deque<Set<String>> tmp = deque;
         lastTimestamp = timestamp;
         if (gap > 10) loop = 11;
         while (--loop > 0) deque.offer(new HashSet<>());
