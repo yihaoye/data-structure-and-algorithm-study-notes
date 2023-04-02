@@ -80,15 +80,8 @@ class Solution {
         boolean[][] dp = new boolean[n][n];
         for (int r=0; r<n; r++) {
             dp[r][r] = true;
-            if (r > 0 && s.charAt(r-1) == s.charAt(r)) {
-                dp[r-1][r] = true;
-                if (1 > maxEnd - maxStart) {
-                    maxStart = r - 1;
-                    maxEnd = r;
-                }
-            }
-            for (int l=1; l<=r-1; l++) {
-                if (dp[l][r-1] && s.charAt(l-1) == s.charAt(r)) {
+            for (int l=1; l<=r; l++) {
+                if ((dp[l][r-1] || l == r) && s.charAt(l-1) == s.charAt(r)) { // l == r && s[r-1] == s[r] -> [r-1..r] = true
                     dp[l-1][r] = true;
                     if (r - l + 1 > maxEnd - maxStart) {
                         maxStart = l - 1;
