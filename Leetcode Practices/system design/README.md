@@ -1806,8 +1806,9 @@ OOD 还可以参考 [Hotel Management System](./../object%20oriented%20design/gr
 * User {user_id}
 
 读的时候使用 ```SELECT COUNT(*) FROM Like WHERE post_id = ?``` 即可。  
-但是这样对每个 Post 都进行 SELECT COUNT(*) 的操作太重了，所以可以直接在 Post 表里加一个 like_count 字段（或者另外建一个表 Post_Like_Count），然后每次 Like 增加时要保证事务操作 like_count 自增 1 且 Like 表插入新纪录（也可以使用消息队列）。  
-在读优化上还可以引入缓存（客户端以及服务端）。  
+但是这样对每个 Post 都进行 SELECT COUNT(*) 的操作太重了，所以可以直接在 Post 表里加一个 like_count 字段（或者另外建一个表 Post_Like_Count），然后每次 Like 增加时要保证事务操作 like_count 自增 1 且 Like 表插入新纪录。  
+如果每个 like 写入都是单独一个事务，那么势必数据库性能不会高，因此可以使用消息队列获取批量的 like 操作事件，然后在一次事务中批量地写入，这样性能更高（唯一要注意如果中间失败会不会重复写入，因为写入前势必要先暂存在应用服务器的内存从而可能发生服务挂机导致的内存丢失）。  
+在读优化上还可以引入缓存（客户端以及服务端 Write-Through）。  
 另外要注意规模大了之后如何分库分表。  
 
 </details>
