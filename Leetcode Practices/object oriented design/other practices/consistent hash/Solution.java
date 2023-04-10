@@ -6,9 +6,9 @@ public class Solution {
     public static void main(String[] args) {
         // test ...
         ConsistentHashCluster cluster = new ConsistentHashCluster(10); // apply 10 vNode for simple test
-        Node node1 = new Node(UUID.randomUUID(), "localhost", 8080, NodeType.CACHE);
-        Node node2 = new Node(UUID.randomUUID(), "localhost", 8081, NodeType.CACHE);
-        Node node3 = new Node(UUID.randomUUID(), "localhost", 8082, NodeType.MEMCACHE);
+        Node node1 = new Node(UUID.randomUUID(), "192.168.0.0", 8080, NodeType.CACHE);
+        Node node2 = new Node(UUID.randomUUID(), "192.168.0.1", 8081, NodeType.CACHE);
+        Node node3 = new Node(UUID.randomUUID(), "192.168.0.2", 8082, NodeType.MEMCACHE);
         cluster.nodeAdded(node1);
         cluster.nodeAdded(node2);
         cluster.nodeAdded(node3);
@@ -17,12 +17,14 @@ public class Solution {
         cluster.putData("key2", "value2");
         cluster.putData("key3", "value3");
 
-        cluster.nodeRemoved(node1);
-        cluster.nodeRemoved(node2);
+        Node removeNode = cluster.getNodeByData("key1");
+        cluster.nodeRemoved(removeNode);
+        Node reAssignNode = cluster.getNodeByData("key1");
+        System.out.println("key1 is reassign from " + removeNode.getNodeId() + " to " + reAssignNode.getNodeId());
 
-        cluster.getData("key1");
-        cluster.getData("key2");
-        cluster.getData("key3");
+        System.out.println(cluster.getData("key1"));
+        System.out.println(cluster.getData("key2"));
+        System.out.println(cluster.getData("key3"));
     }
 }
 
@@ -37,6 +39,9 @@ public interface NodeEventHandler {
 }
 
 public class ConsistentHashCluster implements NodeEventHandler {
+    // there is a confuse with term "replica" in challenge doc, the challenge mention the "replica" is point of node on unit circle, 
+    // which suppose to be the virtual node in consistent hash technology, 
+    // normally term "replica" should be read replica which sync data from primary node, which is easier to be implemented than virtual node
     private final int DEFAULT_VIRTUAL_NODE_NUM = 150; // apply virtual node and large virtual/replicas node number makes the distribution more even
     private int vNodeNum;
     private SortedMap<Double, Node> vNodeToNode = new TreeMap<>(); // <vNode hash, real Node>, apply TreeMap to make the hash range sorted to make reassignment faster
@@ -114,6 +119,15 @@ public class ConsistentHashCluster implements NodeEventHandler {
         if (matchVNode == null) matchVNode = vNodeToNode.lastKey();
         Node matchNode = vNodeToNode.get(matchVNode);
         return matchNode.getData(keyHash, key);
+    }
+
+    public Node getNodeByData(String key) {
+        if (vNodeToNode.isEmpty()) throw new RuntimeException("No node in the cluster");
+
+        Double keyHash = hash(key);
+        Double matchVNode = vNodeToNode.floorKey(keyHash);
+        if (matchVNode == null) matchVNode = vNodeToNode.lastKey();
+        return vNodeToNode.get(matchVNode);
     }
 
     public void putData(String key, String value) {
