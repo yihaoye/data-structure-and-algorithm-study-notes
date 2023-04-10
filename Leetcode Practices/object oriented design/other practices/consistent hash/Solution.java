@@ -5,10 +5,10 @@ import java.security.*;
 public class Solution {
     public static void main(String[] args) {
         // test ...
-        ConsistentHashCluster cluster = new ConsistentHashCluster(10);
+        ConsistentHashCluster cluster = new ConsistentHashCluster(10); // apply 10 vNode for simple test
         Node node1 = new Node(UUID.randomUUID(), "localhost", 8080, NodeType.CACHE);
         Node node2 = new Node(UUID.randomUUID(), "localhost", 8081, NodeType.CACHE);
-        Node node3 = new Node(UUID.randomUUID(), "localhost", 8082, NodeType.CACHE);
+        Node node3 = new Node(UUID.randomUUID(), "localhost", 8082, NodeType.MEMCACHE);
         cluster.nodeAdded(node1);
         cluster.nodeAdded(node2);
         cluster.nodeAdded(node3);
@@ -37,7 +37,7 @@ public interface NodeEventHandler {
 }
 
 public class ConsistentHashCluster implements NodeEventHandler {
-    private final int DEFAULT_VIRTUAL_NODE_NUM = 150; // large virtual/replicas node number makes the distribution more even
+    private final int DEFAULT_VIRTUAL_NODE_NUM = 150; // apply virtual node and large virtual/replicas node number makes the distribution more even
     private int vNodeNum;
     private SortedMap<Double, Node> vNodeToNode = new TreeMap<>(); // <vNode hash, real Node>, apply TreeMap to make the hash range sorted to make reassignment faster
 
@@ -58,10 +58,11 @@ public class ConsistentHashCluster implements NodeEventHandler {
             // data reassignment
             Double fromVNode = vNodeToNode.floorKey(vNodeHash);
             if (fromVNode == null && !vNodeToNode.isEmpty()) fromVNode = vNodeToNode.lastKey();
-            Double upperBound = vNodeToNode.ceilingKey(vNodeHash); // vNodeHash is the lower bound of the reassign data range
+            Double upperBound = vNodeToNode.ceilingKey(vNodeHash); // vNodeHash is the lower bound of the reassign data range, data equals or larger than upperBound should not be reassign since it may belongs to some other vNode of the same fromVNode
+            if (upperBound == null) upperBound = 1.0;
             Node fromNode = vNodeToNode.get(fromVNode);
-            if (fromNode != null && !fromNode.getNodeId().equals(node.getNodeId())) {
-                SortedMap<Double, Set<String>> subMap = (upperBound != null) ? fromNode.keyHashToKeys.subMap(vNodeHash, upperBound) : fromNode.keyHashToKeys.tailMap(vNodeHash);
+            if (fromNode != null && !fromNode.getNodeId().equals(node.getNodeId())) { // if fromNode and node is the same node, no need to reassign data, this is possible when the new vNode is next to the old vNode which created in the same for loop
+                SortedMap<Double, Set<String>> subMap = fromNode.keyHashToKeys.subMap(vNodeHash, upperBound);
                 for (Double keyHash : subMap.keySet()) {
                     Set<String> keys = subMap.get(keyHash);
                     for (String key : keys) {
