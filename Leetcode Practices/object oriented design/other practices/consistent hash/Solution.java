@@ -17,14 +17,26 @@ public class Solution {
         cluster.putData("key2", "value2");
         cluster.putData("key3", "value3");
 
+        node1.getData().forEach((key, value) -> System.out.println(node1.getNodeId() + " : " + key + ", " + value));
+        node2.getData().forEach((key, value) -> System.out.println(node2.getNodeId() + " : " + key + ", " + value));
+        node3.getData().forEach((key, value) -> System.out.println(node3.getNodeId() + " : " + key + ", " + value));
         Node removeNode = cluster.getNodeByData("key1");
         cluster.nodeRemoved(removeNode);
         Node reAssignNode = cluster.getNodeByData("key1");
         System.out.println("key1 is reassign from " + removeNode.getNodeId() + " to " + reAssignNode.getNodeId());
+        node1.getData().forEach((key, value) -> System.out.println(node1.getNodeId() + " : " + key + ", " + value));
+        node2.getData().forEach((key, value) -> System.out.println(node2.getNodeId() + " : " + key + ", " + value));
+        node3.getData().forEach((key, value) -> System.out.println(node3.getNodeId() + " : " + key + ", " + value));
 
         System.out.println(cluster.getData("key1"));
         System.out.println(cluster.getData("key2"));
         System.out.println(cluster.getData("key3"));
+
+        cluster.removeData("key1");
+        System.out.println(cluster.getData("key1"));
+        node1.getData().forEach((key, value) -> System.out.println(node1.getNodeId() + " : " + key + ", " + value));
+        node2.getData().forEach((key, value) -> System.out.println(node2.getNodeId() + " : " + key + ", " + value));
+        node3.getData().forEach((key, value) -> System.out.println(node3.getNodeId() + " : " + key + ", " + value));
     }
 }
 
