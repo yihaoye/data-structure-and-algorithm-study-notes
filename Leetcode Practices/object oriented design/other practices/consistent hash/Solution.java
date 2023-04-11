@@ -1,3 +1,4 @@
+// reference - https://mp.weixin.qq.com/s/eCxGPqrfIeFY_E_CnFRfMw
 import java.util.*;
 import java.math.*;
 import java.security.*;
@@ -56,7 +57,8 @@ public class ConsistentHashCluster implements NodeEventHandler {
     // normally term "replica" should be read replica which sync data from primary node, which is easier to be implemented than virtual node
     private final int DEFAULT_VIRTUAL_NODE_NUM = 150; // apply virtual node and large virtual/replicas node number makes the distribution more even
     private int vNodeNum;
-    private SortedMap<Double, Node> vNodeToNode = new TreeMap<>(); // <vNode hash, real Node>, apply TreeMap to make the hash range sorted to make reassignment faster
+    // request key hash will be redirected to the vNode which is the largest vNode hash equals or smaller than the request key hash
+    private SortedMap<Double, Node> vNodeToNode = new TreeMap<>(); // <vNode hash, real Node>, apply TreeMap to make the hash range sorted to make reassignment and load balance faster
 
     public ConsistentHashCluster() {
         this(DEFAULT_VIRTUAL_NODE_NUM);
@@ -165,7 +167,7 @@ public class ConsistentHashCluster implements NodeEventHandler {
     /**
      * customized hash function, could be replaced by other hash functions
      * the hash value is uniformly distributed in [0, 1) and assume no collision in this example (for simplicity, and reference method in https://web.archive.org/web/20221230083731/https://michaelnielsen.org/blog/consistent-hashing/)
-     * otherwise, we could apply better hash function or higher precision data type as return hash such as BigDecimal
+     * otherwise, we could apply better hash function or add hash collision resolver or higher precision data type as return hash such as BigDecimal
      */
     private Double hash(String key) {
         try {
