@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.regex.*;
 import java.io.*;
 
-public class Net { // 该类只展示了 GET 和简单的 JSON Parse，POST 请下拉看另两个类
+public class Net { // 该类只展示了 GET 和 第三方库 JSON Parse 或简单的自定义 JSON Parse，POST 请下拉看另两个类
     public static void main(String args[]) {
       try {
             // https://www.youtube.com/watch?v=zZoboXqsCNw
@@ -33,7 +33,11 @@ public class Net { // 该类只展示了 GET 和简单的 JSON Parse，POST 请�
 
                 System.out.println(data); // {"time":{"updated":"Feb 15, 2023 11:15:00 UTC","updatedISO":"2023-02-15T11:15:00+00:00","updateduk":"Feb 15, 2023 at 11:15 GMT"},"disclaimer":"This data was produced from the CoinDesk Bitcoin Price Index (USD). Non-USD currency data converted using hourly conversion rate from openexchangerates.org","chartName":"Bitcoin","bpi":{"USD":{"code":"USD","symbol":"&#36;","rate":"22,242.3013","description":"United States Dollar","rate_float":22242.3013},"GBP":{"code":"GBP","symbol":"&pound;","rate":"18,585.4890","description":"British Pound Sterling","rate_float":18585.489},"EUR":{"code":"EUR","symbol":"&euro;","rate":"21,667.2488","description":"Euro","rate_float":21667.2488}}}
                 
-                // 简陋的 json parse，不能处理复杂的嵌套关系只能简单解析出字符串并 flat，更完整的解析参考 Tool Sets 里的 JSONParser.java
+                // 1. 使用 org.json 包解析 json - import org.json.*;
+                JSONObject jsonObj = new JSONObject(str);
+                String time = jsonObj.getString("time");
+
+                // 2. 简陋的 json parse，不能处理复杂的嵌套关系只能简单解析出字符串并 flat，更完整的解析参考 Tool Sets 里的 JSONParser.java
                 Map<String, String> json = new LinkedHashMap<>();
                 Pattern pattern = Pattern.compile("\"([A-Za-z0-9]+)\":\"([^\"]+)\"");
                 Matcher matcher = pattern.matcher(data);
