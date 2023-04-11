@@ -148,7 +148,7 @@ public class ConsistentHashCluster implements NodeEventHandler {
             MessageDigest md = MessageDigest.getInstance("MD5");
             byte[] digest = md.digest(key.getBytes());
             BigInteger bigInt = new BigInteger(1, digest);
-            double hash = bigInt.doubleValue() % 1000_000_000 / 1000_000_000.0; // 精度更低会容易出现哈希冲突，精度更高（比如 15 位）会造成 node add test fail，暂时不知道原因
+            double hash = bigInt.doubleValue() % 1e12 / 1e12; // 精度更低（比如 6 位）会容易出现哈希冲突，精度更高（比如 15 位）会造成 node add test fail，暂时不知道原因
             return hash;
         } catch (Exception e) {
             throw new RuntimeException(e);

@@ -24,7 +24,7 @@ public class MainTest {
     }
 
     @Test public void testConsistentHashClusterNodeAddAndDataReassign() {
-        ConsistentHashCluster cluster = new ConsistentHashCluster(10);
+        ConsistentHashCluster cluster = new ConsistentHashCluster();
         List<Node> nodes = new ArrayList<>();
         Node node0 = new Node(UUID.randomUUID(), "192.168.0.0", 8080, NodeType.MEMCACHE);
         nodes.add(node0);
@@ -53,7 +53,7 @@ public class MainTest {
     }
 
     @Test public void testConsistentHashClusterNodeShuttingDownAndDataReassign() {
-        ConsistentHashCluster cluster = new ConsistentHashCluster(10);
+        ConsistentHashCluster cluster = new ConsistentHashCluster();
         List<Node> nodes = new ArrayList<>();
         int nodeCount = 3;
         for (int i=0; i<nodeCount; i++) {
