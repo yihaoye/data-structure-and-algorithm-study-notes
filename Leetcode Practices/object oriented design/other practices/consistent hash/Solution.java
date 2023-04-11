@@ -54,7 +54,7 @@ public interface NodeEventHandler {
 public class ConsistentHashCluster implements NodeEventHandler {
     // there is a confuse with term "replica" in challenge doc, the challenge mention the "replica" is point of node on unit circle, 
     // which suppose to be the virtual node in consistent hash technology, 
-    // normally term "replica" should be read replica which sync data from primary node, which is easier to be implemented than virtual node
+    // normally term "replica" should be backup / read replica which sync data from primary node, which is easier to be implemented than virtual node
     private final int DEFAULT_VIRTUAL_NODE_NUM = 150; // apply virtual node and large virtual/replicas node number makes the distribution more even
     private int vNodeNum;
     // request key hash will be redirected to the vNode which is the largest vNode hash equals or smaller than the request key hash
@@ -77,10 +77,12 @@ public class ConsistentHashCluster implements NodeEventHandler {
             // data reassignment
             Double fromVNode = vNodeToNode.floorKey(vNodeHash);
             if (fromVNode == null && !vNodeToNode.isEmpty()) fromVNode = vNodeToNode.lastKey();
-            Double upperBound = vNodeToNode.ceilingKey(vNodeHash); // vNodeHash is the lower bound of the reassign data range, data equals or larger than upperBound should not be reassign since it may belongs to some other vNode of the same fromVNode
+            // vNodeHash is the lower bound of the reassign data range, data equals or larger than upperBound should not be reassign since it may belongs to some other vNode of the same fromVNode
+            Double upperBound = vNodeToNode.ceilingKey(vNodeHash);
             if (upperBound == null) upperBound = 1.0;
             Node fromNode = vNodeToNode.get(fromVNode);
-            if (fromNode != null && !fromNode.getNodeId().equals(node.getNodeId())) { // if fromNode and node is the same node, no need to reassign data, this is possible when the new vNode is next to the old vNode which created in the same for loop
+            // if fromNode and node is the same node, no need to reassign data, this is possible when the new vNode is next to the old vNode which created in the same for loop
+            if (fromNode != null && !fromNode.getNodeId().equals(node.getNodeId())) {
                 SortedMap<Double, Set<String>> subMap = fromNode.keyHashToKeys.subMap(vNodeHash, upperBound);
                 for (Double keyHash : subMap.keySet()) {
                     Set<String> keys = subMap.get(keyHash);
@@ -98,7 +100,16 @@ public class ConsistentHashCluster implements NodeEventHandler {
 
     @Override
     public void nodeRemoved(Node node) {
-        nodeShuttingDown(node);
+        try {
+            nodeShuttingDown(node);
+        } catch (Exception e) {
+            throw e;
+        }
+        // do the real Node remove, GC will take care of the no-longer used Node
+        for (int i = 0; i < vNodeNum; i++) {
+            Double vNodeHash = hash(node.getNodeId() + "-" + i);
+            vNodeToNode.remove(vNodeHash);
+        }
     }
 
     @Override
@@ -107,16 +118,22 @@ public class ConsistentHashCluster implements NodeEventHandler {
         if (!vNodeToNode.containsKey(hash(node.getNodeId() + "-" + 0))) throw new RuntimeException("Node " + node.getNodeId() + " is not in the cluster");
         if (vNodeToNode.size() == vNodeNum) throw new RuntimeException("Only one active node in the cluster");
 
+        // apply vNodeToNodeCopy to avoid remove Node from vNodeToNode but fail to reassign data, which will cause data loss
+        SortedMap<Double, Node> vNodeToNodeCopy = new TreeMap<>();
+        for (Double vNodeHash : vNodeToNode.keySet()) {
+            vNodeToNodeCopy.put(vNodeHash, vNodeToNode.get(vNodeHash));
+        }
+        // remove vNode from vNodeToNodeCopy to make data reassignment logic simpler and cleaner
         for (int i = 0; i < vNodeNum; i++) {
             Double vNodeHash = hash(node.getNodeId() + "-" + i);
-            vNodeToNode.remove(vNodeHash);
+            vNodeToNodeCopy.remove(vNodeHash);
         }
 
         // data reassignment
         node.getKeyHashToKeys().forEach((keyHash, keys) -> {
-            Double toVNode = vNodeToNode.floorKey(keyHash);
-            if (toVNode == null) toVNode = vNodeToNode.lastKey();
-            Node toNode = vNodeToNode.get(toVNode);
+            Double toVNode = vNodeToNodeCopy.floorKey(keyHash);
+            if (toVNode == null) toVNode = vNodeToNodeCopy.lastKey();
+            Node toNode = vNodeToNodeCopy.get(toVNode);
             for (String key : keys) {
                 String value = node.getData().get(key);
                 toNode.putData(keyHash, key, value);
@@ -154,7 +171,8 @@ public class ConsistentHashCluster implements NodeEventHandler {
         matchNode.putData(keyHash, key, value);
     }
 
-    public void removeData(String key) { // invalidate key
+    // invalidate key
+    public void removeData(String key) {
         if (vNodeToNode.isEmpty()) throw new RuntimeException("No node in the cluster");
 
         Double keyHash = hash(key);
@@ -187,8 +205,9 @@ public class Node {
     private String hostname;
     private int port;
     private NodeType type;
-
-    private Map<String, String> data; // real cache data
+    
+    private NodeStatus status;
+    private Map<String, String> data; // real cache data, apply <String, String> for simplicity, could be <String, Object> or <Object, Object> for advance use case
     private SortedMap<Double, Set<String>> keyHashToKeys; // <keyHash, keys> - not necessary but for performance improvement for data reassignment
 
     Node(String hostname, int port, NodeType type) {
@@ -197,6 +216,7 @@ public class Node {
         this.port = port;
         this.type = type;
 
+        this.status = NodeStatus.ACTIVE;
         this.data = new HashMap<>();
         this.keyHashToKeys = new TreeMap<>();
     }
@@ -205,12 +225,20 @@ public class Node {
         return nodeId;
     }
 
+    public NodeStatus getStatus() {
+        return status;
+    }
+
     public Map<String, String> getData() {
         return data;
     }
 
     public SortedMap<Double, Set<String>> getKeyHashToKeys() {
         return keyHashToKeys;
+    }
+
+    public void setStatus(NodeStatus status) {
+        this.status = status;
     }
 
     public void putData(Double keyHash, String key, String value) {
@@ -227,4 +255,8 @@ public class Node {
 
 public enum NodeType {
     REDIS, MEMCACHE
+}
+
+public enum NodeStatus {
+    ACTIVE, INACTIVE
 }
