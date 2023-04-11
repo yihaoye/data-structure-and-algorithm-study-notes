@@ -8,7 +8,9 @@ public class ConsistentHashCluster implements NodeEventHandler {
     // apply virtual node and large virtual/replicas node number makes the distribution more even
     private final int DEFAULT_VIRTUAL_NODE_NUM = 150;
     private int vNodeNum;
-    // request key hash will be redirected to the vNode which is the largest vNode hash equals or smaller than the request key hash
+    // request key hash will be redirected to the vNode which is the largest vNode hash equals or smaller than the request key hash, 
+    // if the request key hash find no smaller vNode, it will be redirected to the largest vNode
+    // i.e. find the first vNode on the counterclockwise direction of the unit circle
     private TreeMap<Double, Node> vNodeToNode = new TreeMap<>(); // <vNode hash, real Node>, apply TreeMap to make the hash range sorted to make reassignment and load balance faster
 
     private Map<String, Set<Integer>> hostsRecord = new HashMap<>();
@@ -62,7 +64,6 @@ public class ConsistentHashCluster implements NodeEventHandler {
 
     @Override
     public void nodeRemoved(Node node) {
-        if (!node.isActive()) throw new RuntimeException("Node " + node.getNodeId() + " is failure");
         try {
             nodeShuttingDown(node);
         } catch (Exception e) {
