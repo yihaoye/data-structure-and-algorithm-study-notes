@@ -12,6 +12,7 @@ public class ConsistentHashCluster implements NodeEventHandler {
     // if the request key hash find no smaller vNode, it will be redirected to the largest vNode
     // i.e. find the first vNode on the counterclockwise direction of the unit circle
     private TreeMap<Double, Node> vNodeToNode = new TreeMap<>(); // <vNode hash, real Node>, apply TreeMap to make the hash range sorted to make reassignment and load balance faster
+    private Map<UUID, Node> nodes = new HashMap<>();
 
     public ConsistentHashCluster() {
         this.vNodeNum = DEFAULT_VIRTUAL_NODE_NUM;
@@ -24,10 +25,13 @@ public class ConsistentHashCluster implements NodeEventHandler {
 
     @Override
     public synchronized void nodeAdded(Node node) {
+        if (nodes.containsKey(node.getNodeId()))
+            throw new RuntimeException("Node: " + node.getNodeId() + " hash already exist in cluster");
+
         for (int i = 0; i < vNodeNum; i++) {
             Double vNodeHash = hash(node.getNodeId() + "-" + i);
             if (vNodeToNode.containsKey(vNodeHash))
-                throw new RuntimeException("Virtual Node: " + node.getNodeId() + "-" + i + " hash already exist in cluster, it may caused by duplicated node added or hash collision");
+                throw new RuntimeException("Virtual Node: " + node.getNodeId() + "-" + i + " hash already exist in cluster, it may caused by hash collision");
 
             // data reassignment
             Double fromVNode = vNodeToNode.floorKey(vNodeHash);
@@ -51,17 +55,13 @@ public class ConsistentHashCluster implements NodeEventHandler {
 
             vNodeToNode.put(vNodeHash, node);
         }
+        nodes.put(node.getNodeId(), node);
     }
 
     @Override
     public synchronized void nodeRemoved(Node node) {
         nodeShuttingDown(node);
-
-        // do the real Node remove, GC will take care of the unused Node
-        for (int i = 0; i < vNodeNum; i++) {
-            Double vNodeHash = hash(node.getNodeId() + "-" + i);
-            vNodeToNode.remove(vNodeHash);
-        }
+        nodes.remove(node.getNodeId());
     }
 
     @Override
@@ -75,23 +75,18 @@ public class ConsistentHashCluster implements NodeEventHandler {
         if (vNodeToNode.size() == vNodeNum)
             throw new RuntimeException("Only one active node in the cluster");
 
-        // apply vNodeToNodeCopy to avoid: remove Node from vNodeToNode but fail to reassign data, which will cause data loss
-        TreeMap<Double, Node> vNodeToNodeCopy = new TreeMap<>();
-        for (Double vNodeHash : vNodeToNode.keySet()) {
-            vNodeToNodeCopy.put(vNodeHash, vNodeToNode.get(vNodeHash));
-        }
-        // remove vNode from vNodeToNodeCopy to make following data reassignment logic simpler and cleaner
+        // remove vNode from vNodeToNode to make following data reassignment logic simpler and cleaner
         for (int i = 0; i < vNodeNum; i++) {
             Double vNodeHash = hash(node.getNodeId() + "-" + i);
-            vNodeToNodeCopy.remove(vNodeHash);
+            vNodeToNode.remove(vNodeHash);
         }
 
         // data reassignment
         node.getKeyHashes().forEach(keyHash -> {
             Set<String> keys = node.getKeysByKeyHash(keyHash);
-            Double toVNode = vNodeToNodeCopy.floorKey(keyHash);
-            if (toVNode == null) toVNode = vNodeToNodeCopy.lastKey();
-            Node toNode = vNodeToNodeCopy.get(toVNode);
+            Double toVNode = vNodeToNode.floorKey(keyHash);
+            if (toVNode == null) toVNode = vNodeToNode.lastKey();
+            Node toNode = vNodeToNode.get(toVNode);
             for (String key : keys) {
                 String value = node.get(key);
                 toNode.put(keyHash, key, value);
