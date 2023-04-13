@@ -25,9 +25,7 @@ public class MainTest {
 
     @Test public void testConsistentHashClusterNodeAddAndDataReassign() {
         ConsistentHashCluster cluster = new ConsistentHashCluster();
-        List<Node> nodes = new ArrayList<>();
         Node node0 = new Node(UUID.randomUUID(), "192.168.0.0", 8080, NodeType.MEMCACHE);
-        nodes.add(node0);
         cluster.nodeAdded(node0);
 
         int keyCount = 10;
@@ -38,7 +36,6 @@ public class MainTest {
         int nodeCount = 10;
         for (int i=1; i<nodeCount; i++) {
             Node node = new Node(UUID.randomUUID(), "192.168.0." + i, 8080, NodeType.REDIS);
-            nodes.add(node);
             cluster.nodeAdded(node);
         }
 
@@ -48,17 +45,15 @@ public class MainTest {
         // data should as same as before totally
         for (int j=1; j<keyCount; j++) assertEquals(cluster.get("key" + j), "value" + j);
         int dataCount = 0;
-        for (Node node : nodes) dataCount += node.getDataSize();
+        for (Node node : cluster.getNodes().values()) dataCount += node.getDataSize();
         assertEquals(dataCount, keyCount);
     }
 
     @Test public void testConsistentHashClusterNodeShuttingDownAndDataReassign() {
         ConsistentHashCluster cluster = new ConsistentHashCluster();
-        List<Node> nodes = new ArrayList<>();
         int nodeCount = 3;
         for (int i=0; i<nodeCount; i++) {
             Node node = new Node(UUID.randomUUID(), "192.168.0." + i, 8080, NodeType.REDIS);
-            nodes.add(node);
             cluster.nodeAdded(node);
         }
 
@@ -67,7 +62,7 @@ public class MainTest {
         for (int j=0; j<keyCount; j++) assertEquals(cluster.get("key" + j), "value" + j);
 
         int dataCount = 0;
-        for (Node node : nodes) dataCount += node.getDataSize();
+        for (Node node : cluster.getNodes().values()) dataCount += node.getDataSize();
         assertEquals(dataCount, keyCount);
 
         Node removeNode = cluster.getMatchNodeByKey("key1");
@@ -78,7 +73,8 @@ public class MainTest {
         // data should as same as before totally
         for (int j=1; j<keyCount; j++) assertEquals(cluster.get("key" + j), "value" + j);
         dataCount = 0;
-        for (Node node : nodes) dataCount += node.getDataSize();
+        for (Node node : cluster.getNodes().values())
+            if (node.isActive()) dataCount += node.getDataSize();
         assertEquals(dataCount, keyCount);
     }
 

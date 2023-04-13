@@ -119,6 +119,10 @@ public class ConsistentHashCluster implements NodeEventHandler {
         matchNode.remove(hash(key), key);
     }
 
+    public synchronized Node getNodeById(UUID nodeId) {
+        return nodes.get(nodeId);
+    }
+
     // get matched node by request
     public synchronized Node getMatchNodeByKey(String key) {
         if (vNodeToNode.isEmpty()) 
@@ -128,6 +132,10 @@ public class ConsistentHashCluster implements NodeEventHandler {
         Double matchVNode = vNodeToNode.floorKey(keyHash);
         if (matchVNode == null) matchVNode = vNodeToNode.lastKey();
         return vNodeToNode.get(matchVNode);
+    }
+
+    public synchronized Map<UUID, Node> getNodes() {
+        return new HashMap<>(nodes);
     }
 
     /**
