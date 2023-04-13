@@ -24,108 +24,128 @@ public class ConsistentHashCluster implements NodeEventHandler {
 
     @Override
     public void nodeAdded(Node node) {
-        for (int i = 0; i < vNodeNum; i++) {
-            Double vNodeHash = hash(node.getNodeId() + "-" + i);
-            if (vNodeToNode.containsKey(vNodeHash)) throw new RuntimeException("Virtual Node: " + node.getNodeId() + "-" + i + " hash already exist in cluster, it may caused by duplicated node added or hash collision");
+        synchronized (this) {
+            for (int i = 0; i < vNodeNum; i++) {
+                Double vNodeHash = hash(node.getNodeId() + "-" + i);
+                if (vNodeToNode.containsKey(vNodeHash))
+                    throw new RuntimeException("Virtual Node: " + node.getNodeId() + "-" + i + " hash already exist in cluster, it may caused by duplicated node added or hash collision");
 
-            // data reassignment
-            Double fromVNode = vNodeToNode.floorKey(vNodeHash);
-            if (fromVNode == null && !vNodeToNode.isEmpty()) fromVNode = vNodeToNode.lastKey();
-            // vNodeHash is the lower bound of the reassign data range, data equals or larger than upperBound should not be reassign since it may belongs to some other vNode of the same fromVNode
-            Double upperBound = vNodeToNode.ceilingKey(vNodeHash);
-            if (upperBound == null) upperBound = 1.0;
-            Node fromNode = fromVNode != null ? vNodeToNode.get(fromVNode) : null;
-            // if fromNode and node is the same node, no need to reassign data, this is possible when the new vNode is next to the old vNode which created in the same for loop
-            if (fromNode != null && !fromNode.getNodeId().equals(node.getNodeId())) {
-                Set<Double> keyHashes = fromNode.getKeyHashesByRange(vNodeHash, upperBound);
-                for (Double keyHash : keyHashes) {
-                    Set<String> keys = fromNode.getKeysByKeyHash(keyHash);
-                    for (String key : keys) {
-                        String value = fromNode.get(key);
-                        node.put(keyHash, key, value);
-                        fromNode.remove(keyHash, key);
+                // data reassignment
+                Double fromVNode = vNodeToNode.floorKey(vNodeHash);
+                if (fromVNode == null && !vNodeToNode.isEmpty()) fromVNode = vNodeToNode.lastKey();
+                // vNodeHash is the lower bound of the reassign data range, data equals or larger than upperBound should not be reassign since it may belongs to some other vNode of the same fromVNode
+                Double upperBound = vNodeToNode.ceilingKey(vNodeHash);
+                if (upperBound == null) upperBound = 1.0;
+                Node fromNode = fromVNode != null ? vNodeToNode.get(fromVNode) : null;
+                // if fromNode and node is the same node, no need to reassign data, this is possible when the new vNode is next to the old vNode which created in the same for loop
+                if (fromNode != null && !fromNode.getNodeId().equals(node.getNodeId())) {
+                    Set<Double> keyHashes = fromNode.getKeyHashesByRange(vNodeHash, upperBound);
+                    for (Double keyHash : keyHashes) {
+                        Set<String> keys = fromNode.getKeysByKeyHash(keyHash);
+                        for (String key : keys) {
+                            String value = fromNode.get(key);
+                            node.put(keyHash, key, value);
+                            fromNode.remove(keyHash, key);
+                        }
                     }
                 }
-            }
 
-            vNodeToNode.put(vNodeHash, node);
+                vNodeToNode.put(vNodeHash, node);
+            }
         }
     }
 
     @Override
     public void nodeRemoved(Node node) {
-        try {
+        synchronized (this) {
             nodeShuttingDown(node);
-        } catch (Exception e) {
-            throw e;
-        }
-        // do the real Node remove, GC will take care of the unused Node
-        for (int i = 0; i < vNodeNum; i++) {
-            Double vNodeHash = hash(node.getNodeId() + "-" + i);
-            vNodeToNode.remove(vNodeHash);
+
+            // do the real Node remove, GC will take care of the unused Node
+            for (int i = 0; i < vNodeNum; i++) {
+                Double vNodeHash = hash(node.getNodeId() + "-" + i);
+                vNodeToNode.remove(vNodeHash);
+            }
         }
     }
 
     @Override
     public void nodeShuttingDown(Node node) {
-        if (!node.isActive()) throw new RuntimeException("Node " + node.getNodeId() + " is failure");
-        if (vNodeToNode.size() == 0) throw new RuntimeException("No active node in the cluster");
-        if (!vNodeToNode.containsKey(hash(node.getNodeId() + "-" + 0))) throw new RuntimeException("Node " + node.getNodeId() + " is not in the cluster");
-        if (vNodeToNode.size() == vNodeNum) throw new RuntimeException("Only one active node in the cluster");
+        synchronized (this) {
+            if (!node.isActive())
+                throw new RuntimeException("Node " + node.getNodeId() + " is failure");
+            if (vNodeToNode.size() == 0)
+                throw new RuntimeException("No active node in the cluster");
+            if (!vNodeToNode.containsKey(hash(node.getNodeId() + "-" + 0)))
+                throw new RuntimeException("Node " + node.getNodeId() + " is not in the cluster");
+            if (vNodeToNode.size() == vNodeNum)
+                throw new RuntimeException("Only one active node in the cluster");
 
-        // apply vNodeToNodeCopy to avoid: remove Node from vNodeToNode but fail to reassign data, which will cause data loss
-        TreeMap<Double, Node> vNodeToNodeCopy = new TreeMap<>();
-        for (Double vNodeHash : vNodeToNode.keySet()) {
-            vNodeToNodeCopy.put(vNodeHash, vNodeToNode.get(vNodeHash));
-        }
-        // remove vNode from vNodeToNodeCopy to make following data reassignment logic simpler and cleaner
-        for (int i = 0; i < vNodeNum; i++) {
-            Double vNodeHash = hash(node.getNodeId() + "-" + i);
-            vNodeToNodeCopy.remove(vNodeHash);
-        }
-
-        // data reassignment
-        node.getKeyHashes().forEach(keyHash -> {
-            Set<String> keys = node.getKeysByKeyHash(keyHash);
-            Double toVNode = vNodeToNodeCopy.floorKey(keyHash);
-            if (toVNode == null) toVNode = vNodeToNodeCopy.lastKey();
-            Node toNode = vNodeToNodeCopy.get(toVNode);
-            for (String key : keys) {
-                String value = node.get(key);
-                toNode.put(keyHash, key, value);
+            // apply vNodeToNodeCopy to avoid: remove Node from vNodeToNode but fail to reassign data, which will cause data loss
+            TreeMap<Double, Node> vNodeToNodeCopy = new TreeMap<>();
+            for (Double vNodeHash : vNodeToNode.keySet()) {
+                vNodeToNodeCopy.put(vNodeHash, vNodeToNode.get(vNodeHash));
             }
-        });
-        node.clear();
+            // remove vNode from vNodeToNodeCopy to make following data reassignment logic simpler and cleaner
+            for (int i = 0; i < vNodeNum; i++) {
+                Double vNodeHash = hash(node.getNodeId() + "-" + i);
+                vNodeToNodeCopy.remove(vNodeHash);
+            }
+
+            // data reassignment
+            node.getKeyHashes().forEach(keyHash -> {
+                Set<String> keys = node.getKeysByKeyHash(keyHash);
+                Double toVNode = vNodeToNodeCopy.floorKey(keyHash);
+                if (toVNode == null) toVNode = vNodeToNodeCopy.lastKey();
+                Node toNode = vNodeToNodeCopy.get(toVNode);
+                for (String key : keys) {
+                    String value = node.get(key);
+                    toNode.put(keyHash, key, value);
+                }
+            });
+            node.clear();
+        }
     }
 
     public String get(String key) {
-        Node matchNode = getMatchNodeByKey(key);
-        if (!matchNode.isActive()) throw new RuntimeException("Matched Node " + matchNode.getNodeId() + " is failure");
-        return matchNode.get(key);
+        synchronized (this) {
+            Node matchNode = getMatchNodeByKey(key);
+            if (!matchNode.isActive())
+                throw new RuntimeException("Matched Node " + matchNode.getNodeId() + " is failure");
+            return matchNode.get(key);
+        }
     }
 
     public void put(String key, String value) {
-        Node matchNode = getMatchNodeByKey(key);
-        if (!matchNode.isActive()) throw new RuntimeException("Matched Node " + matchNode.getNodeId() + " is failure");
-        matchNode.put(hash(key), key, value);
+        synchronized (this) {
+            Node matchNode = getMatchNodeByKey(key);
+            if (!matchNode.isActive())
+                throw new RuntimeException("Matched Node " + matchNode.getNodeId() + " is failure");
+            matchNode.put(hash(key), key, value);
+        }
     }
 
     // invalidate key
     public void remove(String key) {
-        Node matchNode = getMatchNodeByKey(key);
-        if (matchNode.get(key) == null) throw new RuntimeException("Key " + key + " is not in cache data store");
-        if (!matchNode.isActive()) throw new RuntimeException("Matched Node " + matchNode.getNodeId() + " is failure");
-        matchNode.remove(hash(key), key);
+        synchronized (this) {
+            Node matchNode = getMatchNodeByKey(key);
+            if (matchNode.get(key) == null)
+                throw new RuntimeException("Key " + key + " is not in cache data store");
+            if (!matchNode.isActive())
+                throw new RuntimeException("Matched Node " + matchNode.getNodeId() + " is failure");
+            matchNode.remove(hash(key), key);
+        }
     }
 
     // get matched node by request
     public Node getMatchNodeByKey(String key) {
-        if (vNodeToNode.isEmpty()) throw new RuntimeException("No node in the cluster");
+        synchronized (this) {
+            if (vNodeToNode.isEmpty()) throw new RuntimeException("No node in the cluster");
 
-        Double keyHash = hash(key);
-        Double matchVNode = vNodeToNode.floorKey(keyHash);
-        if (matchVNode == null) matchVNode = vNodeToNode.lastKey();
-        return vNodeToNode.get(matchVNode);
+            Double keyHash = hash(key);
+            Double matchVNode = vNodeToNode.floorKey(keyHash);
+            if (matchVNode == null) matchVNode = vNodeToNode.lastKey();
+            return vNodeToNode.get(matchVNode);
+        }
     }
 
     /**
