@@ -92,7 +92,7 @@ public class ConsistentHashCluster implements NodeEventHandler {
                 toNode.put(keyHash, key, value);
             }
         });
-        node.clear();
+        node.shutDown();
     }
 
     public synchronized String get(String key) {

@@ -63,6 +63,10 @@ public class Node {
         return new HashSet<>(keyHashToKeys.subMap(fromKeyHash, toKeyHash).keySet());
     }
 
+    public NodeStatus getStatus() {
+        return status;
+    }
+
     public void setStatus(NodeStatus status) {
         this.status = status;
     }
@@ -82,5 +86,10 @@ public class Node {
     public void clear() {
         data.clear();
         keyHashToKeys.clear();
+    }
+
+    public void shutDown() {
+        setStatus(NodeStatus.INACTIVE);
+        clear();
     }
 }
