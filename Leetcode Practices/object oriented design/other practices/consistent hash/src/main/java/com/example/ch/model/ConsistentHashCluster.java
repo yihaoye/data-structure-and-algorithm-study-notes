@@ -37,11 +37,9 @@ public class ConsistentHashCluster implements NodeEventHandler {
             Node fromNode = fromVNode != null ? vNodeToNode.get(fromVNode) : null;
             // if fromNode and node is the same node, no need to reassign data, this is possible when the new vNode is next to the old vNode which created in the same for loop
             if (fromNode != null && !fromNode.getNodeId().equals(node.getNodeId())) {
-                Set<Double> keyHashes = fromNode.getKeyHashToKeys().subMap(vNodeHash, upperBound).keySet();
-                // copy to avoid concurrent modification error, could be improved
-                Set<Double> keyHashesCopy = new HashSet<>(keyHashes);
-                for (Double keyHash : keyHashesCopy) {
-                    Set<String> keys = fromNode.getKeyHashToKeys().get(keyHash);
+                Set<Double> keyHashes = fromNode.getKeyHashesByRange(vNodeHash, upperBound);
+                for (Double keyHash : keyHashes) {
+                    Set<String> keys = fromNode.getKeysByKeyHash(keyHash);
                     for (String key : keys) {
                         String value = fromNode.get(key);
                         node.put(keyHash, key, value);
@@ -87,7 +85,8 @@ public class ConsistentHashCluster implements NodeEventHandler {
         }
 
         // data reassignment
-        node.getKeyHashToKeys().forEach((keyHash, keys) -> {
+        node.getKeyHashes().forEach(keyHash -> {
+            Set<String> keys = node.getKeysByKeyHash(keyHash);
             Double toVNode = vNodeToNodeCopy.floorKey(keyHash);
             if (toVNode == null) toVNode = vNodeToNodeCopy.lastKey();
             Node toNode = vNodeToNodeCopy.get(toVNode);

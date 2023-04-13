@@ -51,8 +51,16 @@ public class Node {
         return data.get(key);
     }
 
-    public TreeMap<Double, Set<String>> getKeyHashToKeys() {
-        return keyHashToKeys;
+    public Set<String> getKeysByKeyHash(Double keyHash) {
+        return new HashSet<>(keyHashToKeys.get(keyHash));
+    }
+
+    public Set<Double> getKeyHashes() {
+        return new HashSet<>(keyHashToKeys.keySet());
+    }
+
+    public Set<Double> getKeyHashesByRange(Double fromKeyHash, Double toKeyHash) {
+        return new HashSet<>(keyHashToKeys.subMap(fromKeyHash, toKeyHash).keySet());
     }
 
     public void setStatus(NodeStatus status) {
