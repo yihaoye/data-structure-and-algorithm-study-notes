@@ -33,7 +33,7 @@ public class MainTest {
         int keyCount = 10;
         for (int j=0; j<keyCount; j++) cluster.put("key" + j, "value" + j);
         for (int j=0; j<keyCount; j++) assertEquals(cluster.get("key" + j), "value" + j);
-        assertEquals(node0.getData().size(), keyCount);
+        assertEquals(node0.getDataSize(), keyCount);
 
         int nodeCount = 10;
         for (int i=1; i<nodeCount; i++) {
@@ -43,12 +43,12 @@ public class MainTest {
         }
 
         // node 0 should have data reassigned to other new node
-        assertNotEquals(node0.getData().size(), keyCount);
+        assertNotEquals(node0.getDataSize(), keyCount);
 
         // data should as same as before totally
         for (int j=1; j<keyCount; j++) assertEquals(cluster.get("key" + j), "value" + j);
         int dataCount = 0;
-        for (Node node : nodes) dataCount += node.getData().size();
+        for (Node node : nodes) dataCount += node.getDataSize();
         assertEquals(dataCount, keyCount);
     }
 
@@ -67,7 +67,7 @@ public class MainTest {
         for (int j=0; j<keyCount; j++) assertEquals(cluster.get("key" + j), "value" + j);
 
         int dataCount = 0;
-        for (Node node : nodes) dataCount += node.getData().size();
+        for (Node node : nodes) dataCount += node.getDataSize();
         assertEquals(dataCount, keyCount);
 
         Node removeNode = cluster.getMatchNodeByKey("key1");
@@ -78,7 +78,7 @@ public class MainTest {
         // data should as same as before totally
         for (int j=1; j<keyCount; j++) assertEquals(cluster.get("key" + j), "value" + j);
         dataCount = 0;
-        for (Node node : nodes) dataCount += node.getData().size();
+        for (Node node : nodes) dataCount += node.getDataSize();
         assertEquals(dataCount, keyCount);
     }
 

@@ -43,8 +43,8 @@ public class Node {
         return false;
     }
 
-    public Map<String, String> getData() {
-        return data;
+    public int getDataSize() {
+        return data.size();
     }
 
     public String get(String key) {

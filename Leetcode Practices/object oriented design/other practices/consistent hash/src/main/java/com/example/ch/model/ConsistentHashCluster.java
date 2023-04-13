@@ -13,8 +13,6 @@ public class ConsistentHashCluster implements NodeEventHandler {
     // i.e. find the first vNode on the counterclockwise direction of the unit circle
     private TreeMap<Double, Node> vNodeToNode = new TreeMap<>(); // <vNode hash, real Node>, apply TreeMap to make the hash range sorted to make reassignment and load balance faster
 
-    private Map<String, Set<Integer>> hostsRecord = new HashMap<>();
-
     public ConsistentHashCluster() {
         this.vNodeNum = DEFAULT_VIRTUAL_NODE_NUM;
     }
@@ -26,10 +24,6 @@ public class ConsistentHashCluster implements NodeEventHandler {
 
     @Override
     public void nodeAdded(Node node) {
-        if (hostsRecord.getOrDefault(node.getHostname(), new HashSet<>()).contains(node.getPort())) {
-            throw new RuntimeException("Added node with duplicate hostname and port in cluster");
-        }
-
         for (int i = 0; i < vNodeNum; i++) {
             Double vNodeHash = hash(node.getNodeId() + "-" + i);
             if (vNodeToNode.containsKey(vNodeHash)) throw new RuntimeException("Virtual Node: " + node.getNodeId() + "-" + i + " hash already exist in cluster, it may caused by duplicated node added or hash collision");
@@ -58,8 +52,6 @@ public class ConsistentHashCluster implements NodeEventHandler {
 
             vNodeToNode.put(vNodeHash, node);
         }
-
-        hostsRecord.computeIfAbsent(node.getHostname(), x -> new HashSet<>()).add(node.getPort());
     }
 
     @Override
@@ -74,7 +66,6 @@ public class ConsistentHashCluster implements NodeEventHandler {
             Double vNodeHash = hash(node.getNodeId() + "-" + i);
             vNodeToNode.remove(vNodeHash);
         }
-        hostsRecord.get(node.getHostname()).remove(node.getPort());
     }
 
     @Override
