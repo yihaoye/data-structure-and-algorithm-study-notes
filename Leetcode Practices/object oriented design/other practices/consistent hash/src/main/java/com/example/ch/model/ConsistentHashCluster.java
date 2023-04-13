@@ -121,7 +121,8 @@ public class ConsistentHashCluster implements NodeEventHandler {
 
     // get matched node by request
     public synchronized Node getMatchNodeByKey(String key) {
-        if (vNodeToNode.isEmpty()) throw new RuntimeException("No node in the cluster");
+        if (vNodeToNode.isEmpty()) 
+            throw new RuntimeException("No node in the cluster");
 
         Double keyHash = hash(key);
         Double matchVNode = vNodeToNode.floorKey(keyHash);
@@ -132,6 +133,7 @@ public class ConsistentHashCluster implements NodeEventHandler {
     /**
      * customized hash function, could be replaced by other hash functions
      * the hash value is uniformly distributed in [0, 1) and assume no collision in this example (for simplicity, and reference method in https://web.archive.org/web/20221230083731/https://michaelnielsen.org/blog/consistent-hashing/)
+     * the easiest way to solve it is apply a new Node with new Node ID (UUID)
      * otherwise, we could apply better hash function or add hash collision resolver or higher precision data type as return hash such as BigDecimal
      */
     private Double hash(String key) {
