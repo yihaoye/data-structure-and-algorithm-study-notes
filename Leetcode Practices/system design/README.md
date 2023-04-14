@@ -1824,6 +1824,22 @@ OOD 还可以参考 [Hotel Management System](./../object%20oriented%20design/gr
 
 
 
+<details>
+<summary>设计 Autocomplete 系统</summary>
+
+参考：https://www.youtube.com/watch?v=uIqvbYVBiCI  
+
+重点关注：
+* 要使用到字典树这一数据结构（另外因为输入字符可能非英文字母，所以需要使用哈希表或线性表来存子节点，数组固定长度不可）
+* 数据量可能非常大，因此需要分布式设计，重点分别有两处：
+  * 处理新的事件（增添字符串）或日志以构建字典树时，使用 MapReduce 处理
+  * 负载均衡以及数据库分库来处理请求等任务
+* 最后可能要考虑如何处理排序或合并结果等等问题
+
+</details>
+
+
+
 <br />
   
   
