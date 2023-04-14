@@ -149,7 +149,7 @@ public class ConsistentHashCluster implements NodeEventHandler {
             MessageDigest md = MessageDigest.getInstance("MD5");
             byte[] digest = md.digest(key.getBytes());
             BigInteger bigInt = new BigInteger(1, digest);
-            double hash = bigInt.doubleValue() % 1e16 / 1e16; // 精度更低（比如 6 位）会容易出现哈希冲突，精度更高（比如 15 位）在之前会造成 node add test fail，暂时不知道原因，目前不再出现该情况
+            double hash = bigInt.doubleValue() % 1e16 / 1e16; // double 小数点后最多可为 16 位，精度更低（比如 6 位）会容易出现哈希冲突，精度高在之前会造成 node add test fail，暂时不知道原因，目前不再出现该情况
             return hash;
         } catch (Exception e) {
             throw new RuntimeException(e);
