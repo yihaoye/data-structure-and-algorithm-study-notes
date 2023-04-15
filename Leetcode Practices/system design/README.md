@@ -3,6 +3,7 @@
 ## 针对面试
 * [Grokking-System-Design](https://github.com/lei-hsia/grokking-system-design)
 * [Systems Design Youtube Playlist](https://www.youtube.com/watch?v=ZgdS0EUmn70&list=PL73KFetZlkJSZ9vTDSJ1swZhe6CIYkqTL)
+* [systemdesign.one](https://systemdesign.one/system-design-interview-cheatsheet/)
 * [系统设计题怎么考怎么答](https://www.youtube.com/watch?v=28n0DVP3U14)
 * [系統设计面试 6 个技巧](https://www.youtube.com/watch?v=zomYKjlvJGU)  
   
