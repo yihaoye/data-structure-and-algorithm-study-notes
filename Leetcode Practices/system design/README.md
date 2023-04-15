@@ -1838,6 +1838,9 @@ OOD 还可以参考 [Hotel Management System](./../object%20oriented%20design/gr
 * 客户端引入机制检测用户输入速率，输入停顿达到一定时间才请求 autocomplete，可有效降低非必需请求减轻系统压力
 * 最后可能要考虑如何处理排序或合并结果等等问题
 
+使用现成开源方案：
+* [Elasticsearch：创建一个 autocomplete 输入系统 - 前端 + 后端](https://juejin.cn/post/7052153840493133855)
+
 </details>
 
 
