@@ -29,11 +29,11 @@ public class Net { // 该类只展示了 GET 和 第三方库 JSON Parse 或简�
         System.out.println(json); // {updated=Feb 16, 2023 08:29:00 UTC, updatedISO=2023-02-16T08:29:00+00:00, updateduk=Feb 16, 2023 at 08:29 GMT, disclaimer=This data was produced from the CoinDesk Bitcoin Price Index (USD). Non-USD currency data converted using hourly conversion rate from openexchangerates.org, chartName=Bitcoin, code=EUR, symbol=&euro;, rate=23,987.9543, description=Euro}
     }
 
-    public static String restGet(String url) {
+    public static String restGet(String endpoint) {
         try {
             // https://www.youtube.com/watch?v=zZoboXqsCNw
 
-            URL url = new URL(url);
+            URL url = new URL(endpoint);
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
