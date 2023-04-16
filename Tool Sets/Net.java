@@ -4,12 +4,36 @@ import java.util.*;
 import java.util.regex.*;
 import java.io.*;
 
+import org.json.*;
+
 public class Net { // 该类只展示了 GET 和 第三方库 JSON Parse 或简单的自定义 JSON Parse，POST 请下拉看另两个类
     public static void main(String args[]) {
-      try {
+        String url = "https://api.coindesk.com/v1/bpi/currentprice.json";
+        String data = restGet(url);
+        if (data == null) {
+            System.out.println("Error: data is null");
+            return;
+        }
+
+        // 1. 使用 org.json 包解析 json - import org.json.*;
+        JSONObject jsonObj = new JSONObject(data);
+        String time = jsonObj.getString("time");
+
+        // 2. 简陋的 json parse，不能处理复杂的嵌套关系只能简单解析出字符串并 flat，更完整的解析参考 Tool Sets 里的 JSONParser.java
+        Map<String, String> json = new LinkedHashMap<>();
+        Pattern pattern = Pattern.compile("\"([A-Za-z0-9]+)\":\"([^\"]+)\"");
+        Matcher matcher = pattern.matcher(data);
+        while (matcher.find()) {
+            json.put(matcher.group(1), matcher.group(2));
+        }
+        System.out.println(json); // {updated=Feb 16, 2023 08:29:00 UTC, updatedISO=2023-02-16T08:29:00+00:00, updateduk=Feb 16, 2023 at 08:29 GMT, disclaimer=This data was produced from the CoinDesk Bitcoin Price Index (USD). Non-USD currency data converted using hourly conversion rate from openexchangerates.org, chartName=Bitcoin, code=EUR, symbol=&euro;, rate=23,987.9543, description=Euro}
+    }
+
+    public static String restGet(String url) {
+        try {
             // https://www.youtube.com/watch?v=zZoboXqsCNw
 
-            URL url = new URL("https://api.coindesk.com/v1/bpi/currentprice.json");
+            URL url = new URL(url);
 
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
@@ -31,23 +55,14 @@ public class Net { // 该类只展示了 GET 和 第三方库 JSON Parse 或简�
                 // Close the scanner
                 scanner.close();
 
-                System.out.println(data); // {"time":{"updated":"Feb 15, 2023 11:15:00 UTC","updatedISO":"2023-02-15T11:15:00+00:00","updateduk":"Feb 15, 2023 at 11:15 GMT"},"disclaimer":"This data was produced from the CoinDesk Bitcoin Price Index (USD). Non-USD currency data converted using hourly conversion rate from openexchangerates.org","chartName":"Bitcoin","bpi":{"USD":{"code":"USD","symbol":"&#36;","rate":"22,242.3013","description":"United States Dollar","rate_float":22242.3013},"GBP":{"code":"GBP","symbol":"&pound;","rate":"18,585.4890","description":"British Pound Sterling","rate_float":18585.489},"EUR":{"code":"EUR","symbol":"&euro;","rate":"21,667.2488","description":"Euro","rate_float":21667.2488}}}
+                // System.out.println(data); // {"time":{"updated":"Feb 15, 2023 11:15:00 UTC","updatedISO":"2023-02-15T11:15:00+00:00","updateduk":"Feb 15, 2023 at 11:15 GMT"},"disclaimer":"This data was produced from the CoinDesk Bitcoin Price Index (USD). Non-USD currency data converted using hourly conversion rate from openexchangerates.org","chartName":"Bitcoin","bpi":{"USD":{"code":"USD","symbol":"&#36;","rate":"22,242.3013","description":"United States Dollar","rate_float":22242.3013},"GBP":{"code":"GBP","symbol":"&pound;","rate":"18,585.4890","description":"British Pound Sterling","rate_float":18585.489},"EUR":{"code":"EUR","symbol":"&euro;","rate":"21,667.2488","description":"Euro","rate_float":21667.2488}}}
                 
-                // 1. 使用 org.json 包解析 json - import org.json.*;
-                JSONObject jsonObj = new JSONObject(str);
-                String time = jsonObj.getString("time");
-
-                // 2. 简陋的 json parse，不能处理复杂的嵌套关系只能简单解析出字符串并 flat，更完整的解析参考 Tool Sets 里的 JSONParser.java
-                Map<String, String> json = new LinkedHashMap<>();
-                Pattern pattern = Pattern.compile("\"([A-Za-z0-9]+)\":\"([^\"]+)\"");
-                Matcher matcher = pattern.matcher(data);
-                while (matcher.find()) {
-                    json.put(matcher.group(1), matcher.group(2));
-                }
-                System.out.println(json); // {updated=Feb 16, 2023 08:29:00 UTC, updatedISO=2023-02-16T08:29:00+00:00, updateduk=Feb 16, 2023 at 08:29 GMT, disclaimer=This data was produced from the CoinDesk Bitcoin Price Index (USD). Non-USD currency data converted using hourly conversion rate from openexchangerates.org, chartName=Bitcoin, code=EUR, symbol=&euro;, rate=23,987.9543, description=Euro}
+                return data;
             }
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            return null;
         }
     }
 }
