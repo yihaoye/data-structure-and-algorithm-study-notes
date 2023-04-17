@@ -1826,7 +1826,7 @@ OOD 还可以参考 [Hotel Management System](./../object%20oriented%20design/gr
 
 
 <details>
-<summary>设计 Autocomplete 系统</summary>
+<summary>设计 Autocomplete、Typeahead Suggestion 系统</summary>
 
 参考：https://www.youtube.com/watch?v=uIqvbYVBiCI  
 
@@ -1841,6 +1841,119 @@ OOD 还可以参考 [Hotel Management System](./../object%20oriented%20design/gr
 
 使用现成开源方案：
 * [Elasticsearch：创建一个 autocomplete 输入系统 - 前端 + 后端](https://juejin.cn/post/7052153840493133855)
+
+</details>
+
+
+
+<details>
+<summary>设计 Tag 系统</summary>
+
+Example：
+* JIRA Tags
+* Confluence Tags
+* Stackoverflow Tags
+* Twitter HashTags
+
+参考：
+* [Tagging Service System Design](https://levelup.gitconnected.com/tagging-service-system-design-ee0081aa0086)
+* [System Design: Tagging Service](https://www.youtube.com/watch?v=WNIR7eiv0Hk)
+
+#### Functional Requirement
+* create tags with item (ticket etc)
+* search tags
+* assign existing tag to item
+* change should sync across all the products
+* recommend tags
+* tag auto complete
+
+#### Non-Functional Requirement
+* read heavy > write (read performance should be with low latency)
+* eventual consistency
+* scalability (have lot of item and tag data)
+
+#### Storage
+* The media files (images, videos) and text files are stored in a managed object storage such as AWS S3
+* A SQL database such as MySQL stores the metadata on the relationship between tags and items
+* A NoSQL data store such as MongoDB stores the metadata of the item
+* A cache server such as Redis stores the popular tags and items
+
+#### HLD (High Level Design)
+* Write Flow ![](./tag-system-write-flow.webp)
+  1. The client makes an HTTP connection to the load balancer
+  2. The load balancer delegates the client request to a web server with free capacity
+  3. The write requests to create an item or tag an item are rate limited
+  4. The write requests are stored on the message queue for asynchronous processing and improved fault tolerance
+  5. The fanout service distributes the write request to multiple services to tag an item
+  6. The object store persists the text files or media files embedded in an item
+  7. The NoSQL data store persists the metadata of an item (comments, upvotes, published date)
+  8. The SQL database persists metadata on the relationship between tags and items
+  9. The tags info service is queried to identify the popular tags
+  10. If the item was tagged with a popular tag, the item is stored on the items cache server
+  11. The tags cache server stores the IDs of items that were tagged with popular tags
+  12. LRU cache is used to evict the cache servers
+  13. The data objects (items and tags) are replicated across data centers at the web server level to save bandwidth
+* Read Flow ![](./tag-system-read-flow.webp)
+  1. The client executes a DNS query to resolve the domain name
+  2. The client queries the CDN to check if the tag data is cached on the CDN
+  3. The client creates an HTTP connection to the load balancer
+  4. The load balancer delegates the client request to a web server with free capacity
+  5. The read requests to fetch the tags or items are rate limited
+  6. The web server queries the tags service to fetch the tags
+  7. The tags service queries the tags info service to identify if the requested tag is popular
+  8. The lists of tagged items for a popular tag are fetched from the tags cache server
+  9. The tags service executes an MGET Redis request to fetch the relevant tagged items from the items cache server
+  10. The list of items tagged with non-popular tags is fetched from the read replicas of the SQL database
+  11. The items tagged with non-popular tags are fetched from the read replicas of the NoSQL data store
+  12. The media files embedded in an item are fetched from the object store
+  13. The trie data structure is used for typeahead autosuggestion for search queries on tags
+
+#### API Design
+```java
+UUID[] searchTagByName(String tagName) {
+  // ...
+}
+
+UUID createTag(String tagName) { // insert only
+  UUID tagId = UUID.random();
+  String createAt = Date.now();
+  try {
+    insertTag(tagId, tagName, createAt); // db insert operation
+    return tagId;
+  } catch (Exception e) {
+    e.printStackTrace();
+    return null;
+  }
+}
+
+UUID createItem(String itemTitle, String itemContent) {
+  //...
+}
+
+void deleteItemTag(String itemId, String[] tagIds) {
+  Item item = searchItemById(itemId);
+  for (String tagId : tagIds) {
+    item.removeTag(tagId);
+    deleteItemTag(tagId, itemId);
+  }
+  updateItem(item);
+}
+
+void addItemTag(String itemId, String[] tagIds) {
+  String createAt = Date.now();
+  Item item = searchItemById(itemId);
+  for (String tagId : tagIds) {
+    item.addTag(tagId); // if db does not have set type then need to deduplicate
+    insertItemTag(tagId, itemId, createAt);
+  }
+  updateItem(item);
+}
+```
+
+#### Scalability & Concurrency
+* Scalability - 对数据库进行分库，比如对 tag-item 表进行分库，tag 与 item 可采用 NoSQL 从而更容易分库。
+  * 需要担心一个 tag 非常热，可能有很多推文关联该 tag，所以如果量非常大则不建议 tag table 单独有个 item list，而还是采用 tag-item 表。当使用场景为根据 tag 搜相关 item 时，直接拿 tag_id 去 tag-item 表查比如前 50 个 item_id，因为通常这种查询都是搜索功能并带有分页功能，通过分页提高效率即可，即使 tag-item 表很大需要分库的情况下，也可以拿 tag_id 对所有库查询前 50 个结果然后合并排序再筛前 50 个返回（如果总共不够 50 就拿最后一个的时间或某字段为分界线再查），总而言之在 tag-item 表很大需要分库的情况下 JOIN 不是一个理想的方案，而 item 表和 tag 表的数据库可以是 NoSQL 也可以是 SQL。
+* Concurrency - 假设多个用户同时更改一个 item 的 tag，可引入 event driven architecture 即消息队列，来保证数据一致性。
 
 </details>
 
