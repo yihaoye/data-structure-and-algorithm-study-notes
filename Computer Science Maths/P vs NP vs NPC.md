@@ -1,3 +1,8 @@
+## NP-Hard and NP-Complete Problems
+https://www.youtube.com/watch?v=e2cF8a5aAhE  
+
+
+
 ## P vs NP vs NPC
 ```
     什么是P问题、NP问题和NPC问题
