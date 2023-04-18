@@ -7,6 +7,9 @@
 * [系统设计题怎么考怎么答](https://www.youtube.com/watch?v=28n0DVP3U14)
 * [系統设计面试 6 个技巧](https://www.youtube.com/watch?v=zomYKjlvJGU)  
   
+<details>
+<summary>系统设计准备</summary>
+
 > 系统设计这块我最开始的时候也是无从下手，许多概念了解一点大概但是都没有深入学习，俗称“略懂”的状态，深究就暴露了。  
 > 具体如何准备这块，地里的很多前辈都总结了很多好的帖子，我觉得比较好的资料包括如下：Grokking the system design Interview, Designing Data-Intensive Applications（https://vonng.gitbooks.io/ddia-cn/content/ ）, 以及一些 YouTube 视频（e.g., https://www.youtube.com/c/SystemDesignInterview/ )。资料可能大家都有，我的诀窍在于下面几点：  
 > 1）重复直至真的理解。发现“书读百遍，其义自现”是真的（古人诚不我欺）。比如 DDIA 至少过一遍，Grokking 至少过5遍，第一遍可能过完什么印象都没有，后面好像每一遍都会有新的收获，然后可以逐渐自己思考如果自己遇到这种问题如何解决，会发现所有给的 design decision 都开始 make sense。跟刷题一样，与其看一大堆然后没啥印象不如多过几遍经典题目然后学会融会贯通。  
@@ -15,6 +18,9 @@
 > 透露下我自己的 timeline，全身心投入的时间可能有两个月，其中两周左右是在全天候学习没有上班，剩下的是正常上班晚上学习，可能 coding 和系统设计各占一半，轮流复习（今天系统设计明天 coding），最终拿到了两个 offer。顺便提下我没有参加任何 mock interview，我觉得大概的流程了解就可以了，而且计划总是赶不上变化，花相同的时间把问题真正搞懂是更有效的时间分配原则。PS，我考了个完全没准备过的题型但还是交出了一个还行的答案。  
   
 以上来源：https://www.1point3acres.com/bbs/thread-692488-1-1.html  
+
+</details>
+<br />
   
 ### 4S 分析法
 * Scenario：场景 - 需要设计哪些（核心）功能（询问面试官、也可以自己想），需要承受多大的访问量？
@@ -252,6 +258,8 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 ### [Service Meltdown, Service Downgrade and Service Circuit Breaker](./服务降级与服务熔断.md)
 
 ### [I/O 模型与 Web 服务器工作模型](./IO模型与Web服务器工作模型.md)
+
+### [分布式事务](./分布式事务.md)
   
 <br />
   
