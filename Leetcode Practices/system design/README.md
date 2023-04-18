@@ -1883,6 +1883,33 @@ Example：
 * A NoSQL data store such as MongoDB stores the metadata of the item
 * A cache server such as Redis stores the popular tags and items
 
+**DB selection**  
+* If data scale is company internal use scale, apply SQL (tag, item, tag-item) JOIN
+* If data scale is really large like twitter, apply NoSQL (tag, item) and SQL (tag-item) and do data partition
+
+**Table Design**  
+| Tag | data type | key type |
+|---|---|---|
+| tag_id | string(UUID) | Sort Key |
+| tag_name | string | Partition Key |
+| created_at | timestamp | Index |
+
+| Item | data type | key type |
+|---|---|---|
+| item_id | string(UUID) | Sort Key |
+| item_name | string | Partition Key |
+| item_content | json |  |
+| item_type | enum |  |
+| tag_id_name_list | list / set |  |
+| created_at | timestamp | Index |
+
+| TagItem | data type | key type |
+|---|---|---|
+| tag_item_id | string(UUID) | Partition Key |
+| tag_id | string(UUID) | Index |
+| item_id | string(UUID) | Index |
+| created_at | timestamp | Sort Key |
+
 #### HLD (High Level Design)
 * Write Flow ![](./tag-system-write-flow.webp)
   1. The client makes an HTTP connection to the load balancer
