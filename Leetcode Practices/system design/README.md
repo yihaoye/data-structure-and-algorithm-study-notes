@@ -1910,6 +1910,8 @@ Example：
 | item_id | string(UUID) | Index |
 | created_at | timestamp | Sort Key |
 
+A Partition Key is simply the key that DynamoDB uses to partition your data onto separate logical data shards. Adding a Sort Key allows us to store multiple records with the same partition key value since the partition key + sort key forms a unique pair, and is therefore our primary key.  
+
 #### HLD (High Level Design)
 * Write Flow ![](./tag-system-write-flow.webp)
   1. The client makes an HTTP connection to the load balancer
