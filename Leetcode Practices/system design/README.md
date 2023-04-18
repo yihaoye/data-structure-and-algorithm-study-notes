@@ -136,7 +136,8 @@
     * 命令应基于任务，而不是以数据为中心。（如 “预订酒店客房”，而不是 “将 ReservationStatus 设置为 Reserved”）。
     * 可将命令排入队列，以进行异步处理而不是同步处理。
     * 查询从不修改数据库。查询返回的 DTO 不封装任何域知识。
-    * 例子 ![](./CQRS.jpeg)
+    * 例子 1 ![](./CQRS.jpeg) 参考自[链接](https://stackoverflow.com/questions/38711908/how-many-database-in-a-microservices-event-driven-architecture)
+    * 例子 2 ![](./CQRS_2.webp) 参考自[链接](https://www.infoq.com/articles/event-driven-finding-seams/)
   * 方案举例：
     * 为更好地实现隔离，可将读取数据与写入数据通过物理方式分离。在此情况下，读取数据库可使用自己的已针对查询进行优化的数据架构。例如，它可以存储数据的具体化视图，从而避免复杂联接或复杂 O/RM 映射。它甚至可能使用不同类型的数据存储。例如，写入数据库可能是关系数据库，而读取数据库是文档数据库。
     * 读取存储可以是写入存储的只读副本，或者读取和写入存储可以具有完全不同的结构。 使用多个只读副本可以提高查询性能，尤其是在只读副本靠近应用程序实例的分布式方案中。
@@ -1958,7 +1959,9 @@ void addItemTag(String itemId, String[] tagIds) {
 * Scalability - 对数据库进行分库，比如对 tag-item 表进行分库，tag 与 item 可采用 NoSQL 从而更容易分库。
   * 需要担心一个 tag 非常热，可能有很多推文关联该 tag，所以如果量非常大则不建议 tag table 单独有个 item list，而还是采用 tag-item 表。当使用场景为根据 tag 搜相关 item 时，直接拿 tag_id 去 tag-item 表查比如前 50 个 item_id，因为通常这种查询都是搜索功能并带有分页功能，通过分页提高效率即可，即使 tag-item 表很大需要分库的情况下，也可以拿 tag_id 对所有库查询前 50 个结果然后合并排序再筛前 50 个返回（如果总共不够 50 就拿最后一个的时间或某字段为分界线再查），总而言之在 tag-item 表很大需要分库的情况下 JOIN 不是一个理想的方案，而 item 表和 tag 表的数据库可以是 NoSQL 也可以是 SQL。
 * Concurrency - 假设多个用户同时更改一个 item 的 tag，可引入 event driven architecture 即消息队列，总体采用 CQRS 模式，来保证数据一致性。
-  * CQRS 模式的图形案例 ![](./CQRS.jpeg)
+  * CQRS 模式的例子：
+    * ![](./CQRS.jpeg)
+    * ![](./CQRS_2.webp)
 
 </details>
 
