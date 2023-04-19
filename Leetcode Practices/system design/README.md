@@ -186,7 +186,7 @@
 * 文件存储（S3、Hadoop HDFS）（e.g. distributed file storage system for storing photos and videos）
 * 统一认证中心（用户的注册、登录验证、token 鉴权；内部信息系统用户的管理和登录鉴权；应用管理，应用的 secret 生成，应用信息的验证 - 如验证接口签名等）
 * 单点登录系统（Central Authentication Service - CAS）
-* 统一配置中心（Config Server、propeties、yaml）
+* [统一配置中心](https://en.wikipedia.org/wiki/Configuration_management)（Config Server、propeties、yaml）
 * 服务治理框架（REST API、RPC）
 * 统一调度中心（定时调度 cron job，如定时抓取数据、刷新状态等）
 * 统一日志服务（log4j、logback、Kibana、CloudWatch）
@@ -1696,6 +1696,7 @@ Example: Booking.com, Airbnb
 参考材料：  
 * https://medium.com/nerd-for-tech/system-design-architecture-for-hotel-booking-apps-like-airbnb-oyo-6efb4f4dddd7
 * https://www.youtube.com/watch?v=YyOXt2MEkv4
+* https://interviewnoodle.com/hotel-booking-system-design-airbnb-1283bbef71ac
   
 ![](./Hotel%20Booking%20System%20Design.png)  
 
@@ -1737,6 +1738,8 @@ OOD 还可以参考 [Hotel Management System](./../object%20oriented%20design/gr
 
 作业调度系统  
 转载自：https://leetcode.com/discuss/general-discussion/1082786/System-Design%3A-Designing-a-distributed-Job-Scheduler-or-Many-interesting-concepts-to-learn  
+
+其他参考材料：https://towardsdatascience.com/ace-the-system-design-interview-job-scheduling-system-b25693817950  
 
 #### 功能要求（可能会有所不同，但假设如下）：
 * 一个 job 可以被其他服务/微服务安排一次或多次执行（cron job）
