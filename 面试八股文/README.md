@@ -96,6 +96,7 @@
 ## Kafka 高频
 * [kafka 架构](https://cloud.tencent.com/developer/article/1853417)
 * [如何确定当前能读到哪一条消息](https://cloud.tencent.com/developer/article/1853417)
+* [Kafka consumer group](https://www.cnblogs.com/huxi2b/p/6223228.html)
 
 ## Docker 高频
 * [Dockerfile 配置文件中的 COPY 和 ADD 指令有什么不同](https://www.modb.pro/db/404626)
