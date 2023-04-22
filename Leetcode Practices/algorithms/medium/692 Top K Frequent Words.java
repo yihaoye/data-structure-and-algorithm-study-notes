@@ -110,3 +110,31 @@ class Solution {
         }
     }
 }
+
+
+
+// My Solution:
+class Solution {
+    public List<String> topKFrequent(String[] words, int k) {
+        // hashmap + treemap + treeset
+        int n = words.length;
+        Map<String, Integer> map = new HashMap<>();
+        TreeMap<Integer, TreeSet<String>> tMap = new TreeMap<>(Collections.reverseOrder());
+        for (String word : words) {
+            int preCnt = map.getOrDefault(word, 0);
+            int curCnt = preCnt + 1;
+            if (preCnt > 0) tMap.get(preCnt).remove(word);
+            tMap.computeIfAbsent(curCnt, v -> new TreeSet<>()).add(word);
+            map.put(word, curCnt);
+        }
+
+        List<String> res = new ArrayList<>();
+        for (TreeSet<String> ts : tMap.values()) {
+            for (String word : ts) {
+                res.add(word);
+                if (res.size() == k) return res;
+            }
+        }
+        return res;
+    }
+}
