@@ -98,3 +98,41 @@ class Solution {
         return false;
      }
 }
+
+
+
+// Other's Solution:
+class Solution {
+    public List<Integer> spiralOrder(int[][] matrix) {
+        // https://leetcode.com/problems/spiral-matrix/solutions/20599/super-simple-and-easy-to-understand-solution/?orderBy=most_votes
+        List<Integer> res = new ArrayList<>();
+        if (matrix.length == 0) return res;
+        
+        int rowBegin = 0, rowEnd = matrix.length - 1;
+        int colBegin = 0, colEnd = matrix[0].length - 1;
+        
+        while (rowBegin <= rowEnd && colBegin <= colEnd) {
+            // Traverse Right
+            for (int c = colBegin; c <= colEnd; c++) res.add(matrix[rowBegin][c]);
+            rowBegin++;
+            
+            // Traverse Down
+            for (int r = rowBegin; r <= rowEnd; r++) res.add(matrix[r][colEnd]);
+            colEnd--;
+            
+            if (rowBegin <= rowEnd) {
+                // Traverse Left
+                for (int c = colEnd; c >= colBegin; c--) res.add(matrix[rowEnd][c]);
+            }
+            rowEnd--;
+            
+            if (colBegin <= colEnd) {
+                // Traver Up
+                for (int r = rowEnd; r >= rowBegin; r--) res.add(matrix[r][colBegin]);
+            }
+            colBegin++;
+        }
+        
+        return res;
+    }
+}
