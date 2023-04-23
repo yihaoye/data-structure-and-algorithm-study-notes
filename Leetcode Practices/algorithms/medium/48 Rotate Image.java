@@ -103,3 +103,26 @@ class Solution {
         matrix[n-column][row] = tmp4;
     }
 }
+
+
+
+// My Solution:
+class Solution {
+    public void rotate(int[][] matrix) {
+        // 分治 + 缓存变量 + 模拟
+        int n = matrix.length;
+        for (int i=0; i<n/2; i++) // n 如果为奇数，中间的不需要操作，n/2 仍正确
+            rotate(matrix, i);
+    }
+
+    public void rotate(int[][] matrix, int layer) {
+        int n = matrix.length, m = matrix.length - layer;
+        for (int r=layer, c=layer; c<m-1; c++) {
+            int tmp = matrix[r][c];
+            matrix[r][c] = matrix[n-1-c][r];
+            matrix[n-1-c][r] = matrix[n-1-r][n-1-c];
+            matrix[n-1-r][n-1-c] = matrix[c][n-1-r];
+            matrix[c][n-1-r] = tmp;
+        }
+    }
+}
