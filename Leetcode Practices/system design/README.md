@@ -1714,6 +1714,7 @@ OOD 还可以参考 [Hotel Management System](./../object%20oriented%20design/gr
 
 参考：https://towardsdatascience.com/architecting-a-machine-learning-pipeline-a847f094d1c7  
 
+![](./AI-system-architecture.jpeg)  
 ![](./ML%20Pipeline%20System%20Architecture.png)  
 
 相关：  
