@@ -196,6 +196,7 @@
 * 分布式一致性与选举算法/共识机制
 * 点对点网络（Peer-to-peer Networks，如 VPC Peering、指数增长的高效的针对大规模目标对象的数据拷贝传输、区块链项目如 Bitcoin、等等）  
   
+![](./System%20Design%20Blueprint.jpeg)
   
 # Grokking System Design
 ## Standard Design Steps within Interview
@@ -1714,8 +1715,9 @@ OOD 还可以参考 [Hotel Management System](./../object%20oriented%20design/gr
 
 参考：https://towardsdatascience.com/architecting-a-machine-learning-pipeline-a847f094d1c7  
 
-![](./AI-system-architecture.jpeg)  
-![](./ML%20Pipeline%20System%20Architecture.png)  
+* ![](./AI-system-architecture.jpeg)
+* ![](./ML%20Pipeline%20System%20Architecture.png)
+* ![](./ChatGPT.jpeg)
 
 相关：  
 * [特征工程](https://aws.amazon.com/cn/blogs/china/feature-engineering-of-the-final-version-of-data-centric-ai-lecture-1/)
