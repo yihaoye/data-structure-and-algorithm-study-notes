@@ -76,6 +76,17 @@ From 2019-01-06 to 2019-01-06 all tasks succeeded and the system state was "succ
 /*
 Other's Solution
 https://leetcode.com/problems/report-contiguous-dates/solutions/835526/mysql-window-function-easy-to-understand/?envType=study-plan&id=sql-iii&orderBy=most_votes
+
+|day | overall_ranking| stats | rk | inv          
+| 2019-01-01 | 1 | success | 1 | 0
+| 2019-01-02 | 2 | success | 2 | 0
+| 2019-01-03 | 3 | success | 3 | 0
+| 2019-01-04 | 4 | fail | 1 | 3
+| 2019-01-05 | 5 | fail | 2 | 3
+| 2019-01-06 | 6 | success | 4 | 2
+| 2019-01-07 | 7 | success | 5 | 2
+| 2019-01-08 | 8 | fail | 3 | 5
+| 2019-01-09 | 9 | fail | 4 | 5
 */
 SELECT stats AS period_state, MIN(day) AS start_date, MAX(day) AS end_date
 FROM (
