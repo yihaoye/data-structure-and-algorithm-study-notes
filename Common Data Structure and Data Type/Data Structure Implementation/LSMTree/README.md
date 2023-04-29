@@ -13,7 +13,7 @@ LSM 树的核心特点是利用顺序写来提高写性能，但因为分层 (�
 如上图所示，LSM 树有以下三个重要组成部分：  
 * MemTable - MemTable 是在内存中的数据结构，用于保存最近更新的数据，会按照 Key 有序地组织这些数据，LSM 树对于具体如何组织有序地组织数据并没有明确的数据结构定义，例如 Hbase 使跳跃表来保证内存中 key 的有序。因为数据暂时保存在内存中，内存并不是可靠存储，如果断电会丢失数据，因此通常会通过 WAL (Write-ahead logging，预写式日志) 的方式来保证数据的可靠性。
 * Immutable MemTable - 当 MemTable 达到一定大小后，会转化成 Immutable MemTable。Immutable MemTable 是将转 MemTable 变为 SSTable 的一种中间状态。写操作由新的 MemTable 处理，在转存过程中不阻塞数据更新操作。
-* SSTable (Sorted String Table) - 有序键值对集合，是 LSM 树组在磁盘中的数据结构，因为是有序的所以查找与合并都较为高效 - 类似 merge sort。为了加快 SSTable 的读取，可以通过建立 key 的索引以及布隆过滤器来加快 key 的查找。![](./SSTable.png)
+* SSTable (Sorted String Table) - 排序字符串表，有序键值对集合，是 LSM 树组在磁盘中的数据结构，因为是有序的所以查找与合并都较为高效 - 类似 merge sort。为了加快 SSTable 的读取，可以通过建立 key 的索引以及布隆过滤器来加快 key 的查找。![](./SSTable.png)
   
 这里需要关注一个重点，LSM 树 (Log-Structured-Merge-Tree) 正如它的名字一样，LSM 树会将所有的数据插入、修改、删除等操作记录 (注意是操作记录) 保存在内存之中，当此类操作达到一定的数据量后，再批量地顺序写入到磁盘当中。这与 B+树不同，B+树数据的更新会直接在原数据所在处修改对应的值，但是 LSM 树的数据更新是日志式的，当一条数据更新是直接 append 一条更新记录完成的。这样设计的目的就是为了顺序写，不断地将 Immutable MemTable flush 到持久化存储即可，而不用去修改之前的 SSTable 中的 key，保证了顺序写。  
 因此当 MemTable 达到一定大小 flush 到持久化存储变成 SSTable 后，在不同的 SSTable 中，可能存在相同 Key 的记录，当然最新的那条记录才是准确的。这样设计的虽然大大提高了写性能，但同时也会带来一些问题：  
