@@ -2007,16 +2007,34 @@ void addItemTag(String itemId, String[] tagIds) {
     * ![](./CQRS_2.webp)
 
 #### Other Questions
-1. What are the different types of tags that can be used in a tagging system?
-2. How do you ensure that tags are relevant and appropriately assigned to content?
-3. What database design would you use to store tag information in a tagging system?
+1. What are the different types of tags that can be used in a tagging system? 
+   * Content tags
+   * Topic tags
+   * Format tags
+   * Genre tags etc.
+2. How do you ensure that tags are relevant and appropriately assigned to content? 
+   * Define a clear set of guidelines or convention.
+3. What database design would you use to store tag information in a tagging system? - See above.
 4. How would you handle tag synonyms or variations in a tagging system?
-5. How would you handle the scalability of a tagging system when there are millions of tags and items to tag?
+   * Use a controlled vocabulary - a controlled vocabulary is a pre-defined list of terms that can be used as tags
+   * Use tag mapping - tag mapping is a process that maps synonyms or variations to a standard tag.
+5. How would you handle the scalability of a tagging system when there are millions of tags and items to tag? 
+   * Apply database sharding for each table (tag, item, tag-item)
 6. How would you design a search function that works efficiently with tagging technology?
+   * Apply existing search solution e.g. elasticsearch
+     * Inverted index could be applied for tag to items or content to items.
+   * When search item by tag only, could apply existing database data
+     * Find if related data in cache (Redis), if so, return them.
+     * When tag is not in cache, could use tag_id and query all related items from TagItem table
 7. What security considerations should be taken into consideration for a tagging system?
-8. How would you incorporate user feedback and reviews to improve the tagging system?
-9. What steps would you take to ensure that the tagging system can handle multiple languages and alphabets?
-10. How would you measure the effectiveness of a tagging system, and what metrics would you use to evaluate it?
+   * Access control - restrict edit and view permission, authentication and authorization mechanisms
+   * Encryption - applied at the database level or at the application level, using tools such as HTTPS, SSL/TLS, or SSH.
+   * Protection against SQL injection attacks (prevent tag or item contain malicious code).
+8. What steps would you take to ensure that the tagging system can handle multiple languages and alphabets? 
+   * Unicode support: Unicode is a universal character encoding standard that supports multiple languages and scripts.
+   * Language detection: system should be able to detect the language of the content being tagged. This can be achieved through the use of language detection algorithms, such as the Google Language Detection API.
+   * Translation: The tagging system should provide users with the ability to translate tags between languages. This can be achieved through the use of translation APIs, such as the Google Translate API.
+   * Input validation: The tagging system should be designed to validate input to ensure that tags are entered correctly in the appropriate language and script.
 
 </details>
 
@@ -2169,6 +2187,7 @@ db_get () {
 
 LSM 树可以被压缩得更好，通常能比 B 树在硬盘上产生更小的文件。B 树存储引擎会由于碎片化（fragmentation）而留下一些未使用的硬盘空间：当页面被拆分或某行不能放入现有页面时，页面中的某些空间仍未被使用。由于 LSM 树不是面向页面的，并且会通过定期重写 SSTables 以去除碎片，所以它们具有较低的存储开销。  
 B 树的一个优点是每个键只存在于索引中的一个位置，而日志结构化的存储引擎可能在不同的段中有相同键的多个副本。这个方面使得 B 树在提供强大的事务语义中更有优势。  
+B 树和日志结构索引都有次级索引。  
 没有简单易行的办法来判断哪种类型（B 树或 LSM 树）的存储引擎对系统的使用场景更好，所以需要通过一些测试来得到相关经验。  
 
 To Be Continue ...  
