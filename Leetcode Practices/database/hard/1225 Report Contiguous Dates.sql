@@ -87,6 +87,8 @@ https://leetcode.com/problems/report-contiguous-dates/solutions/835526/mysql-win
 | 2019-01-07 | 7 | success | 5 | 2
 | 2019-01-08 | 8 | fail | 3 | 5
 | 2019-01-09 | 9 | fail | 4 | 5
+
+Similar Question: LC Q1285
 */
 SELECT stats AS period_state, MIN(day) AS start_date, MAX(day) AS end_date
 FROM (
