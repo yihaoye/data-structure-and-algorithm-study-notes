@@ -66,3 +66,73 @@ class Solution {
         inOrder(root.right, list);
     }
 }
+
+
+
+// My Solution (for follow up):
+class Solution {
+    int maxVal = 10000; // 0 <= Node.val <= 10^4
+    int[] prefixSum = new int[maxVal + 1]; // prefixSum[i] means how many node val <= i, could be replaced by ArrayList for flexible extends but code will be a bit complex
+    int lastValidIndex = -1; // last valid index of prefixSum, i > lastValidIndex is not lazy updated with prefixSum yet
+    TreeMap<Integer, Integer> ops = new TreeMap<>(); // insert and delete operations with key, sort by key, [A, 3] means add num A 3 times, [B, -2] means remove num B twice, for lazy update, use TreeMap instead of PriorityQueue since there can be lot of add A then remove A useless operations etc
+
+    public int kthSmallest(TreeNode root, int k) {
+        // DFS(inorder) + prefix sum + binary search + lazy update
+        if (prefixSum[maxVal] == 0) inorder(root); // prefixSum[10000] == 0 means not init yet, since tree size n must >= 1
+
+        while (prefixSum[lastValidIndex] < k) { // when prefixSum[lastValidIndex] < k then it must be --> !ops.isEmpty() && ops.firstKey() == lastValidIndex + 1
+            lazyUpdateOnce();
+            if (prefixSum[lastValidIndex] >= k) return lastValidIndex; // purge
+        }
+
+        return binarySearch(k, lastValidIndex);
+    }
+
+    public void inorder(TreeNode root) {
+        if (root.left != null) inorder(root.left);
+        while (lastValidIndex < root.val) {
+            prefixSum[lastValidIndex + 1] = lastValidIndex == -1 ? 0 : prefixSum[lastValidIndex];
+            lastValidIndex++;
+        }
+        prefixSum[root.val]++;
+        if (root.right != null) inorder(root.right);
+    }
+
+    public void lazyUpdateOnce() { // lazy update prefixSum once (one index forward only)
+        int idxToUpdate = ops.firstKey();
+        int valToAdd = ops.get(idxToUpdate);
+        prefixSum[idxToUpdate] += valToAdd;
+        ops.remove(idxToUpdate);
+        if (idxToUpdate + 1 <= maxVal) ops.put(idxToUpdate + 1, ops.getOrDefault(idxToUpdate + 1, 0) + valToAdd);
+        lastValidIndex = idxToUpdate;
+    }
+
+    public int binarySearch(int target, int end) { // lower bound binary search
+		int start = 0;
+        while (start < end) {
+            int mid = start + (end - start) / 2;
+            if (prefixSum[mid] >= target) end = mid;
+            else start = mid + 1;
+        }
+		if (start == prefixSum.length) return -1;
+        return start;
+	}
+
+
+
+    /* The following is not really used in the test but important for follow up cases */
+
+    // called during tree add new node with val k
+    public void add(int k) {
+        ops.put(k, ops.getOrDefault(k, 0) + 1);
+        if (ops.get(k) == 0) ops.remove(k);
+        lastValidIndex = Math.min(lastValidIndex, k - 1);
+    }
+
+    // called during tree remove node with val k
+    public void remove(int k) {
+        ops.put(k, ops.getOrDefault(k, 0) - 1);
+        if (ops.get(k) == 0) ops.remove(k);
+        lastValidIndex = Math.min(lastValidIndex, k - 1);
+    }
+}
