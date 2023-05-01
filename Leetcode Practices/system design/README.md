@@ -1906,13 +1906,13 @@ Example：
 **Table Design**  
 | Tag | data type | key type |
 |---|---|---|
-| tag_id | string(UUID) | Sort Key |
+| tag_id | string(UUID) or bigint(Snowflake ID) | Sort Key |
 | tag_name | string | Partition Key |
 | created_at | timestamp | Index |
 
 | Item | data type | key type |
 |---|---|---|
-| item_id | string(UUID) | Sort Key |
+| item_id | string(UUID) or bigint(Snowflake ID) | Sort Key |
 | item_name | string | Partition Key |
 | item_content | json |  |
 | item_type | enum |  |
@@ -1921,12 +1921,16 @@ Example：
 
 | TagItem | data type | key type |
 |---|---|---|
-| tag_item_id | string(UUID) | Partition Key |
-| tag_id | string(UUID) | Index |
-| item_id | string(UUID) | Index |
+| tag_item_id | string(UUID) or bigint(Snowflake ID) | Partition Key |
+| tag_id | string(UUID) or bigint(Snowflake ID) | Index |
+| item_id | string(UUID) or bigint(Snowflake ID) | Index |
 | created_at | timestamp | Sort Key |
 
 A Partition Key is simply the key that DynamoDB uses to partition your data onto separate logical data shards. Adding a Sort Key allows us to store multiple records with the same partition key value since the partition key + sort key forms a unique pair, and is therefore our primary key.  
+
+For performance, primary key is better to be bigint(Snowflake ID) for example amount of data is large and need database sharding, since [continuously auto increment primary key save disk I/O operations](https://www.toomanyafterthoughts.com/primary-key-random-sequential-performance/).  
+For security, primary key is better to be string(UUID) since [prevent estimation from hacker](https://www.liaoxuefeng.com/article/1100985514586848).  
+Normally it is better to use string(UUID) instead of bigint.  
 
 #### HLD (High Level Design)
 * Write Flow ![](./tag-system-write-flow.webp)
