@@ -1744,7 +1744,9 @@ OOD 还可以参考 [Hotel Management System](./../object%20oriented%20design/gr
 作业调度系统  
 转载自：https://leetcode.com/discuss/general-discussion/1082786/System-Design%3A-Designing-a-distributed-Job-Scheduler-or-Many-interesting-concepts-to-learn  
 
-其他参考材料：https://towardsdatascience.com/ace-the-system-design-interview-job-scheduling-system-b25693817950  
+其他参考材料：  
+* https://towardsdatascience.com/ace-the-system-design-interview-job-scheduling-system-b25693817950  
+* https://www.youtube.com/watch?v=ta5x62cDxf4  
 
 #### 功能要求（可能会有所不同，但假设如下）：
 * 一个 job 可以被其他服务/微服务安排一次或多次执行（cron job）
