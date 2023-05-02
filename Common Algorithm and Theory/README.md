@@ -77,5 +77,5 @@
   - 计算几何
     - [扫描线 | Line Sweep](./扫描线.md)
   - 其他常见优化思想、技巧
-    - 懒更新 [例1](./../Leetcode%20Practices/algorithms/medium/1381%20Design%20a%20Stack%20With%20Increment%20Operation.java)、[例2](../Leetcode%20Practices/algorithms/medium/230%20Kth%20Smallest%20Element%20in%20a%20BST.java)
+    - [懒更新](./懒更新.md)
     - [比较优化，减少比较次数（算法导论 9.1）](./../Leetcode%20Practices/algorithms/easy/1491%20Average%20Salary%20Excluding%20the%20Minimum%20and%20Maximum%20Salary.java)  
