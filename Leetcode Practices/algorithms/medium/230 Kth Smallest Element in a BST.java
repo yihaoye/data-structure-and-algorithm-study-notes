@@ -78,6 +78,9 @@ class Solution {
 
     public int kthSmallest(TreeNode root, int k) {
         // DFS(inorder) + prefix sum + binary search + lazy update
+        // Query time complexity: best O(logN), worst O(N*logN), first time O(N)
+        // Modify time complexity: best O(1), worst O(logN)
+        // Space complexity: O(N)
         if (prefixSum[maxVal] == 0) inorder(root); // prefixSum[10000] == 0 means not init yet, since tree size n must >= 1
 
         while (prefixSum[lastValidIndex] < k) { // when prefixSum[lastValidIndex] < k then it must be --> !ops.isEmpty() && ops.firstKey() == lastValidIndex + 1
@@ -136,3 +139,11 @@ class Solution {
         lastValidIndex = Math.min(lastValidIndex, k - 1);
     }
 }
+
+
+
+// My Solution 2 (for follow up):
+// DFS(inorder) + Segment Tree + Prefix Sum + Binary Search
+// Query time complexity: average O(logN*logN), first time O(N)
+// Modify time complexity: average O(logN)
+// Space complexity: O(N)
