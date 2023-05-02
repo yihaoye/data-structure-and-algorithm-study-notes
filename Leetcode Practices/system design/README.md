@@ -1930,7 +1930,7 @@ Example：
 
 A Partition Key is simply the key that DynamoDB uses to partition your data onto separate logical data shards. Adding a Sort Key allows us to store multiple records with the same partition key value since the partition key + sort key forms a unique pair, and is therefore our primary key.  
 
-For performance, primary key is better to be bigint(Snowflake ID) for example amount of data is large and need database sharding, since [continuously auto increment primary key save disk I/O operations](https://www.toomanyafterthoughts.com/primary-key-random-sequential-performance/).  
+For performance, primary key is better to be bigint(Snowflake ID) for example amount of data is large and need database sharding or for internal used (not public), since [continuously auto increment primary key save disk I/O operations](https://www.toomanyafterthoughts.com/primary-key-random-sequential-performance/).  
 For security, primary key is better to be string(UUID) since [prevent estimation from hacker](https://www.liaoxuefeng.com/article/1100985514586848).  
 Normally it is better to use string(UUID) instead of bigint.  
 
