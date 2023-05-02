@@ -686,6 +686,13 @@ Unlock tables;
 * [JDBC with FOR UPDATE](https://blog.csdn.net/weixin_47514459/article/details/121911043)
 * [Difference between LOCK IN SHARE MODE and FOR UPDATE](https://www.youtube.com/watch?v=d6LsfSqj8U0)
 
+ChatGPT 解答如果服务器在释放数据库中记录上的 SELECT FOR UPDATE 锁之前崩溃：  
+>> 如果一个服务器在释放数据库中记录上的 SELECT FOR UPDATE 锁之前崩溃，那么该锁将由失败的服务器持有，并且直到数据库检测到该失败并终止与锁定事务相关的连接后才会被释放。  
+>> 锁定的持续时间取决于数据库和操作系统的超时设置，如果锁定时间过长，可能会对需要访问相同记录的其他客户端造成争用和性能问题，并可能导致数据不一致。  
+>> 为了减轻服务器故障持有锁所带来的影响，可以实现一种机制来检测和恢复故障的服务器。这可以涉及监视服务器的健康状态和检测故障，然后执行恢复操作，如重新启动服务器或将锁转移到另一个服务器。  
+>> 此外，可以实现锁的超时，以确保它们在一定时间内被释放，即使锁定的客户端失败或变得无响应。这可以帮助防止长期持有锁，并减少其他客户端的争用。  
+>> 总之，一个持有 SELECT FOR UPDATE 锁的失败服务器可能会对其他访问相同记录的客户端造成问题，但可以通过仔细监视和恢复机制以及为锁实现超时来加以缓解。  
+
 https://www.javatpoint.com/mysql-table-locking  
 **显示地加表级锁**  
 ```sql
