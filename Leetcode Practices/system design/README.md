@@ -184,7 +184,7 @@
 * 缓存（本地缓存即内存中的缓存机制：ConcurrentHashMap etc；分布式缓存即单独的缓存服务：Redis、Memcached etc）
 * 数据库（SQL、NoSQL）
 * 搜索引擎（全文搜索、ElasticSearch、MySQL）
-* 消息队列（RabbitMQ、Kafka）[阅读材料](http://www.52im.net/thread-1979-1-1.html)
+* [消息队列与流处理](./消息队列与流处理.md)（RabbitMQ、Kafka）[阅读材料](http://www.52im.net/thread-1979-1-1.html)
 * 文件存储（S3、Hadoop HDFS）（e.g. distributed file storage system for storing photos and videos）
 * 统一认证中心（用户的注册、登录验证、token 鉴权；内部信息系统用户的管理和登录鉴权；应用管理，应用的 secret 生成，应用信息的验证 - 如验证接口签名等）
 * 单点登录系统（Central Authentication Service - CAS）
