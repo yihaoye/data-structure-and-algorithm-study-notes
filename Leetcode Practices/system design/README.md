@@ -185,7 +185,8 @@
 * 数据库（SQL、NoSQL）
 * 搜索引擎（全文搜索、ElasticSearch、MySQL）
 * [消息队列与流处理](./消息队列与流处理.md)（RabbitMQ、Kafka）[阅读材料](http://www.52im.net/thread-1979-1-1.html)
-* 文件存储（S3、Hadoop HDFS）（e.g. distributed file storage system for storing photos and videos）
+* 对象/文件/非结构化数据存储（S3、Hadoop HDFS、Blob Storage - Binary Large Object Storage）（e.g. distributed file storage system for storing photos and videos）
+* 镜像/备份/归档（如为云主机、容器或数据库及其存储卷等等的镜像/快照的服务，可以存储至文件存储如 S3 等）
 * 统一认证中心（用户的注册、登录验证、token 鉴权；内部信息系统用户的管理和登录鉴权；应用管理，应用的 secret 生成，应用信息的验证 - 如验证接口签名等）
 * 单点登录系统（Central Authentication Service - CAS）
 * [统一配置中心](https://en.wikipedia.org/wiki/Configuration_management)（Config Server、propeties、yaml）
@@ -2275,8 +2276,8 @@ Protobuf 没有列表或数组数据类型，而是有一个字段的重复标�
 ### 数据流的类型
 数据可以通过多种方式从一个进程/主机流向另一个进程/主机。一方编码数据一方解码。以下是数据如何在进程/主机之间流动的一些最常见的方式：
 * 通过数据库
-* 通过服务调用（REST 与 RPC）
-* 通过异步消息传递（消息传递中的数据流）
+* 通过服务调用（REST 与 SOAP、RPC）- 服务器公开的 API 服务。
+* 通过异步消息传递（消息传递中的数据流，与数据库类似，不是通过直接的网络连接发送消息，而是通过称为消息代理的中介 - 也称为消息队列或面向消息的中间件来临时存储消息）
 
 To Be Continue ...  
 
