@@ -421,12 +421,13 @@ SELECT @A=col1，@B=col2 FROM TABLE1
   
   
 ## SQL 的执行顺序
-第一步：执行 FROM  
+第一步：执行 FROM & JOIN  
 第二步：WHERE 条件过滤  
 第三步：GROUP BY 分组  
-第四步：执行 SELECT 投影列  
-第五步：HAVING 条件过滤  
+第四步：HAVING 条件过滤  
+第五步：执行 SELECT 投影列  
 第六步：执行 ORDER BY 排序  
+![](./SQL-Query-Execution-Order.jpeg)  
   
 ### SQL 中 AND 与 OR 优先级
 例:  

@@ -45,6 +45,7 @@
     - [网络流相关算法]()
     - 系统级
       - [字典树算法 | Trie Algorithm](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/Trie/README.md)
+      - [映射-归约 | MapReduce](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md)
       - [蓄水池抽样算法 | Reservoir Sampling](./蓄水池抽样算法.md)
       - [霍夫曼压缩算法 | Huffman Coding/Compression](./霍夫曼压缩算法.md)
       - [布隆过滤器及其算法 | Bloom Filter](./布隆过滤器及其算法.md)
@@ -70,6 +71,7 @@
       - [P2P 核心算法]()
         - [BitTorrent 协议]()
         - [DHT 的 Kademlia 协议]()
+        - [DHT 的 Chord 算法](https://en.wikipedia.org/wiki/Chord_(peer-to-peer))
         - [Gossip 协议/流行病协议]()
   - 数学
     - [鸽巢原理 | Pigeonhole Principle](./鸽巢原理.md)
