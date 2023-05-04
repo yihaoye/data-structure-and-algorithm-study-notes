@@ -190,7 +190,7 @@
 * 统一认证中心（用户的注册、登录验证、token 鉴权；内部信息系统用户的管理和登录鉴权；应用管理，应用的 secret 生成，应用信息的验证 - 如验证接口签名等）
 * 单点登录系统（Central Authentication Service - CAS）
 * [统一配置中心](https://en.wikipedia.org/wiki/Configuration_management)（Config Server、propeties、yaml）
-* 服务治理框架（REST API、RPC）
+* [服务调用/服务治理框架（REST API、RPC）](./System%20Design%20Fundamentals.md#API%20Design)
 * 统一调度中心（定时调度 cron job，如定时抓取数据、刷新状态等）
 * 统一日志服务（log4j、logback、Kibana、CloudWatch）
 * 数据基础设施（大数据：Hadoop、Spark、数据仓库；数据管道：Kafka、Kinesis；数据分析：Hadoop、Spark、Tableau、Python、SAS、Excel）
@@ -2247,13 +2247,13 @@ B 树和日志结构索引都有次级索引。
 数据仓库的另一个值得一提的优化方面是物化聚合（materialized aggregates）。如前所述，数据仓库查询通常涉及一个聚合函数，如 SQL 中的 COUNT、SUM、AVG、MIN 或 MAX。如果相同的聚合被许多不同的查询使用，那么每次都通过原始数据来处理可能太浪费了。为什么不将一些查询使用最频繁的计数或总和缓存起来？创建这种缓存的一种方式是物化视图（Materialized View）。物化视图的常见特例称为数据立方体或 OLAP 立方。它是按不同维度分组的聚合网格。物化数据立方体的优点是可以让某些查询变得非常快，因为它们已经被有效地预先计算了。  
 
 ## 编码与演化
-几种编码数据的格式，包括 JSON、XML、CSV、Protocol Buffers、Thrift 和 Avro。尤其将关注这些格式如何应对模式变化，以及它们如何对新旧代码数据需要共存的系统提供支持。然后将讨论如何使用这些格式进行数据存储和通信：在 Web 服务中，表述性状态传递（REST） 和 远程过程调用（RPC），以及 消息传递系统（如 Actor 和消息队列）。  
+几种编码数据的格式，包括 JSON、XML、CSV、Protocol Buffers、Thrift 和 Avro。尤其将关注这些格式如何应对模式变化，以及它们如何对新旧代码数据需要共存的系统提供支持。然后将讨论如何使用这些格式进行数据存储和通信：在 Web 服务中，表述性状态传递（REST）和远程过程调用（RPC），以及消息传递系统（如 Actor 和消息队列）。  
 
 程序通常（至少）使用两种形式的数据：
-1. 在内存中，数据保存在对象、结构体、列表、数组、散列表、树等中。 这些数据结构针对 CPU 的高效访问和操作进行了优化（通常使用指针）。
+1. 在内存中，数据保存在对象、结构体、列表、数组、散列表、树等中。这些数据结构针对 CPU 的高效访问和操作进行了优化（通常使用指针）。
 2. 如果要将数据写入文件，或通过网络发送，则必须将其编码（encode）为某种自包含的字节序列（例如，JSON 文档）。这个字节序列表示会与通常在内存中使用的数据结构完全不同。
 
-在两种表示之间进行某种类型的翻译。 从内存中表示到字节序列的转换称为编码（Encoding）（也称为序列化（serialization）或编组（marshalling）），反过来称为解码（Decoding）（或解析（Parsing），反序列化（deserialization），反编组（unmarshalling））。  
+在两种表示之间进行某种类型的翻译。从内存中表示到字节序列的转换称为编码（Encoding）（也称为序列化（serialization）或编组（marshalling）），反过来称为解码（Decoding）（或解析（Parsing），反序列化（deserialization），反编组（unmarshalling））。  
 许多编程语言都内建了将内存对象编码为字节序列的支持。例如，Java 有 java.io.Serializable，Ruby 有 Marshal，Python 有 pickle 等等。许多第三方库也存在。这些语言内置编码库非常方便，但性能以及编码简洁度可能不理想。  
 
 尽管存在一些缺陷，但 JSON、XML 和 CSV 格式对很多需求来说已经足够好了。  
@@ -2276,7 +2276,8 @@ Protobuf 没有列表或数组数据类型，而是有一个字段的重复标�
 ### 数据流的类型
 数据可以通过多种方式从一个进程/主机流向另一个进程/主机。一方编码数据一方解码。以下是数据如何在进程/主机之间流动的一些最常见的方式：
 * 通过数据库
-* 通过服务调用（REST 与 SOAP、RPC）- 服务器公开的 API 服务。
+* 通过[服务调用](./System%20Design%20Fundamentals.md#API%20Design)（REST 与 SOAP、RPC）- 服务器公开的 API 服务。
+  * 关于 API 版本化应该如何工作（即客户端如何指示它想要使用哪个版本的 API）没有一致意见。对于 RESTful API，常用的方法是在 URL 或 HTTP Accept 头中使用版本号。对于使用 API 密钥来标识特定客户端的服务，另一种选择是将客户端请求的 API 版本存储在服务器上，并允许通过单独的管理界面更新该版本选项。
 * 通过异步消息传递（消息传递中的数据流，与数据库类似，不是通过直接的网络连接发送消息，而是通过称为消息代理的中介 - 也称为消息队列或面向消息的中间件来临时存储消息）
 
 To Be Continue ...  

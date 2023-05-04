@@ -107,6 +107,8 @@ https://www.algoexpert.io/systems/fundamentals
 * ![](./REST%20API%20Design.jpeg)
 * ![](./API%20Architectural%20Styles%20Comparison.jpeg)
 * ![](./api-protocols.jpeg)
+  * 新一代的 RPC 框架 gRPC 支持流，其中一个调用不仅包括一个请求和一个响应，还可以是随时间的一系列请求和响应。
+  * 使用二进制编码格式的自定义 RPC 协议可以实现比通用的 JSON over REST 更好的性能。但是，RESTful API 还有其他一些显著的优点：方便实验和调试（只需使用 Web 浏览器或命令行工具 curl，无需任何代码生成或软件安装即可向其请求），能被所有主流的编程语言和平台所支持，还有大量可用的工具（服务器，缓存，负载平衡器，代理，防火墙，监控，调试工具，测试工具等）的生态系统。由于这些原因，REST 似乎是公共 API 的主要风格。 RPC 框架的主要重点在于同一组织拥有的服务之间的请求，通常在同一数据中心内。
   
   
 ## 补充
