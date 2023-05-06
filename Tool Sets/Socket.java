@@ -20,6 +20,7 @@ while ((message = bufferedReader.readLine()) != null) {
     System.out.printf("Get message from client : %s", message);
 }
 clientSocket.shutdownInput();
+bufferedReader.close();
 
 // 当客户端通过客户端套接字连接到服务器的 ServerSocket 时，服务器上会为该连接分配一个 Socket。客户端和服务器的通信就是 Socket 到 Socket 的通信了。
 
