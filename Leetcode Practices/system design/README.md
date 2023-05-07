@@ -1108,6 +1108,23 @@ Dropbox 异步任务框架 ATF：
 3. 聊天服务端发送消息给消息队列
 4. 服务端更新对应接受者的数据库
 
+### API Design
+method: POST  
+`https://example.com/api/v1/messages/`  
+```python
+send_message(user_id, message):
+  server = get_chat_server(user_id)
+  server.send(user_id, message)
+```
+
+method: GET  
+`https://example.com/api/v1/messages/?user_id=1`  
+```python
+read_message(user_id, max_read_id):
+  server = get_chat_server(user_id)
+  return server.read_from_db(user_id, max_read_id)
+```
+  
 瓶颈分析
 核心问题：不同实时通信协议的优缺点  
 解决方案：浏览：[8 Most Popular Instant Messaging & Chat Protocols](https://www.cometchat.com/blog/popular-chat-and-instant-messaging-protocols)
