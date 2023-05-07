@@ -23,10 +23,14 @@ Tool Sets 是算法解题、编码过程中常用的一些经常复用的原子�
 * [JSON 解析器](./JSONParser.java)
 * [链表节点](./LinkedListNode.java)
 * [数学相关操作与套路](./Math.java)
-* [Java Net (网络操作)]
-  * [Java URL (HTTP)](./Net.java)
-  * [Java Socket (TCP/IP)](./Socket.java)
-  * [Java DatagramSocket (UDP/IP)](https://www.cnblogs.com/czwbig/p/10018118.html)
+* Java 网络操作
+  * [Java Net](https://jenkov.com/tutorials/java-networking/index.html)
+    * [URL (HTTP/HTTPS)](./Net.java)
+    * [Socket 与 ServerSocket (TCP/IP)](./Socket.java)
+    * [DatagramSocket (UDP/IP)](https://www.cnblogs.com/czwbig/p/10018118.html)
+  * [Java NIO Channels](https://jenkov.com/tutorials/java-nio/channels.html)
+    * SocketChannel 与 ServerSocketChannel (TCP/IP)
+    * DatagramChannel (UDP/IP)
 * [Java 对象泛操作](./Object.java)
 * [队列](./Queue.java)
 * [正则表达式](./Regex.java)
