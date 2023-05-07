@@ -2059,6 +2059,28 @@ Reference: ByteByteGo
 
 
 
+<details>
+<summary>设计协同编辑系统</summary>
+
+例子：Google Doc  
+
+参考：
+* https://www.cnblogs.com/theseventhson/p/16632237.html
+* https://interview-science.org/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/%E5%88%86%E7%B1%BB%E6%80%BB%E7%BB%93/%E5%8D%8F%E5%90%8C%E7%BC%96%E8%BE%91%E7%B3%BB%E7%BB%9F
+
+http1.1 允许客户端不用等待上一次请求结果返回，就可以发出下一次请求（同步 syncronize 改成了异步 asyncronize），但服务器端必须按照接收到客户端请求的先后顺序依次回送响应结果；基于以上特性，websocket 协议问世了，最大的优势就是可以双工通信，做到数据实时更新，比如用浏览器炒股实时看盘时，用的就是 webscoket 协议。  
+文档编辑时，两类数据最重要：第一就是 metadata，也就是文档的元数据，诸如文档名称、文档作者、创建时间、存放目录、最近修改时间、文档大小、文档类型等；第二就是文档本身了。文档的 metadata 都是结构化的数据，用 mysql 存就行。文档本身则是用 File system，诸如 HDFS 之类的。  
+
+关于协同，同时读比较简单，但如果有多人同时编辑改写怎么办？
+* 一个办法是使用锁，这就涉及到一个颗粒度：是锁整个文档了？还是锁一行了？还是锁某个字？很明显，锁行的颗粒度是最合适的，如果是锁文档，一人编辑则其他人都在等则效率低，如果是锁字符，后台压力则过大，所以综合考虑，还是锁行。既然是锁行，文档应该在内存以双向链表数据结构存放才能便于锁行。![](./online-edit-system-design-deque.png)
+  * 每个 client 创建 UUID，UUID 本质就是索引，核心是把各个行合并成完成的文件。value 之间用的就是双向链表串联起来的，方便锁行和快速在链表的节点间删改链表。
+  * server 收到了某个 client 的更新通知，server 也要第一时间把这些更新转发到其他正在使用该文档 client，方便别人更新内容。既然某个 client 更新了文档，后台的 server 肯定也是要更新文档的，但是 client 做的所有修改，都会先被保存在 redis 服务器，然后有个 scheduled task，定时从 redis 取出所有的更新来合并处理，然后把所有更新合并后的结果存在 file server，最后写入 HDFS，这就极大减少了 file server 读写 disk 的压力（用异步的方式减轻下游的流量压力）。
+* 上述的方式基于锁。但是上锁则效率就会降低，也有不上锁、又能同时让多人协同编辑的方式 -- google docs 用了一个叫做 OT (Operational Transform) 的算法。![](./OT-Algorithm.png)
+
+</details>
+
+
+
 <br />
   
   
