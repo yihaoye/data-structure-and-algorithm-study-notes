@@ -6,7 +6,7 @@ import java.io.*;
 
 import org.json.*;
 
-public class Net { // 该类只展示了 GET 和 第三方库 JSON Parse 或简单的自定义 JSON Parse，POST 请下拉看另两个类
+public class HTTP { // 该类只展示了 GET 和 第三方库 JSON Parse 或简单的自定义 JSON Parse，POST 请下拉看另两个类
     public static String doGet(String endpoint) { // REST GET
         try {
             // https://www.youtube.com/watch?v=zZoboXqsCNw
@@ -76,7 +76,7 @@ import java.util.*;
 import javax.net.ssl.*;
 import java.io.*;
 
-public class Net {
+public class HTTP { // HTTP/HTTPS POST
     public static void main(String[] args) {
         try {
             // https://stackoverflow.com/questions/40107482/parsing-json-file-in-java-without-using-org-json
@@ -146,7 +146,7 @@ public class Net {
 
 import java.net.*;
 
-public class HttpUrlConnectionToInterface { // 通过JDK网络类Java.net.HttpURLConnection；
+public class HttpUrlConnectionToInterface { // 通过 JDK 网络类 Java.net.HttpURLConnection；
 
     /**
      * 以post或get方式调用对方接口方法，
@@ -192,7 +192,7 @@ public class HttpUrlConnectionToInterface { // 通过JDK网络类Java.net.HttpUR
             //构造一个字符流缓存
             br = new BufferedReader(new InputStreamReader(is));
             String str = "";
-            while ((str = br.readLine()) != null){
+            while ((str = br.readLine()) != null) {
                 result += str;
             }
             System.out.println(result);
@@ -200,17 +200,12 @@ public class HttpUrlConnectionToInterface { // 通过JDK网络类Java.net.HttpUR
             is.close();
             //断开连接，disconnect是在底层tcp socket链接空闲时才切断，如果正在被其他线程使用就不切断。
             conn.disconnect();
-
         } catch (Exception e) {
             e.printStackTrace();
-        }finally {
+        } finally {
             try {
-                if (out != null){
-                    out.close();
-                }
-                if (br != null){
-                    br.close();
-                }
+                if (out != null) out.close();
+                if (br != null) br.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
