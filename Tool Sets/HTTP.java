@@ -220,3 +220,47 @@ public class HttpUrlConnectionToInterface { // 通过 JDK 网络类 Java.net.Htt
         doPostOrGet("https://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=13026194071", "");
     }
 }
+
+
+
+
+
+import java.net.URI;
+import java.net.http.*;
+import java.net.http.HttpClient.Version;
+import java.time.Duration;
+import java.util.*;
+
+public class HTTP { // HTTP GET and POST
+    // 全局 HttpClient:
+    static HttpClient httpClient = HttpClient.newBuilder().build();
+
+    public static void main(String[] args) {
+        // ...
+    }
+
+    public static String doGet(String url) throws Exception {
+        HttpRequest request = HttpRequest.newBuilder(new URI(url))
+            .header("User-Agent", "Java HttpClient").header("Accept", "*/*") // 设置 Header:
+            .timeout(Duration.ofSeconds(5)) // 设置超时:
+            .version(Version.HTTP_2).build(); // 设置版本:
+        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        
+        // Map<String, List<String>> headers = response.headers().map(); // HTTP 允许重复的 Header，因此一个 Header 可对应多个 Value:
+        // for (String header : headers.keySet()) {
+        //     System.out.println(header + ": " + headers.get(header).get(0));
+        // }
+        return response.body();
+    }
+
+    public static String doPost(String url, String body) throws Exception {
+        HttpRequest request = HttpRequest.newBuilder(new URI(url))
+            .header("Accept", "*/*")
+            .header("Content-Type", "application/x-www-form-urlencoded")
+            .timeout(Duration.ofSeconds(5))
+            .version(Version.HTTP_2)
+            .POST(BodyPublishers.ofString(body, StandardCharsets.UTF_8)).build(); // 使用 POST 并设置 Body:
+        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        return response.body();
+    }
+}

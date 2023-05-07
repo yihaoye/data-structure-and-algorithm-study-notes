@@ -25,7 +25,7 @@ Tool Sets 是算法解题、编码过程中常用的一些经常复用的原子�
 * [数学相关操作与套路](./Math.java)
 * Java 网络操作
   * [Java Net](https://jenkov.com/tutorials/java-networking/index.html)
-    * [URL (HTTP/HTTPS)](./HTTP.java)
+    * [URL 与 HttpClient (HTTP/HTTPS)](./HTTP.java)
     * [Socket 与 ServerSocket (TCP/IP)](./TCP.java)
     * [DatagramSocket (UDP/IP)](./UDP.java)
   * [Java NIO Channels](https://jenkov.com/tutorials/java-nio/channels.html)
