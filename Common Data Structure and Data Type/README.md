@@ -59,7 +59,7 @@
       - [2–3 树 | 2-3 Tree]()
     - [线段树 | Segment Tree](./Data%20Structure%20Implementation/SegmentTree/README.md) (区间查询 O(logN + K)，更新 O(logN)，构建 O(N) - K is the number of reported segments)
   - [字典树 | Trie](./Data%20Structure%20Implementation/Trie/README.md)
-    - [后缀树 | Suffix Tree](https://www.cnblogs.com/gaochundong/p/suffix_tree.html)
+    - 后缀树 | Suffix Tree [Ref 1](https://www.cnblogs.com/gaochundong/p/suffix_tree.html)、[Ref 2](https://yanglei253.github.io/2020/07/26/dataStructure/dataStructure-tiretree/)
   - [并查集 | Disjoint-Set/Union-Find Forest](./../Common%20Algorithm%20and%20Theory/并查集与联合查找算法.md)
   - [LSM 树 | Log-Structured Merge-Tree](./Data%20Structure%20Implementation/LSMTree/README.md)
   - [默克尔树 | Merkle Tree](https://en.wikipedia.org/wiki/Merkle_tree)
