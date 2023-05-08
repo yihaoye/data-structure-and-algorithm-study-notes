@@ -1859,7 +1859,7 @@ OOD 还可以参考 [Hotel Management System](./../object%20oriented%20design/gr
 <details>
 <summary>设计日活统计系统（或月活等等去重统计）</summary>
 
-重点（也即难点）在于大数据的统计去重同时保证时空效率，同理意味着所有类似功能的系统均可以使用这一方法 - [HyperLogLog](./../../Common%20Algorithm%20and%20Theory/HyperLogLog.md)  
+重点（也即难点）在于大数据的统计去重同时保证时空效率，同理意味着所有类似功能的系统均可以使用这一方法 - [HyperLogLog](./../../Common%20Algorithm%20and%20Theory/HyperLogLog.md)，注意其与[布隆过滤器](../../Common%20Algorithm%20and%20Theory/布隆过滤器及其算法.md)的使用场景的类似与区别。  
 
 </details>
 
