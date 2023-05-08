@@ -378,6 +378,7 @@
 - [x] 36	Valid Sudoku		
 - [x] 37	Sudoku Solver	
 - [x] 1275  Find Winner on a Tic Tac Toe Game   
+- [x] 587   Erect the Fence 
    
 ## DFS & BFS
 - [x] 200	Number of Islands		
@@ -776,4 +777,5 @@
 - [x] 877   Stone Game  
 - [x] 1401  Circle and Rectangle Overlapping    
 - [x] 818   Race Car    
+- [x] 587   Erect the Fence 
   
