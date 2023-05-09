@@ -8,6 +8,49 @@ Math.abs(c);
 
 
 
+// 向量、几何
+// 以下在 LC Q587 得到应用
+/**
+ * 将两个点转换为一个向量，例如点 a(x1, y1), b(x2, y2) 则转化为向量 a ——> b = (x2-x1, y2-y1)
+ *
+ * @param b 向量终点
+ * @param a 向量起始点
+ * @return 返回向量 a ——> b
+ */
+public double[] convertToVector(double[] a, double[] b) { // 亦即向量相减
+    return new double[]{a[0] - b[0], a[1] - b[1]};
+}
+
+/**
+ * 求向量叉积，输入向量 a，向量 b，其叉积几何定义等于 axb = |a||b|sinθ，数学定义为 axb = (x1*y2 - y1*x2)
+ *
+ * @param a 输入向量 a
+ * @param b 输入向量 b
+ * @return 返回向量 axb 的叉积（axb = -bxa）
+ */
+public double cross(double[] a, double[] b) { // 叉乘
+    return a[0] * b[1] - a[1] * b[0];
+}
+
+/**
+ * 输入三个点，a、b、c，其中 a 作为起始点，b、c 分别为两个向量的终点，将 abc 三点转化为两个向量 ab、ac，
+ * 然后返回 ab 旋转到 ac 这条向量上的面积 s，对于面积 s
+ * 1、若 s < 0，表明 ab 到 ac 需顺时针旋转；
+ * 2、若 s > 0，表明 ab 到 ac 需逆时针旋转；
+ * 3、若 s = 0，表明 ab 和 ac 同处于一个水平线上。
+ * 可以使用右手定则自个判断一下（大拇指朝上为正，朝下为负，以大拇指为轴，四个手指垂直于起始向量 ab 然后往 ac 旋转）
+ *
+ * @param a 点 a
+ * @param b 点 b
+ * @param c 点 c
+ * @return 返回向量 ab 和向量 ac 的叉积
+ */
+public double getArea(double[] a, double[] b, double[] c) { // 向量 ab 转为 向量 ac 过程中扫过的面积
+    return cross(convertToVector(b, a), convertToVector(c, a));
+}
+
+
+
 // 手动相乘两个数 (每个数均以 int[] 形式表示)
 // Leetcode 43
 // https://leetcode.com/problems/multiply-strings/discuss/17605/Easiest-JAVA-Solution-with-Graph-Explanation
