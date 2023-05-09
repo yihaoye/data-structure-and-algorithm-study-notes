@@ -24,6 +24,7 @@
 * [其他算法实践、真题、面经笔记](./Other%20Practices/)
 * [计算机系统基础 | Computer System Layer & Basics](./Computer%20System%20Layer/) (包括一些 [CAS、并发相关的 Java 数据结构的用例与详解](./Computer%20System%20Layer/并发与并行(Java)/) 和 [SQL 数据库详解](./Computer%20System%20Layer/数据库)、[数据建模](./Leetcode%20Practices/system%20design/数据库数据建模分库分表.md#数据模型设计))
 * [编程语言特性 | Programming Languages Features](./Program%20Languages%20Features/)
+* [品质保证 | Quality Assurance](./Quality%20Assurance/README.md)
 * [基础知识、面试八股文 | Domain Knowledge](./面试八股文/README.md)
   * [计算机术语表 | Related Terms](./面试八股文/英文术语.md)
 * [标准认知能力测试 | Criteria Cognitive Aptitude Test](./智力测试/README.md)
