@@ -45,3 +45,59 @@ References:
     https://www.cnblogs.com/nedulee/p/12026342.html
 */
 
+
+// NIO SocketChannel
+import java.nio.channels.*;
+
+public class TcpClient {
+    public static void main(String[] args) throws IOException {
+        // https://jenkov.com/tutorials/java-nio/socketchannel.html
+        SocketChannel socketChannel = SocketChannel.open();
+        socketChannel.connect(new InetSocketAddress("http://xxx.com", 80));
+        ByteBuffer buf = ByteBuffer.allocate(48);
+        // read
+        int bytesRead = socketChannel.read(buf);
+        // write
+        buf.clear();
+        String newData = "New Data";
+        buf.put(newData.getBytes());
+        buf.flip();
+
+        socketChannel.close();
+
+        /* Non-blocking Mode */
+        // socketChannel.configureBlocking(false);
+        // socketChannel.connect(new InetSocketAddress("http://xxx.com", 80));
+
+        // while(! socketChannel.finishConnect() ){
+        //     // wait, or do something else...    
+        // }
+    }
+}
+
+
+// NIO ServerSocketChannel
+public class TcpServer {
+    public static void main(String[] args) throws IOException {
+        // https://jenkov.com/tutorials/java-nio/server-socket-channel.html
+        ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
+        serverSocketChannel.socket().bind(new InetSocketAddress(9999));
+
+        while (true) {
+            SocketChannel socketChannel = serverSocketChannel.accept();
+            // do something with socketChannel...
+        }
+
+        /* Non-blocking Mode */
+        // ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
+        // serverSocketChannel.socket().bind(new InetSocketAddress(9999));
+        // serverSocketChannel.configureBlocking(false);
+
+        // while (true) {
+        //     SocketChannel socketChannel = serverSocketChannel.accept();
+        //     if (socketChannel != null) {
+        //         // do something with socketChannel...
+        //     }
+        // }
+    }
+}
