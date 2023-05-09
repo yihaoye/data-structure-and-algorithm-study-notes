@@ -7,7 +7,7 @@
 * [集合](../Tool%20Sets/Collections.java)
 * [异常](../HackerRank%20Practises/java/easy/Java%20Exception%20Handling.java)
 * [并发](../Computer%20System%20Layer/并发与并行(Java)/)
-* [日期与时间](../HackerRank%20Practises/java/easy/Java%20Date%20and%20Time.java)
+* 日期与时间 [Example 1](../HackerRank%20Practises/java/easy/Java%20Date%20and%20Time.java)、[Example 2](../Tool%20Sets/Time.java)
 * [IO](../Tool%20Sets/IO(Serializable).java)
 * [反射](../HackerRank%20Practises/java/easy/Java%20Reflection%20-%20Attributes.java)
 * [泛型](../HackerRank%20Practises/java/easy/Java%20Generics.java)
