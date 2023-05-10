@@ -89,18 +89,19 @@ https://github.com/EndlessCheng/codeforces-go/blob/master/copypasta/segment_tree
 
 ToDo...  
 
-## zkw线段树
+## zkw 线段树
 ToDo...  
   
 ## 例题
-[Leetcode 307](./../../../Leetcode%20Practices/algorithms/medium/307%20Range%20Sum%20Query%20-%20Mutable.java)  
-[Leetcode 2286](./../../../Leetcode%20Practices/algorithms/hard/2286%20Booking%20Concert%20Tickets%20in%20Groups.java)  
-[Leetcode 731](./../../../Leetcode%20Practices/algorithms/medium/731%20My%20Calendar%20II.java)  
-[Leetcode 732](./../../../Leetcode%20Practices/algorithms/hard/732%20My%20Calendar%20III.java)  
-[Leetcode 933](./../../../Leetcode%20Practices/algorithms/easy/933%20Number%20of%20Recent%20Calls.java)  
-[Leetcode 715](./../../../Leetcode%20Practices/algorithms/hard/715%20Range%20Module.java)  
-[Leetcode 699](./../../../Leetcode%20Practices/algorithms/hard/699%20Falling%20Squares.java)  
-[Leetcode 327](./../../../Leetcode%20Practices/algorithms/hard/327%20Count%20of%20Range%20Sum.java)  
+* [Leetcode 307](./../../../Leetcode%20Practices/algorithms/medium/307%20Range%20Sum%20Query%20-%20Mutable.java)
+* [Leetcode 2286](./../../../Leetcode%20Practices/algorithms/hard/2286%20Booking%20Concert%20Tickets%20in%20Groups.java)（线段树 + 二分搜索）
+* [Leetcode 731](./../../../Leetcode%20Practices/algorithms/medium/731%20My%20Calendar%20II.java)
+* [Leetcode 732](./../../../Leetcode%20Practices/algorithms/hard/732%20My%20Calendar%20III.java)
+* [Leetcode 933](./../../../Leetcode%20Practices/algorithms/easy/933%20Number%20of%20Recent%20Calls.java)
+* [Leetcode 715](./../../../Leetcode%20Practices/algorithms/hard/715%20Range%20Module.java)
+* [Leetcode 699](./../../../Leetcode%20Practices/algorithms/hard/699%20Falling%20Squares.java)
+* [Leetcode 327](./../../../Leetcode%20Practices/algorithms/hard/327%20Count%20of%20Range%20Sum.java)
+* [Leetcode 230 follow up](./../../../Leetcode%20Practices/algorithms/medium/230%20Kth%20Smallest%20Element%20in%20a%20BST.java)（线段树 + 二分搜索）
   
 ## 参考
 https://www.youtube.com/watch?v=rYBtViWXYeI  
