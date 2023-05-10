@@ -44,7 +44,19 @@ Keep at least 3 project examples/stories which better to be large scale.
   * 3 Main Product interest Amazon: AWS、Digital Product、Retailer
 * Stripe
   * [Search and Quick Use, Trace and Real Problem Solve Skill](https://medium.com/@SantalTech/no-leetcode-the-stripe-interview-experience-cf1b29e6f55d)  
-  
+
+## ChatGPT 列出的 team leader 最重要的 leadership skills
+* Technical expertise
+* Communication
+* Empathy and emotional intelligence
+* Problem-solving
+* Decision-making
+* Delegation
+* Collaboration and teamwork
+* Adaptability and flexibility
+* Coaching and mentorship and continuous self-improvement
+* Vision and goal setting
+
 # 思维工具
 * [六西格玛](https://zh.wikipedia.org/zh-hans/%E5%85%AD%E6%A8%99%E6%BA%96%E5%B7%AE)
 * [Untools: Tools for better thinking](./untools.md)
