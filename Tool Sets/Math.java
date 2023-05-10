@@ -51,8 +51,13 @@ public double getArea(double[] a, double[] b, double[] c) { // 向量 ab 转为 
 
 
 
+// 斜率公式
+// Leetcode Q149
+
+
+
 // 手动相乘两个数 (每个数均以 int[] 形式表示)
-// Leetcode 43
+// Leetcode Q43
 // https://leetcode.com/problems/multiply-strings/discuss/17605/Easiest-JAVA-Solution-with-Graph-Explanation
 public int[] multiply(int[] num1, int[] num2) { // e.g.   multiply({4, 5}, {1, 2, 3})
     int m = num1.length, n = num2.length;
