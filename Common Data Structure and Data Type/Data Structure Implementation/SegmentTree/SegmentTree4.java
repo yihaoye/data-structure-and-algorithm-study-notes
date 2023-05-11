@@ -1,4 +1,6 @@
-// 参考：https://leetcode.cn/problems/my-calendar-iii/solution/wo-de-ri-cheng-an-pai-biao-by-jiang-hui-yac60/
+// 更多线段树详细内容可查看 ./README.md
+
+// 以下参考：https://leetcode.cn/problems/my-calendar-iii/solution/wo-de-ri-cheng-an-pai-biao-by-jiang-hui-yac60/
 
 
 
