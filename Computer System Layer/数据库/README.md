@@ -1,9 +1,15 @@
 # 数据库基础
 
-* [关系数据库物理原理、SQL 及其优化](./SQL/)
-* [InnoDB 原理](./InnoDB/)
-* [重要：数据库相关系统设计、分库分表](../../Leetcode%20Practices/system%20design/数据库数据建模分库分表.md)
-* [Redis 基本功](./Redis/)
+* SQL
+  * [关系数据库物理原理、SQL 及其优化](./SQL/README.md)
+  * [InnoDB 原理](./InnoDB/README.md)
+  * [重要：数据库相关系统设计、分库分表](../../Leetcode%20Practices/system%20design/数据库数据建模分库分表.md)
+* [NoSQL](./../../Leetcode%20Practices/system%20design/NoSQL.md)
+  * [DynamoDB](./Dynamo/README.md)
+  * [Redis 基本功](./Redis/README.md)
+* [SQL vs NoSQL](./../../Leetcode%20Practices/system%20design/SQL%20vs%20NoSQL.md)
+* [数据模型与查询语言](./../../Leetcode%20Practices/system%20design/README.md#数据模型与查询语言)
+* 向量数据库
 
 ## 数据库相关的数据结构
 ![](./Data%20Structures%20that%20Power%20Database.PNG)  
