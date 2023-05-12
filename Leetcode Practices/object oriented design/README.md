@@ -2,6 +2,7 @@
 ## 针对面试
 * [Object Oriented Design 实战步骤](./object%20oriented%20design%20practical%20steps/)
 * [Grok Object Oriented Design Tutorial](./grok%20object%20oriented%20design%20interview)（即 [educative.io](https://www.educative.io/courses/grokking-the-object-oriented-design-interview) OOD 课程）
+* [设计模式二三事](https://tech.meituan.com/2022/03/10/interesting-talk-about-design-patterns.html)
 * [High Level Design vs Low Level Design | HLD vs LLD | System Design Concepts](https://www.youtube.com/watch?v=H703ErIrby8)
 * [面向对象设计 OOD (一) -- 基础知识](https://www.youtube.com/watch?v=hI0sdGc31vI)
 * [设计模式](./design%20pattern/)
