@@ -59,7 +59,7 @@
       - [漏桶算法, 令牌桶算法 | Leaky Bucket, Token Bucket]()
       - [Loosy Counting 算法]()
       - [OT 算法 | Operational Transformation]()
-      - [四叉树算法, R 树算法 | Quadtree, Rtree]()
+      - [四叉树算法, R 树算法 | QuadTree, RTree](./QuadTree-RTree-算法.md)
       - [光线投射算法 | Ray Casting]()
       - [倒排索引算法 | Reverse Index]()
       - [Rsync 算法]()
