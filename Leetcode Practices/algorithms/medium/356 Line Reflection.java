@@ -56,17 +56,14 @@ class Solution {
         for (int[] point : points) {
             int x = point[0]; int y = point[1];
             if (!records.containsKey(x) || !records.get(x).contains(y)) continue; // previously processed
-            int oppositeX = yAxisMulTwo - x;
+            records.get(x).remove(y);
+            if (records.get(x).isEmpty()) records.remove(x);
 
-            if (x == oppositeX) {
-                records.get(x).remove(y);
-                if (records.get(x).isEmpty()) records.remove(x);
-            } else if (records.getOrDefault(oppositeX, new HashSet<>()).contains(y)) {
-                records.get(x).remove(y);
-                if (records.get(x).isEmpty()) records.remove(x);
+            int oppositeX = yAxisMulTwo - x;
+            if (records.getOrDefault(oppositeX, new HashSet<>()).contains(y)) {
                 records.get(oppositeX).remove(y);
                 if (records.get(oppositeX).isEmpty()) records.remove(oppositeX);
-            } else {
+            } else if (x != oppositeX) {
                 return false;
             }
         }
