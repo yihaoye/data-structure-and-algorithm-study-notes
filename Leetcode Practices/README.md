@@ -455,7 +455,7 @@
 ### 图形学			
 - [x] 149	Max Points on a Line		
 - [ ] 335	Self Crossing		                                    很少考
-- [ ] 356	Line Reflection		                                    很少考
+- [x] 356	Line Reflection		                                    很少考
 - [x] 391	Perfect Rectangle		                                很少考
 - [ ] 223	Rectangle Area		                                    很少考  
 ### 二分图  
