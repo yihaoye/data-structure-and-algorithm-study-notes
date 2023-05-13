@@ -2,7 +2,7 @@
 在面试的 Take Home Project 或 OOD Exam 环节里经常会或多或少地考核代码质量以及测试相关，所以也需要特别注意。  
 
 ## 代码质量
-《代码整洁之道》  
+### <代码整洁之道>
 * 函数
   * 短小
   * 只做一件事
@@ -18,8 +18,11 @@
 * 系统
   * 将系统的构造与使用分开
 
+### Google Java Style Guide
+* [资料](https://google.github.io/styleguide/javaguide.html)
+
 ## 测试
-《代码整洁之道》  
+### <代码整洁之道>
 单元测试：
 * 可读性（精简、足具表达力、避免重复 -- 比如如生产代码一样合理使用函数）
 * 每个测试一句断言
@@ -32,13 +35,13 @@
   * Timely - 测试应及时编写（在生产代码之前编写）
 * 测试覆盖度
 
-《软件测试》  
+### <软件测试>
 * 测试基础
   * 黑盒测试和白盒测试
   * 静态测试和动态测试
 * 测试文档
 
-《软件测试的艺术》  
+### <软件测试的艺术>
 * 功能测试
 * 系统测试
   * 性能测试（除逻辑正确性测试之外还需保证性能，比如压力测试）
@@ -56,3 +59,10 @@
 非增量测试的优势则是如下：
 * 非增量测试所占用的机器时间显得少一些。
 * 模块测试阶段开始时，如果使用的是非增量测试，就会有更多的机会进行并行操作 (也就是说，所有的模块可以同时测试)。
+
+### Modern Best Practices for Testing in Java
+* [资料](https://phauer.com/2019/modern-best-practices-testing-java/)
+
+### Best Practices for Unit Testing in Java
+* [资料 1](https://www.developer.com/java/best-practices-unit-testing-java/)
+* [资料 2](https://www.baeldung.com/java-unit-testing-best-practices)

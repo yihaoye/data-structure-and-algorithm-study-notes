@@ -2,8 +2,9 @@
 四叉树是一种树状数据结构，在每一个节点上会有四个子区块。四叉树常应用于二维空间资料的分析与分类。它将资料区分成为四个象限。资料范围可以是方形或矩形或其他任意形状。  
 四叉树及其算法在图像压缩处理、二维地图近邻分析、碰撞监测等方面都有广泛应用（[参考资料](https://www.youtube.com/watch?v=lAfOLCk9S-4)）。  
 
-[Leetcode 二维矩阵构造四叉树](./../Leetcode%20Practices/algorithms/medium/427%20Construct%20Quad%20Tree.java)  
-[Leetcode 两个四叉树的或运算](./../Leetcode%20Practices/algorithms/medium/558%20Logical%20OR%20of%20Two%20Binary%20Grids%20Represented%20as%20Quad-Trees.java)
+代码实例：  
+* [Leetcode 二维矩阵构造四叉树](./../Leetcode%20Practices/algorithms/medium/427%20Construct%20Quad%20Tree.java)
+* [Leetcode 两个四叉树的或运算](./../Leetcode%20Practices/algorithms/medium/558%20Logical%20OR%20of%20Two%20Binary%20Grids%20Represented%20as%20Quad-Trees.java)
 
 ## OcTree
 OcTree（八叉树）用于三维空间。  
