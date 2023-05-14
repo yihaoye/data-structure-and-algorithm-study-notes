@@ -20,6 +20,9 @@
 
 ### Google Java Style Guide
 * [资料](https://google.github.io/styleguide/javaguide.html)
+  * [翻译版](https://github.com/fantasticmao/google-java-style-guide-zh_cn)
+
+### [Javadoc](https://www.cnblogs.com/linj7/p/14339381.html)
 
 ## 测试
 ### <代码整洁之道>
