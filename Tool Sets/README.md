@@ -28,7 +28,7 @@ Tool Sets 是 Online / Take Home assessment、算法解题、编码过程中常�
   * Java Net lib [Ref 1](https://jenkov.com/tutorials/java-networking/index.html)、[Ref 2](https://www.cnblogs.com/czwbig/p/10018118.html)
     * [HTTP/HTTPS (URL 与 HttpClient)](./HTTP.java)
     * [TCP/IP (Socket 与 ServerSocket)](./TCP.java)
-    * UDP/IP (DatagramSocket)
+    * UDP/IP (DatagramSocket + DatagramPacket)
   * [Java NIO lib Channels](https://jenkov.com/tutorials/java-nio/channels.html)
     * [TCP/IP (SocketChannel 与 ServerSocketChannel)](./TCP.java)
     * UDP/IP (DatagramChannel)
