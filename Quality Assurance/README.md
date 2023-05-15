@@ -23,6 +23,15 @@
   * [翻译版](https://github.com/fantasticmao/google-java-style-guide-zh_cn)
 
 ### [Javadoc](https://www.cnblogs.com/linj7/p/14339381.html)
+Javadoc 是一款能根据源代码中的文档注释来产生 HTML 格式的 API 文档的工具。  
+只要在 java 源码中按一定的格式写注释，就可以利用 javadoc 这款工具自动生成配套的 API 文档。  
+
+* Javadoc 注释分类 - Javadoc 注释根据写法和位置的不同，主要分为以下：
+  * 写在类/方法上面的 Javadoc 注释
+  * 写在字段上面的 Javadoc
+  * 写在包上面的 Javadoc
+* 文档标记 (block tags) - 常用的标签。文档标记常放于包/类/方法的 Javadoc 注释的第三段
+  * `@author, @since, @version, @code, @return, @param, @value, @throws @exception, @link @linkplain @see, @deprecated, <pre>`, etc
 
 ## 测试
 ### <代码整洁之道>
