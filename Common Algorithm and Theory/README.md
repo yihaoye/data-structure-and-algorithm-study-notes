@@ -62,7 +62,7 @@
       - [四叉树算法, R 树算法 | QuadTree, RTree](./QuadTree-RTree-算法.md)
       - [光线投射算法 | Ray Casting]()
       - [倒排索引算法 | Reverse Index]()
-      - [Rsync 算法]()
+      - [Rsync 算法](https://zh.wikipedia.org/zh-cn/Rsync#%E6%BC%94%E7%AE%97%E6%B3%95)
       - [共识机制/算法 (分布式选举问题) | Consensus Algorithm]()
         - 崩溃容错协议 | CFT
           - Paxos、Raft、ZAB、[Quorum](./Quorum算法.md)
