@@ -5,3 +5,4 @@ Software/Hardware acts as intermediary for requests from clients seeking resourc
     * Trаnspаrent Proxy - able to cаche the websіtes.
   * Reverse Proxy - retrieves resources from one or more servers then returned to client as originated from the proxy server itself
 
+![](./forward-proxy-vs-reverse-proxy.jpeg)  
