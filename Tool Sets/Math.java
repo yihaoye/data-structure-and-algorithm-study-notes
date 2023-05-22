@@ -155,6 +155,12 @@ public long lcm(long[] input) {
 
 
 
+// 模拟分数及其计算
+// 需要记录分子分母以及动态计算（需最小公倍数）、合并（需最大公约数）
+// Leetcode 592
+
+
+
 // Java 高效 x^n - k （并且对 10^9+7 取模），Python 等语言有内置函数无需自实现，参考自 https://leetcode.com/problems/count-collisions-of-monkeys-on-a-polygon/solutions/3111664/java-c-python-should-be-pow-2-n-4/?orderBy=most_votes
 // Time O(logn), Space O(1)
 public int fast_power(int x, int n, int k) {
