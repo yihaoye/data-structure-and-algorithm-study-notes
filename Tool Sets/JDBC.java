@@ -51,8 +51,7 @@ public class Main {
                     "DECLARE @id INT; " +
                     "SELECT @id := id FROM goods WHERE status = ? LIMIT 1 FOR UPDATE; " +
                     "UPDATE goods SET status = ? WHERE id = @id; " +
-                    "SELECT @id AS updated_id; " +
-                    "COMMIT;";
+                    "SELECT @id AS updated_id;";
 
             try (PreparedStatement stmt = conn.prepareStatement(query)) {
                 stmt.setString(1, "available");
@@ -68,6 +67,39 @@ public class Main {
                 conn.commit();
 
                 System.out.println("Updated ID: " + updatedID);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+
+
+// more JDBC
+import java.sql.*;
+
+public class Main {
+    public static void main(String[] args) {
+        String url = "jdbc:mysql://hostname:port/database";
+        String user = "user";
+        String password = "password";
+
+        try (Connection conn = DriverManager.getConnection(url, user, password)) {
+            String query = "SELECT id, name, quantity FROM products";
+
+            try (Statement stmt = conn.createStatement();
+                 ResultSet rs = stmt.executeQuery(query)) {
+
+                while (rs.next()) {
+                    int id = rs.getInt("id");
+                    String name = rs.getString("name");
+                    int quantity = rs.getInt("quantity");
+
+                    System.out.println("Product ID: " + id);
+                    System.out.println("Product Name: " + name);
+                    System.out.println("Product Quantity: " + quantity);
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
