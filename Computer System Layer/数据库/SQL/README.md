@@ -1014,6 +1014,41 @@ https://shardingsphere.apache.org/index_zh.html
 * 采用 **PreparedStatement**，就会将 sql 语句："select id, no from user where id=?" `预先编译好，也就是 SQL 引擎会预先进行语法分析，产生语法树，生成执行计划`，也就是说，`后面输入的参数，无论输入的是什么，都不会影响该 sql 语句的 语法结构了`，因为语法分析已经完成了，而语法分析主要是分析 sql 命令，比如 select, from, where, and, or, order by 等等。所以即使后面输入了这些 sql 命令，也不会被当成 sql 命令来执行了，因为这些 sql 命令的执行，必须先的通过语法分析，生成执行计划，既然语法分析已经完成，已经预编译过了，那么后面输入的参数，是绝对不可能作为 sql 命令来执行的，只会被当做字符串字面值参数。所以 sql 语句预编译可以防御 sql 注入。  
   
   
+## 插入操作
+```sql
+INSERT INTO table_name (column1, column2, column3, ...)
+VALUES (value1, value2, value3, ...);
+```  
+批量插入：
+```sql
+INSERT INTO tbl_name (a,b,c) VALUES(1,2,3),(4,5,6),(7,8,9);
+```  
+upsert 操作：
+```sql
+INSERT IGNORE INTO table_name (column_names)  
+VALUES ( value_list), ( value_list) .....;
+```  
+
+### INSERT INTO SELECT
+The INSERT INTO SELECT statement copies data from one table and inserts it into another table.  
+The INSERT INTO SELECT statement requires that the data types in source and target tables matches.  
+Note: The existing records in the target table are unaffected.  
+
+Copy all columns from one table to another table:
+```sql
+INSERT INTO table2
+SELECT * FROM table1
+WHERE condition;
+```
+Copy only some columns from one table into another table:
+```sql
+INSERT INTO table2 (column1, column2, column3, ...)
+SELECT column1, column2, column3, ...
+FROM table1
+WHERE condition;
+```
+
+
 ## 删除操作
 ### DROP、DELETE 与 TRUNCATE 的区别
 三种都可以表示删除，其中的细微区别之处如下：  
@@ -1045,6 +1080,35 @@ ToDo...
 SELECT column_lists FROM table_name WHERE field_name REGEXP 'pattern';
 ```  
 ToDo...  
+
+
+## Stored Procedure
+存储过程（Stored Procedure）是一种在数据库中存储复杂程序，以便外部程序调用的一种数据库对象。  
+存储过程是为了完成特定功能的 SQL 语句集，经编译创建并保存在数据库中，用户可通过指定存储过程的名字并给定参数(需要时)来调用执行。  
+存储过程思想上很简单，就是数据库 SQL 语言层面的代码封装与重用。  
+
+优点  
+* 存储过程可封装，并隐藏复杂的商业逻辑。
+* 存储过程可以回传值，并可以接受参数。
+* 存储过程无法使用 SELECT 指令来运行，因为它是子程序，与查看表，数据表或用户定义函数不同。
+* 存储过程可以用在数据检验，强制实行商业逻辑等。
+
+缺点  
+* 存储过程，往往定制化于特定的数据库上，因为支持的编程语言不同。当切换到其他厂商的数据库系统时，需要重写原有的存储过程。
+* 存储过程的性能调校与撰写，受限于各种数据库系统。
+
+### Stored Procedure Syntax
+```sql
+CREATE PROCEDURE procedure_name
+AS
+sql_statement
+GO;
+```  
+
+### Execute a Stored Procedure
+```sql
+EXEC procedure_name;
+```
 
 
 ## 其他 (Misc)
