@@ -686,6 +686,7 @@ Unlock tables;
 * [SELECT FOR UPDATE 3](https://stackoverflow.com/a/16425603/6481829)
 * [JDBC with FOR UPDATE](https://blog.csdn.net/weixin_47514459/article/details/121911043)
 * [Difference between LOCK IN SHARE MODE and FOR UPDATE](https://www.youtube.com/watch?v=d6LsfSqj8U0)
+* [SELECT FOR UPDATE 使用方法](https://www.cnblogs.com/jpfss/p/9225434.html)
 
 ChatGPT 解答如果服务器在释放数据库中记录上的 SELECT FOR UPDATE 锁之前崩溃：  
 > 如果一个服务器在释放数据库中记录上的 SELECT FOR UPDATE 锁之前崩溃，那么该锁将由失败的服务器持有，并且直到数据库检测到该失败并终止与锁定事务相关的连接后才会被释放。  
@@ -719,7 +720,11 @@ InnoDB 的加锁方法
 **select for update**  
 在执行这个 select 查询语句的时候，会将对应的索引访问条目加上排他锁（X 锁），也就是说这个语句对应的锁就相当于 update 带来的效果；  
 使用场景：为了让确保自己查找到的数据一定是最新数据，并且查找到后的数据值允许自己来修改，此时就需要用到 select for update 语句；  
-性能分析：select for update 语句相当于一个 update 语句。在业务繁忙的情况下，如果事务没有及时地 commit 或者 rollback 可能会造成事务长时间的等待，从而影响数据库的并发使用效率。
+性能分析：select for update 语句相当于一个 update 语句。在业务繁忙的情况下，如果事务没有及时地 commit 或者 rollback 可能会造成事务长时间的等待，从而影响数据库的并发使用效率。  
+* select * from t for update 会等待行锁释放之后，返回查询结果。
+* select * from t for update nowait 不等待行锁释放，提示锁冲突，不返回结果 
+* select * from t for update wait 5 等待 5 秒，若行锁仍未释放，则提示锁冲突，不返回结果 
+* select * from t for update skip locked 查询返回查询结果，但忽略有行锁的记录
 
 **select lock in share mode**  
 in share mode 子句的作用就是将查找的数据加上一个 share 锁，这个就是表示其他的事务只能对这些数据进行简单的 select 操作，而不能进行 DML 操作。  
@@ -733,6 +738,13 @@ begin;
 select * from goods where id = 1 for update;
 update goods set stock = stock - 1 where id = 1;
 commit;
+```  
+```sql
+/* 使用行悲观锁并在更新后返回被更新的行的 id，by chatgpt */
+BEGIN;
+SELECT id FROM goods WHERE status = 'available' LIMIT 1 FOR UPDATE;
+UPDATE goods SET status = 'pending' WHERE status = 'available' LIMIT 1;
+COMMIT RETURNING id;
 ```  
 乐观锁方案：每次获取商品时，不对该商品加锁。在更新数据的时候需要比较程序中的库存量与数据库中的库存量是否相等，如果相等则进行更新，反之程序重新获取库存量，再次进行比较，直到两个库存量的数值相等才进行数据更新。乐观锁适合读取频繁的场景。  
 ```sql
