@@ -742,10 +742,14 @@ commit;
 ```sql
 /* 使用行悲观锁并在更新后返回被更新的行的 id，by chatgpt */
 BEGIN;
-SELECT id FROM goods WHERE status = 'available' LIMIT 1 FOR UPDATE;
-UPDATE goods SET status = 'pending' WHERE status = 'available' LIMIT 1;
-COMMIT RETURNING id;
+DECLARE @id INT;
+SELECT @id = id FROM goods WHERE status = 'available' LIMIT 1 FOR UPDATE;
+UPDATE goods SET status = 'pending' WHERE id = @id;
+SELECT @id AS updated_id;
+COMMIT;
 ```  
+上面这段 SQL 的 [Java 代码](./../../../Tool%20Sets/JDBC.java)。  
+
 乐观锁方案：每次获取商品时，不对该商品加锁。在更新数据的时候需要比较程序中的库存量与数据库中的库存量是否相等，如果相等则进行更新，反之程序重新获取库存量，再次进行比较，直到两个库存量的数值相等才进行数据更新。乐观锁适合读取频繁的场景。  
 ```sql
 /* 不加锁获取 id=1 的商品对象 */
