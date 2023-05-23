@@ -47,31 +47,20 @@ public class Main {
         try (Connection conn = DriverManager.getConnection(url, user, password)) {
             conn.setAutoCommit(false);
 
-            String beginQuery = "BEGIN";
-            String selectQuery = "SELECT id FROM goods WHERE status = ? LIMIT 1 FOR UPDATE";
-            String updateQuery = "UPDATE goods SET status = 'pending' WHERE id = ?";
-            String selectUpdatedIdQuery = "SELECT ? AS updated_id";
+            String query = "BEGIN; " +
+                    "DECLARE @id INT; " +
+                    "SELECT @id := id FROM goods WHERE status = ? LIMIT 1 FOR UPDATE; " +
+                    "UPDATE goods SET status = ? WHERE id = @id; " +
+                    "SELECT @id AS updated_id; " +
+                    "COMMIT;";
 
-            try (Statement beginStmt = conn.createStatement();
-                 PreparedStatement selectStmt = conn.prepareStatement(selectQuery);
-                 PreparedStatement updateStmt = conn.prepareStatement(updateQuery);
-                 PreparedStatement selectUpdatedIdStmt = conn.prepareStatement(selectUpdatedIdQuery)) {
+            try (PreparedStatement stmt = conn.prepareStatement(query)) {
+                stmt.setString(1, "available");
+                stmt.setString(2, "pending");
 
-                beginStmt.execute(beginQuery);
-
-                selectStmt.setString(1, "available");
-                ResultSet rs = selectStmt.executeQuery();
+                ResultSet rs = stmt.executeQuery();
 
                 int updatedID = -1;
-                if (rs.next()) {
-                    updatedID = rs.getInt(1);
-                }
-
-                updateStmt.setInt(1, updatedID);
-                updateStmt.executeUpdate();
-
-                selectUpdatedIdStmt.setInt(1, updatedID);
-                rs = selectUpdatedIdStmt.executeQuery();
                 if (rs.next()) {
                     updatedID = rs.getInt("updated_id");
                 }
