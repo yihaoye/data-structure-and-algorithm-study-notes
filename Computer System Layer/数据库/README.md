@@ -9,6 +9,7 @@
   * [Redis 基本功](./Redis/README.md)
 * [SQL vs NoSQL](./../../Leetcode%20Practices/system%20design/SQL%20vs%20NoSQL.md)
 * [数据模型与查询语言](./../../Leetcode%20Practices/system%20design/README.md#数据模型与查询语言)
+* [数据库设计模式](./数据库设计模式.md)
 * 向量数据库
 
 ## 数据库相关的数据结构
@@ -32,6 +33,8 @@
 
 ## 数据库应用相关
 * [Apache Doris 在美团外卖数仓中的应用实践](https://tech.meituan.com/2020/04/09/doris-in-meituan-waimai.html)
-* 设计数据库架构（谷歌）
+* 设计数据库架构
   * [关于架构](https://cloud.google.com/spanner/docs/schema-and-data-model)
   * [架构设计最佳做法](https://cloud.google.com/spanner/docs/schema-design)
+  * [数据库体系结构设计](https://learn.microsoft.com/zh-cn/azure/architecture/data-guide/databases-architecture-design)
+* [分形树](https://wanghenshui.github.io/2017/01/05/ft-index.html)
