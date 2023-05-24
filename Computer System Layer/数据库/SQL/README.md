@@ -479,8 +479,9 @@ DBMS 采用锁机制来实现事务的隔离性。当多个事务同时更新数
   
   
 ### 保证原子性
+数据库事务句型如下：
 ```sql
-begin; -- 开始一个事务
+begin; -- 开始一个事务（start transaction 和 begin 两者的作用一模一样，只是在 begin 可能成为关键字的时候，使用 start transaction 可以 避免这种情况）
 update table set A = A - 1亿; -- 伪 sql，仅作示意
 update table set B = B + 1亿;
 -- 其他读写操作
@@ -730,6 +731,7 @@ InnoDB 的加锁方法
 in share mode 子句的作用就是将查找的数据加上一个 share 锁，这个就是表示其他的事务只能对这些数据进行简单的 select 操作，而不能进行 DML 操作。  
 使用场景：为了确保自己查询的数据不会被其他事务正在修改，也就是确保自己查询到的数据是最新的数据，并且不允许其他事务来修改数据。与 select for update 不同的是，本事务在查找完之后不一定能去更新数据，因为有可能其他事务也对同数据集使用了 in share mode 的方式加上了 S 锁；  
 性能分析：select lock in share mode 语句是一个给查找的数据上一个共享锁（S 锁）的功能，它允许其他的事务也对该数据上 S 锁，但是不能够允许对该数据进行修改。如果不及时的 commit 或者 rollback 也可能会造成大量的事务等待。  
+MySQL 8.0 引入了 `SELECT ... FOR SHARE`，与原来的 `SELECT ... LOCK IN SHARE MODE` 是同义的。  
   
 **乐观悲观两种锁方案**  
 悲观锁方案：每次获取商品时，对该商品加排他锁。也就是在用户A获取获取 id=1 的商品信息时对该行记录加锁，期间其他用户阻塞等待访问该记录。悲观锁适合写入频繁的场景。  
