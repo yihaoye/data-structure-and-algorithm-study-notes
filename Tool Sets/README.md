@@ -5,6 +5,7 @@ Tool Sets 是 Online / Take Home assessment、算法解题、编码过程中常�
 这里的模版集可用作算法解题中的工具集查询手册。  
   
 以下是模版：  
+* [数学 相关操作与套路](./Math.java)
 * [数组与矩阵](./Arrays(Matrix).java)
 * [Java 大数操作](./BigNumber.java)
 * [位操作](./Bitwise.java)
@@ -24,7 +25,6 @@ Tool Sets 是 Online / Take Home assessment、算法解题、编码过程中常�
 * [Iterator](./Iterator.java)
 * [JSON 解析器](./JSONParser.java)
 * [链表节点](./LinkedListNode.java)
-* [数学相关操作与套路](./Math.java)
 * Java 网络操作
   * Java Net lib [Ref 1](https://jenkov.com/tutorials/java-networking/index.html)、[Ref 2](https://www.cnblogs.com/czwbig/p/10018118.html)
     * [HTTP/HTTPS (URL 与 HttpClient)](./HTTP.java)
