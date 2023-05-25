@@ -37,4 +37,8 @@
   * [关于架构](https://cloud.google.com/spanner/docs/schema-and-data-model)
   * [架构设计最佳做法](https://cloud.google.com/spanner/docs/schema-design)
   * [数据库体系结构设计](https://learn.microsoft.com/zh-cn/azure/architecture/data-guide/databases-architecture-design)
-* [分形树](https://wanghenshui.github.io/2017/01/05/ft-index.html)
+
+## 其他
+### 分形树
+简介：https://wanghenshui.github.io/2017/01/05/ft-index.html  
+* [Bash 画分形树](./../../HackerRank%20Practises/bash/hard/functions-and-fractals-recursive-trees.sh)

@@ -67,6 +67,7 @@
   - [四叉树 | Quad Tree](./../Common%20Algorithm%20and%20Theory/QuadTree-RTree-算法.md)
     - [八叉树 | OcTree](./../Common%20Algorithm%20and%20Theory/QuadTree-RTree-算法.md)
   - [R 树 | R Tree](./../Common%20Algorithm%20and%20Theory/QuadTree-RTree-算法.md)
+  - [分形树 | Fractal Tree](./../Computer%20System%20Layer/数据库/README.md#分形树)
 - [图 | Graph](./Data%20Structure%20Implementation/Graph/README.md)
   - [有向图 | Directed Graph]()
   - [无向图 | Undirected Graph]()
