@@ -63,7 +63,7 @@
 * [Linux 使用的进程间通信方式](https://juejin.cn/post/7069591460730896414#heading-9)
 * [Linux 有哪些系统日志文件](https://juejin.cn/post/7069591460730896414#heading-10)
 * [什么是 root 帐户](https://juejin.cn/post/7069591460730896414#heading-13)
-* Linux 中最重要的 3 个命令，均为文本操作（因为 Linux 一切皆文本）
+* [Linux 中最重要的 3 个命令，均为文本操作（因为 Linux 一切皆文本）](https://zhuanlan.zhihu.com/p/110983126)
   * [grep（更适合单纯的查找或匹配）](https://juejin.cn/post/7069591460730896414#heading-21)
   * [sed（更适合编辑匹配到的文本，取行和替换）](https://juejin.cn/post/7069591460730896414#heading-22)
   * [awk（功能最强大，但也最复杂，简单来说就是把文件逐行的读入，以空格为默认分隔符将每行切片，切开的部分再进行各种分析处理）](https://juejin.cn/post/7069591460730896414#heading-23)
