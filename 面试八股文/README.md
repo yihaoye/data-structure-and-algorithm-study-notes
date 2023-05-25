@@ -69,6 +69,7 @@
 * [bash 文件管理命令](https://juejin.cn/post/7069591460730896414#heading-38)
 * [bash 网络通讯命令](https://juejin.cn/post/7069591460730896414#heading-67)
 * [bash 系统管理命令](https://juejin.cn/post/7069591460730896414#heading-73)
+* [Linux 常用 bash 命令](https://www.cnblogs.com/savorboard/p/bash-guide.html)
 
 ## 网络高频
 * [计算机网络面试突击](https://juejin.cn/post/6932001161532669960)
