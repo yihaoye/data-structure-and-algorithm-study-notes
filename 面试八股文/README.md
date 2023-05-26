@@ -59,6 +59,7 @@
 
 ## 操作系统（Linux & bash）高频
 * [进程、线程、协程的区别](./../Computer%20System%20Layer/进程与线程.md)
+* [Linux for Programmers](https://www.youtube.com/watch?v=ebHX9c75H8I&list=PLzMcBGfZo4-nUIIMsz040W_X-03QH5c5h)
 * [Linux 目录结构](https://zhuanlan.zhihu.com/p/496602829)
 * [Linux 使用的进程间通信方式](https://juejin.cn/post/7069591460730896414#heading-9)
 * [Linux 有哪些系统日志文件](https://juejin.cn/post/7069591460730896414#heading-10)
@@ -72,6 +73,7 @@
 * [bash 系统管理命令](https://juejin.cn/post/7069591460730896414#heading-73)
 * [Linux 常用 bash 命令](https://www.cnblogs.com/savorboard/p/bash-guide.html)
 * [Bash 脚本教程](https://wangdoc.com/bash/)
+* [The 50 Most Popular Linux & Terminal Commands](https://www.youtube.com/watch?v=ZtqBQ68cfJc)
 
 ## 网络高频
 * [计算机网络面试突击](https://juejin.cn/post/6932001161532669960)
