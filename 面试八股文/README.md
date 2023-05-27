@@ -82,6 +82,7 @@
 ## 安全高频
 * [对称加密与非对称加密]()
 * [实际工程项目中应用密匙如何存取]()
+* [Security for Programmer](https://www.youtube.com/watch?v=qjrkV4RjgIU)
 
 ## 系统设计、DevOps 高频
 * [[微服務] 什麼是 gRPC，架構上為什麼要使用 gRPC](https://www.youtube.com/watch?v=qEB3yFzETVs)
