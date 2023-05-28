@@ -2080,6 +2080,23 @@ Reference: ByteByteGo
 
 
 <details>
+<summary>2FA 登陆</summary>
+
+ref: https://swoopnow.com/how-does-two-factor-authentication-work/  
+
+![](./two-factor-auth.webp)
+
+1. 网站或应用程序提示用户登录。
+2. 用户输入他们知道的信息 - 这通常是传统的用户名和密码组合。该站点的服务器找到匹配项并识别用户，成功后返回一个 cookie、token 或重定向到一个第二步登录的 URL（限时有效地址，带一个临时创建的 unique 字符串）。
+3. 接下来，网站会提示用户启动第二步登录。此步骤可以采用几种不同的形式，但目的是证明用户拥有只有用户才能拥有的东西，例如用户的手机。
+4. 然后，用户输入在第 4 步期间为他们生成的一次性代码。
+5. 通过这两个因素后，用户将通过身份验证并被授予访问网站或应用程序的权限。
+
+</details>
+
+
+
+<details>
 <summary>设计协同编辑系统</summary>
 
 例子：Google Doc  
