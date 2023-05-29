@@ -60,7 +60,13 @@
 ## 操作系统（Linux & bash）高频
 * [进程、线程、协程的区别](./../Computer%20System%20Layer/进程与线程.md)
 * [Linux for Programmers](https://www.youtube.com/watch?v=ebHX9c75H8I&list=PLzMcBGfZo4-nUIIMsz040W_X-03QH5c5h)
+  * ps、top
+  * ls -l、chmod
+  * ssh、ssh-keygen
+  * ifconfig、netstat
+  * crontab (i.e. cronjob)、[sleep](https://linuxize.com/post/how-to-use-linux-sleep-command-to-pause-a-bash-script/)
 * [Linux 目录结构](https://zhuanlan.zhihu.com/p/496602829)
+* [Linux 网络命令大全](https://juejin.cn/post/6844903844267180039)
 * [Linux 使用的进程间通信方式](https://juejin.cn/post/7069591460730896414#heading-9)
 * [Linux 有哪些系统日志文件](https://juejin.cn/post/7069591460730896414#heading-10)
 * [什么是 root 帐户](https://juejin.cn/post/7069591460730896414#heading-13)
