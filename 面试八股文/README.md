@@ -60,8 +60,9 @@
 ## 操作系统（Linux & bash）高频
 * [进程、线程、协程的区别](./../Computer%20System%20Layer/进程与线程.md)
 * [Linux for Programmers](https://www.youtube.com/watch?v=ebHX9c75H8I&list=PLzMcBGfZo4-nUIIMsz040W_X-03QH5c5h)
-  * ps、top
-  * ls -l、chmod
+  * cat、rm、cd、mv、cp
+  * ps、top、kill
+  * ls -l、chmod (permission)
   * ssh、ssh-keygen
   * ifconfig、netstat
   * crontab (i.e. cronjob)、[sleep](https://linuxize.com/post/how-to-use-linux-sleep-command-to-pause-a-bash-script/)
@@ -80,6 +81,7 @@
 * [Linux 常用 bash 命令](https://www.cnblogs.com/savorboard/p/bash-guide.html)
 * [Bash 脚本教程](https://wangdoc.com/bash/)
 * [The 50 Most Popular Linux & Terminal Commands](https://www.youtube.com/watch?v=ZtqBQ68cfJc)
+  * ln (create hard/soft link)、open、date、piping (i.e. |)
 
 ## 网络高频
 * [计算机网络面试突击](https://juejin.cn/post/6932001161532669960)
