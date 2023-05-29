@@ -184,6 +184,7 @@
 * API 网关（负载均衡、身份验证、路由、缓存、速率限制、计费、监控、分析、安全防护）
 * 业务应用和后端基础框架（MVC、IOC、ORM）
 * 缓存（本地缓存即内存中的缓存机制：ConcurrentHashMap etc；分布式缓存即单独的缓存服务：Redis、Memcached etc）
+* 主机、计算实例、服务器（EC2、Docker）
 * 数据库（SQL、NoSQL）
 * 搜索引擎（全文搜索、ElasticSearch、MySQL）
 * [消息队列与流处理](./消息队列与流处理.md)（RabbitMQ、Kafka）[阅读材料](http://www.52im.net/thread-1979-1-1.html)
