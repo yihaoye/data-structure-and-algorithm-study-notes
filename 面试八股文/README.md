@@ -91,6 +91,17 @@
 * [对称加密与非对称加密]()
 * [实际工程项目中应用密匙如何存取]()
 * [Security for Programmer](https://www.youtube.com/watch?v=qjrkV4RjgIU)
+* OWASP top 10 : [1](https://owasp.org/www-pdf-archive/OWASP_Top_10_2017_%E4%B8%AD%E6%96%87%E7%89%88v1.2.pdf), [2](https://owasp.org/www-project-top-ten/)
+  * 代码注入 (SQL、跨站脚本 XSS)
+  * 失效的识别、身份认证
+  * 敏感信息泄露、加密失败
+  * 失效的访问控制
+  * 安全配置错误
+  * 软件和数据完整性故障（不安全的反序列化）
+  * 使用含有已知漏洞的、易受攻击或过期的组件
+  * 失效或不足的日志记录和监控
+  * 服务端请求伪造（SSRF）
+  * 不安全的设计（需要更多地使用威胁建模、安全设计模式和原则以及参考架构）
 
 ## 系统设计、DevOps 高频
 * [[微服務] 什麼是 gRPC，架構上為什麼要使用 gRPC](https://www.youtube.com/watch?v=qEB3yFzETVs)
