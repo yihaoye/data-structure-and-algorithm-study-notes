@@ -104,6 +104,7 @@
   * 服务端请求伪造（SSRF）
   * 不安全的设计（需要更多地使用威胁建模、安全设计模式和原则以及参考架构）
 * [Cookie、Session、Token、JWT 区别](https://juejin.cn/post/6844904034181070861)
+* [Password, Session, Cookie, Token, JWT, SSO, OAuth - Authentication Explained](https://blog.bytebytego.com/p/password-session-cookie-token-jwt)
 
 ## 系统设计、DevOps 高频
 * [[微服務] 什麼是 gRPC，架構上為什麼要使用 gRPC](https://www.youtube.com/watch?v=qEB3yFzETVs)

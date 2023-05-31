@@ -1498,7 +1498,10 @@ Mapping Example
   
 **Algolia**  
 比较简单的系统还可以直接使用、集成已有的关于搜索 SaaS 服务，比如 Algolia 等等。  
-
+  
+**PostgreSQL/MySQL**  
+PostgreSQL/MySQL 都提供全文搜索（full text search）。  
+  
 **其他相关技术**
 * [Tf-idf](https://zh.wikipedia.org/wiki/Tf-idf)
 * [H index](https://zh.wikipedia.org/wiki/H%E6%8C%87%E6%95%B0)
@@ -2084,8 +2087,10 @@ Reference: ByteByteGo
 <summary>2FA 登陆</summary>
 
 ref: https://swoopnow.com/how-does-two-factor-authentication-work/  
+https://blog.bytebytego.com/p/password-session-cookie-token-jwt  
 
-![](./two-factor-auth.webp)
+![](./two-factor-auth.webp)  
+![](./cookie-and-session.webp)
 
 1. 网站或应用程序提示用户登录。
 2. 用户输入他们知道的信息 - 这通常是传统的用户名和密码组合。该站点的服务器找到匹配项并识别用户，成功后返回一个 cookie、token 或重定向到一个第二步登录的 URL（限时有效地址，带一个临时创建的 unique 字符串）。
