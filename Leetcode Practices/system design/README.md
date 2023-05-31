@@ -172,8 +172,10 @@
   * 解决方案：在存储无法管理客户端的身份验证和授权的情况下，控制对数据存储的访问。一种典型方案是限制对数据存储公用连接的访问，并向客户端提供数据存储可以验证的密钥或令牌。此密钥或令牌通常称为附属密钥。它提供对特定资源的限时访问，仅允许执行预定义操作，如读取和写入存储或队列，或是在 Web 浏览器中上传和下载。应用程序可以快速、方便地创建附属密钥并颁发给客户端设备和 Web 浏览器，使客户端可以执行所需操作，而无需应用程序直接处理数据传输。这样可从应用程序和服务器中消除处理开销以及对性能和可伸缩性的影响。客户端使用此令牌在特定时间段内访问数据存储中的特定资源，并且访问权限会受到特定限制，如图所示。在指定时间段之后，密钥会成为无效状态，不允许访问资源。![](./valet-key-pattern.png)
 * [守护程序模式](https://learn.microsoft.com/zh-cn/azure/architecture/patterns/gatekeeper) - 应用程序通过接受和处理请求向客户端公开其功能。在云托管方案中，应用程序公开客户端连接，并通常包括代码以处理来自客户端的请求。此代码执行身份验证和验证、部分或全部请求处理，并可能代表客户端访问存储和其他服务。如果恶意用户能够危害系统并获得对应用程序托管环境的访问权限，那么它所使用的安全机制（例如凭据和存储密钥）以及它访问的服务和数据都会暴露出来。因此，恶意用户可以无限制地访问敏感信息和其他服务。
   * 解决方案：为了最大限度地减少客户端访问敏感信息和服务的风险，请将公共 endpoint 的主机或任务与处理请求和访问存储的代码分离。可通过使用某个门面或专用主机或任务完成此操作，该门面或专用主机或任务与客户端交互，然后可能通过一个分离的接口将请求提交到将要处理该请求的主机或任务。
-* [具体化视图](https://learn.microsoft.com/zh-cn/azure/architecture/patterns/materialized-view) - 对经常查询或者展示的数据建立 prepopulated views，提高查询效率以及应用处理的性能。
+* [物化视图](https://learn.microsoft.com/zh-cn/azure/architecture/patterns/materialized-view) - 对经常查询或者展示的数据建立 prepopulated views，提高查询效率以及应用处理的性能。
+  * [许多数据库提供了物化视图的功能](./../../Computer%20System%20Layer/%E6%95%B0%E6%8D%AE%E5%BA%93/SQL/README.md#物化视图)
 * [速率限制模式](https://learn.microsoft.com/zh-cn/azure/architecture/patterns/rate-limiting-pattern) - 节流模式用于减少流量以及增加带宽吞吐量，节流策略可以从每秒请求数，请求数据量，费用等维度进行配置。
+  * 具体参考下面 Practice Examples 的 `Designing an API Rate Limiter`
 * [更多：计算资源合并、外部配置存储、网关路由、运行状况 endpoint 监视、领导选择、优先级队列、发布方/订阅方、基于队列的负载调控、分片、静态内容托管、Geodes、竞争性使用者等等](https://learn.microsoft.com/zh-cn/azure/architecture/patterns/)
 
 </details>
