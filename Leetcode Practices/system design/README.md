@@ -170,6 +170,7 @@
   * 何时使用此模式 - 当应用程序与远程服务进行交互或者访问远程资源时可能会遇到暂时性错误时，请使用此模式。这些错误预计只会短时存在，并且通过后续尝试重复执行之前失败的请求可能会成功。
 * [附属密钥模式](https://learn.microsoft.com/zh-cn/azure/architecture/patterns/valet-key) - 客户端程序和 Web 浏览器通常需要从应用程序的存储读取和写入文件或数据流。通常，应用程序会处理数据的移动 — 通过从存储提取数据并流式传输到客户端，或通过从客户端读取上传的流并将它存储在数据存储中。但是，此方法会占用宝贵资源，如计算、内存和带宽。使用 token 进行鉴权，使用户可以直接访问资源，无需每次都经过服务器。
   * 解决方案：在存储无法管理客户端的身份验证和授权的情况下，控制对数据存储的访问。一种典型方案是限制对数据存储公用连接的访问，并向客户端提供数据存储可以验证的密钥或令牌。此密钥或令牌通常称为附属密钥。它提供对特定资源的限时访问，仅允许执行预定义操作，如读取和写入存储或队列，或是在 Web 浏览器中上传和下载。应用程序可以快速、方便地创建附属密钥并颁发给客户端设备和 Web 浏览器，使客户端可以执行所需操作，而无需应用程序直接处理数据传输。这样可从应用程序和服务器中消除处理开销以及对性能和可伸缩性的影响。客户端使用此令牌在特定时间段内访问数据存储中的特定资源，并且访问权限会受到特定限制，如图所示。在指定时间段之后，密钥会成为无效状态，不允许访问资源。![](./valet-key-pattern.png)
+  * 附属密钥通常在获取的同时就会被使用，比如立刻在下一刻访问资源的地址的请求里附加上密钥（因此整个过程在 JS 运行时内存里完成），如果想长期使用则可以存储在内存或浏览器的 localStorage，如果过期了则需要获取新的密钥并更新 localStorage 的相关。
 * [守护程序模式](https://learn.microsoft.com/zh-cn/azure/architecture/patterns/gatekeeper) - 应用程序通过接受和处理请求向客户端公开其功能。在云托管方案中，应用程序公开客户端连接，并通常包括代码以处理来自客户端的请求。此代码执行身份验证和验证、部分或全部请求处理，并可能代表客户端访问存储和其他服务。如果恶意用户能够危害系统并获得对应用程序托管环境的访问权限，那么它所使用的安全机制（例如凭据和存储密钥）以及它访问的服务和数据都会暴露出来。因此，恶意用户可以无限制地访问敏感信息和其他服务。
   * 解决方案：为了最大限度地减少客户端访问敏感信息和服务的风险，请将公共 endpoint 的主机或任务与处理请求和访问存储的代码分离。可通过使用某个门面或专用主机或任务完成此操作，该门面或专用主机或任务与客户端交互，然后可能通过一个分离的接口将请求提交到将要处理该请求的主机或任务。
 * [物化视图](https://learn.microsoft.com/zh-cn/azure/architecture/patterns/materialized-view) - 对经常查询或者展示的数据建立 prepopulated views，提高查询效率以及应用处理的性能。
@@ -237,12 +238,13 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
     * 系统总是在更新和修改，运维过程中就配置错误是导致服务中断的首要因数。
 * **Availability** - the time a system remains operational to perform its required function in a specific period. (相关组件与手段：负载均衡、故障监控与 failover/故障转移、数据备份)
   * <small>Reliability Vs Availability - If a system is reliable, it is available. However, if it is available, it is not necessarily reliable. high reliability contributes to high availability, but it is possible to achieve a high availability even with an unreliable product by minimizing repair time and ensuring that spares are always available when they are needed.</small>
-* **Efficiency** - Two standard measures of efficiency are response time (or latency) and the throughput (or bandwidth). （相关组件与手段：CDN、异步处理耗时任务如消息队列、缓存、读写分离、索引、分页）. The two measures correspond to the following unit costs:
+* **Efficiency or Performance** - Two standard measures of efficiency are response time (or latency) and the throughput (or bandwidth). （相关组件与手段：CDN、异步处理耗时任务如消息队列、缓存、读写分离、索引、分页）. The two measures correspond to the following unit costs:
   * <small>Number of messages globally sent by the nodes of the system regardless of the message size.</small>
   * <small>Size of messages representing the volume of data exchanges.</small>
 * **Serviceability or Manageability** - how easy to operate and maintain. simplicity and speed with which a system can be repaired or maintained. （相关组件与手段：日志系统、CI/CD、统一配置中心、应用框架、IaC、版本管理、标准制定如协议、解耦）
   * <small>If the time to fix a failed system increases, then availability will decrease.</small>
   * <small>Ease of diagnosing and understanding problems when they occur, ease of making updates or modifications, and how simple the system is to operate.</small>
+* **Security** - Data/Operation security etc.
   
 ### [Consistent Hashing](./一致性哈希.md)  
   
