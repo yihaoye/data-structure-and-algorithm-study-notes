@@ -244,6 +244,9 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 * **Serviceability or Manageability** - how easy to operate and maintain. simplicity and speed with which a system can be repaired or maintained. （相关组件与手段：日志系统、CI/CD、统一配置中心、应用框架、IaC、版本管理、标准制定如协议、解耦）
   * <small>If the time to fix a failed system increases, then availability will decrease.</small>
   * <small>Ease of diagnosing and understanding problems when they occur, ease of making updates or modifications, and how simple the system is to operate.</small>
+* **Consistency** - 一致性，比如数据是否总是最新的
+  * Strong Consistency
+  * Eventual Consistency (Tradeoff with Availability)
 * **Security** - Data/Operation security etc.
   
 ### [Consistent Hashing](./一致性哈希.md)  
@@ -2466,6 +2469,15 @@ Protobuf 没有列表或数组数据类型，而是有一个字段的重复标�
 但是通过使用键散列进行分区的一个缺点是无法高效执行范围查询的能力，任何范围查询都必须发送到所有分区。  
 
 *有些数据库如 Cassandra 采取了折衷的策略。*  
+
+但是即使是使用散列分区，在一些极端情况下仍然无法避免负载偏斜与消除热点，因此特殊情况仍需程序逻辑去给读写做一些额外处理。  
+
+#### 分区与次级索引
+上面的分区方案皆依赖键值数据模型，但当涉及次级索引，情况会变得更加复杂，因为次级索引通常并不能唯一地标识记录。  
+次级索引的问题是它们不能整齐地映射到分区。有两种用次级索引对数据库进行分区的方法：基于文档的分区（document-based）和基于关键词（term-based）的分区。  
+
+**基于文档的次级索引进行分区**  
+
 
 To Be Continue ...  
 
