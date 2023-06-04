@@ -12,3 +12,5 @@ Caches are used in almost every layer of computing: hardware, operating systems,
   * Most Recently Used (MRU)
   * Least Frequently Used (LFU)
   * Random Replacement (RR)
+
+![](./cache-related.jpeg)  
