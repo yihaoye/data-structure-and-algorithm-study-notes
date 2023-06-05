@@ -170,6 +170,8 @@
 - [x] 16	3Sum Closest		                                                            很少考
 - [x] 259	3Sum Smaller		                                                            很少考
 - [ ] 18	4Sum		
+### Random
+- [x] 478   Generate Random Point in a Circle 
 ### 很少考			
 - [x] 231	Power of Two		
 - [x] 326	Power of Three		
