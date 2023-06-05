@@ -55,3 +55,33 @@ class Solution {
  * Solution obj = new Solution(radius, x_center, y_center);
  * double[] param_1 = obj.randPoint();
  */
+
+
+
+// My Solution (incorrect, fail to pass test):
+class Solution {
+    Random r;
+    double radius, x_center, y_center;
+
+    public Solution(double radius, double x_center, double y_center) {
+        // 数学
+        this.r = new Random();
+        this.radius = radius;
+        this.x_center = x_center;
+        this.y_center = y_center;
+    }
+    
+    public double[] randPoint() {
+        double[] res = new double[2];
+        res[0] = random(x_center - radius, x_center + radius);
+        double xDiff = Math.abs(res[0] - x_center);
+        double yDiff = Math.sqrt(radius * radius - xDiff * xDiff);
+        res[1] = random(y_center - yDiff, y_center + yDiff);
+        return res;
+    }
+
+    public double random(double min, double max) {
+        // https://stackoverflow.com/questions/3680637/generate-a-random-double-in-a-range
+        return min + (max - min) * r.nextDouble();
+    }
+}
