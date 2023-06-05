@@ -83,6 +83,7 @@
 * [Bash 脚本教程](https://wangdoc.com/bash/)
 * [The 50 Most Popular Linux & Terminal Commands](https://www.youtube.com/watch?v=ZtqBQ68cfJc)
   * ln (create hard/soft link)、open、date、piping (i.e. |)
+* [硬链接和软链接](https://blog.csdn.net/LEON1741/article/details/100136449)
 * [实时监控日志文件](https://blog.csdn.net/rlnLo2pNEfx9c/article/details/122852275)
 
 ## 网络高频
