@@ -13,9 +13,8 @@
   
 ## Java 高频
 * Java 中垃圾回收机制中如何判断对象需要回收？常见的 GC 回收算法有哪些？ （中等）
-* HashMap 与 ConcurrentHashMap 的实现原理是怎样的？ConcurrentHashMap 是如何保证线程安全的？ （中等）
+* HashMap 与 ConcurrentHashMap 的实现原理是怎样的？HashMap 为什么使用红黑树？ConcurrentHashMap 是如何保证线程安全的？ （中等）
 * Synchronized 关键字底层是如何实现的？它与 Lock 相比优缺点分别是什么？ （中等）
-* HashMap 实现原理，为什么使用红黑树？  （中等）
 * 简述 Java 的反射机制及其应用场景  （简单）
 * Synchronized，Volatile（及其实现原理），可重入锁的不同使用场景及优缺点    （困难）
 * 简述 BIO, NIO, AIO 的区别  （困难）
@@ -25,7 +24,6 @@
 * Java 怎么防止内存溢出  （简单）
 * Java 线程间有多少通信方式？  （简单）
 * Java 中接口和抽象类的区别  （简单）
-* 简述 ArrayList 与 LinkedList 的底层实现以及常见操作的时间复杂度  （简单）
 * hashcode 和 equals 方法的联系  （简单）
 * Java 常见锁有哪些？ReetrantLock 是怎么实现的？  （中等）
 * ThreadLocal 实现原理是什么？  （简单）
@@ -56,7 +54,7 @@
 * [为什么 InnoDB 表必须有主键，并且推荐使用整型的自增主键？](https://blog.csdn.net/weixin_41699562/article/details/104139458)
 * ORM N+1 问题 - [解答一](https://segmentfault.com/a/1190000039421843)、[解答二](https://www.cnblogs.com/google4y/p/3455534.html)、[解答三](https://zhuanlan.zhihu.com/p/27323883)
 * [MySQL 索引背后的数据结构及算法原理 / B+树](https://blog.codinglabs.org/articles/theory-of-mysql-index.html)
-* [LSM 树]()
+* [LSM 树](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/LSMTree/README.md)
 
 ## 操作系统（Linux & bash）高频
 * [进程、线程、协程的区别](./../Computer%20System%20Layer/进程与线程.md)
@@ -91,8 +89,8 @@
 * [TCP 三次握手](https://www.zhihu.com/question/24853633/answer/63668444)
 
 ## 安全高频
-* [对称加密与非对称加密]()
-* [实际工程项目中应用密匙如何存取]()
+* [对称加密与非对称加密](https://github.com/yihaoye/stem-notes/blob/master/e-computer-network/https_and_ssl_tls.md)
+* [实际工程项目中应用密匙如何存取](https://zh.wikipedia.org/zh-hant/%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86)
 * [Security for Programmer](https://www.youtube.com/watch?v=qjrkV4RjgIU)
 * OWASP top 10 : [1](https://owasp.org/www-pdf-archive/OWASP_Top_10_2017_%E4%B8%AD%E6%96%87%E7%89%88v1.2.pdf), [2](https://owasp.org/www-project-top-ten/)
   * 代码注入 (SQL、跨站脚本 XSS) - [PrepareStatement 如何防御代码注入](https://cloud.tencent.com/developer/article/2092203)
@@ -112,7 +110,7 @@
 * [[微服務] 什麼是 gRPC，架構上為什麼要使用 gRPC](https://www.youtube.com/watch?v=qEB3yFzETVs)
 * RPC 与 REST 区别与选择 - [解答一](https://www.cnblogs.com/wongbingming/p/11086773.html)、[解答二](https://zhuanlan.zhihu.com/p/102760613)、[服务调用 / API 设计](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md#API%20Design)
 * [CI 服务有什么用途](https://www.modb.pro/db/404626)
-* [服务降级、服务熔断]()
+* [服务降级、服务熔断](./../Leetcode%20Practices/system%20design/%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E4%B8%8E%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD.md)
 
 ## Redis 高频
 * [redis 有哪些数据类型？可以应用在什么场景？](https://cloud.tencent.com/developer/article/1975464)
@@ -120,8 +118,8 @@
 * [缓存穿透、缓存击穿、缓存雪崩是什么？怎么解决呢？](https://cloud.tencent.com/developer/article/1975464)
 
 ## Nginx 高频
-* [Nginx epoll 模型]()
-* [Nginx 多进程模型是如何实现高并发的]()
+* [Nginx epoll 模型](./../Leetcode%20Practices/system%20design/IO%E6%A8%A1%E5%9E%8B%E4%B8%8EWeb%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%9E%8B.md)
+* [Nginx 多进程模型是如何实现高并发的](./../Leetcode%20Practices/system%20design/IO%E6%A8%A1%E5%9E%8B%E4%B8%8EWeb%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%9E%8B.md)
 
 ## Kafka 高频
 * [kafka 架构](https://cloud.tencent.com/developer/article/1853417)
@@ -144,13 +142,13 @@
 
 ## 前端高频
 * [reactjs interview questions](https://github.com/sudheerj/reactjs-interview-questions)
-* [什么是 React 及其基本设计理念]()
-* [React Hooks]()
+* [什么是 React 及其基本设计理念](https://zh-hans.react.dev/learn/thinking-in-react)
+* [React Hooks](https://github.com/yihaoye/stem-notes/tree/master/t-frameworks/react.js#react-hooks)
 * [什么是 JSX](https://legacy.reactjs.org/docs/introducing-jsx.html)
 * [什么是 Virtual DOM 以及为什么使用它](https://juejin.cn/post/6844903953499422727)
 * [React Virtual DOM 的 diff 算法](https://juejin.cn/post/7005846199479566344)
 * [什么是 Fiber](https://juejin.cn/post/7106148927606358030)
-* [JavaScript 异步、非阻塞]()
+* [JavaScript 异步、非阻塞](https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/Asynchronous/Introducing)
 
 
 以上部分参考：https://osjobs.net/topk/  
