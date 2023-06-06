@@ -149,6 +149,8 @@
 * [React Virtual DOM 的 diff 算法](https://juejin.cn/post/7005846199479566344)
 * [什么是 Fiber](https://juejin.cn/post/7106148927606358030)
 * [JavaScript 异步、非阻塞](https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/Asynchronous/Introducing)
+* [React build 输出](https://handsonreact.com/docs/build-deploy)
+* [什么是 SSR](https://zhuanlan.zhihu.com/p/90746589)
 
 
 以上部分参考：https://osjobs.net/topk/  
