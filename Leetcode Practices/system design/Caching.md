@@ -14,3 +14,5 @@ Caches are used in almost every layer of computing: hardware, operating systems,
   * Random Replacement (RR)
 
 ![](./cache-related.jpeg)  
+
+其他：[Ring Buffer / Circular Buffer](https://zh.wikipedia.org/wiki/%E7%92%B0%E5%BD%A2%E7%B7%A9%E8%A1%9D%E5%8D%80)  
