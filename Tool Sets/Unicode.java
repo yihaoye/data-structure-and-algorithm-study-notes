@@ -24,3 +24,28 @@ String s1 = new String(b, "GBK"); // 按 GBK 转换
 String s2 = new String(b, StandardCharsets.UTF_8); // 按 UTF-8 转换
 
 // 始终牢记：Java 的 String 和 char 在内存中总是以 Unicode 编码表示。
+
+
+
+// https://jenkov.com/tutorials/java-internationalization/unicode.html
+// Converting to and from Unicode UTF-8 Using the String Class
+byte[] bytes = new byte[10];
+String str = new String(bytes, Charset.forName("UTF-8"));
+System.out.println(str);
+
+byte[] bytes2 = str.getBytes(Charset.forName("UTF-8"));
+
+// Converting to and from Unicode UTF-8 Using the Reader and Writer Classes
+InputStream inputStream = new FileInputStream("c:\\data\\utf-8-text.txt");
+Reader reader = new InputStreamReader(inputStream, Charset.forName("UTF-8"));
+int data = reader.read();
+while (data != -1) {
+    char theChar = (char) data;
+    data = reader.read();
+}
+reader.close();
+
+OutputStream outputStream = new FileOutputStream("c:\\data\\output.txt");
+Writer writer = new OutputStreamWriter(outputStream, Charset.forName("UTF-8"));
+writer.write("Hello World");
+writer.close();
