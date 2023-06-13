@@ -275,6 +275,9 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 ### [I/O 模型与 Web 服务器工作模型](./IO模型与Web服务器工作模型.md)
 
 ### [分布式事务](./分布式事务.md)
+
+### Deployment
+* ![](./top-5-most-used-deployment-strategies.jpeg) (by ByteByteGo)
   
 <br />
   
