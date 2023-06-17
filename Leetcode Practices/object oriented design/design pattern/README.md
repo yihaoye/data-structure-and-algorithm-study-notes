@@ -1,6 +1,9 @@
 这里只列举比较重要的常用的设计模式。  
 
-推荐阅读材料：https://refactoringguru.cn/design-patterns/catalog  
+推荐阅读材料：  
+* https://refactoringguru.cn/design-patterns/catalog
+* [设计模式二三事](https://tech.meituan.com/2022/03/10/interesting-talk-about-design-patterns.html)
+
 ![](./设计模式目录：22种设计模式.png)  
 
 # 常用模式
