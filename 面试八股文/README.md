@@ -105,6 +105,13 @@
   * 不安全的设计（需要更多地使用威胁建模、安全设计模式和原则以及参考架构）
 * [Cookie、Session、Token、JWT 区别](https://juejin.cn/post/6844904034181070861)
 * [Password, Session, Cookie, Token, JWT, SSO, OAuth - Authentication Explained](https://blog.bytebytego.com/p/password-session-cookie-token-jwt)
+* 安全清单
+  * 反 SQL/代码注入
+  * SSL / OpenSSL 更新
+  * 密码加盐
+  * 多重要素验证（应用在例如后勤办公室等）
+  * 对敏感数据进行 AES 加密
+  * 避免非加密信息/数据在非安全处（比如邮件）存放/发送
 
 ## 系统设计、DevOps 高频
 * [[微服務] 什麼是 gRPC，架構上為什麼要使用 gRPC](https://www.youtube.com/watch?v=qEB3yFzETVs)
