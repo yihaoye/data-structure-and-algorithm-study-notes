@@ -104,3 +104,6 @@ Keep at least 3 project examples/stories which better to be large scale.
 * [Improve Your English Communication Skills Specialization](https://www.coursera.org/specializations/improve-english)
 * [Teamwork Skills: Communicating Effectively in Groups](https://www.coursera.org/learn/teamwork-skills-effective-communication)
 * [Developing Interpersonal Skills](https://www.coursera.org/learn/interpersonal-skills)
+
+# Debugging Workflow
+![](./debugging-workflow.jpeg)  
