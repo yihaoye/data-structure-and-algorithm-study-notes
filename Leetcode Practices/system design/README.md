@@ -888,6 +888,8 @@ https://www.infoq.cn/article/kkylzqazdomqdkwxgxgv
 https://zh.wikipedia.org/zh-hans/%E6%83%8A%E7%BE%A4%E9%97%AE%E9%A2%98  
 
 #### High Level Architecture
+![](./live-stream-system.jpeg)  
+
 ![](./Facebook%20Live%20Architecture.png)  
 1. 直播端使用 RTMPS 协议发送直播数据到边缘节点（POP）
 2. POP 发送数据到数据中心（DC）
