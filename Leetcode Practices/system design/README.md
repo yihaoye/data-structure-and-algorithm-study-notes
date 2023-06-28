@@ -2149,6 +2149,15 @@ https://blog.bytebytego.com/p/password-session-cookie-token-jwt
 
 
 <details>
+<summary>设计 Google Authenticator</summary>
+
+![](./Google-Authenticator.jpg)  
+
+</details>
+
+
+
+<details>
 <summary>设计协同编辑系统</summary>
 
 例子：Google Doc  
