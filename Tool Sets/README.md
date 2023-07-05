@@ -7,7 +7,7 @@ Tool Sets 是 Online / Take Home assessment、算法解题、编码过程中常�
 以下是模版：  
 * [数学 相关操作与套路](./Math.java)
 * [数组与矩阵](./Arrays(Matrix).java)
-* [Java 大数操作](./BigNumber.java)
+* [Java 大数操作 (以及 Java 内置高级数学函数)](./BigNumber.java)
 * [位操作](./Bitwise.java)
 * Java 容器
   * [Collections 进阶操作](./Collections.java)
