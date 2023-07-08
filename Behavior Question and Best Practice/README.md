@@ -107,3 +107,6 @@ Keep at least 3 project examples/stories which better to be large scale.
 
 # Debugging Workflow
 ![](./debugging-workflow.jpeg)  
+
+# Code Review
+![](./code_review_pyramid.png)  
