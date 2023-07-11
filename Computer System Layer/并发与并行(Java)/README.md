@@ -242,12 +242,20 @@ Rejection Handler [示例代码](./Defog/RejectionHandler.java)
   
 ## ReentrantLock  
 ReentrantLock 可以替代 synchronized 进行同步；ReentrantLock 获取锁更安全；必须先获取到锁，再进入 `try {...}` 代码块，最后使用 `finally` 保证释放锁；可以使用 `tryLock()` 尝试获取锁。  
-[示例代码 1（包括子模块 Condition、ReadWriteLock、StampedLock）](./Liaoxuefeng/ReentrantLock.java)  
+[示例代码 1（包括子模块 Condition）](./Liaoxuefeng/ReentrantLock.java)  
 [示例代码 2](./Defog/ReentrantLock.java)  
   
 顾名思义，ReentrantLock 即意为可多次对同一个对象/资源来调用锁（当调用了 N 次锁，则解锁次数也应为对应的 N 次）。参考[示例代码](./Defog/ReentrantLock.java)里的 reEnterTheLock。  
   
 若 `new ReentrantLock(true)` 即 fair lock 时，ReentrantLock 的 waiting 执行线程队列是 FIFO 的，即最先排队等待锁的线程最先下一个执行。若 `new ReentrantLock(false)` 即 unfair lock 时，则选择执行最快的那个线程，因此性能比 fair lock 好但是却可能造成一些线程 starvation/一直等待得不到执行。  
+  
+## ReadWriteLock
+比 ReentrantLock 更高效。  
+[代码示例](./Liaoxuefeng/ReadWriteLock.java)  
+  
+## StampedLock
+比 ReadWriteLock 更高效。  
+[代码示例](./Liaoxuefeng/StampedLock.java)  
   
 ## Fork-Join
 Fork-Join 与 ExecutorService 基本一样，不同点是：  
