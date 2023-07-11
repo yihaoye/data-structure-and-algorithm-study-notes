@@ -242,7 +242,7 @@ Rejection Handler [示例代码](./Defog/RejectionHandler.java)
   
 ## ReentrantLock  
 ReentrantLock 可以替代 synchronized 进行同步；ReentrantLock 获取锁更安全；必须先获取到锁，再进入 `try {...}` 代码块，最后使用 `finally` 保证释放锁；可以使用 `tryLock()` 尝试获取锁。  
-[示例代码 1（包括子模块 Condition、ReadWriteLock）](./Liaoxuefeng/ReentrantLock.java)  
+[示例代码 1（包括子模块 Condition、ReadWriteLock、StampedLock）](./Liaoxuefeng/ReentrantLock.java)  
 [示例代码 2](./Defog/ReentrantLock.java)  
   
 顾名思义，ReentrantLock 即意为可多次对同一个对象/资源来调用锁（当调用了 N 次锁，则解锁次数也应为对应的 N 次）。参考[示例代码](./Defog/ReentrantLock.java)里的 reEnterTheLock。  
