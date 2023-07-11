@@ -82,6 +82,16 @@
   
 面试常用数据结构：  
 ![](./面试常用数据结构.png)  
+
+### 非线程安全与线程安全数据结构对照
+针对 Queue、List、Map、Set、Deque 等，java.util.concurrent 包提供了对应的并发集合类。归纳一下：  
+| interface	| non-thread-safe	| thread-safe |
+|---  |---  |---  |
+|List	|ArrayList	|CopyOnWriteArrayList |
+|Map	|HashMap	|ConcurrentHashMap  |
+|Set	|HashSet / TreeSet	|CopyOnWriteArraySet  |
+|Queue	|ArrayDeque / LinkedList	|ArrayBlockingQueue / LinkedBlockingQueue |
+|Deque	|ArrayDeque / LinkedList	|LinkedBlockingDeque  |
   
 ### 常用数据结构的一些细节补充
 * 在 Java，以上大部分数据结构属于 Collection / 集合类，参见[图解](./Java%20Collection.png)以及[详解](./集合.md)。以下是线程安全集合类与非线程安全集合类（《Java concurrency in practice》中定义：一个不论运行时/Runtime 如何调度线程都不需要调用方提供额外的同步和协调机制还能正确地运行的类是线程安全的；但线程安全的类/数据结构通常仅指的是其独立的方法或数据是原子化/加锁的，参考[链接](https://blog.csdn.net/a158123/article/details/84948046)，另外可参考代码[案例](../Computer%20System%20Layer/并发与并行(Java)/Jenkov/RaceConditions.java)；线程不安全就是不提供数据访问保护，有可能出现多个线程先后更改数据造成所得到的数据是混乱数据）。

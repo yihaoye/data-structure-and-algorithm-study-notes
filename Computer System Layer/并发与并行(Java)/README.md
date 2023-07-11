@@ -593,3 +593,5 @@ while (queue.isEmpty()) {
 
 ### 例题
 * [Leetcode Q1195]()
+
+## [Java 内置线程安全数据结构](../../Common%20Data%20Structure%20and%20Data%20Type/README.md#非线程安全与线程安全数据结构对照)
