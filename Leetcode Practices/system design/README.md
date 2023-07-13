@@ -2727,3 +2727,8 @@ BufferedWriter 就是一个缓冲区用法，一般来说，缓冲区不宜过�
   * 优化程序
   * 减少网络开销，适当使用长连接
   * 优化数据库，建立索引
+
+## Architect’s Blueprint: Understanding Software Styles and Patterns with Cheatsheet
+Ref: https://medium.com/bytebytego-system-design-alliance/the-architects-blueprint-understanding-software-styles-and-patterns-with-cheatsheet-5c1f5fd55bbd  
+
+![](./architect-blueprint.webp)  
