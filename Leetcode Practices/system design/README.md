@@ -2144,6 +2144,10 @@ https://blog.bytebytego.com/p/password-session-cookie-token-jwt
 4. 然后，用户输入在第 4 步期间为他们生成的一次性代码。
 5. 通过这两个因素后，用户将通过身份验证并被授予访问网站或应用程序的权限。
 
+SESSION 的数据保存在在服务器端，但不是保存在内存中（但是可以用缓存优化性能），而是保存在文件或数据库中。  
+上面的 cookie 和 session 部分可以用 jwt 替换  
+![](./jwt.jpeg)  
+
 </details>
 
 

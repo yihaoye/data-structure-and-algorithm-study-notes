@@ -108,6 +108,8 @@
   * 不安全的设计（需要更多地使用威胁建模、安全设计模式和原则以及参考架构）
 * [Cookie、Session、Token、JWT 区别](https://juejin.cn/post/6844904034181070861)
 * [Password, Session, Cookie, Token, JWT, SSO, OAuth - Authentication Explained](https://blog.bytebytego.com/p/password-session-cookie-token-jwt)
+* [JSON Web Token 入门教程](https://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html)
+* [Session 是怎么实现的？存储在哪里？](https://juejin.cn/post/6942852054847062053)
 * 安全清单
   * 反 SQL/代码注入
   * SSL / OpenSSL 更新
