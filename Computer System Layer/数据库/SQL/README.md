@@ -937,8 +937,13 @@ foreign key(classno) references t_class(cno) on update cascade;
 >
 > 下面这些情况下使用 VARCHAR 是合适的：字符串列的最大长度比平均长度大很多；列的更新很少，所以碎片不是问题；使用了像 UTF-8 这样复杂的字符集，每个字符都使用不同的字节数进行存储。  
 > CHAR 适合存储很短的字符串，或者所有值都接近同一个长度。例如，CHAR 非常适合存储密码的 MD5 值，因为这是一个定长的值。对于经常变更的数据，CHAR 也比 VARCHAR 更好，因为定长的 CHAR 类型不容易产生碎片。  
+> 有时候可以使用枚举列代替常用的字符串类型（如果使用数字作为 ENUM 枚举常量，这种双重性很容易导致混乱，例如 ENUM '1','2','3'。建议尽量避免这么做）。  
+> 与 CHAR 和 VARCHAR 类似的类型还有 BINARY 和 VARBINARY。  
+>
+> BLOB 和 TEXT 都是为存储很大的数据而设计的字符串数据类型，分别采用二进制和字符方式存储。实际上，它们分别属于两组不同的数据类型家族。  
+> MySQL 对 BLOB 和 TEXT 列进行排序与其他类型是不同的：它只对每个列的最前 max_sort_length 字节而不是整个字符串做排序。如果只需要排序前面一小部分字符，则可以减小 max_sort_length 的配置，或者使用 ORDER BY SUSTRING（column，length）。MySQL 不能将 BLOB 和 TEXT 列全部长度的字符串进行索引，也不能使用这些索引消除排序。  
 
-Excerpt From 高性能 MySQL：第3版  
+Excerpt From `高性能 MySQL：第3版`  
   
   
 ## 数据库优化
