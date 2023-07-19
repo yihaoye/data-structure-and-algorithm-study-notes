@@ -959,8 +959,7 @@ foreign key(classno) references t_class(cno) on update cascade;
 ### 其他
 在使用缓存表和汇总表时，必须决定是实时维护数据还是定期重建。  
 
-### 物化视图
-ToDo...  
+### [采用物化视图](./README.md#物化视图)
 
 
 ## Schema 与 数据类型优化
