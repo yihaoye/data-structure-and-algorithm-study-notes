@@ -89,7 +89,8 @@
 * [计算机网络面试突击](https://juejin.cn/post/6932001161532669960)
 * [TCP 三次握手](https://www.zhihu.com/question/24853633/answer/63668444)
 * CORS
-  * ![](./CORS.PNG)
+  * [为什么浏览器要限制跨域访问](https://www.zhihu.com/question/26379635/answer/534866558)
+  * [跨域访问工作流程](./CORS.PNG)
 
 ## 安全高频
 * [对称加密与非对称加密](https://github.com/yihaoye/stem-notes/blob/master/e-computer-network/https_and_ssl_tls.md)
