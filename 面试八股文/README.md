@@ -93,11 +93,14 @@
   * [跨域访问工作流程](./CORS.PNG)
 
 ## 安全高频
+* [CSRF](https://tech.meituan.com/2018/10/11/fe-security-csrf.html)
+  * [CSRF 与 CORS](https://b1ngz.github.io/csrf-and-cors/)
+  * [CORS 为什么能保障安全？为什么只对复杂请求做预检？](https://www.51cto.com/article/705584.html)
 * [对称加密与非对称加密](https://github.com/yihaoye/stem-notes/blob/master/e-computer-network/https_and_ssl_tls.md)
 * [实际工程项目中应用密匙如何存取](https://zh.wikipedia.org/zh-hant/%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86)
 * [Security for Programmer](https://www.youtube.com/watch?v=qjrkV4RjgIU)
 * OWASP top 10 : [1](https://owasp.org/www-pdf-archive/OWASP_Top_10_2017_%E4%B8%AD%E6%96%87%E7%89%88v1.2.pdf), [2](https://owasp.org/www-project-top-ten/)
-  * 代码注入 (SQL、跨站脚本 XSS) - [PrepareStatement 如何防御代码注入](https://cloud.tencent.com/developer/article/2092203)
+  * 代码注入 (SQL、[跨站脚本 XSS](https://www.cnblogs.com/54chensongxia/p/11643787.html)) - [PrepareStatement 如何防御代码注入](https://cloud.tencent.com/developer/article/2092203)
   * 失效的识别、身份认证
   * 敏感信息泄露、加密失败
   * 失效的访问控制
