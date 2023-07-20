@@ -88,14 +88,13 @@
 ## 网络高频
 * [计算机网络面试突击](https://juejin.cn/post/6932001161532669960)
 * [TCP 三次握手](https://www.zhihu.com/question/24853633/answer/63668444)
-* CORS
-  * [为什么浏览器要限制跨域访问](https://www.zhihu.com/question/26379635/answer/534866558)
-  * [跨域访问工作流程](./CORS.PNG)
 
 ## 安全高频
+* [CORS（跨域访问）及其工作流程](./CORS.PNG)
+  * [为什么浏览器要限制跨域访问](https://www.zhihu.com/question/26379635/answer/534866558)
+  * [CORS 为什么能保障安全？为什么只对复杂请求做预检？](https://www.51cto.com/article/705584.html)
 * [CSRF](https://tech.meituan.com/2018/10/11/fe-security-csrf.html)
   * [CSRF 与 CORS](https://b1ngz.github.io/csrf-and-cors/)
-  * [CORS 为什么能保障安全？为什么只对复杂请求做预检？](https://www.51cto.com/article/705584.html)
 * [对称加密与非对称加密](https://github.com/yihaoye/stem-notes/blob/master/e-computer-network/https_and_ssl_tls.md)
 * [实际工程项目中应用密匙如何存取](https://zh.wikipedia.org/zh-hant/%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86)
 * [Security for Programmer](https://www.youtube.com/watch?v=qjrkV4RjgIU)
