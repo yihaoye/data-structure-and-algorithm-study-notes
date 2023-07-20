@@ -2148,6 +2148,9 @@ SESSION 的数据保存在在服务器端，但不是保存在内存中（但是
 上面的 cookie 和 session 部分可以用 jwt 替换  
 ![](./jwt.jpeg)  
 
+[session vs jwt](https://developer.okta.com/blog/2020/11/04/protecting-a-laravel-api-with-jwt)  
+![](./session-vs-jwt.jpeg)  
+
 </details>
 
 
