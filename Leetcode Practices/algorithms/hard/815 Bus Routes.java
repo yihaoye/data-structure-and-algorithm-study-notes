@@ -76,3 +76,54 @@ class Solution {
         return -1;
     }
 }
+
+
+
+// My Solution 2:
+class Solution {
+    public int numBusesToDestination(int[][] routes, int source, int target) {
+        // Graph + BFS
+        if (source == target) return 0;
+        
+        Map<Integer, Set<Integer>> busToStops = new HashMap<>();
+        Map<Integer, Set<Integer>> StopToBuses = new HashMap<>();
+        Map<Integer, Set<Integer>> busToBuses = new HashMap<>(); // graph, set<...> means the next bus can be transfer from the key bus
+        Set<Integer> usedBuses = new HashSet<>(); // bus used
+        Queue<Integer> curBuses = new LinkedList<>();
+        for (int i=0; i<routes.length; i++) {
+            busToStops.computeIfAbsent(i, v -> new HashSet<>());
+            busToBuses.computeIfAbsent(i, v -> new HashSet<>());
+            for (int j=0; j<routes[i].length; j++) {
+                busToStops.get(i).add(routes[i][j]);
+                StopToBuses.computeIfAbsent(routes[i][j], v -> new HashSet<>());
+                for (int prevBus : StopToBuses.get(routes[i][j])) {
+                    busToBuses.get(prevBus).add(i);
+                    busToBuses.get(i).add(prevBus);
+                }
+                StopToBuses.get(routes[i][j]).add(i);
+                if (routes[i][j] == source && !usedBuses.contains(i)) {
+                    usedBuses.add(i);
+                    curBuses.offer(i);
+                }
+            }
+        }
+        
+        int res = 1;
+        while (!curBuses.isEmpty()) {
+            int n = curBuses.size();
+            while (n-- > 0) {
+                int prevBus = curBuses.poll();
+                if (busToStops.get(prevBus).contains(target)) return res;
+                for (int nextBus : busToBuses.get(prevBus)) {
+                    if (usedBuses.contains(nextBus)) continue;
+                    usedBuses.add(nextBus);
+                    curBuses.offer(nextBus);
+                }
+            }
+            
+            res++;
+        }
+
+        return -1;
+    }
+}
