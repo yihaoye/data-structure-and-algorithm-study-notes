@@ -289,3 +289,11 @@ https://www.jianshu.com/p/e074b85b84ef
   
 转载来源：  
 https://www.cnblogs.com/NaughtyCat/p/what-is-good-codes.html  
+
+
+## 何时使用抽象类，何时使用接口
+有一个几乎每次都有效的基本规则：如果可以声明 “A 是 B”，则使用抽象类和继承。如果可以声明 “A 能够 doing as”，那么就使用接口。  
+例如，可以说三角形是多边形，但说三角形能够成为多边形是没有意义的。  
+不管怎样，与以往一样，经验法则是：运用你的常识。有时，即使上述规则告诉你相反的情况，接口可能更合适（如果只是使用接口，且是在考虑后果之后）。  
+
+转载：http://www.devfields.com/abstract-classes-and-interfaces/  
