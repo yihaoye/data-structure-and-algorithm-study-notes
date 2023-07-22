@@ -13,5 +13,6 @@
 - [数据库](./数据库/)
 - [文件系统](./文件系统.md)
 - 操作系统
+  - ![](./linux-components.png)
   - ![](./linux-performance-obser-tools.jpeg)
 
