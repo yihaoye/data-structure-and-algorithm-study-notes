@@ -94,17 +94,18 @@ class Solution {
             busToStops.computeIfAbsent(i, v -> new HashSet<>());
             busToBuses.computeIfAbsent(i, v -> new HashSet<>());
             for (int j=0; j<routes[i].length; j++) {
+                if (routes[i][j] == source && !usedBuses.contains(i)) {
+                    usedBuses.add(i);
+                    curBuses.offer(i);
+                }
                 busToStops.get(i).add(routes[i][j]);
                 StopToBuses.computeIfAbsent(routes[i][j], v -> new HashSet<>());
+                if (StopToBuses.get(routes[i][j]).contains(i)) continue;
                 for (int prevBus : StopToBuses.get(routes[i][j])) {
                     busToBuses.get(prevBus).add(i);
                     busToBuses.get(i).add(prevBus);
                 }
                 StopToBuses.get(routes[i][j]).add(i);
-                if (routes[i][j] == source && !usedBuses.contains(i)) {
-                    usedBuses.add(i);
-                    curBuses.offer(i);
-                }
             }
         }
         
