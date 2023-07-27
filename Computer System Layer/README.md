@@ -15,4 +15,5 @@
 - 操作系统
   - ![](./linux-components.png)
   - ![](./linux-performance-obser-tools.jpeg)
+  - ![](./inter-process-communication.jpeg)
 
