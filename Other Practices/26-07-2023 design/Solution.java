@@ -1,14 +1,26 @@
 import java.util.*;
 import java.util.concurrent.*;
+import java.util.stream.*;
 
 class Solution {
     public static void main(String[] args) {
-        // ...
+        // Test design service with multithreading
+        DesignService designService = new DesignServiceImpl();
+        AuthContext ctx1 = new AuthContext("user1");
+        AuthContext ctx2 = new AuthContext("user2");
+        List<String> designs = Arrays.asList("design1", "design2", "design3");
+        designs.parallelStream().forEach(design -> {
+            String designId = designService.createDesign(ctx1, design);
+            assert designService.getDesign(ctx1, designId).equals(design);
+        });
+        String testDesignId = designService.findDesigns(ctx1).get(0);
+        designService.shareDesign(ctx1, testDesignId, ctx2.userId);
+        assert designService.getDesign(ctx1, testDesignId).equals(designService.getDesign(ctx2, testDesignId));
     }
 }
 
 class DesignServiceImpl implements DesignService {
-    private AtomicInteger designId; // UUID is another solution, AtomicInteger
+    private AtomicInteger designId; // UUID is another solution
     private Map<String, Set<String>> userToDesignIds; // user - content: 1 to many, access
     private Map<String, Design> designs; // id to design 1 to 1
 
@@ -88,7 +100,7 @@ class Design {
     public String ownerId;
     public String content;
 
-    Design(String designId, String ownerId, String content) {
+    public Design(String designId, String ownerId, String content) {
         this.designId = designId;
         this.ownerId = ownerId;
         this.content = content;
