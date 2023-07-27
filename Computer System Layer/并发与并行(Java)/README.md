@@ -63,14 +63,15 @@ Java内存模型中只是列出了几种比较基本的hb规则，在Java语言�
 </details>
 <br>
   
-## synchronized 关键字
+## synchronized 与 volatile 关键字
+### synchronized 关键字
 synchronized 同一个 monitor object 代码块/方法一次只能由一个线程执行。如果有多个线程想访问/执行 synchronized 同一个 monitor object 的代码块/方法，哪一个等待中的线程将获得下一个访问/执行的顺序是无法保证、是不确定的（因此很有可能出现内同一个线程连续重复多次获得访问/执行机会，但其他线程都尚未有机会的情况；另外要注意不存在哪个线程先等待就在下一轮先执行的逻辑，若想保证绝对的等待公平的话可以使用 java.util.concurrent 包里的某些 API）。  
 另外多个 JVM 上运行的各自线程当然一定不会互相 block 对方访问/执行 synchronized 代码块/方法（如果想实现这种跨 JVM 的锁，则可能需要通过数据库等其他工具实现）。   
   
-## volatile 关键字
+### volatile 关键字
 volatile 关键字确保变量的写操作总是立刻保存到主内存/Heap 上，从而保证了多线程间不会发生线程A对共享变量的写操作只保存到自己的工作存储/Thread Stack 上而线程B从主内存（甚至自己的工作存储）中读取的仍是未更新的数据。  
   
-## synchronized 与 volatile 区别
+### synchronized 与 volatile 区别
 1. volatile本质是在告诉jvm当前变量在寄存器（工作存储）中的值是不确定的，需要从主存中读取； synchronized则是锁定当前变量，只有当前线程可以访问该变量，其他线程被阻塞住。
 2. volatile仅能使用在变量级别；synchronized则可以使用在变量、方法、和类级别的
 3. volatile仅能实现变量的修改可见性，不能保证原子性；而synchronized则可以保证变量的修改可见性和原子性
@@ -92,6 +93,11 @@ public class Counter {
 }
 ```  
 以上 Java volatile 错误案例可通过使用 synchronized 来避免问题。  
+  
+### synchronized 与 volatile 合用
+如果一个线程使用 synchronized 锁住了一个 volatile 变量进行修改，那么其他线程在读取这个变量时会看到最新的值。这是因为 synchronized 锁的释放和获取会触发内存屏障，使得在锁释放时，所有的写操作都能立即刷新到主内存，而在锁获取时，所有的读操作都能从主内存中获取最新值。  
+如果第二个线程在读取该 volatile 变量时没有使用 synchronized，那么虽然它能看到最新的值，但不能保证其他线程修改该变量的操作是原子的。  
+以上 by ChatGPT  
   
 ## 原子性 有序性 可见性
   

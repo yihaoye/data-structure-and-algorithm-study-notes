@@ -13,7 +13,8 @@
   
 ## Java 高频
 * Java 中垃圾回收机制中如何判断对象需要回收？常见的 GC 回收算法有哪些？ （中等）
-* HashMap 与 ConcurrentHashMap 的实现原理是怎样的？HashMap 为什么使用红黑树？ConcurrentHashMap 是如何保证线程安全的？ （中等）
+* HashMap 与 ConcurrentHashMap 的实现原理是怎样的？HashMap 为什么使用红黑树？[ConcurrentHashMap 是如何保证线程安全的？](https://github.com/JasonGaoH/KnowledgeSummary/blob/master/Docs/Java/ConcurrentHashMap%E6%98%AF%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84.md) （中等）
+* ConcurrentHashMap 的写操作会对读操作产生性能影响吗？[1](https://stackoverflow.com/a/71805283/6481829)、[2](https://stackoverflow.com/questions/68968305/how-can-i-block-concurrenthashmap-get-operations-during-a-put)
 * Synchronized 关键字底层是如何实现的？它与 Lock 相比优缺点分别是什么？ （中等）
 * 简述 Java 的反射机制及其应用场景  （简单）
 * Synchronized，Volatile（及其实现原理），可重入锁的不同使用场景及优缺点    （困难）
@@ -23,7 +24,7 @@
 * JVM 内存是如何对应到操作系统内存的？  （中等）
 * Java 怎么防止内存溢出  （简单）
 * Java 线程间有多少通信方式？  （简单）
-* Java 中接口和抽象类的区别  （简单）
+* [Java 中接口和抽象类的区别](../Leetcode%20Practices/object%20oriented%20design/README.md#何时使用抽象类，何时使用接口)  （简单）
 * hashcode 和 equals 方法的联系  （简单）
 * Java 常见锁有哪些？ReetrantLock 是怎么实现的？  （中等）
 * ThreadLocal 实现原理是什么？  （简单）
