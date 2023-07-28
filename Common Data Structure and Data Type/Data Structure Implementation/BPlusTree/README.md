@@ -1,4 +1,5 @@
 # B/B+ Tree
+[B Trees and B+ Trees. How they are useful in Databases](https://www.youtube.com/watch?v=aZjYr87r1b8)  
 
 ## 为什么数据库用 B/B+树而不是平衡二叉树呢？
 在内存比在磁盘的数据，查询效率快得多。如果树这种数据结构作为索引，那每查找一次数据就需要从磁盘中读取一个节点，也就是说的一个磁盘块，但是平衡二叉树可是每个节点只存储一个键值和数据的，如果是 B 树，可以存储更多的节点数据，树的高度也会降低，因此读取磁盘的次数就降下来，查询效率就快。  
@@ -8,7 +9,8 @@
 * B+ 树索引的所有数据均存储在叶子节点，而且数据是按照顺序排列的，链表连着的。那么 B+ 树使得范围查找，排序查找，分组查找以及去重查找变得异常简单。
 
 ## B+ 树实现
-[B+树 Java 代码实现以及测试](https://www.cnblogs.com/jing99/p/11741685.html)  
+* [B+树 原理](https://www.youtube.com/watch?v=49P_GDeMDRo&list=PLsEFMZUL5KsOqKHhxquVleVkM9LFLFSo0&index=1)
+* [B+树 Java 代码实现以及测试](https://www.cnblogs.com/jing99/p/11741685.html)
   
 ## 参考资料
 * [MySQL 索引 15 连问](https://mp.weixin.qq.com/s/IO4SIAKi1XBqfzTLMCVyKA)
