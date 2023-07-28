@@ -106,6 +106,7 @@ https://www.algoexpert.io/systems/fundamentals
   * 看大公司的 API 文件，学习如何设计（比如 [Stripe](https://stripe.com/docs/api)、[Google](https://cloud.google.com/apis)、[Twitter](https://developer.twitter.com/en/docs/twitter-api)）
   * 尝试写常见公司（Google、Stripe、Twitter、Uber、Youtube 等等）的 API，然后对照实际的 API 询问自己的设计是否更好或决策想法
 * ![](./REST%20API%20Design.jpeg)
+* ![](./effective-safe-api-design.jpeg)
 * ![](./API%20Architectural%20Styles%20Comparison.jpeg)
 * ![](./api-protocols.jpeg)
   * 新一代的 RPC 框架 gRPC 支持流，其中一个调用不仅包括一个请求和一个响应，还可以是随时间的一系列请求和响应。
