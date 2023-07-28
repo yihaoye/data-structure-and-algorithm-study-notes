@@ -609,3 +609,53 @@ while (queue.isEmpty()) {
 * [Leetcode Q1195]()
 
 ## [Java 内置线程安全数据结构](../../Common%20Data%20Structure%20and%20Data%20Type/README.md#非线程安全与线程安全数据结构对照)
+
+## 虚拟线程
+[参考](https://www.liaoxuefeng.com/wiki/1252599548343744/1501390373388322)  
+对于需要处理大量 IO 请求的任务来说，使用线程是低效的，因为一旦读写 IO，线程就必须进入等待状态，直到 IO 数据返回。  
+
+为了能高效执行 IO 密集型任务，Java 从 19 开始引入了虚拟线程。虚拟线程的接口和普通线程是一样的，但是执行方式不一样。虚拟线程不是由操作系统调度，而是由普通线程调度，即成百上千个虚拟线程可以由一个普通线程调度。任何时刻，只能执行一个虚拟线程，但是，一旦该虚拟线程执行一个 IO 操作进入等待时，它会被立刻“挂起”，然后执行下一个虚拟线程。什么时候 IO 数据返回了，这个挂起的虚拟线程才会被再次调度。因此，若干个虚拟线程可以在一个普通线程中交替运行。  
+
+### 使用虚拟线程
+虚拟线程的接口和普通线程一样，唯一区别在于创建虚拟线程只能通过特定方法。  
+方法一：直接创建虚拟线程并运行：  
+```java
+// 传入 Runnable 实例并立刻运行:
+Thread vt = Thread.startVirtualThread(() -> {
+    System.out.println("Start virtual thread...");
+    Thread.sleep(10);
+    System.out.println("End virtual thread.");
+});
+```  
+
+方法二：创建虚拟线程但不自动运行，而是手动调用 start() 开始运行：
+```java
+// 创建 VirtualThread:
+Thread.ofVirtual().unstarted(() -> {
+    System.out.println("Start virtual thread...");
+    Thread.sleep(1000);
+    System.out.println("End virtual thread.");
+});
+// 运行:
+vt.start();
+```  
+
+方法三：通过虚拟线程的 ThreadFactory 创建虚拟线程，然后手动调用 start() 开始运行：
+```java
+// 创建 ThreadFactory:
+ThreadFactory tf = Thread.ofVirtual().factory();
+// 创建 VirtualThread:
+Thread vt = tf.newThread(() -> {
+    System.out.println("Start virtual thread...");
+    Thread.sleep(1000);
+    System.out.println("End virtual thread.");
+});
+// 运行:
+vt.start();
+```  
+
+直接调用 start() 实际上是由 ForkJoinPool 的线程来调度的。开发者也可以自己创建调度线程，然后运行虚拟线程。  
+
+由于虚拟线程属于非常轻量级的资源，因此，用时创建，用完就扔，不要池化虚拟线程。  
+但虚拟线程在 Java 19 中是预览功能，默认关闭，需要添加参数 --enable-preview 启用：  
+```java --source 19 --enable-preview Main.java```  
