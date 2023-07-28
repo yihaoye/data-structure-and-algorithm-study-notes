@@ -25,7 +25,7 @@ class DesignServiceImpl implements DesignService {
     private Map<String, Design> designs; // id to design 1 to 1
 
     public DesignServiceImpl() {
-        designId = 0;
+        designId = new AtomicInteger(0);
         userToDesignIds = new ConcurrentHashMap<>();
         designs = new ConcurrentHashMap<>();
     }
