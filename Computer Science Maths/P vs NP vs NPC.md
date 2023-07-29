@@ -97,7 +97,7 @@ Matrix67原创
 * 动态规划类问题：
   * 分割等和子集（Partition Equal Subset Sum）
   * 01 背包问题（0/1 Knapsack Problem）
-  * 最长公共子序列（Longest Common Subsequence）
+  * 最长公共子序列（Longest Common Subsequence） - [对于一般性的 LCS 问题（即任意数量的序列）是属于 NP-hard。但当序列的数量确定时，问题可以使用动态规划（Dynamic Programming）在多项式时间内解决。](https://zh.wikipedia.org/zh-hans/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97)
 
 需要注意的是，虽然这些问题被认为是 NP 完全问题，但是 LeetCode 并没有对问题的时间复杂度做出正式的分类和划分。而且，算法设计与问题的具体实现有很大关联，某些问题在特定条件下可能有高效的解法。  
 解决 NP 完全问题的一般方法是使用近似算法或者启发式算法来求解近似解。另外，对于小规模的问题，可以使用回溯法、深度优先搜索等方法进行穷举搜索，但这些方法在规模增加时会变得非常耗时。  
