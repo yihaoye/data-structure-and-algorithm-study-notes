@@ -75,7 +75,9 @@ nbsp;└───┘    │                ┌─→┤AND ├──→输出
 Matrix67原创  
 转载自：http://www.matrix67.com/blog/archives/105  
 
-## Leetcode NP 例题
+## NP-完全例题
+* [卡普的二十一个 NP-完全问题](https://zh.wikipedia.org/zh-hans/%E5%8D%A1%E6%99%AE%E7%9A%84%E4%BA%8C%E5%8D%81%E4%B8%80%E5%80%8BNP-%E5%AE%8C%E5%85%A8%E5%95%8F%E9%A1%8C)
+
 * [LC 416 分割等和子集](./../Leetcode%20Practices/algorithms/medium/416%20Partition%20Equal%20Subset%20Sum.java)
 * [LC 474 一和零]()
 * [LC 494 目标和]()
