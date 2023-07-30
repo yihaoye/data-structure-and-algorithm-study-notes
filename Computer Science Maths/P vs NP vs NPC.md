@@ -83,7 +83,7 @@ Matrix67原创
 * [LC 494 目标和]()
 * [LC 1049 最后一块石头的重量 II]()
 
-有一些问题被认为是 NP 完全问题。这些问题涵盖了不同的领域，包括图论、组合优化、动态规划等。以下是一些 NP 完全问题的示例，它们分属不同类别：  
+有一些问题被认为是 NP 完全问题。这些问题涵盖了不同的领域，包括图论、组合优化、动态规划等。以下是一些 NP 完全问题的示例（前缀带问号的是可能属于 NP 类问题），它们分属不同类别：  
 * 图论类问题：
   * 最小顶点覆盖（Minimum Vertex Cover）
   * 最小边覆盖（Minimum Edge Cover）
@@ -91,13 +91,25 @@ Matrix67原创
   * 最小染色（Minimum Coloring）
   * 图的哈密顿路径（Hamiltonian Path）
   * 图的哈密顿回路（Hamiltonian Cycle）
+  * ? 寻找图的最小生成树（Minimum Spanning Tree）
+  * ? 图的最短路径问题（Shortest Path Problem）
+  * ? 最大网络流问题（Maximum Network Flow Problem）
+  * ? 图的最大独立集（Maximum Independent Set）
+  * ? 图的最大团（Maximum Clique）
 * 组合优化类问题：
   * 旅行商问题（Traveling Salesman Problem，TSP）
   * 子集和问题（Subset Sum Problem）
+  * 最大割问题（Max Cut Problem）
+  * ? 背包问题的变种（Knapsack Problem Variations）
+* 搜索类问题：
+  * ? NPuzzle（八数码）问题
+  * ? 单词接龙问题（Word Ladder Problem）
 * 动态规划类问题：
-  * 分割等和子集（Partition Equal Subset Sum）
   * 01 背包问题（0/1 Knapsack Problem）
-  * 最长公共子序列（Longest Common Subsequence） - [对于一般性的 LCS 问题（即任意数量的序列）是属于 NP-hard。但当序列的数量确定时，问题可以使用动态规划（Dynamic Programming）在多项式时间内解决。](https://zh.wikipedia.org/zh-hans/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97)
+  * ? 分割等和子集（Partition Equal Subset Sum）
+  * ? 最长公共子序列（Longest Common Subsequence） - [对于一般性的 LCS 问题（即任意数量的序列）是属于 NP-hard。但当序列的数量确定时，问题可以使用动态规划（Dynamic Programming）在多项式时间内解决。](https://zh.wikipedia.org/zh-hans/%E6%9C%80%E9%95%BF%E5%85%AC%E5%85%B1%E5%AD%90%E5%BA%8F%E5%88%97)
+  * ? 最长增长子序列（Longest Increasing Subsequence）
+  * ? 博弈类问题（Game Theory Problems）
 
 需要注意的是，虽然这些问题被认为是 NP 完全问题，但是 LeetCode 并没有对问题的时间复杂度做出正式的分类和划分。而且，算法设计与问题的具体实现有很大关联，某些问题在特定条件下可能有高效的解法。  
 解决 NP 完全问题的一般方法是使用近似算法或者启发式算法来求解近似解。另外，对于小规模的问题，可以使用回溯法、深度优先搜索等方法进行穷举搜索，但这些方法在规模增加时会变得非常耗时。  
