@@ -1143,7 +1143,73 @@ read_message(user_id, max_read_id):
   return server.read_from_db(user_id, max_read_id)
 ```
   
-瓶颈分析
+### 存储结构设计
+`Message Table`  
+|column	|data type
+|-- |-- 
+|id	|int
+|from_user_id	|int
+|to_user_id	|int
+|content	|text
+|created_at	|timestamp
+
+这是最基本的一些数据内容，存在的问题是要查询用户 A 和 B 之间的对话，需要如下 SQL
+```sql
+SELECT * FROM message
+WHERE from_user_id=A AND to_user_id=B OR from_user_id=B AND to_user_id=A
+ORDER BY created_at DESC;
+```  
+这里的问题是 WHERE 查询条件太复杂，SQL 的执行效率非常低，而且如果是群聊，这种数据结构没办法拓展。  
+
+Thread Table 链式消息  
+还是以微信为例，进入微信页面，看到的一个个对话就可以称为一个 Thread，每个 Thread 中包含聊天内容 (Message)。且 Thread 对于每个用户都会存在一些私有信息，比如是否免打扰，未读信息数量等等（这个时候需要对 Thread 进行进一步的拆分。添加 UserThread 表用来存储 User 在 Thread 上的私有信息）。  
+
+这时候表结构就变成了
+`Message Table`  
+|column	|data type
+|-- |-- 
+|id	|int
+|thread_id	|int
+|user_id	|int
+|content	|text
+|created_at	|timestamp
+
+`Thread Table`  
+|column	|data type
+|-- |-- 
+|id	|int
+|created_at	|timestamp
+|updated_at	|timestamp
+|last_message	|text
+|avatar	|varchar
+
+`UserThread Table`  
+|column	|data type	|comment
+|-- |-- |--
+|id	|int	|pk
+|user_id	|	|fk
+|thread_id	|	|fk
+|unread_count	|int |
+|is_muted	|bool	|
+|updated_at	|timestamp	|
+|joined_at	|timestamp	|
+
+数据库选择  
+* Message Table - 数据量很大，不需要修改，很像项目中的日志一样，可以使用 NoSQL 存储。
+* Thread Table - 如果使用 SQL 的话，需要对 thread_id (查询某个对话的信息)和 participant_hash_code (查询用户之间是否已经有 thread 存在了)添加索引，因为会有频繁的查询操作。如果使用 NoSQL 的话，对于需要建立多个索引的情况，可以分成两个表
+* UserThread Table - 也可以使用 NoSQL
+
+链接：https://www.acwing.com/blog/content/26646/
+
+### 网络
+在一个典型的 IM（即时通讯）系统中，多个客户端可以连接到同一个服务端，并且每个客户端与服务端之间都使用相同的端口进行通信。也就是说，服务端会监听一个指定的端口（通常是一个固定的端口号），用于接受来自多个客户端的连接请求。  
+一旦客户端发送连接请求到服务端，服务端会为该连接分配一个新的随机端口（或者在一些情况下可以复用已经分配的端口），以便在服务端与该客户端之间建立一个独立的通信通道。这个新分配的端口仅用于该客户端和服务端之间的通信，不会再用于其他客户端。  
+这样做的目的是为了支持多个客户端同时连接到服务端，并且为每个连接分配独立的通信通道，以保证数据传输的可靠性和安全性。  
+因此，每个客户端与服务端之间都使用独立的通信端口。
+
+by ChatGPT  
+
+### 瓶颈分析
 核心问题：不同实时通信协议的优缺点  
 解决方案：浏览：[8 Most Popular Instant Messaging & Chat Protocols](https://www.cometchat.com/blog/popular-chat-and-instant-messaging-protocols)
   
