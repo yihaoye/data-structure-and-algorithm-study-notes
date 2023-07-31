@@ -1483,6 +1483,27 @@ DROP VIEW 视图名称(<视图列名1>, <视图列名2>, ......)
 
 对于 Materialized 视图，开发者可以配合 CQRS 模式或 Event-Sourcing 模式来一起使用。  
 
+### 分区表 (Partitioned Tables)
+简单一点说，分区表就是将一个大表分成若干个小表。分区表可以从物理上将一个大表分成几个小表，但是从逻辑上来看，还是一个大表。  
+MySQL 数据库支持的分区类型为水平分区（指将同一个表中不同行的记录分配到不同的物理文件中），并不支持垂直分区（指将同一表中不同列的记录分配到不同的物理文件中）。  
+`分表与分区的区别在于：分区从逻辑上来讲只有一张表（虽然在物理层面上是有多个表文件），而分表则是将一张表分解成多张表。`  
+
+MySQL 在创建表时使用 PARTITION BY 子句定义每个分区存放的数据。  
+```sql
+-- 创建分区表
+CREATE TABLE `tr` (
+  `id` INT, 
+  `name` VARCHAR(50), 
+  `purchased` DATE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+PARTITION BY RANGE( YEAR(purchased) ) (
+  PARTITION p0 VALUES LESS THAN (1990),
+  PARTITION p1 VALUES LESS THAN (1995),
+  PARTITION p2 VALUES LESS THAN (2000),
+  PARTITION px VALUES LESS THAN MAXVALUE
+);
+```
+  
 
 ## 运维
 ### 加快 ALTER TABLE 操作的速度
