@@ -97,7 +97,7 @@
 * [CSRF](https://tech.meituan.com/2018/10/11/fe-security-csrf.html)
   * [CSRF 与 CORS](https://b1ngz.github.io/csrf-and-cors/)
 * 加密解密
-  * [对称加密](https://www.youtube.com/watch?v=uD_zCOKuYPc) - 最简单的一次性安全加密可以采用异或运算即可
+  * [对称加密](https://www.youtube.com/watch?v=uD_zCOKuYPc) - 最粗糙的一次性安全加密可以采用异或运算即可（通常异或就是工业级对称加密算法的基础，比如 [AES](https://zh.wikipedia.org/wiki/%E9%AB%98%E7%BA%A7%E5%8A%A0%E5%AF%86%E6%A0%87%E5%87%86)）
   * [非对称加密](https://github.com/yihaoye/stem-notes/blob/master/e-computer-network/https_and_ssl_tls.md)
 * [实际工程项目中应用密匙如何存取](https://zh.wikipedia.org/zh-hant/%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86)
 * [Security for Programmer](https://www.youtube.com/watch?v=qjrkV4RjgIU)
@@ -114,6 +114,7 @@
   * 不安全的设计（需要更多地使用威胁建模、安全设计模式和原则以及参考架构）
 * [Cookie、Session、Token、JWT 区别](https://juejin.cn/post/6844904034181070861)
 * [Password, Session, Cookie, Token, JWT, SSO, OAuth - Authentication Explained](https://blog.bytebytego.com/p/password-session-cookie-token-jwt)
+  * [ByteByteGo - Session, cookie, JWT, token, SSO, and OAuth](https://blog.bytebytego.com/p/ep34-session-cookie-jwt-token-sso)
 * [JSON Web Token 入门教程](https://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html)
 * [Session 是怎么实现的？存储在哪里？](https://juejin.cn/post/6942852054847062053)
 * 安全清单
