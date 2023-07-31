@@ -1266,6 +1266,8 @@ WebSocket 连接由客户端启动。它是双向和持久的。它从 HTTP 连�
 #### 安全
 端到端加密。比如 Whatsapp 支持对消息进行端到端加密。只有发件人和收件人才能阅读邮件。  
 ![](./E2EE.png)  
+
+* [其他参考](https://github.com/yihaoye/stem-notes/blob/master/e-computer-network/end-to-end_encryption.md)
   
 </details>
 
