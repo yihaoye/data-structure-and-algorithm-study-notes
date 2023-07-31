@@ -113,6 +113,7 @@
   * 服务端请求伪造（SSRF）
   * 不安全的设计（需要更多地使用威胁建模、安全设计模式和原则以及参考架构）
 * [Cookie、Session、Token、JWT 区别](https://juejin.cn/post/6844904034181070861)
+* [JWT 认证中可以防止他人冒充 token 吗？否](https://www.zhihu.com/question/364616467)
 * [Password, Session, Cookie, Token, JWT, SSO, OAuth - Authentication Explained](https://blog.bytebytego.com/p/password-session-cookie-token-jwt)
   * [ByteByteGo - Session, cookie, JWT, token, SSO, and OAuth](https://blog.bytebytego.com/p/ep34-session-cookie-jwt-token-sso)
 * [JSON Web Token 入门教程](https://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html)
