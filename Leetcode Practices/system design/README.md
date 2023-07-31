@@ -2267,6 +2267,7 @@ https://blog.bytebytego.com/p/password-session-cookie-token-jwt
 SESSION 的数据保存在在服务器端，但不是保存在内存中（但是可以用缓存优化性能），而是保存在文件或数据库中。  
 上面的 cookie 和 session 部分可以用 jwt 替换  
 ![](./jwt.jpeg)  
+![](./jwt-attack-scenario.jpeg)  
 
 [session vs jwt](https://developer.okta.com/blog/2020/11/04/protecting-a-laravel-api-with-jwt)  
 ![](./session-vs-jwt.jpeg)  
