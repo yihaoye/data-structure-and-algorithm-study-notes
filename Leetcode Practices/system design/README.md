@@ -1126,6 +1126,8 @@ Dropbox 异步任务框架 ATF：
 3. 聊天服务端发送消息给消息队列
 4. 服务端更新对应接受者的数据库
 
+另外如果需要为不在线用户推送消息，还可以添加 Notification Service 读取消息队列中不在线的用户消息，类似 SNS（或其他第三方平台、API）把消息以邮件或其他的形式通知用户。  
+
 ### API Design
 method: POST  
 `https://example.com/api/v1/messages/`  
@@ -1174,7 +1176,7 @@ Thread Table 链式消息
 |content	|text
 |created_at	|timestamp
 
-`Thread Table`  
+`Thread/Channel Table`  
 |column	|data type
 |-- |-- 
 |id	|int
@@ -1183,7 +1185,7 @@ Thread Table 链式消息
 |last_message	|text
 |avatar	|varchar
 
-`UserThread Table`  
+`UserThread/UserChannel Table`  
 |column	|data type	|comment
 |-- |-- |--
 |id	|int	|pk
@@ -1199,7 +1201,9 @@ Thread Table 链式消息
 * Thread Table - 如果使用 SQL 的话，需要对 thread_id (查询某个对话的信息)和 participant_hash_code (查询用户之间是否已经有 thread 存在了)添加索引，因为会有频繁的查询操作。如果使用 NoSQL 的话，对于需要建立多个索引的情况，可以分成两个表
 * UserThread Table - 也可以使用 NoSQL
 
-链接：https://www.acwing.com/blog/content/26646/
+参考：
+* https://www.acwing.com/blog/content/26646/
+* https://www.youtube.com/watch?v=uzeJb7ZjoQ4
 
 ### 网络
 在一个典型的 IM（即时通讯）系统中，多个客户端可以连接到同一个服务端，并且每个客户端与服务端之间都使用相同的端口进行通信。也就是说，服务端会监听一个指定的端口（通常是一个固定的端口号），用于接受来自多个客户端的连接请求。  
@@ -1208,6 +1212,28 @@ Thread Table 链式消息
 因此，每个客户端与服务端之间都使用独立的通信端口。
 
 by ChatGPT  
+
+#### 网络协议
+轮询  
+如下图所示，轮询是一种客户端定期询问服务器是否有可用消息的技术。根据轮询频率，轮询的成本可能会很高。它可能会消耗宝贵的服务器资源来回答一个在大多数情况下都没有答案的问题。  
+![](./polling.webp)  
+
+长轮询  
+由于轮询可能效率低下，下图是长轮询。  
+![](./long-polling.webp)  
+在长轮询中，客户端保持连接打开，直到有新消息可用或达到超时阈值。一旦客户端接收到新消息，它会立即向服务器发送另一个请求，从而重新启动进程。长轮询有几个缺点：  
+* 发送方和接收方可能无法连接到同一聊天服务器。基于 HTTP 的服务器通常是无状态的。如果使用循环法进行负载平衡，则接收消息的服务器可能与接收消息的客户端没有长轮询连接。
+* 服务器无法很好地判断客户端是否已断开连接。
+* 效率低下。如果用户聊天不多，长轮询仍然会在超时后进行定期连接。
+
+websocket 长连接  
+WebSocket 是从服务器向客户端发送异步更新的最常见解决方案。下图显示了其工作原理。  
+![](./websocket.webp)  
+WebSocket 连接由客户端启动。它是双向和持久的。它从 HTTP 连接开始，可以通过一些定义良好的握手“升级”到 WebSocket 连接。通过这种持久连接，服务器可以向客户端发送更新。即使有防火墙，WebSocket 连接通常也能正常工作。这是因为它们使用的端口 80 或 443 也被 HTTP/HTTPS 连接使用。
+![](./websocket-for-sender-and-receiver.webp)  
+由于 WebSocket 是双向的，因此通过将 WebSocket 用于发送和接收，它简化了设计，并使客户端和服务器上的实现更加简单。由于 WebSocket 连接是持久的，因此高效的连接管理在服务器端至关重要。  
+
+参考：https://segmentfault.com/a/1190000040680573  
 
 ### 瓶颈分析
 核心问题：不同实时通信协议的优缺点  
