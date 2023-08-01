@@ -15,7 +15,7 @@ public class FSM {
     private int[][] states; // 状态转移表，二维数组，第一维表示当前状态，第二维表示条件，值表示下一个状态，也可以换成 Map<Integer, Map<Integer, Integer>>，第一维表示当前状态，第二维表示条件，值表示下一个状态
     private int state; // 当前状态，0 可以是指代一个合法状态也可以是一个非法状态，具体根据 rules 决定
 
-    public FSM(int[][] rules, int start_state, int max_state, int max_condition) { // simple finite state machine example
+    public FSM(int[][] rules, int init_state, int max_state, int max_condition) { // simple finite state machine example
         this.states = new int[max_state + 1][max_condition + 1];
         for (int[] rule : rules) {
             int curState = rule[0];
@@ -23,7 +23,7 @@ public class FSM {
             int nextState = rule[2];
             this.states[curState][condition] = nextState;
         }
-        this.state = start_state; // 初始状态
+        this.state = init_state; // 初始状态
     }
 
     public int nextState(int condition) {
