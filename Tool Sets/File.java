@@ -1,4 +1,4 @@
-// Method 1: URL class
+// Method 1: URL class - 是否推荐？不推荐，因为 URL 类是为了访问网络资源而设计的，而不是本地文件。
 URL url = new URL("file:/D:/test/test.txt");
 
 URLConnection urlConnection = url.openConnection();
@@ -12,17 +12,20 @@ while (data != -1) {
 input.close();
 
 
-// Method 2: File class
-File file = new File("file:/D:/test/test.txt");
-Scanner reader = new Scanner(file);
-while (reader.hasNextLine()) {
-    String record = reader.nextLine();
-    System.out.printf(record);
+// Method 2: File + Scanner class - 是否推荐？推荐，因为它可以读取任何类型的文件。
+File file = new File("file:/D:/test/test.txt"); // File 类只能读取文件的元数据，不能读取文件内容
+try (Scanner reader = new Scanner(file)) {
+    while (reader.hasNextLine()) {
+        String record = reader.nextLine();
+        System.out.printf(record);
+    }
+} catch (FileNotFoundException e) {
+    e.printStackTrace();
 }
-reader.close();
+// reader.close(); // 不需要，因为 try with resources 会关闭流。
 
 
-// Method 3: FileInputStream + Reader class
+// Method 3: FileInputStream + Reader class - 是否推荐？推荐，因为它可以读取任何类型的文件。
 InputStream inputStream = new FileInputStream("file:/D:/test/test.txt");
 try (Reader inputStreamReader = new InputStreamReader(inputStream)) {
     int data = inputStreamReader.read();
@@ -36,7 +39,7 @@ try (Reader inputStreamReader = new InputStreamReader(inputStream)) {
 // inputStreamReader.close(); // 不需要，因为 try with resources 会关闭流。同样，只要关闭最外层的包装流，里面的流会被系统自动关闭。
 
 
-// Method 3.5: + BufferedReader class
+// Method 3.5: + BufferedReader class - 是否推荐？推荐，因为它可以读取任何类型的文件，而且可以一次读取一行。
 InputStream inputStream = new FileInputStream("file:/D:/test/test.txt");
 try (Reader inputStreamReader = new InputStreamReader(inputStream);
      BufferedReader bufferedReader = new BufferedReader(inputStreamReader)) {
@@ -50,9 +53,24 @@ try (Reader inputStreamReader = new InputStreamReader(inputStream);
 }
 
 
+// Method 4: RandomAccessFile，意思是可以随机访问文件的任何位置，而不是从头开始读取。
+RandomAccessFile randomAccessFile = new RandomAccessFile("file:/D:/test/test.txt", "r"); // 参数 2：r 代表只读，rw 代表读写，rws 代表读写并同步文件内容，rwd 代表读写并同步文件内容和元数据。
+try {
+    String line = randomAccessFile.readLine();
+    while (line != null) {
+        System.out.println(line);
+        line = randomAccessFile.readLine();
+    }
+} catch (IOException e) {
+    e.printStackTrace();
+} finally {
+    randomAccessFile.close();
+}
+
+
 
 // 写入文件
-OutputStream outputStream = new FileOutputStream("file:/D:/test/test.txt");
+OutputStream outputStream = new FileOutputStream("file:/D:/test/test.txt"); // 如果文件不存在，会自动创建文件。参数 2：true 代表 append mode，false 代表 overwrite mode，默认是 false。
 try (Writer outputStreamWriter = new OutputStreamWriter(outputStream)) {
     outputStreamWriter.write("Hello World!");
 } catch (IOException e) {
@@ -60,19 +78,29 @@ try (Writer outputStreamWriter = new OutputStreamWriter(outputStream)) {
 }
 
 
-// 写入文件 method 2
-FileWriter fileWriter = new FileWriter("file:/D:/test/test.txt");
-try (BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
-    bufferedWriter.write("Hello World!");
+// 写入文件 append mode
+OutputStream outputStream = new FileOutputStream("file:/D:/test/test.txt", true);
+try (Writer outputStreamWriter = new OutputStreamWriter(outputStream)) {
+    outputStreamWriter.write("Append!");
 } catch (IOException e) {
     e.printStackTrace();
 }
 
 
-// 写入文件 append mode
-FileWriter fileWriter = new FileWriter("file:/D:/test/test.txt", true);
-try (BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
+// 写入文件 buffer + append - Buffer 好在哪里？Buffer 可以提高写入文件的效率。
+OutputStream outputStream = new FileOutputStream("file:/D:/test/test.txt", true);
+try (BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream))) {
     bufferedWriter.write("Append!");
 } catch (IOException e) {
     e.printStackTrace();
 }
+
+
+
+// 通常推荐使用 InputStream/OutputStream 和 Reader/Writer 类，因为它们可以读取和写入任何类型的文件。
+// 但是，如果读取和写入文本文件，推荐使用 FileReader/FileWriter 类 或 Scanner/PrintWriter 类，因为它们的使用更加简单，但是这些个类只能读取和写入文本文件，不能读取和写入二进制文件。
+
+// PrintWriter 类
+PrintWriter printWriter = new PrintWriter("file:/D:/test/test.txt"); // 参数 2：true 代表 append mode，false 代表 overwrite mode，默认是 false。
+printWriter.println("Hello World!");
+printWriter.close();
