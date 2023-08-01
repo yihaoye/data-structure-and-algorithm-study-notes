@@ -11,6 +11,25 @@
 
 */
 
+public class FSM {
+    private int[][] states;
+    private int state; // 当前状态
 
+    public FSM(int[][] rules, int max_state, int max_condition) { // simple finite state machine example
+        this.states = new int[max_state + 1][max_condition + 1];
+        for (int[] rule : rules) {
+            int curState = rule[0];
+            int condition = rule[1];
+            int nextState = rule[2];
+            this.states[curState][condition] = nextState;
+        }
+        this.state = 0; // 初始状态
+    }
+
+    public int nextState(int condition) {
+        this.state = this.states[this.state][condition];
+        return this.state;
+    }
+}
 
 // ToDo ...
