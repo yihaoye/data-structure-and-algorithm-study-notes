@@ -6,22 +6,20 @@ import java.io.*;
 public class HTTP {
     public static void main(String[] args) throws Exception {
         URL url = new URL("http://www.google.com"); // or "https://api.coindesk.com/v1/bpi/currentprice.json"
-        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-        connection.setRequestMethod("GET");
-        connection.setConnectTimeout(5000);
-        connection.setReadTimeout(5000);
-        int responseCode = connection.getResponseCode();
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+        int responseCode = conn.getResponseCode(); // 没有显示调用 connect()，因为 getResponseCode() 会隐式调用 connect()。
         StringBuilder data = new StringBuilder();
-        if (responseCode == 200) {
-            InputStream inputStream = connection.getInputStream();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                data.append(line);
-            }
-            bufferedReader.close();
+        if (responseCode != 200) { // HttpURLConnection.HTTP_OK
+            throw new RuntimeException("HttpResponseCode: " + responseCode);
         }
-        connection.disconnect();
+        InputStream inputStream = conn.getInputStream();
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+        String line;
+        while ((line = bufferedReader.readLine()) != null) {
+            data.append(line);
+        }
+        bufferedReader.close();
+        conn.disconnect();
         System.out.println(data.toString());
     }
 }
@@ -40,33 +38,26 @@ public class HTTP { // 该类只展示了 GET 和 第三方库 JSON Parse 或简
     public static String doGet(String endpoint) { // REST GET
         try {
             // https://www.youtube.com/watch?v=zZoboXqsCNw
-
             URL url = new URL(endpoint);
-
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            conn.setRequestMethod("GET");
+            conn.setRequestMethod("GET"); // 默认是 GET
+            conn.setConnectTimeout(5000); // 设置连接超时时间，默认是无限等待，单位毫秒
+            conn.setReadTimeout(5000); // 设置读取超时时间，默认是无限等待，单位毫秒
             conn.connect();
 
-            // Check if connect is made
             int responseCode = conn.getResponseCode();
-
             // 200 OK
             if (responseCode != HttpURLConnection.HTTP_OK) {
                 throw new RuntimeException("HttpResponseCode: " + responseCode);
-            } else {
-                StringBuilder data = new StringBuilder();
-                Scanner scanner = new Scanner(url.openStream());
-
-                while (scanner.hasNext()) {
-                    data.append(scanner.nextLine());
-                }
-                // Close the scanner
-                scanner.close();
-
-                // System.out.println(data); // {"time":{"updated":"Feb 15, 2023 11:15:00 UTC","updatedISO":"2023-02-15T11:15:00+00:00","updateduk":"Feb 15, 2023 at 11:15 GMT"},"disclaimer":"This data was produced from the CoinDesk Bitcoin Price Index (USD). Non-USD currency data converted using hourly conversion rate from openexchangerates.org","chartName":"Bitcoin","bpi":{"USD":{"code":"USD","symbol":"&#36;","rate":"22,242.3013","description":"United States Dollar","rate_float":22242.3013},"GBP":{"code":"GBP","symbol":"&pound;","rate":"18,585.4890","description":"British Pound Sterling","rate_float":18585.489},"EUR":{"code":"EUR","symbol":"&euro;","rate":"21,667.2488","description":"Euro","rate_float":21667.2488}}}
-                
-                return data.toString();
             }
+            StringBuilder data = new StringBuilder();
+            Scanner scanner = new Scanner(url.openStream());
+            while (scanner.hasNext()) {
+                data.append(scanner.nextLine());
+            }
+            scanner.close();
+
+            return data.toString(); // {"time":{"updated":"Feb 15, 2023 11:15:00 UTC","updatedISO":"2023-02-15T11:15:00+00:00","updateduk":"Feb 15, 2023 at 11:15 GMT"},"disclaimer":"This data was produced from the CoinDesk Bitcoin Price Index (USD). Non-USD currency data converted using hourly conversion rate from openexchangerates.org","chartName":"Bitcoin","bpi":{"USD":{"code":"USD","symbol":"&#36;","rate":"22,242.3013","description":"United States Dollar","rate_float":22242.3013},"GBP":{"code":"GBP","symbol":"&pound;","rate":"18,585.4890","description":"British Pound Sterling","rate_float":18585.489},"EUR":{"code":"EUR","symbol":"&euro;","rate":"21,667.2488","description":"Euro","rate_float":21667.2488}}}
         } catch (Exception e) {
             e.printStackTrace();
             return null;
