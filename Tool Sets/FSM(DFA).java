@@ -30,6 +30,10 @@ public class FSM {
         this.state = this.states[this.state][condition];
         return this.state;
     }
+
+    public int getState() {
+        return this.state;
+    }
 }
 
 
