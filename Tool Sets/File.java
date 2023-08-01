@@ -15,8 +15,8 @@ try (Scanner reader = new Scanner(file)) {
 InputStream inputStream = new FileInputStream("file:/D:/test/test.txt");
 try (Reader inputStreamReader = new InputStreamReader(inputStream)) {
     int data = inputStreamReader.read();
-    while(data != -) {
-        System.out.print((char) data));
+    while (data != -1) {
+        System.out.print((char) data);
         data = inputStreamReader.read();
     } 
 } catch (IOException e) {

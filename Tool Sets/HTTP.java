@@ -11,15 +11,18 @@ public class HTTP {
         connection.setConnectTimeout(5000);
         connection.setReadTimeout(5000);
         int responseCode = connection.getResponseCode();
+        StringBuilder data = new StringBuilder();
         if (responseCode == 200) {
             InputStream inputStream = connection.getInputStream();
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
             String line;
             while ((line = bufferedReader.readLine()) != null) {
-                System.out.println(line);
+                data.append(line);
             }
             bufferedReader.close();
         }
+        connection.disconnect();
+        System.out.println(data.toString());
     }
 }
 
