@@ -1494,15 +1494,28 @@ MySQL 在创建表时使用 PARTITION BY 子句定义每个分区存放的数据
 CREATE TABLE `tr` (
   `id` INT, 
   `name` VARCHAR(50), 
-  `purchased` DATE
+  `happened` DATE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
-PARTITION BY RANGE( YEAR(purchased) ) (
+PARTITION BY RANGE( YEAR(happened) ) (
   PARTITION p0 VALUES LESS THAN (1990),
   PARTITION p1 VALUES LESS THAN (1995),
   PARTITION p2 VALUES LESS THAN (2000),
   PARTITION px VALUES LESS THAN MAXVALUE
 );
 ```
+
+在下面的场景中，分区可以起到非常大的作用：
+* 表非常大以至于无法全部都放在内存中，或者只在表的最后部分有热点数据，其他均是历史数据。
+* 分区表的数据更容易维护。例如，想批量删除大量数据可以使用清除整个分区的方式。另外，还可以对一个独立分区进行优化、检查、修复等操作。
+* 分区表的数据可以分布在不同的物理设备上，从而高效地利用多个硬件设备。
+* 可以使用分区表来避免某些特殊的瓶颈，例如 InnoDB 的单个索引的互斥访问、ext3 文件系统的 inode 锁竞争等。
+* 如果需要，还可以备份和恢复独立的分区，这在非常大的数据集的场景下效果非常好。
+
+MySQL 的分区实现非常复杂，这里不介绍实现的全部细节。  
+
+参考：
+* 高性能 MySQL：第3版
+* https://www.cnblogs.com/wenxuehai/p/15901779.html
   
 
 ## 运维
