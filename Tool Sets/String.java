@@ -24,3 +24,14 @@ for (int j = 0; j < wordLen; j++) {
     }
     charArray[j] = origin; // 把 charArray 复原，因为下一次换一位字母遍历
 }
+
+
+
+char c = 'Z';
+Character.isLetter(c);
+Character.isDigit(c);
+Character.isUpperCase(c);
+Character.isLowerCase(c);
+Character.toUpperCase(c);
+Character.toLowerCase(c);
+Character.toString(c); // char => String

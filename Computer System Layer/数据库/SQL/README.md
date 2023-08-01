@@ -1513,6 +1513,11 @@ PARTITION BY RANGE( YEAR(happened) ) (
 
 MySQL 的分区实现非常复杂，这里不介绍实现的全部细节。  
 
+#### 分区类型
+* RANGE 分区（范围分区）- 前面的代码示例
+* LIST 分区 - PARTITION BY LIST(expr)
+* HASH 分区
+
 参考：
 * 高性能 MySQL：第3版
 * https://www.cnblogs.com/wenxuehai/p/15901779.html
