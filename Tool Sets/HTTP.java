@@ -1,3 +1,30 @@
+// HTTP GET 示例 by Copilot
+import java.net.*;
+import java.util.*;
+import java.io.*;
+
+public class HTTP {
+    public static void main(String[] args) throws Exception {
+        URL url = new URL("http://www.google.com"); // or "https://api.coindesk.com/v1/bpi/currentprice.json"
+        HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        connection.setRequestMethod("GET");
+        connection.setConnectTimeout(5000);
+        connection.setReadTimeout(5000);
+        int responseCode = connection.getResponseCode();
+        if (responseCode == 200) {
+            InputStream inputStream = connection.getInputStream();
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                System.out.println(line);
+            }
+            bufferedReader.close();
+        }
+    }
+}
+
+
+
 // 可以参考 https://restful-api.dev/
 import java.net.*;
 import java.util.*;
