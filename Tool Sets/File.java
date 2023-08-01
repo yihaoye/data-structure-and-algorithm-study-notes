@@ -1,18 +1,4 @@
-// Method 1: URL class - 是否推荐？不推荐，因为 URL 类是为了访问网络资源而设计的，而不是本地文件。
-URL url = new URL("file:/D:/test/test.txt");
-
-URLConnection urlConnection = url.openConnection();
-InputStream input = urlConnection.getInputStream();
-
-int data = input.read();
-while (data != -1) {
-    System.out.printf((char) data);
-    data = input.read();
-}
-input.close();
-
-
-// Method 2: File + Scanner class - 是否推荐？推荐，因为它可以读取任何类型的文件。
+// 读取 Method 1: File + Scanner class - 是否推荐？推荐，因为它可以读取任何类型的文件。
 File file = new File("file:/D:/test/test.txt"); // File 类只能读取文件的元数据，不能读取文件内容
 try (Scanner reader = new Scanner(file)) {
     while (reader.hasNextLine()) {
@@ -25,7 +11,7 @@ try (Scanner reader = new Scanner(file)) {
 // reader.close(); // 不需要，因为 try with resources 会关闭流。
 
 
-// Method 3: FileInputStream + Reader class - 是否推荐？推荐，因为它可以读取任何类型的文件。
+// 读取 Method 2: FileInputStream + Reader class - 是否推荐？推荐，因为它可以读取任何类型的文件。
 InputStream inputStream = new FileInputStream("file:/D:/test/test.txt");
 try (Reader inputStreamReader = new InputStreamReader(inputStream)) {
     int data = inputStreamReader.read();
@@ -39,7 +25,7 @@ try (Reader inputStreamReader = new InputStreamReader(inputStream)) {
 // inputStreamReader.close(); // 不需要，因为 try with resources 会关闭流。同样，只要关闭最外层的包装流，里面的流会被系统自动关闭。
 
 
-// Method 3.5: + BufferedReader class - 是否推荐？推荐，因为它可以读取任何类型的文件，而且可以一次读取一行。
+// 读取 Method 2.5: + BufferedReader class - 是否推荐？推荐，因为它可以读取任何类型的文件，而且可以一次读取一行。
 InputStream inputStream = new FileInputStream("file:/D:/test/test.txt");
 try (Reader inputStreamReader = new InputStreamReader(inputStream);
      BufferedReader bufferedReader = new BufferedReader(inputStreamReader)) {
@@ -53,7 +39,7 @@ try (Reader inputStreamReader = new InputStreamReader(inputStream);
 }
 
 
-// Method 4: RandomAccessFile，意思是可以随机访问文件的任何位置，而不是从头开始读取。
+// 读取 Method 3: RandomAccessFile，意思是可以随机访问文件的任何位置，而不是从头开始读取。
 RandomAccessFile randomAccessFile = new RandomAccessFile("file:/D:/test/test.txt", "r"); // 参数 2：r 代表只读，rw 代表读写，rws 代表读写并同步文件内容，rwd 代表读写并同步文件内容和元数据。
 try {
     String line = randomAccessFile.readLine();
@@ -66,6 +52,27 @@ try {
 } finally {
     randomAccessFile.close();
 }
+
+
+// 读取 Method 4: Path + Files + Stream class - 是否推荐？推荐，因为它可以读取任何类型的文件。
+Path path = Paths.get("file:/D:/test/test.txt");
+try (Stream<String> lines = Files.lines(path)) {
+    lines.forEach(System.out::println);
+} catch (IOException e) {
+    e.printStackTrace();
+}
+
+
+// 读取 Method 5: URL class - 是否推荐？不推荐，因为 URL 类是为了访问网络资源而设计的，而不是本地文件。
+URL url = new URL("file:/D:/test/test.txt");
+URLConnection urlConnection = url.openConnection();
+InputStream input = urlConnection.getInputStream();
+int data = input.read();
+while (data != -1) {
+    System.out.printf((char) data);
+    data = input.read();
+}
+input.close();
 
 
 
