@@ -12,7 +12,7 @@
 */
 
 public class FSM {
-    private int[][] states; // 状态转移表，二维数组，第一维表示当前状态，第二维表示条件，值表示下一个状态，也可以换成 Map<Integer, Map<Integer, Integer>>，第一维表示当前状态，第二维表示条件，值表示下一个状态
+    private int[][] states; // 状态转移表，二维数组，第一维表示当前状态，第二维表示条件，值表示下一个状态，也可以换成 Map<Integer, Map<Integer, Integer>> 使得内存使用更紧凑，第一维表示当前状态，第二维表示条件，值表示下一个状态，如下方示例 2 所示
     private int state; // 当前状态，0 可以是指代一个合法状态也可以是一个非法状态，具体根据 rules 决定
 
     public FSM(int[][] rules, int init_state, int max_state, int max_condition) { // simple finite state machine example
@@ -35,6 +35,54 @@ public class FSM {
         return this.state;
     }
 }
+
+
+
+
+
+enum State {
+    OFF,
+    ON,
+    UNKNOWN
+}
+
+enum Condition {
+    TURN_ON,
+    TURN_OFF,
+    UNKNOWN
+}
+
+public class FSM {
+    private Map<State, Map<Condition, State>> states;
+    private State currentState;
+
+    public FSM(int[][] rules, State initState) {
+        states = new HashMap<>();
+        for (int[] rule : rules) {
+            State curState = State.values()[rule[0]];
+            Condition condition = Condition.values()[rule[1]];
+            State nextState = State.values()[rule[2]];
+            states.computeIfAbsent(curState, k -> new HashMap<>());
+            states.get(curState).put(condition, nextState);
+        }
+        currentState = initState;
+    }
+
+    public State nextState(Condition condition) {
+        if (!states.containsKey(currentState) || !states.get(currentState).containsKey(condition)) {
+            throw new IllegalArgumentException("Invalid condition or state");
+        }
+        currentState = states.get(currentState).get(condition);
+        return currentState;
+    }
+
+    public State getCurrentState() {
+        return currentState;
+    }
+}
+
+
+
 
 
 // ToDo ...
