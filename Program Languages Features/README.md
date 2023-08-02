@@ -13,6 +13,7 @@
 * [泛型](../HackerRank%20Practises/java/easy/Java%20Generics.java)
 * [JVM](../Computer%20System%20Layer/JVM/)  
   
+建议各种类、接口、API 多查看 [Java 官方文档](https://docs.oracle.com/javase/8/docs/api/overview-summary.html)  
 另外，需熟记 [Java 的关键字](Java%20关键字.pdf) 以及 [Java 标准库](./Java%20标准库.md)  
   
 ## Python 特性

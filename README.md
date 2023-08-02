@@ -4,33 +4,33 @@
 *This repository is just a personal study note, but not any profitable or regular project. Contents may contains/quotes plenty of online materials I learned from (and all these contents are referenced with their source). Please contact me if there is any copyright issues. Sorry about that.*  
   
 ### 本笔记包括以下内容:  
-* Books and Courses 
-  * [算法导论 | Introduction to Algorithms](./Introduction%20to%20Algorithms/)
-  * [程序员面试金典 | Cracking the Coding Interview](./Cracking%20the%20Coding%20Interview/)
-  * [算法竞赛入门经典](./算法竞赛入门经典/)
-  * [算法艺术与信息学竞赛](./算法艺术与信息学竞赛/)
-  * [其他数据结构网课笔记](./其他数据结构网课/)
 * [行为型问题与工作实践 | Behavior Question & Best Practice](./Behavior%20Question%20and%20Best%20Practice/)
-* [Topcoder](./Topcoder/)
-* [Codility Practices](./Codility%20Practices/)
 * [HackerRank Practices](./HackerRank%20Practises/) (包括一些 [Java 语言实例解析](./HackerRank%20Practises/java/)、[Linux Bash](./HackerRank%20Practises/bash/))
-* [Google Code Jam Practices](./Google%20Code%20Jam/)
 * [Leetcode Practices](./Leetcode%20Practices/) (主要包含了[算法](./Leetcode%20Practices/algorithms/)、[SQL](./Leetcode%20Practices/database/)、[OOD](./Leetcode%20Practices/object%20oriented%20design/) 、[系统设计](./Leetcode%20Practices/system%20design/) 和 [API 设计](./Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md#api-design)；算法题第一次提交 round 1 是自己的首次解答方法，第二次提交 round 2 是进行复盘复习后并添加、理解他人的更优解以及增添其他语言解题实现，round 0 则是首次答题没头绪参考他人解题思路)
   * **[重点：分类分析套路](./分析套路.md)**
 * [常用工具集 | Tool Sets](./Tool%20Sets/) (常用编码逻辑工具集查询手册，包括一些 Java 语言实例解析、非 Java 语言内置但是重要的数学工具等等)
 * [常用算法及理论 | Common Algorithm & Theory](./Common%20Algorithm%20and%20Theory/)
 * [常用数据结构、数据类型及其实现 | Common Data Structure & Data Type & Implementation](./Common%20Data%20Structure%20and%20Data%20Type/) (包括并发相关的数据结构的详解)
 * [计算机数学 | Computer Science Maths](./Computer%20Science%20Maths/) (包括理论信息学如 [P/NP 问题](./Computer%20Science%20Maths/P%20vs%20NP%20vs%20NPC.md)，基础数学如[数学归纳法](./Computer%20Science%20Maths/Mathematical%20Induction.md)、[排列组合](./Computer%20Science%20Maths/Combinatorics.md)，以及算法常用数学工具、ACM 数论等等)
-* [其他算法实践、真题、面经笔记](./Other%20Practices/)
 * [计算机系统基础 | Computer System Layer & Basics](./Computer%20System%20Layer/) (包括一些 [CAS、并发相关的 Java 数据结构的用例与详解](./Computer%20System%20Layer/并发与并行(Java)/) 和 [SQL 数据库详解](./Computer%20System%20Layer/数据库)、[数据建模](./Leetcode%20Practices/system%20design/数据库数据建模分库分表.md#数据模型设计))
 * [编程语言特性 | Programming Languages Features](./Program%20Languages%20Features/)
+* [其他算法实践、真题、面经笔记](./Other%20Practices/)
 * [品质保证 | Quality Assurance](./Quality%20Assurance/README.md)
 * [基础知识、面试八股文 | Domain Knowledge](./面试八股文/README.md)
   * [计算机术语表 | Related Terms](./面试八股文/英文术语.md)
+* [其他类别岗位（如架构师、工程经理、安全工程师等）模拟面试 ｜ Other Position Interview Mock](https://www.youtube.com/@tryexponent/playlists)
+* Books and Courses
+  * [算法导论 | Introduction to Algorithms](./Introduction%20to%20Algorithms/)
+  * [程序员面试金典 | Cracking the Coding Interview](./Cracking%20the%20Coding%20Interview/)
+  * [算法竞赛入门经典](./算法竞赛入门经典/)
+  * [算法艺术与信息学竞赛](./算法艺术与信息学竞赛/)
+  * [其他数据结构网课笔记](./其他数据结构网课/)
+* [Topcoder](./Topcoder/)
+* [Codility Practices](./Codility%20Practices/)
+* [Google Code Jam Practices](./Google%20Code%20Jam/)
 * [标准认知能力测试 | Criteria Cognitive Aptitude Test](./智力测试/README.md)
-* [其他类别岗位（如架构师、工程经理、安全工程师等）模拟面试 ｜ Other Position Interview Mock](https://www.youtube.com/@tryexponent/playlists)  
-  
-  
+
+
 ### 刷题技巧与笔记:
   
 #### 看题
