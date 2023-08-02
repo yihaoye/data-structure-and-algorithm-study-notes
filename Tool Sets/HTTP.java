@@ -25,6 +25,66 @@ public class HTTP {
 }
 
 
+// HTTP POST 示例 by ChatGPT
+import java.net.*;
+import java.util.*;
+import java.io.*;
+
+public class HTTP {
+
+    public static void main(String[] args) {
+        String url = "https://example.com/api/endpoint";
+        String requestBody = "{\"key\":\"value\"}"; // 请求体，根据实际情况填充
+
+        try {
+            String response = sendHttpPostRequest(url, requestBody);
+            System.out.println("Response: " + response);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static String sendHttpPostRequest(String url, String requestBody) throws IOException {
+        HttpURLConnection connection = null;
+        BufferedReader reader = null;
+        StringBuilder responseContent = new StringBuilder();
+
+        try {
+            URL apiUrl = new URL(url);
+            connection = (HttpURLConnection) apiUrl.openConnection();
+
+            // 设置请求方法为POST
+            connection.setRequestMethod("POST");
+            connection.setRequestProperty("Content-Type", "application/json"); // 根据实际情况设置请求头
+            connection.setDoOutput(true); // 允许写入请求体
+
+            // 写入请求体
+            try (OutputStream outputStream = connection.getOutputStream()) {
+                byte[] input = requestBody.getBytes("utf-8");
+                outputStream.write(input, 0, input.length);
+            }
+
+            // 读取响应
+            reader = new BufferedReader(new InputStreamReader(connection.getInputStream(), "utf-8"));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                responseContent.append(line);
+            }
+        } finally {
+            // 关闭连接和读取器
+            if (connection != null) connection.disconnect();
+            if (reader != null) reader.close();
+        }
+
+        return responseContent.toString();
+    }
+}
+// 在try-with-resources结构中，只要实现了AutoCloseable接口的资源在try块中声明，无论是否发生异常，都会自动关闭该资源。在这个示例中，OutputStream和BufferedReader都实现了AutoCloseable接口，所以不需要手动调用close()方法。
+// 在执行try-with-resources结构的时候，会自动在try块结束后关闭资源，保证资源的正确释放。因此，在这个例子中，OutputStream会在写入数据后自动被关闭，而BufferedReader会在读取响应后自动被关闭，无需显式调用close()方法。
+
+
+
+
 
 // 可以参考 https://restful-api.dev/
 import java.net.*;
