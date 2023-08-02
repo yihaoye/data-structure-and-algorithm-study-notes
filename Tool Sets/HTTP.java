@@ -79,8 +79,8 @@ public class HTTP {
         return responseContent.toString();
     }
 }
-// 在try-with-resources结构中，只要实现了AutoCloseable接口的资源在try块中声明，无论是否发生异常，都会自动关闭该资源。在这个示例中，OutputStream和BufferedReader都实现了AutoCloseable接口，所以不需要手动调用close()方法。
-// 在执行try-with-resources结构的时候，会自动在try块结束后关闭资源，保证资源的正确释放。因此，在这个例子中，OutputStream会在写入数据后自动被关闭，而BufferedReader会在读取响应后自动被关闭，无需显式调用close()方法。
+// 在 try-with-resources 结构中，只要实现了 AutoCloseable 接口的资源在 try 块中声明，无论是否发生异常，都会自动关闭该资源。在这个示例中，OutputStream都实现了 AutoCloseable 接口（BufferedReader 也实现了），所以不需要显示调用 flush() 和 close() 方法。
+// 在执行 try-with-resources 结构的时候，会自动在try块结束后关闭资源，保证资源的正确释放。因此，在这个例子中，OutputStream 会在写入数据后自动被关闭。
 
 
 
@@ -157,57 +157,25 @@ import java.util.*;
 import javax.net.ssl.*;
 import java.io.*;
 
-public class HTTP { // HTTP/HTTPS POST
-    public static void main(String[] args) {
-        try {
-            // https://stackoverflow.com/questions/40107482/parsing-json-file-in-java-without-using-org-json
-            
-            // URL url = new URL("https://httpbin.org/post");
-            // HttpURLConnection httpConnection = (HttpURLConnection) url.openConnection();
-            // httpConnection.setRequestMethod("POST");
-            // httpConnection.setDoOutput(true);
-            // OutputStream os = httpConnection.getOutputStream();
-            // String jsonText = "{\"name\":\"AppleMacBookPro16\",\"data\":{\"year\":2019,\"price\":1849.99,\"CPUmodel\":\"IntelCorei9\",\"Harddisksize\":\"1TB\"}}";
-            // os.write(jsonText.getBytes());
-            // os.flush();
-            // os.close();
+public class HTTPS { // HTTPS POST
+    public static void main(String[] args) throws Exception {
+        String body = "{\"name\": \"Apple iPad Air\", \"data\": { \"Generation\": \"4th\", \"Price\": \"519.99\", \"Capacity\": \"256 GB\" }}";
+        URL url = new URL("https://api.restful-api.dev/objects");
+        HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
+        conn.setRequestMethod("POST");
+        conn.setDoOutput(true);
+        conn.setRequestProperty("Content-Type", "application/json");
+        conn.setRequestProperty("User-Agent", "Mozilla/5.0");
 
-            // int responseCode = httpConnection.getResponseCode();
-            // System.out.println(responseCode);
+        try (DataOutputStream dos = new DataOutputStream(conn.getOutputStream())) {
+            dos.writeBytes(body);
+        }
 
-            // if (responseCode == HttpURLConnection.HTTP_OK) {
-            //     BufferedReader br = new BufferedReader(new InputStreamReader(httpConnection.getInputStream()));
-            //     String input;
-            //     StringBuffer response = new StringBuffer();
-
-            //     while ((input = br.readLine()) != null) {
-            //         response.append(input);
-            //     }
-            //     br.close();
-            //     String responseJson = response.toString();
-            //     System.out.println(responseJson);
-            // }
-
-            String body = "{\"name\": \"Apple iPad Air\", \"data\": { \"Generation\": \"4th\", \"Price\": \"519.99\", \"Capacity\": \"256 GB\" }}";
-            URL url = new URL("https://api.restful-api.dev/objects");
-            HttpsURLConnection conn = (HttpsURLConnection) url.openConnection();
-            conn.setRequestMethod("POST");
-            conn.setDoOutput(true);
-            conn.setRequestProperty("Content-Type", "application/json");
-            conn.setRequestProperty("User-Agent", "Mozilla/5.0");
-
-            try (DataOutputStream dos = new DataOutputStream(conn.getOutputStream())) {
-                dos.writeBytes(body);
+        try (BufferedReader bf = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
+            String line;
+            while ((line = bf.readLine()) != null) {
+                System.out.println(line);
             }
-
-            try (BufferedReader bf = new BufferedReader(new InputStreamReader(conn.getInputStream()))) {
-                String line;
-                while ((line = bf.readLine()) != null) {
-                    System.out.println(line);
-                }
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
 	}
 }
@@ -224,87 +192,6 @@ public class HTTP { // HTTP/HTTPS POST
     ③通过Apache封装好的HttpClient；由②发展来的
     ④通过SpringBoot-RestTemplate；
  */
-
-import java.net.*;
-
-public class HttpUrlConnectionToInterface { // 通过 JDK 网络类 Java.net.HttpURLConnection；
-
-    /**
-     * 以post或get方式调用对方接口方法，
-     * @param pathUrl
-     */
-    public static void doPostOrGet(String pathUrl, String data){
-        OutputStreamWriter out = null;
-        BufferedReader br = null;
-        String result = "";
-        try {
-            URL url = new URL(pathUrl);
-            //打开和url之间的连接
-            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            //请求方式
-            conn.setRequestMethod("POST");
-            //conn.setRequestMethod("GET");
-
-            //设置通用的请求属性
-            conn.setRequestProperty("accept", "*/*");
-            conn.setRequestProperty("connection", "Keep-Alive");
-            conn.setRequestProperty("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)");
-            conn.setRequestProperty("Content-Type", "application/json;charset=utf-8");
-
-            //DoOutput设置是否向httpUrlConnection输出，DoInput设置是否从httpUrlConnection读入，此外发送post请求必须设置这两个
-            conn.setDoOutput(true);
-            conn.setDoInput(true);
-
-            /**
-             * 下面的三句代码，就是调用第三方http接口
-             */
-            //获取URLConnection对象对应的输出流
-            out = new OutputStreamWriter(conn.getOutputStream(), "UTF-8");
-            //发送请求参数即数据
-            out.write(data);
-            //flush输出流的缓冲
-            out.flush();
-
-            /**
-             * 下面的代码相当于，获取调用第三方http接口后返回的结果
-             */
-            //获取URLConnection对象对应的输入流
-            InputStream is = conn.getInputStream();
-            //构造一个字符流缓存
-            br = new BufferedReader(new InputStreamReader(is));
-            String str = "";
-            while ((str = br.readLine()) != null) {
-                result += str;
-            }
-            System.out.println(result);
-            //关闭流
-            is.close();
-            //断开连接，disconnect是在底层tcp socket链接空闲时才切断，如果正在被其他线程使用就不切断。
-            conn.disconnect();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                if (out != null) out.close();
-                if (br != null) br.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    public static void main(String[] args) {
-        /**
-         *手机信息查询接口：http://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=手机号
-　　　　 *　　　　　　http://api.showji.com/Locating/www.showji.com.aspx?m=手机号&output=json&callback=querycallback
-         */
-        doPostOrGet("https://tcc.taobao.com/cc/json/mobile_tel_segment.htm?tel=13026194071", "");
-    }
-}
-
-
-
-
 
 import java.net.URI;
 import java.net.http.*;
