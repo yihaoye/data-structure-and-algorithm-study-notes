@@ -1226,12 +1226,14 @@ by ChatGPT
 * 服务器无法很好地判断客户端是否已断开连接。
 * 效率低下。如果用户聊天不多，长轮询仍然会在超时后进行定期连接。
 
-websocket 长连接  
-WebSocket 是从服务器向客户端发送异步更新的最常见解决方案。下图显示了其工作原理。  
+Websocket 长连接  
+[WebSocket](https://www.ruanyifeng.com/blog/2017/05/websocket.html) 是从服务器向客户端发送异步更新的最常见解决方案。下图显示了其工作原理。  
 ![](./websocket.webp)  
 WebSocket 连接由客户端启动。它是双向和持久的。它从 HTTP 连接开始，可以通过一些定义良好的握手“升级”到 WebSocket 连接。通过这种持久连接，服务器可以向客户端发送更新。即使有防火墙，WebSocket 连接通常也能正常工作。这是因为它们使用的端口 80 或 443 也被 HTTP/HTTPS 连接使用。
 ![](./websocket-for-sender-and-receiver.webp)  
 由于 WebSocket 是双向的，因此通过将 WebSocket 用于发送和接收，它简化了设计，并使客户端和服务器上的实现更加简单。由于 WebSocket 连接是持久的，因此高效的连接管理在服务器端至关重要。  
+
+除了 Websocket 外，[Server Sent Events (SSE)](https://www.ruanyifeng.com/blog/2017/05/server-sent_events.html) 也是一个可选协议，但通常 IM 系统里还是更建议 Websocket，因为 SSE 是单工通信还需要另开一个连接接收客户端的写请求操作。  
 
 参考：https://segmentfault.com/a/1190000040680573  
 

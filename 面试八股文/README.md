@@ -84,11 +84,13 @@
   * ln (create hard/soft link)、open、date、piping (i.e. |)
 * [硬链接和软链接](https://blog.csdn.net/LEON1741/article/details/100136449)
 * [实时监控日志文件](https://blog.csdn.net/rlnLo2pNEfx9c/article/details/122852275)
-* [Systemd](https://www.youtube.com/watch?v=Kzpm-rGAXos)
+* [systemd / systemctl](https://www.youtube.com/watch?v=5JVBpXiYMKo)
 
 ## 网络高频
 * [计算机网络面试突击](https://juejin.cn/post/6932001161532669960)
 * [TCP 三次握手](https://www.zhihu.com/question/24853633/answer/63668444)
+* [Websocket](https://www.ruanyifeng.com/blog/2017/05/websocket.html)
+* [Server Sent Events (SSE)](https://www.ruanyifeng.com/blog/2017/05/server-sent_events.html)
 
 ## 安全高频
 * [CORS（跨域访问）及其工作流程](./CORS.PNG)
