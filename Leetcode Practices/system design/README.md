@@ -2225,6 +2225,23 @@ void addItemTag(String itemId, String[] tagIds) {
 
 
 <details>
+<summary>设计云消息队列</summary>
+
+For the poll-first-available-message API, the sever could do `select * from message_table where status = 'available' ... limit 1 for update`, and then set the result row status to 'pending', and then return the message id, if the server fail before release the select for update lock, the setting with the database timeout will detect and release it when time expire. So that the API could return the message again next time.  
+
+And there is another solution is optimistic lock - compare and set, after select the first available record, then do  
+```sql
+begin;
+update message_table set status = 'pending' where id = {the-selected-id} and status = 'available';
+commit;
+```  
+if commit fail then do the select again (something like a while loop until succeed).
+
+</details>
+
+
+
+<details>
 <summary>设计用户密码保存与证实</summary>
 
 盐（Salt），在密码学中，是指在散列之前将散列内容（例如：密码）的任意固定位置插入特定的字符串。这个在散列中加入字符串的方式称为“加盐”。其作用是让加盐后的散列结果和没有加盐的结果不相同，在不同的应用情景中，这个处理可以增加额外的安全性。  
