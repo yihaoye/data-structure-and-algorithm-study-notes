@@ -1,5 +1,7 @@
 # I/O 模型与 Web 服务器工作模型
 
+## [阻塞与中断基础知识](../../Computer%20System%20Layer/阻塞与中断.md)
+
 ## NIO 相关基础
 来源：  
 * [NIO 基础](https://mp.weixin.qq.com/s?__biz=MzU0MzQ5MDA0Mw==&mid=2247483907&idx=1&sn=3d5e1384a36bd59f5fd14135067af1c2&chksm=fb0be897cc7c61815a6a1c3181f3ba3507b199fd7a8c9025e9d8f67b5e9783bc0f0fe1c73903&scene=21#wechat_redirect)
