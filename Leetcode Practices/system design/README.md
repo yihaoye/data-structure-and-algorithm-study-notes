@@ -2227,6 +2227,20 @@ void addItemTag(String itemId, String[] tagIds) {
 <details>
 <summary>设计云消息队列</summary>
 
+* 功能需求
+  * 写入
+  * 读取
+  * 按序
+  * 持久化
+* 非功能需求
+  * 一致性
+  * 并发
+    * 多生产者
+    * 多消费者
+
+可使用对象存储和数据库来实现  
+![](./cloud-message-queue.png)  
+
 For the poll-first-available-message API, the sever could do `select * from message_table where status = 'available' ... limit 1 for update`, and then set the result row status to 'pending', and then return the message id, if the server fail before release the select for update lock, the setting with the database timeout will detect and release it when time expire. So that the API could return the message again next time.  
 
 And there is another solution is optimistic lock - compare and set, after select the first available record, then do  
