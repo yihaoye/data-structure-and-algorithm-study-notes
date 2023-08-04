@@ -2310,6 +2310,16 @@ SESSION 的数据保存在在服务器端，但不是保存在内存中（但是
 
 
 <details>
+<summary>设计 Single Sign On</summary>
+
+![](./SSO2.webp)  
+![](./SSO.jpeg)  
+
+</details>
+
+
+
+<details>
 <summary>设计 Google Authenticator</summary>
 
 Ref: https://blog.bytebytego.com/i/65351443/how-does-google-authenticator-or-other-types-of-factor-authenticators-work  
