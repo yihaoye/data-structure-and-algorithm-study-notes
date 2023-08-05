@@ -9,6 +9,7 @@ NIO 由以下核心组件组成：
 选择器 - NIO 包含“选择器”的概念。选择器是一个可以监视多个事件通道的对象（例如：连接打开，数据到达等）。因此，单个线程可以监视多个通道的数据。
 
 NIO 有比这些更多的类和组件，但 Channel，Buffer 和 Selector 构成了 API 的核心。其余的组件，如 Pipe 和 FileLock，只是与三个核心组件一起使用的实用程序类。
+另外 NIO 还提供了 Paths/Files/Pipe 等新类来取代 File 类，这些新类的方法更加简单，使用起来更加方便（注意 File 类是原 io 包内的，而 Path 是 NIO 的新接口而不是类）。
 
 NIO 中的所有 IO 都以 Channel 开头。数据可以从 Channel 读入 Buffer，也可以从 Buffer 写入 Channel
 有几种 Channel 和 Buffer ，以下是 NIO 中主要 Channel 实现类的列表，这些通道包括 UDP + TCP 网络 IO 和文件 IO：
@@ -47,6 +48,12 @@ NIO 允许仅使用一个（或几个）线程来管理多个通道（网络连�
 
 
 
+// 在 Java NIO 中，主要有以下几种类型的 Channel：
+//      FileChannel：用于文件的读取和写入。
+//      SocketChannel：用于网络 Socket 的读取和写入。它支持非阻塞模式，可以通过 Socket 的 getChannel() 方法获取。
+//      ServerSocketChannel：用于监听客户端连接的 Server Socket。它也支持非阻塞模式，可以通过 ServerSocket 的 getChannel() 方法获取。
+//      DatagramChannel：用于 UDP 数据报套接字的读取和写入。它也支持非阻塞模式。
+//      Pipe.SinkChannel 和 Pipe.SourceChannel：用于两个线程之间的单向通信。
 public class ChannelExample {
     public static void main(String[] args) throws IOException {
 	    // 文件内容是 123456789
@@ -165,3 +172,53 @@ public class NioSelectorExample { // by ChatGPT
 // 非网络通道（比如 FileChannel）与 Selector 通常不直接配合使用，因为 FileChannel 本身并不是一个可非阻塞的通道，无法直接注册到 Selector 上。
 // Selector 通常用于监听网络通道（SocketChannel）的事件，例如连接、读取、写入等。
 
+
+
+// 将数据写入缓冲区
+// 可以通过两种方式将数据写入 Buffer：
+//      * 将数据从通道写入缓冲区
+channel.read(buffer);
+//      * 通过缓冲区的 put() 方法,自己将数据写入缓冲区
+buffer.put(data);
+
+
+
+// NIO 具有内置的 scatter/gather 支持，用于描述读取和写入通道的操作。
+//      * 分散（scatter）地从 Channel 中读取是将数据读入多个 Buffer 的操作。 因此，通道将来自通道的数据“分散”到多个缓冲区中。
+ByteBuffer buffer1 = ByteBuffer.allocate(5); // 分配第一个缓冲区，大小为 5
+ByteBuffer buffer2 = ByteBuffer.allocate(128);
+ByteBuffer[] buffers = {buffer1, buffer2}; // 两个缓冲区的数组
+long data = channel.read(buffers); // 一次性把通道的数据读入2个缓冲区
+//      * 聚集（gather）地写入 Channel 是将来自多个缓冲区的数据写入单个通道的操作。 因此，通道将来自多个缓冲区的数据“收集”到同一个通道中。
+ByteBuffer header = ByteBuffer.allocate(128);
+ByteBuffer body   = ByteBuffer.allocate(1024);
+ByteBuffer[] bufferArray = { header, body };
+channel.write(bufferArray);
+
+
+
+// Channel to Channel 通道到通道传输
+// 在 NIO 中，如果其中一个通道是 FileChannel ，可以直接将数据从一个通道传输到另一个通道。 FileChannel 类有一个 transferTo() 和 transferFrom() 方法。
+// FileChannel 对象的 transferFrom() 方法将数据从源通道传输到 FileChannel。transferFrom() 方法的第一个参数是源通道，第二个参数是开始传输的位置，第三个参数是要传输的最大字节数。
+FileChannel fromChannel = fromFile.getChannel();
+FileChannel toChannel = toFile.getChannel();
+long position = 0;
+long count = fromChannel.size();
+toChannel.transferFrom(fromChannel, position, count);
+
+
+
+// AsynchronousFileChannel 异步文件通道
+// 它可以异步读取数据并将数据写入文件。异步和阻塞/非阻塞没有关系：
+//      * 阻塞是进程/线程的一个状态 - 发起任务请求然后一直等，直到到任务完成再把结果返回，如果任务未完成当前进程/线程会被挂起。
+//      * 非阻塞是发起任务请求之后先马上返回去做别的事，然后再时不时主动查看任务请求是否被完成（轮询）。
+//      * 同步就是代码完全按顺序执行、处理，等待阻塞。
+//      * 异步就是代码执行时，遇到一个耗时操作（或者对象已经被别的线程占用了），不等待而是去做其他事情，也不主动查看是否完成，而是等耗时操作完成，发通知再叫线程回来处理结果，常见的例子就是 Ajax，相关概念有回调函数等。
+// 一般异步都是和非阻塞组合使用的。
+Path path = Paths.get("D:\\test\\input.txt");
+AsynchronousFileChannel fileChannel = AsynchronousFileChannel.open(path, StandardOpenOption.READ);
+// 通过 Future 读取数据
+Future<Integer> operation = fileChannel.read(buffer, 0);
+while (!operation.isDone()) ;
+buffer.flip();
+System.out.println(new String(buffer.array()));
