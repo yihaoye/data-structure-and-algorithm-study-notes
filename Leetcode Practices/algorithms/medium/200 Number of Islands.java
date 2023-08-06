@@ -23,86 +23,69 @@ Output: 3
 
 
 
-// Other's Solution:
-class Solution {
+// My Solution (并查集):
+class Solution {    
     public int numIslands(char[][] grid) {
-        // 并查集 - https://leetcode.cn/problems/number-of-islands/solution/dao-yu-shu-liang-by-leetcode/
-        if (grid == null || grid.length == 0) {
-            return 0;
-        }
+        int rs = grid.length;
+        int cs = grid[0].length;
+        UnionFindSet uf = new UnionFindSet(rs * cs);
+        for (int r = 0; r < rs; r++) {
+            for (int c = 0; c < cs; c++) {
+                if (grid[r][c] == '0') continue;
 
-        int nr = grid.length;
-        int nc = grid[0].length;
-        int num_islands = 0;
-        UnionFind uf = new UnionFind(grid);
-        for (int r = 0; r < nr; ++r) {
-            for (int c = 0; c < nc; ++c) {
-                if (grid[r][c] == '1') {
-                    grid[r][c] = '0';
-                    if (r - 1 >= 0 && grid[r-1][c] == '1') {
-                        uf.union(r * nc + c, (r-1) * nc + c);
-                    }
-                    if (r + 1 < nr && grid[r+1][c] == '1') {
-                        uf.union(r * nc + c, (r+1) * nc + c);
-                    }
-                    if (c - 1 >= 0 && grid[r][c-1] == '1') {
-                        uf.union(r * nc + c, r * nc + c - 1);
-                    }
-                    if (c + 1 < nc && grid[r][c+1] == '1') {
-                        uf.union(r * nc + c, r * nc + c + 1);
-                    }
-                }
+                // grid[r][c] == '1'
+                if (r - 1 >= 0 && grid[r-1][c] == '1') uf.union(r * cs + c, (r-1) * cs + c);
+                if (r + 1 < rs && grid[r+1][c] == '1') uf.union(r * cs + c, (r+1) * cs + c);
+                if (c - 1 >= 0 && grid[r][c-1] == '1') uf.union(r * cs + c, r * cs + c - 1);
+                if (c + 1 < cs && grid[r][c+1] == '1') uf.union(r * cs + c, r * cs + c + 1);
             }
         }
 
-        return uf.getCount();
+        Set<Integer> res = new HashSet<>();
+        for (int r = 0; r < rs; r++) {
+            for (int c = 0; c < cs; c++) {
+                if (grid[r][c] == '0') continue;
+                res.add(uf.find(r * cs + c));
+            }
+        }
+
+        return res.size();
     }
 
-    class UnionFind {
-        int count;
-        int[] parent;
-        int[] rank;
-
-        public UnionFind(char[][] grid) {
-            count = 0;
-            int m = grid.length;
-            int n = grid[0].length;
-            parent = new int[m * n];
-            rank = new int[m * n];
-            for (int i = 0; i < m; ++i) {
-                for (int j = 0; j < n; ++j) {
-                    if (grid[i][j] == '1') {
-                        parent[i * n + j] = i * n + j;
-                        ++count;
-                    }
-                    rank[i * n + j] = 0;
-                }
+    // 并查集部分
+    class UnionFindSet {
+        private int[] parents_;
+        private int[] ranks_;
+    
+        public UnionFindSet(int n) {
+            parents_ = new int[n + 1];
+            ranks_ = new int[n + 1];
+            for (int i = 0; i < parents_.length; ++i) {
+                parents_[i] = i;
+                ranks_[i] = 1;
             }
         }
-
-        public int find(int i) {
-            if (parent[i] != i) parent[i] = find(parent[i]);
-            return parent[i];
-        }
-
-        public void union(int x, int y) {
-            int rootx = find(x);
-            int rooty = find(y);
-            if (rootx != rooty) {
-                if (rank[rootx] > rank[rooty]) {
-                    parent[rooty] = rootx;
-                } else if (rank[rootx] < rank[rooty]) {
-                    parent[rootx] = rooty;
-                } else {
-                    parent[rooty] = rootx;
-                    rank[rootx] += 1;
-                }
-                --count;
+    
+        public boolean union(int u, int v) {
+            int pu = find(u);
+            int pv = find(v);
+            if (pu == pv) return false;
+        
+            if (ranks_[pv] > ranks_[pu])
+                parents_[pu] = pv;
+            else if (ranks_[pu] > ranks_[pv])
+                parents_[pv] = pu;
+            else {
+                parents_[pv] = pu;
+                ranks_[pu] += 1;
             }
+        
+            return true;
         }
 
-        public int getCount() {
-            return count;
+        public int find(int u) { // 递归写法：find 调用会将该节点所属树/路径的全部节点都 path compression
+            if (u != parents_[u]) parents_[u] = find(parents_[u]);
+            return parents_[u];
         }
     }
 }
