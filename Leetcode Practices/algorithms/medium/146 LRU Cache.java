@@ -42,87 +42,6 @@ Constraints:
 
 
 
-// My Solution (Customized LinkedList + HashMap): 
-class LRUCache {
-    private Map<Integer, Node> map;
-    private Node listHead;
-    private Node listTail;
-    private int capacity;
-
-    public LRUCache(int capacity) {
-        this.map = new HashMap<>();
-        this.listHead = null;
-        this.listTail = null;
-        this.capacity = capacity;
-    }
-    
-    public int get(int key) {
-        if (map.containsKey(key)) {
-            Node updateNode = map.get(key);
-            if (updateNode.prev != null) {
-                updateNode.prev.next = updateNode.next;
-                if (updateNode.next != null) updateNode.next.prev = updateNode.prev;
-                else listTail = updateNode.prev; // updateNode is listTail
-                listHead.prev = updateNode;
-                updateNode.prev = null;
-                updateNode.next = listHead;
-                listHead = updateNode;
-            }
-            return updateNode.val;
-        }
-        return -1;
-    }
-    
-    public void put(int key, int value) {
-        if (map.containsKey(key)) {
-            Node updateNode = map.get(key);
-            updateNode.val = value;
-            if (updateNode.prev != null) {
-                updateNode.prev.next = updateNode.next;
-                if (updateNode.next != null) updateNode.next.prev = updateNode.prev;
-                else listTail = updateNode.prev; // updateNode is listTail
-                listHead.prev = updateNode;
-                updateNode.prev = null;
-                updateNode.next = listHead;
-                listHead = updateNode;
-            }
-            return;
-        }
-        Node newNode = new Node(null, listHead, key, value);
-        map.put(key, newNode);
-        if (listTail == null) listTail = newNode;
-        listHead = newNode;
-        if (listHead.next != null) listHead.next.prev = listHead;
-        if (map.size() > capacity) {
-            map.remove(listTail.key);
-            listTail = listTail.prev;
-            listTail.next = null;
-        }
-    }
-    
-    class Node {
-        public Node prev;
-        public Node next;
-        public int key;
-        public int val;
-        
-        public Node(Node prev, Node next, int key, int val) {
-            this.prev = prev;
-            this.next = next;
-            this.key = key;
-            this.val = val;
-        }
-    }
-}
-/**
- * Your LRUCache object will be instantiated and called as such:
- * LRUCache obj = new LRUCache(capacity);
- * int param_1 = obj.get(key);
- * obj.put(key,value);
- */
-
-
-
 // Other's Solution:
 public class LRUCache {
     /*
@@ -289,3 +208,84 @@ class LRUCache {
         head.next = insert;
     }
 }
+
+
+
+// My Solution (Customized LinkedList + HashMap): 
+class LRUCache {
+    private Map<Integer, Node> map;
+    private Node listHead;
+    private Node listTail;
+    private int capacity;
+
+    public LRUCache(int capacity) {
+        this.map = new HashMap<>();
+        this.listHead = null;
+        this.listTail = null;
+        this.capacity = capacity;
+    }
+    
+    public int get(int key) {
+        if (map.containsKey(key)) {
+            Node updateNode = map.get(key);
+            if (updateNode.prev != null) {
+                updateNode.prev.next = updateNode.next;
+                if (updateNode.next != null) updateNode.next.prev = updateNode.prev;
+                else listTail = updateNode.prev; // updateNode is listTail
+                listHead.prev = updateNode;
+                updateNode.prev = null;
+                updateNode.next = listHead;
+                listHead = updateNode;
+            }
+            return updateNode.val;
+        }
+        return -1;
+    }
+    
+    public void put(int key, int value) {
+        if (map.containsKey(key)) {
+            Node updateNode = map.get(key);
+            updateNode.val = value;
+            if (updateNode.prev != null) {
+                updateNode.prev.next = updateNode.next;
+                if (updateNode.next != null) updateNode.next.prev = updateNode.prev;
+                else listTail = updateNode.prev; // updateNode is listTail
+                listHead.prev = updateNode;
+                updateNode.prev = null;
+                updateNode.next = listHead;
+                listHead = updateNode;
+            }
+            return;
+        }
+        Node newNode = new Node(null, listHead, key, value);
+        map.put(key, newNode);
+        if (listTail == null) listTail = newNode;
+        listHead = newNode;
+        if (listHead.next != null) listHead.next.prev = listHead;
+        if (map.size() > capacity) {
+            map.remove(listTail.key);
+            listTail = listTail.prev;
+            listTail.next = null;
+        }
+    }
+    
+    class Node {
+        public Node prev;
+        public Node next;
+        public int key;
+        public int val;
+        
+        public Node(Node prev, Node next, int key, int val) {
+            this.prev = prev;
+            this.next = next;
+            this.key = key;
+            this.val = val;
+        }
+    }
+}
+/**
+ * Your LRUCache object will be instantiated and called as such:
+ * LRUCache obj = new LRUCache(capacity);
+ * int param_1 = obj.get(key);
+ * obj.put(key,value);
+ */
