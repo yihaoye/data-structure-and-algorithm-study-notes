@@ -69,7 +69,7 @@ class TaskQueue {
         lock.lock();
         try {
             queue.add(s);
-            condition.signalAll();
+            condition.signalAll(); // 当调用 condition.signalAll() 方法时，它会唤醒等待在相应条件上的所有线程，但被唤醒的线程并不会立即继续执行，而是需要等待当前线程释放锁。
         } finally {
             lock.unlock();
         }
@@ -78,8 +78,13 @@ class TaskQueue {
     public String getTask() {
         lock.lock();
         try {
+             // 在使用 Condition 进行线程通信时，建议使用 while 循环而不是 if 来等待条件。
+             // 使用 while 循环可以避免虚假唤醒（Spurious Wakeup）的问题，确保条件满足时才继续执行，而不是在唤醒后无条件地继续执行。
+             // 虚假唤醒是指在多线程环境下，线程可能在没有收到显式的信号（如调用 signal() 或 signalAll()）的情况下，也会从等待状态被唤醒。
+             // 这种情况可能是由于操作系统或虚拟机的实现原因导致的，并且不能完全依靠 if 语句来确保条件已满足。
+             // 因此，使用 while 循环来等待条件是一种更安全的做法，因为即使发生虚假唤醒，线程仍会在条件满足时继续等待，而不会提前退出等待状态。
             while (queue.isEmpty()) {
-                condition.await();
+                condition.await(); // 释放锁，当前线程立即释放锁并进入等待状态，下次如果被唤醒时会从这一行继续执行（并自动重新获取锁，无需手动处理）
             }
             return queue.remove();
         } finally {
