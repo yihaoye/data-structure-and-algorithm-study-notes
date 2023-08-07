@@ -312,7 +312,7 @@ https://www.cnblogs.com/NaughtyCat/p/what-is-good-codes.html
 
 总的来说，抽象类更适合用于表示类之间的继承关系和提供公共的实现，适合于类层次结构，而接口更适合用于定义一组行为的规范，适合于实现类之间的解耦和多态性。在设计时根据具体情况和设计需求选择使用接口或抽象类，或者它们的组合，以实现更灵活、可维护和可扩展的代码。  
 
-当涉及到方法的具体实现和线程安全性时，使用抽象类更为合适。抽象类提供了更多的灵活性和控制权（有自己的字段/属性，用 synchronized 锁住某个字段/属性或锁住对象或锁住整个类，接口只能默认方法可以用 synchronized 修饰），能够更好地满足类之间的继承关系和共享通用实现的需求。  
+当涉及到方法的具体实现和线程安全性时，使用抽象类更为合适（所以可以留意到 Java 官方的一些重要的线程安全组件源代码是使用抽象类，如 [AbstractQueuedSynchronizer](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/locks/AbstractQueuedSynchronizer.html)）。抽象类提供了更多的灵活性和控制权（有自己的字段/属性，用 synchronized 锁住某个字段/属性或锁住对象或锁住整个类，接口只能默认方法可以用 synchronized 修饰），能够更好地满足类之间的继承关系和共享通用实现的需求。  
 
 转载：http://www.devfields.com/abstract-classes-and-interfaces/  
 
