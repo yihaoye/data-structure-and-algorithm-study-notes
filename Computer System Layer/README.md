@@ -13,7 +13,7 @@
 - [数据库](./数据库/)
 - [文件系统](./文件系统.md)
 - 操作系统
-  - [阻塞与中断](./阻塞与中断.md)
+  - [阻塞与中断](./阻塞与中断.md)![](./阻塞与中断.png)
   - ![](./linux-components.png)
   - ![](./linux-performance-obser-tools.jpeg)
   - ![](./inter-process-communication.jpeg)
