@@ -166,7 +166,7 @@ public long lcm(long[] input) {
 
 
 
-// Java 高效 x^n - k （并且对 10^9+7 取模），Python 等语言有内置函数无需自实现，参考自 https://leetcode.com/problems/count-collisions-of-monkeys-on-a-polygon/solutions/3111664/java-c-python-should-be-pow-2-n-4/?orderBy=most_votes
+// 快速幂法 迭代写法 Java 高效 x^n - k （并且对 10^9+7 取模），Python 等语言有内置函数无需自实现，参考自 https://leetcode.com/problems/count-collisions-of-monkeys-on-a-polygon/solutions/3111664/java-c-python-should-be-pow-2-n-4/?orderBy=most_votes
 // Time O(logn), Space O(1)
 public int fast_power(int x, int n, int k) {
     long res = 1, base = x, mod = (long) 1e9 + 7;
@@ -176,6 +176,15 @@ public int fast_power(int x, int n, int k) {
         n /= 2; // or n >>= 1;
     }
     return (int) ((res - k + mod) % mod);
+}
+
+// 快速幂法 递归写法
+public long fast_power(long x, long n) { // x is base, n is exponent
+    if (n == 0) return 1;
+
+    long res = fast_power(x, n / 2);
+    if (n % 2 == 0) return res * res;
+    else return res * res * x;
 }
 
 // 31 位内包括 31 高效求 2^n

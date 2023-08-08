@@ -78,6 +78,8 @@
   - 数学
     - [鸽巢原理 | Pigeonhole Principle](./鸽巢原理.md)
     - [取模运算 | Modulo](./取模运算.md)
+    - [快速幂法 | Binary Exponentiation](../Tool%20Sets/Math.java)
+    - [其他数学工具、操作与套路](../Tool%20Sets/Math.java)
   - 计算几何
     - [扫描线 | Line Sweep](./扫描线.md)
     - [凸包 | Convex Hull](./凸包.md)
