@@ -60,12 +60,13 @@
 ## 操作系统（Linux & bash）高频
 * [进程、线程、协程的区别](./../Computer%20System%20Layer/进程与线程.md)
 * [Linux for Programmers](https://www.youtube.com/watch?v=ebHX9c75H8I&list=PLzMcBGfZo4-nUIIMsz040W_X-03QH5c5h)
-  * cat、rm、cd、mv、cp
-  * ps、top、kill
-  * ls -l、chmod (permission)
-  * ssh、ssh-keygen
-  * ifconfig、netstat
-  * crontab (i.e. cronjob)、[sleep](https://linuxize.com/post/how-to-use-linux-sleep-command-to-pause-a-bash-script/)
+  * `cat`、`rm`、`cd`、`mv`、`cp`
+  * `ps`、`top`、`kill`
+  * `ls -l`、`chmod` (permission)
+  * 网络
+    * `ssh` (Connects to a remote machine securely)、`ssh-keygen`、`scp` (Copies files securely between hosts)
+    * `ifconfig` (Displays network interface configuration)、`netstat` (Shows network connections, open ports, and routing table)、`ip` (Versatile command to manage network interfaces, addresses, and routes)、`ping`、`traceroute` (Determines the path packets take to reach a destination)、`route` (Manages IP routing table)、`iptables` (Powerful firewall tool)、`nslookup` (Queries DNS servers)、`hostname` (Displays or sets the system's hostname)、`arp` (Manages ARP cache)
+  * `crontab` (i.e. cronjob)、[sleep](https://linuxize.com/post/how-to-use-linux-sleep-command-to-pause-a-bash-script/)
 * [Linux 目录结构](https://zhuanlan.zhihu.com/p/496602829)
 * [Linux 网络命令大全](https://juejin.cn/post/6844903844267180039)
 * [Linux 使用的进程间通信方式](https://juejin.cn/post/7069591460730896414#heading-9)
