@@ -2274,9 +2274,14 @@ if commit fail then do the select again (something like a while loop until succe
 **密码保存与证实的整体过程**  
 ![](./password-process.jpeg)  
 
+彩虹表简介  
+> 粗暴简单理解的话彩虹表就是描述 “明文->密文” 对应关系的一个大型数据库，破解时通过密文直接反查明文的暴力破解。  
+> 实际是即使如此暴力破解仍然可能性很多效率很低（比方说就是针对密文这个锁的预制钥匙太多了）。因此真正的彩虹表，是将钥匙按照某种规律进行分组，每组钥匙中只需要带最有特点的一个，当发现某个 “特征钥匙” 差一点就能开锁了，则当场对该钥匙进行简单的打磨，直到能开锁为止。这种方法是既省力又省时的。  
+
 Reference:
 * ByteByteGo
 * https://zh.wikipedia.org/wiki/%E7%9B%90_(%E5%AF%86%E7%A0%81%E5%AD%A6)
+* https://www.zhihu.com/question/19790488/answer/19290308
 
 </details>
 
