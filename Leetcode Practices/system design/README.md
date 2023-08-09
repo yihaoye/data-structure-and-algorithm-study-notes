@@ -11,7 +11,7 @@
 <summary>系统设计准备</summary>
 
 > 系统设计这块我最开始的时候也是无从下手，许多概念了解一点大概但是都没有深入学习，俗称“略懂”的状态，深究就暴露了。  
-> 具体如何准备这块，地里的很多前辈都总结了很多好的帖子，我觉得比较好的资料包括如下：Grokking the system design Interview, Designing Data-Intensive Applications（https://vonng.gitbooks.io/ddia-cn/content/ ）, 以及一些 YouTube 视频（e.g., https://www.youtube.com/c/SystemDesignInterview/ )。资料可能大家都有，我的诀窍在于下面几点：  
+> 具体如何准备这块，地里的很多前辈都总结了很多好的帖子，我觉得比较好的资料包括如下：Grokking the system design Interview, Designing Data-Intensive Applications（https://vonng.gitbooks.io/ddia-cn/content/ ）, 以及一些 YouTube 视频（e.g., https://www.youtube.com/c/SystemDesignInterview/ ）。资料可能大家都有，我的诀窍在于下面几点：  
 > 1）重复直至真的理解。发现“书读百遍，其义自现”是真的（古人诚不我欺）。比如 DDIA 至少过一遍，Grokking 至少过5遍，第一遍可能过完什么印象都没有，后面好像每一遍都会有新的收获，然后可以逐渐自己思考如果自己遇到这种问题如何解决，会发现所有给的 design decision 都开始 make sense。跟刷题一样，与其看一大堆然后没啥印象不如多过几遍经典题目然后学会融会贯通。  
 > 2）要做笔记并总结。很多系统设计题大概框架都是相似的，比如设计 facebook, twitter, instgram, pinterest，核心都是 feed generation，可以用 push（[fanout](https://en.wikipedia.org/wiki/Fan-out_(software))/heavy write，fast read）也可以 pull（light write，slower read）模式，而且一般最优解都是两者结合。再比如如何处理 hot object问题，一遍情况下我们可以加 cache 直接从内存读取，或者使用不同的 sharding strategy 来平分流量。  
 > 3）要学会抓关键得分点。这一点其实是目标公司 HR 在面试之前透露的系统设计的 evaluation standard，发现特别受用，具体有以下这些：（1）problem exploration，先问清楚设计的目的，有哪些功能性和非功能性的要求，怎么评价成功；（2）quantitative analysis，无非就是估算 QPS，内存，存储以及带宽需求；（3）completeness of the design，这个肯定是必须的，直接决定过不过；（4）ability to reason trade-offs，特别需要讲为什么选这个技术而不是其他的；（5）deep dive，重点关注数据/存储，以及如何解决 scale/bottleneck 等方面。面试过程要主动考虑这些点，整个流程如果每个点都有的话，应该不会有太大的偏差。  
@@ -144,6 +144,7 @@
     * 将索引表实现为引用原始数据的规范化结构需要应用程序执行两项查找操作才能找到数据。第一项操作搜索索引表以检索主键，第二项操作使用主键提取数据。
     * 如果系统基于极大型数据集整合了许多索引表，则可能很难维持索引表与原始数据之间的一致性。也许可以围绕最终一致性模型设计应用程序。例如，若要插入、更新或删除数据，应用程序可以向队列发布一条消息，让单独的任务执行该操作，并维护以异步方式引用此数据的索引表。
     * 索引表本身可能已分区或分片。
+  * 反向索引模式 - 是其衍生模式，用于搜索系统。
 * [CQRS 模式](https://learn.microsoft.com/zh-cn/azure/architecture/patterns/cqrs) -- CQRS 是“命令和查询责任分离”的英文缩写，它是一种将数据存储的读取操作和更新操作分离的模式。在应用程序中实现 CQRS 可以最大限度地提高其性能、可缩放性和安全性。通过迁移到 CQRS 而创建的灵活性使系统能够随着时间的推移而更好地发展，并防止更新命令在域级别导致合并冲突。
   * 背景：在传统的体系结构中，使用同一数据模型查询和更新数据库。这十分简单，非常适用于基本的 CRUD 操作。但是，在更复杂的应用程序中，此方法会变得难以操作。例如，在读取方面，应用程序可能执行大量不同的查询，返回具有不同形状的数据传输对象 (DTO)。对象映射可能会变得复杂。在写入方面，模型可能实施复杂验证和业务逻辑。结果，模型执行太多操作，过度复杂。读取和写入工作负载通常是非对称的，两者的性能和缩放要求有很大的差异。
   * 解决方案：CQRS 将读取和写入分离到不同的模型，使用命令来更新数据，使用查询来读取数据。
@@ -910,7 +911,7 @@ https://zh.wikipedia.org/zh-hans/%E6%83%8A%E7%BE%A4%E9%97%AE%E9%A2%98
 
 #### 传输协议以及编码
 RTMPS 协议介绍  
-RTMPS 协议就是为视频直播设置的，1) 它能够保证低延迟。2) 它在工业上已经被广泛应用，所以能够重用已有的客户端和服务端的库。3) 它基于 TCP 协议能够与大部分企业的网络架构兼容。4) 协议导致的应用大小占用较小。  
+RTMPS 协议就是为视频直播设置的，1 它能够保证低延迟。2 它在工业上已经被广泛应用，所以能够重用已有的客户端和服务端的库。3 它基于 TCP 协议能够与大部分企业的网络架构兼容。4 协议导致的应用大小占用较小。  
 
 编码  
 解析度为 400x400 和 720x720. 如果用户网络不好会自动转换成低分辨率  
@@ -1172,7 +1173,8 @@ ORDER BY created_at DESC;
 Thread Table 链式消息  
 还是以微信为例，进入微信页面，看到的一个个对话就可以称为一个 Thread，每个 Thread 中包含聊天内容 (Message)。且 Thread 对于每个用户都会存在一些私有信息，比如是否免打扰，未读信息数量等等（这个时候需要对 Thread 进行进一步的拆分。添加 UserThread 表用来存储 User 在 Thread 上的私有信息）。  
 
-这时候表结构就变成了
+这时候表结构就变成了  
+
 `Message Table`  
 |column	|data type
 |-- |-- 
