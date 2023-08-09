@@ -5,7 +5,7 @@
 * [设计模式二三事](https://tech.meituan.com/2022/03/10/interesting-talk-about-design-patterns.html)
 * [High Level Design vs Low Level Design | HLD vs LLD | System Design Concepts](https://www.youtube.com/watch?v=H703ErIrby8)
 * [面向对象设计 OOD (一) -- 基础知识](https://www.youtube.com/watch?v=hI0sdGc31vI)
-* [设计模式](./design%20pattern/)
+* [设计模式](./design%20pattern/README.md)
 * 面向对象设计专题班（文泰来 / 九章算法），目录如下（[链接](https://www.youtube.com/watch?v=oaUVVBOhyJw) 仅能免费看第一部分）
   * 面向对象设计入门 Introduction to Object Oriented Design（高频 OOD 面试题 - 电梯设计 Elevator Design）
       * OOD 面试应对方法

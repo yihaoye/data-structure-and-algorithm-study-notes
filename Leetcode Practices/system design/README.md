@@ -358,6 +358,8 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 ![](./Twitter%20System%20Publish%20Flow.jpeg)  
 Twitter System Publish Flow - by ByteByteGo  
 
+[用代码实现部分 Twitter 逻辑](../algorithms/medium/355%20Design%20Twitter.java)  
+
 [花花酱讲解](https://www.youtube.com/watch?v=PMCdWr6ejpw)
 * Step 1: What is Twitter?
 * Step 2: Requirements and Goals of the System (Functional Requirements, Non-Functional Requirements, Extended Requirements).
