@@ -64,8 +64,8 @@
   * `ps`、`top`、`kill`
   * `ls -l`、`chmod` (permission)
   * 网络
-    * `ssh` (Connects to a remote machine securely)、`ssh-keygen`、`scp` (Copies files securely between hosts)
-    * `ifconfig` (Displays network interface configuration)、`netstat` (Shows network connections, open ports, and routing table)、`ip` (Versatile command to manage network interfaces, addresses, and routes)、`ping`、`traceroute` (Determines the path packets take to reach a destination)、`route` (Manages IP routing table)、`iptables` (Powerful firewall tool)、`nslookup` (Queries DNS servers)、`hostname` (Displays or sets the system's hostname)、`arp` (Manages ARP cache)
+    * `ssh` (用于远程登录到其他计算机，提供了安全的加密通信。可以在终端中运行远程命令)、`ssh-keygen`、`scp` (用于通过SSH在本地计算机和远程计算机之间复制文件。可以实现安全的文件传输)、`curl` (可发送 HTTP/HTTPS、SFTP、FTP 等协议的网络请求)、`wget` (用于从网络下载文件)
+    * `ifconfig` 或 `ip` (用于显示和配置网络接口的信息，包括 IP 地址、子网掩码、广播地址等)、`netstat` (用于显示网络连接、路由表、接口统计、网络协议统计等信息。可以帮助查看当前网络连接和端口状态)、`ping`、`traceroute` (用于跟踪数据包从本地主机到目标主机的路径)、`route` (Manages IP routing table)、`iptables` (用于设置和管理 Linux 防火墙规则，可以控制网络流量和安全)、`nslookup` (用于查询域名系统 DNS 信息，可以查找域名的 IP 地址以及反向查找 IP 地址对应的域名)、`hostname` (Displays or sets the system's hostname)、`arp` (Manages ARP cache)
   * `crontab` (i.e. cronjob)、[sleep](https://linuxize.com/post/how-to-use-linux-sleep-command-to-pause-a-bash-script/)
 * [Linux 目录结构](https://zhuanlan.zhihu.com/p/496602829)
 * [Linux 网络命令大全](https://juejin.cn/post/6844903844267180039)
