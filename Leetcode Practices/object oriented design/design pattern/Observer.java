@@ -9,82 +9,75 @@
 它是一种通知机制，让发送通知的一方（被观察方）和接收通知的一方（观察者）能彼此分离，互不影响。
 */
 
-// 假设一个电商网站，有多种Product（商品），同时，Customer（消费者）和Admin（管理员）对商品上架、价格改变都感兴趣，希望能第一时间获得通知。
-// 于是，Store（商场）可以这么写：
-public class Store {
-    private List<ProductObserver> observers = new ArrayList<>();
-    private Map<String, Product> products = new HashMap<>();
+// 以下 By ChatGPT
+// 订阅者接口
+interface Observer {
+    void update(String message);
+}
 
-    // 注册观察者:
-    public void addObserver(ProductObserver observer) {
-        this.observers.add(observer);
+// 发布者接口
+interface Subject {
+    void addObserver(Observer observer);
+    void removeObserver(Observer observer);
+    void notifyObservers(String message);
+}
+
+// 具体订阅者实现
+class ConcreteObserver implements Observer {
+    private String name;
+    
+    public ConcreteObserver(String name) {
+        this.name = name;
     }
 
-    // 取消注册:
-    public void removeObserver(ProductObserver observer) {
-        this.observers.remove(observer);
-    }
-
-    public void addNewProduct(String name, double price) {
-        Product p = new Product(name, price);
-        products.put(p.getName(), p);
-        // 通知观察者:
-        observers.forEach(o -> o.onPublished(p));
-        // 各个观察者是依次获得的同步通知，如果上一个观察者处理太慢，会导致下一个观察者不能及时获得通知。
-        // 此外，如果观察者在处理通知的时候，发生了异常，还需要被观察者处理异常，才能保证继续通知下一个观察者。
-        // 改进：改成异步通知，使得所有观察者可以并发同时处理
-    }
-
-    public void setProductPrice(String name, double price) {
-        Product p = products.get(name);
-        p.setPrice(price);
-        // 通知观察者:
-        observers.forEach(o -> o.onPriceChanged(p));
+    @Override
+    public void update(String message) {
+        System.out.println(name + " 收到消息：" + message);
     }
 }
 
-// 观察者的定义可以放到客户端:
-// observer:
-Admin a = new Admin();
-Customer c = new Customer();
-// store:
-Store store = new Store();
-// 注册观察者:
-store.addObserver(a);
-store.addObserver(c);
-
-// 甚至可以注册匿名观察者：
-store.addObserver(new ProductObserver() {
-    public void onPublished(Product product) {
-        System.out.println("[Log] on product published: " + product);
+// 具体发布者实现
+class ConcreteSubject implements Subject {
+    private List<Observer> observers = new ArrayList<>();
+    
+    @Override
+    public void addObserver(Observer observer) {
+        observers.add(observer);
     }
 
-    public void onPriceChanged(Product product) {
-        System.out.println("[Log] on product price changed: " + product);
+    @Override
+    public void removeObserver(Observer observer) {
+        observers.remove(observer);
     }
-});
-/*
-ProductObserver 是一个接口，类 Admin 和类 Customer 应实现这个接口
 
-┌─────────┐      ┌───────────────┐
-│  Store  │─ ─ ─>│ProductObserver│
-└─────────┘      └───────────────┘
-     │                   ▲
-                         │
-     │             ┌─────┴─────┐
-     ▼             │           │
-┌─────────┐   ┌─────────┐ ┌─────────┐
-│ Product │   │  Admin  │ │Customer │ ...
-└─────────┘   └─────────┘ └─────────┘
-*/
+    @Override
+    public void notifyObservers(String message) {
+        observers.forEach(observer -> observer.update(message));
+    }
 
-
-
-// 有些观察者模式把通知变成一个Event对象，从而不再有多种方法通知，而是统一成一种：
-public interface ProductObserver {
-    void onEvent(ProductEvent event);
+    // 主题状态发生变化时，调用该方法通知所有订阅者
+    public void changeState(String newState) {
+        notifyObservers("主题状态变为：" + newState);
+    }
 }
-// 让观察者自己从Event对象中读取通知类型和通知数据。
+
+public class Main {
+    public static void main(String[] args) {
+        ConcreteSubject subject = new ConcreteSubject();
+
+        ConcreteObserver observer1 = new ConcreteObserver("观察者1");
+        ConcreteObserver observer2 = new ConcreteObserver("观察者2");
+
+        subject.addObserver(observer1);
+        subject.addObserver(observer2);
+
+        subject.changeState("新状态1");
+        subject.changeState("新状态2");
+
+        subject.removeObserver(observer1);
+        subject.changeState("新状态3");
+    }
+}
 
 
 
