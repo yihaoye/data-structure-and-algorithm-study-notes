@@ -43,7 +43,7 @@ class MinStack {
     
     private class Node {
         int val;
-        int min;
+        int min; // 除了 min 外，还可以同时多存储几个极值属性，比如最大值、第二大值等等
         Node next;
         
         private Node(int val, int min) {
