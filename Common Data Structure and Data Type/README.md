@@ -31,6 +31,7 @@
     - [基于链表的FIFO无界阻塞队列 | LinkedTransferQueue](./Data%20Structure%20Implementation/LinkedTransferQueue/README.md)
 - [栈 | Stack]() (入栈/出栈 O(1))
   - [双端队列 | Deque]()
+  - [最小栈 | Min Stack](../Leetcode%20Practices/algorithms/easy/155%20Min%20Stack.java)
 - [堆 | Heap]()
   - [二叉堆 | Binary Heap](./Data%20Structure%20Implementation/BinaryHeap/README.md) (构造 O(N)，遍历 O(N)，插入/删除节点 O(logN))
     - [优先队列 | PriorityQueue]()
