@@ -2,6 +2,11 @@
 
 
 
+// 随机数
+Math.random(); // [0, 1) 比 Random 类更快，但是不如 Random 灵活
+
+
+
 int a = 3;
 int b = 4;
 Math.min(a, b);
