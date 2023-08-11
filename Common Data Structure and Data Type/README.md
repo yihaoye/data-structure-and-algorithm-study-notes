@@ -1,64 +1,64 @@
 # 常用数据结构
   
-- [数组 | Array]() (索引 O(1)，遍历 O(N)，插入/删除节点 O(N))
+- 数组 | Array (索引 O(1)，遍历 O(N)，插入/删除节点 O(N))
   - [树状数组 | Binary Indexed Tree](../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/BinaryIndexedTree(FenwickTree)/README.md) (单点修改、区间查询均为 O(logN))
   - [ST 表 | Sparse Table](https://oi-wiki.org/ds/sparse-table/)
-- [线性表 | Linear List]()
-  - [顺序表 | ArrayList]() (索引 O(1)，遍历 O(N)，添加节点 O(1)，插入/删除节点 O(N))
+- 线性表 | Linear List
+  - 顺序表 | ArrayList (索引 O(1)，遍历 O(N)，添加节点 O(1)，插入/删除节点 O(N))
   - [向量 | Vector](./Data%20Structure%20Implementation/Vector/) (索引 O(1)，遍历 O(N)，添加节点 O(1)，插入/删除节点 O(N))
   - [链表 | LinkedList](./Data%20Structure%20Implementation/LinkedList/README.md) (索引 O(N)，遍历 O(N)，插入/删除节点 O(1))
-    - [单链表 | Singly Linked List]()
-    - [双链表 | Doubly Linked List]()
-    - [循环链表 | Circular Linked List]()
+    - 单链表 | Singly Linked List
+    - 双链表 | Doubly Linked List
+    - 循环链表 | Circular Linked List
     - [跳表 | Skip List](./Data%20Structure%20Implementation/SkipList/README.md) (有序链表，查找、插入、删除均为 O(logN))
       - [ConcurrentSkipListMap](./Data%20Structure%20Implementation/ConcurrentSkipListMap/README.md)
-- [队列 | Queue]()
+- 队列 | Queue
   - [链表 | LinkedList](./Data%20Structure%20Implementation/LinkedList/README.md) (入队/出队 O(1)，首值 O(1))
-  - [优先队列 | PriorityQueue]() (遍历 O(N)，入队/出队 O(logN)，首值 O(1))
-  - [双端队列 | Deque]()
+  - 优先队列 | PriorityQueue (遍历 O(N)，入队/出队 O(logN)，首值 O(1))
+  - 双端队列 | Deque
     - [链表 | LinkedList](./Data%20Structure%20Implementation/LinkedList/README.md) (同上)
     - [数组双端队列 | ArrayDeque](./../HackerRank%20Practises/java/medium/Java%20Dequeue.java)
-    - [基于链表的线程安全无界双端队列 | ConcurrentLinkedDeque]()
-    - [基于链表的FIFO双端阻塞队列 | LinkedBlockingDeque]()
-  - [基于链表的线程安全无界队列 | ConcurrentLinkedQueue]()
+    - 基于链表的线程安全无界双端队列 | ConcurrentLinkedDeque
+    - 基于链表的FIFO双端阻塞队列 | LinkedBlockingDeque
+  - 基于链表的线程安全无界队列 | ConcurrentLinkedQueue
   - [阻塞队列 | BlockingQueue](./Data%20Structure%20Implementation/BlockingQueue/README.md)
     - [基于数组的并发阻塞队列 | ArrayBlockingQueue](./Data%20Structure%20Implementation/ArrayBlockingQueue/ArrayBlockingQueue.java) (入队/出队 O(1)，首值 O(1))
-    - [延期阻塞队列 | DelayQueue]() (入队/出队 O(logN)，首值 O(1))
-    - [基于链表的FIFO双端阻塞队列 | LinkedBlockingDeque]()
+    - 延期阻塞队列 | DelayQueue (入队/出队 O(logN)，首值 O(1))
+    - 基于链表的FIFO双端阻塞队列 | LinkedBlockingDeque
     - [基于链表的FIFO阻塞队列 | LinkedBlockingQueue](./Data%20Structure%20Implementation/LinkedBlockingQueue/LinkedBlockingQueue.java) (入队/出队 O(1)，首值 O(1))
-    - [并发同步阻塞队列 | SynchronousQueue]() (入队/出队 O(1)，首值 O(1))
-    - [带优先级的无界阻塞队列 | PriorityBlockingQueue]() (入队/出队 O(logN)，首值 O(1))
+    - 并发同步阻塞队列 | SynchronousQueue (入队/出队 O(1)，首值 O(1))
+    - 带优先级的无界阻塞队列 | PriorityBlockingQueue (入队/出队 O(logN)，首值 O(1))
     - [基于链表的FIFO无界阻塞队列 | LinkedTransferQueue](./Data%20Structure%20Implementation/LinkedTransferQueue/README.md)
-- [栈 | Stack]() (入栈/出栈 O(1))
-  - [双端队列 | Deque]()
+- 栈 | Stack (入栈/出栈 O(1))
+  - 双端队列 | Deque
   - [最极栈 | Extreme (Min/Max etc) Stack](../Leetcode%20Practices/algorithms/easy/155%20Min%20Stack.java)
-- [堆 | Heap]()
+- 堆 | Heap
   - [二叉堆 | Binary Heap](./Data%20Structure%20Implementation/BinaryHeap/README.md) (构造 O(N)，遍历 O(N)，插入/删除节点 O(logN))
-    - [优先队列 | PriorityQueue]()
-  - [斐波那契堆 | Fibonacci Heap]()
-- [映射表 | Map/Table]()
+    - 优先队列 | PriorityQueue
+  - 斐波那契堆 | Fibonacci Heap
+- 映射表 | Map/Table
   - [散列表 | HashMap](./Data%20Structure%20Implementation/HashMap/README.md) (索引搜索 O(1)，插入/删除节点 O(1))
-  - [并发散列表 | ConcurrentHashMap]() (索引搜索 O(1)，插入/删除节点 O(1))
-  - [链散列表 | LinkedHashMap]() (按插入顺序的散列表，索引搜索 O(1)，插入/删除节点 O(1))
-  - [树状映射表 | TreeMap]() (索引搜索 O(logN)，插入/删除节点 O(logN))
+  - 并发散列表 | ConcurrentHashMap (索引搜索 O(1)，插入/删除节点 O(1))
+  - 链散列表 | LinkedHashMap (按插入顺序的散列表，索引搜索 O(1)，插入/删除节点 O(1))
+  - 树状映射表 | TreeMap (索引搜索 O(logN)，插入/删除节点 O(logN))
   - [双向表 | BiMap](./Data%20Structure%20Implementation/BiMap/BiMap.java)
   - [枚举表 | EnumMap](./Data%20Structure%20Implementation/EnumMap/README.md) (索引搜索 O(1))
-- [集合 | Set]()
-  - [散列集 | HashSet]() (索引搜索 O(1)，插入/删除节点 O(1))
-  - [链散列集 | LinkedHashSet]() (索引搜索 O(1)，插入/删除节点 O(1))
-  - [树集 | TreeSet]() (索引搜索 O(logN)，插入/删除节点 O(logN))
-  - [枚举集 | EnumSet]()
-- [树 | Tree]()
-  - [二叉搜索树 | Binary Search Tree]() (搜索 O(logN) - O(N)，插入/删除节点 O(1))
-  - [平衡树 | Balanced Tree]()
+- 集合 | Set
+  - 散列集 | HashSet (索引搜索 O(1)，插入/删除节点 O(1))
+  - 链散列集 | LinkedHashSet (索引搜索 O(1)，插入/删除节点 O(1))
+  - 树集 | TreeSet (索引搜索 O(logN)，插入/删除节点 O(logN))
+  - 枚举集 | EnumSet
+- 树 | Tree
+  - 二叉搜索树 | Binary Search Tree (搜索 O(logN) - O(N)，插入/删除节点 O(1))
+  - 平衡树 | Balanced Tree
     - [树堆 | Treap](https://oi-wiki.org/ds/treap/)
-    - [自平衡二叉搜索树 | Self-Balanced Binary Search Tree]()
+    - 自平衡二叉搜索树 | Self-Balanced Binary Search Tree
       - [AVL 树 | AVL Tree](./Data%20Structure%20Implementation/AVLTree/) (搜索 O(logN)，插入/删除节点 O(logN))
       - [红黑树 | Red-Black Tree](./Data%20Structure%20Implementation/RedBlackTree/README.md) (搜索 O(logN)，插入/删除节点 O(logN))
       - [T 树 | T Tree](https://en.wikipedia.org/wiki/T-tree)
-    - [自平衡搜索树 | Self-Balanced Search Tree]()
+    - 自平衡搜索树 | Self-Balanced Search Tree
       - [B/B+ 树 | B/B+ Tree](./Data%20Structure%20Implementation/BPlusTree/README.md)
-      - [2–3 树 | 2-3 Tree]()
+      - 2–3 树 | 2-3 Tree
     - [线段树 | Segment Tree](./Data%20Structure%20Implementation/SegmentTree/README.md) (区间查询 O(logN + K)，更新 O(logN)，构建 O(N) - K is the number of reported segments)
   - [字典树 | Trie](./Data%20Structure%20Implementation/Trie/README.md)
     - 后缀树 | Suffix Tree [Ref 1](https://www.cnblogs.com/gaochundong/p/suffix_tree.html)、[Ref 2](https://yanglei253.github.io/2020/07/26/dataStructure/dataStructure-tiretree/)
@@ -71,10 +71,10 @@
   - [R 树 | R Tree](./../Common%20Algorithm%20and%20Theory/QuadTree-RTree-算法.md)
   - [分形树 | Fractal Tree](./../Computer%20System%20Layer/数据库/README.md#分形树)
 - [图 | Graph](./Data%20Structure%20Implementation/Graph/README.md)
-  - [有向图 | Directed Graph]()
-  - [无向图 | Undirected Graph]()
+  - 有向图 | Directed Graph
+  - 无向图 | Undirected Graph
     - [二分图 | Bipartite Graph](./Data%20Structure%20Implementation/BipartiteGraph/README.md)
-  - [加权图（有向或无向）| Weighted Graph]()
+  - 加权图（有向或无向）| Weighted Graph
   - [生成树 | Spanning Tree](./Data%20Structure%20Implementation/SpanningTree/README.md)
     - [最小生成树 | Minimum Spanning Tree](./Data%20Structure%20Implementation/MinimumSpanningTree/README.md)
   
