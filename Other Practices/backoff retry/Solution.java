@@ -1,14 +1,15 @@
+// 经典策略模式
 import java.util.concurrent.*;
 import java.util.*;
 
-public class BackoffRetry {
+public class BackoffRetry throws InterruptedException {
     private static final int MAX_RETRIES = 5;
     private static final int INITIAL_INTERVAL = 1000; // in milliseconds
 
     public static void main(String[] args) {
         BackoffStrategy linearBackoff = new LinearBackoff();
         BackoffStrategy exponentialBackoff = new ExponentialBackoff();
-        BackoffStrategy fibonacciBackoff = new FibonacciBackoff();
+        BackoffStrategy fibonacciBackoff = new FibonacciBackoff(); // new FibonacciBackoff(MAX_RETRIES);
 
         BackoffRetryManager retryManager = new BackoffRetryManager(fibonacciBackoff); // Change the strategy here
 
@@ -16,23 +17,20 @@ public class BackoffRetry {
         int retries = 0;
 
         while (!success && retries < MAX_RETRIES) {
-            try {
-                // Simulate some operation that might fail
-                if (performSomeOperation()) {
-                    success = true;
-                    System.out.println("Operation succeeded!");
-                } else {
-                    System.out.println("Operation failed. Retrying...");
-                    retryManager.waitBeforeRetry(retries);
-                }
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+]           // Simulate some operation that might fail
+            if (operation()) {
+                success = true;
+                System.out.println("Operation succeeded!");
+            } else {
+                System.out.println("Operation failed. Retrying...");
+                retryManager.waitBeforeRetry(retries);
             }
+
             retries++;
         }
     }
 
-    private static boolean performSomeOperation() {
+    private static boolean operation() {
         // Simulate the operation
         return Math.random() < 0.7; // 70% chance of success
     }
@@ -61,24 +59,25 @@ class ExponentialBackoff implements BackoffStrategy {
 }
 
 class FibonacciBackoff implements BackoffStrategy {
-    private static final int MAX_RETRIES = 64; // Adjust this value as needed
-    private long[] fibonacciCache = new long[MAX_RETRIES];
+    private int MAX_RETRIES = 64; // Adjust default value as needed
+    private long[] fibonacciCache;
 
     public FibonacciBackoff() {
+        this(MAX_RETRIES);
+    }
+
+    public FibonacciBackoff(int maxRetries) {
+        this.MAX_RETRIES = maxRetries;
+        fibonacciCache = new long[MAX_RETRIES];
         fibonacciCache[0] = 0;
         fibonacciCache[1] = 1;
-        for (int i = 2; i < MAX_RETRIES; i++) {
-            fibonacciCache[i] = fibonacciCache[i - 1] + fibonacciCache[i - 2];
-        }
+        for (int i = 2; i < MAX_RETRIES; i++) fibonacciCache[i] = fibonacciCache[i - 1] + fibonacciCache[i - 2];
     }
 
     @Override
     public long getWaitTime(int retryAttempt) {
-        if (retryAttempt < MAX_RETRIES) {
-            return fibonacciCache[retryAttempt];
-        } else {
-            return Long.MAX_VALUE; // Indicate no more retries
-        }
+        if (retryAttempt >= MAX_RETRIES) return Long.MAX_VALUE; // Indicate no more retries
+        return fibonacciCache[retryAttempt];
     }
 }
 
