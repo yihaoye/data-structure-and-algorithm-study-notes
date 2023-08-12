@@ -40,10 +40,10 @@
       - [词法分析 | Lexical Analysis](https://zh.wikipedia.org/wiki/%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90)
     - [KMP 算法 | Knuth–Morris–Pratt Algorithm](./KMP算法.md) (时间复杂度 O(N+M))
     - [AC 自动机 | Aho–Corasick Algorithm](./AC自动机.md)
-    - [马拉车算法 | Manacher Algorithm]()
+    - 马拉车算法 | Manacher Algorithm
     - [联合查找算法（并查集） | Union Find Algorithm](./并查集与联合查找算法.md) (时间复杂度 O(a(N)) - a(N) 为反阿克曼函数，对于大部分 N，a(N) 均小于 5，所以并查集的时间复杂度也可视为 O(1))
     - [最小生成树相关算法 | Minimum Spanning Tree Algorithms](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/MinimumSpanningTree/README.md)
-    - [网络流相关算法]()
+    - 网络流相关算法
     - 系统级
       - [字典树算法 | Trie Algorithm](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/Trie/README.md)
       - [映射-归约 | MapReduce](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md)
@@ -54,27 +54,27 @@
       - [HyperLogLog 算法](./HyperLogLog.md)
       - [Count-Min Sketch 算法](./Count-Min-Sketch.md)
       - [雪花算法 | Snowflake ID](./雪花算法.md)
-      - [一致性哈希 | Consistent Hashing](./../Leetcode%20Practices/system%20design/一致性哈希.md)
-      - [Frugal Streaming 算法]()
-      - [Geohash 算法, S2 Geometry 算法]()
-      - [漏桶算法, 令牌桶算法 | Leaky Bucket, Token Bucket]()
-      - [Loosy Counting 算法]()
-      - [OT 算法 | Operational Transformation]()
+      - 一致性哈希 | Consistent Hashing ([wiki](./../Leetcode%20Practices/system%20design/一致性哈希.md)、[code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/consistent%20hash/README.md))
+      - 反向索引 | Inverted Index ([wiki](../Leetcode%20Practices/system%20design/README.md)、[code](../Tool%20Sets/Index.java))
+      - Frugal Streaming 算法
+      - [Geohash 算法, S2 Geometry 算法](../Leetcode%20Practices/system%20design/README.md)
+      - [漏桶算法, 令牌桶算法 | Leaky Bucket, Token Bucket](../Leetcode%20Practices/system%20design/README.md)
+      - Loosy Counting 算法
+      - [OT 算法 | Operational Transformation](../Leetcode%20Practices/system%20design/README.md)
       - [四叉树算法, R 树算法 | QuadTree, RTree Algorithm](./QuadTree-RTree-算法.md)
       - [默克尔树算法 | Merkle Tree Algorithm](https://en.wikipedia.org/wiki/Merkle_tree)
-      - [光线投射算法 | Ray Casting]()
-      - [倒排索引算法 | Reverse Index]()
+      - 光线投射算法 | Ray Casting
       - [Rsync 算法](https://zh.wikipedia.org/zh-cn/Rsync#%E6%BC%94%E7%AE%97%E6%B3%95)
-      - [共识机制/算法 (分布式选举问题) | Consensus Algorithm]()
+      - [共识机制/算法 (分布式选举问题) | Consensus Algorithm](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md)
         - 崩溃容错协议 | CFT
           - Paxos、Raft、ZAB、[Quorum](./Quorum算法.md)
         - 拜占庭容错 | BFT (Ref: [1](https://www.bilibili.com/read/cv14498545)、[2](https://cloud.tencent.com/developer/news/580379)、[3](https://learnku.com/articles/56919))
           - PBFT、Hotstuff
-      - [P2P 核心算法]()
-        - [BitTorrent 协议]()
-        - [DHT 的 Kademlia 协议]()
+      - [P2P 核心算法](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md)
+        - BitTorrent 协议
+        - DHT 的 Kademlia 协议
         - [DHT 的 Chord 算法](https://en.wikipedia.org/wiki/Chord_(peer-to-peer))
-        - [Gossip 协议/流行病协议]()
+        - Gossip 协议/流行病协议
   - 数学
     - [鸽巢原理 | Pigeonhole Principle](./鸽巢原理.md)
     - [取模运算 | Modulo](./取模运算.md)
