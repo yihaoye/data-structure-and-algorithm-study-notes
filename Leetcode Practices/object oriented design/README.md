@@ -271,7 +271,7 @@ https://www.jianshu.com/p/e074b85b84ef
 * 延迟初始化和懒加载 - 这个的确是一种优化，即需要用到它的值时，才初始化。如果永远不用到，就永远不会被初始化。但要慎用，只有在初始化这个数据域开销很大的时候才用。在大多数情况下，正常的初始化要优于延迟初始化
 * LinkedHashMap、HashMap、ArrayList、HashSet、HashTable 等集合类，没有初始化容量
 * 方法和类如果确实有业务场景需求不会被覆盖、不会被继承，用 final 修饰 - final method 在某些处理器下得到优化，跑得更快
-* 合理数据库连接池和线程池 - 一个减少数据库连接的建立和断开（耗时)，一个减少线程的创建和销毁，动态根据请求分配资源，提高资源利用率
+* 合理数据库连接池和线程池 - 一个减少数据库连接的建立和断开（耗时），一个减少线程的创建和销毁，动态根据请求分配资源，提高资源利用率
 * 多用 buffer 等缓冲提高输入输出 IO 效率及 FileChannel.transferTo、FileChannel.transferFrom 和 FileChannnel.map - 诸如 BufferedReader 、BufferedWriter、BufferedInputStream 和 BufferedOutputStream 等
 * synchronized 修饰符最小作用域 - synchronized 要耗费性能，因此 synchronized 代码块优于 synchronized 方法，最小原则
 * enum 代替 int 枚举模式 - int 枚举模式不具有类型安全性，也没有描述性，比较也会出问题

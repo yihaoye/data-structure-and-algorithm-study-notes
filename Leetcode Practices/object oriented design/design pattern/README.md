@@ -21,6 +21,7 @@
 * [桥接 | Bridge](./Bridge.java)
 * [组合 | Composite](./Composite.java)
 * [代理 | Proxy](./Proxy.java)
+* [信号量模式 | Semaphore](./Semaphore.java)
 * [装饰器 | Decorator](./Decorator.java)  
   
 ## 行为型模式
