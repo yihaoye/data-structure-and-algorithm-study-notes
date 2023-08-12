@@ -74,3 +74,10 @@ System.out.println("b1 hashCode is: " + b1.hashCode() + " and b2 hashCode is: " 
 map.put(b1, "test");
 System.out.println(map.get(b1)); // test
 System.out.println(map.get(b2)); // null
+
+
+
+// 对数组进行哈希计算
+import java.util.*;
+Arrays.sort(array);
+int hashCode = Objects.hash(array);
