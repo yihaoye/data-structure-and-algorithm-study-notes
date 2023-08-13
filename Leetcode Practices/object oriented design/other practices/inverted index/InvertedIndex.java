@@ -2,20 +2,20 @@
 import java.util.*;
 import java.util.concurrent.*;
 
-public class InvertedIndex {
+public class InvertedIndex { // 用哈希表实现，如果搜索功能要考虑关键词的顺序甚至关心重复次数的话，则需要用字典树（Trie）实现
     private Map<String, Set<String>> keyToTexts;
     private Map<String, Set<String>> textToKeys;
-    private Set<String> ignoreWords;
+    private Set<String> stopWords; // 停用词表，反向索引通常会忽略一些常用词，例如 a, the, is, are, will, can, with, etc
     
     /* search 性能提升，非必需 */
     // private Map<Operation, Map<Integer, Set<String>>> searchCache;
     // private Map<String, Set<Integer>> textToCacheKeys;
 
-    public InvertedIndex(String[] ignoreWords) {
+    public InvertedIndex(String[] stopWords) {
         this.keyToTexts = new HashMap<>(); // ConcurrentHashMap
         this.textToKeys = new HashMap<>(); // ConcurrentHashMap
-        this.ignoreWords = new HashSet<>(); // ConcurrentSkipListSet
-        for (String word : ignoreWords) this.ignoreWords.add(word);
+        this.stopWords = new HashSet<>(); // ConcurrentSkipListSet
+        for (String word : stopWords) this.stopWords.add(word);
 
         /* search 性能提升，非必需 */
         // searchCache = new HashMap<>(); // ConcurrentHashMap
@@ -30,7 +30,7 @@ public class InvertedIndex {
         
         String[] words = text.split("\\s+");
         for (String word : words) {
-            if (ignoreWords.contains(word)) continue;
+            if (stopWords.contains(word)) continue;
             keyToTexts.computeIfAbsent(word, v -> new HashSet<>()).add(text);
             textToKeys.get(text).add(word);
         }
