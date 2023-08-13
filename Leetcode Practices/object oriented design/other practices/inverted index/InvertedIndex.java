@@ -18,10 +18,10 @@ public class InvertedIndex {
         for (String word : ignoreWords) this.ignoreWords.add(word);
 
         /* search 性能提升，非必需 */
-        // searchCache = new HashMap<>();
-        // searchCache.put(Operation.AND, new HashMap<>());
-        // searchCache.put(Operation.OR, new HashMap<>());
-        // textToCacheKeys = new HashMap<>();
+        // searchCache = new HashMap<>(); // ConcurrentHashMap
+        // searchCache.put(Operation.AND, new HashMap<>()); // ConcurrentHashMap
+        // searchCache.put(Operation.OR, new HashMap<>()); // ConcurrentHashMap
+        // textToCacheKeys = new HashMap<>(); // ConcurrentHashMap
     }
 
     public boolean insert(String text) {
@@ -67,8 +67,7 @@ public class InvertedIndex {
         if (keywords == null || keywords.length == 0) return new HashSet<>();
 
         /* 使用缓存提高性能，非必需，但是注意要引入对 operation 和 delete 的考虑 */
-        // Arrays.sort(keywords);
-        // int hashCode = Objects.hash(keywords);
+        // int hashCode = Arrays.hashCode(keywords); // Arrays.hashCode() 方法会对数组中的每个元素进行哈希运算，然后将这些哈希值进行组合。具体的计算方式涉及到位运算和混合运算，是一种复杂的方法。这种方式保证了元素相同但顺序不同的数组会得到相同的哈希值
         // if (searchCache.get(operation).containsKey(hashCode)) return searchCache.get(operation).get(hashCode);
 
         Set<String> result;

@@ -55,7 +55,7 @@
       - [Count-Min Sketch 算法](./Count-Min-Sketch.md)
       - [雪花算法 | Snowflake ID](./雪花算法.md)
       - 一致性哈希 | Consistent Hashing ([wiki](./../Leetcode%20Practices/system%20design/一致性哈希.md)、[code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/consistent%20hash/README.md))
-      - 反向索引 | Inverted Index ([wiki](../Leetcode%20Practices/system%20design/README.md)、[code](../Tool%20Sets/Index.java))
+      - 反向索引 | Inverted Index ([wiki](../Leetcode%20Practices/system%20design/README.md)、[code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/inverted%20index/InvertedIndex.java))
       - Frugal Streaming 算法
       - [Geohash 算法, S2 Geometry 算法](../Leetcode%20Practices/system%20design/README.md)
       - [漏桶算法, 令牌桶算法 | Leaky Bucket, Token Bucket](../Leetcode%20Practices/system%20design/README.md)
