@@ -126,9 +126,10 @@ volatile：具有有序性和可见性。
   
 以上参考：[链接](https://www.jianshu.com/p/cf57726e77f2)  
   
-# Thread/线程
+# JUC 框架
+JUC 指的是 JDK 5 引入的 java.util.concurrent 并发包。  
   
-## Runnable vs Callable
+## Thread/线程的 Runnable vs Callable
 runnable 是通过 run 方法实现多线程操作而 callable 是通过 call 方法实现多线程操作实体有返回值的任务必须通过 callable，另外 runnable 不可以抛出异常但是 callable 可以。  
   
 ## ThreadLocal
@@ -253,7 +254,7 @@ ReentrantLock 可以替代 synchronized 进行同步；ReentrantLock 获取锁�
   
 顾名思义，ReentrantLock 即意为可多次对同一个对象/资源来调用锁（当调用了 N 次锁，则解锁次数也应为对应的 N 次）。参考[示例代码](./Defog/ReentrantLock.java)里的 reEnterTheLock。  
   
-若 `new ReentrantLock(true)` 即 fair lock 时，ReentrantLock 的 waiting 执行线程队列是 FIFO 的，即最先排队等待锁的线程最先下一个执行。若 `new ReentrantLock(false)` 即 unfair lock 时，则选择执行最快的那个线程，因此性能比 fair lock 好但是却可能造成一些线程 starvation/一直等待得不到执行。  
+ReentranLock 还分为公平锁和非公平锁，二者的区别就在获取锁机会是否和排队顺序相关。若 `new ReentrantLock(true)` 即 fair lock 时，ReentrantLock 的 waiting 执行线程队列是 FIFO 的，即最先排队等待锁的线程最先下一个执行。若 `new ReentrantLock(false)` 即 unfair lock 时，则选择执行最快的那个线程，因此性能比 fair lock 好但是却可能造成一些线程 starvation/一直等待得不到执行。  
   
 ## ReadWriteLock
 比 ReentrantLock 更高效，其本质仍是悲观锁。  
@@ -296,7 +297,7 @@ Semaphore 可以用于做流量控制，特别公用资源有限的应用场景�
 [示例代码](./Defog/Semaphore.java)  
   
 ## CountDownLatch
-CountDownLatch 允许一个或多个线程等待其他线程完成操作，即利用它可以实现类似计数器的功能：比如有一个任务A，它要等待其他4个任务执行完毕之后才能执行。  
+CountDownLatch 允许一个或多个线程等待其他线程完成操作，即利用它可以实现类似计数器的功能：比如有一个任务 A，它要等待其他 N 个任务执行完毕之后才能执行。  
 [代码示例](./Defog/CountDownLatch.java)  
 
 ## AbstractQueuedSynchronizer
@@ -316,7 +317,9 @@ AQS 的核心思想是使用一个双向链表来维护等待线程，并使用�
 AQS 的设计使得开发者可以更方便地实现复杂的同步器和锁，避免了编写底层线程同步和调度代码的复杂性。同时，AQS 也提供了高效的线程阻塞和唤醒机制，有助于实现高性能的并发应用程序。  
 总体而言，AbstractQueuedSynchronizer 是 Java 并发编程中的一个重要组件，它为实现复杂的同步器和锁提供了基础框架，并通过双向链表和同步状态的管理，提供了高效的线程阻塞和唤醒机制，为并发编程提供了强大的工具。  
 
-By ChatGPT
+参考：  
+* ChatGPT
+* https://www.cnblogs.com/zhangxinhua/p/13274886.html
   
 ## 并行流
 [On Java 8 示例](./OnJava8/)  

@@ -3,7 +3,7 @@ public class MyBlockingQueue<E> {
 
     private Queue<E> queue;
     private int max = 16;
-    private ReentrantLock lock = new ReentrantLock(true);
+    private ReentrantLock lock = new ReentrantLock(true); // true for fairness
     private Condition notEmpty = lock.newCondition();
     private Condition notFull = lock.newCondition();
 
