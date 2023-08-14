@@ -1,29 +1,7 @@
 // https://www.youtube.com/watch?v=mnSMdTPBG1U
 // ![](./Min%20Heap.png)
 public class MinHeap {
-
     private List<Integer> data_;
-
-    // 堆内部维护 ![](./Min%20Heap%202.png)
-    private void heapifyUp(int index) {
-        // 类似冒泡排序，虽然排序本身性能较差，但因为是在 Heap 里冒泡，所以时间复杂度也只是 log(N)
-        if (index == 0) return;
-        int parent = (index - 1) / 2;
-        if (data_.get(index) >= data_.get(parent)) return;
-        Collections.swap(data_, index, parent);
-        heapifyUp(parent);
-    }
-
-    // 堆内部维护 ![](./Min%20Heap%203.png)
-    private void heapifyDown(int index) {
-        int smallerIndex = index;
-        for (int childIndex : new int[]{index * 2 + 1, index * 2 + 2}) {
-            if (childIndex < data_.size() && data_.get(childIndex) < data_.get(smallerIndex)) smallerIndex = childIndex;
-        }
-        if (smallerIndex == index) return;
-        Collections.swap(data_, index, smallerIndex);
-        heapifyDown(smallerIndex);
-    }
 
     // Create an empty heap
     public MinHeap() {
@@ -62,5 +40,26 @@ public class MinHeap {
     // return the size of the heap
     public int size() {
         return data_.size();
+    }
+
+    // 堆内部维护 ![](./Min%20Heap%202.png)
+    private void heapifyUp(int index) {
+        // 类似冒泡排序，虽然排序本身性能较差，但因为是在 Heap 里冒泡，所以时间复杂度也只是 log(N)
+        if (index == 0) return;
+        int parent = (index - 1) / 2;
+        if (data_.get(index) >= data_.get(parent)) return;
+        Collections.swap(data_, index, parent);
+        heapifyUp(parent);
+    }
+
+    // 堆内部维护 ![](./Min%20Heap%203.png)
+    private void heapifyDown(int index) {
+        int smallerIndex = index;
+        for (int childIndex : new int[]{index * 2 + 1, index * 2 + 2}) {
+            if (childIndex < data_.size() && data_.get(childIndex) < data_.get(smallerIndex)) smallerIndex = childIndex;
+        }
+        if (smallerIndex == index) return;
+        Collections.swap(data_, index, smallerIndex);
+        heapifyDown(smallerIndex);
     }
 }

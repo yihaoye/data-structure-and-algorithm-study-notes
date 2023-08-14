@@ -85,5 +85,6 @@
     - [凸包 | Convex Hull](./凸包.md)
     - [三分搜索 | Ternary Search](https://www.cnblogs.com/PJQOOO/p/4161891.html)
   - 其他常见优化思想、技巧
-    - [懒更新](./懒更新.md)
+    - [懒更新 | Lazy Update](./懒更新.md)
+    - [状态压缩 | State Compression](../Tool%20Sets/StateCompression.java)
     - [比较优化，减少比较次数（算法导论 9.1）](./../Leetcode%20Practices/algorithms/easy/1491%20Average%20Salary%20Excluding%20the%20Minimum%20and%20Maximum%20Salary.java)  
