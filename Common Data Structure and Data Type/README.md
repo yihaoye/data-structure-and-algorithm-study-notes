@@ -32,10 +32,6 @@
 - 栈 | Stack (入栈/出栈 O(1))
   - 双端队列 | Deque
   - [最极栈 | Extreme (Min/Max etc) Stack](../Leetcode%20Practices/algorithms/easy/155%20Min%20Stack.java)
-- 堆 | Heap
-  - [二叉堆 | Binary Heap](./Data%20Structure%20Implementation/BinaryHeap/README.md) (构造 O(N)，遍历 O(N)，插入/删除节点 O(logN))
-    - 优先队列 | PriorityQueue
-  - 斐波那契堆 | Fibonacci Heap
 - 映射表 | Map/Table
   - [散列表 | HashMap](./Data%20Structure%20Implementation/HashMap/README.md) (索引搜索 O(1)，插入/删除节点 O(1))
   - 并发散列表 | ConcurrentHashMap (索引搜索 O(1)，插入/删除节点 O(1))
@@ -48,7 +44,12 @@
   - 链散列集 | LinkedHashSet (索引搜索 O(1)，插入/删除节点 O(1))
   - 树集 | TreeSet (索引搜索 O(logN)，插入/删除节点 O(logN))
   - 枚举集 | EnumSet
-- 树 | Tree
+- [树 | Tree](./Data%20Structure%20Implementation/Tree/README.md)
+  - 完全二叉树
+    - 堆 | Heap
+      - [二叉堆 | Binary Heap](./Data%20Structure%20Implementation/BinaryHeap/README.md) (构造 O(N)，遍历 O(N)，插入/删除节点 O(logN))
+        - 优先队列 | PriorityQueue
+      - 斐波那契堆 | Fibonacci Heap
   - 二叉搜索树 | Binary Search Tree (搜索 O(logN) - O(N)，插入/删除节点 O(1))
   - 平衡树 | Balanced Tree
     - [树堆 | Treap](https://oi-wiki.org/ds/treap/)
