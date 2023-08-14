@@ -8,10 +8,11 @@
 - [ ] Design Distributed Id Generation like Twitter Snowflake id	
 - [ ] Implement a Logger	
 - [ ] Cab Booking like Uber, Ola	
-- [x] Design Parking Lot System
+- [x] [Design Parking Lot System](./parking%20lot%20mock/Solution.java)
 - [ ] Design Chess Game	
 - [x] Design Blackjack
 - [x] Stack Overflow
+- [x] Design Twitter
 - [x] LFU
 - [x] Design an Online Book Reader System (Library)
 - [ ] Design an Online Hotel Booking System	(Decorator Design Pattern)
@@ -20,7 +21,7 @@
 - [ ] Design a Configuration Management System
 - [ ] Design a Vending Machine
 - [ ] Design Maps Navigator Client for different transportation types (OOD)
-- [x] Design a Json Parser from scratch	
+- [x] [Design a Json Parser from scratch](./json%20parser/README.md)	
 - [ ] Design Elevator	
 - [x] Design ATM (Factory Design Pattern)
 - [ ] CricInfo / Cricbuzz
@@ -30,8 +31,8 @@
 - [ ] Uber Eats / DoorDash / Swiggy
 - [x] LRU
 - [x] Stack and Queue
-- [x] Design a Simple Bank System
-- [x] Inverted Index
-- [x] Consistent Hash
-- [x] Rate Limiter
+- [x] [Design a Simple Bank System](./simple%20bank/README.md)
+- [x] [Inverted Index](./inverted%20index/InvertedIndex.java)
+- [x] [Consistent Hash](./consistent%20hash/README.md)
+- [x] [Rate Limiter](./rate%20limiter%201/README.md)
 
