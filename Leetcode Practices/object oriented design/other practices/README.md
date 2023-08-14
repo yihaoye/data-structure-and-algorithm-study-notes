@@ -31,4 +31,7 @@
 - [x] LRU
 - [x] Stack and Queue
 - [x] Design a Simple Bank System
+- [x] Inverted Index
+- [x] Consistent Hash
+- [x] Rate Limiter
 
