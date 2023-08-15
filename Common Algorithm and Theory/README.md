@@ -18,6 +18,7 @@
     - [双指针法, 滑动窗口算法 | Two Pointer, Sliding Window](./双指针法与滑动窗口算法.md)
     - [深度优先, 广度优先, 树图遍历 | Depth First Search, Breadth First Search](./树图遍历.md)
       - [回溯法 | Backtracking](./NQueen.java)
+      - [双向搜索 | Bidirectional Search](https://oi-wiki.org/search/bidirectional/)
     - [贪婪算法 | Greedy Algorithm](./贪婪算法.md)
       - [耐心排序 | Patience Sorting](./耐心排序.md)
     - [拓扑排序 | Topological Sorting](./拓扑排序.md) (时间复杂度 O(N))

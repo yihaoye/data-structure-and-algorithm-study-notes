@@ -24,6 +24,19 @@ String[][] arr2 = new String[][]{{"a", "a"}};
 Arrays.equals(arr1, arr2); // Return false - comparing two dimensional arrays, which means the elements of these arrays are themselves arrays. Therefore, when the elements are compared (using Object's equals), false is returned, since Object's equals compares Object references.
 Arrays.deepEquals(arr1, arr2); // Returns true if the two specified arrays are deeply equal to one another. Unlike the equals(Object [], Object []) method, this method is appropriate for use with nested arrays of arbitrary depth.
 
+// 计算哈希（不受顺序影响，集合一样即可）
+String[] arr1 = new String[]{"a", "b", "c"};
+String[] arr2 = new String[]{"c", "b", "a"};
+int hash1 = Arrays.hashCode(arr1);
+int hash2 = Arrays.hashCode(arr2);
+System.out.println(hash1 == hash2); // true
+// 多维数组计算哈希
+String[][] arr1 = new String[][]{{"a", "b", "c"}, {"d", "e", "f"}};
+String[][] arr2 = new String[][]{{"d", "e", "f"}, {"a", "b", "c"}};
+int hash1 = Arrays.deepHashCode(arr1);
+int hash2 = Arrays.deepHashCode(arr2);
+System.out.println(hash1 == hash2); // true
+
 // 二维迷宫探索（上下左右并有界线检查）
 class Solution {
     private int N, M;
