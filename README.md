@@ -94,7 +94,7 @@
   * [线段树](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/SegmentTree/SegmentTree4.java)
   * [红黑树](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/RedBlackTree/RBTree.java)
   * [树状数组 | Leetcode Q307](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/BinaryIndexedTree(FenwickTree)/README.md#树状数组实现)
-  * 其他：[1](./Leetcode%20Practices/object%20oriented%20design/other%20practices/README.md)、[2](./Common%20Data%20Structure%20and%20Data%20Type/README.md)、[3](./Tool%20Sets/README.md)
+  * 其他：[1](./Leetcode%20Practices/object%20oriented%20design/other%20practices/README.md)、[2](./Common%20Data%20Structure%20and%20Data%20Type/README.md)、[3](./Other%20Practices/)、[4](./Tool%20Sets/README.md)
 * 中级算法
   * [二分搜索 | Leetcode Q34 Q2517 etc](./Common%20Algorithm%20and%20Theory/二分搜索.md)
   * [反转链表 | Leetcode Q92](./Leetcode%20Practices/algorithms/medium/92%20Reverse%20Linked%20List%20II.java)
