@@ -47,6 +47,7 @@
     - 系统级
       - [字典树算法 | Trie Algorithm](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/Trie/README.md)
       - [映射-归约 | MapReduce](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md)
+      - [分桶法 | Range Bucketing](./分桶法.md)
       - [蓄水池抽样算法 | Reservoir Sampling](./蓄水池抽样算法.md)
       - [霍夫曼压缩算法 | Huffman Coding/Compression](./霍夫曼压缩算法.md)
       - [布隆过滤器及其算法 | Bloom Filter](./布隆过滤器及其算法.md)
