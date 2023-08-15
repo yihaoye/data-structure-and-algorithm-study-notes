@@ -89,4 +89,6 @@
     - [懒更新 | Lazy Update](./懒更新.md)
     - [状态压缩 | State Compression](../Tool%20Sets/StateCompression.java)
     - [坐标离散化 | Coordinate Compression](./坐标离散化.md)
+    - [集合的整数表示](./集合的整数表示.md)
+    - [反转/开关问题](./反转开关问题.md)
     - [比较优化，减少比较次数（算法导论 9.1）](./../Leetcode%20Practices/algorithms/easy/1491%20Average%20Salary%20Excluding%20the%20Minimum%20and%20Maximum%20Salary.java)  
