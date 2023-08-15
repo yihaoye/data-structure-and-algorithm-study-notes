@@ -4,7 +4,7 @@
 // 2. Any dead cell with three live neighbours becomes a live cell.
 // 3. All other live cells die in the next generation. Similarly, all other dead cells stay dead.
 
-// 本解题方案采用 BFS 思想只关心前 live cells 并通过它们获得下一次的 live cells
+// 本解题方案采用 BFS 思想只关心前 live cells 并通过它们获得下一次的 live cells（其实就是坐标离散化/坐标压缩优化）
 // 时间复杂度相比暴力解法 O(mn) 有所提升，只与 live cells 有关，如果矩阵很大但是 live cells 很少，那么时间复杂度高效很多
 // 相比之下空间复杂度有所增加，也只与 live cells 有关
 
