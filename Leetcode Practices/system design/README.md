@@ -22,7 +22,20 @@
 </details>
 <br />
   
-### 4S 分析法
+### **面试步骤**
+[真实面试过程模拟 (System Design Mock: with ex-Google EM)](https://www.youtube.com/watch?v=_K-eupuDVEc)
+* 场景确认（所有细节）、分析及列出需求（功能与非功能）
+* 初步架构图
+* 数据建模、数据库选择（SQL 还是 NoSQL 及其原因）与设计（所有的 Table 然后细讲主要的 Table）
+* API 设计或某段主要服务、功能的逻辑流 - 可用伪代码
+* 扩展与可能的风险以及它们的解决方案
+
+系统设计面试主要考察以下几个方面：  
+* 可行解 Work Solution、特定问题 Special Case、分析能力 Analysis、权衡 Tradeoff、知识储备 Knowledge Base  
+  
+以上参考[来源](https://juejin.cn/post/6863387461947506702)  
+  
+#### 4S 分析法
 * Scenario：场景 - 需要设计哪些（核心）功能（询问面试官、也可以自己想），需要承受多大的访问量？
 * Service：服务 - 逻辑处理的整合，对于同一类问题的逻辑处理可以归并到一个服务中。这一步实际上就是将整个系统细分为若干个小的服务。
 * Storage：存储 - 最重要的部分。根据每个服务的数据特性选择合适的存储结构，然后细化数据表结构。系统设计中可以选择的存储结构一般有三大类（数据库系统，文件系统，缓存系统）。其中数据库系统又分为关系型数据库（[SQL Database](./../../HackerRank%20Practises/sql/README.md)）和非关系型数据库（[NoSQL Database](./NoSQL.md)）。
@@ -35,18 +48,6 @@
 * No more no less. 不要总想着设计最牛的系统，要设计够用的系统；
 * Work solution first. 先设计一个基本能工作的系统，然后再逐步优化；
 * Analysis is important than solution. 系统设计没有标准答案，记住答案是没用的，通过分析过程展示知识储备，权衡各种设计方式的利弊。  
-  
-**面试步骤：**  
-* 场景确认（所有细节）、分析及列出需求（功能与非功能）
-* 初步架构图
-* 数据建模、数据库选择（SQL 还是 NoSQL 及其原因）与设计（所有的 Table 然后细讲主要的 Table）
-* API 设计或某段主要服务、功能的逻辑流 - 可用伪代码
-* 扩展与可能的风险以及它们的解决方案
-
-系统设计面试主要考察以下几个方面：  
-* 可行解 Work Solution、特定问题 Special Case、分析能力 Analysis、权衡 Tradeoff、知识储备 Knowledge Base  
-  
-以上参考[来源](https://juejin.cn/post/6863387461947506702)  
   
 ## 系统学习
 * [Grok System Design Tutorial](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Leetcode%20Practices/system%20design/grok_system_design_interview.pdf)
@@ -81,7 +82,7 @@
 </details>
 <br />
   
-## 系统设计模式
+## **系统设计模式**
 系统设计也有设计模式（类似 OOD 的设计模式），就像算法需要掌握数据结构，系统设计也需要掌握系统设计模式，因为这些都是最佳实践、通常比自己创造想象的要来得稳健。  
 <details>
 <summary>主要的系统设计模式：https://docs.microsoft.com/zh-cn/azure/architecture/patterns/</summary>
@@ -2006,6 +2007,18 @@ OOD 还可以参考 [Hotel Management System](./../object%20oriented%20design/gr
 
 
 <details>
+<summary>设计 ETL/ELT 系统</summary>
+
+ETL 系统其实与 cronjob / batch process 系统有一些类似。  
+
+如何觉察用户的数据库数据 schema 发生了变化？假设没有用户端的 API 调用的情况下：  
+一个办法是总是保存上一次用户递交的数据的 schema 在对象存储（或其他合适的存储介质）里，然后当接收到当前数据时，比较两个 schema 是否有更新，如果有则进行处理并把新的 schema 保存下来替换上一次的用于下一次比较。  
+
+</details>
+
+
+
+<details>
 <summary>设计点赞系统（Facebook/TikTok/Twitter/Youtube Like）</summary>
 
 [Twitter Likes Count Design | Youtube Views Count Design | Near Realtime Counter System Design](https://www.youtube.com/watch?v=0V-Ns9vovzE)  
@@ -2372,17 +2385,6 @@ http1.1 允许客户端不用等待上一次请求结果返回，就可以发出
 * 上述的方式基于锁。但是上锁则效率就会降低，也有不上锁、又能同时让多人协同编辑的方式 -- google docs 用了一个叫做 OT (Operational Transform) 的算法。![](./OT-Algorithm.png)
 
 </details>
-
-
-
-<details>
-<summary>设计 ETL/ELT 系统</summary>
-
-如何觉察用户的数据库数据 schema 发生了变化？假设没有用户端的 API 调用的情况下：  
-一个办法是总是保存上一次用户递交的数据的 schema 在对象存储（或其他合适的存储介质）里，然后当接收到当前数据时，比较两个 schema 是否有更新，如果有则进行处理并把新的 schema 保存下来替换上一次的用于下一次比较。  
-
-</details>
-
 
 
 <br />
