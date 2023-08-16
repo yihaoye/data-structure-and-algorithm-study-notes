@@ -11,7 +11,7 @@
 
 class Solution {
     private int[][] board;
-    private Queue<Integer> preLives = new LinkedList<>();
+    private Queue<int[]> preLives = new LinkedList<>();
     private int shift; // used for hash and unhash
 
     private Set<Integer> curWith1Lives = new HashSet<>(); // 这里的三个 set 可以用一个 map 代替 <count, <lives set...>>
@@ -31,15 +31,16 @@ class Solution {
     }
 
     public void nextGrid() { // 只由主线程/主服务调用
-        curWith1Lives.addAll(preLives);
-        while (!preLives.isEmpty()) {
+        while (!preLives.isEmpty()) { // 由子线程/子服务调用
             int[] preXy = preLives.poll();
-            next(preXy); // 由子线程/子服务调用
+            next(preXy);
         }
+
         while (!curLives.isEmpty()) {
             int hash = curLives.iterator().next();
             int[] xy = unhash(hash);
             board[xy[0]][xy[1]] = 1;
+            preLives.offer(xy);
             curLives.remove(hash);
         }
         curWith2Lives.clear();
@@ -47,7 +48,7 @@ class Solution {
     }
 
     public void next(int[] preXy) {
-        for (int[] neighbor : neighbors(preXy)) {
+        for (int[] neighbor : neighbors(preXy)) { // 包括 xy 自己也需要循环
             int neighborHash = hash(neighbor);
             if (curLives.contains(neighborHash)) continue;
 
@@ -72,11 +73,10 @@ class Solution {
         return new int[]{hash / shift, hash % shift};
     }
 
-    private List<int[]> neighbors(int[] xy) {
+    private List<int[]> neighbors(int[] xy) { // 需要包括 xy 自己也添加进 result
         List<int[]> neighbors = new ArrayList<>();
         for (int i = xy[0] - 1; i <= xy[0] + 1; i++) {
             for (int j = xy[1] - 1; j <= xy[1] + 1; j++) {
-                if (i == xy[0] && j == xy[1]) continue;
                 if (i < 0 || i >= board.length || j < 0 || j >= board[0].length) continue;
                 neighbors.add(new int[]{i, j});
             }
