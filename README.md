@@ -81,8 +81,8 @@
 6. 可以开头问有几道题（比如有没有 follow up），简单题开始写代码后可以代码为主解释为辅（面试官可能默认只是热身、更多是期望快速解题，所以最好不要浪费时间）
 7. [数据结构手绘、白板（文本文件）上绘图技巧](./白板绘图(数据结构手绘).md)
 
-#### 预先准备（或算法长时间手生需重捡复习）推荐
-预备熟用熟背常用模版
+#### 预先准备
+熟用熟背常用模版（或算法长时间手生需重捡复习）推荐
 * 中级设计/数据结构
   * [设计哈希表 | Leetcode Q706](./Leetcode%20Practices/algorithms/easy/706%20Design%20HashMap.java)
   * [设计最极栈 | Leetcode Q155](./Leetcode%20Practices/algorithms/easy/155%20Min%20Stack.java)
@@ -93,6 +93,7 @@
   * [并查集与联合查找 | Leetcode Q200 Q684 UF 解法](./Leetcode%20Practices/algorithms/medium/200%20Number%20of%20Islands.java)
   * [线段树](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/SegmentTree/SegmentTree4.java)
   * [红黑树](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/RedBlackTree/RBTree.java)
+  * 跳表
   * [树状数组 | Leetcode Q307](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/BinaryIndexedTree(FenwickTree)/README.md#树状数组实现)
   * 其他：[1](./Leetcode%20Practices/object%20oriented%20design/other%20practices/README.md)、[2](./Common%20Data%20Structure%20and%20Data%20Type/README.md)、[3](./Other%20Practices/)、[4](./Tool%20Sets/README.md)
 * 中级算法
