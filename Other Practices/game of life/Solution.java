@@ -7,13 +7,14 @@
 // 本解题方案采用 BFS 思想只关心前 live cells 并通过它们获得下一次的 live cells（其实就是坐标离散化/坐标压缩优化）
 // 时间复杂度相比暴力解法 O(mn) 有所提升，只与 live cells 有关，如果矩阵很大但是 live cells 很少，那么时间复杂度高效很多
 // 相比之下空间复杂度有所增加，也只与 live cells 有关
+// 而且如果在系统设计中此法也可以进一步利用多线程提升性能，只需要把 preLives 等成员变量换成线程安全的数据结构如 BlockingQueue、ConcurrentHashMap 等即可
 
 class Solution {
     private int[][] board;
-    private Set<Integer> preLives = new HashSet<>();
-    private int shift;
+    private Queue<Integer> preLives = new LinkedList<>();
+    private int shift; // used for hash and unhash
 
-    private Set<Integer> curWith1Lives = new HashSet<>();
+    private Set<Integer> curWith1Lives = new HashSet<>(); // 这里的三个 set 可以用一个 map 代替 <count, <lives set...>>
     private Set<Integer> curWith2Lives = new HashSet<>();
     private Set<Integer> curLives = new HashSet<>();
 
@@ -24,7 +25,7 @@ class Solution {
     public void init(int[][] board) {
         this.board = board;
         for (int[] xy : board) {
-            preLives.add(hash(xy));
+            preLives.offer(xy);
         }
         shift = (int) Math.pow(10, (int) Math.log10(board[0].length) + 1);
     }
@@ -32,8 +33,7 @@ class Solution {
     public void next() {
         curWith1Lives.addAll(preLives);
         while (!preLives.isEmpty()) {
-            int preHash = preLives.iterator().next();
-            int[] preXy = unhash(preHash);
+            int[] preXy = preLives.poll();
             for (int[] neighbor : neighbors(preXy)) {
                 int neighborHash = hash(neighbor);
                 if (curLives.contains(neighborHash)) continue;
@@ -48,14 +48,12 @@ class Solution {
                     curWith1Lives.add(neighborHash);
                 }
             }
-            preLives.remove(preHash);
             board[preXy[0]][preXy[1]] = 0;
         }
         while (!curLives.isEmpty()) {
             int hash = curLives.iterator().next();
             int[] xy = unhash(hash);
             board[xy[0]][xy[1]] = 1;
-            preLives.add(hash);
             curLives.remove(hash);
         }
         curWith2Lives.clear();
