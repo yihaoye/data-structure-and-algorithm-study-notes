@@ -263,6 +263,13 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 
 ### [Caching](./Caching.md)
 
+### [Message Queue and Stream](./消息队列与流处理.md)
+
+### Cache vs Message Queue / Stream
+相比之下 Cache 更像 Java 的 HashMap，Message Queue / Stream 更像 Java 的 Queue/Deque/Stream：
+* Cache 通常用于索引定位更快的响应的场景，而不是用于有序事件处理（虽然如 Redis 也有相关功能但在需要更高级的消息队列功能，例如消息确认、重试、顺序性保证等时，Kafka 是更好的选择）
+* Message Queue / Stream 保证先入先出、（处理）事件有序的场景应用，而不是为了快速索引定位响应（因为如 Kafka 等系统是使用硬盘日志而不是内存存储数据，因此延迟较高）。
+
 ### [Sharding or Data Partitioning](./Sharding%20or%20Data%20Partitioning.md)
 
 ### [Indexes](./Indexes.md)
