@@ -2051,6 +2051,9 @@ ETL 系统其实与 cronjob / batch process 系统有一些类似。
 
 参考：https://www.youtube.com/watch?v=uIqvbYVBiCI  
 
+![](./AutoComplete.png)  
+![](./AutoComplete-Trie.png)  
+
 重点关注：
 * 要使用到字典树这一数据结构（另外因为输入字符可能非英文字母，所以需要使用哈希表或线性表来存子节点，数组固定长度不可）
 * 数据量可能非常大，因此需要分布式设计，重点分别有两处：
