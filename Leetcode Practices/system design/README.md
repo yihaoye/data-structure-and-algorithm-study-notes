@@ -2049,7 +2049,9 @@ ETL 系统其实与 cronjob / batch process 系统有一些类似。
 <details>
 <summary>设计 Autocomplete、Typeahead Suggestion 系统</summary>
 
-参考：https://www.youtube.com/watch?v=uIqvbYVBiCI  
+参考：  
+* [花花酱](https://www.youtube.com/watch?v=uIqvbYVBiCI)
+* https://www.youtube.com/watch?v=us0qySiUsGU
 
 ![](./AutoComplete.png)  
 ![](./AutoComplete-Trie.png)  
@@ -2057,11 +2059,13 @@ ETL 系统其实与 cronjob / batch process 系统有一些类似。
 重点关注：
 * 要使用到字典树这一数据结构（另外因为输入字符可能非英文字母，所以需要使用哈希表或线性表来存子节点，数组固定长度不可）
 * 数据量可能非常大，因此需要分布式设计，重点分别有两处：
-  * 处理新的事件（增添字符串）或日志以构建字典树时，使用 MapReduce 处理
+  * 单个字典树、节点无法保证可用性及性能，因此会分片多个字典树节点，然后通过索引、哈希或如 Zookeeper 找到对应的字典树节点（类似一致性哈希）
+  * 处理新的事件（增添字符串）或日志以构建字典树时，使用 MapReduce 处理（字典树更新是耗时任务，所以需要 cronjob 比如每周执行）
   * 负载均衡以及数据库分库（并注意热前缀以及均匀分布）来处理请求等任务
-* 引入缓存（客户端及服务端）来提高性能
+* 引入缓存（客户端及服务端如 Redis）来提高性能
 * 客户端引入机制检测用户输入速率，输入停顿达到一定时间才请求 autocomplete，可有效降低非必需请求减轻系统压力
 * 最后可能要考虑如何处理排序或合并结果等等问题
+* 数据收集过程同样重要，包括关键词解析及其权重，可使用如 Cassandra 等 LSM 树的 NoSQL 数据库保证写入、Aggregate 性能
 
 使用现成开源方案：
 * [Elasticsearch：创建一个 autocomplete 输入系统 - 前端 + 后端](https://juejin.cn/post/7052153840493133855)
