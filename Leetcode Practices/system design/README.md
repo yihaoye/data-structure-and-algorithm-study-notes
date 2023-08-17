@@ -34,6 +34,8 @@
 * 可行解 Work Solution、特定问题 Special Case、分析能力 Analysis、权衡 Tradeoff、知识储备 Knowledge Base  
   
 以上参考[来源](https://juejin.cn/post/6863387461947506702)  
+
+注意：有的系统设计可能一开始给了个类似算法或设计的问题，其实可以先从单机简单开始进行类似 OOD 设计并使用数据结构、算法解决简单场景先，然后可以扩展场景比如更大的数据量更多的客户交互等等，然后把已设计好的 OOD 转化成系统设计（比如 Queue 换成消息队列、HashMap 换成内存缓存服务器如 Redis）。[例题](../../Other%20Practices/game%20of%20life/)  
   
 #### 4S 分析法
 * Scenario：场景 - 需要设计哪些（核心）功能（询问面试官、也可以自己想），需要承受多大的访问量？
