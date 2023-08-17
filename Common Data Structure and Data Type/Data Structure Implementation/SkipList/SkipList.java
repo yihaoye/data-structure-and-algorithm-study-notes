@@ -1,136 +1,256 @@
 package skiplist;
 
-// copy from https://github.com/wangzheng0822/algo/blob/master/java/17_skiplist/SkipList.java
+import java.util.*;
+
 /**
- * 跳表的一种实现方法。
- * 跳表中存储的是正整数，并且存储的是不重复的。
+ * https://gist.github.com/SylvanasSun/f2a3e30e3657d8727006887751c1d1de
  *
- * Author：ZHENG
+ * @author SylvanasSun
  */
-public class SkipList {
+public class SkipList<K extends Comparable<K>, V> implements Iterable<K> {
+    protected static final Random randomGenerator = new Random();
+    protected static final double DEFAULT_PROBABILITY = 0.5;
+    private Node<K, V> head;
+    private double probability;
+    private int size;
 
-  private static final float SKIPLIST_P = 0.5f;
-  private static final int MAX_LEVEL = 16;
-
-  private int levelCount = 1;
-
-  private Node head = new Node();  // 带头链表
-
-  public Node find(int value) {
-    Node p = head;
-    // 从最大层开始查找，找到前一节点，通过--i，移动到下层再开始查找
-    for (int i = levelCount - 1; i >= 0; --i) {
-      while (p.forwards[i] != null && p.forwards[i].data < value) {
-        // 找到前一节点
-        p = p.forwards[i];
-      }
+    public SkipList() {
+        this(DEFAULT_PROBABILITY);
     }
 
-    if (p.forwards[0] != null && p.forwards[0].data == value) {
-      return p.forwards[0];
-    } else {
-      return null;
-    }
-  }
-
-  public void insert(int value) {
-    int level = randomLevel(); // 随机一个层数
-    Node newNode = new Node();
-    newNode.data = value;
-    newNode.maxLevel = level; // 表示从最大层到低层，都要有节点数据
-    Node update[] = new Node[level]; // 记录要更新的层数，表示新节点要更新到哪几层
-    for (int i = 0; i < level; ++i) {
-      update[i] = head;
+    public SkipList(double probability) {
+        this.head = new Node<K, V>(null, null, 0);
+        this.probability = probability;
+        this.size = 0;
     }
 
-    /**
-      *
-      * 1，说明：层是从下到上的，这里最下层编号是0，最上层编号是15
-      * 2，这里没有从已有数据最大层（编号最大）开始找，（而是随机层的最大层）导致有些问题。
-      *    如果数据量为1亿，随机level=1 ，那么插入时间复杂度为O（n）
-      */
-    // record every level largest value which smaller than insert value in update[]
-    Node p = head;
-    for (int i = level - 1; i >= 0; --i) {
-      while (p.forwards[i] != null && p.forwards[i].data < value) {
-        p = p.forwards[i];
-      }
-      update[i] = p;// use update save node in search path
+    public V get(K key) {
+        checkKeyValidity(key);
+        Node<K, V> node = findNode(key);
+        if (node.getKey().compareTo(key) == 0) return node.getValue();
+        else return null;
     }
 
-    // in search path node next node become new node forwords(next)
-    for (int i = 0; i < level; ++i) {
-      newNode.forwards[i] = update[i].forwards[i];
-      update[i].forwards[i] = newNode;
-    }
-
-    // update node hight
-    if (levelCount < level) levelCount = level;
-  }
-
-  public void delete(int value) {
-    Node[] update = new Node[levelCount];
-    Node p = head;
-    for (int i = levelCount - 1; i >= 0; --i) {
-      while (p.forwards[i] != null && p.forwards[i].data < value) {
-        p = p.forwards[i];
-      }
-      update[i] = p;
-    }
-
-    if (p.forwards[0] != null && p.forwards[0].data == value) {
-      for (int i = levelCount - 1; i >= 0; --i) {
-        if (update[i].forwards[i] != null && update[i].forwards[i].data == value) {
-          update[i].forwards[i] = update[i].forwards[i].forwards[i];
+    public void add(K key, V value) {
+        checkKeyValidity(key);
+        Node<K, V> node = findNode(key);
+        if (node.getKey() != null && node.getKey().compareTo(key) == 0) {
+            node.setValue(value);
+            return;
         }
-      }
+        Node<K, V> newNode = new Node<K, V>(key, value, node.getLevel());
+        horizontalInsert(node, newNode);
+
+        int currentLevel = node.getLevel();
+        int headLevel = head.getLevel();
+        while (isBuildLevel()) { // 通过随机数来决定是否需要构建新的层级
+            if (currentLevel >= headLevel) { // 如果当前层级已经到达或超越顶层（顶层数字最大，底层为 0），那么需要构建一个新的顶层
+                Node<K, V> newHead = new Node<K, V>(null, null, headLevel + 1);
+                verticalLink(newHead, head);
+                head = newHead;
+                headLevel = head.getLevel();
+            }
+            // 找到 node 对应的上一层节点
+            while (node.getUp() == null) node = node.getPrevious();
+            node = node.getUp();
+
+            // 将 newNode 复制到上一层
+            Node<K, V> tmp = new Node<K, V>(key, value, node.getLevel());
+            horizontalInsert(node, tmp);
+            verticalLink(tmp, newNode);
+            newNode = tmp;
+            currentLevel++;
+        }
+        size++;
     }
 
-    while (levelCount>1&&head.forwards[levelCount]==null){
-      levelCount--;
+    public void remove(K key) {
+        checkKeyValidity(key);
+        Node<K, V> node = findNode(key);
+        if (node == null || node.getKey().compareTo(key) != 0) throw new NoSuchElementException("The key is not exist!");
+
+        // 移动到最底层
+        while (node.getDown() != null) node = node.getDown();
+        // 自底向上地进行删除
+        Node<K, V> prev = null;
+        Node<K, V> next = null;
+        for (; node != null; node = node.getUp()) {
+            prev = node.getPrevious();
+            next = node.getNext();
+            if (prev != null) prev.setNext(next);
+            if (next != null) next.setPrevious(prev);
+        }
+
+        // 对顶层链表进行调整，去除无效的顶层链表
+        while (head.getNext() == null && head.getDown() != null) {
+            head = head.getDown();
+            head.setUp(null);
+        }
+        size--;
     }
 
-  }
-
-  // 理论来讲，一级索引中元素个数应该占原始数据的 50%，二级索引中元素个数占 25%，三级索引12.5% ，一直到最顶层。
-  // 因为这里每一层的晋升概率是 50%。对于每一个新插入的节点，都需要调用 randomLevel 生成一个合理的层数。
-  // 该 randomLevel 方法会随机生成 1~MAX_LEVEL 之间的数，且 ：
-  //        50%的概率返回 1
-  //        25%的概率返回 2
-  //      12.5%的概率返回 3 ...
-  private int randomLevel() {
-    int level = 1;
-
-    while (Math.random() < SKIPLIST_P && level < MAX_LEVEL)
-      level += 1;
-    return level;
-  }
-
-  public void printAll() {
-    Node p = head;
-    while (p.forwards[0] != null) {
-      System.out.print(p.forwards[0] + " ");
-      p = p.forwards[0];
+    public boolean contains(K key) {
+        return get(key) != null;
     }
-    System.out.println();
-  }
 
-  public class Node {
-    private int data = -1;
-    private Node forwards[] = new Node[MAX_LEVEL];
-    private int maxLevel = 0;
+    public int size() {
+        return size;
+    }
+
+    public boolean empty() {
+        return size == 0;
+    }
+
+    protected Node<K, V> findNode(K key) {
+        Node<K, V> node = head;
+        Node<K, V> next = null;
+        Node<K, V> down = null;
+        K nodeKey = null;
+
+        while (true) {
+            // Searching nearest (less than or equal) node with special key
+            next = node.getNext();
+            while (next != null && lessThanOrEqual(next.getKey(), key)) {
+                node = next;
+                next = node.getNext();
+            }
+            nodeKey = node.getKey();
+            if (nodeKey != null && nodeKey.compareTo(key) == 0) break;
+            // Descend to the bottom for continue search
+            down = node.getDown();
+            if (down != null) node = down;
+            else break;
+        }
+
+        return node;
+    }
+
+    protected void checkKeyValidity(K key) {
+        if (key == null) throw new IllegalArgumentException("Key must be not null!");
+    }
+
+    protected boolean lessThanOrEqual(K a, K b) {
+        return a.compareTo(b) <= 0;
+    }
+
+    protected boolean isBuildLevel() {
+        return randomGenerator.nextDouble() < probability;
+    }
+
+    protected void horizontalInsert(Node<K, V> x, Node<K, V> y) {
+        y.setPrevious(x);
+        y.setNext(x.getNext());
+        if (x.getNext() != null) x.getNext().setPrevious(y);
+        x.setNext(y);
+    }
+
+    protected void verticalLink(Node<K, V> x, Node<K, V> y) {
+        x.setDown(y);
+        y.setUp(x);
+    }
 
     @Override
-    public String toString() {
-      StringBuilder builder = new StringBuilder();
-      builder.append("{ data: ");
-      builder.append(data);
-      builder.append("; levels: ");
-      builder.append(maxLevel);
-      builder.append(" }");
-
-      return builder.toString();
+    public Iterator<K> iterator() {
+        return new SkipListIterator<K, V>(head);
     }
-  }
 
+
+    protected static class SkipListIterator<K extends Comparable<K>, V> implements Iterator<K> {
+        private Node<K, V> node;
+
+        public SkipListIterator(Node<K, V> node) {
+            while (node.getDown() != null) node = node.getDown();
+            while (node.getPrevious() != null) node = node.getPrevious();
+            if (node.getNext() != null) node = node.getNext();
+
+            this.node = node;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return this.node != null;
+        }
+
+        @Override
+        public K next() {
+            K result = node.getKey();
+            node = node.getNext();
+            return result;
+        }
+
+        @Override
+        public void remove() {
+            throw new UnsupportedOperationException();
+        }
+    }
+
+
+    protected static class Node<K extends Comparable<K>, V> {
+        private K key;
+        private V value;
+        private int level;
+        private Node<K, V> up, down, next, previous;
+
+        public Node(K key, V value, int level) {
+            this.key = key;
+            this.value = value;
+            this.level = level;
+        }
+
+        public K getKey() {
+            return key;
+        }
+
+        public void setKey(K key) {
+            this.key = key;
+        }
+
+        public V getValue() {
+            return value;
+        }
+
+        public void setValue(V value) {
+            this.value = value;
+        }
+
+        public int getLevel() {
+            return level;
+        }
+
+        public void setLevel(int level) {
+            this.level = level;
+        }
+
+        public Node<K, V> getUp() {
+            return up;
+        }
+
+        public void setUp(Node<K, V> up) {
+            this.up = up;
+        }
+
+        public Node<K, V> getDown() {
+            return down;
+        }
+
+        public void setDown(Node<K, V> down) {
+            this.down = down;
+        }
+
+        public Node<K, V> getNext() {
+            return next;
+        }
+
+        public void setNext(Node<K, V> next) {
+            this.next = next;
+        }
+
+        public Node<K, V> getPrevious() {
+            return previous;
+        }
+
+        public void setPrevious(Node<K, V> previous) {
+            this.previous = previous;
+        }
+    }
 }
