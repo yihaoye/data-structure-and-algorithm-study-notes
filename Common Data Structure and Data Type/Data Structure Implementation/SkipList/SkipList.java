@@ -55,10 +55,10 @@ public class SkipList<K extends Comparable<K>, V> implements Iterable<K> {
             node = node.getUp();
 
             // 将 newNode 复制到上一层（因为上面随机函数判定了让这个 newNode 也成为上一层的一个节点）
-            Node<K, V> tmp = new Node<K, V>(key, value, node.getLevel());
-            horizontalInsert(node, tmp);
-            verticalLink(tmp, newNode);
-            newNode = tmp;
+            Node<K, V> newNodeUp = new Node<K, V>(key, value, node.getLevel());
+            horizontalInsert(node, newNodeUp);
+            verticalLink(newNodeUp, newNode);
+            newNode = newNodeUp;
             currentLevel++;
         }
         size++;
@@ -144,7 +144,7 @@ public class SkipList<K extends Comparable<K>, V> implements Iterable<K> {
         x.setNext(y);
     }
 
-    protected void verticalLink(Node<K, V> x, Node<K, V> y) { // 注意这里的 x 和 y 是相同的节点（使用场景要求），x 在上 y 在下，无需设置 x 的上层和 y 的下层
+    protected void verticalLink(Node<K, V> x, Node<K, V> y) { // 注意这里的 x 和 y 应是相同的节点（使用场景要求，使用者也要注意保证），x 在上 y 在下，无需设置 x 的上层和 y 的下层
         x.setDown(y);
         y.setUp(x);
     }
