@@ -46,7 +46,7 @@ class JobQueue {
     private Queue<Job> queue = new LinkedList<>();
 
     public void enqueue(Job job) {
-        for (Job subJob : job.subJobs) enqueue(subJob);
+        for (Job subJob : job.subJobs) enqueue(subJob); // 除了递归，也可以考虑采用 BFS
         queue.offer(job);
     }
 

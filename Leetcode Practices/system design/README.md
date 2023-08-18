@@ -46,10 +46,11 @@
   * [Scale a Website Step by Step](./scale-a-website-step-by-step.jpeg)
   
 最后，系统设计面试中需要注意的点：  
-* Ask before design. 问清楚再动手设计，不要一上来就冲着一个巨牛的方案去设计 - 比如可能只是一个每天百位数以内请求、无并发可能的场景；
-* No more no less. 不要总想着设计最牛的系统，要设计够用的系统；
-* Work solution first. 先设计一个基本能工作的系统，然后再逐步优化；
-* Analysis is important than solution. 系统设计没有标准答案，记住答案是没用的，通过分析过程展示知识储备，权衡各种设计方式的利弊。  
+* Ask before design. 问清楚再动手设计，不要一上来就冲着一个巨牛的方案去设计 - 比如可能只是一个每天百位数以内请求、无并发可能的场景。
+* No more no less. 不要总想着设计最牛的系统，要设计够用的系统。
+* Work solution first. 先设计一个基本能工作的系统，然后再逐步优化。
+* Analysis is important than solution. 系统设计没有标准答案，记住答案是没用的，通过分析过程展示知识储备，权衡各种设计方式的利弊。
+* 另外不要总是只局限于如何在服务端工作/优化，有时还可以根据具体情况把相关工作/优化搬到客户端去做，比如缓存、重试策略、限流等等，可能会比服务端更高效、适用。永远记着两个方向上都考虑到。
   
 ## 系统学习
 * [Grok System Design Tutorial](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Leetcode%20Practices/system%20design/grok_system_design_interview.pdf)
