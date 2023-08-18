@@ -16,6 +16,7 @@ import java.util.concurrent.*;
 class Job implements Runnable {
     public String id;
     public List<Job> subJobs;
+    public volatile boolean status;
 
     public Job(String id) {
         this(id, new ArrayList<>());
@@ -24,10 +25,20 @@ class Job implements Runnable {
     public Job(String id, List<Job> subJobs) {
         this.id = id;
         this.subJobs = subJobs;
+        this.status = false;
+    }
+
+    public boolean checkDependsStatus() { // check if dependancies status are all done/true
+        // ...
     }
 
     public void run() { 
+        while (!checkDependsStatus()) {
+            // wait
+            // 在等待时可能会消耗过多的系统资源。可以考虑使用更适合等待的机制，比如 wait() 和 notify()，这样可以更有效地管理线程等待状态。
+        }
         // ...
+        this.status = true;
     }
 }
 
@@ -35,32 +46,20 @@ class JobQueue {
     private Queue<Job> queue = new LinkedList<>();
 
     public void enqueue(Job job) {
+        for (Job subJob : job.subJobs) enqueue(subJob);
         queue.offer(job);
     }
 
     public void runJob(Job job, int maxRetry) {
-         // 考虑到子任务可能有依赖关系，需要拓扑排序，并且建议由单个线程执行同一根任务下的所有子任务而不是把他们也放进 queue 里
-         // 因为 runJobsAsync 总是可能乱序执行（如果不太严格的话也不是不行，可以在 runJob 里 catch 依赖错误把当前任务放回 queue 里，注意 queue 需是 BlockingQueue）
-        List<Job> subJobs = topoSort(job);
-
-        int attempts = maxRetry;
-        for (Job subJob : subJobs) {
-            while (attempts-- > 0) {
-                try {
-                    subJob.run();
-                    break;
-                } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                }
-            }
-
-            if (attempts == 0) {
-                System.out.println("Job failed: " + job.id); // or handleFailure(job);
+        while (maxRetry-- > 0) {
+            try {
+                job.run();
                 return;
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
-
-            attempts = maxRetry;
         }
+        System.out.println("Job failed: " + job.id); // or handleFailure(job);
     }
 
     public void runJobs() {
