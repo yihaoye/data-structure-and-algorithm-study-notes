@@ -7,7 +7,7 @@
 // 本解题方案采用 BFS 思想只关心前 live cells 并通过它们获得下一次的 live cells（其实就是坐标离散化/坐标压缩优化）
 // 时间复杂度相比暴力解法 O(mn) 有所提升，只与 live cells 有关，如果矩阵很大但是 live cells 很少，那么时间复杂度高效很多
 // 相比之下空间复杂度有所增加，也只与 live cells 有关
-// 而且如果在系统设计中此法也可以进一步利用多线程（或多服务器）提升性能，需要把 preLives 等成员变量换成线程安全的数据结构如 BlockingQueue (或消息队列 Kafka)、ConcurrentHashMap（或 Redis）且即可
+// 而且如果在系统设计中此法也可以进一步利用多线程（或多服务器）提升性能，需要把 preLives 等成员变量换成线程安全的数据结构如 BlockingQueue (或消息队列 Kafka)、ConcurrentHashMap（或 Redis，但是要注意加锁避免同时多个 +1 时只实际执行一个）且即可
 
 class Solution {
     private int[][] board;
