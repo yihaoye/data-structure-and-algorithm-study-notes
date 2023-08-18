@@ -2426,6 +2426,34 @@ http1.1 允许客户端不用等待上一次请求结果返回，就可以发出
 </details>
 
 
+
+<details>
+<summary>设计 Metric Collection System</summary>
+
+参考：https://cloud.google.com/bigtable#section-8  
+
+![](./Logstash_central_log_server_architecture.png)  
+![](./metric-collection-flow.png)  
+
+* 数据收集：StatsD 或 Elastic Beats（如 Filebeat、Metricbeat、Packetbeat 等）等工具/代理从各种数据源（应用程序、服务器、网络流量等）收集数据。每个 Beats 模块专门设计用于特定类型的数据收集。
+* 数据传输和处理：Beats 将收集的数据传输到 Logstash 或 Elasticsearch 进行进一步的处理。数据传输可以是直接将数据发送给 Elasticsearch，也可以通过 Logstash 进行过滤、解析和转换。
+* 数据处理与转换（可选）：如果数据需要进一步的处理、转换或过滤，可以使用 Logstash。Logstash 提供强大的数据转换功能，可以对数据进行解析、清洗、转换为结构化格式等。
+* 数据存储：收集和处理后的数据被存储到 Elasticsearch 中。Elasticsearch 是一个分布式搜索和分析引擎，用于高效地存储和检索大量数据。
+* 数据索引和建模：Elasticsearch 对数据进行索引和建模，使数据能够高效地被搜索和查询。数据被存储在索引中，索引可以包含多个分片和副本以实现高可用性和扩展性。
+* 数据查询和分析：使用 Elasticsearch 进行数据查询和分析。Elasticsearch 提供了强大的搜索和聚合功能，可以进行复杂的数据查询和分析操作。
+* 数据可视化：使用 Kibana 对数据进行可视化和分析。Kibana 提供了丰富的图表、仪表盘和地图等可视化工具，可以帮助用户理解数据并发现趋势和模式。
+* 实时监控与报警：通过 Kibana 和 Elasticsearch 联合使用，可以设置实时监控和报警规则，以便在数据达到预定阈值时触发报警。
+
+以上 by ChatGPT  
+
+客户端读取数据
+* 客户端可能需要通过特定协议（如 Websocket、MQTT）从对应服务端获取数据，因为实时性较高可能需要用消息队列 Pub/Sub 模式而非缓存
+* 客户端获取数据后，在客户端侧进行数据渲染、可视化
+
+
+</details>
+
+
 <br />
   
   
