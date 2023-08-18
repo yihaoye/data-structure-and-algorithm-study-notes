@@ -3,7 +3,7 @@ package skiplist;
 import java.util.*;
 
 /**
- * https://gist.github.com/SylvanasSun/f2a3e30e3657d8727006887751c1d1de
+ * 源代码来源：https://gist.github.com/SylvanasSun/f2a3e30e3657d8727006887751c1d1de
  *
  * @author SylvanasSun
  */
@@ -31,7 +31,7 @@ public class SkipList<K extends Comparable<K>, V> implements Iterable<K> {
         else return null;
     }
 
-    public void add(K key, V value) {
+    public void add(K key, V value) { // 这里的 K 是不可重复的，重复 K 会覆盖原值。如果想实现可重复的，可以将 Node 的 value 改为整数统计或 List<V>，且 get、add、remove 方法均需要修改
         checkKeyValidity(key);
         Node<K, V> node = findNode(key);
         if (node.getKey() != null && node.getKey().compareTo(key) == 0) {
@@ -44,7 +44,7 @@ public class SkipList<K extends Comparable<K>, V> implements Iterable<K> {
         int currentLevel = node.getLevel();
         int headLevel = head.getLevel();
         while (isBuildLevel()) { // 通过随机数来决定是否需要构建新的层级
-            if (currentLevel >= headLevel) { // 如果当前层级已经到达或超越顶层（顶层数字最大，底层为 0），那么需要构建一个新的顶层
+            if (currentLevel >= headLevel) { // 如果当前层级已经到达或超越顶层（注意越上层数字越大，顶层数字最大，底层为 0），那么需要构建一个新的顶层
                 Node<K, V> newHead = new Node<K, V>(null, null, headLevel + 1);
                 verticalLink(newHead, head);
                 head = newHead;
@@ -54,7 +54,7 @@ public class SkipList<K extends Comparable<K>, V> implements Iterable<K> {
             while (node.getUp() == null) node = node.getPrevious();
             node = node.getUp();
 
-            // 将 newNode 复制到上一层
+            // 将 newNode 复制到上一层（因为上面随机函数判定了让这个 newNode 也成为上一层的一个节点）
             Node<K, V> tmp = new Node<K, V>(key, value, node.getLevel());
             horizontalInsert(node, tmp);
             verticalLink(tmp, newNode);
@@ -108,7 +108,7 @@ public class SkipList<K extends Comparable<K>, V> implements Iterable<K> {
         K nodeKey = null;
 
         while (true) {
-            // Searching nearest (less than or equal) node with special key
+            // 找到最接近 key 的 Node（小于或等于）
             next = node.getNext();
             while (next != null && lessThanOrEqual(next.getKey(), key)) {
                 node = next;
@@ -116,7 +116,7 @@ public class SkipList<K extends Comparable<K>, V> implements Iterable<K> {
             }
             nodeKey = node.getKey();
             if (nodeKey != null && nodeKey.compareTo(key) == 0) break;
-            // Descend to the bottom for continue search
+            // 往下一层搜索看看是否有比当前 node 更接近 key 的 Node
             down = node.getDown();
             if (down != null) node = down;
             else break;
@@ -144,44 +144,9 @@ public class SkipList<K extends Comparable<K>, V> implements Iterable<K> {
         x.setNext(y);
     }
 
-    protected void verticalLink(Node<K, V> x, Node<K, V> y) {
+    protected void verticalLink(Node<K, V> x, Node<K, V> y) { // 注意这里的 x 和 y 是相同的节点（使用场景要求），x 在上 y 在下，无需设置 x 的上层和 y 的下层
         x.setDown(y);
         y.setUp(x);
-    }
-
-    @Override
-    public Iterator<K> iterator() {
-        return new SkipListIterator<K, V>(head);
-    }
-
-
-    protected static class SkipListIterator<K extends Comparable<K>, V> implements Iterator<K> {
-        private Node<K, V> node;
-
-        public SkipListIterator(Node<K, V> node) {
-            while (node.getDown() != null) node = node.getDown();
-            while (node.getPrevious() != null) node = node.getPrevious();
-            if (node.getNext() != null) node = node.getNext();
-
-            this.node = node;
-        }
-
-        @Override
-        public boolean hasNext() {
-            return this.node != null;
-        }
-
-        @Override
-        public K next() {
-            K result = node.getKey();
-            node = node.getNext();
-            return result;
-        }
-
-        @Override
-        public void remove() {
-            throw new UnsupportedOperationException();
-        }
     }
 
 
@@ -251,6 +216,42 @@ public class SkipList<K extends Comparable<K>, V> implements Iterable<K> {
 
         public void setPrevious(Node<K, V> previous) {
             this.previous = previous;
+        }
+    }
+
+
+    // SkipListIterator 和 iterator 不是必需的，可酌情省略（若省略记得把前面 SkipList 类的 implements Iterable<K> 也移除）
+    @Override
+    public Iterator<K> iterator() {
+        return new SkipListIterator<K, V>(head);
+    }
+
+    protected static class SkipListIterator<K extends Comparable<K>, V> implements Iterator<K> {
+        private Node<K, V> node;
+
+        public SkipListIterator(Node<K, V> node) {
+            while (node.getDown() != null) node = node.getDown();
+            while (node.getPrevious() != null) node = node.getPrevious();
+            if (node.getNext() != null) node = node.getNext();
+
+            this.node = node;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return this.node != null;
+        }
+
+        @Override
+        public K next() {
+            K result = node.getKey();
+            node = node.getNext();
+            return result;
+        }
+
+        @Override
+        public void remove() {
+            throw new UnsupportedOperationException();
         }
     }
 }
