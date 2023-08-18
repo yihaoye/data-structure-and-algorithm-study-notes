@@ -2,7 +2,13 @@
 import java.util.*;
 import java.util.concurrent.*;
 
-public class InvertedIndex { // 用哈希表实现，如果搜索功能要考虑关键词的顺序甚至关心重复次数的话，则需要用字典树（Trie）实现
+public class InvertedIndex {
+    // 本例用哈希表实现。
+    // 如果进阶搜索功能要考虑关键词的顺序甚至关心重复次数的话，可以改为使用 Map<String, Map<String, List<Integer>>> keyToTexts，
+    // 其中 Map<String, List<Integer>> 的 String 是 text，List<Integer> 为关键词 key 在 text 中的位置/索引，因为会在解析关键词添加进 List 时保证有序所以可以二分搜索，
+    // 具体过程为已记录上一个关键词（lastKey）在匹配的该 text（可能有多个，每个都需要后面同样的操作）中的位置 idx，
+    // 然后在 keyToTexts.get(nextKey).get(text) 即 List<Integer> 中二分搜索大于 idx 的最小值，如果找到则设为新的 idx 且继续，否则该 text 不匹配直接 break。
+    // 关心顺序与重复的话也可以用字典树（Trie）实现，但是时空复杂度都会更高，而且最差可能要遍历整个字典树，所以不推荐。
     private Map<String, Set<String>> keyToTexts;
     private Map<String, Set<String>> textToKeys;
     private Set<String> stopWords; // 停用词表，反向索引通常会忽略一些常用词，例如 a, the, is, are, will, can, with, etc
@@ -38,7 +44,7 @@ public class InvertedIndex { // 用哈希表实现，如果搜索功能要考虑
     }
 
     public boolean delete(String text) {
-        if (!textToKeys.containsKey(text)) return false;
+        if (!textToKeys.containsKey(text)) return false; // 可酌情根据要求改为抛出错误
 
         for (String word : textToKeys.get(text)) {
             keyToTexts.get(word).remove(text);
@@ -70,13 +76,8 @@ public class InvertedIndex { // 用哈希表实现，如果搜索功能要考虑
         // int hashCode = Arrays.hashCode(keywords); // Arrays.hashCode() 方法会对数组中的每个元素进行哈希运算，然后将这些哈希值进行组合。具体的计算方式涉及到位运算和混合运算，是一种复杂的方法。这种方式保证了元素相同但顺序不同的数组会得到相同的哈希值
         // if (searchCache.get(operation).containsKey(hashCode)) return searchCache.get(operation).get(hashCode);
 
-        Set<String> result;
+        Set<String> result = search(keywords[0]);
         for (String keyword : keywords) {
-            if (result == null) {
-                result = search(keyword);
-                continue;
-            }
-
             if (operation.equals(Operation.OR)) result.addAll(search(keyword));
             if (operation.equals(Operation.AND)) result.retainAll(search(keyword));
         }
