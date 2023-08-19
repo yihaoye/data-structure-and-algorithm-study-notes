@@ -15,8 +15,8 @@
 * [数据结构、数据类型及其实现 | Common Data Structure & Data Type & Implementation](./Common%20Data%20Structure%20and%20Data%20Type/README.md) (包括并发相关的数据结构的详解)
 * [计算机数学 | Computer Science Maths](./Computer%20Science%20Maths/README.md) (包括理论信息学如 [P/NP 问题](./Computer%20Science%20Maths/P%20vs%20NP%20vs%20NPC.md)，基础数学如[数学归纳法](./Computer%20Science%20Maths/Mathematical%20Induction.md)、[排列组合](./Computer%20Science%20Maths/Combinatorics.md)，以及算法常用数学工具、ACM 数论等等)
 * [计算机系统基础 | Computer System Layer & Basics](./Computer%20System%20Layer/README.md) (包括一些 [CAS、并发相关的 Java 数据结构的用例与详解](./Computer%20System%20Layer/并发与并行(Java)/) 和 [数据库详解](./Computer%20System%20Layer/数据库/README.md)、[数据建模](./Leetcode%20Practices/system%20design/数据库数据建模分库分表.md#数据模型设计))
-* [编程语言特性 | Programming Languages Features](./Program%20Languages%20Features/README.md)
-* [基础知识、面试八股文 | Domain Knowledge](./面试八股文/README.md)
+* [领域知识、面试八股文 | Domain Knowledge](./面试八股文/README.md)
+  * [编程语言特性 | Programming Languages Features](./Program%20Languages%20Features/README.md)
   * [计算机术语表 | Related Terms](./面试八股文/英文术语.md)
 * [其他类别岗位（如架构师、工程经理、安全工程师等）模拟面试 ｜ Other Position Interview Mock](https://www.youtube.com/@tryexponent/playlists)
 * Books and Courses
@@ -107,7 +107,7 @@
   * [树复原 | Leetcode Q105 Q106](./Leetcode%20Practices/algorithms/medium/105%20Construct%20Binary%20Tree%20from%20Preorder%20and%20Inorder%20Traversal.java)
   * [穷举递增子序列 | Leetcode Q491](./Leetcode%20Practices/algorithms/medium/491%20Increasing%20Subsequences.java)
   * [翻转树 | Leetcode Q156 Q226](./Leetcode%20Practices/algorithms/medium/156%20Binary%20Tree%20Upside%20Down.java)
-  * [K 数之和](./Leetcode%20Practices/algorithms/medium/18%204Sum.java)
+  * [K 数之和 | Leetcode Q18](./Leetcode%20Practices/algorithms/medium/18%204Sum.java)
 * 高级算法
   * [拓扑排序 | Leetcode Q210](./Common%20Algorithm%20and%20Theory/拓扑排序.md)
   * [多路归并 | Leetcode Q23](./Leetcode%20Practices/algorithms/hard/23%20Merge%20k%20Sorted%20Lists.java)

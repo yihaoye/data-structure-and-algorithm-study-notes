@@ -304,18 +304,51 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 <summary>Design TinyURL</summary>
 
 * [系统设计 TinyURL 完整版](./example%20questions/Design%20a%20URL%20Shortener%20(TinyURL)%20System.md)  
-  * Step 1: Why do we need URL shortening? - save a lot of space when displayed, printed, messaged, or tweeted, and hiding affiliated original URLs.
-  * Step 2: Requirements and Goals of the System (Functional Requirements, Non-Functional Requirements, Extended Requirements).
-  * Step 3: Capacity Estimation and Constraints (Traffic estimates -> Bandwidth estimates -> Storage estimates, Memory/Cache estimates -> Summary/High Level estimates).
-  * Step 4: System APIs - SOAP or REST APIs to expose the functionality of the service, definitions of the APIs with functionality, method name, params and return.
-  * Step 5: Database Design - Defining the DB schema in the early stages would help to understand the data flow among various components and later would guide towards data partitioning. Choose NoSQL since no relationships between objects within requirement and easier to scale.
-  * Step 6: Basic System Design and Algorithm - Encoding algorithm (e.g. MD5, SHA256, KGS etc) (concurrency problems?).
-  * Step 7: Data Partitioning and Replication - come up with a partitioning scheme that would divide and store data to different DB servers (Range Based Partitioning, Hash-Based Partitioning).
-  * Step 8: Cache (cache eviction policy - e.g. Least Recently Used (LRU) with LinkedHashMap).
-  * Step 9: Load Balancer (Between Clients and Application servers; Between Application Servers and database servers; Between Application Servers and Cache servers) (policy - e.g. Round Robin LB).
-  * Step 10: Purging or DB cleanup.
-  * Step 11: Telemetry.
-  * Step 12: Security and Permissions (user permission).
+
+Why do we need URL shortening? - save a lot of space when displayed, printed, messaged, or tweeted, and hiding affiliated original URLs.
+
+Functional Requirements:
+* 把长链接转换成短链接（唯一）且短链接不可猜测
+* 访问短链接时可以重定向到对应的长链接
+* （进阶）自定义短链接
+* （进阶）设置短链接过期时间（Purging or DB cleanup）
+
+Non-Functional Requirements:
+* Scalability（分库分表）
+* Availability（备份、fail-over）
+* Performance（缓存）
+
+Capacity Estimation and Constraints (Traffic estimates -> Bandwidth estimates -> Storage estimates, Memory/Cache estimates -> Summary/High Level estimates).  
+
+基本思路：  
+为每个添加的长链接返回一个数据库表新主键 ID，然后通过模运算得到 `ID <-> 短链接` 唯一对唯一映射，访问短链接时可以快速计算出主键 ID 然后找到长链接（不需要通过长链接找短链接，因为实际场景没有这个需求）。  
+
+API Design:
+```java
+String createShortUrl(String longUrl) {
+  int id = getNewIdFromDB();
+  return idToShortUrl(id);
+}
+
+String getLongUrl(String shortUrl) {
+  int id = shortUrlToId(shortUrl);
+  return getLongUrlById(id);
+}
+```
+
+Database Design - Choose NoSQL since no relationships between objects within requirement and easier to scale.  
+`mapping_table: {id, longUrl, shortUrl}`  
+
+Basic System Design and Algorithm - Encoding algorithm (e.g. MD5, SHA256, KGS etc) (concurrency problems?).  
+
+Data Partitioning and Replication - come up with a partitioning scheme that would divide and store data to different DB servers (Range Based Partitioning, Hash-Based Partitioning).  
+
+Cache (cache eviction policy - e.g. Least Recently Used (LRU) with LinkedHashMap).  
+
+其他：  
+* Telemetry.
+* Security and Permissions (user permission).
+
 </details>
 
 
@@ -2456,6 +2489,15 @@ http1.1 允许客户端不用等待上一次请求结果返回，就可以发出
 * 客户端可能需要通过特定协议（如 Websocket、MQTT）从对应服务端获取数据，因为实时性较高可能需要用消息队列 Pub/Sub 模式而非缓存
 * 客户端获取数据后，在客户端侧进行数据渲染、可视化（使用如 D3.js 等框架）
 
+
+</details>
+
+
+
+<details>
+<summary>设计 Payment Gateway System</summary>
+
+Ref：https://www.youtube.com/watch?v=olfaBgJrUBI  
 
 </details>
 
