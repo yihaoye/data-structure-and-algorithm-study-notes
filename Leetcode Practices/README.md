@@ -169,7 +169,7 @@
 - [x] 15	3Sum		
 - [x] 16	3Sum Closest		                                                            很少考
 - [x] 259	3Sum Smaller		                                                            很少考
-- [ ] 18	4Sum		
+- [x] 18	4Sum		
 ### Random
 - [x] 478   Generate Random Point in a Circle 
 ### 很少考			
@@ -524,7 +524,7 @@
 - [x] 13	Roman to Integer		
 - [x] 15	3Sum		
 - [x] 17	Letter Combinations of a Phone Number		
-- [ ] 18	4Sum		
+- [x] 18	4Sum		
 - [x] 20	Valid Parentheses		
 - [x] 22	Generate Parentheses		
 - [x] 23	Merge k Sorted Lists		
