@@ -30,20 +30,21 @@ class Job implements Runnable {
 
     public int dependsStatus() { // check if dependancy jobs status are all done/succeed
         // return 0 if not all done, 1 if all succeed, -1 if any failed（可以递归实现）
-        // 而且如果是 1 或 -1，可以直接用一个变量缓存了，因为以后都不会变化了
     }
 
     public void run() { 
-        // process ...
+        // pure process ...
     }
 }
 
 class JobQueue {
     private BlockingQueue<Job> queue;
+    private BlockingQueue<Job> results;;
     private static final int CPU_CORES_NUM;
 
     public JobQueue() {
         this.queue = new LinkedBlockingQueue<>();
+        this.results = new LinkedBlockingQueue<>();
         this.CPU_CORES_NUM = Runtime.getRuntime().availableProcessors();
     }
 
@@ -52,46 +53,45 @@ class JobQueue {
         queue.offer(job);
     }
 
-    public void runJob(Job job, int maxRetry) { // maxRetry 可以根据实际情况调整，另外应保证 job.dependsStatus() 此时只能为 1 或 -1
-        while (job.dependsStatus() == 1 && maxRetry-- > 0) {
+    public void runNextJob(int maxRetry) {
+        Job job = queue.poll(100, TimeUnit.MILLISECONDS); // 从队列中取出任务，如果队列为空则等待 0.1s，不用 take 因为可能 queue 剩 1 个元素时刚好多个线程同时 runNextJob
+        if (job == null) return;
+
+        int dependsStatus = job.dependsStatus();
+        if (dependsStatus == 0) {
+            queue.offer(job); // 依赖任务未全部完成，放回队列
+            return;
+        }
+        while (dependsStatus == 1 && maxRetry-- > 0) {
             try {
                 job.run();
                 job.status = 1;
+                results.offer(job); // 成功和失败结果可以放进不同队列，这里简化为放进同一个队列
                 return;
-            } catch (Exception e) { // 非依赖任务无法执行，乃其他临时故障，比如本任务网络错误，可以重试
+            } catch (Exception e) { // 不是因为依赖任务无法执行，而是其他临时故障，比如本任务网络错误，可以重试解决的那种
                 System.out.println(e.getMessage());
             }
         }
-        job.status = -1; // 依赖任务无法完成或重试次数用完，都标记为失败
-        handleFailure(job);
+        job.status = -1; // 依赖任务无法完成或重试次数用完，都标记当前 job 为失败
+        results.offer(job); // 或者添加 handleFailure(job);
     }
 
     public void runJobs() {
+        int maxRetry = 3; // 这里写死，实际上可以根据实际情况调整
         while (!queue.isEmpty()) {
-            Job job = queue.poll();
-            if (job.dependsStatus() == 0) {
-                queue.offer(job); // 依赖任务未全部完成，放回队列
-                continue;
-            }
-            runJob(job, 3);
+            runNextJob(maxRetry);
         }
     }
 
     public void runJobsAsync() {
+        int jobCount = queue.size();
+        int maxRetry = 5;
         ExecutorService executor = Executors.newFixedThreadPool(CPU_CORES_NUM);
-        while (!queue.isEmpty()) {
-            Job job = queue.poll();
-            if (job.dependsStatus() == 0) {
-                queue.offer(job); // 依赖任务未全部完成，放回队列（必须在这里放回队列而不是 executor.execute(() -> runJob(job, 5)) 里，否则可能在放回之前就在下一个 while 判定 queue 为空跳出循环）
-                continue;
-            }
-            executor.execute(() -> runJob(job, 5)); // 比 CompletableFuture.runAsync(() -> runJob(job, 5)) 更好，因为 CompletableFuture 在当调用/任务数比 CPU 核数远多的情况下会因线程切换、竞争导致性能下降，而线程池会阻塞任务队列，保证线程数不会超过 CPU 核数
+        while (results.size() < jobCount) { // 这里不用 !queue.isEmpty()，因为可能会出现当前多线程处理余下任务但因依赖项未完成需要往 queue 放回，而之前刚好 while 判断为 true，导致提前退出循环
+            if (queue.isEmpty()) continue; // 避免起多余线程导致性能下降，但这里也无法保证不为空时会不会刚好多个线程抢少数 job，所以 runNextJob 里还会有 poll 限时双重保证
+            executor.execute(() -> runNextJob(maxRetry)); // 比 CompletableFuture.runAsync(() -> runNextJob(maxRetry)) 更好，因为 CompletableFuture 在当调用/任务数比 CPU 核数远多的情况下会因线程切换、竞争导致性能下降，而线程池会阻塞任务队列，保证线程数不会超过 CPU 核数
             // 注意：Java 没有像 JavaScript 中的事件循环（Event Loop）机制，Java 的异步任务通常都是通过线程实现的
         }
         executor.shutdown();
-    }
-
-    public void handleFailure(Job job) {
-        // 比如放进另一个全局队列 ...
     }
 }
