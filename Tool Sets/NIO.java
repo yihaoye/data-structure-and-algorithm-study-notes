@@ -44,6 +44,9 @@ NIO 允许仅使用一个（或几个）线程来管理多个通道（网络连�
 同样，如果需要与其他计算机保持大量开放连接，例如，在 P2P 网络中，使用单个线程来管理所有出站连接可能是一个优势。
 但如果拥有较少带宽的连接，一次连接的数据量较大，那么经典的 IO 服务器实现可能更合适的。
 所以，应该根据具体的情况分析，选择更适合的，而不是更新的。
+
+JDK 1.4 中，java.nio.* 包引入新的 Java I/O 库，其目的是提高速度。实际上，“旧”的 I/O 包已经使用 NIO 重新实现过，即使不显式的使用 NIO 编程，也能从中受益。
+https://tobebetterjavaer.com/nio/nio-better-io.html
 */
 
 
@@ -222,3 +225,11 @@ Future<Integer> operation = fileChannel.read(buffer, 0);
 while (!operation.isDone()) ;
 buffer.flip();
 System.out.println(new String(buffer.array()));
+
+
+
+// AIO 与 NIO 的区别
+// NIO 是同步非阻塞的，AIO 是异步非阻塞的。
+// NIO 适合连接数目比较多、连接比较短的架构，比如聊天服务器，弹幕系统，服务器间通讯等。AIO 适用于连接数目比较少、连接比较长且连接比较活跃的架构，比如 P2P 网络通讯，即时通讯软件等。
+// NIO 由于是 Reactor 模式，一个线程可以同时处理多个请求，而 AIO 由于是 Proactor 模式，一个请求只能对应一个线程处理。
+// 主要方式 AsynchronousFileChannel、AsynchronousSocketChannel 也来自包 java.nio.channels。

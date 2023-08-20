@@ -18,7 +18,7 @@
 * Synchronized 关键字底层是如何实现的？它与 Lock 相比优缺点分别是什么？ （中等）
 * 简述 Java 的反射机制及其应用场景  （简单）
 * Synchronized，Volatile（及其实现原理），可重入锁的不同使用场景及优缺点    （困难）
-* 简述 BIO, NIO, AIO 的区别  （困难）
+* [简述 BIO, NIO, AIO 的区别](https://tobebetterjavaer.com/nio/BIONIOAIO.html)  （困难）
 * Java 类的加载流程是怎样的？什么是双亲委派机制？  （简单）
 * JMM 中内存模型是怎样的？什么是指令序列重排序？  （中等）
 * JVM 内存是如何对应到操作系统内存的？  （中等）
