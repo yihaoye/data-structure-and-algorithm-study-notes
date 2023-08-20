@@ -145,7 +145,7 @@
 - [ ] 301	Remove Invalid Parentheses		
 ### Subsequence			
 - [x] 392	Is Subsequence		
-- [ ] 115	Distinct Subsequences		
+- [x] 115	Distinct Subsequences		
 - [x] 187	Repeated DNA Sequences		                                            很少考
   
 ## Math
@@ -594,7 +594,7 @@
 - [x] 111	Minimum Depth of Binary Tree		
 - [x] 112	Path Sum		
 - [x] 113	Path Sum II		
-- [ ] 115	Distinct Subsequences		
+- [x] 115	Distinct Subsequences		
 - [x] 116	Populating Next Right Pointers in Each Node		
 - [x] 117	Populating Next Right Pointers in Each Node II		
 - [x] 121	Best Time to Buy and Sell Stock		
