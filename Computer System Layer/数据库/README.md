@@ -7,10 +7,13 @@
 * [NoSQL](./../../Leetcode%20Practices/system%20design/NoSQL.md)
   * [Dynamo](./Dynamo/README.md)
   * [Redis 基本功](./Redis/README.md)
+  * 时序数据库
+  * 向量数据库
 * [SQL vs NoSQL](./../../Leetcode%20Practices/system%20design/SQL%20vs%20NoSQL.md)
 * [数据模型与查询语言](./../../Leetcode%20Practices/system%20design/README.md#数据模型与查询语言)
+  * 关系模型、文档模型（树模型/KV模型）、图模型（网络模型）
 * [数据库设计模式](./数据库设计模式.md)
-* 向量数据库
+* 数据库常见组件：Parser、Binder、Planner、Optimizer、Execution、Storage
 
 ## 数据库相关的数据结构
 ![](./Data%20Structures%20that%20Power%20Database.PNG)  
