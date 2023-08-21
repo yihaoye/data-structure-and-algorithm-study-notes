@@ -49,7 +49,7 @@ class Solution {
         Map<Character, List<Integer>> cMap = new HashMap<>(); // <char, <index in t...>>
         for (int i=0; i<m; i++) cMap.computeIfAbsent(t.charAt(i), k -> new ArrayList<>()).add(i);
 
-        int[][] dp = new int[m][m]; // dp[x][y] means how many combination can match to t[0..x] which end with y --> y >= x && t[x] == t[y] --> dp[x][y] = dp[x-1][0] + ... + dp[x-1][y-1]
+        int[][] dp = new int[m][m]; // dp[x][y] means how many combination can match to t[0..x] which end with y --> y >= x && t[x] == t[y] --> dp[x][y] = dp[x-1][0] + ... + dp[x-1][y-1] = dp[x-1][x-1] + ... + dp[x-1][y-1] 因为 x must <= y
         for (int i=0; i<n; i++) {
             char sChar = s.charAt(i);
             for (int j=Math.min(i, m-1); j>=0; j--) { // 反向，避免循环时影响到后面的计算
