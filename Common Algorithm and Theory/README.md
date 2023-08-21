@@ -42,7 +42,7 @@
     - [KMP 算法 | Knuth–Morris–Pratt Algorithm](./KMP算法.md) (时间复杂度 O(N+M))
     - [AC 自动机 | Aho–Corasick Algorithm](./AC自动机.md)
     - 马拉车算法 | Manacher Algorithm
-    - [联合查找算法（并查集） | Union Find Algorithm](./并查集与联合查找算法.md) (时间复杂度 O(a(N)) - a(N) 为反阿克曼函数，对于大部分 N，a(N) 均小于 5，所以并查集的时间复杂度也可视为 O(1))
+    - [并查集/联合查找算法 | Union Find Algorithm](./并查集与联合查找算法.md) (时间复杂度 O(a(N)) - a(N) 为反阿克曼函数，对于大部分 N，a(N) 均小于 5，所以并查集的时间复杂度也可视为 O(1))
     - [最小生成树相关算法 | Minimum Spanning Tree Algorithms](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/MinimumSpanningTree/README.md)
     - 网络流相关算法
     - 系统级
