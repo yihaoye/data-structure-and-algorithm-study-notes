@@ -24,10 +24,10 @@
   
 ### **面试步骤**
 [真实面试过程模拟 (System Design Mock: with ex-Google EM)](https://www.youtube.com/watch?v=_K-eupuDVEc)
-* 场景确认（所有细节）、分析及列出需求（功能与非功能）
-* 初步架构图
-* 数据建模、数据库选择（SQL 还是 NoSQL 及其原因）与设计（所有的 Table 然后细讲主要的 Table）
-* API 设计或某段主要服务、功能的逻辑流 - 可用伪代码
+* 场景确认（所有细节）、分析及列出需求（功能与非功能）-（OOD 也一样）
+* 初步架构图 -（对应于 OOD 的流程图）
+* 数据建模、数据库选择（SQL 还是 NoSQL 及其原因）与设计（所有的 Table 然后细讲主要的 Table）-（对应于 OOD 里选择什么数据结构以及类设计进行存储）
+* API 设计或某段主要服务、功能的逻辑流，可用伪代码 -（对应 OOD 里的外部可调用 public 函数）
 * 扩展与可能的风险以及它们的解决方案
 
 系统设计面试主要考察以下几个方面：  
@@ -2497,7 +2497,9 @@ http1.1 允许客户端不用等待上一次请求结果返回，就可以发出
 <details>
 <summary>设计 Payment Gateway System</summary>
 
-Ref：https://www.youtube.com/watch?v=olfaBgJrUBI  
+Ref：
+* https://www.youtube.com/watch?v=9bjwfntoRGU&list=PLdQDWw95rTMduhc9_KvM6nsm2x-7zsYvK&index=1
+* https://www.youtube.com/watch?v=olfaBgJrUBI
 
 </details>
 
