@@ -136,7 +136,7 @@ public class HTTP { // 该类只展示了 GET 和 第三方库 JSON Parse 或简
         JSONObject jsonObj = new JSONObject(data);
         String time = jsonObj.getString("time");
 
-        // 2. 简陋的 json parse，不能处理复杂的嵌套关系只能简单解析出字符串并 flat，更完整的解析参考 Tool Sets 里的 JSONParser.java
+        // 2. 简陋的 json parse，不能处理复杂的嵌套关系只能简单解析出字符串并 flat，更完整的解析参考 Tool Sets 里的 JSONParser.java 或 other practices 里的 nested data
         Map<String, String> json = new LinkedHashMap<>();
         Pattern pattern = Pattern.compile("\"([A-Za-z0-9]+)\":\"([^\"]+)\"");
         Matcher matcher = pattern.matcher(data);

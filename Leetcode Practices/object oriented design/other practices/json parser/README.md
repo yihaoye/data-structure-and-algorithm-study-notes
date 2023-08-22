@@ -9,4 +9,5 @@ https://leetcode.com/discuss/interview-question/875180/microsoft-interview-quest
 
 
 ## 实现
-[JSON Parser Java 实现](./../../../../Tool%20Sets/JSONParser.java)  
+* [JSON Parser Java 实现](./../../../../Tool%20Sets/JSONParser.java)
+* [简单版递归 Java 实现](./../../../../Other%20Practices/nested%20data/Solution.java)
