@@ -11,6 +11,11 @@
 
 // 字符串操作套路
 
+// 分割字符串
+String str = "abc def   ghi  jkl";
+String[] subs = str.split("\\s+");
+// subs = ["abc", "def", "ghi", "jkl"]
+
 
 
 // 将字符串每一位轮流替换成其他（小写）英文字母，比如 Leetcode 126
