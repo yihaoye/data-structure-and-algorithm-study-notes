@@ -2500,6 +2500,11 @@ http1.1 允许客户端不用等待上一次请求结果返回，就可以发出
 Ref：
 * https://www.youtube.com/watch?v=9bjwfntoRGU&list=PLdQDWw95rTMduhc9_KvM6nsm2x-7zsYvK&index=1
 * https://www.youtube.com/watch?v=olfaBgJrUBI
+* https://newsletter.pragmaticengineer.com/p/designing-a-payment-system
+
+![](./payment-system-0.webp)  
+![](./payment-system-1.webp)  
+![](./payment-system-2.webp)  
 
 </details>
 
