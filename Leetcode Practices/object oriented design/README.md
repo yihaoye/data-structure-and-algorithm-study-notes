@@ -1,36 +1,46 @@
 # OOD 学习资源
 ## 针对面试
-* [Object Oriented Design 实战步骤](./object%20oriented%20design%20practical%20steps/)
+* 面向对象设计基础，部分参考[链接](https://www.youtube.com/watch?v=oaUVVBOhyJw)
+  * 类/对象基础知识
+    * 继承、接口、多态、组合、封装、抽象
+    * hashCode()、equals() 函数
+  * [设计模式 Design Pattern](./design%20pattern/README.md)
+  * 简单的数据结构以及算法
+    * 数组、线性表
+    * FIFO 用队列、FILO 用栈
+    * KV、去重或缓存用哈希表
+    * 数据类型选用（比如财务数据用 BigDecimal）
+  * 数据关系：一对一、一对多、多对多
+  * 设计原则
+    * DRY (Don't Repeat Yourself)
+    * SOLID（以下链接皆为示例代码）
+      * [S 单一功能原则](./SOLID/SingleResponsibility.java): 对象或类应该仅具有一种单一功能。
+      * [O 开闭原则](./SOLID/OpenClose.java): 对象或实体应该对扩展开放，对修改封闭。
+      * [L 里氏替换原则](./SOLID/LiskovSubstitution.java): 任何一个子类或派生类应该可以替换它们的基类或父类（参考契约式设计）（通常与 I 接口隔离原则互为表里）。
+      * [I 接口隔离原则](./SOLID/InterfaceSeggregation.java): 多个特定客户端接口要好于一个宽泛用途的接口（不应该强迫一个类实现它用不上的接口）（通常与 L 里氏替换原则互为表里）。
+      * [D 依赖反转原则](./SOLID/DependencyInversion.java): 抽象不应该依赖于具体实现，具体实现应该依赖于抽象。High level 实体不应该依赖于 Low level 实体。
+  * OOD 面试应对方法
+    * 6 步解题法
+      * Clarify requirement - 问清楚那些是必须的，那些可以不用考虑
+      * Define class (core object) - 整个时间中一共会出现那些类？
+      * Define field (properties) - 每个类有那些filed？
+      * Define method, how data flow works - 这些类与类之间是如何交互的？ (inheritance为了好扩展, abstraction)
+      * Implementing 核心关键 method - above all no implementation, only definition
+      * Optimize with design pattern - 炫技时间，trade off show time 注意这是锦上添花，不写也可以过
+    * 5C 解题法
+![](./5c.svg)  
+  * OOD 系统分类
+    * 管理类（停车场问题 Parking Lot）
+    * 预定类（餐厅管理问题 Restaurant、酒店预订系统设计 Hotel Reservation）
+    * 实物类（Vending Machine 自动售货机、Coffee Maker 咖啡机、Kindle 设计）
+    * 游戏棋牌类（Tictactoe、Chinese Chess、Black Jack）
+
+其他重要资源：
+* [Object Oriented Design 实战步骤](./object%20oriented%20design%20practical%20steps/README.md)
 * [Grok Object Oriented Design Tutorial](./grok%20object%20oriented%20design%20interview)（即 [educative.io](https://www.educative.io/courses/grokking-the-object-oriented-design-interview) OOD 课程）
 * [设计模式二三事](https://tech.meituan.com/2022/03/10/interesting-talk-about-design-patterns.html)
 * [High Level Design vs Low Level Design | HLD vs LLD | System Design Concepts](https://www.youtube.com/watch?v=H703ErIrby8)
 * [面向对象设计 OOD (一) -- 基础知识](https://www.youtube.com/watch?v=hI0sdGc31vI)
-* [设计模式](./design%20pattern/README.md)
-* 面向对象设计专题班（文泰来 / 九章算法），目录如下（[链接](https://www.youtube.com/watch?v=oaUVVBOhyJw) 仅能免费看第一部分）
-  * 面向对象设计入门 Introduction to Object Oriented Design（高频 OOD 面试题 - 电梯设计 Elevator Design）
-      * OOD 面试应对方法
-        * SOLID 设计原则（以下链接皆为示例代码）
-          * [S 单一功能原则](./SOLID/SingleResponsibility.java):    对象或类应该仅具有一种单一功能。
-          * [O 开闭原则](./SOLID/OpenClose.java):       对象或实体应该对扩展开放，对修改封闭。
-          * [L 里氏替换原则](./SOLID/LiskovSubstitution.java):    任何一个子类或派生类应该可以替换它们的基类或父类（参考契约式设计）（通常与 I 接口隔离原则互为表里）。
-          * [I 接口隔离原则](./SOLID/InterfaceSeggregation.java):    多个特定客户端接口要好于一个宽泛用途的接口（不应该强迫一个类实现它用不上的接口）（通常与 L 里氏替换原则互为表里）。
-          * [D 依赖反转原则](./SOLID/DependencyInversion.java):    抽象不应该依赖于具体实现，具体实现应该依赖于抽象。High level 实体不应该依赖于 Low level 实体。
-        * 6 步解题法
-          * Clarify requirement - 问清楚那些是必须的，那些可以不用考虑
-          * Define class (core object) - 整个时间中一共会出现那些类？
-          * Define field (properties) - 每个类有那些filed？
-          * Define method, how data flow works - 这些类与类之间是如何交互的？ (inheritance为了好扩展, abstraction)
-          * Implementing 核心关键 method - above all no implementation, only definition
-          * Optimize with design pattern - 炫技时间，trade off show time 注意这是锦上添花，不写也可以过
-        * 5C 解题法  
-![](./5c.svg)  
-      * 设计模式讲解 Design Pattern - Strategy
-  * 管理类面向对象设计 OOD for Management System（停车场问题 Parking Lot）
-  * 预定类面向对象设计 OOD for Reservation System（餐厅管理问题 Restaurant、酒店预订系统设计 Hotel Reservation）
-  * 实物类面向对象设计 OOD for Real Life Object（Vending Machine 自动售货机、Coffee Maker 咖啡机、Kindle 设计）
-      * 设计模式讲解 Design Pattern Factory
-      * 设计模式讲解 Design Pattern: Adaptor
-  * 游戏棋牌类面向对象设计 OOD for Games（Tictactoe、Chinese Chess、Black Jack）
 * [算法刷完了如何准备系统设计 OOD](https://www.youtube.com/watch?v=by6WFFzXlF0)
 * [Top 10 OOD Interview questions](https://hackernoon.com/the-top-10-object-oriented-design-interview-questions-developers-should-know-c7fc2e13ce39)
 * [例题](./other%20practices/)  
