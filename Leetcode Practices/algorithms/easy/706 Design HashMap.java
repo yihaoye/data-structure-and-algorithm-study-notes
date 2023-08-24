@@ -41,7 +41,7 @@ Just for the information. In JDK 8, HashMap has been tweaked so that if keys can
 Time complexity: O(1) average and O(n) worst case - for all get(),put() and remove() methods.
 Space complexity: O(n) - where n is the number of entries in HashMap
 */
-class MyHashMap {
+class MyHashMap { // 扩展设计 RandomHashMap，可参考 ../../Other%20Practices/random%20hashmap/Solution.java
 	ListNode[] nodes = new ListNode[10000];
 
 	public int get(int key) {
