@@ -1,21 +1,28 @@
 # 缓存
 这里的缓存指的是多个应用服务之间的共享缓存，通常使用 Redis，每个应用服务自己本地也可以使用自己的内存（数据结构如数组、哈希表）作为本地缓存。  
 
-Caches are used in almost every layer of computing: hardware, operating systems, web browsers, web applications, and more (can exist at all levels in architecture), but are often found at the level nearest to the front end. It is like short-term memory and fast.  
-* Application server cache - If it is not in the cache, the requesting node will query the data from disk (faster than going to network storage), However, if LB randomly distributes requests across nodes, same request will go to different nodes, thus increasing cache misses. Two overcoming choices are global caches and distributed caches.
-* Content Distribution Network (CDN) - CDNs are a kind of cache that comes into play for sites serving large amounts of static media. If content not locally available, CDN will query back-end servers for the file, cache it locally and serve it to user. Above can be done by Nginx.
-* Cache Invalidation - cache require some maintenance for keeping cache coherent with the source of truth (e.g., database).
-  * Write-through cache - data is written into the cache and the corresponding database at the same time.
-  * Write-around cache - data is written directly to permanent storage, bypassing the cache.
-  * Write-back cache - data is written to cache alone and completion is immediately confirmed to the client. The write to the permanent storage is done after specified intervals or under certain conditions.
-* Cache eviction policies
-  * First In First Out (FIFO)
-  * Last In First Out (LIFO)
-  * Least Recently Used (LRU)
-  * Most Recently Used (MRU)
-  * Least Frequently Used (LFU)
-  * Random Replacement (RR)
+缓存在几乎每个计算层级中都被使用：硬件、操作系统、Web 浏览器、Web 应用程序等等（可以存在于体系结构的所有层级中），但通常在最靠近前端的层级中使用。它类似于短期记忆且速度快。
+
+* 应用服务器缓存 - 如果数据不在缓存中，请求节点将从磁盘查询数据（比访问网络存储快）。然而，如果负载均衡（LB）随机分发请求到不同的节点，同样的请求可能会发送到不同的节点，从而增加了缓存未命中。两种克服选择是全局缓存（global caches）和分布式缓存（distributed caches）。
+* 内容分发网络（CDN） - CDN 是一种在为大量静态媒体提供服务的站点中发挥作用的缓存。如果内容在本地不可用，CDN 将向后端服务器查询文件，将其缓存到本地并提供给用户。上述操作可以由 Nginx 完成。
+* 缓存失效（Cache Invalidation）- 缓存需要一些维护来保持与真实数据源（例如数据库）的一致性。
+  * 写入-通过缓存（Write-through cache） - 数据同时写入缓存和相应的数据库。
+    * 这种模式确保了缓存和持久性存储之间的数据一致性，但可能会影响写入操作的性能。
+    * 适用于情况：数据一致性要求高、避免数据丢失、写入操作不频繁、读取性能较重要等等。
+  * 写入-绕过缓存（Write-around cache） - 数据直接写入永久存储，绕过缓存。
+  * 写回缓存（Write-back cache） - 数据仅写入缓存，然后立即向客户端确认完成。写入永久存储在指定的时间间隔或特定条件下进行。
+  * 读取-通过缓存（Read-through cache）- 缓存系统在缓存未命中时，会自动从持久化存储（如数据库）中读取数据，并将数据放入缓存，以便下次访问时可以从缓存中获取数据，从而提高读取操作的性能。这种模式可以有效减轻后端数据库的负载，提高读取操作的速度。
+    * 适用于那些对读取性能要求较高的场景，例如，读取操作频繁、数据变化不频繁、数据量较大的情况。这种模式可以减少对后端存储的直接读取压力，提高读取速度，同时确保了数据的一致性。需要注意的是，在 Read-Through 缓存模式中，数据的更新通常需要额外的处理，以确保缓存中的数据与持久化存储中的数据保持一致。这可能涉及到缓存失效、数据更新通知等机制。
+* 缓存淘汰策略（Cache eviction policies）
+  * 先进先出（FIFO）
+  * 后进先出（LIFO）
+  * 最近最少使用（LRU）
+  * 最近最常使用（MRU）
+  * 最不常使用（LFU - Least Frequently Used）
+  * 随机替换（RR - Random Replacement）
 
 ![](./cache-related.jpeg)  
 
 其他：[Ring Buffer / Circular Buffer](https://zh.wikipedia.org/wiki/%E7%92%B0%E5%BD%A2%E7%B7%A9%E8%A1%9D%E5%8D%80)  
+
+分层缓存（Tiered Cache）：将缓存分成多个层级，每个层级具有不同的容量和速度。通常将最常访问的数据存储在速度较快的高层级缓存中，较少访问的数据存储在速度较慢的低层级缓存中。  
