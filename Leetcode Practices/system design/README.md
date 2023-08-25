@@ -2497,10 +2497,40 @@ http1.1 允许客户端不用等待上一次请求结果返回，就可以发出
 <details>
 <summary>设计 Payment Gateway System</summary>
 
+支付系统是用于通过货币价值转移来结算金融交易的系统。这包括使其交易成为可能的机构、工具、人员、规则、程序、标准和技术。  
+
 Ref：
 * https://www.youtube.com/watch?v=9bjwfntoRGU&list=PLdQDWw95rTMduhc9_KvM6nsm2x-7zsYvK&index=1
 * https://www.youtube.com/watch?v=olfaBgJrUBI
 * https://newsletter.pragmaticengineer.com/p/designing-a-payment-system
+
+* Functional requirements
+  * Pay-in flow: payment system receives money from customers on behalf of sellers.
+  * Pay-out flow: payment system sends money to sellers around the world.
+* Non-functional requirements
+  * Reliability and fault tolerance. Failed payments need to be carefully handled.
+  * A reconciliation process between internal services (payment systems, accounting systems) and external services (payment service providers) is required. The process asynchronously verifies that the payment information across these systems is consistent.
+
+* high-level design
+  * Payment service - 接受来自用户的支付事件并协调支付流程。它通常做的第一件事是风险检查，评估是否符合 AML/CFT 等法规，以及洗钱或资助恐怖主义等犯罪活动的证据。支付服务仅处理通过此风险检查的付款。通常，风险检查服务会使用第三方提供商，因为它非常复杂且高度专业化。
+  * Payment executor - 通过支付服务提供商（PSP）执行单个支付订单。一个支付事件可能包含多个支付订单。
+  * Payment service provider（第三方平台如 Stripe）
+  * Card schemes（卡计划如 Visa 等信用卡及其复杂的 plan）
+  * Ledger（记账、交易记录）
+  * Wallet（钱包余额）
+  * Double-entry ledger system - 账本系统中有一个非常重要的设计原则：复式记账原则。复式记账系统是任何支付系统的基础，也是准确记账的关键。它将每笔支付交易记录到两个金额相同的独立账本中。一个账户记入借方，另一个账户记入相同金额的贷方。
+* design deep dive
+  * PSP integration
+  * Reconciliation（和解）
+  * Handling processing delays
+  * Handling failed payments
+  * Exactly-once delivery
+  * Consistency
+  * Payment security
+
+API 设计  
+* 付款
+* 获取付款
 
 ![](./payment-system-0.webp)  
 ![](./payment-system-1.webp)  
