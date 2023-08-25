@@ -25,8 +25,6 @@ The median is (2 + 3)/2 = 2.5
 class Solution {
     public double findMedianSortedArrays(int[] A, int[] B) {
         // 二分搜索 - https://leetcode.com/problems/median-of-two-sorted-arrays/solutions/2496/concise-java-solution-based-on-binary-search/
-        // if (aMid < bMid) Keep [aRight + bLeft]    
-        // else Keep [bRight + aLeft]
         // Time: O(log(m + n))
         int m = A.length, n = B.length;
         int l = (m + n + 1) / 2;
@@ -39,12 +37,12 @@ class Solution {
         if (bStart > B.length - 1) return A[aStart + k - 1];                
         if (k == 1) return Math.min(A[aStart], B[bStart]);
         
-        int aMid = Integer.MAX_VALUE, bMid = Integer.MAX_VALUE;
-        if (aStart + k/2 - 1 < A.length) aMid = A[aStart + k/2 - 1]; 
-        if (bStart + k/2 - 1 < B.length) bMid = B[bStart + k/2 - 1];        
+        int aNextStartValue = Integer.MAX_VALUE, bNextStartValue = Integer.MAX_VALUE; // xNextStartValue 其实应该是 nextStart 前一位的值，这里免得命名太长就写 xNextStartValue 了
+        if (aStart + k/2 - 1 < A.length) aNextStartValue = A[aStart + k/2 - 1]; // aNextStart = (aStart + k/2 - 1) + 1
+        if (bStart + k/2 - 1 < B.length) bNextStartValue = B[bStart + k/2 - 1]; // bNextStart = (bStart + k/2 - 1) + 1
         
-        if (aMid < bMid) return getkth(A, aStart + k/2, B, bStart, k - k/2); // Check: aRight + bLeft 
-        else return getkth(A, aStart, B, bStart + k/2, k - k/2); // Check: bRight + aLeft
+        if (aNextStartValue < bNextStartValue) return getkth(A, aStart + k/2, B, bStart, k - k/2); // Check: curA move k/2 + curB
+        else return getkth(A, aStart, B, bStart + k/2, k - k/2); // Check: curB move k/2 + curA
     }
 }
 
