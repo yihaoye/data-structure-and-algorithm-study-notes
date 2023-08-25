@@ -27,13 +27,14 @@ class Solution {
         // 二分搜索 - https://leetcode.com/problems/median-of-two-sorted-arrays/solutions/2496/concise-java-solution-based-on-binary-search/
         // if (aMid < bMid) Keep [aRight + bLeft]    
         // else Keep [bRight + aLeft]
+        // Time: O(log(m + n))
         int m = A.length, n = B.length;
         int l = (m + n + 1) / 2;
         int r = (m + n + 2) / 2;
         return (getkth(A, 0, B, 0, l) + getkth(A, 0, B, 0, r)) / 2.0;
     }
 
-    public double getkth(int[] A, int aStart, int[] B, int bStart, int k) {
+    public double getkth(int[] A, int aStart, int[] B, int bStart, int k) { // 寻找 A、B 剩余数组元素 (A[aStart...aLen]、B[bStart...bLen]) 的第 k 值（由小到大排序）
         if (aStart > A.length - 1) return B[bStart + k - 1];            
         if (bStart > B.length - 1) return A[aStart + k - 1];                
         if (k == 1) return Math.min(A[aStart], B[bStart]);
@@ -42,10 +43,8 @@ class Solution {
         if (aStart + k/2 - 1 < A.length) aMid = A[aStart + k/2 - 1]; 
         if (bStart + k/2 - 1 < B.length) bMid = B[bStart + k/2 - 1];        
         
-        if (aMid < bMid) 
-            return getkth(A, aStart + k/2, B, bStart, k - k/2); // Check: aRight + bLeft 
-        else 
-            return getkth(A, aStart, B, bStart + k/2, k - k/2); // Check: bRight + aLeft
+        if (aMid < bMid) return getkth(A, aStart + k/2, B, bStart, k - k/2); // Check: aRight + bLeft 
+        else return getkth(A, aStart, B, bStart + k/2, k - k/2); // Check: bRight + aLeft
     }
 }
 
