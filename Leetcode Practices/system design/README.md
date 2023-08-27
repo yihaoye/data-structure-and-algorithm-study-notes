@@ -7,21 +7,6 @@
 * [系统设计题怎么考怎么答](https://www.youtube.com/watch?v=28n0DVP3U14)
 * [系統设计面试 6 个技巧](https://www.youtube.com/watch?v=zomYKjlvJGU)  
   
-<details>
-<summary>系统设计准备</summary>
-
-> 系统设计这块我最开始的时候也是无从下手，许多概念了解一点大概但是都没有深入学习，俗称“略懂”的状态，深究就暴露了。  
-> 具体如何准备这块，地里的很多前辈都总结了很多好的帖子，我觉得比较好的资料包括如下：Grokking the system design Interview, Designing Data-Intensive Applications（https://vonng.gitbooks.io/ddia-cn/content/ ）, 以及一些 YouTube 视频（e.g., https://www.youtube.com/c/SystemDesignInterview/ ）。资料可能大家都有，我的诀窍在于下面几点：  
-> 1）重复直至真的理解。发现“书读百遍，其义自现”是真的（古人诚不我欺）。比如 DDIA 至少过一遍，Grokking 至少过5遍，第一遍可能过完什么印象都没有，后面好像每一遍都会有新的收获，然后可以逐渐自己思考如果自己遇到这种问题如何解决，会发现所有给的 design decision 都开始 make sense。跟刷题一样，与其看一大堆然后没啥印象不如多过几遍经典题目然后学会融会贯通。  
-> 2）要做笔记并总结。很多系统设计题大概框架都是相似的，比如设计 facebook, twitter, instgram, pinterest，核心都是 feed generation，可以用 push（[fanout](https://en.wikipedia.org/wiki/Fan-out_(software))/heavy write，fast read）也可以 pull（light write，slower read）模式，而且一般最优解都是两者结合。再比如如何处理 hot object问题，一遍情况下我们可以加 cache 直接从内存读取，或者使用不同的 sharding strategy 来平分流量。  
-> 3）要学会抓关键得分点。这一点其实是目标公司 HR 在面试之前透露的系统设计的 evaluation standard，发现特别受用，具体有以下这些：（1）problem exploration，先问清楚设计的目的，有哪些功能性和非功能性的要求，怎么评价成功；（2）quantitative analysis，无非就是估算 QPS，内存，存储以及带宽需求；（3）completeness of the design，这个肯定是必须的，直接决定过不过；（4）ability to reason trade-offs，特别需要讲为什么选这个技术而不是其他的；（5）deep dive，重点关注数据/存储，以及如何解决 scale/bottleneck 等方面。面试过程要主动考虑这些点，整个流程如果每个点都有的话，应该不会有太大的偏差。  
-> 透露下我自己的 timeline，全身心投入的时间可能有两个月，其中两周左右是在全天候学习没有上班，剩下的是正常上班晚上学习，可能 coding 和系统设计各占一半，轮流复习（今天系统设计明天 coding），最终拿到了两个 offer。顺便提下我没有参加任何 mock interview，我觉得大概的流程了解就可以了，而且计划总是赶不上变化，花相同的时间把问题真正搞懂是更有效的时间分配原则。PS，我考了个完全没准备过的题型但还是交出了一个还行的答案。  
-  
-以上来源：https://www.1point3acres.com/bbs/thread-692488-1-1.html  
-
-</details>
-<br />
-  
 ### **面试步骤**
 [真实面试过程模拟 (System Design Mock: with ex-Google EM)](https://www.youtube.com/watch?v=_K-eupuDVEc)
 * 场景确认（所有细节）、分析及列出需求（功能与非功能）-（OOD 也一样）
@@ -57,6 +42,7 @@
 * [System Design Fundamentals](./System%20Design%20Fundamentals.md)
 * [System-Design-Primer](https://github.com/donnemartin/system-design-primer)
 * [Scalability Architecture](https://github.com/binhnguyennus/awesome-scalability#architecture)
+* [System Design Interview](https://www.youtube.com/c/SystemDesignInterview)
   
 ## 系统主要大类（其他系统皆可从中找到类似）
 <details>
@@ -273,6 +259,11 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 * Cache 通常用于索引定位更快的响应的场景，而不是用于有序事件处理（虽然如 Redis 也有相关功能但在需要更高级的消息队列功能，例如消息确认、重试、顺序性保证等时，Kafka 是更好的选择）
 * Message Queue / Stream 保证先入先出、（处理）事件有序的场景应用，而不是为了快速索引定位响应（因为如 Kafka 等系统是使用硬盘日志而不是内存存储数据，因此延迟较高）。
 * 处理实时数据时（持续快速更新数据的场景），消息队列比缓存更适用，因为缓存在这种情况要非常注意读写一致性问题（引入读写策略、锁之类的）可能非常复杂、麻烦。
+
+### 处理范式
+* 请求与响应 - 延迟最小的一种范式，响应时间处于亚毫秒到毫秒之间，而且响应时间一般非常稳定。这种处理模式一般是阻塞的，应用程序向处理系统发出请求，然后等待响应。在数据库领域，这种范式就是线上交易处理（OLTP）。
+* 批处理 - 该范式有高延迟和高吞吐量的特点。处理系统按照设定的时间启动处理进程。
+* 流式处理 - 这种范式介于上述两者之间。大部分的业务不要求亚毫秒级的响应，不过也接受不了要等到第二天才知道结果。大部分业务流程都是持续进行的，只要业务报告保持更新，业务产品线能够持续响应，那么业务流程就可以进行下去，而无需等待特定的响应，也不要求在几毫秒内得到响应。一些业务流程具有持续性和非阻塞的特点。
 
 ### [Sharding or Data Partitioning](./Sharding%20or%20Data%20Partitioning.md)
 
