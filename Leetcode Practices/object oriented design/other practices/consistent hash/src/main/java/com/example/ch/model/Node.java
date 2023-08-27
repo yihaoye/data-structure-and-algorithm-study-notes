@@ -12,7 +12,7 @@ public class Node {
 
     // real cache data, apply <String, String> for simplicity, could be <String, Object> or <Object, Object> for advance use case
     private Map<String, String> data;
-    // <keyHash, keys> - not necessary but for performance improvement for data reassignment
+    // <keyHash, keys> - not necessary but for performance improvement for data reassignment, to make the reassignment (getKeyHashesByRange) faster, could use skip list or B+ tree instead
     private TreeMap<Double, Set<String>> keyHashToKeys;
 
     public Node(UUID nodeId, String hostname, int port, NodeType type) {
