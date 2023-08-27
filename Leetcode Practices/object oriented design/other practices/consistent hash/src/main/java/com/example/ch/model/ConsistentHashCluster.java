@@ -11,7 +11,7 @@ public class ConsistentHashCluster implements NodeEventHandler {
     // request key hash will be redirected to the vNode which is the largest vNode hash equals or smaller than the request key hash, 
     // if the request key hash find no smaller vNode, it will be redirected to the largest vNode
     // i.e. find the first vNode on the counterclockwise direction of the unit circle
-    private TreeMap<Double, Node> vNodeToNode = new TreeMap<>(); // <vNode hash, real Node>, apply TreeMap to make the hash range sorted to make reassignment and load balance faster
+    private TreeMap<Double, Node> vNodeToNode = new TreeMap<>(); // <vNode hash, real Node>, apply TreeMap to make the hash range sorted to make reassignment and load balance faster, to make the reassignment faster, we could also use skip list or B+ tree or other data structure
     private Map<UUID, Node> nodes = new HashMap<>();
 
     public ConsistentHashCluster() {
