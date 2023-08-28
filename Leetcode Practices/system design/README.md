@@ -2518,13 +2518,14 @@ http1.1 允许客户端不用等待上一次请求结果返回，就可以发出
 <details>
 <summary>设计 Payment Gateway System</summary>
 
-支付系统是用于通过货币价值转移来结算金融交易的系统。这包括使其交易成为可能的机构、工具、人员、规则、程序、标准和技术。  
-
-Ref：
+Ref：  
 * https://www.youtube.com/watch?v=9bjwfntoRGU&list=PLdQDWw95rTMduhc9_KvM6nsm2x-7zsYvK&index=1
 * https://www.youtube.com/watch?v=olfaBgJrUBI
 * https://newsletter.pragmaticengineer.com/p/designing-a-payment-system
+  
+支付系统是用于通过货币价值转移来结算金融交易的系统。这包括使其交易成为可能的机构、工具、人员、规则、程序、标准和技术。  
 
+#### 需求分析
 * Functional requirements
   * Pay-in flow: payment system receives money from customers on behalf of sellers.
   * Pay-out flow: payment system sends money to sellers around the world.
@@ -2532,6 +2533,7 @@ Ref：
   * Reliability and fault tolerance. Failed payments need to be carefully handled.
   * A reconciliation process between internal services (payment systems, accounting systems) and external services (payment service providers) is required. The process asynchronously verifies that the payment information across these systems is consistent.
 
+#### 总体设计
 * high-level design
   * Payment service - 接受来自用户的支付事件并协调支付流程。它通常做的第一件事是风险检查，评估是否符合 AML/CFT 等法规，以及洗钱或资助恐怖主义等犯罪活动的证据。支付服务仅处理通过此风险检查的付款。通常，风险检查服务会使用第三方提供商，因为它非常复杂且高度专业化。
   * Payment executor - 通过支付服务提供商（PSP）执行单个支付订单。一个支付事件可能包含多个支付订单。
@@ -2551,7 +2553,7 @@ Ref：
     * 数据同步方法二：确保所有副本始终同步。可以使用 Paxos 和 Raft 等共识算法，或者使用 YugabyteDB 或 CockroachDB 等基于共识的分布式数据库。
   * Payment security
 
-API 设计  
+#### API 设计  
 * 付款
 * 获取付款
 
