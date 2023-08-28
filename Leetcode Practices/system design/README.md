@@ -3024,6 +3024,7 @@ To Be Continue ...
 
 ## 事件驱动架构
 ![](./inside-eda.png)  
+参考：https://serverlessland.com/event-driven-architecture/visuals/inside-event-driven-architectures  
 
 ## [详解吞吐量、QPS、TPS、并发数等高并发大流量指标](https://www.toutiao.com/article/7123847014781141518/?wid=1680490047925)
 系统吞吐量指的是系统在单位时间内可处理的事务的数量，是用于衡量系统性能的重要指标。  
