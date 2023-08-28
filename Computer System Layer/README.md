@@ -18,4 +18,5 @@
   - ![](./linux-components.png)
   - ![](./linux-performance-obser-tools.jpeg)
   - ![](./inter-process-communication.jpeg)
+  - ![](./linux-files.png)
 
