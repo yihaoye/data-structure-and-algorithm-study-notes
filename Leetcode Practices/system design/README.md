@@ -182,16 +182,17 @@
 ## 系统通用基础设施
 摘录：https://www.cnblogs.com/ilinuxer/p/6697015.html  
 * API 网关（负载均衡、身份验证、路由、速率限制、计费、监控、分析、安全防护）
-* 自动扩展（ECS、K8S）
+* 自动扩展与 fail-over（ECS、K8S）
 * 业务应用和后端基础框架（MVC、IOC、ORM）
-* 缓存、CDN、分布式锁（本地缓存即内存中的缓存机制：ConcurrentHashMap etc；分布式缓存即单独的缓存服务：Redis、Memcached etc）
+* 缓存、CDN（本地缓存即内存中的缓存机制：ConcurrentHashMap etc；分布式缓存即单独的缓存服务：Redis、Memcached etc）
 * 主机、计算实例、服务器（EC2、Docker、Serverless）
-* 数据库（SQL、NoSQL）
+* 数据库（SQL、NoSQL、分库分表、主从复制）
 * 搜索引擎（全文搜索、ElasticSearch、MySQL）
 * [消息队列与流处理](./消息队列与流处理.md)（RabbitMQ、Kafka）[阅读材料](http://www.52im.net/thread-1979-1-1.html)
 * 对象/文件/非结构化数据存储（S3、Hadoop HDFS、Blob Storage - Binary Large Object Storage）（e.g. distributed file storage system for storing photos and videos）
 * 镜像/备份/归档（如为云主机、容器或数据库及其存储卷等等的镜像/快照的服务，可以存储至文件存储如 S3 等）
-* 统一认证中心（用户的注册、登录验证、token 鉴权；内部信息系统用户的管理和登录鉴权；应用管理，应用的 secret 生成，应用信息的验证 - 如验证接口签名等）
+* 统一认证中心（用户的注册、登录验证、token 鉴权；内部信息系统用户的管理、权限和登录鉴权；应用管理，应用的 secret 生成，应用信息的验证 - 如验证接口签名等）
+* 加密解密、压缩解压
 * 单点登录系统（Central Authentication Service - CAS）
 * [统一配置中心](https://en.wikipedia.org/wiki/Configuration_management)（Config Server、propeties、yaml）
 * [服务调用/服务治理框架（REST API、RPC）](./System%20Design%20Fundamentals.md#API%20Design)
@@ -200,7 +201,7 @@
 * 数据基础设施（大数据：Hadoop、Spark、数据仓库；数据管道：Kafka、Kinesis；数据分析：Hadoop、Spark、Tableau、Python、SAS、Excel）
 * 故障监控（系统监控、业务监控；Datadog、故障定位、警报等级、IM 或 oncall）(Telemetry)
 * DX（内部服务：包括大数据、构建交付工具、通用运行时服务类库、数据持久化、安全等）
-* 分布式一致性与选举算法/共识机制
+* 分布式锁、分布式一致性与选举算法/共识机制
 * 点对点网络（Peer-to-peer Networks，如 VPC Peering、指数增长的高效的针对大规模目标对象的数据拷贝传输、区块链项目如 Bitcoin、等等）  
   
 ![](./System%20Design%20Blueprint.jpeg)
@@ -263,6 +264,7 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 
 ### 处理编程范式
 * 请求响应模式 - 延迟最小的一种范式，响应时间处于亚毫秒到毫秒之间，而且响应时间一般非常稳定。这种处理模式一般是阻塞的（同步），应用程序向处理系统发出请求，然后等待响应。在数据库领域，这种范式就是线上交易处理（OLTP）。通常的形式是 SOAP、REST API、RPC 等。
+  * 轮询、长轮询、全双工（例如 Websocket）
 * 回调模式 - 系统级：Webhook、API 调用等；线程/进程级：CompletableFuture、接口回调等。通常情况下，回调是在一个不同于主线程/主服务的另一个线程/服务中执行的。回调常用于异步处理中，当某个特定事件发生时，会触发回调函数的执行。
 * 批处理 - 该范式有高延迟和高吞吐量的特点。处理系统按照设定的时间启动处理进程。
 * 流式处理 [Ref 1](https://github.com/yihaoye/big-data-training/blob/main/kafka/README.md#%E6%B5%81%E5%BC%8F%E5%A4%84%E7%90%86)、[Ref 2](https://keys961.github.io/2018/07/05/%E6%B5%81%E5%BC%8F%E5%A4%84%E7%90%86%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/) - 这种范式介于上述两者之间。大部分的业务不要求亚毫秒级的响应，不过也接受不了要等到第二天才知道结果。大部分业务流程都是持续进行的，只要业务报告保持更新，业务产品线能够持续响应，那么业务流程就可以进行下去，而无需等待特定的响应，也不要求在几毫秒内得到响应。一些业务流程具有持续性和非阻塞的特点。
@@ -2954,10 +2956,17 @@ Protobuf 没有列表或数组数据类型，而是有一个字段的重复标�
 
 ### 事务
 从概念上讲，事务中的所有读写操作被视作单个操作来执行：整个事务要么成功提交（commit），要么失败中止（abort）或回滚（rollback）。事务所提供的安全保证，通常由众所周知的首字母缩略词 ACID 来描述。  
+
 To Be Continue ...  
 #### 单对象和多对象操作
+对单节点上的单个对象（例如键值对）上提供原子性和隔离性。原子性可以通过使用日志来实现崩溃恢复（WAL），并且可以使用每个对象上的锁来实现隔离（每次只允许一个线程访问对象）。  
+假设想同时修改多个对象（行，文档，记录）。通常需要多对象事务（multi-object transaction）来保持多块数据同步。  
+
 #### 弱隔离级别
 #### 可串行化
+可串行化（Serializability）隔离通常被认为是最强的隔离级别。它保证即使事务可以并行执行，最终的结果也是一样的，就好像它们没有任何并发性，连续挨个执行一样。因此数据库保证，如果事务在单独运行时正常运行，则它们在并发运行时继续保持正确 —— 换句话说，数据库可以防止所有可能的竞争条件。  
+传统的数据库教科书将隔离性形式化为可串行化（Serializability），这意味着每个事务可以假装它是唯一在整个数据库上运行的事务。数据库确保当多个事务被提交时，结果与它们串行运行（一个接一个）是一样的，尽管实际上它们可能是并发运行的。  
+然而实践中很少会使用可串行的隔离，因为它有性能损失。一些流行的数据库如 Oracle，甚至没有实现它。在 Oracle 中有一个名为 “可串行的” 隔离级别，但实际上它实现了一种叫做快照隔离（snapshot isolation） 的功能，这是一种比可串行化更弱的保证。  
 To Be Continue ...  
 
 # 一些面试小技巧
