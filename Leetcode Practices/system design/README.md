@@ -77,7 +77,8 @@
 
 ![](./most-used-distributed-system-pattern.jpeg)  
 
-* [代表/大使模式](https://docs.microsoft.com/zh-cn/azure/architecture/patterns/ambassador) - 创建代表客户服务或应用程序发送网络请求的帮助程序服务。
+* [代表/大使模式](https://docs.microsoft.com/zh-cn/azure/architecture/patterns/ambassador) - 代表模式是一种将外部系统或组件与微服务之间的交互抽象成一个代表（Representative）的模式。这个代表可以是一个单独的微服务，负责与外部系统通信、处理复杂的逻辑或封装对外部系统的访问。代表模式可以帮助减少微服务之间的直接依赖，从而提高系统的可维护性和扩展性。
+* [边车/挎斗模式](https://learn.microsoft.com/zh-cn/azure/architecture/patterns/sidecar) - 边车模式是一种将某些辅助功能或非核心功能从主微服务中分离出来，放置到一个独立的边车（Sidecar）中运行的模式。这个边车与主微服务一起部署，但是可以独立地进行扩展、升级或替换，而且语言无关，边车服务可以用任何语言编写。边车模式常用于处理与主微服务业务不直接相关的功能，例如通用的基建功能：日志收集、监控追踪、安全、服务发现、网络连接、负载均衡、认证授权、流量控制等。边车模式的一个例子是 [Service Mesh](https://zhuanlan.zhihu.com/p/61901608)。
 * [防损层/反腐层模式](https://docs.microsoft.com/zh-cn/azure/architecture/patterns/anti-corruption-layer) - 在现代应用程序与旧系统之间实施外观或适配器层。
   * 在不共享相同语义的不同子系统之间实施外观或适配器层。此层转换一个子系统向另一个子系统发出的请求。
   * 大多数应用程序依赖于其他系统的某些数据或功能。例如，旧版应用程序迁移到新式系统时，可能仍需要现有的旧的资源。新功能必须能够调用旧系统。逐步迁移尤其如此，随着时间推移，较大型应用程序的不同功能迁移到新式系统中。
