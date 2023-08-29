@@ -48,7 +48,7 @@
 - [x] 56	Merge Intervals		
 - [x] 252	Meeting Rooms		
 - [x] 253	Meeting Rooms II		
-- [ ] 352	Data Stream as Disjoint Intervals		                    TreeMap
+- [x] 352	Data Stream as Disjoint Intervals		                    TreeMap
 ### Counter			
 - [x] 239	Sliding Window Maximum		
 - [x] 295	Find Median from Data Stream		
@@ -740,7 +740,7 @@
 - [ ] 348	Design Tic-Tac-Toe		
 - [x] 350	Intersection of Two Arrays II		
 - [ ] 351	Android Unlock Patterns		
-- [ ] 352	Data Stream as Disjoint Intervals		
+- [x] 352	Data Stream as Disjoint Intervals		
 - [x] 353	Design Snake Game		
 - [x] 354	Russian Doll Envelopes		
 - [x] 355	Design Twitter		
