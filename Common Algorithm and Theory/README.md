@@ -35,7 +35,7 @@
     - 启发式搜索 | Heuristic Search (启发式搜索通常不讨论时空复杂度)
       - [A&ast; 搜索算法 | A&ast; Search Algorithm](./A*搜索算法.md)
       - 随机搜索 | Random Search
-        - [模拟退火 | Simulated Annealing](https://zhuanlan.zhihu.com/p/266874840)
+        - [模拟退火 | Simulated Annealing](./模拟退火.md)
         - 遗传算法 | Genetic Algorithm
     - [图匹配 | Graph Match](./图匹配.md)
       - [匈牙利算法 | Hungarian Algorithm](./匈牙利算法.md) (时间复杂度 O(N^3))
