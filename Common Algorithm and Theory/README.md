@@ -2,10 +2,14 @@
   
 - 概念
   - [时空复杂度](./时空复杂度.md)
+    - 渐进分析 | Asymptotic Analysis
+    - 平摊分析 | Amortized Analysis
+    - 随机算法分析（涉及到概率和期望值的计算）
   - [多项式时间 | Polynomial Time](./多项式时间.md)
   - [搜索](./搜索.md)
 - 算法分析工具
   - [递归树 | Recursion Tree](./递归树.md)
+  - 循环不变量 | Loop Invariants
 - 算法
   - 基础
     - [常用排序算法 | Sorting Algorithms](./Common%20Sorts/README.md)
@@ -28,7 +32,11 @@
     - [快速选择 (霍尔选择算法) | Quickselect (Randomized Selection)](./快速选择.md)
     - [位运算 | Bitwise Operation](./位运算.md)
   - 进阶
-    - [A&ast; 搜索算法 | A&ast; Search Algorithm](./A*搜索算法.md)
+    - 启发式搜索 | Heuristic Search (启发式搜索通常不讨论时空复杂度)
+      - [A&ast; 搜索算法 | A&ast; Search Algorithm](./A*搜索算法.md)
+      - 随机搜索 | Random Search
+        - [模拟退火 | Simulated Annealing](https://zhuanlan.zhihu.com/p/266874840)
+        - 遗传算法 | Genetic Algorithm
     - [图匹配 | Graph Match](./图匹配.md)
       - [匈牙利算法 | Hungarian Algorithm](./匈牙利算法.md) (时间复杂度 O(N^3))
     - [迪杰斯特拉算法 | Dijkstra Algorithm](./Dijkstra算法.md)
@@ -77,16 +85,17 @@
         - DHT 的 Kademlia 协议
         - [DHT 的 Chord 算法](https://en.wikipedia.org/wiki/Chord_(peer-to-peer))
         - Gossip 协议/流行病协议
-  - 数学
+      - 决策树算法 | Decision Tree Algorithm
+  - [数学](../Computer%20Science%20Maths/README.md)
     - [鸽巢原理 | Pigeonhole Principle](./鸽巢原理.md)
     - [取模运算 | Modulo](./取模运算.md)
     - [快速幂法 | Binary Exponentiation](../Tool%20Sets/Math.java)
     - [高斯消元法 | Gaussian Elimination](./高斯消元法.md)
+    - 计算几何
+      - [扫描线 | Line Sweep](./扫描线.md)
+      - [凸包 | Convex Hull](./凸包.md)
+      - [三分搜索 | Ternary Search](https://www.cnblogs.com/PJQOOO/p/4161891.html)
     - [其他数学工具、操作与套路](../Tool%20Sets/Math.java)
-  - 计算几何
-    - [扫描线 | Line Sweep](./扫描线.md)
-    - [凸包 | Convex Hull](./凸包.md)
-    - [三分搜索 | Ternary Search](https://www.cnblogs.com/PJQOOO/p/4161891.html)
   - 其他常见优化思想、技巧
     - [懒更新 | Lazy Update](./懒更新.md)
     - [状态压缩 | State Compression](../Tool%20Sets/StateCompression.java)
