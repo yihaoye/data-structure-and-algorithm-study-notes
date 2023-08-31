@@ -95,13 +95,12 @@
   * [设计最极栈 | Leetcode Q155](./Leetcode%20Practices/algorithms/easy/155%20Min%20Stack.java)
   * [设计最小/大堆](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/BinaryHeap/MinHeap.java)
 * 高级设计/数据结构
-  * [LRU 缓存 | Leetcode Q146](./Leetcode%20Practices/algorithms/medium/146%20LRU%20Cache.java)
+  * [LRU 缓存 | Leetcode Q146](./Leetcode%20Practices/algorithms/medium/146%20LRU%20Cache.java)、[LFU 缓存 | Leetcode Q460](./Leetcode%20Practices/algorithms/hard/460%20LFU%20Cache.java)
   * [前缀树(字典树) | Leetcode Q208](./Leetcode%20Practices/algorithms/medium/208%20Implement%20Trie%20(Prefix%20Tree).java)
   * [并查集与联合查找 | Leetcode Q200 Q684 UF 解法](./Leetcode%20Practices/algorithms/medium/200%20Number%20of%20Islands.java)
   * [线段树](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/SegmentTree/SegmentTree4.java)
   * [跳表](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/SkipList/SkipList.java)
-  * [红黑树](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/RedBlackTree/RBTree.java)
-  * [树状数组 | Leetcode Q307](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/BinaryIndexedTree(FenwickTree)/README.md#树状数组实现)
+  * [红黑树](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/RedBlackTree/RBTree.java)、[树状数组](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/BinaryIndexedTree(FenwickTree)/README.md#树状数组实现)
   * 其他：[1](./Leetcode%20Practices/object%20oriented%20design/other%20practices/README.md)、[2](./Common%20Data%20Structure%20and%20Data%20Type/README.md)、[3](./Other%20Practices/)、[4](./Tool%20Sets/README.md)
 * 中级算法
   * [二分搜索 | Leetcode Q34 Q2517 etc](./Common%20Algorithm%20and%20Theory/二分搜索.md)
