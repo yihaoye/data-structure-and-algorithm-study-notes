@@ -126,7 +126,7 @@
   * [表达式求值/模拟计算器 | Leetcode Q772 Q227 etc](./Leetcode%20Practices/algorithms/hard/772%20Basic%20Calculator%20III.java)
   * [背包问题 | Leetcode Q2585 etc](./Leetcode%20Practices/algorithms/hard/2585%20Number%20of%20Ways%20to%20Earn%20Points.java)
   * [凸包 | Leetcode Q587](./Leetcode%20Practices/algorithms/hard/587%20Erect%20the%20Fence.java)
-  * [模拟退火 | Leetcode Q1879](./Leetcode%20Practices/algorithms/hard/1879%20Minimum%20XOR%20Sum%20of%20Two%20Arrays.java)
+  * [模拟退火 | Leetcode Q1879](./Leetcode%20Practices/algorithms/hard/1879%20Minimum%20XOR%20Sum%20of%20Two%20Arrays.java)、[遗传算法](./Common%20Algorithm%20and%20Theory/遗传算法.md)
 * 并发
   * [多线程的方案集 A | Leetcode Q1115](./Leetcode%20Practices/algorithms/medium/1115%20Print%20FooBar%20Alternately.java)
   * [多线程的方案集 B | Leetcode Q1116](./Leetcode%20Practices/algorithms/medium/1116%20Print%20Zero%20Even%20Odd.java)

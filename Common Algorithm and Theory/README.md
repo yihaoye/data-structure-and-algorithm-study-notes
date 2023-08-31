@@ -36,7 +36,7 @@
       - [A&ast; 搜索算法 | A&ast; Search Algorithm](./A*搜索算法.md)
       - 随机搜索 | Random Search
         - [模拟退火 | Simulated Annealing](./模拟退火.md)
-        - [遗传算法 | Genetic Algorithm](https://zhuanlan.zhihu.com/p/100337680)
+        - [遗传算法 | Genetic Algorithm](./遗传算法.md)
     - [图匹配 | Graph Match](./图匹配.md)
       - [匈牙利算法 | Hungarian Algorithm](./匈牙利算法.md) (时间复杂度 O(N^3))
     - [迪杰斯特拉算法 | Dijkstra Algorithm](./Dijkstra算法.md)
@@ -47,6 +47,8 @@
       - [弗洛伊德算法 | Floyd-Warshall Algorithm](./弗洛伊德算法.md) (时间复杂度 O(N^3))
       - [Kadane 算法 | Kadane's Algorithm](./Kadane算法.md) (时间复杂度 O(N))
       - [词法分析 | Lexical Analysis](https://zh.wikipedia.org/wiki/%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90)
+      - 隐马尔可夫模型 | Hidden Markov Model, HMM
+      - 维特比算法
     - [KMP 算法 | Knuth–Morris–Pratt Algorithm](./KMP算法.md) (时间复杂度 O(N+M))
     - [AC 自动机 | Aho–Corasick Algorithm](./AC自动机.md)
     - 马拉车算法 | Manacher Algorithm
