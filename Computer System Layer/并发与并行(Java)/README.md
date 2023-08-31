@@ -319,7 +319,7 @@ AQS 的设计使得开发者可以更方便地实现复杂的同步器和锁，�
 
 参考：  
 * ChatGPT
-* https://www.cnblogs.com/zhangxinhua/p/13274886.html
+* [AbstractQueuedSynchronizer (AQS) 抽丝剥茧深入了解 JUC 框架原理](https://www.cnblogs.com/zhangxinhua/p/13274886.html)
   
 ## 并行流
 [On Java 8 示例](./OnJava8/)  

@@ -36,7 +36,7 @@
       - [A&ast; 搜索算法 | A&ast; Search Algorithm](./A*搜索算法.md)
       - 随机搜索 | Random Search
         - [模拟退火 | Simulated Annealing](./模拟退火.md)
-        - 遗传算法 | Genetic Algorithm
+        - [遗传算法 | Genetic Algorithm](https://zhuanlan.zhihu.com/p/100337680)
     - [图匹配 | Graph Match](./图匹配.md)
       - [匈牙利算法 | Hungarian Algorithm](./匈牙利算法.md) (时间复杂度 O(N^3))
     - [迪杰斯特拉算法 | Dijkstra Algorithm](./Dijkstra算法.md)
@@ -53,39 +53,39 @@
     - [并查集/联合查找算法 | Union Find Algorithm](./并查集与联合查找算法.md) (时间复杂度 O(a(N)) - a(N) 为反阿克曼函数，对于大部分 N，a(N) 均小于 5，所以并查集的时间复杂度也可视为 O(1))
     - [最小生成树相关算法 | Minimum Spanning Tree Algorithms](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/MinimumSpanningTree/README.md)
     - 网络流相关算法
-    - 系统级
-      - [字典树算法 | Trie Algorithm](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/Trie/README.md)
-      - [映射-归约 | MapReduce](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md)
-      - [分桶法 | Range Bucketing](./分桶法.md) (若为平方分割，则时间复杂度 O(√n))
-      - [蓄水池抽样算法 | Reservoir Sampling](./蓄水池抽样算法.md)
-      - [霍夫曼压缩算法 | Huffman Coding/Compression](./霍夫曼压缩算法.md)
-      - [布隆过滤器及其算法 | Bloom Filter](./布隆过滤器及其算法.md)
-      - [最小哈希 | MinHash](https://en.wikipedia.org/wiki/MinHash)
-      - [HyperLogLog 算法](./HyperLogLog.md)
-      - [Count-Min Sketch 算法](./Count-Min-Sketch.md)
-      - [雪花算法 | Snowflake ID](./雪花算法.md)
-      - 一致性哈希 | Consistent Hashing ([wiki](./../Leetcode%20Practices/system%20design/一致性哈希.md)、[code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/consistent%20hash/README.md))
-      - 反向索引 | Inverted Index ([wiki](../Leetcode%20Practices/system%20design/README.md)、[code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/inverted%20index/InvertedIndex.java))
-      - Frugal Streaming 算法
-      - [Geohash 算法, S2 Geometry 算法](../Leetcode%20Practices/system%20design/README.md)
-      - [漏桶算法, 令牌桶算法 | Leaky Bucket, Token Bucket](../Leetcode%20Practices/system%20design/README.md)
-      - Loosy Counting 算法
-      - [OT 算法 | Operational Transformation](../Leetcode%20Practices/system%20design/README.md)
-      - [四叉树算法, R 树算法 | QuadTree, RTree Algorithm](./QuadTree-RTree-算法.md)
-      - [默克尔树算法 | Merkle Tree Algorithm](https://en.wikipedia.org/wiki/Merkle_tree)
-      - 光线投射算法 | Ray Casting
-      - [Rsync 算法](https://zh.wikipedia.org/zh-cn/Rsync#%E6%BC%94%E7%AE%97%E6%B3%95)
-      - [共识机制/算法 (分布式选举问题) | Consensus Algorithm](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md)
-        - 崩溃容错协议 | CFT
-          - Paxos、Raft、ZAB、[Quorum](./Quorum算法.md)
-        - 拜占庭容错 | BFT (Ref: [1](https://www.bilibili.com/read/cv14498545)、[2](https://cloud.tencent.com/developer/news/580379)、[3](https://learnku.com/articles/56919))
-          - PBFT、Hotstuff
-      - [P2P 核心算法](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md)
-        - BitTorrent 协议
-        - DHT 的 Kademlia 协议
-        - [DHT 的 Chord 算法](https://en.wikipedia.org/wiki/Chord_(peer-to-peer))
-        - Gossip 协议/流行病协议
-      - 决策树算法 | Decision Tree Algorithm
+  - 系统级
+    - [字典树算法 | Trie Algorithm](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/Trie/README.md)
+    - [映射-归约 | MapReduce](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md)
+    - [分桶法 | Range Bucketing](./分桶法.md) (若为平方分割，则时间复杂度 O(√n))
+    - [蓄水池抽样算法 | Reservoir Sampling](./蓄水池抽样算法.md)
+    - [霍夫曼压缩算法 | Huffman Coding/Compression](./霍夫曼压缩算法.md)
+    - [布隆过滤器及其算法 | Bloom Filter](./布隆过滤器及其算法.md)
+    - [最小哈希 | MinHash](https://en.wikipedia.org/wiki/MinHash)
+    - [HyperLogLog 算法](./HyperLogLog.md)
+    - [Count-Min Sketch 算法](./Count-Min-Sketch.md)
+    - [雪花算法 | Snowflake ID](./雪花算法.md)
+    - 一致性哈希 | Consistent Hashing ([wiki](./../Leetcode%20Practices/system%20design/一致性哈希.md)、[code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/consistent%20hash/README.md))
+    - 反向索引 | Inverted Index ([wiki](../Leetcode%20Practices/system%20design/README.md)、[code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/inverted%20index/InvertedIndex.java))
+    - Frugal Streaming 算法
+    - [Geohash 算法, S2 Geometry 算法](../Leetcode%20Practices/system%20design/README.md)
+    - [漏桶算法, 令牌桶算法 | Leaky Bucket, Token Bucket](../Leetcode%20Practices/system%20design/README.md)
+    - Loosy Counting 算法
+    - [OT 算法 | Operational Transformation](../Leetcode%20Practices/system%20design/README.md)
+    - [四叉树算法, R 树算法 | QuadTree, RTree Algorithm](./QuadTree-RTree-算法.md)
+    - [默克尔树算法 | Merkle Tree Algorithm](https://en.wikipedia.org/wiki/Merkle_tree)
+    - 光线投射算法 | Ray Casting
+    - [Rsync 算法](https://zh.wikipedia.org/zh-cn/Rsync#%E6%BC%94%E7%AE%97%E6%B3%95)
+    - [共识机制/算法 (分布式选举问题) | Consensus Algorithm](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md)
+      - 崩溃容错协议 | CFT
+        - Paxos、Raft、ZAB、[Quorum](./Quorum算法.md)
+      - 拜占庭容错 | BFT (Ref: [1](https://www.bilibili.com/read/cv14498545)、[2](https://cloud.tencent.com/developer/news/580379)、[3](https://learnku.com/articles/56919))
+        - PBFT、Hotstuff
+    - [P2P 核心算法](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md)
+      - BitTorrent 协议
+      - DHT 的 Kademlia 协议
+      - [DHT 的 Chord 算法](https://en.wikipedia.org/wiki/Chord_(peer-to-peer))
+      - Gossip 协议/流行病协议
+    - 决策树算法 | Decision Tree Algorithm
   - [数学](../Computer%20Science%20Maths/README.md)
     - [鸽巢原理 | Pigeonhole Principle](./鸽巢原理.md)
     - [取模运算 | Modulo](./取模运算.md)
