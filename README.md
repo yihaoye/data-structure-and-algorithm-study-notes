@@ -16,7 +16,7 @@
 * [计算机数学 | Computer Science Maths](./Computer%20Science%20Maths/README.md) (包括理论信息学如 [P/NP 问题](./Computer%20Science%20Maths/P%20vs%20NP%20vs%20NPC.md)，基础数学如[数学归纳法](./Computer%20Science%20Maths/Mathematical%20Induction.md)、[排列组合](./Computer%20Science%20Maths/Combinatorics.md)，以及算法常用数学工具、ACM 数论等等)
 * [计算机系统基础 | Computer System Layer & Basics](./Computer%20System%20Layer/README.md) 包括：
   * [CAS、并发相关的 Java 数据结构的用例与详解](./Computer%20System%20Layer/并发与并行(Java)/README.md)
-  * [并行编程模型](./Computer%20System%20Layer/并发编程模型.md)
+  * [并发编程模型](./Computer%20System%20Layer/并发编程模型.md)
   * [数据库详解](./Computer%20System%20Layer/数据库/README.md)
   * [数据建模](./Leetcode%20Practices/system%20design/数据库数据建模分库分表.md#数据模型设计)
 * [领域知识、面试八股文 | Domain Knowledge](./面试八股文/README.md)

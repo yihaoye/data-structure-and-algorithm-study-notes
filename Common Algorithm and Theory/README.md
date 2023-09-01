@@ -48,7 +48,8 @@
       - [Kadane 算法 | Kadane's Algorithm](./Kadane算法.md) (时间复杂度 `O(N)`)
       - [词法分析 | Lexical Analysis](https://zh.wikipedia.org/wiki/%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90)
       - 隐马尔可夫模型 | Hidden Markov Model, HMM
-      - 维特比算法
+        - 前向与后向算法
+        - 维特比算法
     - [KMP 算法 | Knuth–Morris–Pratt Algorithm](./KMP算法.md) (时间复杂度 `O(N+M)`)
     - [AC 自动机 | Aho–Corasick Algorithm](./AC自动机.md)
     - 马拉车算法 | Manacher Algorithm
@@ -87,7 +88,10 @@
       - DHT 的 Kademlia 协议
       - [DHT 的 Chord 算法](https://en.wikipedia.org/wiki/Chord_(peer-to-peer))
       - Gossip 协议/流行病协议
-    - 决策树算法 | Decision Tree Algorithm
+    - 机器学习
+      - 决策树算法 | Decision Tree Algorithm
+      - 深度学习 / 神经网络
+        - 大语言模型（LLM）
   - [数学](../Computer%20Science%20Maths/README.md)
     - [鸽巢原理 | Pigeonhole Principle](./鸽巢原理.md)
     - [取模运算 | Modulo](./取模运算.md)
@@ -103,4 +107,4 @@
     - [状态压缩 | State Compression](../Tool%20Sets/StateCompression.java)
     - [坐标离散化 | Coordinate Compression](./坐标离散化.md)
     - [集合的整数表示 | Bit Set](./集合的整数表示.md)
-    - [比较优化，减少比较次数（算法导论 9.1）](./../Leetcode%20Practices/algorithms/easy/1491%20Average%20Salary%20Excluding%20the%20Minimum%20and%20Maximum%20Salary.java)  
+    - [比较优化，减少比较次数（算法导论 9.1）](./../Leetcode%20Practices/algorithms/easy/1491%20Average%20Salary%20Excluding%20the%20Minimum%20and%20Maximum%20Salary.java)
