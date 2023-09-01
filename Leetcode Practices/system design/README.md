@@ -255,6 +255,7 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 ### [Caching](./Caching.md)
 
 ### [Message Queue and Stream](./消息队列与流处理.md)
+注意，一般的消息队列（Kafka、Redis、ActiveMQ etc）不支持索引查询，但是时间序列数据库（Time Series Database，如 InfluxDB etc）除了能当简单的消息队列还可以索引查询。  
 
 ### Cache vs Message Queue / Stream
 相比之下 Cache 更像 Java 的 HashMap，Message Queue / Stream 更像 Java 的 Queue/Deque/Stream：
@@ -1827,8 +1828,11 @@ https://www.zhihu.com/question/19839828/answer/28434795
 #### 进阶阅读
 * [CME Group Trading Services](https://www.cmegroup.com/confluence/display/EPICSANDBOX/Trading+Services)  
 
-#### 其他方案：基于 Redis
-* [Building a Real-Time Trading Platform with Redis](https://redis.com/blog/real-time-trading-platform-with-redis-enterprise/)
+#### [相关系统及其方案：基于 Redis 的实时交易所/平台](https://redis.com/blog/real-time-trading-platform-with-redis-enterprise/)
+实际原理为结合 Redis 内置的时间序列数据库（RedisTimeSeries - 用以跟踪最新价格数据）以及 Redis 的频道（Channel）作为流/发布订阅的基础设施来推送读取最新的数据、信息。  
+> Redis 的频道是 Redis 的一个特殊功能，独立于键值（Key-Value）存储功能。Redis 的主要功能是作为键值存储数据库，但它还提供了一些附加的功能，如发布/订阅（Pub/Sub），用于消息传递和事件通知。  
+> 频道是发布/订阅机制的一部分，广播通信机制，用于将消息从发布者传递到所有订阅者。频道本身并不存储消息，它只是一个消息传递的通道。消息是从发布者发送到频道，然后由订阅该频道的所有客户端接收。客户端通过 SUBSCRIBE 命令来订阅频道，然后通过 MESSAGE 事件或回调函数来接收到消息。这个机制是异步的，消息的传递不依赖于存储在特定键中。  
+> By ChatGPT
 
 </details>
 
