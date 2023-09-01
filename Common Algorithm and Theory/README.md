@@ -16,8 +16,8 @@
     - [枚举/穷举算法 | Enumerate](./枚举(穷举)算法.md)
     - [模拟算法 | Simulation](./模拟算法.md)
     - [递归, 迭代 | Recursion, Iteration](./递归与迭代.md)
-    - [分治法 | Divide-and-Conquer Algorithm](./分治法.md) (时间复杂度不固定，比如若是指数分解则为 O(loga N)，若是线性分解则为 O(N)，其他分解情况下亦有可能是其他大 O)
-    - [二分搜索 | Binary Search](./二分搜索.md) (时间复杂度 O(logN))
+    - [分治法 | Divide-and-Conquer Algorithm](./分治法.md) (时间复杂度不固定，比如若是指数分解则为 O(loga N)，若是线性分解则为 O(N)，其他分解情况下亦有可能是其他大 O) ([分治法 vs 二分算法](./分治法.md#分治法-vs-二分算法))
+    - [二分搜索/二分算法 | Binary Search](./二分搜索.md) (时间复杂度 O(logN))
   - 中阶
     - [双指针法, 滑动窗口算法 | Two Pointer, Sliding Window](./双指针法与滑动窗口算法.md)
     - [深度优先, 广度优先, 树图遍历 | Depth First Search, Breadth First Search](./树图遍历.md)
