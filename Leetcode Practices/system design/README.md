@@ -10,10 +10,10 @@
 ### **面试步骤**
 [真实面试过程模拟 (System Design Mock: with ex-Google EM)](https://www.youtube.com/watch?v=_K-eupuDVEc)
 * 场景确认（所有细节）、分析及列出需求（功能与非功能）-（OOD 也一样）
-* 初步架构图 -（对应于 OOD 的流程图）
+* 初步架构图（注意可以在一开始列出主要服务如 booking、order、cronjob、notification 等等并用不同的组件画框把它们区分开来）-（对应于 OOD 的流程图）
 * 数据建模、数据库选择（SQL 还是 NoSQL 及其原因）与设计（所有的 Table 然后细讲主要的 Table）-（对应于 OOD 里选择什么数据结构以及类设计进行存储）
 * API 设计或某段主要服务、功能的逻辑流，可用伪代码 -（对应 OOD 里的外部可调用 public 函数）
-* 扩展与可能的风险以及它们的解决方案
+* 扩展与可能的风险以及它们的解决方案（安全、可用性、可扩展性、高并发、性能等等）
 
 系统设计面试主要考察以下几个方面：  
 * 可行解 Work Solution、特定问题 Special Case、分析能力 Analysis、权衡 Tradeoff、知识储备 Knowledge Base  
@@ -1826,6 +1826,9 @@ https://www.zhihu.com/question/19839828/answer/28434795
   
 #### 进阶阅读
 * [CME Group Trading Services](https://www.cmegroup.com/confluence/display/EPICSANDBOX/Trading+Services)  
+
+#### 其他方案：基于 Redis
+* [Building a Real-Time Trading Platform with Redis](https://redis.com/blog/real-time-trading-platform-with-redis-enterprise/)
 
 </details>
 
