@@ -24,6 +24,29 @@ Output: -1
 // My Solution:
 class Solution {
     public int search(int[] nums, int target) {
+        // 二分搜索 + recursion (可以用迭代改写，但是比较麻烦)
+        return recursion(nums, 0, nums.length-1, target);
+    }
+
+    public int recursion(int[] nums, int l, int r, int target) {
+        if (l == r) return nums[l] == target ? l : -1;
+        int m = l + (r - l) / 2; // mid
+        if (inSub(nums, l, m, target)) return recursion(nums, l, m, target);
+        else return recursion(nums, m+1, r, target);
+    }
+
+    public boolean inSub(int[] nums, int l, int r, int target) {
+        if (nums[l] <= target && target <= nums[r]) return true;
+        if (nums[l] > nums[r] && (target <= nums[r] || nums[l] <= target)) return true;
+        return false;
+    }
+}
+
+
+
+// My Solution:
+class Solution {
+    public int search(int[] nums, int target) {
         int len = nums.length;
         if (len == 0) return -1;
         int index = findIndex(nums); // binary search: find index which index > index+1

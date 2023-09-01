@@ -255,7 +255,7 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 ### [Caching](./Caching.md)
 
 ### [Message Queue and Stream](./消息队列与流处理.md)
-注意，一般的消息队列（Kafka、Redis、ActiveMQ etc）不支持索引查询，但是时间序列数据库（Time Series Database，如 InfluxDB etc）除了能当简单的消息队列还可以索引查询。  
+注意，一般的消息队列（Kafka、Redis、ActiveMQ etc）不支持索引查询，但是时间序列数据库（Time Series Database，如 InfluxDB etc）除了能当简单的消息队列还可以索引查询（时间序列数据库通常会使用时间戳作为主要的索引字段，以便快速按时间范围查询数据。这使得在时间序列数据库中执行时间范围查询非常高效）。  
 
 ### Cache vs Message Queue / Stream
 相比之下 Cache 更像 Java 的 HashMap，Message Queue / Stream 更像 Java 的 Queue/Deque/Stream：
