@@ -24,6 +24,29 @@ Output: -1
 // My Solution:
 class Solution {
     public int search(int[] nums, int target) {
+        // 分治法（其实还是二分搜索） + 迭代，Time: O(logn), Space: O(1)
+        int l = 0, r = nums.length - 1;
+        while (l != r) {
+            int m = l + (r - l) / 2; // mid
+            if (inSub(nums, l, m, target)) r = m;
+            else l = m + 1;
+        }
+        return nums[l] == target ? l : -1;
+    }
+
+    public boolean inSub(int[] nums, int l, int r, int target) {
+        if (nums[l] <= target && target <= nums[r]) return true;
+        // 下面处理 edge case 如 [5,1,3] 1 或 [6,7,1,2,3,4,5] 6 等等
+        if (nums[l] > nums[r] && (target <= nums[r] || nums[l] <= target)) return true;
+        return false;
+    }
+}
+
+
+
+// My Solution:
+class Solution {
+    public int search(int[] nums, int target) {
         // 二分搜索 + recursion (可以用迭代改写，但是比较麻烦)
         return recursion(nums, 0, nums.length-1, target);
     }
