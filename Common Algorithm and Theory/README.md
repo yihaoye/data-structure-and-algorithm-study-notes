@@ -32,11 +32,14 @@
     - [快速选择 (霍尔选择算法) | Quickselect (Randomized Selection)](./快速选择.md)
     - [位运算 | Bitwise Operation](./位运算.md)
   - 进阶
-    - 启发式搜索 | Heuristic Search (启发式搜索通常不讨论时空复杂度)
+    - 启发式算法/搜索 | Heuristic Algorithm / Search (启发式搜索通常不讨论时空复杂度)
       - [A&ast; 搜索算法 | A&ast; Search Algorithm](./A*搜索算法.md)
-      - 随机搜索 | Random Search
+      - 随机化算法/搜索 | Random Algorithm / Search
         - [模拟退火 | Simulated Annealing](./模拟退火.md)
         - [遗传算法 | Genetic Algorithm](./遗传算法.md)
+        - 粒子群优化算法 | Particle Swarm Optimization
+        - 蒙特卡洛算法
+        - 拉斯维加斯算法
     - [图匹配 | Graph Match](./图匹配.md)
       - [匈牙利算法 | Hungarian Algorithm](./匈牙利算法.md) (时间复杂度 `O(N^3)`)
     - [迪杰斯特拉算法 | Dijkstra Algorithm](./Dijkstra算法.md)

@@ -8,7 +8,9 @@
 * Redis 还支持数据的备份，即 Master-Slave 主从模式的数据备份。  
 
 另外要注意 redis 的数据是 flat 的，比如不能 set 里又嵌套一个 set。  
-如果需要存储复杂的嵌套结构，通常需要将嵌套的数据展开为单层结构，然后使用合适的数据类型来存储。  
+如果需要存储复杂的嵌套结构，通常需要将嵌套的数据展开为单层结构，然后使用合适的数据类型来存储。以下是其中[两种可行的数据模型](https://redis.com/blog/real-time-trading-platform-with-redis-enterprise/)：  
+* Using the HASH to model the entity structure, with each attribute of the entity being a field in the Redis HASH.
+* Flatten the entity structure and to represent each entity attribute using a key identified by entity id — one such key for each attribute. The fields in each HASH will be the ID and a corresponding value.
 
 ## Redis 和 MySQL 的区别
 * 类型上的不同。MySQL 是关系型数据库，采用表格的存储方式，数据以行列组织，并遵守了传统的数据库的 ACID 原则。Redis 是 NoSQL（非关系型数据库），不严格遵守 ACID 原则，其采用 key-value 存储组织数据，大量使用缓存来读写数据，周期性地把更新数据写入磁盘或在追加文件中写入修改操作，以及同步分布数据库等。这些特点为大大提高了 Redis 在极大并发量下的读写性能。由于不以表格方式组织数据，Redis 的数据扩展十分灵活方便。
