@@ -1915,10 +1915,12 @@ URL Frontier 主要是存储一堆待访问的 URL。它有 2 个接口：
 
 ![](./Web%20Crawler%20URL%20Frontier.png)  
 
+* input urls 就是种子 URL（启动用的，并且可通过 BFS 来放入子 URL）和爬取过程中解析派生出来的新 URL。
 * Front Queue 与 Prioritizer 实现选择策略，为 URL 优先级进行了排序（Prioritizer 根据 URL 重要性或上次被访问距今间隔时间等等来评定，然后根据评定的优先级插到对应的队列里面）。假设数字越低优先级越高，优先级为 1 的 URL 就放进 Front Queue 1 队列，以此类推。
 * Back Queue
   * Back Queues、Politeness Router 以及 Mapping Table `<url, back_queue_id>` 把同一个网站/子网页/URL 都插入到同一个 Back Queue 中，比如 Amazon 的 URLs 只放进 B1、Facebook 的 URLs 只放进 B2 等等。
   * 接着实现礼貌性策略，控制对一个网站访问的频率（politeness selector 协同一个时间戳排序的 heap 以控制每个 Back Queue 何时可以再次读取 - heap 里存储的是每个 Back Queue 下一次可以被访问/读取/poll 的时间）。
+* 分为 Front、Back 两个队列的原因是，要避免多个机器、Worker 同时爬取同一个根域名的网站（礼貌性策略），而 Front 队列只提供了优先级区分的功能，没有限制一个网站只被一个机器、Worker 爬取处理的逻辑，所以需要额外的 Back 队列来负责限制逻辑这部分。
 
 ![](./Web%20Crawler%20Mapping%20Table.png)  
   
@@ -2007,7 +2009,7 @@ OOD 还可以参考 [Hotel Management System](./../object%20oriented%20design/gr
 
 
 <details>
-<summary>设计分布式 Job Scheduler</summary>
+<summary>设计分布式 Job Scheduler / ETL / ELT / Migrator 系统</summary>
 
 作业调度系统  
 转载自：https://leetcode.com/discuss/general-discussion/1082786/System-Design%3A-Designing-a-distributed-Job-Scheduler-or-Many-interesting-concepts-to-learn  
@@ -2083,13 +2085,7 @@ OOD 还可以参考 [Hotel Management System](./../object%20oriented%20design/gr
 * String createTrigger(String TriggerType, JSON Config) - 创建 Trigger 并返回其 ID
 * Boolean updateTrigger(String TriggerID, String TriggerType, JSON Config) - 更新已有的 Trigger
 
-</details>
-
-
-
-<details>
-<summary>设计 ETL/ELT 系统</summary>
-
+#### 其他
 ETL 系统其实与 cronjob / batch process 系统有一些类似。  
 
 如何觉察用户的数据库数据 schema 发生了变化？假设没有用户端的 API 调用的情况下：  
@@ -2100,7 +2096,7 @@ ETL 系统其实与 cronjob / batch process 系统有一些类似。
 
 
 <details>
-<summary>设计点赞系统（Facebook/TikTok/Twitter/Youtube Like）</summary>
+<summary>设计点赞系统（Facebook / TikTok / Twitter / Youtube Like）</summary>
 
 [Twitter Likes Count Design | Youtube Views Count Design | Near Realtime Counter System Design](https://www.youtube.com/watch?v=0V-Ns9vovzE)  
 简而言之，就是使用关系数据库并创建 3 个 Table：
