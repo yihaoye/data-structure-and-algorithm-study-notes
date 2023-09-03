@@ -31,24 +31,21 @@ s is a balanced parentheses string.
 
 
 
-
-
 // Other's Solution:
 class Solution {
     public int scoreOfParentheses(String S) {
         /*
-             栈：https://leetcode-cn.com/problems/score-of-parentheses/solution/gua-hao-de-fen-shu-by-leetcode/
-             N 是字符串 S 的长度 - 时间复杂度 O(N)，空间复杂度 O(N) 栈空间
+             栈：https://leetcode.cn/problems/score-of-parentheses/solutions/1878233/by-ac_oier-0mhz/
         */
         Deque<Integer> stack = new LinkedList();
         stack.push(0);
         
         for (char c: S.toCharArray()) {
-            if (c == '(')
-                stack.push(0);
+            if (c == '(') stack.push(0);
             else {
-                int v = stack.pop(), w = stack.pop();
-                stack.push(w + Math.max(2 * v, 1));
+                int curr = stack.pop();
+                int prev = stack.pop();
+                stack.push(prev + Math.max(2 * curr, 1));
             }
         }
 
