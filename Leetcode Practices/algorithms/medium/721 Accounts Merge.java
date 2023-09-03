@@ -33,6 +33,58 @@ accounts[i][j] (for j > 0) is a valid email.
 
 
 
+// My Solution:
+class Solution {
+    public List<List<String>> accountsMerge(List<List<String>> accounts) {
+        // 并查集 + TreeMap
+        TreeMap<String, String> emailToName = new TreeMap<>(); // 使用 TreeMap，保证后续组成答案时同一集合内的 email 按序被遍历、添加（总是 p_email 先入 res）。name 可能重复所以只能为值
+        UF uf = new UF();
+        for (List<String> account : accounts) {
+            for (int i=1; i<account.size(); i++) {
+                emailToName.put(account.get(i), account.get(0)); // <email, name>
+
+                uf.parents.putIfAbsent(account.get(i), account.get(i)); // putIfAbsent，因为可能之前在其他 account 已添加、更新
+                uf.union(account.get(1), account.get(i)); // 无需每个 email 之间都构建连接，通过都连接同一个 email 即可（也是并查集原理）
+            }
+        }
+
+        Map<String, List<String>> helper = new HashMap<>(); // <p_email, <sub_res...>>
+        List<List<String>> res = new ArrayList<>();
+        for (String email : emailToName.keySet()) {
+            String p_email = uf.find(email);
+            if (!helper.containsKey(p_email)) {
+                List<String> list = new ArrayList<>(); list.add(emailToName.get(p_email)); // add name first
+                helper.put(p_email, list);
+                res.add(list); // reference update
+            }
+            helper.get(p_email).add(email); // reference update
+        }
+        return res;
+    }
+
+    public class UF {
+        public Map<String, String> parents;
+
+        public UF() {
+            parents = new HashMap<>();
+        }
+
+        public void union(String u, String v) {
+            String pu = find(u);
+            String pv = find(v);
+            if (pu.compareTo(pv) <= 0) parents.put(pu, pv); // 冒泡逻辑 - 使得最小的 email 总是成为 parent（题目要求，不然可以直接无脑 parents.put(pu, pv)）
+            else parents.put(pv, pu);
+        }
+
+        public String find(String s) {
+            if (!s.equals(parents.get(s))) parents.put(s, find(parents.get(s)));
+            return parents.get(s);
+        }
+    }
+}
+
+
+
 // Other's Solution:
 class Solution {
     public List<List<String>> accountsMerge(List<List<String>> accounts) {
