@@ -37,6 +37,42 @@ All the integers in s are in the range [1, 300].
 // My Solution:
 class Solution {
     public String decodeString(String s) {
+        // 双端栈，遍历到 ] 时取出栈中数据（直到 [）并取出 [ 前数字（直到字母或栈为空）进行计算，计算后的数据存回栈中，最后栈中剩下的将是纯字母，拼接并返回该字符串
+        // Time: (N*K), Space: (N*K)
+        ArrayDeque<Character> queue = new ArrayDeque<>();
+        for (char c : s.toCharArray()) {
+            if (c == ']') {
+                StringBuilder tempStrB = new StringBuilder();
+                int times = 0, tens = 1;
+                while (queue.peekLast() != '[') tempStrB.append(queue.pollLast());
+                tempStrB = tempStrB.reverse();
+                queue.pollLast(); // remove '['
+                while (!queue.isEmpty() && Character.isDigit(queue.peekLast())) {
+                    times = (queue.pollLast()-'0') * tens + times;
+                    tens *= 10;
+                }
+                if (times == 0) times = 1;
+                String tempStr = tempStrB.toString();
+                while (times-- > 0) {
+                    for (char tempC : tempStr.toCharArray()) queue.offer(tempC);
+                }
+            } else {
+                queue.offer(c);
+            }
+        }
+        
+        StringBuilder strB = new StringBuilder();
+        while (!queue.isEmpty()) strB.append(queue.poll());
+        
+        return strB.toString();
+    }
+}
+
+
+
+// My Solution:
+class Solution {
+    public String decodeString(String s) {
         /*
             遍历字符串，递归解题
             时间复杂度 O(N)，空间复杂度 O(N)
@@ -69,41 +105,5 @@ class Solution {
         }
         // if (subStrB.length() > 0) res.append(subStrB.toString());
         return res.toString();
-    }
-}
-
-
-
-// My Solution:
-class Solution {
-    public String decodeString(String s) {
-        // 双端栈，遍历到 ] 时取出栈中数据（直到 [）并取出 [ 前数字（直到字母或栈为空）进行计算，计算后的数据存回栈中，最后栈中剩下的将是纯字母，拼接并返回该字符串
-        // Time: (N*K), Space: (N*K)
-        ArrayDeque<Character> queue = new ArrayDeque<>();
-        for (char c : s.toCharArray()) {
-            if (c == ']') {
-                StringBuilder tempStrB = new StringBuilder();
-                int times = 0, tens = 1;
-                while (queue.peekLast() != '[') tempStrB.append(queue.pollLast());
-                tempStrB = tempStrB.reverse();
-                queue.pollLast(); // remove '['
-                while (!queue.isEmpty() && Character.isDigit(queue.peekLast())) {
-                    times = (queue.pollLast()-'0') * tens + times;
-                    tens *= 10;
-                }
-                if (times == 0) times = 1;
-                String tempStr = tempStrB.toString();
-                while (times-- > 0) {
-                    for (char tempC : tempStr.toCharArray()) queue.offer(tempC);
-                }
-            } else {
-                queue.offer(c);
-            }
-        }
-        
-        StringBuilder strB = new StringBuilder();
-        while (!queue.isEmpty()) strB.append(queue.poll());
-        
-        return strB.toString();
     }
 }
