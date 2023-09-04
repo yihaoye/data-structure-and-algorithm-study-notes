@@ -12,13 +12,13 @@
   - 循环不变量 | Loop Invariants
 - 算法
   - 基础
-    - [常用排序算法 | Sorting Algorithms](./Common%20Sorts/README.md)
-    - [枚举/穷举算法 | Enumerate](./枚举(穷举)算法.md)
-    - [模拟算法 | Simulation](./模拟算法.md)
+    - [排序（常用排序算法）| Sorting](./Common%20Sorts/README.md)
+    - [枚举/穷举 | Enumerate](./枚举(穷举)算法.md)
+    - [模拟 | Simulation](./模拟算法.md)
     - [递归, 迭代 | Recursion, Iteration](./递归与迭代.md)
-    - [分治法 | Divide-and-Conquer Algorithm](./分治法.md) (时间复杂度不固定，比如若是开方分解则为 `O(logN)`，若是线性分解则为 `O(N)` 或 `O(N*f(N))` 或 `O(N*logN)` 比如归并算法，其他分解情况下亦有可能是其他大 O) ([分治法 vs 二分算法](./分治法.md#分治法-vs-二分算法))
-    - [二分搜索/二分算法 | Binary Search](./二分搜索.md) (时间复杂度 `O(logN)`)
+    - [分治法 | Divide-and-Conquer](./分治法.md) (通常被认为一种方案思路或算法范型而非具体算法，时间复杂度不固定，比如若是开方分解则为 `O(logN)`，若是线性分解则为 `O(N)` 或 `O(N*f(N))` 或 `O(N*logN)` 比如归并算法，其他分解情况下亦有可能是其他大 O) ([分治法与二分算法的区别](./分治法.md#分治法-vs-二分算法))
   - 中阶
+    - [二分搜索/二分算法 | Binary Search](./二分搜索.md) (时间复杂度 `O(logN)`)
     - [双指针法, 滑动窗口算法 | Two Pointer, Sliding Window](./双指针法与滑动窗口算法.md)
     - [深度优先, 广度优先, 树图遍历 | Depth First Search, Breadth First Search](./树图遍历.md)
       - [回溯法 | Backtracking](./NQueen.java)
@@ -92,7 +92,7 @@
       - [DHT 的 Chord 算法](https://en.wikipedia.org/wiki/Chord_(peer-to-peer))
       - Gossip 协议/流行病协议
     - 机器学习
-      - 决策树算法 | Decision Tree Algorithm
+      - [决策树算法 | Decision Tree Algorithm](https://www.ibm.com/cn-zh/topics/decision-trees)
       - 深度学习 / 神经网络
         - 大语言模型（LLM）
   - [数学](../Computer%20Science%20Maths/README.md)
