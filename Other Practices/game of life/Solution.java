@@ -1,4 +1,4 @@
-// Leetcode 289 变体进阶版，
+// Leetcode 289 变体进阶版，细胞自动机模型
 // 比如已知 game of life 的初始化矩阵，求第 n 代的矩阵（或每一个下一版本的矩阵）
 // 1. Any live cell with two or three live neighbours survives.
 // 2. Any dead cell with three live neighbours becomes a live cell.
@@ -8,6 +8,7 @@
 // 时间复杂度相比暴力解法 O(mn) 有所提升，只与 live cells 有关，如果矩阵很大但是 live cells 很少，那么时间复杂度高效很多
 // 相比之下空间复杂度有所增加，也只与 live cells 有关
 // 而且如果在系统设计中此法也可以进一步利用多线程（或多服务器）提升性能，需要把 preLives 等成员变量换成线程安全的数据结构如 BlockingQueue (或消息队列 Kafka)、ConcurrentHashMap（或 Redis，但是要注意加锁避免同时多个 +1 时只实际执行一个）且即可
+// 以上可以认为是分治法题解思路
 
 class Solution {
     private int[][] board;
