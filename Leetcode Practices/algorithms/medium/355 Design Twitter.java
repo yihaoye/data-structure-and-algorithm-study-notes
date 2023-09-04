@@ -42,6 +42,7 @@ At most 3 * 104 calls will be made to postTweet, getNewsFeed, follow, and unfoll
 // Other's Solution:
 class Twitter {
     /*
+        多路归并 + 哈希表
         参考题解，创建一个推文类包含属性用户 ID 和时间戳以及下一个推文的指针，使用一个哈希表存储用户与推文（链表，使用链表是因为其多路归并代码写法更简洁）映射关系，使用一个哈希表存储用户与其关注的用户，使用一个堆（优先队列进行多路归并）。
     */
     private Map<Integer, Tweet> twitter;

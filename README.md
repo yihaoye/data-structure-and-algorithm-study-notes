@@ -97,7 +97,7 @@
 * 高级设计/数据结构
   * [LRU 缓存 | Leetcode Q146](./Leetcode%20Practices/algorithms/medium/146%20LRU%20Cache.java)、[LFU 缓存 | Leetcode Q460](./Leetcode%20Practices/algorithms/hard/460%20LFU%20Cache.java)
   * [前缀树(字典树) | Leetcode Q208](./Leetcode%20Practices/algorithms/medium/208%20Implement%20Trie%20(Prefix%20Tree).java)
-  * [并查集与联合查找 | Leetcode Q200 Q684 UF 解法](./Leetcode%20Practices/algorithms/medium/200%20Number%20of%20Islands.java)
+  * [并查集与联合查找 | Leetcode Q200 Q684-UF-解法](./Leetcode%20Practices/algorithms/medium/200%20Number%20of%20Islands.java)
   * [线段树](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/SegmentTree/SegmentTree4.java)
   * [跳表](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/SkipList/SkipList.java)
   * [红黑树](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/RedBlackTree/RBTree.java)、[树状数组](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/BinaryIndexedTree(FenwickTree)/README.md#树状数组实现)
@@ -115,10 +115,10 @@
   * [倍增法 | Leetcode Q702](./Common%20Algorithm%20and%20Theory/倍增法.md)
 * 高级算法
   * [拓扑排序 | Leetcode Q210](./Common%20Algorithm%20and%20Theory/拓扑排序.md)
-  * [多路归并 | Leetcode Q23](./Leetcode%20Practices/algorithms/hard/23%20Merge%20k%20Sorted%20Lists.java)
+  * [多路归并 | Leetcode Q23-合并排序链表 Q355-设计推特](./Leetcode%20Practices/algorithms/hard/23%20Merge%20k%20Sorted%20Lists.java)
   * [Kadane 算法 | Leetcode Q53](./Leetcode%20Practices/algorithms/easy/53%20Maximum%20Subarray.java)
   * [弗洛伊德算法 | Leetcode Q1462](./Leetcode%20Practices/algorithms/medium/1462%20Course%20Schedule%20IV.java)
-  * [Dijkstra 算法 | Leetcode Q743](./Leetcode%20Practices/algorithms/medium/743%20Network%20Delay%20Time.java)
+  * [Dijkstra 算法 | Leetcode Q743-网络延迟时间](./Leetcode%20Practices/algorithms/medium/743%20Network%20Delay%20Time.java)
   * [滚动哈希](./Common%20Algorithm%20and%20Theory/滚动哈希.md)
   * [LCA | Leetcode Q236](./Leetcode%20Practices/algorithms/medium/236%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree.java)
   * [扫描线 | Leetcode Q218](./Leetcode%20Practices/algorithms/hard/218%20The%20Skyline%20Problem.java)
