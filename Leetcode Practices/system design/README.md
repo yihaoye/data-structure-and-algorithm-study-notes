@@ -372,32 +372,31 @@ Cache (cache eviction policy - e.g. Least Recently Used (LRU) with LinkedHashMap
 <details>
 <summary>Design Pastebin</summary>
 
-* Step 1: Pastebin enable users to store plain text or images over the network (Internet) and generate unique URLs to access the uploaded data. Such services are also used to share data over the network quickly, as users would just need to pass the URL to let other users see it.
-* Step 2: Requirements and Goals of the System.
-* Step 3: Some Design Considerations. Pastebin shares some requirements with TinyURL, but there are some additional considerations.
-  * What should be the limit on the amount of text user can paste at a time.
-  * Should we impose size limits on custom URLs.
-* Step 4: Capacity Estimation and Constraints (Traffic estimates -> Storage estimates -> Bandwidth estimates -> Memory estimates).
-* Step 5: System APIs - SOAP or REST APIs
+* 步骤 1：Pastebin 允许用户在网络（互联网）上存储纯文本或图像，并生成唯一的 URL 以访问上传的数据。此类服务还用于快速在网络上共享数据，因为用户只需传递 URL 给其他用户即可查看数据。
+* 步骤 2：系统的需求和目标。
+* 步骤 3：一些设计考虑。Pastebin 与 TinyURL 有一些共同的需求，但还有一些额外的考虑。
+  * 用户一次可以粘贴的文本量应该有多大的限制。
+  * 是否应该对自定义 URL 设置大小限制。
+* 步骤 4：容量估算和约束（流量估算 -> 存储估算 -> 带宽估算 -> 内存估算）。
+* 步骤 5：系统 API - SOAP 或 REST API
   * addPaste(api_dev_key, paste_data, custom_url=None user_name=None, paste_name=None, expire_date=None)
   * getPaste(api_dev_key, api_paste_key)
   * deletePaste(api_dev_key, api_paste_key)
-* Step 6: Database Design
+* 步骤 6：数据库设计
   * Paste {URLHash: varchar(16), ContentKey: varchar(512), ExpirationDate: datatime, CreationDate: datetime}
   * User {UserID: int, Name: varchar(20), Email: varchar(32), CreationDate: datetime, LastLogin: datatime}
-* Step 7: High Level Design
-  * Client -> Application -> Object Storage (like Amazon S3: paste contents) and Metadata Storage (databse: metadata related to each paste, users, etc)
-  * Above division of data will also allow us to scale them individually
-* Step 8: Component Design
+* 步骤 7：高级设计
+  * 客户端 -> 应用程序 -> 对象存储（例如 Amazon S3：粘贴内容）和元数据存储（数据库：与每个粘贴、用户等相关的元数据）
+  * 上述数据的分割还将使我们能够单独扩展它们。
+* 步骤 8: Component Design
   * Application layer (根据粘贴内容创建一个随机 6 字符的 Key，将 Key 和粘贴内容一对一存在数据库，如果 Key 重复了就重创建直到没有重复；另一种办法是使用 KGS - Key Generation Service 并使用一个 Key 数据库作为 Key 池子 -- 一个已使用 Key 表一个未使用 Key 表，KGS 还可以用内存缓存未使用 Key -- 使用后则移除并存入已使用 Key 表，KGS 可能成为单点故障，所以需要为其准备一个 replica KGS，另外每个应用服务也可以缓存一些 Key 数据库的 Key)
     * ![](./Pastebin.png)
   * Datastore layer
     * Metadata database: 可以是 RDBMS 如 MySQL 或 Distributed Key-Value store 如 Dynamo 或 Cassandra
-* Step 9: Purging or DB Cleanup (参考 TinyURL)
-* Step 10: Data Partitioning and Replication (参考 TinyURL)
-* Step 11: Cache and Load Balancer (参考 TinyURL)
-* Step 12: Security and Permissions (参考 TinyURL)
-
+* 步骤 9: Purging or DB Cleanup (参考 TinyURL)
+* 步骤 10: Data Partitioning and Replication (参考 TinyURL)
+* 步骤 11: 缓存与负载均衡 (参考 TinyURL)
+* 步骤 12: 安全与权限 (参考 TinyURL)
 
 </details>
 
@@ -809,14 +808,12 @@ Driver 如何获得打车请求？—— Report location 的同时，服务器�
 </details>
 
 
-
 <details>
 <summary>设计 Google Map</summary>
 
 ![](./google_map_system_design.png)  
 
 </details>
-
 
 
 <details>
@@ -953,7 +950,6 @@ Netflix 在三个 AWS 区域运营：一个在北弗吉尼亚州，一个在俄�
 Netflix 视频分发  
 分发意味着视频文件通过网络从中央位置复制并存储在世界各地的计算机上。对于 Netflix，存储视频的中心位置是 S3。CDN 背后的想法很简单：通过在全球范围内传播计算机，让视频尽可能靠近用户。当用户想要观看视频时，找到最近的带有视频的计算机并从那里流式传输到设备。每个有计算机存储视频内容的位置称为 PoP 或入网点。每个 PoP 都是提供互联网访问的物理位置。它包含服务器、路由器和其他电信设备。  
 Netflix 开发了自己的视频存储计算机系统。Netflix 称它们为 Open Connect 设备或 OCA。每个 OCA 都是一个快速的服务器，经过高度优化，可用于传输大文件，并带有大量用于存储视频的硬盘或闪存驱动器。从硬件的角度来看，OCA 没有什么特别之处。它们基于商用 PC 组件，并由各种供应商组装在定制机箱中。从软件的角度来看，OCA 使用 FreeBSD 操作系统和 NGINX 作为 Web 服务器。是的，每个 OCA 都有一个 Web 服务器。通过 NGINX 提供视频流。其他视频服务，如 YouTube 和亚马逊，在他们自己的骨干网络上提供视频。这些公司实际上建立了自己的全球网络，用于向用户提供视频。这样做非常复杂且非常昂贵。Netflix 采用了完全不同的方法来构建其 CDN。Netflix 不运营自己的网络；它也不再运营自己的数据中心。相反，互联网服务提供商 (ISP) 同意将 OCA 放入其数据中心。OCA 免费提供给 ISP 以嵌入到他们的网络中。Netflix 还将 OCA 放置在互联网交换位置 (IXP) 中或附近。ISP 是用户的互联网提供商，它可能是 Verizon、Comcast、AT&T 或数千种其他服务。OCA 放置在 ISP 数据中心里可使得 Netflix 和 ISP 共赢（降低 ISP 的网络资源成本）。   
-
 
 </details>
 
@@ -1147,7 +1143,6 @@ https://dropbox.tech/infrastructure/optimizing-web-servers-for-high-throughput-a
 ### 其他
 Dropbox 异步任务框架 ATF：  
 ![](./Dropbox-ATF.png)  
-
 
 </details>
 
@@ -1925,7 +1920,10 @@ URL Frontier 主要是存储一堆待访问的 URL。它有 2 个接口：
 
 ![](./Web%20Crawler%20URL%20Frontier.png)  
 
-* input urls 就是种子 URL（`A Seed URL in web crawling is a url from which a web crawler will begin to traverse a site.` - 启动用的，比如 www.facebook.com、www.amazon.com 之类，并且可通过 BFS 来放入子 URL）和爬取过程中解析派生出来的新 URL。
+* input urls 就是种子 URL（`A Seed URL in web crawling is a url from which a web crawler will begin to traverse a site.` - 启动用的，比如 www.facebook.com、www.amazon.com 之类，并且可通过 BFS 来放入子 URL）和爬取过程中解析派生出来的新 URL。种子 URL 的部分来源和选择方法：
+  * 手动选择种子URL：这是最常见的方法，爬虫系统的操作员手动选择一些重要的、具有代表性的网页作为种子URL。通常选择与爬虫目标相关的网页，确保这些网页包含了系统要收集的数据。
+  * 搜索引擎结果页：可以从搜索引擎结果页中提取一些相关的链接作为种子URL。这些链接通常与特定主题或关键字相关，可以帮助爬虫系统开始收集相关内容。
+  * 网站地图（Site Map）：一些网站提供了网站地图，其中包含了站点的所有页面链接。爬虫可以从网站地图中选择一些链接作为种子URL，以确保覆盖整个站点。
 * Front Queue 与 Prioritizer 实现选择策略，为 URL 优先级进行了排序（Prioritizer 根据 URL 重要性或上次被访问距今间隔时间等等来评定，然后根据评定的优先级插到对应的队列里面）。假设数字越低优先级越高，优先级为 1 的 URL 就放进 Front Queue 1 队列，以此类推。
 * Back Queue
   * Back Queues、Politeness Router 以及 Mapping Table `<url, back_queue_id>` 把同一个网站/子网页/URL 都插入到同一个 Back Queue 中，比如 Amazon 的 URLs 只放进 B1、Facebook 的 URLs 只放进 B2 等等。
@@ -1942,7 +1940,6 @@ URL Frontier 主要是存储一堆待访问的 URL。它有 2 个接口：
   * Server replacement
 
 </details>
-
 
 
 <details>
@@ -1967,9 +1964,7 @@ Top K 系统是非常常见的一种子系统，基本上，就是从全量巨�
 * 第二个思路方面，统计不实时，但相对精确。对于这些持久化的数据，由 MR 的 job 定期执行来处理，并更新结果到数据库中。
   * 读取数据的时候，根据需要可以读取即时统计或者异步计算得到的统计数据，数据可以在外部缓存。  
 
-
 </details>
-
 
 
 <details>
@@ -1991,7 +1986,6 @@ OOD 还可以参考 [Hotel Management System](./../object%20oriented%20design/gr
 </details>
 
 
-
 <details>
 <summary>设计 ML pipeline 系统</summary>
 
@@ -2008,14 +2002,12 @@ OOD 还可以参考 [Hotel Management System](./../object%20oriented%20design/gr
 </details>
 
 
-
 <details>
 <summary>设计分布式 KV 数据库（Dynamo）</summary>
 
 [Dynamo](./../../Computer%20System%20Layer/数据库/Dynamo/README.md)
 
 </details>
-
 
 
 <details>
@@ -2104,7 +2096,6 @@ ETL 系统其实与 cronjob / batch process 系统有一些类似。
 </details>
 
 
-
 <details>
 <summary>设计点赞系统（Facebook / TikTok / Twitter / Youtube Like）</summary>
 
@@ -2123,14 +2114,12 @@ ETL 系统其实与 cronjob / batch process 系统有一些类似。
 </details>
 
 
-
 <details>
 <summary>设计日活统计系统（或月活等等去重统计）</summary>
 
 重点（也即难点）在于大数据的统计去重同时保证时空效率，同理意味着所有类似功能的系统均可以使用这一方法 - [HyperLogLog](./../../Common%20Algorithm%20and%20Theory/HyperLogLog.md)，注意其与[布隆过滤器](../../Common%20Algorithm%20and%20Theory/布隆过滤器及其算法.md)的使用场景的类似与区别。  
 
 </details>
-
 
 
 <details>
@@ -2158,7 +2147,6 @@ ETL 系统其实与 cronjob / batch process 系统有一些类似。
 * [Elasticsearch：创建一个 autocomplete 输入系统 - 前端 + 后端](https://juejin.cn/post/7052153840493133855)
 
 </details>
-
 
 
 <details>
@@ -2340,7 +2328,6 @@ void addItemTag(String itemId, String[] tagIds) {
 </details>
 
 
-
 <details>
 <summary>设计云消息队列</summary>
 
@@ -2371,7 +2358,6 @@ if commit fail then do the select again (something like a while loop until succe
 [更多参考](./README.md#message-queue-and-stream)  
 
 </details>
-
 
 
 <details>
@@ -2405,7 +2391,6 @@ Reference:
 </details>
 
 
-
 <details>
 <summary>2FA 登陆</summary>
 
@@ -2432,7 +2417,6 @@ SESSION 的数据保存在在服务器端，但不是保存在内存中（但是
 </details>
 
 
-
 <details>
 <summary>设计 Single Sign On</summary>
 
@@ -2440,7 +2424,6 @@ SESSION 的数据保存在在服务器端，但不是保存在内存中（但是
 ![](./SSO.jpeg)  
 
 </details>
-
 
 
 <details>
@@ -2459,7 +2442,6 @@ Ref: https://blog.bytebytego.com/i/65351443/how-does-google-authenticator-or-oth
 更多详细内容：[TOTP(基于时间的一次性密码算法)](https://zh.wikipedia.org/wiki/%E5%9F%BA%E4%BA%8E%E6%97%B6%E9%97%B4%E7%9A%84%E4%B8%80%E6%AC%A1%E6%80%A7%E5%AF%86%E7%A0%81%E7%AE%97%E6%B3%95)  
 
 </details>
-
 
 
 <details>
@@ -2483,7 +2465,6 @@ http1.1 允许客户端不用等待上一次请求结果返回，就可以发出
 </details>
 
 
-
 <details>
 <summary>一个实时并发计算（图形）的系统</summary>
 
@@ -2502,7 +2483,6 @@ http1.1 允许客户端不用等待上一次请求结果返回，就可以发出
 * 采用 Websocket 协议进行通信，并可以用 diff 来优化带宽数据量（第一次获取完整矩阵数据，后续都用 diff + version number，又或者每次都是获取完整数据但是只获取 lives 的点并通过结尾数据 - 带有版本号以及总 lives 数来保证客户端获取完整数据再渲染，逻辑有点类似网络数据包）
 
 </details>
-
 
 
 <details>
@@ -2531,9 +2511,7 @@ http1.1 允许客户端不用等待上一次请求结果返回，就可以发出
 * 客户端可能需要通过特定协议（如 Websocket、MQTT）从对应服务端获取数据，因为实时性较高可能需要用消息队列 Pub/Sub 模式而非缓存
 * 客户端获取数据后，在客户端侧进行数据渲染、可视化（使用如 D3.js 等框架）
 
-
 </details>
-
 
 
 <details>
