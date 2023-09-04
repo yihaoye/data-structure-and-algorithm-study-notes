@@ -33,6 +33,73 @@ All the pairs (ui, vi) are unique. (i.e., no multiple edges.)
 
 
 
+// My Solution:
+class Solution {
+    // Dijkstra - https://leetcode.cn/problems/network-delay-time/solution/gong-shui-san-xie-yi-ti-wu-jie-wu-chong-oghpz/
+    // 时间复杂度：O((E+V)*logV)，空间复杂度：O(E+V)
+
+    public int networkDelayTime(int[][] times, int n, int k) {
+        /* Dijkstra 使用模版 */
+        Graph graph = new Graph();
+        for (int[] time : times) graph.addEdge(time[0], time[1], time[2]);
+        graph.dijkstra(k);
+        Map<Integer, Integer> dist = graph.getDist(k);
+        /*******************/
+
+        int res = 0;
+        for (int i=1; i<=n; i++) res = Math.max(res, dist.getOrDefault(i, Integer.MAX_VALUE));
+        return res == Integer.MAX_VALUE ? -1 : res;
+    }
+
+    public class Graph { // Dijkstra 算法模版
+        public Map<Integer, Map<Integer, Integer>> adj; // 邻接表 <from, <to, weight>>，使用 Map 而非 List 可以更好地适配其他数据类型的节点，比如字符串等等
+        public Map<Integer, Map<Integer, Integer>> dists; // <from, <to, min_dist>> dists[from][to] 即 from 到 to 的最短距离/时间，一开始全部设为最大值，每次调用 dijkstra(src) 后可以缓存以提高性能，但是如果有新的 addEdge() 调用后，所有 src 都应该重新 dijkstra(src) 而非直接调用 getDist(src)
+
+        public Graph() {
+            adj = new HashMap<>();
+            dists = new HashMap<>();
+        }
+
+        public void addEdge(int u, int v, int w) { // 添加边 (from, to, weight)
+            adj.computeIfAbsent(u, k -> new HashMap<>()).put(v, w); // 如果是无向图，需要双向添加
+            dists.putIfAbsent(u, null); dists.putIfAbsent(v, null);
+        }
+
+        public void dijkstra(int src) { // 使用 Dijkstra 算法从 src 遍历全图（最小堆优化，贪心策略）以计算 dists[src]
+            Map<Integer, Integer> srcDist = new HashMap<>();
+            dists.put(src, srcDist); // 初始化以及清理旧数据
+            for (int node : dists.keySet()) srcDist.put(node, Integer.MAX_VALUE);
+            srcDist.put(src, 0); // dists[src][src] = 0
+
+            Set<Integer> visited = new HashSet<>();
+            PriorityQueue<int[]> minHeap = new PriorityQueue<>((a, b) -> a[1] - b[1]);
+            minHeap.offer(new int[]{src, 0}); // first next 'to' is src itself
+
+            while (!minHeap.isEmpty()) {
+                int[] curr = minHeap.poll(); // 确保总是从距离 src 最近的节点开始扩展，从而找到最短路径。
+                int from = curr[0];
+                if (!visited.add(from) || !adj.containsKey(from)) continue;
+
+                for (Map.Entry<Integer, Integer> entry : adj.get(from).entrySet()) {
+                    int to = entry.getKey();
+                    int wei = entry.getValue(); // weight of from..to
+
+                    if (srcDist.get(from) + wei < srcDist.get(to)) {
+                        srcDist.put(to, srcDist.get(from) + wei);
+                        minHeap.offer(new int[]{to, srcDist.get(to)}); // [to, src_to_cur_best_dist]
+                    }
+                }
+            }
+        }
+
+        public Map<Integer, Integer> getDist(int src) { // src 到所有其他结点的最短距离 dists[src]
+            return dists.getOrDefault(src, new HashMap<>());
+        }
+    }
+}
+
+
+
 // Other's Solution:
 class Solution {
     // Dijkstra - https://leetcode.cn/problems/network-delay-time/solution/gong-shui-san-xie-yi-ti-wu-jie-wu-chong-oghpz/
