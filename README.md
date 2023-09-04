@@ -115,10 +115,10 @@
   * [倍增法 | Leetcode Q702](./Common%20Algorithm%20and%20Theory/倍增法.md)
 * 高级算法
   * [拓扑排序 | Leetcode Q210](./Common%20Algorithm%20and%20Theory/拓扑排序.md)
-  * [多路归并 | Leetcode Q23-合并排序链表 Q355-设计推特](./Leetcode%20Practices/algorithms/hard/23%20Merge%20k%20Sorted%20Lists.java)
+  * [多路归并 | Leetcode Q23-合并排序链表 Q355-设计推特-News-Feed](./Leetcode%20Practices/algorithms/hard/23%20Merge%20k%20Sorted%20Lists.java)
   * [Kadane 算法 | Leetcode Q53](./Leetcode%20Practices/algorithms/easy/53%20Maximum%20Subarray.java)
   * [弗洛伊德算法 | Leetcode Q1462](./Leetcode%20Practices/algorithms/medium/1462%20Course%20Schedule%20IV.java)
-  * [Dijkstra 算法 | Leetcode Q743-网络延迟时间](./Leetcode%20Practices/algorithms/medium/743%20Network%20Delay%20Time.java)
+  * [Dijkstra 算法 | Leetcode Q743-最快网络时间](./Leetcode%20Practices/algorithms/medium/743%20Network%20Delay%20Time.java)
   * [滚动哈希](./Common%20Algorithm%20and%20Theory/滚动哈希.md)
   * [LCA | Leetcode Q236](./Leetcode%20Practices/algorithms/medium/236%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree.java)
   * [扫描线 | Leetcode Q218](./Leetcode%20Practices/algorithms/hard/218%20The%20Skyline%20Problem.java)

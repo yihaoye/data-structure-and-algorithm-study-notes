@@ -301,21 +301,34 @@ CountDownLatch 允许一个或多个线程等待其他线程完成操作，即�
 [代码示例](./Defog/CountDownLatch.java)  
 
 ## AbstractQueuedSynchronizer
-当谈到 Java 并发编程中的底层同步机制时，`AbstractQueuedSynchronizer` (AQS) 是一个非常重要的组件。AQS 是用于实现锁和同步器的基础框架，它是一个抽象类，提供了一种用于构建同步器的模板。在 Java 的高级并发工具和类，如 `ReentrantLock`、`CountDownLatch`、`Semaphore` 等，都是基于 AQS 实现的。
+当谈到 Java 并发编程中的底层同步机制时，`AbstractQueuedSynchronizer` (AQS) 是一个非常重要的组件。AQS 是用于实现锁和同步器的基础框架，它是一个抽象类，提供了一种用于构建同步器的模板，主要实现了同步状态管理、线程队列管理、线程等待、线程唤醒等底层操作。在 Java 的高级并发工具和类，如 `ReentrantLock`、`CountDownLatch`、`Semaphore` 等，都是基于 AQS 实现的。  
 
-AQS 的核心思想是使用一个双向链表来维护等待线程，并使用一个整型变量来表示同步状态。AQS 提供了一套丰富的方法来管理同步状态、线程的入队和出队、以及线程的阻塞与唤醒。具体来说，AQS 提供了以下几个重要的方法：
+AQS 的核心思想是使用一个先进先出的双向链表（CLH）来维护等待线程，并使用一个整型变量来表示同步状态。AQS 提供了一套丰富的方法来管理同步状态、线程的入队和出队、以及线程的阻塞与唤醒（当线程尝试获取锁失败时，会将当前线程包装成 AQS 内部类 Node 对象加入到 CLH 队列中，并将当前线程挂起。当有线程释放自己的锁时 AQS 会尝试唤醒 CLH 队列中 head 后的直接后继的线程）。具体来说，AQS 提供了以下几个重要的方法：
 1. `getState()`：获取当前同步状态的方法。
 2. `setState(int newState)`：设置同步状态的方法。
-3. `tryAcquire(int arg)`：尝试获取同步状态，成功则返回 true，否则返回 false。
-4. `tryRelease(int arg)`：尝试释放同步状态，成功则返回 true，否则返回 false。
-5. `acquire(int arg)`：获取同步状态，若未成功则线程会被阻塞，直到成功获取同步状态。
-6. `release(int arg)`：释放同步状态，并唤醒等待的线程。
-7. `acquireShared(int arg)`：获取共享同步状态，若未成功则线程会被阻塞，直到成功获取共享同步状态。
-8. `releaseShared(int arg)`：释放共享同步状态，并唤醒等待的线程。
+3. `tryAcquire(int arg)`：尝试获取独占锁（写锁），成功则返回 true，否则返回 false。
+4. `tryRelease(int arg)`：尝试释放独占锁，成功则返回 true，否则返回 false。
+5. `acquire(int arg)`：获取独占锁，若未成功则线程会被阻塞，直到成功获取锁。
+6. `release(int arg)`：释放独占锁，并唤醒等待的线程。
+7. `acquireShared(int arg)`：获取共享锁（读锁），若未成功则线程会被阻塞，直到成功获取共享锁。
+8. `releaseShared(int arg)`：释放共享锁，并唤醒等待的线程。
+
+```java
+Class AbstractQueuedSynchronizer {
+    /* 队列中的头结点，无实际意义，head 的后继节点才是队列中的第一个节点 */
+    private transient volatile Node head;
+    /* 队列中的尾节点 */
+    private transient volatile Node tail;
+    /* 队列中的状态，上锁解锁可以扩展成不同的状态。AQS 实际上也是对该字段的管理。子类中通过 get set compare 方法对 state 的管理 */
+    private volatile int state;
+}
+```
 
 通过继承 AQS 并实现其抽象方法，可以自定义锁或同步器，例如 `ReentrantLock` 和 `CountDownLatch` 的实现就是通过继承 AQS 来实现的。开发者可以根据自己的需求，重写 AQS 中的相关方法，实现适合特定场景的线程同步控制。  
 AQS 的设计使得开发者可以更方便地实现复杂的同步器和锁，避免了编写底层线程同步和调度代码的复杂性。同时，AQS 也提供了高效的线程阻塞和唤醒机制，有助于实现高性能的并发应用程序。  
 总体而言，AbstractQueuedSynchronizer 是 Java 并发编程中的一个重要组件，它为实现复杂的同步器和锁提供了基础框架，并通过双向链表和同步状态的管理，提供了高效的线程阻塞和唤醒机制，为并发编程提供了强大的工具。  
+
+![](./AbstractQueuedSynchronizer.jpeg)  
 
 参考：  
 * ChatGPT
