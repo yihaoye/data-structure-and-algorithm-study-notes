@@ -50,9 +50,6 @@
       - [弗洛伊德算法 | Floyd-Warshall Algorithm](./弗洛伊德算法.md) (时间复杂度 `O(N^3)`)
       - [Kadane 算法 | Kadane's Algorithm](./Kadane算法.md) (时间复杂度 `O(N)`)
       - [词法分析 | Lexical Analysis](https://zh.wikipedia.org/wiki/%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90)
-      - 隐马尔可夫模型 | Hidden Markov Model, HMM
-        - 前向与后向算法
-        - 维特比算法
     - [KMP 算法 | Knuth–Morris–Pratt Algorithm](./KMP算法.md) (时间复杂度 `O(N+M)`)
     - [AC 自动机 | Aho–Corasick Algorithm](./AC自动机.md)
     - 马拉车算法 | Manacher Algorithm
@@ -91,10 +88,19 @@
       - DHT 的 Kademlia 协议
       - [DHT 的 Chord 算法](https://en.wikipedia.org/wiki/Chord_(peer-to-peer))
       - Gossip 协议/流行病协议
-    - 机器学习
+    - 统计学（Statistics）/ 机器学习（Machine Learning）
+      - 线性规划 | Linear Regression
       - [决策树算法 | Decision Tree Algorithm](https://www.ibm.com/cn-zh/topics/decision-trees)
-      - 深度学习 / 神经网络
-        - 大语言模型（LLM）
+      - 朴素贝叶斯 | Naive Bayes
+      - 支持向量机 | Support Vector Machine, SVM
+      - 隐马尔可夫模型 | Hidden Markov Model, HMM
+        - 前向与后向算法
+        - 维特比算法
+      - 深度学习（Deep Learning）/ 神经网络（Neural Networks）
+        - 卷积神经网络（CNN）
+        - LSTM 长短期记忆 / 循环神经网络（RNN）
+        - 生成对抗网络（GAN）
+        - Transformer 模型 / 大语言模型（LLM）
   - [数学](../Computer%20Science%20Maths/README.md)
     - [鸽巢原理 | Pigeonhole Principle](./鸽巢原理.md)
     - [取模运算 | Modulo](./取模运算.md)
