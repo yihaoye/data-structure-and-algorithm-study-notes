@@ -809,6 +809,16 @@ Driver 如何获得打车请求？—— Report location 的同时，服务器�
 </details>
 
 
+
+<details>
+<summary>设计 Google Map</summary>
+
+![](./google_map_system_design.png)  
+
+</details>
+
+
+
 <details>
 <summary>设计 Youtube</summary>
 
@@ -1356,7 +1366,7 @@ WebSocket 连接由客户端启动。它是双向和持久的。它从 HTTP 连�
 
 
 <details>
-<summary>设计 Amazon（电商/秒杀网站）</summary>
+<summary>设计 Amazon（电商 / 秒杀网站）</summary>
 
 转载自：https://osjobs.net/system/posts/spike-system/  
 其他参考资料：https://www.youtube.com/watch?v=2BWr0fsDSs0  
@@ -1915,7 +1925,7 @@ URL Frontier 主要是存储一堆待访问的 URL。它有 2 个接口：
 
 ![](./Web%20Crawler%20URL%20Frontier.png)  
 
-* input urls 就是种子 URL（启动用的，并且可通过 BFS 来放入子 URL）和爬取过程中解析派生出来的新 URL。
+* input urls 就是种子 URL（`A Seed URL in web crawling is a url from which a web crawler will begin to traverse a site.` - 启动用的，比如 www.facebook.com、www.amazon.com 之类，并且可通过 BFS 来放入子 URL）和爬取过程中解析派生出来的新 URL。
 * Front Queue 与 Prioritizer 实现选择策略，为 URL 优先级进行了排序（Prioritizer 根据 URL 重要性或上次被访问距今间隔时间等等来评定，然后根据评定的优先级插到对应的队列里面）。假设数字越低优先级越高，优先级为 1 的 URL 就放进 Front Queue 1 队列，以此类推。
 * Back Queue
   * Back Queues、Politeness Router 以及 Mapping Table `<url, back_queue_id>` 把同一个网站/子网页/URL 都插入到同一个 Back Queue 中，比如 Amazon 的 URLs 只放进 B1、Facebook 的 URLs 只放进 B2 等等。
@@ -3048,6 +3058,9 @@ To Be Continue ...
 ## 事件驱动架构
 ![](./inside-eda.png)  
 参考：https://serverlessland.com/event-driven-architecture/visuals/inside-event-driven-architectures  
+
+![](./big_query_event_driven_architecture.svg)  
+参考：https://cloud.google.com/bigquery#section-4  
 
 ## [详解吞吐量、QPS、TPS、并发数等高并发大流量指标](https://www.toutiao.com/article/7123847014781141518/?wid=1680490047925)
 系统吞吐量指的是系统在单位时间内可处理的事务的数量，是用于衡量系统性能的重要指标。  
