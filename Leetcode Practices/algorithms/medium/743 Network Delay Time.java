@@ -69,16 +69,16 @@ class Solution {
             Map<Integer, Integer> srcDist = new HashMap<>();
             dists.put(src, srcDist); // 初始化以及清理旧数据
             for (int node : dists.keySet()) srcDist.put(node, Integer.MAX_VALUE);
-            srcDist.put(src, 0); // dists[src][src] = 0
+            srcDist.put(src, 0); // 肯定 dists[src][src] = 0
 
             Set<Integer> visited = new HashSet<>();
             PriorityQueue<int[]> minHeap = new PriorityQueue<>((a, b) -> a[1] - b[1]);
-            minHeap.offer(new int[]{src, 0}); // first next 'to' is src itself
+            minHeap.offer(new int[]{src, 0}); // 以 src 自己为 first next 'to' 启动点，且自己与自己距离必为 0
 
             while (!minHeap.isEmpty()) {
-                int[] curr = minHeap.poll(); // 确保总是从距离 src 最近的节点开始扩展，从而找到最短路径。
-                int from = curr[0];
-                if (!visited.add(from) || !adj.containsKey(from)) continue;
+                int[] curr = minHeap.poll(); // 确保总是从距离 src 最近的节点开始扩展，从而找到最短路径。不可能存在从 src 到 curr[0] 更短的路径了，因为如果存在，应该在之前就被放入堆了，因为它的子路径一定更短且更早地被入堆出堆且访问过了
+                int from = curr[0]; // previous 'to' is current 'from'
+                if (!visited.add(from) || !adj.containsKey(from)) continue; // from 如果被访问过了就可以跳过，因为如上所写，更早访问到的一定路径更短
 
                 for (Map.Entry<Integer, Integer> entry : adj.get(from).entrySet()) {
                     int to = entry.getKey();
@@ -86,7 +86,7 @@ class Solution {
 
                     if (srcDist.get(from) + wei < srcDist.get(to)) {
                         srcDist.put(to, srcDist.get(from) + wei);
-                        minHeap.offer(new int[]{to, srcDist.get(to)}); // [to, src_to_cur_best_dist]
+                        minHeap.offer(new int[]{to, srcDist.get(to)}); // [to, src..to cur best dist]
                     }
                 }
             }
