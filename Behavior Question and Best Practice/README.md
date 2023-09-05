@@ -30,7 +30,8 @@ BQ 问题来来去去就是那些，准备多了背熟就会越练越好，核�
 `STARL 结构/模版` - Situation, Task, Action, Results, Learn（通常正向问题及经验可以跳过 L，负面问题及经验要添加 L）  
 Keep at least 3 project examples/stories which better to be large scale.  
 
-[如何描述 Work Experience 和 Project Experience](https://www.youtube.com/watch?v=WSoN8ZMiXTc)  
+* [如何描述 Work Experience 和 Project Experience](https://www.youtube.com/watch?v=WSoN8ZMiXTc)
+* [项目介绍示例](https://interview-science.org/%E5%B8%B8%E8%A7%84%E5%86%85%E5%AE%B9/%E9%A1%B9%E7%9B%AE%E4%BB%8B%E7%BB%8D%E7%A4%BA%E4%BE%8B)
   
 ## 项目讨论的框架
 * Context: 简要描述项目背景，为什么要做，意义和影响何在。让面试官快速了解。
