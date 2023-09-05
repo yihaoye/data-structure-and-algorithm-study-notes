@@ -197,13 +197,14 @@
 * 加密解密、压缩解压
 * 单点登录系统（Central Authentication Service - CAS）
 * [统一配置中心](https://en.wikipedia.org/wiki/Configuration_management)（Config Server、propeties、yaml）
+* 管理后台/管理控制台（允许客服或工程师直接访问和管理数据库数据以支持用户）
 * [服务调用/服务治理框架（REST API、RPC）](./System%20Design%20Fundamentals.md#API%20Design)
 * 统一调度中心（定时调度 cron job，如定时抓取数据、刷新状态等）
 * 统一日志服务（log4j、logback、Kibana、CloudWatch）
 * 数据基础设施（大数据：Hadoop、Spark、数据仓库；数据管道：Kafka、Kinesis；数据分析：Hadoop、Spark、Tableau、Python、SAS、Excel）
-* 故障监控（系统监控、业务监控；Datadog、故障定位、警报等级、IM 或 oncall）(Telemetry)
+* 故障监控（系统监控、业务监控；Datadog、ELK、故障定位、警报等级、IM 或 oncall）(Telemetry)
 * DX（内部服务：包括大数据、构建交付工具、通用运行时服务类库、数据持久化、安全等）
-* 分布式锁、分布式一致性与选举算法/共识机制
+* 分布式锁、[分布式一致性](./System%20Design%20Fundamentals.md)与[选举算法/共识机制](./example%20questions/Leader%20Election.md)
 * 点对点网络（Peer-to-peer Networks，如 VPC Peering、指数增长的高效的针对大规模目标对象的数据拷贝传输、区块链项目如 Bitcoin、等等）  
   
 ![](./System%20Design%20Blueprint.jpeg)
@@ -1370,6 +1371,8 @@ WebSocket 连接由客户端启动。它是双向和持久的。它从 HTTP 连�
 
 * [其他参考](https://github.com/yihaoye/stem-notes/blob/master/e-computer-network/end-to-end_encryption.md)
   
+其他参考方案：[Design a Chat Service](./example%20questions/Design%20a%20Chat%20Service.md)  
+
 </details>
 
 
@@ -1495,6 +1498,8 @@ WebSocket 连接由客户端启动。它是双向和持久的。它从 HTTP 连�
      * 若该商品库存大于零，将库存减一
      * 若该商品库存等于零的话，不做操作
 6. 服务端根据消息队列里的消息状态返回下单结果
+
+其他参考方案：[AMZ Order System](./example%20questions/AMZ%20Order%20System.md)  
 
 </details>
 
@@ -1952,6 +1957,8 @@ URL Frontier 主要是存储一堆待访问的 URL。它有 2 个接口：
 * 容错性
   * Server replacement
 
+相关参考方案：[Web Crawler Detector](./example%20questions/Web%20Crawler%20Detector.md)  
+
 </details>
 
 
@@ -1976,6 +1983,10 @@ Top K 系统是非常常见的一种子系统，基本上，就是从全量巨�
   * 如果需要的即时统计数据不是总榜，而是最近一段时间的趋势榜，那就可以借助 [Ring Buffer](https://zh.wikipedia.org/wiki/%E7%92%B0%E5%BD%A2%E7%B7%A9%E8%A1%9D%E5%8D%80) —— 比如只关心最近一小时的趋势，就可以把一小时划分为 ring 上的 60 个区间，每个区间使用 Count-min Sketch 甚至简单的 Map 分别统计，趋势榜每次可聚合这 60 个区间得出 top K；每过一分钟都覆写最老的那一个区间的数据，从而保证 ring 上的数据始终是最近一小时的。
 * 第二个思路方面，统计不实时，但相对精确。对于这些持久化的数据，由 MR 的 job 定期执行来处理，并更新结果到数据库中。
   * 读取数据的时候，根据需要可以读取即时统计或者异步计算得到的统计数据，数据可以在外部缓存。  
+
+其他参考方案：  
+[Design a Real Time Gaming Ranking System](./example%20questions/Design%20a%20Real%20Time%20Gaming%20Ranking%20System.md)  
+[Top Discount Product in Time Window](./example%20questions/Top%20Discount%20Product%20in%20Time%20Window.md)
 
 </details>
 
@@ -2370,6 +2381,8 @@ if commit fail then do the select again (something like a while loop until succe
 
 [更多参考](./README.md#message-queue-and-stream)  
 
+其他参考方案：[Pub-Sub Architecture Design and Scale](./example%20questions/Pub-Sub%20Architecture%20Design%20and%20Scale.md)  
+
 </details>
 
 
@@ -2503,6 +2516,11 @@ http1.1 允许客户端不用等待上一次请求结果返回，就可以发出
 
 参考：https://cloud.google.com/bigtable#section-8  
 
+应用场景：
+* 应用程序性能管理（APM），微服务、系统日志（警告、异常等）
+* 业务或用户动态、体验（消息事件、安全、API 网关）
+* 基础设施监控（硬件指标如负载、容量、内存使用、CPU，网络流及吞吐等）
+
 ![](./Logstash_central_log_server_architecture.png)  
 ![](./metric-collection-flow.png)  
 ![](./metric-collection-flow-2.png)  
@@ -2523,6 +2541,8 @@ http1.1 允许客户端不用等待上一次请求结果返回，就可以发出
 自定义客户端读取数据
 * 客户端可能需要通过特定协议（如 Websocket、MQTT）从对应服务端获取数据，因为实时性较高可能需要用消息队列 Pub/Sub 模式而非缓存
 * 客户端获取数据后，在客户端侧进行数据渲染、可视化（使用如 D3.js 等框架）
+
+其他参考方案：[Distributed Logging Architecture for Microservices](./example%20questions/Distributed%20Logging%20Architecture%20for%20Microservices.md)  
 
 </details>
 
@@ -2575,6 +2595,17 @@ Ref：
 ![](./payment-system-2.webp)  
 ![](./payment-system-3.webp)  
 ![](./payment-system-4.webp)  
+
+</details>
+
+
+<details>
+<summary>设计规则引擎</summary>
+
+* [从 0 到 1：构建强大且易用的规则引擎](https://tech.meituan.com/2017/06/09/maze-framework.html)
+
+最简单的方式是 hard coding 规则，更进一步的是可以使用[模式匹配](https://hillside.net/plop/plop99/proceedings/Metayer/MatcherHandler.pdf)或[元编程（Metaprogramming）](https://zh.wikipedia.org/zh-hans/%E5%85%83%E7%BC%96%E7%A8%8B)，支持元编程的语言有 Lisp、Python、Ruby 等。  
+应该可以用 NoSQL 数据库存储规则（决策树结构或规则数据模型 - 规则本质是一个函数，由 n 个输入、1 个输出和函数计算逻辑三部分组成），构建管理后台/管理控制台可以支持动态规则（分析师添加、更新规则）。  
 
 </details>
 
