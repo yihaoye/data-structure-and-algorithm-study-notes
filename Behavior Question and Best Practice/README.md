@@ -15,6 +15,7 @@ BQ 问题来来去去就是那些，准备多了背熟就会越练越好，核�
 
 * [彻底击碎行为问题](https://docs.google.com/document/d/112HBiMNvu6TYbDUOfVRe_MS4A-fKaWYrpMlmnsiMNiA/edit#heading=h.bmwacy4ylksh)
 * [如何高效准备 BQ 面试](https://www.youtube.com/watch?v=-xUHMCXxu8w)
+* [TOP 10 BEHAVIORAL Interview Questions with Answers](https://www.youtube.com/watch?v=khbR_qvOF5g)
 * [充满陷阱的 Behavior Question：谈谈你没有按时完成项目的经历](https://zhuanlan.zhihu.com/p/65345319)  
 
 ![](./Behavior%20Question.png)  
@@ -26,7 +27,7 @@ BQ 问题来来去去就是那些，准备多了背熟就会越练越好，核�
 * https://www.youtube.com/watch?v=0xKLVJuBRCU  
   
 ## 回答策略
-`S*T*A*R` - Situation, Task, Action, Results  
+`STARL 结构/模版` - Situation, Task, Action, Results, Learn（通常正向问题及经验可以跳过 L，负面问题及经验要添加 L）  
 Keep at least 3 project examples/stories which better to be large scale.  
 
 [如何描述 Work Experience 和 Project Experience](https://www.youtube.com/watch?v=WSoN8ZMiXTc)  
