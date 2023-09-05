@@ -1,4 +1,6 @@
 # 系统设计学习资源
+系统设计重要性：在 Senior 或 Team Leader 或更高级别的岗位招聘面试中，系统设计常常拥有一票否决权。  
+[而且系统设计与现实生活有许多共通的哲学与智慧。](https://www.youtube.com/watch?v=th_73AVA4dY)  
   
 ## 针对面试
 * [Grokking-System-Design](https://github.com/lei-hsia/grokking-system-design)
@@ -35,7 +37,7 @@
 * No more no less. 不要总想着设计最牛的系统，要设计够用的系统。
 * Work solution first. 先设计一个基本能工作的系统，然后再逐步优化。
 * Analysis is important than solution. 系统设计没有标准答案，记住答案是没用的，通过分析过程展示知识储备，权衡各种设计方式的利弊。
-* 另外不要总是只局限于如何在服务端工作/优化，有时还可以根据具体情况把相关工作/优化搬到客户端去做，比如缓存、重试策略、限流等等，可能会比服务端更高效、适用。永远记着两个方向上都考虑到。
+* 另外不要总是只局限于如何在服务端工作/优化，有时还可以根据具体情况把相关工作/优化搬到客户端去做，比如缓存、重试策略、限流等等，可能会比服务端更高效、适用，又比如如果一个服务端 API 实现多个功能如果太过困难复杂 -- 比如 SQL 要做多个 JOIN 甚至跨库操作等等，可以根据情况把单个 API 拆分成多个 API（或者有时是相反的如 SQL 处理更简便比如 GROUP_CONCAT）然后让客户端负责分别调用它们、聚合返回的数据以降低复杂性、提高健壮性。永远记着两个方向上都考虑到，而且这有时还会影响整个系统架构的设计变动。
   
 ## 系统学习
 * [Grok System Design Tutorial](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Leetcode%20Practices/system%20design/grok_system_design_interview.pdf)
@@ -221,7 +223,7 @@ During designing a large system, investing in scaling before it is needed is gen
 Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Theorem`, `Load Balancing`, `Caching`, `Data Partitioning`, `Indexes`, `Proxies`, `Queues`, `Replication`, and choosing between `SQL vs NoSQL`.  
 
 ### Key Characteristics of Distributed Systems
-* **Scalability** - the capability of a system, process, or a network to continuously evolve/grow and manage increased demand. (相关组件与手段：负载均衡、自动扩展、分库分表、数据备份)
+* **Scalability** - the capability of a system, process, or a network to continuously evolve/grow and manage increased demand. (相关组件与手段：负载均衡、自动扩展、分库分表、数据备份、分布式)
   * <small>Horizontal Scaling - Add more servers (e.g. Cassandra and MongoDB easy to scale horizontally).</small>
   * <small>Vertical Scaling - Add more resource/power (CPU, RAM, Storage etc) to same server (e.g. MySQL easy to scale vertically) (scaling involves downtime).</small>
 * **Reliability** - the probability a system will fail in a given period. （相关组件与手段： API 网关、测试、CI/CD 与回滚、故障监控与 failover/故障转移、服务降级），故障分类 - DDIA 里故障的分类可以分为三大类：硬件故障、软件错误、人为错误 - [来源参考](https://xie.infoq.cn/article/a83e33394a05086a1514c2826)。Reliability 指标有两个：MTTF（Mean Time To Failure）平均故障前的时间，即系统平均能够正常运行多长时间才发生一次故障，系统的可靠性越高，MTTF 越长；MTTR（Mean Time To Repair）平均修复时间，即从故障出现到故障修复的这段时间，这段时间越短越好。
@@ -235,7 +237,7 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
     * 级联故障。一个组件小问题引发其它组件级联故障。
   * 人为错误
     * 系统总是在更新和修改，运维过程中就配置错误是导致服务中断的首要因数。
-* **Availability** - the time a system remains operational to perform its required function in a specific period. (相关组件与手段：负载均衡、故障监控与 failover/故障转移、数据备份)
+* **Availability** - the time a system remains operational to perform its required function in a specific period. (相关组件与手段：负载均衡、故障监控与 failover/故障转移、数据备份、无主分布式)
   * <small>Reliability Vs Availability - If a system is reliable, it is available. However, if it is available, it is not necessarily reliable. high reliability contributes to high availability, but it is possible to achieve a high availability even with an unreliable product by minimizing repair time and ensuring that spares are always available when they are needed.</small>
 * **Efficiency or Performance** - Two standard measures of efficiency are response time (or latency) and the throughput (or bandwidth). （相关组件与手段：CDN、异步处理耗时任务如消息队列、缓存、读写分离、索引、分页）. The two measures correspond to the following unit costs:
   * <small>Number of messages globally sent by the nodes of the system regardless of the message size.</small>
@@ -254,6 +256,10 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
     * 幂等性标志：可以在请求中包含一个幂等性标志，如果该标志为真，则服务端执行幂等操作。这在某些情况下可能有用，例如处理一些负载均衡和请求路由的情况。
     * 幂等性检查点：在系统执行操作的不同阶段，可以插入幂等性检查点。这些检查点可以记录操作的执行状态，并在操作需要重试时，根据检查点来继续操作。
 * **Security** - Data/Operation security etc.
+  * 权限管理
+  * 数据加密解密（传输与存储）、隐私、合规性
+  * 攻击防护（DDoS、伪造或注入攻击）
+  * 监控与日志
   
 ### [Consistent Hashing](./一致性哈希.md)  
   
@@ -262,7 +268,7 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 ### [Caching](./Caching.md)
 
 ### [Message Queue and Stream](./消息队列与流处理.md)
-注意，一般的消息队列（Kafka、Redis、ActiveMQ etc）不支持索引查询，但是时间序列数据库（Time Series Database，如 InfluxDB etc）除了能当简单的消息队列（比一般数据库吞吐性能更强，但仅限低吞吐量等有限场景。大规模、高吞吐量场景还是要用专门的消息队列系统）还可以索引查询（时间序列数据库通常会使用时间戳作为主要的索引字段，以便快速按时间范围查询数据。这使得在时间序列数据库中执行时间范围查询非常高效）。  
+注意，一般的消息队列（Kafka、Redis、ActiveMQ etc）不支持索引查询，但是时序数据库、时间序列数据库（Time Series Database，如 InfluxDB、MongoDB、Prometheus、RedisTimeSeries etc）除了能当简单的消息队列（比一般数据库吞吐性能更强，但仅限低吞吐量等有限场景。大规模、高吞吐量场景还是要用专门的消息队列系统）还可以索引查询（时间序列数据库通常会使用时间戳作为主要的索引字段，以便快速按时间范围查询数据。这使得在时间序列数据库中执行时间范围查询非常高效）。  
 对象存储也可以实现简单的消息队列，比如把 bucket 分成未处理和已处理两个路径，从未处理的 bucket 读出最前面的文件，处理它，然后把文件转移至已处理路径即可（此办法不足以应对多个消费者订阅同一个主题消息的场景，需要进一步改动）。  
 
 ### Cache vs Message Queue / Stream
@@ -273,7 +279,7 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 
 ### 处理编程范式
 * 请求响应模式 - 延迟最小的一种范式，响应时间处于亚毫秒到毫秒之间，而且响应时间一般非常稳定。这种处理模式一般是阻塞的（同步），应用程序向处理系统发出请求，然后等待响应。在数据库领域，这种范式就是线上交易处理（OLTP）。通常的形式是 SOAP、REST API、RPC 等。
-  * 轮询、长轮询、全双工（例如 Websocket）
+  * 轮询、长轮询、全双工（例如 Websocket）。
 * 回调模式 - 系统级：Webhook、API 调用等；线程/进程级：JavaScript 回调、CompletableFuture、接口回调等。通常情况下，回调是在一个不同于主线程/主服务的另一个线程/服务中执行的。回调常用于异步处理中，当某个特定事件发生时，会触发回调函数的执行。
 * 批处理 - 该范式有高延迟和高吞吐量的特点。处理系统按照设定的时间启动处理进程。
 * 流式处理 [Ref 1](https://github.com/yihaoye/big-data-training/blob/main/kafka/README.md#%E6%B5%81%E5%BC%8F%E5%A4%84%E7%90%86)、[Ref 2](https://keys961.github.io/2018/07/05/%E6%B5%81%E5%BC%8F%E5%A4%84%E7%90%86%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/) - 这种范式介于上述两者之间。大部分的业务不要求亚毫秒级的响应，不过也接受不了要等到第二天才知道结果。大部分业务流程都是持续进行的，只要业务报告保持更新，业务产品线能够持续响应，那么业务流程就可以进行下去，而无需等待特定的响应，也不要求在几毫秒内得到响应。一些业务流程具有持续性和非阻塞的特点。

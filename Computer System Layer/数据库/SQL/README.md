@@ -1236,10 +1236,13 @@ InnoDB 引擎有一个特殊的功能叫做 “自适应哈希索引（adaptive 
 INSERT INTO table_name (column1, column2, column3, ...)
 VALUES (value1, value2, value3, ...);
 ```  
+
 批量插入：
 ```sql
 INSERT INTO tbl_name (a,b,c) VALUES(1,2,3),(4,5,6),(7,8,9);
 ```  
+批量插入语句中，如果任何一行数据插入失败，整个 INSERT 语句通常会回滚，这意味着如果有一行数据插入失败，所有的插入操作都将被撤销，不会插入到数据库中。在大多数数据库管理系统中，即使执行的多行插入操作没有显式地包装在事务内，它们通常会作为一个自动的隐式事务来处理。这意味着要么所有的插入成功，要么整个操作会回滚。  
+
 upsert 操作：
 ```sql
 INSERT IGNORE INTO table_name (column_names)  
