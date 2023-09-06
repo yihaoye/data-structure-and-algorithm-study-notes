@@ -460,7 +460,7 @@ Twitter System Publish Flow - by ByteByteGo
 <details>
 <summary>Designing an API Rate Limiter</summary>
 
-具体代码实现可参考 Java 实现 RateLimiter [例 1](./../object%20oriented%20design/other%20practices/rate%20limiter%201/)、[例 2](./../object%20oriented%20design/other%20practices/rate%20limiter%202/)、[例 3](./../algorithms/easy/359%20Logger%20Rate%20Limiter.java)、[例 4](./../object%20oriented%20design/other%20practices/rate%20limiter%203/Solution.java)  
+具体代码实现可参考 Java 实现 RateLimiter [例 1](./../object%20oriented%20design/other%20practices/rate%20limiter%203/Solution.java)、[例 2](./../object%20oriented%20design/other%20practices/rate%20limiter%201/)、[例 3](./../object%20oriented%20design/other%20practices/rate%20limiter%202/)、[例 4](./../algorithms/easy/359%20Logger%20Rate%20Limiter.java)。  
 
 * Step 1: Rate Limiter 限制用户发送的请求数量。单个服务每秒可处理的请求是有限的，因此需要机制限制实体（用户、设备、IP 等）单个时间内的请求、事件执行数量。
   * 比如用户每秒可发 1 个消息、用户每天允许 3 次失败的信用卡交易、同一 IP 每天最多可创建 20 个账户

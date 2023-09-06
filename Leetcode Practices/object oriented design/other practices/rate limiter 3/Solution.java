@@ -4,41 +4,59 @@ import java.time.*;
 import java.time.temporal.*;
 
 public class Solution {
+    // 漏桶法
     public static int reqLimit = 8;
     public static int timeLimit = 5; // sec
-    public static int creditLimit = 10;
-    public static Map<Integer, Queue<Instant>> customerRecords = new HashMap<>(); // 漏桶法
-    public static Map<Integer, Float> creditRecords = new HashMap<>(); // <id, creditLimit by default> 令牌桶法
+    public static Map<Integer, Queue<Instant>> userRecords = new HashMap<>();
 
-   public static void main(String[] args) {
-        // test with same customer id
-        for (int i=0; i<10; i++) {
-            System.out.println(rateLimit(1));
+    // 令牌桶法
+    public static int creditLimit = 2;
+    public static int[] creditRate = new int[]{1, 3}; // 1 credit per 3 sec -> 1/3 credit per sec，简化可以使用 double 但是要小心除不尽的情况
+    public static Map<Integer, Instant> userLastReq = new HashMap<>(); // <uid, user_last_request_time>
+    public static Map<Integer, int[]> creditRecords = new HashMap<>(); // <uid, credit_num> 初始为 0 credit 比如 [0, 3]，简化可以使用 double 但是要小心除不尽的情况
+
+    public static void main(String[] args) {
+        // test with same user id
+        int uid = 1000;
+        for (int i=0; i<11; i++) {
+            System.out.println(rateLimit(uid));
         }
         try {
             Thread.sleep(1000);
         } catch (Exception e) {
             // ... 
         }
-        System.out.println(rateLimit(1));
-   }
+        System.out.println(rateLimit(uid));
+    }
 
-   // Perform rate limiting logic for provided customer ID. Return true if the request is allowed, and false if it is not.
-   // Each customer allow x request in y sec
+    // Perform rate limiting logic for provided user ID. Return true if the request is allowed, and false if it is not.
+    // Each user allow x request in y sec
    
-   // Credit for customer - accumulate when not exceed last time, max = 10
-   public static boolean rateLimit(int customerId) {
-       Queue<Instant> queue = customerRecords.getOrDefault(customerId, new LinkedList<>());
-       Instant now = Instant.now();
-       Instant limit = now.minus(timeLimit, ChronoUnit.SECONDS);
-       while(!queue.isEmpty() && queue.peek().isBefore(limit)) {
-           queue.poll();
-       }
-       creditRecords.put(customerId, Math.min(creditLimit, creditRecords.getOrDefault(customerId, 0) + (float) (now.getEpochSecond() - queue.peekLast().getEpochSecond()) * reqLimit / timeLimit)); // 如果除不尽可以改用数组表示 [分子，分母]
-       if (queue.size() >= reqLimit && creditRecords.get(customerId) < 1) return false;
-       if (queue.size() >= reqLimit) creditRecords.put(customerId, creditRecords.get(customerId) - 1);
-       queue.offer(now);
-       customerRecords.put(customerId, queue);
-       return true;
-   }
+    // Credit for user - accumulate when not exceed last time, max = 2
+    public static boolean rateLimit(int userId) {
+        // 更新漏桶部分
+        userRecords.putIfAbsent(userId, new LinkedList<>());
+        Queue<Instant> queue = userRecords.get(userId);
+        Instant now = Instant.now();
+        Instant limit = now.minus(timeLimit, ChronoUnit.SECONDS);
+        while(!queue.isEmpty() && queue.peek().isBefore(limit)) {
+            queue.poll();
+        }
+
+        // 更新令牌桶部分
+        userLastReq.putIfAbsent(userId, now);
+        creditRecords.putIfAbsent(userId, new int[]{0, creditRate[1]});
+        int gapSeconds = now.getEpochSecond() - userLastReq.get(userId).getEpochSecond();
+        creditRecords.get(userId)[0] = Math.min(creditLimit * creditRate[1], creditRecords.get(userId)[0] + gapSeconds);
+
+        // 处理请求
+        if (queue.size() >= reqLimit && creditRecords.get(userId)[0] < creditRecords.get(userId)[1]) {
+            return false;
+        } else if (queue.size() >= reqLimit) {
+            creditRecords.get(userId)[0] -= creditRecords.get(userId)[1];
+        } else {
+            queue.offer(now);
+        }
+        return true;
+    }
 }
