@@ -54,6 +54,7 @@ public class Solution {
             return false;
         } else if (queue.size() >= reqLimit) {
             creditRecords.get(userId)[0] -= creditRecords.get(userId)[1];
+            userLastReq.put(userId, now);
         } else {
             queue.offer(now);
         }
