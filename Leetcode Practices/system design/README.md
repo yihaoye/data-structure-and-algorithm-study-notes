@@ -460,7 +460,7 @@ Twitter System Publish Flow - by ByteByteGo
 <details>
 <summary>Designing an API Rate Limiter</summary>
 
-具体代码实现可参考 Java 实现 RateLimiter [例 1](./../object%20oriented%20design/other%20practices/rate%20limiter%201/)、[例 2](./../object%20oriented%20design/other%20practices/rate%20limiter%202/)、[例 3](./../algorithms/easy/359%20Logger%20Rate%20Limiter.java)  
+具体代码实现可参考 Java 实现 RateLimiter [例 1](./../object%20oriented%20design/other%20practices/rate%20limiter%201/)、[例 2](./../object%20oriented%20design/other%20practices/rate%20limiter%202/)、[例 3](./../algorithms/easy/359%20Logger%20Rate%20Limiter.java)、[例 4](./../object%20oriented%20design/other%20practices/rate%20limiter%203/Solution.java)  
 
 * Step 1: Rate Limiter 限制用户发送的请求数量。单个服务每秒可处理的请求是有限的，因此需要机制限制实体（用户、设备、IP 等）单个时间内的请求、事件执行数量。
   * 比如用户每秒可发 1 个消息、用户每天允许 3 次失败的信用卡交易、同一 IP 每天最多可创建 20 个账户
@@ -521,7 +521,7 @@ Twitter System Publish Flow - by ByteByteGo
     * IP：在这个方案中，限制每个 IP 的请求；尽管在区分 “好” 和 “坏” 请求者方面不是最佳选择，但总比没有速率限制要好。基于 IP 的节流的最大问题是当多个用户共享一个公共 IP 时，例如在使用同一网关的网吧或智能手机用户中。一个不良用户可能会导致其他用户受到限制。缓存基于 IP 的限制时可能会出现另一个问题，因为即使是一台计算机，黑客也可以使用大量 IPv6 地址，让服务器耗尽内存跟踪 IPv6 地址不是难事。
     * 用户：可以在用户认证后对 API 进行速率限制。一旦通过身份验证，用户将获得一个令牌，用户将在每个请求中传递该令牌。这将确保对具有有效身份验证令牌的特定 API 进行速率限制。但是如果必须限制的是登录本身的 API 则怎么办？这种速率限制的弱点是黑客可以通过输入错误的凭据来对用户进行拒绝服务攻击，如此，实际用户将无法登录。
   * 如果将上述两种方案结合起来怎么样？混合：正确的方法可能是对每个 IP 和每个用户进行速率限制，因为它们在单独实施时都有弱点，但是，这将导致更多的缓存 entries 和每个 entries 的更多详细信息，因此需要更多的内存和存储。
-* PS: 漏桶法（Leaky Bucket）和令牌桶法（Token Bucket）、滑动日志
+* PS: [漏桶法（Leaky Bucket）和令牌桶法（Token Bucket）](./../object%20oriented%20design/other%20practices/rate%20limiter%203/Solution.java)、滑动日志
   * Leaky Bucket - 可以使用 FIFO 队列实现来实现简单的漏桶算法。它将请求转换为先进先出格式，以正常速率处理队列中的项目。
   * Token Bucket - 这是最简单的速率限制器算法，仅仅跟踪在设定的时间间隔内发出的请求数量。使用 Redis 的作为桶，设计一个 5QPM 速率限制，对于每个新的唯一用户请求，会在 userId 上创建一个哈希 key entry，其中包含请求时间戳和令牌计数。对于后续请求，将获取该特定 userId 的映射散列，并使用当前请求时间戳和剩余的可用令牌计数更新它，如果用户在第一次请求的同一分钟窗口内用完令牌，则来自该用户的所有其他请求都将被丢弃，当速率限制时间间隔过去时，令牌被重置为原始计数。警告：对于上面的 Redis 实现，由于先读后写行为，操作不是原子性的，因此在分布式环境中，可能会遇到竞争问题。![](./API%20Rate%20Limiter%20Token%20Bucket.png)（用户令牌计数和请求时间戳作为 Redis hash keys）
   * 关于单机版的限流器，比较著名的基本上都是基于令牌桶实现的，比如 Google 的 Guava，Go 语言的官方库中也有 rate。(https://guanhonly.github.io/2020/05/30/distributed-rate-limiter/, https://medium.com/swlh/rate-limiting-fdf15bfe84ab)

@@ -97,7 +97,7 @@
 * 高级设计/数据结构
   * [LRU 缓存 | Leetcode Q146](./Leetcode%20Practices/algorithms/medium/146%20LRU%20Cache.java)、[LFU 缓存 | Leetcode Q460](./Leetcode%20Practices/algorithms/hard/460%20LFU%20Cache.java)
   * [前缀树(字典树) | Leetcode Q208](./Leetcode%20Practices/algorithms/medium/208%20Implement%20Trie%20(Prefix%20Tree).java)
-  * [并查集与联合查找 | Leetcode Q200 Q684-UF-解法](./Leetcode%20Practices/algorithms/medium/200%20Number%20of%20Islands.java)
+  * [并查集与联合查找 | Leetcode Q200 Q684 UF-解法](./Leetcode%20Practices/algorithms/medium/200%20Number%20of%20Islands.java)
   * [线段树](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/SegmentTree/SegmentTree4.java)
   * [跳表](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/SkipList/SkipList.java)
   * [红黑树](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/RedBlackTree/RBTree.java)、[树状数组](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/BinaryIndexedTree(FenwickTree)/README.md#树状数组实现)

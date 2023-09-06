@@ -7,8 +7,8 @@ public class Solution {
     public static int reqLimit = 8;
     public static int timeLimit = 5; // sec
     public static int creditLimit = 10;
-    public static Map<Integer, Queue<Instant>> customerRecords = new HashMap<>();
-    public static Map<Integer, Float> creditRecords = new HashMap<>(); // <id, creditLimit by default>
+    public static Map<Integer, Queue<Instant>> customerRecords = new HashMap<>(); // 漏桶法
+    public static Map<Integer, Float> creditRecords = new HashMap<>(); // <id, creditLimit by default> 令牌桶法
 
    public static void main(String[] args) {
         // test with same customer id
