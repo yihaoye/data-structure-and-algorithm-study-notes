@@ -204,10 +204,10 @@ Google、Amazon 等各大中型公司技术面开始不再单纯地考核算法�
 ### 算法的实用性
 实际工作中，因为多数开发是业务场景，通过算法优化程序性能的机会可能并不多，因为大部分时候使用的库、框架已经封装了最优解的算法与数据结构。当然在基础设施（如网络的 [Dijkstra 算法](./Common%20Algorithm%20and%20Theory/Dijkstra%E7%AE%97%E6%B3%95.md) etc）、库开发、科研与实验（应用了各类数据科学如[有限元分析法](https://zh.wikipedia.org/wiki/%E6%9C%89%E9%99%90%E5%85%83%E7%B4%A0%E6%B3%95) / [共轭梯度法](http://hliangzhao.me/math/CG.pdf) / [自由度(数学)](https://zh.wikipedia.org/wiki/%E8%87%AA%E7%94%B1%E5%BA%A6_(%E7%BB%9F%E8%AE%A1%E5%AD%A6)) etc）、高频使用各种算法的特定领域（如自动控制的 [PID 控制器](https://zh.wikipedia.org/wiki/PID%E6%8E%A7%E5%88%B6%E5%99%A8) / [模糊逻辑](https://zh.wikipedia.org/wiki/%E6%A8%A1%E7%B3%8A%E9%80%BB%E8%BE%91)、计算机图形、音频视频、通信的[傅里叶变换](https://cloud.tencent.com/developer/article/1134448)、等等）、安全与数据传输（加密解密的非对称加密 [ECC](https://zh.wikipedia.org/wiki/%E6%A4%AD%E5%9C%86%E6%9B%B2%E7%BA%BF%E5%AF%86%E7%A0%81%E5%AD%A6) / [RSA](https://zh.wikipedia.org/wiki/RSA%E5%8A%A0%E5%AF%86%E6%BC%94%E7%AE%97%E6%B3%95) 以及对称加密 [AES](https://zh.wikipedia.org/wiki/%E9%AB%98%E7%BA%A7%E5%8A%A0%E5%AF%86%E6%A0%87%E5%87%86)、压缩解压如[霍夫曼算法](./Common%20Algorithm%20and%20Theory/%E9%9C%8D%E5%A4%AB%E6%9B%BC%E5%8E%8B%E7%BC%A9%E7%AE%97%E6%B3%95.md) / [LZ77](https://zh.wikipedia.org/wiki/LZ77%E4%B8%8ELZ78) / [安全哈希](https://zh.wikipedia.org/wiki/%E6%95%A3%E5%88%97%E5%87%BD%E6%95%B8) etc）、系统底层或某些自定义模块（比如搜索模块、推荐系统的 [PageRank](https://zh.wikipedia.org/wiki/PageRank)、可视化、数据处理与分析、监控警报系统等等）的场景下，会使用最优的算法、数学和数据结构则非常重要了。另外业务代码的逻辑与性能里很多时候是应该先考虑设计好数据库数据建模、设计优良的 SQL 而不是先想着通过代码算法进行优化。  
 领域算法例子如下：  
-* 安全算法 - 摘要、加密
-* 大数据处理 - 分治、布隆、外排 ...
+* 安全/压缩算法 - 摘要、加密
+* 大数据处理 - [分治](./Common%20Algorithm%20and%20Theory/分治法.md)、[布隆](./Common%20Algorithm%20and%20Theory/布隆过滤器及其算法.md)、外排 ...
 * 分布式算法 - Paxos、Raft、ZAB、[Quorum](./Common%20Algorithm%20and%20Theory/Quorum算法.md) ...
-* 负载均衡 - 经典 6 种（轮询法、加权轮询法、加权随机法、最小连接数法、随机法、源地址哈希法）（Nginx）
+* 负载均衡 - [常见 8 种](./Leetcode%20Practices/system%20design/Load%20Balancing.md)（Nginx）
 * 推荐算法 - 常见 8 种
 * 数据挖掘 - top 10
 

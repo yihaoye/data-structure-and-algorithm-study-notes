@@ -246,7 +246,7 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 * **Serviceability or Manageability** - how easy to operate and maintain. simplicity and speed with which a system can be repaired or maintained. （相关组件与手段：日志系统、CI/CD、统一配置中心、应用框架、IaC、版本管理、标准制定如协议、解耦）
   * <small>If the time to fix a failed system increases, then availability will decrease.</small>
   * <small>Ease of diagnosing and understanding problems when they occur, ease of making updates or modifications, and how simple the system is to operate.</small>
-* **Consistency** - 一致性，比如数据是否总是最新的
+* **Consistency** - 一致性，比如事务以及数据是否总是最新的（相关组件与手段：多数从节点写入、锁/分布式锁、CAS 及版本、WAL 预写日志、消息队列、时间戳、唯一 ID 等等）
   * Strong Consistency
   * Eventual Consistency (Tradeoff with Availability)
   * Idempotence（幂等性）- 保证幂等性是非常重要的，特别是在面临网络故障、超时、重试请求等情况下。以下是一些常见的方法来确保系统的操作是幂等的：
