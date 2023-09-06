@@ -33,13 +33,10 @@
 * 简述常见的工厂模式以及单例模式的使用场景  （中等）
 * 简述 Netty 线程模型，Netty 为什么如此高效？  （中等）
 * 线程池是如何实现的？简述线程池的任务策略  （中等）
-* 简述生产者消费者模型  （简单）
 * 产生死锁的必要条件有哪些？如何解决死锁？  （中等）
 * 简述 Spring 的 IOC 机制  （简单）
 * 简述 Spring bean 的生命周期  （中等）
 * 简述 Spring AOP 的原理
-* MVC 模型和 MVVM 模型的区别  （中等）
-* 简述使用协程的优点
 * 什么是公平锁？什么是非公平锁？  （简单）
 * 简述动态代理与静态代理
 * [Java IO](https://www.cnblogs.com/czwbig/p/10007201.html)
@@ -50,6 +47,8 @@
 * [go routine 和 thread、process 区别](https://huweicai.com/process-thread-goroutine/)
 * panic 相关 - [panic](https://www.yiibai.com/go/golang-panic.html)、[panic 和 recover](https://draveness.me/golang/docs/part2-foundation/ch05-keyword/golang-panic-recover/)
 * [上下文 Context](https://draveness.me/golang/docs/part3-runtime/ch06-concurrency/golang-context/)
+* [什么是 Go Scheduler](https://golang.design/go-questions/sched/what-is/)
+* [GPM 是什么](https://golang.design/go-questions/sched/gpm/)
 
 ## 数据库高频
 * [为什么 InnoDB 表必须有主键，并且推荐使用整型的自增主键？](https://blog.csdn.net/weixin_41699562/article/details/104139458)
@@ -135,6 +134,7 @@
 * RPC 与 REST 区别与选择 - [解答一](https://www.cnblogs.com/wongbingming/p/11086773.html)、[解答二](https://zhuanlan.zhihu.com/p/102760613)、[服务调用 / API 设计](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md#API%20Design)
 * [CI 服务有什么用途](https://www.modb.pro/db/404626)
 * [服务降级、服务熔断](./../Leetcode%20Practices/system%20design/%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E4%B8%8E%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD.md)
+* MVC 模型和 MVVM 模型的区别
 
 ## Redis 高频
 * [redis 有哪些数据类型？可以应用在什么场景？](https://cloud.tencent.com/developer/article/1975464)

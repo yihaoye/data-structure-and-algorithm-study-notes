@@ -183,8 +183,8 @@
   
 ## 系统通用基础设施
 摘录：https://www.cnblogs.com/ilinuxer/p/6697015.html  
-* API 网关（负载均衡、身份验证、路由、速率限制、计费、监控、分析、安全防护）
-* 自动扩展与 fail-over（ECS、K8S）
+* API 网关（身份验证、路由、速率限制、流量控制、计费、监控、分析、协议转换、安全防护）、Firewall 防火墙（访问控制）
+* 负载均衡、自动扩展与 fail-over（ECS、K8S）
 * 业务应用和后端基础框架（MVC、IOC、ORM）
 * 缓存、CDN（本地缓存即内存中的缓存机制：ConcurrentHashMap etc；分布式缓存即单独的缓存服务：Redis、Memcached etc）
 * 主机、计算实例、服务器（EC2、Docker、Serverless）
@@ -197,7 +197,7 @@
 * 加密解密、压缩解压
 * 单点登录系统（Central Authentication Service - CAS）
 * [统一配置中心](https://en.wikipedia.org/wiki/Configuration_management)（Config Server、propeties、yaml）
-* 管理后台/管理控制台（允许客服或工程师直接访问和管理数据库数据以支持用户）
+* 管理后台/管理控制台（允许客服或工程师直接访问和管理数据库数据以支持用户，比如 Django Admin、WordPress）
 * [服务调用/服务治理框架（REST API、RPC）](./System%20Design%20Fundamentals.md#API%20Design)
 * 统一调度中心（定时调度 cron job，如定时抓取数据、刷新状态等）
 * 统一日志服务（log4j、logback、Kibana、CloudWatch）
@@ -2604,8 +2604,17 @@ Ref：
 
 * [从 0 到 1：构建强大且易用的规则引擎](https://tech.meituan.com/2017/06/09/maze-framework.html)
 
-最简单的方式是 hard coding 规则，更进一步的是可以使用[模式匹配](https://hillside.net/plop/plop99/proceedings/Metayer/MatcherHandler.pdf)或[元编程（Metaprogramming）](https://zh.wikipedia.org/zh-hans/%E5%85%83%E7%BC%96%E7%A8%8B)，支持元编程的语言有 Lisp、Python、Ruby 等。  
+最简单的方式是 hard coding 规则，更进一步的是可以使用[模式匹配](https://hillside.net/plop/plop99/proceedings/Metayer/MatcherHandler.pdf)或[元编程（Metaprogramming）](https://zh.wikipedia.org/zh-hans/%E5%85%83%E7%BC%96%E7%A8%8B)，支持元编程的语言有 Lisp、Python、Ruby、Golang 等。  
 应该可以用 NoSQL 数据库存储规则（决策树结构或规则数据模型 - 规则本质是一个函数，由 n 个输入、1 个输出和函数计算逻辑三部分组成），构建管理后台/管理控制台可以支持动态规则（分析师添加、更新规则）。  
+
+</details>
+
+
+<details>
+<summary>设计广告系统</summary>
+
+参考：https://khamdb.com/ad-tech/advertising-system-architecture-how-to-build-a-production-ad-platform/  
+![](./ads-system-design.jpeg)  
 
 </details>
 
