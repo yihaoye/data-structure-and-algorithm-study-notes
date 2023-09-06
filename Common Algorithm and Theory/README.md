@@ -100,7 +100,7 @@
         - 卷积神经网络 | CNN
         - 长短期记忆, 循环神经网络 | LSTM, RNN
         - 生成对抗网络 | GAN
-        - Transformer 模型, 大语言模型（LLM）
+        - [Transformer 模型, 大语言模型（LLM）](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model))
   - [数学](../Computer%20Science%20Maths/README.md)
     - [鸽巢原理 | Pigeonhole Principle](./鸽巢原理.md)
     - [取模运算 | Modulo](./取模运算.md)

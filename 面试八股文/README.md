@@ -10,6 +10,18 @@
 3. 选点阐述：要有侧重地从这些要点中选择一两个你比较熟悉的阐述细节，其他要点简单介绍即可。例如如果你最熟悉的是建立连接阶段（比如 TCP 连接以及 HTTP/S 连接，TCP 使用三次握手建立连接）
 
 这种情况下，面试官会从你比较熟悉的点去进行延伸提问。  
+
+## 设计模式、系统设计、DevOps 高频
+* MVC 模型和 MVVM 模型的区别
+* 简述常见的工厂模式以及单例模式的使用场景
+* [线程池是如何实现的？简述线程池的任务策略](https://tech.meituan.com/2020/04/02/java-pooling-pratice-in-meituan.html)
+* 简述 CAS 原理，什么是 ABA 问题，怎么解决？
+* 什么是公平锁？什么是非公平锁？
+* 产生死锁的必要条件有哪些？如何解决死锁？
+* [[微服務] 什麼是 gRPC，架構上為什麼要使用 gRPC](https://www.youtube.com/watch?v=qEB3yFzETVs)
+* RPC 与 REST 区别与选择 - [解答一](https://www.cnblogs.com/wongbingming/p/11086773.html)、[解答二](https://zhuanlan.zhihu.com/p/102760613)、[服务调用 / API 设计](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md#API%20Design)
+* [CI 服务有什么用途](https://www.modb.pro/db/404626)
+* [服务降级、服务熔断](./../Leetcode%20Practices/system%20design/%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E4%B8%8E%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD.md)
   
 ## Java 高频
 * Java 中垃圾回收机制中如何判断对象需要回收？常见的 GC 回收算法有哪些？ （中等）
@@ -18,7 +30,7 @@
 * Synchronized 关键字底层是如何实现的？它与 Lock 相比优缺点分别是什么？ （中等）
 * 简述 Java 的反射机制及其应用场景  （简单）
 * Synchronized，Volatile（及其实现原理），可重入锁的不同使用场景及优缺点    （困难）
-* [简述 BIO, NIO, AIO 的区别](https://tobebetterjavaer.com/nio/BIONIOAIO.html)  （困难）
+* [简述 Java BIO、NIO、AIO 的区别](https://tobebetterjavaer.com/nio/BIONIOAIO.html)  （困难）
 * Java 类的加载流程是怎样的？什么是双亲委派机制？  （简单）
 * JMM 中内存模型是怎样的？什么是指令序列重排序？  （中等）
 * JVM 内存是如何对应到操作系统内存的？  （中等）
@@ -28,16 +40,11 @@
 * hashcode 和 equals 方法的联系  （简单）
 * Java 常见锁有哪些？ReetrantLock 是怎么实现的？  （中等）
 * ThreadLocal 实现原理是什么？  （简单）
-* 简述 CAS 原理，什么是 ABA 问题，怎么解决？  （简单）
 * 简述 Spring 的初始化流程  （中等）
-* 简述常见的工厂模式以及单例模式的使用场景  （中等）
 * 简述 Netty 线程模型，Netty 为什么如此高效？  （中等）
-* 线程池是如何实现的？简述线程池的任务策略  （中等）
-* 产生死锁的必要条件有哪些？如何解决死锁？  （中等）
 * 简述 Spring 的 IOC 机制  （简单）
 * 简述 Spring bean 的生命周期  （中等）
 * 简述 Spring AOP 的原理
-* 什么是公平锁？什么是非公平锁？  （简单）
 * 简述动态代理与静态代理
 * [Java IO](https://www.cnblogs.com/czwbig/p/10007201.html)
 * [Java 注解原理](../Tool%20Sets/Annotation.java)
@@ -128,13 +135,6 @@
   * 多重要素验证（应用在例如后勤办公室等）
   * 对敏感数据进行 AES 加密
   * 避免非加密信息/数据在非安全处（比如邮件）存放/发送
-
-## 系统设计、DevOps 高频
-* [[微服務] 什麼是 gRPC，架構上為什麼要使用 gRPC](https://www.youtube.com/watch?v=qEB3yFzETVs)
-* RPC 与 REST 区别与选择 - [解答一](https://www.cnblogs.com/wongbingming/p/11086773.html)、[解答二](https://zhuanlan.zhihu.com/p/102760613)、[服务调用 / API 设计](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md#API%20Design)
-* [CI 服务有什么用途](https://www.modb.pro/db/404626)
-* [服务降级、服务熔断](./../Leetcode%20Practices/system%20design/%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E4%B8%8E%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD.md)
-* MVC 模型和 MVVM 模型的区别
 
 ## Redis 高频
 * [redis 有哪些数据类型？可以应用在什么场景？](https://cloud.tencent.com/developer/article/1975464)
