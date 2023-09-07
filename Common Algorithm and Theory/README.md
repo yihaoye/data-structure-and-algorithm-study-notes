@@ -16,7 +16,7 @@
     - [枚举/穷举 | Enumerate](./枚举(穷举)算法.md)
     - [模拟 | Simulation](./模拟算法.md)
     - [递归, 迭代 | Recursion, Iteration](./递归与迭代.md)
-    - [分治法 | Divide-and-Conquer](./分治法.md) (通常被认为一种方案思路或算法范型而非具体算法，时间复杂度不固定，比如若是开方分解则为 `O(logN)`，若是线性分解则为 `O(N)` 或 `O(N*f(N))` 或 `O(N*logN)` 比如归并算法，其他分解情况下亦有可能是其他大 O) ([分治法与二分算法的区别](./分治法.md#分治法-vs-二分算法))
+    - [分治法 | Divide-and-Conquer](./分治法.md) (通常被认为一种方案思路或算法范型而非具体算法，时间复杂度不固定，比如若是开方分解则为 `O(logN)`，若是线性分解则为 `O(N)` 或 `O(N*f(N))` 或 `O(N*logN)` 比如归并排序，其他分解情况下亦有可能是其他大 O) ([分治法与二分算法的区别](./分治法.md#分治法-vs-二分算法))
   - 中阶
     - [二分搜索/二分算法 | Binary Search](./二分搜索.md) (时间复杂度 `O(logN)`)
     - [双指针法, 滑动窗口算法 | Two Pointer, Sliding Window](./双指针法与滑动窗口算法.md)
@@ -42,7 +42,7 @@
         - 拉斯维加斯算法
     - [图匹配 | Graph Match](./图匹配.md)
       - [匈牙利算法 | Hungarian Algorithm](./匈牙利算法.md) (时间复杂度 `O(N^3)`)
-    - [迪杰斯特拉算法 | Dijkstra Algorithm](./Dijkstra算法.md)
+    - [迪杰斯特拉算法 | Dijkstra Algorithm](./Dijkstra算法.md) (时间复杂度 `O((E+V)*logV)` - 仅计算了指定的一个起点到其他各点)
     - [动态规划, 状态机, 规则引擎 | Dynamic Programming, State Machine, Rule Engine](./动态规划与状态机.md)
       - [前缀和, 差分, 树状数组, 线段树 | Prefix Sum, Difference, Binary Indexed Tree, Segment Tree](./前缀和与差分.md)
       - [记忆化搜索 | Memory Search](./记忆化搜索.md)
@@ -53,13 +53,13 @@
     - [KMP 算法 | Knuth–Morris–Pratt Algorithm](./KMP算法.md) (时间复杂度 `O(N+M)`)
     - [AC 自动机 | Aho–Corasick Algorithm](./AC自动机.md)
     - 马拉车算法 | Manacher Algorithm
-    - [并查集/联合查找算法 | Union Find Algorithm](./并查集与联合查找算法.md) (时间复杂度 `O(a(N))` - a(N) 为反阿克曼函数，对于大部分 N，a(N) 均小于 5，所以并查集的时间复杂度也可视为 `O(1)`)
+    - [并查集联合查找算法 | Disjoint-Set Union-Find Algorithm](./并查集与联合查找算法.md) (时间复杂度 `O(a(N))` - a(N) 为反阿克曼函数，对于大部分 N，a(N) 均小于 5，所以并查集的时间复杂度也可视为 `O(1)`)
     - [最小生成树相关算法 | Minimum Spanning Tree Algorithms](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/MinimumSpanningTree/README.md)
     - 网络流相关算法
   - 系统级
     - [字典树算法 | Trie Algorithm](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/Trie/README.md)
     - [映射-归约 | MapReduce](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md)
-    - [分桶法 | Range Bucketing](./分桶法.md) (若为平方分割，则时间复杂度 `O(√n)`)
+    - [分桶法 | Range Bucketing](./分桶法.md) (若为平方分割，则时间复杂度 `O(√N)`)
     - [蓄水池抽样算法 | Reservoir Sampling](./蓄水池抽样算法.md)
     - [霍夫曼压缩算法 | Huffman Coding/Compression](./霍夫曼压缩算法.md)
     - [布隆过滤器及其算法 | Bloom Filter](./布隆过滤器及其算法.md)

@@ -76,6 +76,7 @@
   - 无向图 | Undirected Graph
     - [二分图 | Bipartite Graph](./Data%20Structure%20Implementation/BipartiteGraph/README.md)
   - 加权图（有向或无向）| Weighted Graph
+    - 多阶段图 | Multistage Graph (通常使用动态规划)
   - [生成树 | Spanning Tree](./Data%20Structure%20Implementation/SpanningTree/README.md)
     - [最小生成树 | Minimum Spanning Tree](./Data%20Structure%20Implementation/MinimumSpanningTree/README.md)
   
