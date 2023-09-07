@@ -11,7 +11,7 @@ public class Solution {
 
     // 令牌桶法
     public static int creditLimit = 2;
-    public static int[] creditRate = new int[]{1, 3}; // 1 credit per 3 sec -> 1/3 credit per sec，简化可以使用 double 但是要小心除不尽的情况
+    public static int[] creditRate = new int[]{1, 3}; // 比如每 3 秒 1 credit 或每 9 秒 3 credit（可以自行选择是否计算并除以最大公约数）-> 1/3 credit per sec，简化可以使用 double 但是要小心除不尽的情况
     public static Map<Integer, Instant> userLastReq = new HashMap<>(); // <uid, user_last_request_time>
     public static Map<Integer, int[]> creditRecords = new HashMap<>(); // <uid, credit_num> 初始为 0 credit 比如 [0, 3]，简化可以使用 double 但是要小心除不尽的情况
 
@@ -47,7 +47,7 @@ public class Solution {
         userLastReq.putIfAbsent(userId, now);
         creditRecords.putIfAbsent(userId, new int[]{0, creditRate[1]});
         int gapSeconds = now.getEpochSecond() - userLastReq.get(userId).getEpochSecond();
-        creditRecords.get(userId)[0] = Math.min(creditLimit * creditRate[1], creditRecords.get(userId)[0] + gapSeconds);
+        creditRecords.get(userId)[0] = Math.min(creditLimit * creditRate[1], creditRecords.get(userId)[0] + gapSeconds * creditRate[0]);
 
         // 处理请求
         if (queue.size() >= reqLimit && creditRecords.get(userId)[0] < creditRecords.get(userId)[1]) {
