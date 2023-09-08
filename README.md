@@ -6,10 +6,10 @@
 ### 本笔记包括以下内容:  
 * [行为型问题与工作实践 | Behavior Question & Best Practice](./Behavior%20Question%20and%20Best%20Practice/README.md)
   * [质量保证 | Quality Assurance](./Quality%20Assurance/README.md)
-* [Leetcode Practices](./Leetcode%20Practices/) (主要包含了[算法](./Leetcode%20Practices/algorithms/)、[SQL](./Leetcode%20Practices/database/)、[OOD](./Leetcode%20Practices/object%20oriented%20design/README.md) 、[系统设计](./Leetcode%20Practices/system%20design/README.md) 和 [API 设计](./Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md#api-design)；算法题第一次提交 round 1 是自己的首次解答方法，第二次提交 round 2 是进行复盘复习后并添加、理解他人的更优解以及增添其他语言解题实现，round 0 则是首次答题没头绪参考他人解题思路)
+* [Practices](./Leetcode%20Practices/) (主要包含了 [Leetcode 算法](./Leetcode%20Practices/algorithms/)、[SQL](./Leetcode%20Practices/database/)、[OOD](./Leetcode%20Practices/object%20oriented%20design/README.md) 、[系统设计](./Leetcode%20Practices/system%20design/README.md) 和 [API 设计](./Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md#api-design)；算法题第一次提交 round 1 是自己的首次解答方法，第二次提交 round 2 是进行复盘复习后并添加、理解他人的更优解以及增添其他语言解题实现，round 0 则是首次答题没头绪参考他人解题思路)
   * **[重点：分类分析套路](./分析套路.md)**
-* [HackerRank Practices](./HackerRank%20Practises/) (包括一些 [Java 语言实例解析](./HackerRank%20Practises/java/)、[Linux Bash](./HackerRank%20Practises/bash/))
-* [其他算法实践、真题、面经笔记](./Other%20Practices/)
+  * [HackerRank](./HackerRank%20Practises/) (包括一些 [Java 语言实例解析](./HackerRank%20Practises/java/)、[Linux Bash](./HackerRank%20Practises/bash/))
+  * [其他算法实践、真题、面经笔记](./Other%20Practices/)
 * [工具集 | Tool Sets](./Tool%20Sets/) (常用编码逻辑工具集查询手册，包括一些 Java 语言实例解析、非 Java 语言内置但是重要的数学工具等等)
 * [算法及理论 | Common Algorithm & Theory](./Common%20Algorithm%20and%20Theory/README.md)
 * [数据结构、数据类型及其实现 | Common Data Structure & Data Type & Implementation](./Common%20Data%20Structure%20and%20Data%20Type/README.md) (包括并发相关的数据结构的详解)
@@ -23,15 +23,8 @@
   * [编程语言特性 | Programming Languages Features](./Program%20Languages%20Features/README.md)
   * [计算机术语表 | Related Terms](./面试八股文/英文术语.md)
 * [其他类别岗位（如架构师、工程经理、安全工程师等）模拟面试 ｜ Other Position Interview Mock](https://www.youtube.com/@tryexponent/playlists)
-* Books and Courses
-  * [算法导论 | Introduction to Algorithms](./Introduction%20to%20Algorithms/)
-  * [程序员面试金典 | Cracking the Coding Interview](./Cracking%20the%20Coding%20Interview/)
-  * [算法竞赛入门经典](./算法竞赛入门经典/README.md)
-  * [算法艺术与信息学竞赛](./算法艺术与信息学竞赛/README.md)
-  * [其他数据结构网课笔记](./其他数据结构网课/)
-* [Topcoder](./Topcoder/)
-* [Codility Practices](./Codility%20Practices/)
-* [Google Code Jam Practices](./Google%20Code%20Jam/)
+* Books and Courses ([算法导论 | Introduction to Algorithms](./Introduction%20to%20Algorithms/)、[程序员面试金典 | Cracking the Coding Interview](./Cracking%20the%20Coding%20Interview/)、[算法竞赛入门经典](./算法竞赛入门经典/README.md)、[算法艺术与信息学竞赛](./算法艺术与信息学竞赛/README.md)、[其他数据结构网课笔记](./其他数据结构网课/))
+* [Topcoder](./Topcoder/)、[Codility Practices](./Codility%20Practices/)、[Google Code Jam Practices](./Google%20Code%20Jam/)
 * [标准认知能力测试 | Criteria Cognitive Aptitude Test](./智力测试/README.md)
 
 
@@ -185,8 +178,7 @@
 > 位运算（Bit），基础数据结构实现（LinkedList、Deque等实现），一些设计思想（Design），数学知识（Math），通配符，转义字符，记忆化搜索等。  
 > 如果用的是 Java，其实别的语言也一样，Java 还有一些常用的数据结构：TreeMap，TreeSet，PriorityQueue，Deque 等  
 > 以上的所有东西，全部都是 Leetcode 题目出现过的。  
-> 如果是针对面试，有很多都是北美的，Google、Facebook 这种公司，会的还要更多：  
-> Dijkstra，二分图，红黑树知识等；  
+> 如果是针对面试，有很多都是北美的，Google、Facebook 这种公司，会的还要更多：Dijkstra，二分图，红黑树知识等；  
 > Java 的基础：Heap 实现，HashMap，HashSet 具体区别等，equals、hashcode 重写等  
 > 这些东西一样，都是曾经在面试中大量出现的，就是我们要会的基础。  
   
@@ -211,7 +203,8 @@ Google、Amazon 等各大中型公司技术面开始不再单纯地考核算法�
 * 推荐算法 - 常见 8 种
 * 数据挖掘 - top 10
 
-[普通算法和 AI 算法在应用、本质上的异同。](./普通算法AI算法异同.md)  
+**[普通算法和 AI 算法在应用、本质上的异同。](./普通算法AI算法异同.md)**  
+
 相比数据结构与算法，实际工作中更多的性能优化是来自并发、异步编程（比如多线程与非阻塞逻辑、NIO）以及 SE（软件工程）、OOD（抽象化、设计模式）、系统设计相关的工程优化（比如程序尽量复用缓存如内存变量或 NoSQL 且减少重复的 IO 调用如外部 API 请求等等，以及架构、数据库操作优化等等）。  
 一般对于社招来说，Leetcode 周赛稳定前 3 道即足够了（分数 2000 分以上），第 4 道如果有瓶颈则多练第 4 道（hard 题）也就可以慢慢克服。总的来说分数在 2000 - 2500 就相当足够应付面试（包括谷歌），而且这个分数区间也不需要是天赋型选手，练度够即可。  
   
