@@ -105,7 +105,7 @@
 - [x] 161	One Edit Distance		
 - [x] 38	Count and Say		
 - [ ] 358	Rearrange String k Distance Apart		
-- [ ] 316	Remove Duplicate Letters		
+- [x] 316	Remove Duplicate Letters		
 - [ ] 271	Encode and Decode Strings		
 - [x] 168	Excel Sheet Column Title		
 - [x] 171	Excel Sheet Column Number		
@@ -720,7 +720,7 @@
 - [x] 311	Sparse Matrix Multiplication		
 - [x] 312	Burst Balloons		
 - [x] 314	Binary Tree Vertical Order Traversal		
-- [ ] 316	Remove Duplicate Letters		
+- [x] 316	Remove Duplicate Letters		
 - [ ] 317	Shortest Distance from All Buildings		
 - [x] 318	Maximum Product of Word Lengths		
 - [x] 322	Coin Change		
