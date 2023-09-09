@@ -151,6 +151,9 @@
 * [Nginx 高效原理](https://zhuanlan.zhihu.com/p/108031600)
 
 ## Kafka 高频
+* [System Design: Why is Kafka fast?](https://www.youtube.com/watch?v=UNUz1-msbOM)
+  * 顺序 I/O
+  * [Zero-Copy (DMA)](./../Leetcode%20Practices/system%20design/IO模型与Web服务器工作模型.md#零拷贝)
 * [kafka 架构](https://cloud.tencent.com/developer/article/1853417)
 * [如何确定当前能读到哪一条消息](https://cloud.tencent.com/developer/article/1853417)
 * [Kafka consumer group](https://www.cnblogs.com/huxi2b/p/6223228.html)
