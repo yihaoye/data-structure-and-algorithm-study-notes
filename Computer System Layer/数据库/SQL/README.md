@@ -1334,6 +1334,9 @@ ToDo...
 * 存储过程，往往定制化于特定的数据库上，因为支持的编程语言不同。当切换到其他厂商的数据库系统时，需要重写原有的存储过程。
 * 存储过程的性能调校与撰写，受限于各种数据库系统。
 
+### Procedure 例题
+* [LC Q2252](./../../../Leetcode%20Practices/database/hard/2252%20Dynamic%20Pivoting%20of%20a%20Table.sql)
+
 ### Stored Procedure Syntax
 ```sql
 CREATE PROCEDURE procedure_name
