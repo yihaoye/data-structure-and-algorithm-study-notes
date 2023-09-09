@@ -20,6 +20,7 @@
     - [数组双端队列 | ArrayDeque](./../HackerRank%20Practises/java/medium/Java%20Dequeue.java)
     - 基于链表的线程安全无界双端队列 | ConcurrentLinkedDeque
     - 基于链表的FIFO双端阻塞队列 | LinkedBlockingDeque
+  - [环形队列 | CircularQueue (RingBuffer)](./../Leetcode%20Practices/algorithms/medium/622%20Design%20Circular%20Queue.java)
   - 基于链表的线程安全无界队列 | ConcurrentLinkedQueue
   - [阻塞队列 | BlockingQueue](./Data%20Structure%20Implementation/BlockingQueue/README.md)
     - [基于数组的并发阻塞队列 | ArrayBlockingQueue](./Data%20Structure%20Implementation/ArrayBlockingQueue/ArrayBlockingQueue.java) (入队/出队 O(1)，首值 O(1))

@@ -99,6 +99,7 @@
 
 ## 网络高频
 * [计算机网络面试突击](https://juejin.cn/post/6932001161532669960)
+* [Linux network ring buffers](https://medium.com/coccoc-engineering-blog/linux-network-ring-buffers-cea7ead0b8e8)
 * [TCP 三次握手](https://www.zhihu.com/question/24853633/answer/63668444)
 * [Websocket](https://www.ruanyifeng.com/blog/2017/05/websocket.html)
 * [Server Sent Events (SSE)](https://www.ruanyifeng.com/blog/2017/05/server-sent_events.html)
