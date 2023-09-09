@@ -40,6 +40,44 @@
 public interface Serializable {
 }
 // Serializable接口没有定义任何方法，它是一个空接口。这样的空接口称为“标记接口”（Marker Interface），实现了标记接口的类仅仅是给自身贴了个“标记”，并没有增加任何方法。
+import java.io.*;
+class Data implements Serializable { // 创建一个可序列化的类
+    private static final long serialVersionUID = 1L;
+    private int value;
+    private String description;
+
+    public Data(int value, String description) {
+        this.value = value;
+        this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Data [value=" + value + ", description=" + description + "]";
+    }
+}
+
+public class Example {
+    public static void main(String[] args) {
+        // 创建一个 Data 对象
+        Data data = new Data(42, "This is some data.");
+        // 将 Data 对象序列化到文件
+        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("data.ser"))) {
+            oos.writeObject(data);
+            System.out.println("Data 对象已序列化并保存到文件。");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // 从文件中反序列化 Data 对象
+        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("data.ser"))) {
+            Data restoredData = (Data) ois.readObject();
+            System.out.println("从文件中反序列化的 Data 对象：" + restoredData);
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
 
 // 序列化
 // 把一个Java对象变为byte[]数组，需要使用ObjectOutputStream。它负责把一个Java对象写入一个字节流：

@@ -100,7 +100,10 @@
 ## 网络高频
 * [计算机网络面试突击](https://juejin.cn/post/6932001161532669960)
 * [Linux network ring buffers](https://medium.com/coccoc-engineering-blog/linux-network-ring-buffers-cea7ead0b8e8)
+* [Linux 网络栈接收数据过程](https://blog.packagecloud.io/monitoring-tuning-linux-networking-stack-receiving-data/)
 * [TCP 三次握手](https://www.zhihu.com/question/24853633/answer/63668444)
+  * 三次握手的主要目的是确认自己和对方的发送和接收都是正常的，从而保证了双方能够进行可靠通信。若采用两次握手，当第二次握手后就建立连接的话，此时客户端知道服务器能够正常接收到自己发送的数据，而服务器并不知道客户端是否能够收到自己发送的数据。
+  * ACK 是为了告诉客户端发来的数据已经接收无误，而传回 SYN 是为了告诉客户端，服务端收到的消息确实是客户端发送的消息。Seq 为序号。
 * [Websocket](https://www.ruanyifeng.com/blog/2017/05/websocket.html)
 * [Server Sent Events (SSE)](https://www.ruanyifeng.com/blog/2017/05/server-sent_events.html)
 
