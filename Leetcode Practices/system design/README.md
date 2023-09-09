@@ -11,11 +11,11 @@
   
 ### **面试步骤**
 [真实面试过程模拟 (System Design Mock: with ex-Google EM)](https://www.youtube.com/watch?v=_K-eupuDVEc)
-* 场景确认（所有细节）、分析及列出需求（功能与非功能）-（OOD 也一样）
-* 初步架构图（注意可以在一开始列出主要服务如 booking / ordering、payment、feed / stream、search、upload / download、cronjob、auth / limit、notification 等等并用不同的组件画框把它们区分开来）-（对应于 OOD 的流程图）
-* 数据建模、数据库选择（SQL 还是 NoSQL 及其原因）与设计（所有的 Table 然后细讲主要的 Table）-（对应于 OOD 里选择什么数据结构以及类设计进行存储）
-* API 设计或某段主要服务、功能的逻辑流，可用伪代码 -（对应 OOD 里的外部可调用 public 函数）
-* 扩展与可能的风险以及它们的解决方案（安全、可用性、可扩展性、高并发、性能等等）
+* 场景确认（所有细节，Back-of-the-envelope estimation 比如 QPS、带宽、存储）、分析及列出需求（功能与非功能）-（OOD 也一样）
+* 初步架构图（注意可以在一开始列出主要服务如 booking / ordering、payment、feed / stream、search、upload / download、cronjob、auth / limit、notification 等等并用不同的组件画框把它们区分开来）至少画 5-6 个系统的核心组件 -（对应于 OOD 的流程图）
+* 数据建模、数据库选择（SQL 还是 NoSQL 及其原因）与 schema 设计（所有的 Table 然后细讲主要的 Table）-（对应于 OOD 里选择什么数据结构以及类设计进行存储）
+* 系统接口或函数方法，API 设计或某段主要服务、功能的逻辑流，可用伪代码 -（对应 OOD 里的外部可调用 public 函数）
+* Deep dive 2、3 个组件；扩展与可能的瓶颈、风险以及它们的解决方案（安全、可用性、可扩展性、高并发、性能等等）
 
 系统设计面试主要考察以下几个方面：  
 * 可行解 Work Solution、特定问题 Special Case、分析能力 Analysis、权衡 Tradeoff、知识储备 Knowledge Base  
@@ -215,16 +215,7 @@
 </details>
 <br />
   
-# Grokking System Design
-## Standard Design Steps within Interview
-* Step 1: Requirements clarifications
-* Step 2: System interface definition - Define what APIs/Methods are expected from the system
-* Step 3: Back-of-the-envelope estimation - estimate the scale of the system for scaling, partitioning, load balancing and caching
-* Step 4: Defining data model - entities of service, database choose and schema and design
-* Step 5: High-level design - block diagram with 5-6 boxes representing the core components of the system
-* Step 6: Detailed design - dig deeper into two or three components
-* Step 7: Identifying and resolving bottlenecks
-  
+# Grokking System Design  
 ## System Design Basics
 During designing a large system, investing in scaling before it is needed is generally not a smart business proposition; however, some forethought into the design can save valuable time and resources in the future.  
 Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Theorem`, `Load Balancing`, `Caching`, `Data Partitioning`, `Indexes`, `Proxies`, `Queues`, `Replication`, and choosing between `SQL vs NoSQL`.  
@@ -315,6 +306,9 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 ### [分布式事务](./分布式事务.md)
 
 ### [分布式锁](./分布式锁.md)
+
+### [网络相关](https://github.com/yihaoye/stem-notes/blob/master/e-computer-network/README.md)
+![](./data-transmitted-between-applications.jpeg)  
 
 ### 状态有无
 在计算机系统中，"stateful"（有状态）和 "stateless"（无状态）是两种不同的概念，用于描述系统或组件在处理请求和交互时是否保存状态信息。
@@ -952,7 +946,7 @@ Driver 如何获得打车请求？—— Report location 的同时，服务器�
 * Microsoft Smooth Streaming
 * Adobe HTTP Dynamic Streaming (HDS)
   
-不需要完全理解甚至记住这些流协议名称，因为它们是需要特定领域知识的底层细节。重要的是要了解不同的流协议支持不同的视频编码和播放器。当设计视频流服务系统时，必须选择正确的流协议来支持面对的用例。[流媒体协议更多细节](https://archerzdip.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%E7%B3%BB%E5%88%97-%E6%B5%81%E5%AA%92%E4%BD%93%E5%8D%8F%E8%AE%AE%E7%AF%87-%E5%B8%B8%E8%A7%81%E7%9A%84%E6%B5%81%E5%AA%92%E4%BD%93%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D/)  
+不需要完全理解甚至记住这些流协议名称，因为它们是需要特定领域知识的底层细节。重要的是要了解不同的流协议支持不同的视频编码和播放器。当设计视频流服务系统时，必须选择正确的流协议来支持面对的用例。流媒体协议更多细节：[Ref 1](https://archerzdip.github.io/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE%E7%B3%BB%E5%88%97-%E6%B5%81%E5%AA%92%E4%BD%93%E5%8D%8F%E8%AE%AE%E7%AF%87-%E5%B8%B8%E8%A7%81%E7%9A%84%E6%B5%81%E5%AA%92%E4%BD%93%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D/)、[Ref 2](https://github.com/0voice/audio_video_streaming/blob/main/article/008-%E6%B5%81%E5%AA%92%E4%BD%93%E5%8D%8F%E8%AE%AE%E4%BB%8B%E7%BB%8D.md)  
   
 视频系统的其他拓展功能：  
 * 推荐
