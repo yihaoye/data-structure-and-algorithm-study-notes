@@ -32,6 +32,13 @@ for (int j = 0; j < wordLen; j++) {
 
 
 
+// 字符串转数字
+for (int digit = 0; digit <= 9999; digit++) {
+    System.out.println(String.format("%04d", digit)); // prepend 0 for digit which smaller than 1000
+}
+
+
+
 char c = 'Z';
 Character.isLetter(c);
 Character.isDigit(c);
