@@ -336,7 +336,7 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 
 无论是有状态还是无状态的设计，都取决于具体的应用场景和需求。一些应用可能需要维护状态以跟踪用户活动，而另一些应用可能更适合使用无状态的设计以获得更好的可扩展性和性能。  
 
-### [Deployment](https://www.youtube.com/watch?v=AWVTKBUnoIg)
+## [Deployment](https://www.youtube.com/watch?v=AWVTKBUnoIg)
 * ![](./top-5-most-used-deployment-strategies.png) (by ByteByteGo)
   
 <br />
