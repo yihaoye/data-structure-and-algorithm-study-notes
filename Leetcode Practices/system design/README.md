@@ -215,12 +215,11 @@
 </details>
 <br />
   
-# Grokking System Design  
-## System Design Basics
+# System Design Basics
 During designing a large system, investing in scaling before it is needed is generally not a smart business proposition; however, some forethought into the design can save valuable time and resources in the future.  
 Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Theorem`, `Load Balancing`, `Caching`, `Data Partitioning`, `Indexes`, `Proxies`, `Queues`, `Replication`, and choosing between `SQL vs NoSQL`.  
 
-### Key Characteristics of Distributed Systems
+## Key Characteristics of Distributed Systems
 * **Scalability** - the capability of a system, process, or a network to continuously evolve/grow and manage increased demand. (相关组件与手段：负载均衡、自动扩展、分库分表、数据备份、分布式)
   * <small>Horizontal Scaling - Add more servers (e.g. Cassandra and MongoDB easy to scale horizontally).</small>
   * <small>Vertical Scaling - Add more resource/power (CPU, RAM, Storage etc) to same server (e.g. MySQL easy to scale vertically) (scaling involves downtime).</small>
@@ -259,23 +258,23 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
   * 攻击防护（DDoS、伪造或注入攻击）
   * 监控与日志
   
-### [Consistent Hashing](./一致性哈希.md)  
+## [Consistent Hashing](./一致性哈希.md)  
   
-### [Load Balancing](./Load%20Balancing.md)
+## [Load Balancing](./Load%20Balancing.md)
 
-### [Caching](./Caching.md)
+## [Caching](./Caching.md)
 
-### [Message Queue and Stream](./消息队列与流处理.md)
+## [Message Queue and Stream](./消息队列与流处理.md)
 注意，一般的消息队列（Kafka、Redis、ActiveMQ etc）不支持索引查询，但是时序数据库、时间序列数据库（Time Series Database，如 InfluxDB、MongoDB、Prometheus、RedisTimeSeries etc）除了能当简单的消息队列（比一般数据库吞吐性能更强，但仅限低吞吐量等有限场景。大规模、高吞吐量场景还是要用专门的消息队列系统）还可以索引查询（时间序列数据库通常会使用时间戳作为主要的索引字段，以便快速按时间范围查询数据。这使得在时间序列数据库中执行时间范围查询非常高效）。  
 对象存储也可以实现简单的消息队列，比如把 bucket 分成未处理和已处理两个路径，从未处理的 bucket 读出最前面的文件，处理它，然后把文件转移至已处理路径即可（此办法不足以应对多个消费者订阅同一个主题消息的场景，需要进一步改动）。  
 
-### Cache vs Message Queue / Stream
+## Cache vs Message Queue / Stream
 相比之下 Cache 更像 Java 的 HashMap，Message Queue / Stream 更像 Java 的 Queue/Deque/Stream：
 * Cache 通常用于索引定位更快的响应的场景，而不是用于有序事件处理（虽然如 Redis 也有相关功能但在需要更高级的消息队列功能，例如消息确认、重试、顺序性保证等时，Kafka 是更好的选择）
 * Message Queue / Stream 保证先入先出、（处理）事件有序的场景应用，而不是为了快速索引定位响应（因为如 Kafka 等系统是使用硬盘日志而不是内存存储数据，因此延迟较高）。
 * 处理实时数据时（持续快速更新数据的场景），消息队列比缓存更适用，因为缓存在这种情况要非常注意读写一致性问题（引入读写策略、锁之类的）可能非常复杂、麻烦。
 
-### 处理编程范式
+## 处理编程范式
 * 请求响应模式 - 延迟最小的一种范式，响应时间处于亚毫秒到毫秒之间，而且响应时间一般非常稳定。这种处理模式一般是阻塞的（同步），应用程序向处理系统发出请求，然后等待响应。在数据库领域，这种范式就是线上交易处理（OLTP）。通常的形式是 SOAP、REST API、RPC 等。
   * 轮询、长轮询、全双工（例如 Websocket）。
 * 回调模式 - 系统级：Webhook、API 调用等；线程/进程级：JavaScript 回调、CompletableFuture、接口回调等。通常情况下，回调是在一个不同于主线程/主服务的另一个线程/服务中执行的。回调常用于异步处理中，当某个特定事件发生时，会触发回调函数的执行。
@@ -283,34 +282,34 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 * 流式处理 [Ref 1](https://github.com/yihaoye/big-data-training/blob/main/kafka/README.md#%E6%B5%81%E5%BC%8F%E5%A4%84%E7%90%86)、[Ref 2](https://keys961.github.io/2018/07/05/%E6%B5%81%E5%BC%8F%E5%A4%84%E7%90%86%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/) - 这种范式介于上述两者之间。大部分的业务不要求亚毫秒级的响应，不过也接受不了要等到第二天才知道结果。大部分业务流程都是持续进行的，只要业务报告保持更新，业务产品线能够持续响应，那么业务流程就可以进行下去，而无需等待特定的响应，也不要求在几毫秒内得到响应。一些业务流程具有持续性和非阻塞的特点。
   * 发布订阅模式。
 
-### [并发编程模型](../../Computer%20System%20Layer/并发编程模型.md)
+## [并发编程模型](../../Computer%20System%20Layer/并发编程模型.md)
 
-### [Sharding or Data Partitioning](./Sharding%20or%20Data%20Partitioning.md)
+## [Sharding or Data Partitioning](./Sharding%20or%20Data%20Partitioning.md)
 
-### [Indexes](./Indexes.md)
+## [Indexes](./Indexes.md)
 
-### [Proxies](./Proxies.md)
+## [Proxies](./Proxies.md)
 
-### Redundancy and Replication
+## Redundancy and Replication
 * Redundancy - backup or failover to avoid single points of failure
 * Replication - sharing information to ensure consistency between redundant resources (e.g. db master-slave relationship)
 
-### [SQL vs NoSQL](./SQL%20vs%20NoSQL.md)
+## [SQL vs NoSQL](./SQL%20vs%20NoSQL.md)
 
-### [CAP Theorem](./CAP.md)
+## [CAP Theorem](./CAP.md)
 
-### [Service Meltdown, Service Downgrade and Service Circuit Breaker](./服务降级与服务熔断.md)
+## [Service Meltdown, Service Downgrade and Service Circuit Breaker](./服务降级与服务熔断.md)
 
-### [I/O 模型与 Web 服务器工作模型](./IO模型与Web服务器工作模型.md)
+## [I/O 模型与 Web 服务器工作模型](./IO模型与Web服务器工作模型.md)
 
-### [分布式事务](./分布式事务.md)
+## [分布式事务](./分布式事务.md)
 
-### [分布式锁](./分布式锁.md)
+## [分布式锁](./分布式锁.md)
 
-### [网络相关](https://github.com/yihaoye/stem-notes/blob/master/e-computer-network/README.md)
+## [网络相关](https://github.com/yihaoye/stem-notes/blob/master/e-computer-network/README.md)
 ![](./data-transmitted-between-applications.jpeg)  
 
-### 状态有无
+## 状态有无
 在计算机系统中，"stateful"（有状态）和 "stateless"（无状态）是两种不同的概念，用于描述系统或组件在处理请求和交互时是否保存状态信息。
 1. **Stateful（有状态）：**
    - 一个有状态的系统或组件会在处理请求和交互时维护一些状态信息。这意味着系统在不同的请求之间会保留之前的状态，从而能够跟踪用户或对象的操作。
@@ -330,9 +329,10 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
   
 <br />
   
-## Practice Examples
+# Practice Examples
+## Design TinyURL
 <details>
-<summary>Design TinyURL</summary>
+<summary>details</summary>
 
 * [系统设计 TinyURL 完整版](./example%20questions/Design%20a%20URL%20Shortener%20(TinyURL)%20System.md)  
 
@@ -383,8 +383,9 @@ Cache (cache eviction policy - e.g. Least Recently Used (LRU) with LinkedHashMap
 </details>
 
 
+## Design Pastebin
 <details>
-<summary>Design Pastebin</summary>
+<summary>details</summary>
 
 * 步骤 1：Pastebin 允许用户在网络（互联网）上存储纯文本或图像，并生成唯一的 URL 以访问上传的数据。此类服务还用于快速在网络上共享数据，因为用户只需传递 URL 给其他用户即可查看数据。
 * 步骤 2：系统的需求和目标。
@@ -415,8 +416,9 @@ Cache (cache eviction policy - e.g. Least Recently Used (LRU) with LinkedHashMap
 </details>
 
 
+## Design Twitter
 <details>
-<summary>Design Twitter</summary>
+<summary>details</summary>
 
 ![](./Twitter%20System%20Architecture.jpeg)  
 
@@ -457,8 +459,9 @@ Twitter System Publish Flow - by ByteByteGo
 </details>
 
 
+## Designing an API Rate Limiter
 <details>
-<summary>Designing an API Rate Limiter</summary>
+<summary>details</summary>
 
 具体代码实现可参考 Java 实现 RateLimiter [例 1](./../object%20oriented%20design/other%20practices/rate%20limiter%203/Solution.java)、[例 2](./../object%20oriented%20design/other%20practices/rate%20limiter%201/)、[例 3](./../object%20oriented%20design/other%20practices/rate%20limiter%202/)、[例 4](./../algorithms/easy/359%20Logger%20Rate%20Limiter.java)。  
 
@@ -540,8 +543,9 @@ Twitter System Publish Flow - by ByteByteGo
 </details>
 
 
+## 设计 Yelp
 <details>
-<summary>设计 Yelp</summary>
+<summary>details</summary>
 
 设计 Yelp 或附近的朋友  
 设计一个类似 Yelp 的服务，用户可以搜索附近的地方，如餐馆、剧院或购物中心等，还可以添加/查看地方的评论。类似的服务；近距离（Proximity）服务器。难度等级：难  
@@ -646,8 +650,9 @@ Round Robin LB 的一个问题是，它不会把服务器的负载考虑在内�
 </details>
 
 
+## 设计 Uber
 <details>
-<summary>设计 Uber</summary>
+<summary>details</summary>
 
 设计一个像 Uber 一样的乘车共享服务，将需要乘车的乘客与有车的司机联系起来。类似的服务。Lyft, Didi, Sidecar 等。难度：困难。  
 前置知识：设计 Yelp  
@@ -822,16 +827,18 @@ Driver 如何获得打车请求？—— Report location 的同时，服务器�
 </details>
 
 
+## 设计 Google Map
 <details>
-<summary>设计 Google Map</summary>
+<summary>details</summary>
 
 ![](./google_map_system_design.png)  
 
 </details>
 
 
+## 设计 Youtube
 <details>
-<summary>设计 Youtube</summary>
+<summary>details</summary>
 
 [花花酱 Youtube 系统设计](https://www.youtube.com/watch?v=mp-OSK6jm1c)  
 [Video Streaming System Design](https://medium.com/double-pointer/system-design-interview-video-streaming-service-e-g-netflix-or-youtube-design-adc2402e54a1)  
@@ -968,8 +975,9 @@ Netflix 开发了自己的视频存储计算机系统。Netflix 称它们为 Ope
 </details>
 
 
+## 设计 Facebook Live
 <details>
-<summary>设计 Facebook Live</summary>
+<summary>details</summary>
 
 参考来源：  
 https://www.youtube.com/watch?v=IO4teCbHvZw  
@@ -977,7 +985,7 @@ https://osjobs.net/system/posts/facebook-live/
 https://www.infoq.cn/article/kkylzqazdomqdkwxgxgv  
 https://zh.wikipedia.org/zh-hans/%E6%83%8A%E7%BE%A4%E9%97%AE%E9%A2%98  
 
-#### High Level Architecture
+### High Level Architecture
 ![](./live-stream-system.jpeg)  
 
 ![](./Facebook%20Live%20Architecture.png)  
@@ -1038,8 +1046,9 @@ C10M 问题，是千万级并发实现。Linux 上通常用 epoll 实现。
 </details>
 
 
+## 设计 Dropbox
 <details>
-<summary>设计 Dropbox</summary>
+<summary>details</summary>
 
 参考：  
 Grok System Design - Design Dropbox  
@@ -1161,8 +1170,9 @@ Dropbox 异步任务框架 ATF：
 </details>
 
 
+## 设计 WhatsApp / Slack（IM）
 <details>
-<summary>设计 WhatsApp / Slack（IM）</summary>
+<summary>details</summary>
 
 设计 IM 系统  
 参考：https://interview-science.org/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/IM%20%E7%B3%BB%E7%BB%9F  
@@ -1376,8 +1386,9 @@ WebSocket 连接由客户端启动。它是双向和持久的。它从 HTTP 连�
 </details>
 
 
+## 设计 Amazon（电商 / 秒杀网站）
 <details>
-<summary>设计 Amazon（电商 / 秒杀网站）</summary>
+<summary>details</summary>
 
 转载自：https://osjobs.net/system/posts/spike-system/  
 其他参考资料：https://www.youtube.com/watch?v=2BWr0fsDSs0  
@@ -1504,8 +1515,9 @@ WebSocket 连接由客户端启动。它是双向和持久的。它从 HTTP 连�
 </details>
 
 
+## 设计 Twitter Search（搜索系统）
 <details>
-<summary>设计 Twitter Search（搜索系统）</summary>
+<summary>details</summary>
 
 Twitter 是最大的社交网络服务之一，这里设计一个可以存储和搜索用户推文的服务 - 即推文搜索。  
   
@@ -1766,8 +1778,9 @@ https://medium.com/double-pointer/system-design-interview-search-engine-edb66b64
 </details>
 
 
+## 设计（高频）Trading（交易）系统
 <details>
-<summary>设计（高频）Trading（交易）系统</summary>
+<summary>details</summary>
 
 高频交易是指从那些人们无法利用的极为短暂的市场变化中寻求获利的计算机化交易。比如，某种证券买入价和卖出价差价的微小变化，或者某只股票在不同交易所之间的微小价差。这种交易的速度如此之快，以至于有些交易机构将自己的服务器群组 (server farms) 安置到了离交易所的计算机很近的地方，以缩短交易指令到达交易所的距离。  
 
@@ -1843,7 +1856,7 @@ https://www.zhihu.com/question/19839828/answer/28434795
 架构草图（未定案）：  
 ![](./Tarding%20System%20Architecture%20Draft%20Diagram.png)  
   
-#### 数据模型
+### 数据模型
 应该与 C2C 的 ecommerce 类似：  
 表设计：  
 * User 表：ID, Balance, ...
@@ -1863,8 +1876,9 @@ https://www.zhihu.com/question/19839828/answer/28434795
 </details>
 
 
+## 设计 Web Crawler
 <details>
-<summary>设计 Web Crawler</summary>
+<summary>details</summary>
 
 参考来源：https://www.youtube.com/watch?v=_NyVaxEIYGo  
 
@@ -1917,7 +1931,7 @@ https://www.zhihu.com/question/19839828/answer/28434795
   * 把 URL 地址转换成服务器的 IP 地址以访问
 * 如果有大量的 URL 需要去爬取，则 DNS 解析部分可能带来性能瓶颈，解决方案是在本地建立一个 DNS 服务器缓存以前的查询结果，这样就不用每次都去外部 DNS 解析器处查询，减少其压力。
 
-#### Detailed Component Design
+### Detailed Component Design
 * Crawling Policies（爬取策略）
   * 4 个基本策略（其中选择策略和礼貌性策略比较重要）
     * 选择策略（selection policy）（互联网资源海量，因此要决定哪些内容先爬取哪些后爬取）
@@ -1950,7 +1964,7 @@ URL Frontier 主要是存储一堆待访问的 URL。它有 2 个接口：
 
 ![](./Web%20Crawler%20Mapping%20Table.png)  
   
-#### Fault Tolerance（容错性） & Scalability（扩展性）
+### Fault Tolerance（容错性） & Scalability（扩展性）
 * 扩展性
   * Database sharding
   * Consistent hashing
@@ -1962,8 +1976,9 @@ URL Frontier 主要是存储一堆待访问的 URL。它有 2 个接口：
 </details>
 
 
+## 设计 Top K 系统
 <details>
-<summary>设计 Top K 系统</summary>
+<summary>details</summary>
 
 * [常见分布式应用系统设计图解：Top K 系统](https://www.raychase.net/6275)
 * [谷歌排名系统](https://osjobs.net/system/posts/google-board/)
@@ -1991,8 +2006,9 @@ Top K 系统是非常常见的一种子系统，基本上，就是从全量巨�
 </details>
 
 
+## 设计酒店预订系统
 <details>
-<summary>设计酒店预订系统</summary>
+<summary>details</summary>
 
 Example: Booking.com, Airbnb  
 参考材料：  
@@ -2010,8 +2026,9 @@ OOD 还可以参考 [Hotel Management System](./../object%20oriented%20design/gr
 </details>
 
 
+## 设计 ML pipeline 系统
 <details>
-<summary>设计 ML pipeline 系统</summary>
+<summary>details</summary>
 
 参考：https://towardsdatascience.com/architecting-a-machine-learning-pipeline-a847f094d1c7  
 
@@ -2026,16 +2043,18 @@ OOD 还可以参考 [Hotel Management System](./../object%20oriented%20design/gr
 </details>
 
 
+## 设计分布式 KV 数据库（Dynamo）
 <details>
-<summary>设计分布式 KV 数据库（Dynamo）</summary>
+<summary>details</summary>
 
 [Dynamo](./../../Computer%20System%20Layer/数据库/Dynamo/README.md)
 
 </details>
 
 
+## 设计分布式 Job Scheduler / ETL / ELT / Migrator 系统
 <details>
-<summary>设计分布式 Job Scheduler / ETL / ELT / Migrator 系统</summary>
+<summary>details</summary>
 
 作业调度系统  
 转载自：https://leetcode.com/discuss/general-discussion/1082786/System-Design%3A-Designing-a-distributed-Job-Scheduler-or-Many-interesting-concepts-to-learn  
@@ -2044,19 +2063,19 @@ OOD 还可以参考 [Hotel Management System](./../object%20oriented%20design/gr
 * https://towardsdatascience.com/ace-the-system-design-interview-job-scheduling-system-b25693817950  
 * https://www.youtube.com/watch?v=ta5x62cDxf4  
 
-#### 功能要求（可能会有所不同，但假设如下）：
+### 功能要求（可能会有所不同，但假设如下）：
 * 一个 job 可以被其他服务/微服务安排一次或多次执行（cron job）
 * 对于每个 job，可以指定一个类，该类继承一些接口，如 IJob，以便稍后在执行作业时可以在工作节点上调用该接口方法。（例如，该类可以存在于工作节点上的 .jar 文件中）。 
 * job 执行结果存储，可查询
 
-#### 非功能要求（同样，可能会有所不同，但假设如下）：
+### 非功能要求（同样，可能会有所不同，但假设如下）：
 * 可扩展性：每天可以安排和运行数千甚至数百万个 job/作业
 * 持久性：作业不能丢失 -> 需要持久化作业
 * 可靠性：作业执行不能比预期晚很多或丢弃 -> 需要一个容错系统
 * 可用性：应该总是可以调度和执行作业->（动态）水平扩展
 * 作业不得多次执行（或应将此类发生降至最低）
 
-#### 领域分析：概念
+### 领域分析：概念
 可以定义稍后可以转换为数据模型的域模型（Schema 的数据库模型或 ZooKeeper 的模型）：  
 * Job：
   * 表示要执行的 Job
@@ -2071,7 +2090,7 @@ OOD 还可以参考 [Hotel Management System](./../object%20oriented%20design/gr
 
 注：一个 Job 可以有多个 Trigger  
 
-#### HLD (High Level Design)
+### HLD (High Level Design)
 ![](./Distributed%20Job%20Scheduler%20System%20HLD.png)  
 
 想要调度（非）循环作业的微服务：可以发送消息（或 Kafka 术语中的 produce）给相应的 Kafka 队列（确切地说是一个 topic）。  
@@ -2105,13 +2124,13 @@ OOD 还可以参考 [Hotel Management System](./../object%20oriented%20design/gr
 **其他问题和担忧**：  
 不可靠的时钟/时间：在分布式系统中，有不可靠的时钟和时间（比如由于请求 NTP 时间时的无限延迟，因为使用的是 packet-switched networks/分组交换网络，通常不是 circuit-switched networks/电路交换网络），不可靠的 NTP 服务器（即 Time server/时间服务器），石英时钟会产生偏移量等问题。当想要可靠地调度 Jobs 并在正确的时间执行它们时，时钟和时间起着重要的作用。因此，需要确保节点上的时间是同步的并且不会相差太大。实现这一目标的一种方法是使用多个 NTP 服务器并过滤掉那些偏差很大的服务器。另一种更可靠但成本更高的方法是在数据中心使用原子钟。  
 
-#### System APIs
+### System APIs
 * String createAndRunJob() - 创建并执行下一个可准备执行的 Job，返回它的 ID
 * String checkFailure() - 查询出现故障的 Executor，并返回其正在执行的 JobID 如果没有则为空
 * String createTrigger(String TriggerType, JSON Config) - 创建 Trigger 并返回其 ID
 * Boolean updateTrigger(String TriggerID, String TriggerType, JSON Config) - 更新已有的 Trigger
 
-#### 其他
+### 其他
 ETL 系统其实与 cronjob / batch process 系统有一些类似。  
 
 如何觉察用户的数据库数据 schema 发生了变化？假设没有用户端的 API 调用的情况下：  
@@ -2120,8 +2139,9 @@ ETL 系统其实与 cronjob / batch process 系统有一些类似。
 </details>
 
 
+## 设计点赞系统（Facebook / TikTok / Twitter / Youtube Like）
 <details>
-<summary>设计点赞系统（Facebook / TikTok / Twitter / Youtube Like）</summary>
+<summary>details</summary>
 
 [Twitter Likes Count Design | Youtube Views Count Design | Near Realtime Counter System Design](https://www.youtube.com/watch?v=0V-Ns9vovzE)  
 简而言之，就是使用关系数据库并创建 3 个 Table：
@@ -2138,16 +2158,18 @@ ETL 系统其实与 cronjob / batch process 系统有一些类似。
 </details>
 
 
+## 设计日活统计系统（或月活等等去重统计）
 <details>
-<summary>设计日活统计系统（或月活等等去重统计）</summary>
+<summary>details</summary>
 
 重点（也即难点）在于大数据的统计去重同时保证时空效率，同理意味着所有类似功能的系统均可以使用这一方法 - [HyperLogLog](./../../Common%20Algorithm%20and%20Theory/HyperLogLog.md)，注意其与[布隆过滤器](../../Common%20Algorithm%20and%20Theory/布隆过滤器及其算法.md)的使用场景的类似与区别。  
 
 </details>
 
 
+## 设计 Autocomplete、Typeahead Suggestion 系统
 <details>
-<summary>设计 Autocomplete、Typeahead Suggestion 系统</summary>
+<summary>details</summary>
 
 参考：  
 * [花花酱](https://www.youtube.com/watch?v=uIqvbYVBiCI)
@@ -2173,8 +2195,9 @@ ETL 系统其实与 cronjob / batch process 系统有一些类似。
 </details>
 
 
+## 设计 Tag 系统
 <details>
-<summary>设计 Tag 系统</summary>
+<summary>details</summary>
 
 Example：
 * JIRA Tags
@@ -2187,7 +2210,7 @@ Example：
 * [System Design: Tagging Service](https://www.youtube.com/watch?v=WNIR7eiv0Hk)
 * [Tagging System](https://justpaste.it/b26kl)
 
-#### Functional Requirement
+### Functional Requirement
 * create tags with item (ticket etc)
 * search tags
 * assign existing tag to item
@@ -2195,12 +2218,12 @@ Example：
 * recommend tags
 * tag auto complete
 
-#### Non-Functional Requirement
+### Non-Functional Requirement
 * read heavy > write (read performance should be with low latency)
 * eventual consistency
 * scalability (have lot of item and tag data)
 
-#### Storage
+### Storage
 * The media files (images, videos) and text files are stored in a managed object storage such as AWS S3
 * A SQL database such as MySQL stores the metadata on the relationship between tags and items
 * A NoSQL data store such as MongoDB stores the metadata of the item
@@ -2239,7 +2262,7 @@ For performance, primary key is better to be bigint(Snowflake ID) for example am
 For security, primary key is better to be string(UUID) since [prevent estimation from hacker](https://www.liaoxuefeng.com/article/1100985514586848).  
 Normally it is better to use string(UUID) instead of bigint.  
 
-#### HLD (High Level Design)
+### HLD (High Level Design)
 * Write Flow ![](./tag-system-write-flow.webp)
   1. The client makes an HTTP connection to the load balancer
   2. The load balancer delegates the client request to a web server with free capacity
@@ -2269,7 +2292,7 @@ Normally it is better to use string(UUID) instead of bigint.
   12. The media files embedded in an item are fetched from the object store
   13. The trie data structure is used for typeahead autosuggestion for search queries on tags
 
-#### API Design
+### API Design
 ```java
 UUID[] searchTagByName(String tagName) {
   // ...
@@ -2311,7 +2334,7 @@ void addItemTag(String itemId, String[] tagIds) {
 }
 ```
 
-#### Scalability & Concurrency
+### Scalability & Concurrency
 * Scalability - 对数据库进行分库，比如对 tag-item 表进行分库，tag 与 item 可采用 NoSQL 从而更容易分库。
   * 需要担心一个 tag 非常热，可能有很多推文关联该 tag，所以如果量非常大则不建议 tag table 单独有个 item list，而还是采用 tag-item 表。当使用场景为根据 tag 搜相关 item 时，直接拿 tag_id 去 tag-item 表查比如前 50 个 item_id，因为通常这种查询都是搜索功能并带有分页功能，通过分页提高效率即可，即使 tag-item 表很大需要分库的情况下，也可以拿 tag_id 对所有库查询前 50 个结果然后合并排序再筛前 50 个返回（如果总共不够 50 就拿最后一个的时间或某字段为分界线再查），总而言之在 tag-item 表很大需要分库的情况下 JOIN 不是一个理想的方案，而 item 表和 tag 表的数据库可以是 NoSQL 也可以是 SQL。
 * Concurrency - 假设多个用户同时更改一个 item 的 tag，可引入 event driven architecture 即消息队列，总体采用 CQRS 模式，来保证数据一致性。
@@ -2319,7 +2342,7 @@ void addItemTag(String itemId, String[] tagIds) {
     * ![](./CQRS.jpeg)
     * ![](./CQRS_2.webp)
 
-#### Other Questions
+### Other Questions
 1. What are the different types of tags that can be used in a tagging system? 
    * Content tags
    * Topic tags
@@ -2352,8 +2375,9 @@ void addItemTag(String itemId, String[] tagIds) {
 </details>
 
 
+## 设计云消息队列
 <details>
-<summary>设计云消息队列</summary>
+<summary>details</summary>
 
 * 功能需求
   * 写入
@@ -2386,8 +2410,9 @@ if commit fail then do the select again (something like a while loop until succe
 </details>
 
 
+## 设计用户密码保存与证实
 <details>
-<summary>设计用户密码保存与证实</summary>
+<summary>details</summary>
 
 盐（Salt），在密码学中，是指在散列之前将散列内容（例如：密码）的任意固定位置插入特定的字符串。这个在散列中加入字符串的方式称为“加盐”。其作用是让加盐后的散列结果和没有加盐的结果不相同，在不同的应用情景中，这个处理可以增加额外的安全性。  
 在大部分情况，盐是不需要保密的。盐可以是随机产生的字符串，其插入的位置可以也是随意而定。如果这个散列结果在将来需要进行验证（例如：验证用户输入的密码），则需要将已使用的盐记录下来。  
@@ -2417,8 +2442,9 @@ Reference:
 </details>
 
 
+## 2FA 登陆
 <details>
-<summary>2FA 登陆</summary>
+<summary>details</summary>
 
 ref: https://swoopnow.com/how-does-two-factor-authentication-work/  
 https://blog.bytebytego.com/p/password-session-cookie-token-jwt  
@@ -2443,8 +2469,9 @@ SESSION 的数据保存在在服务器端，但不是保存在内存中（但是
 </details>
 
 
+## 设计 Single Sign On
 <details>
-<summary>设计 Single Sign On</summary>
+<summary>details</summary>
 
 ![](./SSO2.webp)  
 ![](./SSO.jpeg)  
@@ -2452,8 +2479,9 @@ SESSION 的数据保存在在服务器端，但不是保存在内存中（但是
 </details>
 
 
+## 设计 Google Authenticator
 <details>
-<summary>设计 Google Authenticator</summary>
+<summary>details</summary>
 
 Ref: https://blog.bytebytego.com/i/65351443/how-does-google-authenticator-or-other-types-of-factor-authenticators-work  
   
@@ -2470,8 +2498,9 @@ Ref: https://blog.bytebytego.com/i/65351443/how-does-google-authenticator-or-oth
 </details>
 
 
+## 设计协同编辑系统
 <details>
-<summary>设计协同编辑系统</summary>
+<summary>details</summary>
 
 例子：Google Doc  
 
@@ -2491,8 +2520,9 @@ http1.1 允许客户端不用等待上一次请求结果返回，就可以发出
 </details>
 
 
+## 设计图形渲染/计算密集型/实时并发计算系统
 <details>
-<summary>设计图形渲染/计算密集型/实时并发计算系统</summary>
+<summary>details</summary>
 
 [具体代码逻辑及其实现](../../Other%20Practices/game%20of%20life/Solution.java)  
 
@@ -2511,8 +2541,9 @@ http1.1 允许客户端不用等待上一次请求结果返回，就可以发出
 </details>
 
 
+## 设计 Metric Collection System
 <details>
-<summary>设计 Metric Collection System</summary>
+<summary>details</summary>
 
 参考：https://cloud.google.com/bigtable#section-8  
 
@@ -2547,8 +2578,9 @@ http1.1 允许客户端不用等待上一次请求结果返回，就可以发出
 </details>
 
 
+## 设计 Payment System
 <details>
-<summary>设计 Payment System</summary>
+<summary>details</summary>
 
 Ref：  
 * https://www.youtube.com/watch?v=9bjwfntoRGU&list=PLdQDWw95rTMduhc9_KvM6nsm2x-7zsYvK&index=1
@@ -2558,7 +2590,7 @@ Ref：
 支付系统是用于通过货币价值转移来结算金融交易的系统。这包括使其交易成为可能的机构、工具、人员、规则、程序、标准和技术。  
 该系统只是面向、支持公司主营业务的支付集成子系统，而不是设计更底层的 PSP 或支付网关，因为后者需要保证遵守许多标准（standard）、合规性（compliance）如 PCI-DSS 等。  
 
-#### 需求分析
+### 需求分析
 * Functional requirements
   * Pay-in flow: payment system receives money from customers on behalf of sellers.
   * Pay-out flow: payment system sends money to sellers around the world.
@@ -2566,7 +2598,7 @@ Ref：
   * Reliability and fault tolerance. Failed payments need to be carefully handled.
   * A reconciliation process between internal services (payment systems, accounting systems) and external services (payment service providers) is required. The process asynchronously verifies that the payment information across these systems is consistent.
 
-#### 总体设计
+### 总体设计
 * high-level design
   * Payment service - 接受来自用户的支付事件并协调支付流程。它通常做的第一件事是风险检查，评估是否符合 AML/CFT 等法规，以及洗钱或资助恐怖主义等犯罪活动的证据。支付服务仅处理通过此风险检查的付款。通常，风险检查服务会使用第三方提供商，因为它非常复杂且高度专业化。
   * Payment executor - 通过支付服务提供商（PSP）执行单个支付订单。一个支付事件可能包含多个支付订单。
@@ -2586,7 +2618,7 @@ Ref：
     * 数据同步方法二：确保所有副本始终同步。可以使用 Paxos 和 Raft 等共识算法，或者使用 YugabyteDB 或 CockroachDB 等基于共识的分布式数据库。
   * Payment security
 
-#### API 设计  
+### API 设计  
 * 付款
 * 获取付款
 
@@ -2599,8 +2631,9 @@ Ref：
 </details>
 
 
+## 设计规则引擎
 <details>
-<summary>设计规则引擎</summary>
+<summary>details</summary>
 
 * [从 0 到 1：构建强大且易用的规则引擎](https://tech.meituan.com/2017/06/09/maze-framework.html)
 
@@ -2610,8 +2643,9 @@ Ref：
 </details>
 
 
+## 设计广告系统
 <details>
-<summary>设计广告系统</summary>
+<summary>details</summary>
 
 参考：https://khamdb.com/ad-tech/advertising-system-architecture-how-to-build-a-production-ad-platform/  
 ![](./ads-system-design.jpeg)  
