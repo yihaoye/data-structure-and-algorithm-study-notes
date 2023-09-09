@@ -186,7 +186,7 @@
 <details>
 <summary>主要组件：https://www.cnblogs.com/ilinuxer/p/6697015.html </summary>
 
-* API 网关（身份验证、路由、速率限制、流量控制、计费、监控、分析、协议转换、安全防护）、Firewall 防火墙（访问控制）
+* API 网关（身份验证、路由、速率限制、流量控制、计费、监控、分析、协议转换、安全防护）、[Firewall 防火墙（访问控制）](./firewall.jpg)
 * 负载均衡、自动扩展与 fail-over（ECS、K8S）
 * 业务应用和后端基础框架（MVC、IOC、ORM）
 * 缓存、CDN（本地缓存即内存中的缓存机制：ConcurrentHashMap etc；分布式缓存即单独的缓存服务：Redis、Memcached etc）
