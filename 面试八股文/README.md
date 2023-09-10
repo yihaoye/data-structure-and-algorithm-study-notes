@@ -48,6 +48,7 @@
 * 简述动态代理与静态代理
 * [Java IO](https://www.cnblogs.com/czwbig/p/10007201.html)
 * [Java 注解原理](../Tool%20Sets/Annotation.java)
+* [Java 编译部署](../Computer%20System%20Layer/编译部署/README.md)
 
 ## Golang 高频
 * [什么是 golang 内存逃逸](./../Computer%20System%20Layer/内存与程序.md#内存逃逸)

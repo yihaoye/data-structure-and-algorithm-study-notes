@@ -8,6 +8,7 @@
 - [异步与同步](./异步与同步.md)
 - [编译](./编译.md)
   - [JVM](./JVM/)
+  - [编译部署](./编译部署/README.md)
 - [I/O](./IO/README.md)
   - [Java I/O](./IO/IO(Java).md)
 - [缓存与缓冲](./缓存与缓冲.md)
