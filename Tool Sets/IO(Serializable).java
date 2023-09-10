@@ -31,47 +31,40 @@
 
 // https://www.liaoxuefeng.com/wiki/1252599548343744/1298366845681698
 /*
-序列化是指把一个Java对象变成二进制内容，本质上就是一个byte[]数组。
-为什么要把Java对象序列化呢？因为序列化后可以把byte[]保存到文件中，或者把byte[]通过网络传输到远程，这样，就相当于把Java对象存储到文件或者通过网络传输出去了。
-有序列化，就有反序列化，即把一个二进制内容（也就是byte[]数组）变回Java对象。有了反序列化，保存到文件中的byte[]数组又可以“变回”Java对象，或者从网络上读取byte[]并把它“变回”Java对象。
-来看看如何把一个Java对象序列化。
-一个Java对象要能序列化，必须实现一个特殊的java.io.Serializable接口，它的定义如下：
+序列化是指把一个 Java 对象变成二进制内容，本质上就是一个 byte[] 数组。
+为什么要把 Java 对象序列化呢？因为序列化后可以把 byte[] 保存到文件中，或者把 byte[] 通过网络传输到远程，这样，就相当于把 Java 对象存储到文件或者通过网络传输出去了。
+有序列化，就有反序列化，即把一个二进制内容（也就是 byte[] 数组）变回 Java 对象。有了反序列化，保存到文件中的 byte[] 数组又可以“变回” Java 对象，或者从网络上读取 byte[] 并把它“变回” Java 对象。
+来看看如何把一个 Java 对象序列化。
+一个 Java 对象要能序列化，必须实现一个特殊的 java.io.Serializable 接口，它的定义如下：
 */
 public interface Serializable {
 }
-// Serializable接口没有定义任何方法，它是一个空接口。这样的空接口称为“标记接口”（Marker Interface），实现了标记接口的类仅仅是给自身贴了个“标记”，并没有增加任何方法。
+// Serializable 接口没有定义任何方法，它是一个空接口。这样的空接口称为“标记接口”（Marker Interface），实现了标记接口的类仅仅是给自身贴了个“标记”，并没有增加任何方法。
+// Serializable 接口告诉 Java 运行时系统该类可以被序列化和反序列化。序列化过程会将对象的字段按顺序转换为字节流，并将其保存到文件。反序列化过程会从文件中读取字节流并还原为对象。通过明确指定 serialVersionUID 字段，可以确保类的版本兼容性。
+// 类的方法本身不会被序列化和反序列化。对象的方法行为是由类定义的，如果类在反序列化后没有发生变化，那么对象的方法行为应该保持不变。
 import java.io.*;
 class Data implements Serializable { // 创建一个可序列化的类
     private static final long serialVersionUID = 1L;
     private int value;
     private String description;
+    // private List<Item> items; // 从属变量如果是基于自定义的类也可以一并被序列化和反序列化（下面的 Test），但是它们也必须实现 Serializable 接口
 
     public Data(int value, String description) {
         this.value = value;
         this.description = description;
     }
-
-    @Override
-    public String toString() {
-        return "Data [value=" + value + ", description=" + description + "]";
-    }
 }
 
-public class Example {
+public class Test {
     public static void main(String[] args) {
-        // 创建一个 Data 对象
-        Data data = new Data(42, "This is some data.");
-        // 将 Data 对象序列化到文件
+        Data data = new Data(10, "This is some data."); // 创建一个 Data 对象
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("data.ser"))) {
-            oos.writeObject(data);
-            System.out.println("Data 对象已序列化并保存到文件。");
+            oos.writeObject(data); // 将 Data 对象序列化到文件
         } catch (IOException e) {
             e.printStackTrace();
         }
-        // 从文件中反序列化 Data 对象
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("data.ser"))) {
-            Data restoredData = (Data) ois.readObject();
-            System.out.println("从文件中反序列化的 Data 对象：" + restoredData);
+            Data restoredData = (Data) ois.readObject(); // 从文件中反序列化 Data 对象
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
@@ -79,11 +72,12 @@ public class Example {
 }
 
 
+
 // 序列化
 // 把一个Java对象变为byte[]数组，需要使用ObjectOutputStream。它负责把一个Java对象写入一个字节流：
 import java.io.*;
 import java.util.Arrays;
-public class Main {
+public class Test {
     public static void main(String[] args) throws IOException {
         ByteArrayOutputStream buffer = new ByteArrayOutputStream();
         try (ObjectOutputStream output = new ObjectOutputStream(buffer)) {
