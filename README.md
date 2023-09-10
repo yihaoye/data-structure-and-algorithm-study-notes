@@ -108,7 +108,7 @@
   * [倍增法 | Leetcode Q702](./Common%20Algorithm%20and%20Theory/倍增法.md)
 * 高级算法
   * [拓扑排序 | Leetcode Q210](./Common%20Algorithm%20and%20Theory/拓扑排序.md)
-  * [多路归并 | Leetcode Q23-合并排序链表 Q355-设计推特-News-Feed](./Leetcode%20Practices/algorithms/hard/23%20Merge%20k%20Sorted%20Lists.java)
+  * [多路归并 | Leetcode Q23-合并排序链表 Q355-设计推特-News-Feed Q373](./Leetcode%20Practices/algorithms/hard/23%20Merge%20k%20Sorted%20Lists.java)
   * [Kadane 算法 | Leetcode Q53](./Leetcode%20Practices/algorithms/easy/53%20Maximum%20Subarray.java)
   * [弗洛伊德算法 | Leetcode Q1462](./Leetcode%20Practices/algorithms/medium/1462%20Course%20Schedule%20IV.java)
   * [Dijkstra 算法 | Leetcode Q743-图-最极权重路径](./Leetcode%20Practices/algorithms/medium/743%20Network%20Delay%20Time.java)
