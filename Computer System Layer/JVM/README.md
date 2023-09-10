@@ -2,6 +2,15 @@
 ![](./Java%20JVM.png)  
 ![](./JDK%20JRE%20JVM.png)  
   
+JDK（Java Development Kit）和 JRE（Java Runtime Environment）是 Java 平台的两个关键组成部分，它们之间有以下区别：
+1. **JDK（Java Development Kit）：**
+   - JDK 是 Java 开发工具包，它包括了 Java 开发人员在创建、编译和调试 Java 应用程序时所需的工具和库。
+   - JDK 包括 Java 编译器（`javac`）、Java 虚拟机（JVM）、调试器、开发工具（如 `javap` 和 `javadoc`）、标准类库（Java 标准库如 `java.utils.*`）等。
+   - JDK 还把 JRE 包括了，所以下载安装了 JDK 就不用再下载安装 JRE 了。
+2. **JRE（Java Runtime Environment）：**
+   - JRE 是 Java 运行时环境，它是用于运行 Java 应用程序的部署环境。
+   - JRE 包括 Java 虚拟机（JVM）和 Java 标准类库，但不包括 Java 编译器和其他开发工具。
+   - 当用户只需要运行已经编译好的 Java 应用程序（比如 jar 文件）时，只需要安装 JRE，而不需要 JDK。JRE 提供了 Java 程序的执行环境。
   
 ### JVM 物理结构
 ![](./JVM%20物理结构.gif)  
