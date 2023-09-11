@@ -1527,7 +1527,7 @@ WebSocket 连接由客户端启动。它是双向和持久的。它从 HTTP 连�
 </details>
 
 
-## 设计 Twitter Search（搜索系统）
+## 设计搜索引擎 Twitter Search
 <details>
 <summary>details</summary>
 

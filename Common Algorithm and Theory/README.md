@@ -12,7 +12,7 @@
   - 循环不变量 | Loop Invariants
 - 算法
   - 基础
-    - [排序（常用排序算法）| Sorting](./Common%20Sorts/README.md)
+    - [排序 (常用排序算法) | Sorting](./Common%20Sorts/README.md)
     - [枚举/穷举 | Enumerate](./枚举(穷举)算法.md)
     - [模拟 | Simulation](./模拟算法.md)
     - [递归, 迭代 | Recursion, Iteration](./递归与迭代.md)
@@ -32,9 +32,9 @@
     - [快速选择 (霍尔选择算法) | Quickselect (Randomized Selection)](./快速选择.md)
     - [位运算 | Bitwise Operation](./位运算.md)
   - 进阶
-    - 启发式算法/搜索 | Heuristic Algorithm / Search (启发式搜索通常不讨论时空复杂度)
+    - 启发式算法/搜索 | Heuristic Algorithm/Search (启发式搜索通常不讨论时空复杂度)
       - [A&ast; 搜索算法 | A&ast; Search Algorithm](./A*搜索算法.md)
-      - 随机化算法/搜索 | Random Algorithm / Search
+      - 随机化算法/搜索 | Random Algorithm/Search
         - [模拟退火 | Simulated Annealing](./模拟退火.md)
         - [遗传算法 | Genetic Algorithm](./遗传算法.md)
         - 粒子群优化算法 | Particle Swarm Optimization
@@ -67,8 +67,8 @@
     - [HyperLogLog 算法](./HyperLogLog.md)
     - [Count-Min Sketch 算法](./Count-Min-Sketch.md)
     - [雪花算法 | Snowflake ID](./雪花算法.md)
-    - 一致性哈希 | Consistent Hashing ([wiki](./../Leetcode%20Practices/system%20design/一致性哈希.md)、[code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/consistent%20hash/README.md))
-    - 反向索引 | Inverted Index ([wiki](../Leetcode%20Practices/system%20design/README.md)、[code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/inverted%20index/InvertedIndex.java))
+    - 一致性哈希 | Consistent Hashing ([README](./../Leetcode%20Practices/system%20design/一致性哈希.md)、[Code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/consistent%20hash/README.md))
+    - 反向索引 | Inverted Index ([README](../Leetcode%20Practices/system%20design/README.md#设计搜索引擎-Twitter-Search)、[Code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/inverted%20index/InvertedIndex.java))
     - Frugal Streaming 算法
     - [Geohash 算法, S2 Geometry 算法](../Leetcode%20Practices/system%20design/README.md)
     - [漏桶算法, 令牌桶算法 | Leaky Bucket, Token Bucket](../Leetcode%20Practices/system%20design/README.md)
@@ -88,19 +88,19 @@
       - DHT 的 Kademlia 协议
       - [DHT 的 Chord 算法](https://en.wikipedia.org/wiki/Chord_(peer-to-peer))
       - Gossip 协议/流行病协议
-    - 统计学, 机器学习 | Statistics, Machine Learning
-      - 线性规划 | Linear Regression
-      - [决策树算法 | Decision Tree Algorithm](https://www.ibm.com/cn-zh/topics/decision-trees)
-      - 朴素贝叶斯 | Naive Bayes
-      - 支持向量机 | Support Vector Machine, SVM
-      - 隐马尔可夫模型 | Hidden Markov Model, HMM
-        - 前向与后向算法
-        - 维特比算法
-      - 深度学习, 神经网络 | Deep Learning, Neural Networks
-        - 卷积神经网络 | CNN
-        - 长短期记忆, 循环神经网络 | LSTM, RNN
-        - 生成对抗网络 | GAN
-        - [Transformer 模型, 大语言模型（LLM）](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model))
+  - 人工智能, 机器学习 | Artificial Intelligence, Machine Learning
+    - 线性规划 | Linear Regression
+    - [决策树算法 | Decision Tree Algorithm](https://www.ibm.com/cn-zh/topics/decision-trees)
+    - 朴素贝叶斯 | Naive Bayes
+    - 支持向量机 | Support Vector Machine, SVM
+    - 隐马尔可夫模型 | Hidden Markov Model, HMM
+      - 前向与后向算法
+      - 维特比算法
+    - [深度学习, 神经网络 | Deep Learning, Neural Networks](https://www.zhihu.com/question/314879954/answer/638380202)
+      - 卷积神经网络 | CNN
+      - 长短期记忆, 循环神经网络 | LSTM, RNN
+      - 生成对抗网络 | GAN
+      - [Transformer 模型, 大语言模型（LLM）](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)) (Related: [build GPT from scratch](https://www.youtube.com/watch?v=kCc8FmEb1nY))
   - [数学](../Computer%20Science%20Maths/README.md)
     - [鸽巢原理 | Pigeonhole Principle](./鸽巢原理.md)
     - [取模运算 | Modulo](./取模运算.md)
