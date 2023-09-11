@@ -14,9 +14,11 @@
 ## 设计模式、系统设计、DevOps 高频
 * MVC 模型和 MVVM 模型的区别
 * 简述常见的工厂模式以及单例模式的使用场景
+* 如何在多线程环境下进行懒加载 - 使用双重检查锁（Double-Checked Locking）模式
 * [线程池是如何实现的？简述线程池的任务策略](https://tech.meituan.com/2020/04/02/java-pooling-pratice-in-meituan.html)
-* 简述 CAS 原理，什么是 ABA 问题，怎么解决？
-* 什么是公平锁？什么是非公平锁？
+* 简述 CAS 原理，什么是 ABA 问题，怎么解决？CAS（Compare and Swap）操作通常是由硬件层面提供的原子性指令来支持的，不同的处理器架构可能提供不同的 CAS 指令，例如 x86 架构上的 CMPXCHG 指令，这些指令允许在一个操作中比较内存中的值与预期值，如果它们相等，就将新值写入内存中。
+* 自旋锁是什么？自旋锁是一种基于忙等待的锁，它的特点是线程在尝试获取锁时不会立即阻塞，而是会反复检查锁是否可用，如果锁已经被其他线程持有，线程会一直循环检查，而不是进入阻塞状态，自旋锁通常在锁的竞争情况较短暂且线程数不多的情况下表现良好。自旋锁通常使用 CAS（比较并交换）操作来实现。
+* 什么是公平锁？什么是非公平锁？遵循 "先来先得锁" 的原则。
 * 产生死锁的必要条件有哪些？如何解决死锁？
 * [[微服務] 什麼是 gRPC，架構上為什麼要使用 gRPC](https://www.youtube.com/watch?v=qEB3yFzETVs)
 * RPC 与 REST 区别与选择 - [解答一](https://www.cnblogs.com/wongbingming/p/11086773.html)、[解答二](https://zhuanlan.zhihu.com/p/102760613)、[服务调用 / API 设计](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md#API%20Design)
@@ -27,25 +29,23 @@
 * Java 中垃圾回收机制中如何判断对象需要回收？常见的 GC 回收算法有哪些？ （中等）
 * HashMap 与 ConcurrentHashMap 的实现原理是怎样的？HashMap 为什么使用红黑树？[ConcurrentHashMap 是如何保证线程安全的？](https://github.com/JasonGaoH/KnowledgeSummary/blob/master/Docs/Java/ConcurrentHashMap%E6%98%AF%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84.md) （中等）
 * ConcurrentHashMap 的写操作会对读操作产生性能影响吗？[1](https://stackoverflow.com/a/71805283/6481829)、[2](https://stackoverflow.com/questions/68968305/how-can-i-block-concurrenthashmap-get-operations-during-a-put)
-* Synchronized 关键字底层是如何实现的？它与 Lock 相比优缺点分别是什么？ （中等）
 * 简述 Java 的反射机制及其应用场景  （简单）
-* Synchronized，Volatile（及其实现原理），可重入锁的不同使用场景及优缺点    （困难）
+* Synchronized，Volatile（及其实现原理），可重入锁的不同使用场景及优缺点？synchronized 基于 JVM 的内置锁（也称为监视器锁或对象锁，对象都有一个对象头，用来存储对象的元数据信息，其中一部分用于存储锁的信息，该部分由 CAS 保护）来实现同步，每个 Java 对象都可以作为锁，当一个线程进入一个被 synchronized 修饰的代码块或方法时，它会尝试获取对象锁；volatile 利用内存屏障（memory barrier）来实现可见性，它告诉编译器和处理器不要对 volatile 变量进行优化，确保变量的值总是从主内存中读取；可重入锁是一种高级锁机制，允许同一个线程多次获取同一把锁而不会造成死锁，Java 中的 ReentrantLock 和 synchronized 都属于可重入锁。
 * [简述 Java BIO、NIO、AIO 的区别](https://tobebetterjavaer.com/nio/BIONIOAIO.html)  （困难）
 * Java 类的加载流程是怎样的？什么是双亲委派机制？  （简单）
 * JMM 中内存模型是怎样的？什么是指令序列重排序？  （中等）
 * JVM 内存是如何对应到操作系统内存的？  （中等）
-* Java 怎么防止内存溢出  （简单）
+* Java 怎么防止内存溢出？避免创建不必要的对象、尽量重用对象，关闭不再需要的资源，分析堆内存、递归深度和 GC。
 * Java 线程间有多少通信方式？  （简单）
 * [Java 中接口和抽象类的区别](../Leetcode%20Practices/object%20oriented%20design/README.md#何时使用抽象类，何时使用接口)  （简单）
 * hashcode 和 equals 方法的联系  （简单）
 * Java 常见锁有哪些？ReetrantLock 是怎么实现的？  （中等）
 * ThreadLocal 实现原理是什么？  （简单）
-* 简述 Spring 的初始化流程  （中等）
-* 简述 Netty 线程模型，Netty 为什么如此高效？  （中等）
-* 简述 Spring 的 IOC 机制  （简单）
-* 简述 Spring bean 的生命周期  （中等）
-* 简述 Spring AOP 的原理
-* 简述动态代理与静态代理
+* 简述 Spring 的初始化流程（bean 的生命周期）？加载配置文件 -> 创建容器 -> Bean 的定义 -> Bean 的实例化 -> 依赖注入 -> Bean 的初始化回调 -> 应用程序使用 Bean -> Bean 的销毁回调 -> 容器关闭。
+* 简述 Netty 线程模型，Netty 为什么如此高效？[高效的 I/O 模型](./../Leetcode%20Practices/system%20design/IO模型与Web服务器工作模型.md)以及零拷贝技术等等。
+* 简述 Spring 的 IOC 机制？依赖注入。
+* 简述 Spring AOP 的原理？核心原理是基于代理模式和动态代理技术，通过代理对象拦截方法调用并应用通知，以实现横切关注点的功能。
+* 简述动态代理（在运行时动态生成代理类。动态代理不需要预先创建代理类的代码，而是在运行时使用反射等机制动态生成代理类）与静态代理（代理类的代码是在编译时期就已经生成的，它们在编译时与具体的目标类绑定）
 * [Java IO](https://www.cnblogs.com/czwbig/p/10007201.html)
 * [Java 注解原理](../Tool%20Sets/Annotation.java)
 * [Java 编译部署](../Computer%20System%20Layer/编译部署/README.md)

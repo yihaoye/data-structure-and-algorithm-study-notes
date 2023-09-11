@@ -2030,6 +2030,19 @@ Example: Booking.com, Airbnb
   
 ![](./Hotel%20Booking%20System%20Design.png)  
 
+上面的设计应该优化：不需要根据不同的可用日期重复每个相同的房间（room 表可以去掉 time 和 status 且 room_id 唯一），只需要在 order 表看看该房间是否已有冲突时间即可（如果对同一个房间一次预约 n 天，则会在 order 表里创建 n 个新纪录）
+```sql
+SELECT r.room_id
+FROM room AS r
+LEFT JOIN (
+    SELECT DISTINCT room_id
+    FROM order
+    WHERE order_date BETWEEN start_date AND end_date
+) AS o ON r.room_id = o.room_id
+WHERE o.room_id IS NULL
+AND r.price <= ? AND r.location LIKE ?;
+```
+
 Other's Design  
 ![](./Hotel%20Booking%20System%20Design%202.png)  
 
