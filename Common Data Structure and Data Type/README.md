@@ -66,7 +66,7 @@
     - 后缀树 | Suffix Tree [Ref 1](https://www.cnblogs.com/gaochundong/p/suffix_tree.html)、[Ref 2](https://yanglei253.github.io/2020/07/26/dataStructure/dataStructure-tiretree/)
   - [并查集 | Disjoint-Set/Union-Find Forest](./../Common%20Algorithm%20and%20Theory/并查集与联合查找算法.md)
   - [LSM 树 | Log-Structured Merge-Tree](./Data%20Structure%20Implementation/LSMTree/README.md)
-  - [默克尔树 | Merkle Tree](https://en.wikipedia.org/wiki/Merkle_tree)
+  - [默克尔树 | Merkle Tree](./../Leetcode%20Practices/algorithms/easy/572%20Subtree%20of%20Another%20Tree.java)
   - [K-D 树 | K-D Tree](https://zh.wikipedia.org/zh-hans/K-d%E6%A0%91)
   - [四叉树 | Quad Tree](./../Common%20Algorithm%20and%20Theory/QuadTree-RTree-算法.md)
     - [八叉树 | OcTree](./../Common%20Algorithm%20and%20Theory/QuadTree-RTree-算法.md)

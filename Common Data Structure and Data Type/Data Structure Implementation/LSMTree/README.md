@@ -5,6 +5,8 @@ LSM 树（Log-Structured Merge Tree）存储引擎介绍
 LSM 树 (Log-Structured-Merge-Tree) 的名字往往会给初识者一个错误的印象，事实上，LSM 树并不像 B+ 树、红黑树一样是一颗严格的树状数据结构，它其实是一种存储结构，目前 HBase, LevelDB, RocksDB 这些 NoSQL 存储都是采用的 LSM 树。  
   
 LSM 树的核心特点是利用顺序写来提高写性能，但因为分层 (此处分层是指的分为内存和文件两部分) 的设计会稍微降低读性能，但是通过牺牲小部分读性能换来高性能写，使得 LSM 树成为非常流行的存储结构。核心思路就是假定内存足够大，因此不需要每次有数据更新就必须将数据写入到磁盘中，而可以先将最新的数据驻留在内存中，等到积累到最后多之后，再使用归并排序的方式将内存内的数据合并追加到磁盘队尾（因为所有待排序的树都是有序的，可以通过合并排序的方式快速合并到一起）。  
+
+## [Java 代码实现](./LSMTree.java)
   
 ## LSM 树的核心思想
 [The Secret Sauce Behind NoSQL: LSM Tree](https://www.youtube.com/watch?v=I6jB0nM9SKU)  
