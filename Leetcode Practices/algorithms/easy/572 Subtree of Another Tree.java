@@ -36,6 +36,35 @@ Return false.
 
 
 // Other's Solution:
+class Solution {
+    public boolean isSubtree(TreeNode root, TreeNode subRoot) {
+        // 默克尔树 - https://leetcode.com/problems/subtree-of-another-tree/solutions/1676456/merkle-tree-on/
+        if (root == null) return false;
+        addHash(root); addHash(subRoot);
+        return rec(root, subRoot);
+    }
+
+    private int addHash(TreeNode node) {
+        if (node == null) return "#".hashCode();
+        node.val = node.val + addHash(node.left) + Integer.hashCode(node.val) + addHash(node.right);
+        return node.val;
+    }
+
+    private boolean rec(TreeNode root, TreeNode subRoot) {
+        if (root == null) return false;
+        if (root.val == subRoot.val && isEqual(root, subRoot)) return true;
+        return rec(root.left, subRoot) || rec(root.right, subRoot);
+    }
+
+    private boolean isEqual(TreeNode subroot1, TreeNode subroot2) {
+        if (subroot1 == null || subroot2 == null) return subroot1 == null && subroot2 == null;
+        else return subroot1.val == subroot2.val && isEqual(subroot1.left, subroot2.left) && isEqual(subroot1.right, subroot2.right);
+    }
+}
+
+
+
+// Other's Solution:
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
