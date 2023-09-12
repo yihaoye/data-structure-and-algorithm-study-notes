@@ -91,7 +91,7 @@
   * 一个使用者可以使用每个请求的资源同时向多个服务发送请求。当使用者向配置不当或无响应的服务发送请求时，可能无法及时释放客户端请求所用的资源。随着不断地向服务发送请求，这些资源可能会耗尽。例如，客户端的连接池可能会耗尽。此时，使用者向其他服务发出的请求会受到影响。最终，使用者不再能够向其他服务（而不仅仅是原始的无响应服务）发送请求。
 * [缓存端模式](https://docs.microsoft.com/zh-cn/azure/architecture/patterns/cache-aside) - 将数据按需从数据存储加载到缓存（如 Redis）中。
   * [Fan-out 模式](https://en.wikipedia.org/wiki/Fan-out_(software)) - 是其衍生模式，具体可看下面的设计 Twitter。
-* [协调/编舞模式](https://docs.microsoft.com/zh-cn/azure/architecture/patterns/choreography) - 让每项服务都参与决定业务运营的处理时间和处理方式，而不是依赖于一个中心型业务流程协调程序。
+* [协调/编舞模式](https://docs.microsoft.com/zh-cn/azure/architecture/patterns/choreography) - 让每项服务都参与决定业务运营的处理时间和处理方式，而不是依赖于一个中心型业务流程协调程序。![](./Orchestration-vs-Choreography.png)
   * 实现协调/编舞的一种解决方案是使用异步消息传送模式（消息队列）协调业务运营。客户端请求将消息发布到消息队列，消息到达时，它们会推送到对该消息感兴趣的订阅者或服务，每个订阅的服务按消息指示执行其操作，并响应操作成功或失败的消息队列，如果成功，服务可以将消息推送回同一队列或其他消息队列，以便另一个服务根据需要继续工作流，如果操作失败，消息总线可以重试该操作。由于没有点到点通信，因此此模式有助于减少服务之间的耦合。
   * 如果希望经常更新、删除或添加新服务，请使用编舞模式。可以修改整个应用，工作量较小，对现有服务造成最少的中断。如果在中央业务流程协调程序中遇到性能瓶颈，请考虑此模式。此模式是无服务器体系结构的自然模型，其中所有服务都可以短生存期或事件驱动。服务可能会因为事件而启动，执行其任务，并在任务完成后被删除。
 * [断路器模式](https://docs.microsoft.com/zh-cn/azure/architecture/patterns/circuit-breaker) - 连接到远程服务或资源时处理故障，此类故障所需修复时间不定，这可以提高应用程序的稳定性和复原能力。但在处理对应用程序中的本地私有资源的访问，例如内存中数据结构，不推荐使用断路器模式，因为在此环境中使用断路器会增加系统开销。
@@ -1939,7 +1939,7 @@ https://www.zhihu.com/question/19839828/answer/28434795
     * 本地可以缓存一份 robots.txt 文件，这样可以减少重复地下载该文件
   * URL 地址去重
     * URL 标准化（比如大写变小写、相对路径变成绝对路径等等）
-    * 可以使用 URL 指纹来去重
+    * 可以使用 URL 指纹来去重 ![](./How-to-Dedupe-Massive-URLs.png)
 
 #### DNS Resolver
 * DNS 解析
@@ -2688,6 +2688,9 @@ Ref：
 ![](./payment-system-2.webp)  
 ![](./payment-system-3.webp)  
 ![](./payment-system-4.webp)  
+
+### 其他
+![](./swift.png)  
 
 </details>
 
