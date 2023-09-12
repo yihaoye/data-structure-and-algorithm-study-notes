@@ -306,6 +306,8 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 * Random I/O (slower)
 * Sequential I/O (much faster)
 
+![](./access-performances.png)  
+
 ## [分布式事务](./分布式事务.md)
 
 ## [分布式锁](./分布式锁.md)
@@ -322,7 +324,7 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 这个过程确保了网络数据包的有效接收和传递给相应的应用程序。环形缓冲区用于解决网络速度和处理速度之间的差异，因为 NIC 可以以更高的速度接收数据包，而操作系统可能无法立即处理所有接收到的数据包。缓冲区允许数据包在等待处理时保持在适配器上。  
 
 ## 状态有无
-在计算机系统中，"stateful"（有状态）和 "stateless"（无状态）是两种不同的概念，用于描述系统或组件在处理请求和交互时是否保存状态信息。
+在计算机系统中，"stateful"（有状态）和 "stateless"（无状态）是两种不同的概念，用于描述系统或组件在处理请求和交互时是否保存状态信息。state (for instance user session data). A good practice is to store session data in the persistent storage such as relational database or NoSQL.  
 1. **Stateful（有状态）：**
    - 一个有状态的系统或组件会在处理请求和交互时维护一些状态信息。这意味着系统在不同的请求之间会保留之前的状态，从而能够跟踪用户或对象的操作。
    - 有状态的系统通常需要在服务器端存储数据，以便在不同的请求之间共享和维护状态。这可能涉及到会话管理、状态跟踪、数据存储等。
@@ -502,6 +504,7 @@ Twitter System Publish Flow - by ByteByteGo
   * 新的请求到达，Web 服务器首先询问 Rate Limiter 来决定它是被服务还是被节流。如果请求没有被限制，那么它将被传递到 API 服务器。
   * ![](./API%20Rate%20Limiter%20High%20Level%20Design.png)
 * Step 8: 基本系统设计与算法
+  * Where shall we store counters? Using the database is not a good idea due to slowness of disk access. In-memory cache is chosen because it is fast and supports time-based expiration strategy. For instance, Redis is a popular option to implement rate limiting. It is an in-memory store that offers two commands: INCR and EXPIRE.
   * 举个例子，想限制每个用户的请求数量。在这种情况下，对于每个唯一用户，将保留一个计数，表示用户发出的请求数以及开始计算请求时的时间戳。可以将它保存在一个哈希表中，其中 “键” 将是 UserID，“值” 将是一个包含 Count 整数和 Epoch time 整数的结构体（UserID: {Count, StartTime}）。
     1. 如果哈希表中不存在 UserID，则插入它，将 Count 设置为 1，将 StartTime 设置为当前时间（标准化为一分钟），并允许请求。
     2. 否则，查找 UserID 的记录，如果 CurrentTime – StartTime >= 1 min，将 StartTime 设置为当前时间，Count 设置为 1，并允许请求。
@@ -2711,6 +2714,8 @@ Ref：
 
 **百分位点通常用于 服务级别目标（SLO, service level objectives）和 服务级别协议（SLA, service level agreements），即定义服务预期性能和可用性的合同。 SLA 可能会声明，如果服务响应时间的中位数小于 200 毫秒，且 99.9 百分位点低于 1 秒，则认为服务工作正常（如果响应时间更长，就认为服务不达标）。这些指标为客户设定了期望值，并允许客户在 SLA 未达标的情况下要求退款。**
 
+![](./SLA.png)  
+
 排队延迟（queueing delay）通常占了高百分位点处响应时间的很大一部分。由于服务器只能并行处理少量的事务（如受其 CPU 核数的限制），所以只要有少量缓慢的请求就能阻碍后续请求的处理，这种效应有时被称为 头部阻塞（head-of-line blocking）。即使后续请求在服务器上处理的非常迅速，由于需要等待先前请求完成，客户端最终看到的是缓慢的总体响应时间。因为存在这种效应，测量客户端的响应时间非常重要。  
 在多重调用的后端服务里，高百分位数变得特别重要。即使并行调用，最终用户请求仍然需要等待最慢的并行调用完成。只需要一个缓慢的调用就可以使整个最终用户请求变慢。即使只有一小部分后端调用速度较慢，如果最终用户请求需要多个后端调用，则获得较慢调用的机会也会增加，因此较高比例的最终用户请求速度会变慢（效果称为尾部延迟放大）。  
 
@@ -3120,7 +3125,7 @@ To Be Continue ...
 
 ## Bandwidth 计算
 与 QPS 类似，不同的是根据每天/周/月应该传输/处理多少数据总量来计算每秒需要传输多少数据量。  
-理论上，服务器的带宽处理能力可以从几 Mbps 到数 Tbps 不等。这个范围非常广泛，因为服务器的性能和配置可以差异很大。以下是一个非常一般性的估计范围，仅供参考：  
+理论上，服务器的带宽处理能力可以从几 Mbps 到数 Tbps 不等。这个范围非常广泛，因为服务器的性能和配置（主要由网卡 NIC、CPU、RAM 决定）可以差异很大。以下是一个非常一般性的估计范围，仅供参考：  
 - 中等级的企业服务器：大约 100 Mbps 到 1 Gbps 的带宽处理能力。
 - 高性能服务器：大约 1 Gbps 到 10 Gbps 的带宽处理能力。
 - 数据中心级、超级计算机和云基础设施：大约 10 Gbps 到 100 Gbps 的甚至超过 100 Gbps 的带宽处理能力。

@@ -28,12 +28,15 @@
 * SQL vs NoSQL Which one to use? - there’s no one-size-fits-all solution
   * Reasons to use SQL database
     * need to ensure ACID compliance reduces anomalies and protects the integrity of db (for many e-commerce and financial applications, an ACID- compliant database remains the preferred option)
-    * data is structured and unchanging
+    * data is structured (or have any relational data) and unchanging
+    * need JOIN operation (通常情况下，NoSQL 数据库不太支持传统的 SQL 中的 JOIN 操作)
   * ![](./How%20to%20Select%20SQL%20DB.jpeg)
   * Reasons to use NoSQL database (Big data contributes to NoSQL databases' succeed)
     * Storing large volumes of data that often have little to no structure
     * Making the most of cloud computing and storage, requires data to be easily spread across multiple servers to scale up
     * Rapid development - quick iterations of system which require making frequent updates to the data structure without much downtime between versions
+    * 高性能、侧重写操作（LSM 树）
+    * 只需要序列化/反序列化数据
   * ![](./How%20to%20Select%20NoSQL%20DB.jpeg)
 
 参考：https://pingcap.medium.com/how-to-efficiently-choose-the-right-database-for-your-applications-20a109abced3  
