@@ -44,6 +44,8 @@
   - 散列集 | HashSet (索引搜索 O(1)，插入/删除节点 O(1))
   - 链散列集 | LinkedHashSet (索引搜索 O(1)，插入/删除节点 O(1))
   - 树集 | TreeSet (索引搜索 O(logN)，插入/删除节点 O(logN))
+  - 位集 | BitSet
+    - [布隆过滤器 | Bloom Filter](./../Common%20Algorithm%20and%20Theory/布隆过滤器及其算法.md)
   - 枚举集 | EnumSet
 - [树 | Tree](./Data%20Structure%20Implementation/Tree/README.md)
   - 完全二叉树
