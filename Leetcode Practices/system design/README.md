@@ -294,6 +294,8 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 * Redundancy - backup or failover to avoid single points of failure
 * Replication - sharing information to ensure consistency between redundant resources (e.g. db master-slave relationship)
 
+## [文件系统](./../../Computer%20System%20Layer/文件系统.md)
+
 ## [SQL vs NoSQL](./SQL%20vs%20NoSQL.md)
 
 ## [CAP Theorem](./CAP.md)
@@ -2616,6 +2618,7 @@ http1.1 允许客户端不用等待上一次请求结果返回，就可以发出
 ![](./Logstash_central_log_server_architecture.png)  
 ![](./metric-collection-flow.png)  
 ![](./metric-collection-flow-2.png)  
+![](./metric-system.png)  
 
 * 数据收集：StatsD 或 Elastic Beats（如 Filebeat、Metricbeat、Packetbeat 等）等工具/代理从各种数据源（应用程序、服务器、网络流量等）收集数据。每个 Beats 模块专门设计用于特定类型的数据收集。
 * 数据传输和处理：Beats 将收集的数据传输到 Logstash 或 Elasticsearch 进行进一步的处理。数据传输可以是直接将数据发送给 Elasticsearch，也可以通过 Logstash 进行过滤、解析和转换。
@@ -2713,6 +2716,16 @@ Ref：
 
 参考：https://khamdb.com/ad-tech/advertising-system-architecture-how-to-build-a-production-ad-platform/  
 ![](./ads-system-design.jpeg)  
+
+</details>
+
+
+## 设计邮件系统
+<details>
+<summary>details</summary>
+
+![](./email-system-send.png)  
+![](./email-system-recieve.png)
 
 </details>
 
