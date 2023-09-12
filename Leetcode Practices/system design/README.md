@@ -284,7 +284,9 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 
 ## [并发编程模型](../../Computer%20System%20Layer/并发编程模型.md)
 
-## [Sharding or Data Partitioning](./Sharding%20or%20Data%20Partitioning.md)
+## Sharding or Data Partitioning
+* [分片的几种方式、标准](./Sharding%20or%20Data%20Partitioning.md)
+* [数据库数据建模分库分表](./数据库数据建模分库分表.md)
 
 ## [Indexes](./Indexes.md)
 

@@ -50,15 +50,15 @@ public class LSMTree<K extends Comparable<K>, V> {
         sstables.get(sstables.size() - 1).putAll(memTable);
         memTable.clear();
 
-        // 根据磁盘文件大小阈值执行合并策略
+        // 根据磁盘文件大小阈值执行合并策略（实际中有两种不同的策略：size-tiered 策略、leveled 策略）
         while (sstables.size() >= 2 && sstables.get(sstables.size() - 1).size() >= sstableSizeThresholds.get(sstables.size() - 1)) {
             mergeSSTables();
         }
     }
 
-    // 合并磁盘文件（实际中磁盘不使用 TreeMap 但是 SSTables 仍通常会采用类似归并排序的方法合并，因为 SSTables 用链表、平衡树或跳表保证有序的，所以合并策略效率很高）
+    // 合并磁盘文件（实际中磁盘不使用 TreeMap 但是 SSTables 仍通常会采用类似归并排序的方法合并，因为 SSTables 实际用排序字符串表 - 有序键值对集合，所以合并策略效率很好）
     // 另外下面处理发生冲突时只是简单的采用更新的数据覆盖旧数据，实际中可能有更复杂的策略提供
-    private void mergeSSTables() {
+    private void mergeSSTables() { // or named: compact()
         TreeMap<K, V> sstable = sstables.remove(sstables.size() - 1);
         sstables.get(sstables.size() - 1).putAll(sstable);
     }
