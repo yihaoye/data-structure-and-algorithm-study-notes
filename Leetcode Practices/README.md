@@ -309,6 +309,7 @@
 - [x] 363	Max Sum of Rectangle No Larger Than K		    TreeSet
 - [x] 712   Minimum ASCII Delete Sum for Two Strings    
 - [x] 1143  Longest Common Subsequence  
+- [x] 799   Champagne Tower 
 ### 化简（降维？）
 - [x] 198	House Robber		
 - [x] 213	House Robber II		
@@ -780,4 +781,5 @@
 - [x] 1401  Circle and Rectangle Overlapping    
 - [x] 818   Race Car    
 - [x] 587   Erect the Fence 
+- [x] 799   Champagne Tower 
   
