@@ -2557,6 +2557,9 @@ SESSION 的数据保存在在服务器端，但不是保存在内存中（但是
 ![](./SSO2.webp)  
 ![](./SSO.jpeg)  
 
+OAuth 2.0  
+![](./oauth2-abstract-flow.png)  
+
 </details>
 
 
@@ -2769,6 +2772,15 @@ Ref：
 ![](./dns-system.png)  
 
 DNS 根服务器采用分布式架构，并通过任播和多层缓存、高性能硬件来应对每天的海量请求。  
+
+</details>
+
+
+## 设计 CICD Pipeline
+<details>
+<summary>details</summary>
+
+![](./cicd-pipeline.jpeg)  
 
 </details>
 

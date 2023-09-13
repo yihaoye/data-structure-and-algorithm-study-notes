@@ -82,7 +82,7 @@
 7. [数据结构手绘、白板（文本文件）上绘图技巧](./白板绘图(数据结构手绘).md)
 
 #### 预先准备
-熟用熟背常用模版（或算法长时间手生需重捡复习）推荐
+熟用熟背常用模版（推荐：或算法长时间手生需重捡复习，可配合[分类分析套路](./分析套路.md)）
 * 中级设计/数据结构
   * [设计哈希表 | Leetcode Q706](./Leetcode%20Practices/algorithms/easy/706%20Design%20HashMap.java)
   * [设计最极栈 | Leetcode Q155](./Leetcode%20Practices/algorithms/easy/155%20Min%20Stack.java)
@@ -93,7 +93,8 @@
   * [并查集与联合查找 | Leetcode Q200 Q684 UF-解法](./Leetcode%20Practices/algorithms/medium/200%20Number%20of%20Islands.java)
   * [线段树](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/SegmentTree/SegmentTree4.java)
   * [跳表 | Leetcode Q1206](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/SkipList/SkipList.java)
-  * [红黑树](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/RedBlackTree/RBTree.java)、[树状数组](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/BinaryIndexedTree(FenwickTree)/README.md#树状数组实现)
+  * [红黑树](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/RedBlackTree/RBTree.java)
+  * [状态机](./Tool%20Sets/FSM(DFA).java)
   * 其他：[1](./Leetcode%20Practices/object%20oriented%20design/other%20practices/README.md)、[2](./Common%20Data%20Structure%20and%20Data%20Type/README.md)、[3](./Other%20Practices/)、[4](./Tool%20Sets/README.md)
 * 中级算法
   * [二分搜索 | Leetcode Q34 Q2517 etc](./Common%20Algorithm%20and%20Theory/二分搜索.md)
@@ -108,7 +109,7 @@
   * [倍增法 | Leetcode Q702](./Common%20Algorithm%20and%20Theory/倍增法.md)
 * 高级算法
   * [拓扑排序 | Leetcode Q210](./Common%20Algorithm%20and%20Theory/拓扑排序.md)
-  * [多路归并 | Leetcode Q23-合并排序链表 Q355-设计推特-News-Feed Q373](./Leetcode%20Practices/algorithms/hard/23%20Merge%20k%20Sorted%20Lists.java)
+  * [多路归并 | Leetcode Q23-合并排序链表 Q355-设计推特时间线 Q373-最极-TopK-组合](./Leetcode%20Practices/algorithms/hard/23%20Merge%20k%20Sorted%20Lists.java)
   * [Kadane 算法 | Leetcode Q53](./Leetcode%20Practices/algorithms/easy/53%20Maximum%20Subarray.java)
   * [弗洛伊德算法 | Leetcode Q1462](./Leetcode%20Practices/algorithms/medium/1462%20Course%20Schedule%20IV.java)
   * [Dijkstra 算法 | Leetcode Q743-图-最极权重路径](./Leetcode%20Practices/algorithms/medium/743%20Network%20Delay%20Time.java)
