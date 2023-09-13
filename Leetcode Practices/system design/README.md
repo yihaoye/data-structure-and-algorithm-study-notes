@@ -187,7 +187,8 @@
 <summary>主要组件：https://www.cnblogs.com/ilinuxer/p/6697015.html </summary>
 
 * API 网关（身份验证、路由、速率限制、流量控制、计费、监控、分析、协议转换、安全防护）、[Firewall 防火墙（访问控制）](./firewall.jpg)
-* 负载均衡、自动扩展与 fail-over（ECS、K8S）
+* 负载均衡、DNS 服务（通常情况下，大型互联网公司在不同的数据中心中存储的数据是相同的或者是部分相同的。这是为了实现高可用性、容错性和性能优化而采用的策略之一。其中全球负载均衡通常通过 DNS 解析来实现。这种方法被称为 “全局负载均衡 DNS” 或 “全球负载均衡 DNS”）
+* 自动扩展与 fail-over（ECS、K8S）
 * 业务应用和后端基础框架（MVC、IOC、ORM）
 * 缓存、CDN（本地缓存即内存中的缓存机制：ConcurrentHashMap etc；分布式缓存即单独的缓存服务：Redis、Memcached etc）
 * 主机、计算实例、服务器（EC2、Docker、Serverless）
@@ -2740,6 +2741,19 @@ Ref：
 
 ![](./email-system-send.png)  
 ![](./email-system-recieve.png)
+
+</details>
+
+
+## 设计 CDN、DNS 系统
+<details>
+<summary>details</summary>
+
+![](./cdn-system.png)  
+  
+![](./dns-system.png)  
+
+DNS 根服务器采用分布式架构，并通过任播和多层缓存、高性能硬件来应对每天的海量请求。  
 
 </details>
 
