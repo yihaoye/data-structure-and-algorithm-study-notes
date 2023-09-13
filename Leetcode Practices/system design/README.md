@@ -855,7 +855,7 @@ Driver 如何获得打车请求？—— Report location 的同时，服务器�
 </details>
 
 
-## 设计 Youtube
+## 设计 Youtube（Netflix、TikTok）
 <details>
 <summary>details</summary>
 
@@ -990,6 +990,10 @@ Netflix 在三个 AWS 区域运营：一个在北弗吉尼亚州，一个在俄�
 Netflix 视频分发  
 分发意味着视频文件通过网络从中央位置复制并存储在世界各地的计算机上。对于 Netflix，存储视频的中心位置是 S3。CDN 背后的想法很简单：通过在全球范围内传播计算机，让视频尽可能靠近用户。当用户想要观看视频时，找到最近的带有视频的计算机并从那里流式传输到设备。每个有计算机存储视频内容的位置称为 PoP 或入网点。每个 PoP 都是提供互联网访问的物理位置。它包含服务器、路由器和其他电信设备。  
 Netflix 开发了自己的视频存储计算机系统。Netflix 称它们为 Open Connect 设备或 OCA。每个 OCA 都是一个快速的服务器，经过高度优化，可用于传输大文件，并带有大量用于存储视频的硬盘或闪存驱动器。从硬件的角度来看，OCA 没有什么特别之处。它们基于商用 PC 组件，并由各种供应商组装在定制机箱中。从软件的角度来看，OCA 使用 FreeBSD 操作系统和 NGINX 作为 Web 服务器。是的，每个 OCA 都有一个 Web 服务器。通过 NGINX 提供视频流。其他视频服务，如 YouTube 和亚马逊，在他们自己的骨干网络上提供视频。这些公司实际上建立了自己的全球网络，用于向用户提供视频。这样做非常复杂且非常昂贵。Netflix 采用了完全不同的方法来构建其 CDN。Netflix 不运营自己的网络；它也不再运营自己的数据中心。相反，互联网服务提供商 (ISP) 同意将 OCA 放入其数据中心。OCA 免费提供给 ISP 以嵌入到他们的网络中。Netflix 还将 OCA 放置在互联网交换位置 (IXP) 中或附近。ISP 是用户的互联网提供商，它可能是 Verizon、Comcast、AT&T 或数千种其他服务。OCA 放置在 ISP 数据中心里可使得 Netflix 和 ISP 共赢（降低 ISP 的网络资源成本）。   
+
+Timeline:  
+如果是如 YouTube、TikTok 那样的可以订阅账号的系统，还可以引入 Twitter 那样的 newsfeed（fan-out）机制。  
+因为总有一些用户是订阅量大的大 V 而有一些是低订阅量的普通用户。  
 
 </details>
 
@@ -2606,7 +2610,7 @@ http1.1 允许客户端不用等待上一次请求结果返回，就可以发出
 </details>
 
 
-## 设计 Metric Collection System
+## 设计 Metric Collection System（类似系统 Google-Analytics）
 <details>
 <summary>details</summary>
 
