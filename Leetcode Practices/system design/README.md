@@ -42,6 +42,7 @@
 ## 系统学习
 * [Grok System Design Tutorial](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Leetcode%20Practices/system%20design/grok_system_design_interview.pdf)
 * [System Design Fundamentals](./System%20Design%20Fundamentals.md)
+* [ByteByteGo Articles](https://blog.bytebytego.com/archive?sort=new)
 * [System-Design-Primer](https://github.com/donnemartin/system-design-primer)
 * [Scalability Architecture](https://github.com/binhnguyennus/awesome-scalability#architecture)
 * [System Design Interview](https://www.youtube.com/c/SystemDesignInterview)
@@ -854,8 +855,9 @@ Driver 如何获得打车请求？—— Report location 的同时，服务器�
 ![](./google_map_system_design.png)  
 ![](./google-map-rendering.png)  
 
-在进行导航时，因为已经由客户输入出发与目标地址，因此简单的设计是可以直接使用 Dijkstra 算法（因为地图里每个点可以用二维图数据渲染）处理计算并返回相应的路径数据。  
-至于基于车辆还是步行等导航，可以为图的每个点设置不同的值，如此进行 Dijkstra 计算时可以据此当作是否可行还是阻拦来计算。  
+在进行导航时，因为已经由客户输入出发与目标地址，因此简单的设计是可以直接使用 `Dijkstra 算法`（因为地图里每个点可以用二维图数据渲染）预处理计算过的路径数据（该数据可以持久化存储，因为地图道路通常较少变更）。路径查找算法还有其他选项，比如 `A* 搜索算法`。  
+至于基于车辆还是步行等导航，可以为图的每个点设置不同的值，如此进行 Dijkstra 计算时可以据此当作是否可行还是阻拦来计算。另外，还应该考虑动态重规划：在导航过程中，用户可能会出现导航误差、交通变化等情况，因此，系统通常会使用动态重规划来重新计算最佳路径，并提供实时导航指示。  
+如果想实现地图检测部分路段因实时堵塞而通知用户速度较慢的功能，可以通过数据收集：谷歌通过多种途径收集行车速度数据，其中包括智能手机上的谷歌地图应用，这些应用可以匿名地收集用户位置数据和速度信息，此外，谷歌还使用了实时交通信息，这些信息来自于车载导航设备、交通监控摄像头、交通数据提供商等。  
 
 至于地图的渲染是个复杂的过程：
 * 矢量数据：谷歌地图通常使用矢量数据来表示地图的各个元素，如道路、建筑物、地理特征等。这些矢量数据以地理信息系统（GIS）格式存储，并以一种高效的方式进行压缩和存储，以便快速传输和渲染。

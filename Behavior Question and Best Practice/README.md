@@ -14,6 +14,7 @@ BQ 问题来来去去就是那些，准备多了背熟就会越练越好，核�
 另外还需要注意 BQ 回答时的时间管理控制，不要超时或过短，否则会落下时间管理不善的印象。  
 
 * [彻底击碎行为问题](https://docs.google.com/document/d/112HBiMNvu6TYbDUOfVRe_MS4A-fKaWYrpMlmnsiMNiA/edit#heading=h.bmwacy4ylksh)
+* [Tech Interview Handbook](https://www.techinterviewhandbook.org/behavioral-interview/)
 * [如何高效准备 BQ 面试](https://www.youtube.com/watch?v=-xUHMCXxu8w)
 * [TOP 10 BEHAVIORAL Interview Questions with Answers](https://www.youtube.com/watch?v=khbR_qvOF5g)
 * [充满陷阱的 Behavior Question：谈谈你没有按时完成项目的经历](https://zhuanlan.zhihu.com/p/65345319)  
