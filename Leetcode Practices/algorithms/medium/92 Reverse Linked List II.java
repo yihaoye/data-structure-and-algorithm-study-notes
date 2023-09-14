@@ -32,7 +32,7 @@ class Solution {
             tmp.next = last;
             last = tmp;
         }
-        // if (cur != null) cur = reverseK(cur, len); // follow-up：如果想迭代、递归地反转链表的后续，可以添加这一行
+        // if (cur != null) cur = reverseK(cur, len); // follow-up：如果想迭代、递归地反转链表的后续，可以添加这一行（假设输入 1->2->3->4->5->NULL，每 2 个进行反转，得出 2->1->4->3->5->NULL）
         if (head != null) head.next = cur;
         return last;
     }
