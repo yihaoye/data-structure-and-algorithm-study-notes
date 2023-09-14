@@ -25,15 +25,16 @@ class Solution {
 
     public ListNode reverseList(ListNode head, int len) {
         // 栈思想 Time: O(N), Space: O(1)
-        ListNode tmpLast = null, tmpNext = head;
-        while (tmpNext != null && len-- > 0) {
-            ListNode last = tmpNext;
-            tmpNext = last.next;
-            last.next = tmpLast;
-            tmpLast = last;
+        ListNode last = null, cur = head;
+        int cnt = len;
+        while (cur != null && cnt-- > 0) {
+            ListNode tmp = cur; cur = cur.next;
+            tmp.next = last;
+            last = tmp;
         }
-        if (head != null) head.next = tmpNext;
-        return tmpLast;
+        // if (cur != null) cur = reverseK(cur, len); // follow-up：如果想迭代、递归地反转链表的后续，可以添加这一行
+        if (head != null) head.next = cur;
+        return last;
     }
 }
 
