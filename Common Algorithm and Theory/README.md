@@ -100,7 +100,7 @@
       - 卷积神经网络 | CNN
       - 长短期记忆, 循环神经网络 | LSTM, RNN
       - 生成对抗网络 | GAN
-      - [Transformer 模型, 大语言模型（LLM）](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)) (Related: [build GPT from scratch](https://www.youtube.com/watch?v=kCc8FmEb1nY))
+      - [Transformer 模型, 大语言模型 (LLM)](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)) (Related: [build GPT from scratch](https://www.youtube.com/watch?v=kCc8FmEb1nY))
   - [数学](../Computer%20Science%20Maths/README.md)
     - [鸽巢原理 | Pigeonhole Principle](./鸽巢原理.md)
     - [取模运算 | Modulo](./取模运算.md)
@@ -110,10 +110,11 @@
       - [扫描线 | Line Sweep](./扫描线.md)
       - [凸包 | Convex Hull](./凸包.md)
       - [三分搜索 | Ternary Search](https://www.cnblogs.com/PJQOOO/p/4161891.html)
+      - [向量计算 | Vector](https://cp.wiwiho.me/vector/)
     - [其他数学工具、操作与套路](../Tool%20Sets/Math.java)
   - 其他常见优化思想、技巧
     - [懒更新 | Lazy Update](./懒更新.md)
     - [状态压缩 | State Compression](../Tool%20Sets/StateCompression.java)
     - [坐标离散化 | Coordinate Compression](./坐标离散化.md)
-    - [集合的整数表示 | Bit Set](./集合的整数表示.md)
-    - [比较优化，减少比较次数（算法导论 9.1）](./../Leetcode%20Practices/algorithms/easy/1491%20Average%20Salary%20Excluding%20the%20Minimum%20and%20Maximum%20Salary.java)
+    - [集合的整数表示 (位集、位向量) | Bit Set](./集合的整数表示.md)
+    - [比较优化，减少比较次数 (算法导论 9.1)](./../Leetcode%20Practices/algorithms/easy/1491%20Average%20Salary%20Excluding%20the%20Minimum%20and%20Maximum%20Salary.java)
