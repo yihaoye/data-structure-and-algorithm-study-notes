@@ -30,7 +30,9 @@
 * HashMap 与 ConcurrentHashMap 的实现原理是怎样的？HashMap 为什么使用红黑树？[ConcurrentHashMap 是如何保证线程安全的？](https://github.com/JasonGaoH/KnowledgeSummary/blob/master/Docs/Java/ConcurrentHashMap%E6%98%AF%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84.md) （中等）
 * ConcurrentHashMap 的写操作会对读操作产生性能影响吗？[1](https://stackoverflow.com/a/71805283/6481829)、[2](https://stackoverflow.com/questions/68968305/how-can-i-block-concurrenthashmap-get-operations-during-a-put)
 * 简述 Java 的反射机制及其应用场景  （简单）
-* Synchronized，Volatile（及其实现原理），可重入锁的不同使用场景及优缺点？synchronized 基于 JVM 的内置锁（也称为监视器锁或对象锁，对象都有一个对象头，用来存储对象的元数据信息，其中一部分用于存储锁的信息，该部分由 CAS 保护）来实现同步，每个 Java 对象都可以作为锁，当一个线程进入一个被 synchronized 修饰的代码块或方法时，它会尝试获取对象锁；volatile 利用内存屏障（memory barrier）来实现可见性，它告诉编译器和处理器不要对 volatile 变量进行优化，确保变量的值总是从主内存中读取；可重入锁是一种高级锁机制，允许同一个线程多次获取同一把锁而不会造成死锁，Java 中的 ReentrantLock 和 synchronized 都属于可重入锁。
+* [Java 所有锁细节](https://tech.meituan.com/2018/11/15/java-lock.html)
+* Synchronized，Volatile（及其实现原理），可重入锁的不同使用场景及优缺点？synchronized 关键字实际上是基于操作系统的互斥锁（Mutex）来实现的；volatile 利用内存屏障（memory barrier）来实现可见性，它告诉编译器和处理器不要对 volatile 变量进行优化，确保变量的值总是从主内存中读取；可重入锁是一种高级锁机制，允许同一个线程多次获取同一把锁而不会造成死锁，Java 中的 ReentrantLock 和 synchronized 都属于可重入锁。
+* [sun.misc.Unsafe](https://tech.meituan.com/2019/02/14/talk-about-java-magic-class-unsafe.html)
 * [简述 Java BIO、NIO、AIO 的区别](https://tobebetterjavaer.com/nio/BIONIOAIO.html)  （困难）
 * Java 类的加载流程是怎样的？什么是双亲委派机制？  （简单）
 * JMM 中内存模型是怎样的？什么是指令序列重排序？  （中等）
@@ -68,8 +70,12 @@
 ## 机器学习高频
 * [七大最常见的机器学习面试问题](https://www.youtube.com/watch?v=j340MdN0QSY)
 
-## 操作系统（Linux & bash）高频
+## 硬件与操作系统（Linux & bash）高频
 * [进程、线程、协程的区别](./../Computer%20System%20Layer/进程与线程.md)
+* 锁的实现可以分为两大类：基于操作系统（软件）的锁和基于硬件的锁（比如 CAS 指令）。
+  * 基于操作系统的锁：这种锁是通过操作系统提供的原语来实现的，例如 Linux 的互斥锁（mutex），Windows 的临界区（critical section）等。它们是在操作系统层面上实现的，通常会涉及到用户态到内核态的切换，因此相对来说比较重量级。[互斥锁的实现](https://www.zhihu.com/question/332113890)及相关[算法](https://zh.wikipedia.org/wiki/Peterson%E7%AE%97%E6%B3%95)。
+  * 基于硬件的锁：这种锁是直接利用处理器提供的原语来实现的，最典型的就是 CAS（Compare and Swap）指令。CAS 指令是一种乐观锁，它尝试将一个变量的值与一个期望的值进行比较，如果相等就将该变量设置为一个新的值。如果失败，则说明其他线程已经修改了这个变量，需要重新尝试。由于 CAS 是在硬件层面上实现的，所以比基于操作系统的锁要轻量级，性能更高。
+* [内存屏障](https://monkeysayhi.github.io/2017/12/28/%E4%B8%80%E6%96%87%E8%A7%A3%E5%86%B3%E5%86%85%E5%AD%98%E5%B1%8F%E9%9A%9C/)
 * [Linux for Programmers](https://www.youtube.com/watch?v=ebHX9c75H8I&list=PLzMcBGfZo4-nUIIMsz040W_X-03QH5c5h)
   * `cat`、`rm`、`cd`、`mv`、`cp`
   * `ps`、`top`、`kill`
