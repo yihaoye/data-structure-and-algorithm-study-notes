@@ -247,6 +247,9 @@ CachedThreadPool、ScheduledThreadPool 的 keepAliveTime 默认是 60 秒，意�
 ![](./Rejection%20Handler%202.png)  
 Rejection Handler [示例代码](./Defog/RejectionHandler.java)  
   
+## Java 锁
+![](./Java主流锁.png)  
+  
 ## ReentrantLock  
 ReentrantLock 可以替代 synchronized 进行同步；ReentrantLock 获取锁更安全；必须先获取到锁，再进入 `try {...}` 代码块，最后使用 `finally` 保证释放锁；可以使用 `tryLock()` 尝试获取锁。其本质是悲观锁。  
 [示例代码 1（包括子模块 Condition）](./Liaoxuefeng/ReentrantLock.java)  
