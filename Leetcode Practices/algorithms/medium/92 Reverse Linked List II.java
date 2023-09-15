@@ -33,7 +33,7 @@ class Solution {
             last = tmp;
         }
         // if (cur != null) cur = reverseK(cur, len); // follow-up：如果想迭代、递归地反转链表的后续，可以添加这一行（假设输入 1->2->3->4->5->NULL，每 2 个进行反转，得出 2->1->4->3->5->NULL）
-        if (head != null) head.next = cur;
+        if (head != null) head.next = cur; // len 遍历完后，cur 此时为反转后的链表的第 len+1 个节点，原来的 head 现在为第 len 个节点，将两者连接以完成剩下的拼接
         return last;
     }
 }
