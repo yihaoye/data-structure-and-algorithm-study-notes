@@ -255,9 +255,13 @@ ReentrantLock 可以替代 synchronized 进行同步；ReentrantLock 获取锁�
 [示例代码 1（包括子模块 Condition）](./Liaoxuefeng/ReentrantLock.java)  
 [示例代码 2](./Defog/ReentrantLock.java)  
   
-顾名思义，ReentrantLock 即意为可多次对同一个对象/资源来调用锁（当调用了 N 次锁，则解锁次数也应为对应的 N 次）。参考[示例代码](./Defog/ReentrantLock.java)里的 reEnterTheLock。  
+可重入锁，也叫做递归锁，重入性是指一个线程在获取到锁之后能够再次获取该锁而不会被锁阻塞，顾名思义，ReentrantLock 即意为可多次对同一个对象/资源来调用锁（当调用了 N 次锁，则解锁次数也应为对应的 N 次）。参考[示例代码](./Defog/ReentrantLock.java)里的 reEnterTheLock。线程获取该锁需要具备两个条件：
+* 需要去识别获取锁的线程是否为当前占据锁的线程，如果是，则再次获取成功
+* 锁的最终释放：线程重复 N 次获取了锁，随后在第 N 次释放该锁后，其它线程才能够获取到该锁。锁的最终释放要求锁对于获取进行计数自增，计数表示当前线程被重复获取的次数，而被释放时，计数自减，当计数为 0 时表示锁已经成功释放。
   
 ReentranLock 还分为公平锁和非公平锁，二者的区别就在获取锁机会是否和排队顺序相关。若 `new ReentrantLock(true)` 即 fair lock 时，ReentrantLock 的 waiting 执行线程队列是 FIFO 的，即最先排队等待锁的线程最先下一个执行。若 `new ReentrantLock(false)` 即 unfair lock 时，则选择执行最快的那个线程，因此性能比 fair lock 好但是却可能造成一些线程 starvation/一直等待得不到执行。  
+
+非可重入锁与可重入锁（Reentrant Lock）的主要区别在于可重入锁允许同一线程多次获得锁，而非可重入锁不允许。非可重入锁的应用场景相对有限，因为在多线程环境下，可重入锁更加灵活，更容易管理线程之间的互斥和同步。非可重入锁可能会导致程序更难以维护和出现死锁等问题，因此通常情况下，可重入锁更常见和推荐使用。  
   
 ## ReadWriteLock
 比 ReentrantLock 更高效，其本质仍是悲观锁。  
