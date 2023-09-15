@@ -1,6 +1,6 @@
 # 系统设计学习资源
 系统设计重要性：在 Senior 或 Team Leader 或更高级别的岗位招聘面试中，系统设计常常拥有一票否决权。  
-[而且系统设计与现实生活有许多共通的哲学与智慧。](https://www.youtube.com/watch?v=th_73AVA4dY)  
+而且[系统设计与现实生活有许多共通的哲学与智慧](https://www.youtube.com/watch?v=th_73AVA4dY)。有专门的学科[系统科学](https://en.wikipedia.org/wiki/Systems_science)，系统设计就是其内容之一，软件的系统设计可以说是其子集。  
   
 ## 针对面试
 * [Grokking-System-Design](https://github.com/lei-hsia/grokking-system-design)
