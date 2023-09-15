@@ -51,8 +51,9 @@ public class LSMTree<K extends Comparable<K>, V> {
 
         // 根据磁盘文件大小阈值执行合并策略（实际中有两种不同的策略：size-tiered 策略、leveled 策略）
         int level = 0;
-        while (level < sstables.size() - 1 && sstables.get(level).size() >= sstableSizeThreshold * (level + 1)) {
-            mergeSSTables(level++);
+        while (level < sstables.size() - 1 && sstables.get(level).size() >= sstableSizeThreshold * Math.pow(2, level)) {
+            mergeSSTables(level);
+            level++;
         }
     }
 
