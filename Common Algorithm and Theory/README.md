@@ -80,7 +80,7 @@
     - [Rsync 算法](https://zh.wikipedia.org/zh-cn/Rsync#%E6%BC%94%E7%AE%97%E6%B3%95)
     - [共识机制/算法 (分布式选举问题) | Consensus Algorithm](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md) ([etcd 实现](../Leetcode%20Practices/system%20design/example%20questions/Leader%20Election.md))
       - 崩溃容错协议 | CFT
-        - Paxos、Raft、ZAB、[Quorum](./Quorum算法.md)
+        - Paxos、[Raft](https://cloud.tencent.com/developer/article/1816404)、ZAB、[Quorum](./Quorum算法.md)
       - 拜占庭容错 | BFT (Ref: [1](https://www.bilibili.com/read/cv14498545)、[2](https://cloud.tencent.com/developer/news/580379)、[3](https://learnku.com/articles/56919))
         - PBFT、Hotstuff
     - [P2P 核心算法](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md)
@@ -96,7 +96,7 @@
     - 隐马尔可夫模型 | Hidden Markov Model, HMM
       - 前向与后向算法
       - 维特比算法
-    - 多模态学习 | Multimodal Learning
+    - [多模态学习 | Multimodal Learning](https://zhuanlan.zhihu.com/p/53511144)
     - [深度学习, 神经网络 | Deep Learning, Neural Networks](https://www.zhihu.com/question/314879954/answer/638380202)
       - 卷积神经网络 | CNN
       - 长短期记忆, 循环神经网络 | LSTM, RNN

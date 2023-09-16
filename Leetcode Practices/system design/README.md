@@ -210,7 +210,7 @@
 * 故障监控（系统监控、业务监控；Datadog、ELK、故障定位、警报等级、IM 或 oncall）(Telemetry)
 * DX（内部服务：包括大数据、构建交付工具、通用运行时服务类库、数据持久化、安全等）
 * 分布式锁、[分布式一致性](./System%20Design%20Fundamentals.md)与[选举算法/共识机制](./example%20questions/Leader%20Election.md)
-* 网络、拓扑（如 AWS VPC 等），点对点网络（Peer-to-peer Networks，如 VPC Peering、指数增长的高效的针对大规模目标对象的数据拷贝传输、区块链项目如 Bitcoin、等等）  
+* 网络、拓扑（如 AWS VPC 等），点对点网络/去中心化（Peer-to-peer Networks，如 VPC Peering、指数增长的高效的针对大规模目标对象的数据拷贝传输、区块链项目如 Bitcoin、等等）  
   
 ![](./System%20Design%20Blueprint.jpeg)
 
