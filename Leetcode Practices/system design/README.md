@@ -272,7 +272,7 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 [对象存储也可以实现简单的消息队列](./README.md#设计分布式云消息队列)，比如把 bucket 分成未处理和已处理两个路径，从未处理的 bucket 读出最前面的文件，处理它，然后把文件转移至已处理路径即可（此办法不足以应对多个消费者订阅同一个主题消息的场景，需要进一步改动）。  
 
 ## Cache vs Message Queue / Stream
-相比之下 Cache 更像 Java 的 HashMap，Message Queue / Stream 更像 Java 的 Queue/Deque/Stream：
+相比之下 Cache 更像 Java 的 HashMap，Message Queue / Stream 更像 Java 的 Queue / Deque / Stream：
 * Cache 通常用于索引定位更快的响应的场景，而不是用于有序事件处理（虽然如 Redis 也有相关功能但在需要更高级的消息队列功能，例如消息确认、重试、顺序性保证等时，Kafka 是更好的选择）
 * Message Queue / Stream 保证先入先出、（处理）事件有序的场景应用，而不是为了快速索引定位响应（因为如 Kafka 等系统是使用硬盘日志而不是内存存储数据，因此延迟较高）。
 * 处理实时数据时（持续快速更新数据的场景），消息队列比缓存更适用，因为缓存在这种情况要非常注意读写一致性问题（引入读写策略、锁之类的）可能非常复杂、麻烦。
@@ -511,7 +511,7 @@ Twitter System Publish Flow - by ByteByteGo
   * 新的请求到达，Web 服务器首先询问 Rate Limiter 来决定它是被服务还是被节流。如果请求没有被限制，那么它将被传递到 API 服务器。
   * ![](./API%20Rate%20Limiter%20High%20Level%20Design.png)
 * Step 8: 基本系统设计与算法
-  * Where shall we store counters? Using the database is not a good idea due to slowness of disk access. In-memory cache is chosen because it is fast and supports time-based expiration strategy. For instance, Redis is a popular option to implement rate limiting. It is an in-memory store that offers two commands: INCR and EXPIRE.
+  * **应该把计数器存储在哪里？不建议使用数据库，因为磁盘访问较慢。通常选择内存缓存，因为它速度快，并支持基于时间的过期策略。例如，Redis 是一个常用的选项来实现速率限制，它是内存存储，并提供了两个命令：INCR 和 EXPIRE。**
   * 举个例子，想限制每个用户的请求数量。在这种情况下，对于每个唯一用户，将保留一个计数，表示用户发出的请求数以及开始计算请求时的时间戳。可以将它保存在一个哈希表中，其中 “键” 将是 UserID，“值” 将是一个包含 Count 整数和 Epoch time 整数的结构体（UserID: {Count, StartTime}）。
     1. 如果哈希表中不存在 UserID，则插入它，将 Count 设置为 1，将 StartTime 设置为当前时间（标准化为一分钟），并允许请求。
     2. 否则，查找 UserID 的记录，如果 CurrentTime – StartTime >= 1 min，将 StartTime 设置为当前时间，Count 设置为 1，并允许请求。
