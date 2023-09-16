@@ -58,6 +58,8 @@ public double getArea(double[] a, double[] b, double[] c) { // 向量 ab 转为 
     return cross(convertToVector(b, a), convertToVector(c, a));
 }
 
+// 向量可以用数组表示（但是固定长度），也可以用线性表表示（可以动态添加）。一个 N 维的向量应该就是一个 N 个元素的数组（int[] vector = new int[n];）或线性表表示。
+
 
 
 // 斜率公式
