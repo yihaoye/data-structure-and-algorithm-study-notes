@@ -2485,6 +2485,13 @@ commit;
 ```  
 if commit fail then do the select again (something like a while loop until succeed).
 
+### 扩展（仿 Kafka）
+可以为每个消息在 message_table 里对应一个记录，有 topic 字段并添加 partition 字段，但是不需要 status 字段。每个消费者对应 consumer_partition_table 里的 k 个记录（数量 k == 消费者对应的 partition 数量），记录有 consumer_id，partition_id（分区 ID 建议是类似 UUID 而不是可重复的第几个分区，因为这样可以顺便实现消费者对消息的访问权限隔离功能，访问权限有 permission_table 来管理）和 last_commit 字段，partition 也有 producer_partition_table（包括 partition_id、producer_id 字段），producer 有 producer_table。  
+当 producer 生产消息时，以及把日志文件上传对象存储（可以根据 partition_id 来分 bucket，这样也可以为不同的 bucket 设置不同的 S3 权限以进行底层权限双保证）并获取地址，把元数据（自增 message_id、topic、key、address、partition_id 等）写入 message_table，然后 consumer 从 consumer_partition_table 里轮询每一个其负责的 partition_id 查上一个 last_commit 的 message_id，然后找是否有下一个，有则读取处理并更新 last_commit。  
+offset 的实现可以结合 message_table 和 consumer_partition_table 的 last_commit 和 message_id 以及 SQL 来实现。  
+因为没有范围查询的需求，可以通过一致性哈希分区，键可以以 partition_id 为准。  
+保证每个分区和同一个消费者组里只对应单个消费者实例，如果消费者实例有多而分区不够分配则把该实例闲置。  
+
 [更多参考](./README.md#message-queue-and-stream)  
 
 其他参考方案：[Pub-Sub Architecture Design and Scale](./example%20questions/Pub-Sub%20Architecture%20Design%20and%20Scale.md)  
