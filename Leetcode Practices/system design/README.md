@@ -187,8 +187,8 @@
 <details>
 <summary>主要组件：https://www.cnblogs.com/ilinuxer/p/6697015.html </summary>
 
+* 负载均衡、虚拟 IP、DNS 服务（通常情况下，大型互联网公司在不同的数据中心中存储的数据是相同的或者是部分相同的。这是为了实现高可用性、容错性和性能优化而采用的策略之一。其中全球负载均衡通常通过 DNS 解析来实现。这种方法被称为 “全局负载均衡 DNS” 或 “全球负载均衡 DNS”。DNS 还可以返回客户端虚拟 IP 以重定向请求到不同的负载均衡节点）
 * API 网关（身份验证、路由、速率限制、流量控制、计费、监控、分析、协议转换、安全防护）、[Firewall 防火墙（访问控制）](./firewall.jpg)
-* 负载均衡、DNS 服务（通常情况下，大型互联网公司在不同的数据中心中存储的数据是相同的或者是部分相同的。这是为了实现高可用性、容错性和性能优化而采用的策略之一。其中全球负载均衡通常通过 DNS 解析来实现。这种方法被称为 “全局负载均衡 DNS” 或 “全球负载均衡 DNS”）
 * 自动扩展与 fail-over（ECS、K8S）
 * 业务应用和后端基础框架（MVC、IOC、ORM）
 * 缓存、CDN（本地缓存即内存中的缓存机制：ConcurrentHashMap etc；分布式缓存即单独的缓存服务：Redis、Memcached etc）
@@ -199,18 +199,18 @@
 * 对象/文件/非结构化数据存储（S3、Hadoop HDFS、Blob Storage - Binary Large Object Storage）（e.g. distributed file storage system for storing photos and videos）
 * 镜像/备份/归档（如为云主机、容器或数据库及其存储卷等等的镜像/快照的服务，可以存储至文件存储如 S3 等）
 * 统一认证中心（用户的注册、登录验证、token 鉴权；内部信息系统用户的管理、权限和登录鉴权；应用管理，应用的 secret 生成，应用信息的验证 - 如验证接口签名等）
-* 加密解密、压缩解压
+* 加密解密（如 KMS）、压缩解压（无损，如图像多媒体文件、通信、存储备份等）
 * 单点登录系统（Central Authentication Service - CAS）
 * [统一配置中心](https://en.wikipedia.org/wiki/Configuration_management)（Config Server、propeties、yaml）
 * 管理后台/管理控制台（允许客服或工程师直接访问和管理数据库数据以支持用户，比如 Django Admin、WordPress）
-* [服务调用/服务治理框架（REST API、RPC）](./System%20Design%20Fundamentals.md#API%20Design)
+* [服务调用/服务治理框架（REST API、RPC）](./System%20Design%20Fundamentals.md#API%20Design)，服务发现、注册、查询（如 Consul、etcd、ZooKeeper）
 * 统一调度中心（定时调度 cron job，如定时抓取数据、刷新状态等）
 * 统一日志服务（log4j、logback、Kibana、CloudWatch）
 * 数据基础设施（大数据：Hadoop、Spark、数据仓库；数据管道：Kafka、Kinesis；数据分析：Hadoop、Spark、Tableau、Python、SAS、Excel）
 * 故障监控（系统监控、业务监控；Datadog、ELK、故障定位、警报等级、IM 或 oncall）(Telemetry)
 * DX（内部服务：包括大数据、构建交付工具、通用运行时服务类库、数据持久化、安全等）
 * 分布式锁、[分布式一致性](./System%20Design%20Fundamentals.md)与[选举算法/共识机制](./example%20questions/Leader%20Election.md)
-* 点对点网络（Peer-to-peer Networks，如 VPC Peering、指数增长的高效的针对大规模目标对象的数据拷贝传输、区块链项目如 Bitcoin、等等）  
+* 网络、拓扑（如 AWS VPC 等），点对点网络（Peer-to-peer Networks，如 VPC Peering、指数增长的高效的针对大规模目标对象的数据拷贝传输、区块链项目如 Bitcoin、等等）  
   
 ![](./System%20Design%20Blueprint.jpeg)
 
@@ -267,6 +267,7 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 ## [Caching](./Caching.md)
 
 ## [Message Queue and Stream](./消息队列与流处理.md)
+[设计分布式/云消息队列](./README.md#设计分布式云消息队列)  
 注意，一般的消息队列（Kafka、Redis、ActiveMQ etc）不支持索引查询，但是时序数据库、时间序列数据库（Time Series Database，如 InfluxDB、MongoDB、Prometheus、RedisTimeSeries etc）除了能当简单的消息队列（比一般数据库吞吐性能更强，但仅限低吞吐量等有限场景。大规模、高吞吐量场景还是要用专门的消息队列系统）还可以索引查询（时间序列数据库通常会使用时间戳作为主要的索引字段，以便快速按时间范围查询数据。这使得在时间序列数据库中执行时间范围查询非常高效）。  
 对象存储也可以实现简单的消息队列，比如把 bucket 分成未处理和已处理两个路径，从未处理的 bucket 读出最前面的文件，处理它，然后把文件转移至已处理路径即可（此办法不足以应对多个消费者订阅同一个主题消息的场景，需要进一步改动）。  
 
@@ -2456,7 +2457,7 @@ void addItemTag(String itemId, String[] tagIds) {
 </details>
 
 
-## 设计云消息队列
+## 设计分布式/云消息队列
 <details>
 <summary>details</summary>
 

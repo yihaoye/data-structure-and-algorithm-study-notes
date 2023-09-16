@@ -96,6 +96,7 @@
     - 隐马尔可夫模型 | Hidden Markov Model, HMM
       - 前向与后向算法
       - 维特比算法
+    - 多模态学习 | Multimodal Learning
     - [深度学习, 神经网络 | Deep Learning, Neural Networks](https://www.zhihu.com/question/314879954/answer/638380202)
       - 卷积神经网络 | CNN
       - 长短期记忆, 循环神经网络 | LSTM, RNN
