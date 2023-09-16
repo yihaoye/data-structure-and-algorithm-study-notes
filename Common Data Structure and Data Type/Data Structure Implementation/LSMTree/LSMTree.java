@@ -36,8 +36,7 @@ public class LSMTree<K extends Comparable<K>, V> {
         V value = memTable.get(key);
         if (value == null) {
             for (TreeMap<K, V> sstable : sstables) { // 从上往下找，越上方的数据才是越新的数据
-                value = sstable.get(key);
-                if (value != null) break;
+                if (sstable.containsKey(key)) return sstable.get(key); // 有可能返回 null 因为可能是标记删除的数据
             }
         }
         return value;
