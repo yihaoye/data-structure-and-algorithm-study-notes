@@ -33,13 +33,11 @@ public class LSMTree<K extends Comparable<K>, V> {
     // 从表中获取值
     public V get(K key) {
         if (!bloomFilter.mightContain(key)) return null;
-        V value = memTable.get(key);
-        if (value == null) {
-            for (TreeMap<K, V> sstable : sstables) { // 从上往下找，越上方的数据才是越新的数据
-                if (sstable.containsKey(key)) return sstable.get(key); // 有可能返回 null 因为可能是标记删除的数据
-            }
+        if (memTable.containsKey(key)) return memTable.get(key);
+        for (TreeMap<K, V> sstable : sstables) { // 从上往下找，越上方的数据才是越新的数据
+            if (sstable.containsKey(key)) return sstable.get(key); // 有可能返回 null 因为可能是标记删除的数据
         }
-        return value;
+        return null;
     }
 
     // 合并内存表数据到磁盘文件

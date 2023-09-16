@@ -259,9 +259,7 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
   * 数据加密解密（传输与存储）、隐私、合规性
   * 攻击防护（DDoS、伪造或注入攻击）
   * 监控与日志
-  
-## [Consistent Hashing](./一致性哈希.md)  
-  
+    
 ## [Load Balancing](./Load%20Balancing.md)
 
 ## [Caching](./Caching.md)
@@ -271,7 +269,7 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 注意，一般的消息队列（Kafka、Redis、ActiveMQ etc）不支持索引查询，但是时序数据库、时间序列数据库（Time Series Database，如 InfluxDB、MongoDB、Prometheus、RedisTimeSeries etc）除了能当简单的消息队列（比一般数据库吞吐性能更强，但仅限低吞吐量等有限场景。大规模、高吞吐量场景还是要用专门的消息队列系统）还可以索引查询（时间序列数据库通常会使用时间戳作为主要的索引字段，以便快速按时间范围查询数据。这使得在时间序列数据库中执行时间范围查询非常高效）。  
 [对象存储也可以实现简单的消息队列](./README.md#设计分布式云消息队列)，比如把 bucket 分成未处理和已处理两个路径，从未处理的 bucket 读出最前面的文件，处理它，然后把文件转移至已处理路径即可（此办法不足以应对多个消费者订阅同一个主题消息的场景，需要进一步改动）。  
 
-## Cache vs Message Queue / Stream
+### Cache vs Message Queue / Stream
 相比之下 Cache 更像 Java 的 HashMap，Message Queue / Stream 更像 Java 的 Queue / Deque / Stream：
 * Cache 通常用于索引定位更快的响应的场景，而不是用于有序事件处理（虽然如 Redis 也有相关功能但在需要更高级的消息队列功能，例如消息确认、重试、顺序性保证等时，Kafka 是更好的选择）
 * Message Queue / Stream 保证先入先出、（处理）事件有序的场景应用，而不是为了快速索引定位响应（因为如 Kafka 等系统是使用硬盘日志而不是内存存储数据，因此延迟较高）。
@@ -290,6 +288,8 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 ## Sharding or Data Partitioning
 * [分片的几种方式、标准](./Sharding%20or%20Data%20Partitioning.md)
 * [数据库数据建模分库分表](./数据库数据建模分库分表.md)
+
+### [Consistent Hashing](./一致性哈希.md)
 
 ## [Indexes](./Indexes.md)
 
@@ -2485,9 +2485,9 @@ commit;
 ```  
 if commit fail then do the select again (something like a while loop until succeed).
 
-### 扩展（仿 Kafka）
+### 设计改良/扩展（推荐：仿 Kafka）
 可以为每个消息在 message_table 里对应一个记录，有 topic 字段并添加 partition 字段，但是不需要 status 字段。每个消费者对应 consumer_partition_table 里的 k 个记录（数量 k == 消费者对应的 partition 数量），记录有 consumer_id，partition_id（分区 ID 建议是类似 UUID 而不是可重复的第几个分区，因为这样可以顺便实现消费者对消息的访问权限隔离功能，访问权限有 permission_table 来管理）和 last_commit 字段，partition 也有 producer_partition_table（包括 partition_id、producer_id 字段），producer 有 producer_table。  
-当 producer 生产消息时，以及把日志文件上传对象存储（可以根据 partition_id 来分 bucket，这样也可以为不同的 bucket 设置不同的 S3 权限以进行底层权限双保证）并获取地址，把元数据（自增 message_id、topic、key、address、partition_id 等）写入 message_table，然后 consumer 从 consumer_partition_table 里轮询每一个其负责的 partition_id 查上一个 last_commit 的 message_id，然后找是否有下一个，有则读取处理并更新 last_commit。  
+当 producer 生产消息时，以及把日志文件上传对象存储（可以根据 partition_id 来分 bucket，这样也可以为不同的 bucket 设置不同的 S3 权限以进行底层权限双保证，该场景采用 IAM user group 比较适合）并获取地址，把元数据（自增 message_id、topic、key、address、partition_id 等）写入 message_table，然后 consumer 从 consumer_partition_table 里轮询每一个其负责的 partition_id 查上一个 last_commit 的 message_id，然后找是否有下一个，有则读取处理并更新 last_commit。  
 offset 的实现可以结合 message_table 和 consumer_partition_table 的 last_commit 和 message_id 以及 SQL 来实现。  
 因为没有范围查询的需求，可以通过一致性哈希分区，键可以以 partition_id 为准。  
 保证每个分区和同一个消费者组里只对应单个消费者实例，如果消费者实例有多而分区不够分配则把该实例闲置。  
