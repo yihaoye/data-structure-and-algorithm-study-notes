@@ -265,11 +265,11 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 ## [Load Balancing](./Load%20Balancing.md)
 
 ## [Caching](./Caching.md)
+因为缓存多使用 KV 数据库，因此缓存也有许多与数据库相似的设计与思想，比如缓存也可以分库分表、分布式等等。  
 
 ## [Message Queue and Stream](./消息队列与流处理.md)
-[设计分布式/云消息队列](./README.md#设计分布式云消息队列)  
 注意，一般的消息队列（Kafka、Redis、ActiveMQ etc）不支持索引查询，但是时序数据库、时间序列数据库（Time Series Database，如 InfluxDB、MongoDB、Prometheus、RedisTimeSeries etc）除了能当简单的消息队列（比一般数据库吞吐性能更强，但仅限低吞吐量等有限场景。大规模、高吞吐量场景还是要用专门的消息队列系统）还可以索引查询（时间序列数据库通常会使用时间戳作为主要的索引字段，以便快速按时间范围查询数据。这使得在时间序列数据库中执行时间范围查询非常高效）。  
-对象存储也可以实现简单的消息队列，比如把 bucket 分成未处理和已处理两个路径，从未处理的 bucket 读出最前面的文件，处理它，然后把文件转移至已处理路径即可（此办法不足以应对多个消费者订阅同一个主题消息的场景，需要进一步改动）。  
+[对象存储也可以实现简单的消息队列](./README.md#设计分布式云消息队列)，比如把 bucket 分成未处理和已处理两个路径，从未处理的 bucket 读出最前面的文件，处理它，然后把文件转移至已处理路径即可（此办法不足以应对多个消费者订阅同一个主题消息的场景，需要进一步改动）。  
 
 ## Cache vs Message Queue / Stream
 相比之下 Cache 更像 Java 的 HashMap，Message Queue / Stream 更像 Java 的 Queue/Deque/Stream：

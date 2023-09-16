@@ -38,8 +38,8 @@
         - [模拟退火 | Simulated Annealing](./模拟退火.md)
         - [遗传算法 | Genetic Algorithm](./遗传算法.md)
         - 粒子群优化算法 | Particle Swarm Optimization
-        - 蒙特卡洛算法
-        - 拉斯维加斯算法
+        - 蒙特卡洛算法 | Monte Carlo Algorithm
+        - 拉斯维加斯算法 | Las Vegas Algorithm
     - [图匹配 | Graph Match](./图匹配.md)
       - [匈牙利算法 | Hungarian Algorithm](./匈牙利算法.md) (时间复杂度 `O(N^3)`)
     - [迪杰斯特拉算法 | Dijkstra Algorithm](./Dijkstra算法.md) (时间复杂度 `O((E+V)*logV)` - 仅计算了指定的一个起点到其他各点)
@@ -55,7 +55,7 @@
     - 马拉车算法 | Manacher Algorithm
     - [并查集联合查找算法 | Disjoint-Set Union-Find Algorithm](./并查集与联合查找算法.md) (时间复杂度 `O(a(N))` - a(N) 为反阿克曼函数，对于大部分 N，a(N) 均小于 5，所以并查集的时间复杂度也可视为 `O(1)`)
     - [最小生成树相关算法 | Minimum Spanning Tree Algorithms](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/MinimumSpanningTree/README.md)
-    - 网络流相关算法
+    - 网络流相关算法 | Flow Network Algorithms
   - 系统级
     - [字典树算法 | Trie Algorithm](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/Trie/README.md)
     - [映射-归约 | MapReduce](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md)
@@ -70,10 +70,10 @@
     - 一致性哈希 | Consistent Hashing ([README](./../Leetcode%20Practices/system%20design/一致性哈希.md)、[Code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/consistent%20hash/README.md))
     - 反向索引 | Inverted Index ([README](../Leetcode%20Practices/system%20design/README.md#设计搜索引擎-Twitter-Search)、[Code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/inverted%20index/InvertedIndex.java))
     - Frugal Streaming 算法
-    - [Geohash 算法, S2 Geometry 算法](../Leetcode%20Practices/system%20design/README.md)
-    - [漏桶算法, 令牌桶算法 | Leaky Bucket, Token Bucket](../Leetcode%20Practices/system%20design/README.md)
+    - [Geohash 算法, S2 Geometry 算法](../Leetcode%20Practices/system%20design/README.md#设计-Uber)
+    - [漏桶算法, 令牌桶算法 | Leaky Bucket, Token Bucket](../Leetcode%20Practices/system%20design/README.md#Designing-an-API-Rate-Limiter)
     - Loosy Counting 算法
-    - [OT 算法 | Operational Transformation](../Leetcode%20Practices/system%20design/README.md)
+    - [OT 算法 | Operational Transformation](../Leetcode%20Practices/system%20design/README.md#设计协同编辑系统)
     - [四叉树算法, R 树算法 | QuadTree, RTree Algorithm](./QuadTree-RTree-算法.md)
     - [默克尔树算法 | Merkle Tree Algorithm](https://en.wikipedia.org/wiki/Merkle_tree) (简单实现：[Code](./../Leetcode%20Practices/algorithms/easy/572%20Subtree%20of%20Another%20Tree.java))
     - 光线投射算法 | Ray Casting
