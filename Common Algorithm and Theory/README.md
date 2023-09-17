@@ -1,6 +1,6 @@
 ## 小章目录
   
-- 概念
+- [概念](https://oi-wiki.org/misc/cc-basic/)
   - [时空复杂度](./时空复杂度.md)
     - 渐进分析 | Asymptotic Analysis
     - 平摊分析 | Amortized Analysis

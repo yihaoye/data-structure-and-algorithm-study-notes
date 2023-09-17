@@ -443,8 +443,8 @@
    
 ## Random
 - [x] 384	Shuffle an Array		
-- [ ] 398	Random Pick Index		
-- [ ] 382	Linked List Random Node		
+- [x] 398	Random Pick Index		
+- [x] 382	Linked List Random Node		
 - [x] 380	Insert Delete GetRandom O(1)		
 - [ ] 381	Insert Delete GetRandom O(1) - Duplicates allowed		
 - [x] 138	Copy List with Random Pointer	
@@ -762,7 +762,7 @@
 - [x] 385	Mini Parser		
 - [x] 389	Find the Difference		
 - [x] 394	Decode String		
-- [ ] 398	Random Pick Index	
+- [x] 398	Random Pick Index	
 - [x] 875   Koko Eating Bananas 
 - [x] 621   Task Scheduler  
 - [x] 743   Network Delay Time	

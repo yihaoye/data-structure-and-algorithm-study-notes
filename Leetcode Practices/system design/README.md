@@ -1185,7 +1185,7 @@ https://dropbox.tech/infrastructure/optimizing-web-servers-for-high-throughput-a
 ![](./../../Computer%20System%20Layer/不同的文件系统.png)  
 ![](./../../Computer%20System%20Layer/不同的文件系统2.png)  
 
-抹除码：  
+[纠删码](https://en.wikipedia.org/wiki/Erasure_code)：  
 ![](./../../Computer%20System%20Layer/erasure-coding.png)  
   
 #### 文件处理工作流程
