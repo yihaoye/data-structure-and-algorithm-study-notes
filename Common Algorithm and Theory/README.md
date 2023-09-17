@@ -1,12 +1,13 @@
 ## 小章目录
   
-- [概念](https://oi-wiki.org/misc/cc-basic/)
-  - [时空复杂度](./时空复杂度.md)
+- [理论与概念](https://oi-wiki.org/misc/cc-basic/)
+  - [时空复杂度 | Time and Space Complexity](./时空复杂度.md)
     - 渐进分析 | Asymptotic Analysis
     - 平摊分析 | Amortized Analysis
     - 随机算法分析（涉及到概率和期望值的计算）
   - [多项式时间 | Polynomial Time](./多项式时间.md)
   - [搜索](./搜索.md)
+  - [在线/离线算法 | Online/Offline Algorithm](./在线离线算法.md)
 - 算法分析工具
   - [递归树 | Recursion Tree](./递归树.md)
   - 循环不变量 | Loop Invariants
