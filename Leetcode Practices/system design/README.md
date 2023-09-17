@@ -1093,7 +1093,7 @@ C10M 问题，是千万级并发实现。Linux 上通常用 epoll 实现。
 </details>
 
 
-## 设计 Dropbox
+## 设计云存储系统（Dropbox、S3）
 <details>
 <summary>details</summary>
 
@@ -1178,6 +1178,15 @@ https://dropbox.tech/infrastructure/optimizing-web-servers-for-high-throughput-a
   * 云/块存储存储了用户上传的文件块。客户端直接与存储互动，进行发送、接收对象操作。元数据与存储的分离使系统能够使用云中或 in-house 的存储数据。
   
 ![](./Dropbox%20System%20Design%20Architecture.png)  
+
+![](./upload-to-s3.png)  
+  
+#### 文件系统分类
+![](./../../Computer%20System%20Layer/不同的文件系统.png)  
+![](./../../Computer%20System%20Layer/不同的文件系统2.png)  
+
+抹除码：  
+![](./../../Computer%20System%20Layer/erasure-coding.png)  
   
 #### 文件处理工作流程
 下面的序列显示了在一个场景中应用程序的组件之间的互动，当客户端 A 更新一个与客户端 B 和 C 共享的文件，所以它们也应该收到更新。如果其他客户端在更新时不在线，消息队列服务将更新通知保存在单独的响应队列中，直到它们稍后上线。  
