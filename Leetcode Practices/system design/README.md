@@ -262,18 +262,18 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
     
 ## [Load Balancing](./Load%20Balancing.md)
 
-## [Caching](./Caching.md)
-因为缓存多使用 KV 数据库，因此缓存也有许多与数据库相似的设计与思想，比如缓存也可以分库分表、分布式等等。  
-
-## [Message Queue and Stream](./消息队列与流处理.md)
-注意，一般的消息队列（Kafka、Redis、ActiveMQ etc）不支持索引查询，但是时序数据库、时间序列数据库（Time Series Database，如 InfluxDB、MongoDB、Prometheus、RedisTimeSeries etc）除了能当简单的消息队列（比一般数据库吞吐性能更强，但仅限低吞吐量等有限场景。大规模、高吞吐量场景还是要用专门的消息队列系统）还可以索引查询（时间序列数据库通常会使用时间戳作为主要的索引字段，以便快速按时间范围查询数据。这使得在时间序列数据库中执行时间范围查询非常高效）。  
-[对象存储也可以实现简单的消息队列](./README.md#设计分布式云消息队列)，比如把 bucket 分成未处理和已处理两个路径，从未处理的 bucket 读出最前面的文件，处理它，然后把文件转移至已处理路径即可（此办法不足以应对多个消费者订阅同一个主题消息的场景，需要进一步改动）。  
-
-### Cache vs Message Queue / Stream
+## Cache vs Message Queue / Stream
 相比之下 Cache 更像 Java 的 HashMap，Message Queue / Stream 更像 Java 的 Queue / Deque / Stream：
 * Cache 通常用于索引定位更快的响应的场景，而不是用于有序事件处理（虽然如 Redis 也有相关功能但在需要更高级的消息队列功能，例如消息确认、重试、顺序性保证等时，Kafka 是更好的选择）
 * Message Queue / Stream 保证先入先出、（处理）事件有序的场景应用，而不是为了快速索引定位响应（因为如 Kafka 等系统是使用硬盘日志而不是内存存储数据，因此延迟较高）。
 * 处理实时数据时（持续快速更新数据的场景），消息队列比缓存更适用，因为缓存在这种情况要非常注意读写一致性问题（引入读写策略、锁之类的）可能非常复杂、麻烦。
+
+### [Caching](./Caching.md)
+因为缓存多使用 KV 数据库，因此缓存也有许多与数据库相似的设计与思想，比如缓存也可以分库分表、分布式等等。  
+
+### [Message Queue and Stream](./消息队列与流处理.md)
+注意，一般的消息队列（Kafka、Redis、ActiveMQ etc）不支持索引查询，但是时序数据库、时间序列数据库（Time Series Database，如 InfluxDB、MongoDB、Prometheus、RedisTimeSeries etc）除了能当简单的消息队列（比一般数据库吞吐性能更强，但仅限低吞吐量等有限场景。大规模、高吞吐量场景还是要用专门的消息队列系统）还可以索引查询（时间序列数据库通常会使用时间戳作为主要的索引字段，以便快速按时间范围查询数据。这使得在时间序列数据库中执行时间范围查询非常高效）。  
+[对象存储也可以实现简单的消息队列](./README.md#设计分布式云消息队列)，比如把 bucket 分成未处理和已处理两个路径，从未处理的 bucket 读出最前面的文件，处理它，然后把文件转移至已处理路径即可（此办法不足以应对多个消费者订阅同一个主题消息的场景，需要进一步改动）。  
 
 ## 处理编程范式
 * 请求响应模式 - 延迟最小的一种范式，响应时间处于亚毫秒到毫秒之间，而且响应时间一般非常稳定。这种处理模式一般是阻塞的（同步），应用程序向处理系统发出请求，然后等待响应。在数据库领域，这种范式就是线上交易处理（OLTP）。通常的形式是 SOAP、REST API、RPC 等。
@@ -329,6 +329,15 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 4. **操作系统处理**：操作系统的网络栈会定期检查环形缓冲区，以查找新的数据包。一旦发现新数据包，操作系统将从缓冲区中读取它，解封装数据包并根据目标IP地址和端口号将其传递给正确的应用程序或服务。
 
 这个过程确保了网络数据包的有效接收和传递给相应的应用程序。环形缓冲区用于解决网络速度和处理速度之间的差异，因为 NIC 可以以更高的速度接收数据包，而操作系统可能无法立即处理所有接收到的数据包。缓冲区允许数据包在等待处理时保持在适配器上。  
+
+### 常用网络协议
+* HTTP/HTTPS/QUIC - HTTP 请求和响应结构、状态码、请求方法（GET、POST、PUT、DELETE 等）以及 HTTPS 加密原理等。QUIC 协议是一种双工通信协议，它的设计目标包括低延迟、高性能、安全性和可靠性，它非常适合且广泛应用在实时视频流、音频流、在线游戏和 WebRTC 等系统。
+* UDP/TCP/IP - TCP 的连接建立和终止、IP 地址和子网掩码、路由表等内容。
+* DNS - DNS 查询、DNS 解析、DNS 缓存、递归查询和迭代查询等。
+* SSH/SCP/VNC/LDAP - 远程访问和管理计算机系统。LDAP 控制访问和维护目录服务，常用于身份验证和目录查询。
+* SMTP/POP3/IMAP - SMTP 用于电子邮件的发送，而 POP3 和 IMAP 用于电子邮件的接收。
+* FTP/SFTP - 文件传输的工作原理：文件切块、数据连接、数据传输、确认和重试、汇总文件。另外还有认证机制以及安全性考虑。
+* QUIC/WebSocket/MQTT - 双工通信协议，可根据具体情况在开发中使用、替换。
 
 ## 状态有无
 在计算机系统中，"stateful"（有状态）和 "stateless"（无状态）是两种不同的概念，用于描述系统或组件在处理请求和交互时是否保存状态信息。state (for instance user session data). A good practice is to store session data in the persistent storage such as relational database or NoSQL.  
