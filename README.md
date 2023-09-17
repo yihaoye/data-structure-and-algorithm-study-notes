@@ -85,7 +85,7 @@
 熟用熟背常用模版（推荐：或算法长时间手生需重捡复习，可配合[分类分析套路](./分析套路.md)）
 * 中级设计/数据结构
   * [设计哈希表 | Leetcode Q706](./Leetcode%20Practices/algorithms/easy/706%20Design%20HashMap.java)
-  * [设计最极栈 | Leetcode Q155](./Leetcode%20Practices/algorithms/easy/155%20Min%20Stack.java)
+  * [设计最值栈 | Leetcode Q155](./Leetcode%20Practices/algorithms/easy/155%20Min%20Stack.java)
   * [设计最小/大堆](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/BinaryHeap/MinHeap.java)
 * 高级设计/数据结构
   * [LRU 缓存 | Leetcode Q146](./Leetcode%20Practices/algorithms/medium/146%20LRU%20Cache.java)、[LFU 缓存 | Leetcode Q460](./Leetcode%20Practices/algorithms/hard/460%20LFU%20Cache.java)
@@ -109,10 +109,10 @@
   * [倍增法 | Leetcode Q702](./Common%20Algorithm%20and%20Theory/倍增法.md)
 * 高级算法
   * [拓扑排序 | Leetcode Q210](./Common%20Algorithm%20and%20Theory/拓扑排序.md)
-  * [多路归并 | Leetcode Q23-合并排序链表 Q355-设计推特时间线 Q373-最极-TopK-组合](./Leetcode%20Practices/algorithms/hard/23%20Merge%20k%20Sorted%20Lists.java)
+  * [多路归并 | Leetcode Q23-合并排序链表 Q355-设计推特时间线 Q373-最值-TopK-组合](./Leetcode%20Practices/algorithms/hard/23%20Merge%20k%20Sorted%20Lists.java)
   * [Kadane 算法 | Leetcode Q53](./Leetcode%20Practices/algorithms/easy/53%20Maximum%20Subarray.java)
   * [弗洛伊德算法 | Leetcode Q1462](./Leetcode%20Practices/algorithms/medium/1462%20Course%20Schedule%20IV.java)
-  * [Dijkstra 算法 | Leetcode Q743-图-最极权重路径](./Leetcode%20Practices/algorithms/medium/743%20Network%20Delay%20Time.java)
+  * [Dijkstra 算法 | Leetcode Q743-图-最值权重路径](./Leetcode%20Practices/algorithms/medium/743%20Network%20Delay%20Time.java)
   * [滚动哈希](./Common%20Algorithm%20and%20Theory/滚动哈希.md)
   * [LCA | Leetcode Q236](./Leetcode%20Practices/algorithms/medium/236%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree.java)
   * [扫描线 | Leetcode Q218](./Leetcode%20Practices/algorithms/hard/218%20The%20Skyline%20Problem.java)

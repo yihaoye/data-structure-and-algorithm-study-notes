@@ -61,7 +61,7 @@
     - [字典树算法 | Trie Algorithm](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/Trie/README.md)
     - [映射-归约 | MapReduce](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md)
     - [分桶法 | Range Bucketing](./分桶法.md) (若为平方分割，则时间复杂度 `O(√N)`)
-    - [蓄水池抽样算法 | Reservoir Sampling](./蓄水池抽样算法.md) (时间复杂度为一次遍历即可，空间复杂度 `O(1)`)
+    - [蓄水池抽样算法 | Reservoir Sampling](./蓄水池抽样算法.md) (时间复杂度为一次遍历即可，空间复杂度 `O(m)` m 为随机选出 m 个比如可能为 1)
     - [霍夫曼压缩算法 | Huffman Coding/Compression](./霍夫曼压缩算法.md)
     - [布隆过滤器及其算法 | Bloom Filter](./布隆过滤器及其算法.md)
     - [最小哈希 | MinHash](https://en.wikipedia.org/wiki/MinHash)

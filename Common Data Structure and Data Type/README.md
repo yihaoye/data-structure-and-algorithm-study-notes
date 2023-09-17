@@ -32,7 +32,7 @@
     - [基于链表的FIFO无界阻塞队列 | LinkedTransferQueue](./Data%20Structure%20Implementation/LinkedTransferQueue/README.md)
 - 栈 | Stack (入栈/出栈 O(1))
   - 双端队列 | Deque
-  - [最极栈 | Extreme (Min/Max etc) Stack](../Leetcode%20Practices/algorithms/easy/155%20Min%20Stack.java)
+  - [最值栈 | Extreme (Min/Max etc) Stack](../Leetcode%20Practices/algorithms/easy/155%20Min%20Stack.java)
 - 映射表 | Map/Table
   - [散列表 | HashMap](./Data%20Structure%20Implementation/HashMap/README.md) (索引搜索 O(1)，插入/删除节点 O(1))
   - 并发散列表 | ConcurrentHashMap (索引搜索 O(1)，插入/删除节点 O(1))
