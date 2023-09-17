@@ -2112,6 +2112,25 @@ KV 数据库主要的考点是高可用性、扩展性及高性能：
 </details>
 
 
+## 设计分布式缓存（Redis）
+<details>
+<summary>details</summary>
+
+参考：[System Design Interview - Distributed Cache](https://www.youtube.com/watch?v=iuqZvajTOyA)  
+
+基本与设计 KV 数据库一致。除此之外要实现一些基本的缓存策略、算法如 LRU。  
+
+另外对比两种模式：
+* Dedicated Cache Cluster
+  * 隔离资源（不与服务应用共用硬件）
+  * 灵活应用与配置
+* Co-located Cache
+  * 无额外硬件支出
+  * 与服务应用一起扩展
+
+</details>
+
+
 ## 设计分布式 Unique ID Generator
 <details>
 <summary>details</summary>
@@ -2495,6 +2514,11 @@ offset 的实现可以结合 message_table 和 consumer_partition_table 的 last
 [更多参考](./README.md#message-queue-and-stream)  
 
 其他参考方案：[Pub-Sub Architecture Design and Scale](./example%20questions/Pub-Sub%20Architecture%20Design%20and%20Scale.md)  
+
+### 其他
+设计 Notification 系统：与 SQS 的 pull-based 不同，SNS 是 push-based 的，其他都很类似（比如订阅发布模式、主题等等）。  
+* Notification 系统适用于实时通知、事件驱动、消息广播等场景，消息通常是短暂性的，不需要长期存储。
+* Notification 系统通常需要订阅者自行处理消息，它不保留消息。
 
 </details>
 
