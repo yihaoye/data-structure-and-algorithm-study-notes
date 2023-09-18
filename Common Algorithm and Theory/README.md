@@ -27,7 +27,7 @@
     - [贪婪算法 | Greedy Algorithm](./贪婪算法.md)
       - [耐心排序 | Patience Sorting](./耐心排序.md)
     - [拓扑排序 | Topological Sorting](./拓扑排序.md) (时间复杂度 `O(N)`)
-    - [单调栈 | Monotone Stack](./单调栈.md) (时间复杂度 `O(N)`)
+    - [单调栈 (包括单调队列) | Monotone Stack](./单调栈.md) (时间复杂度 `O(N)`)
     - [自定义哈希/指纹 | Customized HashCode/FingerPrint](./自定义哈希指纹.md) (时间复杂度 `O(N)`)
       - [滚动哈希 | Rolling Hash (Rabin-Karp)](./滚动哈希.md) (时间复杂度 `O(N+M)`)
     - [快速选择 (霍尔选择算法) | Quickselect (Randomized Selection)](./快速选择.md)
