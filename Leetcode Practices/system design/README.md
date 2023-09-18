@@ -1110,7 +1110,6 @@ https://dropbox.tech/infrastructure/optimizing-web-servers-for-high-throughput-a
 * 可靠性和耐用性。云存储的另一个好处是，它提供 100% 的数据可靠性和耐久性。云存储通过在不同地理位置的服务器上保存多个数据副本，确保用户永远不会丢失他们的数据。  
 * 可扩展性。用户永远不必担心存储空间不足的问题。有了云存储，只要付费，就有无限的存储空间。  
   
-  
 ### 系统的要求和目标
 希望从一个云存储系统中实现什么？以下是系统的最高要求。
  1. 用户应该能够从任何设备上传和下载他们的文件/照片。
@@ -1187,6 +1186,8 @@ https://dropbox.tech/infrastructure/optimizing-web-servers-for-high-throughput-a
 
 [纠删码](https://en.wikipedia.org/wiki/Erasure_code)：  
 ![](./../../Computer%20System%20Layer/erasure-coding.png)  
+
+[独立硬盘冗余阵列 (RAID)](https://zh.wikipedia.org/wiki/RAID)  
   
 #### 文件处理工作流程
 下面的序列显示了在一个场景中应用程序的组件之间的互动，当客户端 A 更新一个与客户端 B 和 C 共享的文件，所以它们也应该收到更新。如果其他客户端在更新时不在线，消息队列服务将更新通知保存在单独的响应队列中，直到它们稍后上线。  
@@ -2131,6 +2132,9 @@ KV 数据库主要的考点是高可用性、扩展性及高性能：
 性能优化：
 * Data compression
 * Store only frequently used data in memory and the rest on disk
+
+并发、事务、可靠性与恢复性：
+* [预写日志 WAL (Write-Ahead Logging)](https://juejin.cn/post/7212087651809181752)
 
 数据备份：
 * [主从数据同步](./数据库数据建模分库分表.md#读写分离示意图)
