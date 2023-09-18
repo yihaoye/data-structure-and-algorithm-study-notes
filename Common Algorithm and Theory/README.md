@@ -68,15 +68,15 @@
     - [HyperLogLog 算法](./HyperLogLog.md)
     - [Count-Min Sketch 算法](./Count-Min-Sketch.md)
     - [雪花算法 | Snowflake ID](./雪花算法.md)
-    - 一致性哈希 | Consistent Hashing ([README](./../Leetcode%20Practices/system%20design/一致性哈希.md)、[Code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/consistent%20hash/README.md))
-    - 反向索引 | Inverted Index ([README](../Leetcode%20Practices/system%20design/README.md#设计搜索引擎-Twitter-Search)、[Code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/inverted%20index/InvertedIndex.java))
+    - 一致性哈希 | Consistent Hashing ([README](./../Leetcode%20Practices/system%20design/一致性哈希.md)、[代码实现](../Leetcode%20Practices/object%20oriented%20design/other%20practices/consistent%20hash/README.md))
+    - 反向索引 | Inverted Index ([README](../Leetcode%20Practices/system%20design/README.md#设计搜索引擎-Twitter-Search)、[代码实现](../Leetcode%20Practices/object%20oriented%20design/other%20practices/inverted%20index/InvertedIndex.java))
     - Frugal Streaming 算法
     - [Geohash 算法, S2 Geometry 算法](../Leetcode%20Practices/system%20design/README.md#设计-Uber)
     - [漏桶算法, 令牌桶算法 | Leaky Bucket, Token Bucket](../Leetcode%20Practices/system%20design/README.md#Designing-an-API-Rate-Limiter)
     - Loosy Counting 算法
     - [OT 算法 | Operational Transformation](../Leetcode%20Practices/system%20design/README.md#设计协同编辑系统)
     - [四叉树算法, R 树算法 | QuadTree, RTree Algorithm](./QuadTree-RTree-算法.md)
-    - [默克尔树算法 | Merkle Tree Algorithm](https://en.wikipedia.org/wiki/Merkle_tree) (简单实现：[Code](./../Leetcode%20Practices/algorithms/easy/572%20Subtree%20of%20Another%20Tree.java))
+    - [默克尔树算法 | Merkle Tree Algorithm](https://en.wikipedia.org/wiki/Merkle_tree) ([简易代码实现](./../Leetcode%20Practices/algorithms/easy/572%20Subtree%20of%20Another%20Tree.java))
     - 光线投射算法 | Ray Casting
     - [Rsync 算法](https://zh.wikipedia.org/zh-cn/Rsync#%E6%BC%94%E7%AE%97%E6%B3%95)
     - [共识机制/算法 (分布式选举问题) | Consensus Algorithm](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md) ([etcd 实现](../Leetcode%20Practices/system%20design/example%20questions/Leader%20Election.md))
@@ -105,6 +105,7 @@
       - [Transformer 模型, 大语言模型 (LLM)](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)) (Related: [build GPT from scratch](https://www.youtube.com/watch?v=kCc8FmEb1nY))
   - [数学](../Computer%20Science%20Maths/README.md)
     - [鸽巢原理 | Pigeonhole Principle](./鸽巢原理.md)
+    - 容斥原理 | Inclusion–Exclusion Principle
     - [取模运算 | Modulo](./取模运算.md)
     - [快速幂法 | Binary Exponentiation](../Tool%20Sets/Math.java)
     - [高斯消元法 | Gaussian Elimination](./高斯消元法.md)

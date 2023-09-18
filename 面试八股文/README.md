@@ -66,6 +66,7 @@
 * ORM N+1 问题 - [解答一](https://segmentfault.com/a/1190000039421843)、[解答二](https://www.cnblogs.com/google4y/p/3455534.html)、[解答三](https://zhuanlan.zhihu.com/p/27323883)
 * [MySQL 索引背后的数据结构及算法原理 / B+树](https://blog.codinglabs.org/articles/theory-of-mysql-index.html)
 * [LSM 树](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/LSMTree/README.md)
+* [MySQL 中的 UTF8 和 UTF8mb4 编码的详细区别](https://cloud.tencent.com/developer/article/1930660)
 
 ## 机器学习高频
 * [七大最常见的机器学习面试问题](https://www.youtube.com/watch?v=j340MdN0QSY)
@@ -104,6 +105,7 @@
 * [实时监控日志文件](https://blog.csdn.net/rlnLo2pNEfx9c/article/details/122852275)
 * [systemd / systemctl](https://www.youtube.com/watch?v=5JVBpXiYMKo)
 * [NIO 相关基础](../Leetcode%20Practices/system%20design/IO模型与Web服务器工作模型.md)
+* [eBPF](https://ebpf.io/what-is-ebpf/)
 
 ## 网络高频
 * [计算机网络面试突击](https://juejin.cn/post/6932001161532669960)
