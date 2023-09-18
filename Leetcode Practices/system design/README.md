@@ -2055,6 +2055,8 @@ Top K 系统是非常常见的一种子系统，基本上，就是从全量巨�
 * 第二个思路方面，统计不实时，但相对精确。对于这些持久化的数据，由 MR 的 job 定期执行来处理，并更新结果到数据库中。
   * 读取数据的时候，根据需要可以读取即时统计或者异步计算得到的统计数据，数据可以在外部缓存。  
 
+![](./top-k-mapreduce.png)  
+
 其他参考方案：  
 [Design a Real Time Gaming Ranking System](./example%20questions/Design%20a%20Real%20Time%20Gaming%20Ranking%20System.md)  
 [Top Discount Product in Time Window](./example%20questions/Top%20Discount%20Product%20in%20Time%20Window.md)
