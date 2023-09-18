@@ -56,7 +56,7 @@
     1. 对不直观的条件/要求进行转化以简化：比如限速器的设置为每 n 时间添加 m 个 token/credit 在逻辑处理时不太直观，可以把它转化为每单位时间添加 m/n 个 token/credit 以更编写逻辑、计算（可以使用浮点数，如果除不尽可以采用[分数](./Tool%20Sets/Math.java)），这属于把集中的分散（或分散的集中）的转化方法。
     2. 逆向/反向思维：对规则/条件/操作进行反向，比如题目给出的规则或条件是 XXX 的触发条件是 A、B、C，如果正着实现可能就是遍历每个元素并检查是否满足所有条件，这样可能在数据量大时不高效/方便，反着则可以总是每次遍历每个有限的条件并根据该条件记录满足该条件元素（比如记录在哈希表）且当在记录时发现该元素已满足完全规则/条件时即可触发 XXX。[示例](./Other%20Practices/game%20of%20life/Solution.java)
     3. 降维、数据类型转换、序列化与反序列化、状态压缩：比如类对象、字符串转换成数字或反向这类，虽然通常是把复杂数据类型转换成简单数据类型，但是注意有的时候复杂数据类型（如字符串、日期）比简单数据类型（如数字、时间戳）好用（原因可能是规则多提高复杂性的）（例子如 Leetcode Q635）。
-17. 特征发现 - 类似线性代数和人工智能里的特征选择与匹配以简化问题（示例如 Leetcode Q694 Q711 etc）。
+17. 特征发现 - 类似线性代数和人工智能里的特征选择与匹配特征向量以简化问题（示例如 Leetcode Q694 Q711 etc）。
   
 #### 编码时、做题中、Debug
 1. 制作工具，即是否需要、可以把复杂或重复部分的逻辑、代码封装成一个函数。（大致方向已明晰的情况下，这样尤其有利于简化中间实现过程中一些中等的复杂、模糊的思绪）
@@ -107,7 +107,7 @@
   * [穷举递增子序列 | Leetcode Q491](./Leetcode%20Practices/algorithms/medium/491%20Increasing%20Subsequences.java)
   * [翻转树 | Leetcode Q156 Q226](./Leetcode%20Practices/algorithms/medium/156%20Binary%20Tree%20Upside%20Down.java)
   * [K 数之和 | Leetcode Q18](./Leetcode%20Practices/algorithms/medium/18%204Sum.java)
-  * [倍增法 | Leetcode Q702](./Common%20Algorithm%20and%20Theory/倍增法.md)
+  * [倍增法 | Leetcode Q1483](./Common%20Algorithm%20and%20Theory/倍增法.md)
 * 高级算法
   * [拓扑排序 | Leetcode Q210](./Common%20Algorithm%20and%20Theory/拓扑排序.md)
   * [多路归并 | Leetcode Q23-合并排序链表 Q355-设计推特时间线 Q373-最值-TopK-组合](./Leetcode%20Practices/algorithms/hard/23%20Merge%20k%20Sorted%20Lists.java)

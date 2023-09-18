@@ -43,7 +43,7 @@ secret is sorted in a strictly increasing order.
  */
 class Solution {
     public int search(ArrayReader reader, int target) {
-        // 倍增法 Binary Lifting
+        // 二分搜索（本题解不符合传统的倍增法 Binary Lifting 定义，虽然有点类似，但是倍增法是要预处理的，然后根据预处理的动态规划表来贪心地往前跳）
         // Time: O(logN), Space: O(1)
         int index = 0; // temp index
         int lift = 1;
