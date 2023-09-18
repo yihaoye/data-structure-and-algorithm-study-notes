@@ -2109,7 +2109,14 @@ OOD 还可以参考 [Hotel Management System](./../object%20oriented%20design/gr
 
 相关：  
 * [特征工程](https://aws.amazon.com/cn/blogs/china/feature-engineering-of-the-final-version-of-data-centric-ai-lecture-1/)
+* [特征向量](https://zh.wikipedia.org/zh-hans/%E7%89%B9%E5%BE%81%E5%80%BC%E5%92%8C%E7%89%B9%E5%BE%81%E5%90%91%E9%87%8F)
 * [Visual Search System](https://bytebytego.com/courses/machine-learning-system-design-interview/visual-search-system)
+
+向量数据库是基于特征向量的数据库系统。它主要用于存储和查询向量数据，其中每个数据点都表示为一个特征向量。向量数据库的主要功能之一是执行相似性搜索。通过比较查询向量与存储的特征向量，数据库可以找到最相似的数据点或特征向量。这对于图像检索、文本搜索、推荐系统等应用非常有用。  
+向量数据库的兴起与机器学习、深度学习和大数据分析的发展密切相关，因为这些领域产生了大量的特征向量数据，需要高效的存储和查询解决方案。特征向量和向量数据库已成为许多数据密集型应用的核心组成部分。  
+
+特征工程的目标是提取有信息量、可解释性强、与预测目标相关的特征，以便机器学习模型能够更好地理解数据并进行准确的预测。这些特征可以作为模型的输入。其过程可能包括：特征提取、特征变换、特征选择、特征构建、文本特征处理等。  
+特征向量和向量数据库通常在机器学习模型的应用和特征工程之后发挥作用。一旦特征被提取、转换和选择，它们通常被组织成特征向量的形式，并用于训练和测试机器学习模型。向量数据库可以用于存储和检索这些特征向量，以支持相似性搜索、数据检索和模型推断等任务。  
 
 </details>
 
