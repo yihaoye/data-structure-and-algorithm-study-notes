@@ -8,6 +8,7 @@
   - [多项式时间 | Polynomial Time](./多项式时间.md)
   - [搜索](./搜索.md)
   - [在线/离线算法 | Online/Offline Algorithm](./在线离线算法.md)
+  - 离散与连续 (数据集) | Discrete and Continuous
 - 算法分析工具
   - [递归树 | Recursion Tree](./递归树.md)
   - 循环不变量 | Loop Invariants
@@ -60,7 +61,7 @@
   - 系统级
     - [字典树算法 | Trie Algorithm](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/Trie/README.md)
     - [映射-归约 | MapReduce](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md)
-    - [分桶法 | Range Bucketing](./分桶法.md) (若为平方分割，则时间复杂度 `O(√N)`)
+    - [分块/分桶法 | Range Block/Bucketing](./分桶法.md) (若为平方分割，则时间复杂度 `O(√N)`)
     - [蓄水池抽样算法 | Reservoir Sampling](./蓄水池抽样算法.md) (时间复杂度为一次遍历即可，空间复杂度 `O(m)` m 为随机选出 m 个比如可能为 1)
     - [霍夫曼压缩算法 | Huffman Coding/Compression](./霍夫曼压缩算法.md)
     - [布隆过滤器及其算法 | Bloom Filter](./布隆过滤器及其算法.md)
@@ -109,6 +110,7 @@
     - [取模运算 | Modulo](./取模运算.md)
     - [快速幂法 | Binary Exponentiation](../Tool%20Sets/Math.java)
     - [高斯消元法 | Gaussian Elimination](./高斯消元法.md)
+    - [博弈论 | Game Theory](https://zhuanlan.zhihu.com/p/183168457)
     - 计算几何
       - [扫描线 | Line Sweep](./扫描线.md)
       - [凸包 | Convex Hull](./凸包.md)
@@ -116,6 +118,7 @@
       - [向量计算 | Vector](https://cp.wiwiho.me/vector/)
     - [其他数学工具、操作与套路](../Tool%20Sets/Math.java)
   - 其他常见优化思想、技巧
+    - 剪枝 | Pruning
     - [懒更新 | Lazy Update](./懒更新.md)
     - [状态压缩 | State Compression](../Tool%20Sets/StateCompression.java)
     - [坐标离散化 | Coordinate Compression](./坐标离散化.md)
