@@ -443,6 +443,8 @@ Cache (cache eviction policy - e.g. Least Recently Used (LRU) with LinkedHashMap
 * 步骤 11: 缓存与负载均衡 (参考 TinyURL)
 * 步骤 12: 安全与权限 (参考 TinyURL)
 
+进阶：[设计协同编辑系统](./README.md#设计协同编辑系统)  
+
 </details>
 
 
@@ -1476,7 +1478,7 @@ WebSocket 连接由客户端启动。它是双向和持久的。它从 HTTP 连�
 可以观察到，超卖问题的原因在于事务查询和更新库区期间，库存已经被其他事务修改了。在学习悲观锁之前，先了解下什么是两阶段加锁，两阶段加锁是一个典型的悲观锁策略：  
 > 两阶段加锁方法类似，但锁的强制性更高。多个事务可以同时读取同一对象，当只要出现任何写操作（包括修改或删除），则必须加锁以独占访问。—《数据密集型应用系统设计》
 
-这里电商系统中可以应用两阶段加锁，由于下单请求涉及到修改库存，可以先使用排他锁锁定记录，防止被其他事务所修改。大部分关系型数据库都提供这种功能（在 MySQL 和 PostgresSQL 里面的语法是 SELECT … FOR 下UPDATE）。流程如下图：  
+这里电商系统中可以应用两阶段加锁，由于下单请求涉及到修改库存，可以先使用排他锁锁定记录，防止被其他事务所修改。大部分关系型数据库都提供这种功能（在 MySQL 和 PostgresSQL 里面的语法是 SELECT ... FOR UPDATE）。流程如下图：  
 ![](./电商悲观锁.svg)  
 1. 蓝色请求先获取排他锁，查询和更新库存，在此期间黑色请求等待获取排他锁。
 2. 蓝色请求更新库存后释放排他锁，返回下单成功
@@ -2650,6 +2652,8 @@ Ref: https://blog.bytebytego.com/i/65351443/how-does-google-authenticator-or-oth
 <summary>details</summary>
 
 例子：Google Doc  
+
+该系统可以说是 [Pastebin](./README.md#design-pastebin) 的进阶版。  
 
 参考：
 * https://www.cnblogs.com/theseventhson/p/16632237.html
