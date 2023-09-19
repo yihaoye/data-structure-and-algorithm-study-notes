@@ -112,6 +112,7 @@
     - [快速幂法 | Binary Exponentiation](../Tool%20Sets/Math.java)
     - [高斯消元法 | Gaussian Elimination](./高斯消元法.md)
     - [博弈论 | Game Theory](https://zhuanlan.zhihu.com/p/183168457)
+    - [高精度计算 | Arbitrary-Precision Arithmetic](https://oi-wiki.org/math/bignum/)
     - 计算几何
       - [扫描线 | Line Sweep](./扫描线.md)
       - [凸包 | Convex Hull](./凸包.md)
@@ -126,3 +127,6 @@
     - [坐标离散化 | Coordinate Compression](./坐标离散化.md)
     - [集合的整数表示 (位集、位向量) | Bit Set](./集合的整数表示.md)
     - [比较优化，减少比较次数 (算法导论 9.1)](./../Leetcode%20Practices/algorithms/easy/1491%20Average%20Salary%20Excluding%20the%20Minimum%20and%20Maximum%20Salary.java)
+
+
+部分参考自链接：[Ref 1](https://oi-wiki.org/basic/)、[Ref 2](https://www.acoier.com/tags/)。  

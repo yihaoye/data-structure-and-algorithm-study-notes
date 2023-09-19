@@ -86,7 +86,7 @@ class Solution {
         n[b] = c;
     }
 
-    int calc() {
+    int calc() { // calc 函数按题目需求自定义，本代码其他部分皆为模板内容基本不用改
         int res = 0;
         for (int i = 0; i < n; i++) res += n1[i] ^ n2[i];
         ans = Math.min(ans, res);

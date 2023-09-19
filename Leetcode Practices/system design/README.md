@@ -2186,6 +2186,17 @@ KV 数据库主要的考点是高可用性、扩展性及高性能：
 </details>
 
 
+## 设计分布式计数器
+<details>
+<summary>details</summary>
+
+参考：
+* [系统设计之分布式计数器](https://www.51cto.com/article/705970.html)
+* [System Design: Distributed Counter (12 approaches)](https://www.youtube.com/watch?v=V1HlNh4IhUo)
+
+</details>
+
+
 ## 设计分布式 Job Scheduler / ETL / ELT / Migrator 系统
 <details>
 <summary>details</summary>
@@ -3307,6 +3318,7 @@ To Be Continue ...
 服务器的具体性能取决于硬件规格、操作系统、网络带宽、负载均衡设置、应用程序设计等多个因素。以下是一些可能的估算仅供参考：
 - 对于 Web 服务器，中等配置的服务器可能在每秒处理 1000 到 5000 个 HTTP 请求之间，好一点的 10000 左右。
 - 对于数据库服务器，每秒处理几百（X00）到几千（X000）个查询是可能的，但具体取决于数据库引擎和查询复杂性。
+- 缓存服务器通常性能极好，比如 Redis 单机就可支持 10 万 QPS+。
 - 应用服务器的性能取决于应用程序的性质，但通常可以在每秒数百（X00）到数千（X000）个请求之间。
 - 消息队列服务器可能在每秒处理数千（X000）到数万（X0000）个消息之间。
 - 文件服务器通常可以以每秒数百（X00）到数千（X000）次的速度提供文件传输服务。
