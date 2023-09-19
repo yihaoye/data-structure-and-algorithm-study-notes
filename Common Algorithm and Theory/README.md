@@ -45,6 +45,7 @@
     - [图匹配 | Graph Match](./图匹配.md)
       - [匈牙利算法 | Hungarian Algorithm](./匈牙利算法.md) (时间复杂度 `O(N^3)`)
     - [迪杰斯特拉算法 | Dijkstra Algorithm](./Dijkstra算法.md) (时间复杂度 `O((E+V)*logV)` - 仅计算了指定的一个起点到其他各点)
+    - 贝尔曼-福特算法 | Bellman-Ford Algorithm
     - [动态规划, 状态机, 规则引擎 | Dynamic Programming, State Machine, Rule Engine](./动态规划与状态机.md)
       - [前缀和, 差分, 树状数组, 线段树 | Prefix Sum, Difference, Binary Indexed Tree, Segment Tree](./前缀和与差分.md)
       - [记忆化搜索 | Memory Search](./记忆化搜索.md)
@@ -119,6 +120,7 @@
     - [其他数学工具、操作与套路](../Tool%20Sets/Math.java)
   - 其他常见优化思想、技巧
     - 剪枝 | Pruning
+    - [预处理 (打表) | Precompute (Hard Coding)](https://www.cnblogs.com/hxtblogs/p/7654635.html)
     - [懒更新 | Lazy Update](./懒更新.md)
     - [状态压缩 | State Compression](../Tool%20Sets/StateCompression.java)
     - [坐标离散化 | Coordinate Compression](./坐标离散化.md)
