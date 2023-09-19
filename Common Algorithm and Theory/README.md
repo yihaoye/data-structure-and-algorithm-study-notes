@@ -25,17 +25,21 @@
     - [深度优先, 广度优先, 树图遍历 | Depth First Search, Breadth First Search](./树图遍历.md)
       - [回溯法 | Backtracking](./NQueen.java)
       - [双向搜索 | Bidirectional Search](https://oi-wiki.org/search/bidirectional/)
-    - [贪婪算法 | Greedy Algorithm](./贪婪算法.md)
+    - [贪心算法 | Greedy Algorithm](./贪婪算法.md)
       - [耐心排序 | Patience Sorting](./耐心排序.md)
+      - [摩尔投票 | Boyer–Moore Majority Vote Algorithm](https://zh.wikipedia.org/wiki/%E5%A4%9A%E6%95%B0%E6%8A%95%E7%A5%A8%E7%AE%97%E6%B3%95)
     - [拓扑排序 | Topological Sorting](./拓扑排序.md) (时间复杂度 `O(N)`)
     - [单调栈 (包括单调队列) | Monotone Stack](./单调栈.md) (时间复杂度 `O(N)`)
     - [自定义哈希/指纹 | Customized HashCode/FingerPrint](./自定义哈希指纹.md) (时间复杂度 `O(N)`)
       - [滚动哈希 | Rolling Hash (Rabin-Karp)](./滚动哈希.md) (时间复杂度 `O(N+M)`)
     - [快速选择 (霍尔选择算法) | Quickselect (Randomized Selection)](./快速选择.md)
     - [位运算 | Bitwise Operation](./位运算.md)
+    - [洗牌算法 | Knuth-Shuffle](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle)
   - 进阶
     - 启发式算法/搜索 | Heuristic Algorithm/Search (启发式搜索通常不讨论时空复杂度)
       - [A&ast; 搜索算法 | A&ast; Search Algorithm](./A*搜索算法.md)
+        - IDA&ast; 算法 | IDA&ast; Algorithm
+      - 爬山算法 | Hill Climbing
       - 随机化算法/搜索 | Random Algorithm/Search
         - [模拟退火 | Simulated Annealing](./模拟退火.md)
         - [遗传算法 | Genetic Algorithm](./遗传算法.md)
@@ -63,6 +67,7 @@
     - [字典树算法 | Trie Algorithm](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/Trie/README.md)
     - [映射-归约 | MapReduce](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md)
     - [分块/分桶法 | Range Block/Bucketing](./分桶法.md) (若为平方分割，则时间复杂度 `O(√N)`)
+      - [莫队算法 | Mo Algorithm](https://oi-wiki.org/misc/mo-algo/)
     - [蓄水池抽样算法 | Reservoir Sampling](./蓄水池抽样算法.md) (时间复杂度为一次遍历即可，空间复杂度 `O(m)` m 为随机选出 m 个比如可能为 1)
     - [霍夫曼压缩算法 | Huffman Coding/Compression](./霍夫曼压缩算法.md)
     - [布隆过滤器及其算法 | Bloom Filter](./布隆过滤器及其算法.md)
@@ -113,6 +118,7 @@
     - [高斯消元法 | Gaussian Elimination](./高斯消元法.md)
     - [博弈论 | Game Theory](https://zhuanlan.zhihu.com/p/183168457)
     - [高精度计算 | Arbitrary-Precision Arithmetic](https://oi-wiki.org/math/bignum/)
+    - [约瑟夫环/问题 | Josephus Problem](./../Other%20Practices/josephus%20problem/Solution.java)
     - 计算几何
       - [扫描线 | Line Sweep](./扫描线.md)
       - [凸包 | Convex Hull](./凸包.md)
