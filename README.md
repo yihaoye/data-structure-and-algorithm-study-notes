@@ -84,13 +84,13 @@
 
 #### 预先准备
 熟用熟背常用模版（推荐：或算法长时间手生需重捡复习，可配合[分类分析套路](./分析套路.md)）
-* 中级设计/数据结构
+* 中级设计/构造/数据结构
   * [设计哈希表 | Leetcode Q706](./Leetcode%20Practices/algorithms/easy/706%20Design%20HashMap.java)
   * [设计最值栈 | Leetcode Q155](./Leetcode%20Practices/algorithms/easy/155%20Min%20Stack.java)
   * [设计最小/大堆](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/BinaryHeap/MinHeap.java)
-* 高级设计/数据结构
+* 高级设计/构造/数据结构
   * [LRU 缓存 | Leetcode Q146](./Leetcode%20Practices/algorithms/medium/146%20LRU%20Cache.java)、[LFU 缓存 | Leetcode Q460](./Leetcode%20Practices/algorithms/hard/460%20LFU%20Cache.java)
-  * [前缀树(字典树) | Leetcode Q208](./Leetcode%20Practices/algorithms/medium/208%20Implement%20Trie%20(Prefix%20Tree).java)
+  * [前缀树（字典树）| Leetcode Q208](./Leetcode%20Practices/algorithms/medium/208%20Implement%20Trie%20(Prefix%20Tree).java)
   * [并查集与联合查找 | Leetcode Q200 Q684 UF-解法](./Leetcode%20Practices/algorithms/medium/200%20Number%20of%20Islands.java)
   * [线段树](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/SegmentTree/SegmentTree4.java)
   * [跳表 | Leetcode Q1206](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/SkipList/SkipList.java)
@@ -102,7 +102,7 @@
   * [反转链表 | Leetcode Q92](./Leetcode%20Practices/algorithms/medium/92%20Reverse%20Linked%20List%20II.java)
   * [滑动窗口](./Common%20Algorithm%20and%20Theory/双指针法与滑动窗口算法.md)
   * [快慢指针 | Leetcode Q142](./Leetcode%20Practices/algorithms/medium/142%20Linked%20List%20Cycle%20II.java)
-  * [单调栈 | Leetcode Q503](./Common%20Algorithm%20and%20Theory/单调栈.md)
+  * [单调栈（单调队列）| Leetcode Q503](./Common%20Algorithm%20and%20Theory/单调栈.md)
   * [树复原 | Leetcode Q105 Q106](./Leetcode%20Practices/algorithms/medium/105%20Construct%20Binary%20Tree%20from%20Preorder%20and%20Inorder%20Traversal.java)
   * [穷举递增子序列 | Leetcode Q491](./Leetcode%20Practices/algorithms/medium/491%20Increasing%20Subsequences.java)
   * [翻转树 | Leetcode Q156 Q226](./Leetcode%20Practices/algorithms/medium/156%20Binary%20Tree%20Upside%20Down.java)

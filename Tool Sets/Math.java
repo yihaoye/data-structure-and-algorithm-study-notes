@@ -228,3 +228,18 @@ public Set<Integer> prime_factorization(int num) {
 
 // 计算 n 内的质数
 // Leetcode Q204
+
+
+
+// 进制转换
+// Integer.toBinaryString(int)：将十进制整数转换为二进制字符串
+// Integer.parseInt(String, int)：将字符串转换为十进制整数，基数为指定的进制
+int decimal = Integer.parseInt("FF", 16); // 将十六进制字符串 "FF" 转换为十进制整数
+System.out.println(decimal); // 255
+int decimalValue = Integer.parseInt("101010", 2); // 二进制转十进制
+System.out.println(decimalValue); // 输出 42
+// Integer.toOctalString(int)：将十进制整数转换为八进制字符串
+// Integer.toHexString(int)：将十进制整数转换为十六进制字符串
+String hexString = Integer.toHexString(decimalValue); // decimalValue = 42
+System.out.println(hexString); // 输出 2A
+// 二进制转十六进制需要先转换为十进制，然后再转换为十六进制
