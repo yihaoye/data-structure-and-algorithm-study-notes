@@ -2599,9 +2599,23 @@ Reference:
 </details>
 
 
-## 2FA 登陆
+## 设计 Google Authenticator（2FA 登录）
 <details>
 <summary>details</summary>
+
+Ref: https://blog.bytebytego.com/i/65351443/how-does-google-authenticator-or-other-types-of-factor-authenticators-work  
+  
+![](./Google-Authenticator.jpg)  
+  
+**在使用多重因素验证之前，服务器与用户的设备必须通过一个安全的信道共享一个密钥，用于此后所有的身份验证会话。如需要执行更多步骤，用户也可以用 TOTP 验证服务器。(We need to make sure the secret key is transmitted using HTTPS. The authenticator client and the database store the secret key, and we need to make sure the secret keys are encrypted.)**  
+> 服务器与客户端都会计算密码，但是由服务器来检查客户端提供的密码是否匹配服务器本地生成的密码。考虑到轻微的时钟偏移、网络延迟或用户延误等情况，有些服务器允许接受本应该在早先已生成或稍后才生成的密码。  
+
+> 不限制登录尝试的TOTP实现容易被暴力破解，因此尝试次数限制必须非常少。  
+> The password has 6 digits, so the generated password has 1 million potential combinations. Plus, the password changes every 30 seconds. If hackers want to guess the password in 30 seconds, they need to enter 30,000 combinations per second.  
+  
+更多详细内容：[TOTP(基于时间的一次性密码算法)](https://zh.wikipedia.org/wiki/%E5%9F%BA%E4%BA%8E%E6%97%B6%E9%97%B4%E7%9A%84%E4%B8%80%E6%AC%A1%E6%80%A7%E5%AF%86%E7%A0%81%E7%AE%97%E6%B3%95)  
+
+### 2FA 流程
 
 ref: https://swoopnow.com/how-does-two-factor-authentication-work/  
 https://blog.bytebytego.com/p/password-session-cookie-token-jwt  
@@ -2623,6 +2637,8 @@ SESSION 的数据保存在在服务器端，但不是保存在内存中（但是
 [session vs jwt](https://developer.okta.com/blog/2020/11/04/protecting-a-laravel-api-with-jwt)  
 ![](./session-vs-jwt.jpeg)  
 
+[扫码登录](https://zhuanlan.zhihu.com/p/497594238)  
+
 </details>
 
 
@@ -2635,25 +2651,6 @@ SESSION 的数据保存在在服务器端，但不是保存在内存中（但是
 
 OAuth 2.0  
 ![](./oauth2-abstract-flow.png)  
-
-</details>
-
-
-## 设计 Google Authenticator
-<details>
-<summary>details</summary>
-
-Ref: https://blog.bytebytego.com/i/65351443/how-does-google-authenticator-or-other-types-of-factor-authenticators-work  
-  
-![](./Google-Authenticator.jpg)  
-  
-**在使用多重因素验证之前，服务器与用户的设备必须通过一个安全的信道共享一个密钥，用于此后所有的身份验证会话。如需要执行更多步骤，用户也可以用 TOTP 验证服务器。(We need to make sure the secret key is transmitted using HTTPS. The authenticator client and the database store the secret key, and we need to make sure the secret keys are encrypted.)**  
-> 服务器与客户端都会计算密码，但是由服务器来检查客户端提供的密码是否匹配服务器本地生成的密码。考虑到轻微的时钟偏移、网络延迟或用户延误等情况，有些服务器允许接受本应该在早先已生成或稍后才生成的密码。  
-
-> 不限制登录尝试的TOTP实现容易被暴力破解，因此尝试次数限制必须非常少。  
-> The password has 6 digits, so the generated password has 1 million potential combinations. Plus, the password changes every 30 seconds. If hackers want to guess the password in 30 seconds, they need to enter 30,000 combinations per second.  
-  
-更多详细内容：[TOTP(基于时间的一次性密码算法)](https://zh.wikipedia.org/wiki/%E5%9F%BA%E4%BA%8E%E6%97%B6%E9%97%B4%E7%9A%84%E4%B8%80%E6%AC%A1%E6%80%A7%E5%AF%86%E7%A0%81%E7%AE%97%E6%B3%95)  
 
 </details>
 
