@@ -39,16 +39,19 @@ At most 5 * 104 calls in total will be made to reset and shuffle.
 // Other's Solution:
 class Solution {
     /*
+        https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle
         思路 - 随机类，遍历每个索引将其与后面随机一个索引进行 swap 操作
         时间复杂度 O(N)，空间复杂度 O(1)
     */
     int[] nums;
     int[] origin;
+    Random random;
     
     public Solution(int[] nums) {
         this.nums = nums;
         this.origin = new int[nums.length];
         System.arraycopy(nums, 0, origin, 0, nums.length);
+        this.random = new Random();
     }
     
     public int[] reset() {
@@ -57,7 +60,6 @@ class Solution {
     }
     
     public int[] shuffle() {
-        Random random = new Random();
         for (int i = 0; i < nums.length; i++) {
             int j = i + random.nextInt(nums.length-i);
             swap(nums, i, j);

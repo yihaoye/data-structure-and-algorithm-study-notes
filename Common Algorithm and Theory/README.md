@@ -34,7 +34,7 @@
       - [滚动哈希 | Rolling Hash (Rabin-Karp)](./滚动哈希.md) (时间复杂度 `O(N+M)`)
     - [快速选择 (霍尔选择算法) | Quickselect (Randomized Selection)](./快速选择.md)
     - [位运算 | Bitwise Operation](./位运算.md)
-    - [洗牌算法 | Knuth-Shuffle](https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle)
+    - [洗牌算法 | Knuth-Shuffle](./../Leetcode%20Practices/algorithms/medium/384%20Shuffle%20an%20Array.java)
   - 进阶
     - 启发式算法/搜索 | Heuristic Algorithm/Search (启发式搜索通常不讨论时空复杂度)
       - [A&ast; 搜索算法 | A&ast; Search Algorithm](./A*搜索算法.md)
