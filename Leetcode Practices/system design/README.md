@@ -2164,10 +2164,11 @@ KV 数据库主要的考点是高可用性、扩展性及高性能：
 </details>
 
 
-## 设计分布式 Unique ID Generator
+## 设计分布式 Unique ID Generator / 计数器
 <details>
 <summary>details</summary>
 
+### Unique ID Generator
 * 第一种方法是多主复制 - 这种方法使用了数据库的 auto_increment 特性。与将下一个 ID 递增 1 不同，将其递增 k，其中 k 是正在使用的数据库服务器数量。这解决了一些可扩展性问题，因为 ID 可以随着数据库服务器的数量而扩展。然而，这种策略有一些主要缺点：
   * 难以与多个数据中心一起扩展
   * 跨多个服务器，ID 不会随时间递增。
@@ -2183,13 +2184,7 @@ KV 数据库主要的考点是高可用性、扩展性及高性能：
 * 部分长度调整。例如，在低并发和长期应用程序中，减少序列号但增加时间戳位是有效的。
 * 高可用性。由于 ID 生成器是一个关键任务的系统，它必须具备高可用性。
 
-</details>
-
-
-## 设计分布式计数器
-<details>
-<summary>details</summary>
-
+### 计数器
 参考：
 * [系统设计之分布式计数器](https://www.51cto.com/article/705970.html)
 * [System Design: Distributed Counter (12 approaches)](https://www.youtube.com/watch?v=V1HlNh4IhUo)
