@@ -70,6 +70,7 @@
 
 ## 机器学习高频
 * [七大最常见的机器学习面试问题](https://www.youtube.com/watch?v=j340MdN0QSY)
+* [机器学习高频概念](https://www.youtube.com/watch?v=D641Ucd_xuw&list=PLxIHUhMHF8okwhq8poRuiHBChWjkVUHLL)
 
 ## 硬件与操作系统（Linux & bash）高频
 * [进程、线程、协程的区别](./../Computer%20System%20Layer/进程与线程.md)
@@ -106,6 +107,8 @@
 * [systemd / systemctl](https://www.youtube.com/watch?v=5JVBpXiYMKo)
 * [NIO 相关基础](../Leetcode%20Practices/system%20design/IO模型与Web服务器工作模型.md)
 * [eBPF](https://ebpf.io/what-is-ebpf/)
+* [文件系统：FAT、NTFS 和 Ext3 区别](https://learn.lianglianglee.com/%E4%B8%93%E6%A0%8F/%E9%87%8D%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%AE%8C/30%20%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%EF%BC%9AFAT%E3%80%81NTFS%20%E5%92%8C%20Ext3%20%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F.md)
+* [Interview best 20 questions on OPERATING SYSTEM](https://leetcode.com/discuss/interview-question/operating-system/3816083/Interview-best-20-questions-on-OPERATING-SYSTEM)
 
 ## 网络高频
 * [计算机网络面试突击](https://juejin.cn/post/6932001161532669960)

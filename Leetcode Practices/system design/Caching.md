@@ -15,12 +15,13 @@
   * 写回缓存（Write-back cache） - 数据仅写入缓存，然后立即向客户端确认完成。写入永久存储在指定的时间间隔或特定条件下进行。
   * 读取-通过缓存（Read-through cache）- 缓存系统在缓存未命中时，会自动从持久化存储（如数据库）中读取数据，并将数据放入缓存，以便下次访问时可以从缓存中获取数据，从而提高读取操作的性能。这种模式可以有效减轻后端数据库的负载，提高读取操作的速度。
     * 适用于那些对读取性能要求较高的场景，例如，读取操作频繁、数据变化不频繁、数据量较大的情况。这种模式可以减少对后端存储的直接读取压力，提高读取速度，同时确保了数据的一致性。需要注意的是，在 Read-Through 缓存模式中，数据的更新通常需要额外的处理，以确保缓存中的数据与持久化存储中的数据保持一致。这可能涉及到缓存失效、数据更新通知等机制。
-* 缓存淘汰策略（Cache eviction policies）
+* 缓存淘汰策略（Cache eviction policies）及其[代码实现](https://www.sakuratears.top/blog/%E7%BC%93%E5%AD%98%E6%B7%98%E6%B1%B0%E7%AE%97%E6%B3%95%EF%BC%88LFU%E3%80%81LRU%E3%80%81FIFO%E3%80%81ARC%E3%80%81MRU%EF%BC%89.html)
   * 先进先出（FIFO）
   * 后进先出（LIFO）
   * 最近最少使用（LRU）
-  * 最近最常使用（MRU）
+  * 最近最常使用（MRU）（[使用场景](https://stackoverflow.com/questions/5088128/why-does-cache-use-most-recently-used-mru-algorithm-as-evict-policy)）
   * 最不常使用（LFU - Least Frequently Used）
+  * 自适应缓存替换（ARC）（结合了 LRU 与 LFU 的特点）
   * 随机替换（RR - Random Replacement）
 
 ![](./cache-related.jpeg)  
