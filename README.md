@@ -152,7 +152,6 @@
 5. 没 BUG
 6. 写代码速度快
   
-</br>
 <details>
 <summary>高效地刷 LC：</summary>
 
@@ -167,7 +166,6 @@ https://www.youtube.com/watch?v=fyf-GRH1Ceo
 7. 多考慮 edge case，要有辦法回答时间空间复杂度
 8. 解法不需要全會，通常會一種就行（保留意见，暴力解基本上都會被問有沒有辦法更好，看法是暴力解以外要會一種解法。對暴力解的看法是像是一個秘密武器，真的沒招了再拿出來使用）  
 </details>
-</br>
   
 <details>
 <summary>LeetCode 需要的基础</summary>
