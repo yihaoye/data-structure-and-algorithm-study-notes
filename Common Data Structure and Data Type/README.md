@@ -64,6 +64,8 @@
       - [B/B+ 树 | B/B+ Tree](./Data%20Structure%20Implementation/BPlusTree/README.md)
       - 2–3 树 | 2-3 Tree
     - [线段树 | Segment Tree](./Data%20Structure%20Implementation/SegmentTree/README.md) (区间查询 O(logN + K)，更新 O(logN)，构建 O(N) - K is the number of reported segments)
+  - [树套树](https://www.cnblogs.com/Flying2018/p/13615844.html)
+  - [划分树](https://oi-wiki.org/ds/dividing/)
   - [字典树 | Trie](./Data%20Structure%20Implementation/Trie/README.md)
     - 后缀树 | Suffix Tree [Ref 1](https://www.cnblogs.com/gaochundong/p/suffix_tree.html)、[Ref 2](https://yanglei253.github.io/2020/07/26/dataStructure/dataStructure-tiretree/)
   - [并查集 | Disjoint-Set/Union-Find Forest](./../Common%20Algorithm%20and%20Theory/并查集与联合查找算法.md)
@@ -79,7 +81,7 @@
   - 无向图 | Undirected Graph
     - [二分图 | Bipartite Graph](./Data%20Structure%20Implementation/BipartiteGraph/README.md)
   - 加权图（有向或无向）| Weighted Graph
-    - 多阶段图 | Multistage Graph (通常使用动态规划)
+    - 多阶段图 | Multistage Graph (通常与动态规划同时使用)
   - [生成树 | Spanning Tree](./Data%20Structure%20Implementation/SpanningTree/README.md)
     - [最小生成树 | Minimum Spanning Tree](./Data%20Structure%20Implementation/MinimumSpanningTree/README.md)
   
@@ -122,6 +124,7 @@
 * 放入 PriorityQueue 的元素，必须实现 Comparable 接口，PriorityQueue 会根据元素的排序顺序决定出队的优先级。如果要放入的元素并没有实现 Comparable 接口的话，也可以提供一个 Comparator 对象来判断两个元素的顺序。PriorityQueue 在每次插入新元素后会自动触发排序。
 * Java 没有内置专门的二叉堆数据结构，因为可以使用 PriorityQueue（最小堆）来当二叉堆用。
 * LinkedBlockingQueue 与 ArrayBlockingQueue 对比：1. ArrayBlockingQueue 入队出队采用一把锁，导致入队出队相互阻塞，效率低下；2. LinkedBlockingQueue 入队出队采用两把锁，入队出队互不干扰，效率较高；3. 二者都是有界队列，如果长度相等且出队速度跟不上入队速度，都会导致大量线程阻塞；4. LinkedBlockingQueue 如果初始化不传入初始容量，则使用最大 int 值，如果出队速度跟不上入队速度，会导致队列特别长，占用大量内存。
+* ArrayDeque 是 Java 标准库中的一种双端队列实现，底层基于数组实现。与 LinkedList 相比，ArrayDeque 的性能更优，因为它使用连续的内存空间存储元素，可以更好地利用 CPU 缓存，在大多数情况下也更快。因为 ArrayDeque 的底层实现是数组，而 LinkedList 的底层实现是链表。数组是一段连续的内存空间，而链表是由多个节点组成的，每个节点存储数据和指向下一个节点的指针。因此，在使用 LinkedList 时，需要频繁进行内存分配和释放，而 ArrayDeque 在创建时就一次性分配了连续的内存空间，不需要频繁进行内存分配和释放，这样可以更好地利用 CPU 缓存，提高访问效率。现代计算机 CPU 对于数据的局部性有很强的依赖，如果需要访问的数据在内存中是连续存储的，那么就可以利用 CPU 的缓存机制，提高访问效率。而当数据存储在不同的内存块里时，每次访问都需要从内存中读取，效率会受到影响。使用 ArrayDeque 时，数组复制操作也是需要考虑的性能消耗之一。当 ArrayDeque 的元素数量超过了初始容量时，会触发扩容操作。扩容操作会创建一个新的数组，并将原有元素复制到新数组中。扩容操作的时间复杂度为 O(n)。不过，ArrayDeque 的扩容策略（当 ArrayDeque 中的元素数量达到数组容量时，就需要进行扩容操作，扩容时会将数组容量扩大为原来的两倍）可以在一定程度上减少数组复制的次数和时间消耗，同时保证 ArrayDeque 的性能和空间利用率。[来源](https://javabetter.cn/collection/arraydeque.html#%E5%B0%8F%E7%BB%93)
 * JDK 为什么没有实现图（Graph）数据结构？因为一般更倾向于根据具体算法需求和数据的特性来自己实现图，就说最常用的两种实现 —— 邻接矩阵和邻接表（比如 A-B-C 三节点相连的图可以表示为 `vexs[] = new Vertex[3]{A, B, C}` + `edges[] = new int[3][3]` + `edges[Ai][Bi] == edges[Ai][Ci] == edges[Bi][Ci] == 1`）。通常可以简单的使用二维数组做邻接矩阵，如果图连通性很低，也可以用 HashMap 做邻接矩阵。邻接表可以用链表的数组做，也可以 TreeMap 的数组做，也可以 HashMap 里放 TreeMap 或者其他数据结构来做。这要看具体的算法需要。这也是为什么通常说图不常用，其实不是不常用，是图的通用性不值得 JDK 去做一个 build-in 的实现给它（树 Tree 同理）。而且选择第三方实现的时候也要慎重，要结合具体的算法需要和数据情况。（[摘录来源](https://www.zhihu.com/question/275694305/answer/392905791)）  
   
 Java 容器图解  

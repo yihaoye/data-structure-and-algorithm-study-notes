@@ -271,7 +271,7 @@ https://blog.csdn.net/qq_40688707/article/details/80602064
 > 初级的算法是数论、二分、三分、线段树、树状数组、最短路、最小生成树、简单DP等。  
 > 而中级算法则是树套树、划分树、AC自动机、离散化、RMQ、LCA、DFA、KMP、后缀树、博弈理论、网络流、二分匹配、连通图等（[更多参考](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B%E5%85%A5%E9%97%A8%E7%BB%8F%E5%85%B8/)）。  
 > 至于高级的，则不是单纯的某一类算法或数据结构了。  
-> 或者说高级的，已经不能成为算法了，而是一个实际的现实问题抽象简化而来，都是要使用多个数据结构和算法，综合运用来解决一道问题，以及使用更多数学知识（如[《具体数学》](https://zh.wikipedia.org/wiki/%E5%85%B7%E9%AB%94%E6%95%B8%E5%AD%B8)、[《数值分析》](https://book.douban.com/subject/26600495/)、[《离散数学》](https://book.douban.com/subject/6558200/)等等）。  
+> 或者说高级的，已经不能成为算法了，而是一个实际的现实问题抽象简化而来，都是要使用多个数据结构和算法，综合运用来解决一道问题，以及使用更多数学知识（如[《具体数学》](https://zh.wikipedia.org/wiki/%E5%85%B7%E9%AB%94%E6%95%B8%E5%AD%B8)、[《数值分析》](https://book.douban.com/subject/26600495/)、[《离散数学》](https://book.douban.com/subject/6558200/)、[《信息论》](https://book.douban.com/subject/2305237/)等等）。  
 > 专业选手毕竟是专业化的人员，在解决各种算法问题的过程中，他们使得自己的分析问题能力、代码能力，查错问题能力得到很大的提高。  
 > 分析问题能力可以让他们分析出一道题该如何解决（类似于工作中的项目或者问题，能够快速找找到解决方案）。  
 > 而代码能力则是将解决问题的想法具体实现。  

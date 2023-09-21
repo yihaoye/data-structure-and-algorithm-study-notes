@@ -108,6 +108,7 @@
 * [NIO 相关基础](../Leetcode%20Practices/system%20design/IO模型与Web服务器工作模型.md)
 * [eBPF](https://ebpf.io/what-is-ebpf/)
 * [文件系统：FAT、NTFS 和 Ext3 区别](https://learn.lianglianglee.com/%E4%B8%93%E6%A0%8F/%E9%87%8D%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%AE%8C/30%20%20%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%BA%95%E5%B1%82%E5%AE%9E%E7%8E%B0%EF%BC%9AFAT%E3%80%81NTFS%20%E5%92%8C%20Ext3%20%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F.md)
+* [inode](https://www.ruanyifeng.com/blog/2011/12/inode.html)
 * [Interview best 20 questions on OPERATING SYSTEM](https://leetcode.com/discuss/interview-question/operating-system/3816083/Interview-best-20-questions-on-OPERATING-SYSTEM)
 
 ## 网络高频
