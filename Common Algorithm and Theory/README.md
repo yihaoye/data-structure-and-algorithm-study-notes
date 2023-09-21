@@ -88,7 +88,7 @@
     - [Rsync 算法](https://zh.wikipedia.org/zh-cn/Rsync#%E6%BC%94%E7%AE%97%E6%B3%95)
     - [共识机制/算法 (分布式选举问题) | Consensus Algorithm](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md) ([etcd 实现](../Leetcode%20Practices/system%20design/example%20questions/Leader%20Election.md))
       - 崩溃容错协议 | CFT
-        - Paxos、Raft ([Ref 1](https://cloud.tencent.com/developer/article/1816404)、[Ref 2](https://raft.github.io/))、[ZAB](https://houbb.github.io/2018/10/30/zab)、[Quorum](./Quorum算法.md)
+        - Paxos、Raft ([Ref 1](https://cloud.tencent.com/developer/article/1816404)、[Ref 2](https://raft.github.io/))、[ZAB](https://houbb.github.io/2018/10/30/zab) (这 3 种协议有许多共同的内容，比如 Leader-Follower、[Quorum 仲裁机制](./Quorum算法.md)、状态机等等)
       - 拜占庭容错 | BFT ([Ref 1](https://www.bilibili.com/read/cv14498545)、[Ref 2](https://cloud.tencent.com/developer/news/580379)、[Ref 3](https://learnku.com/articles/56919))
         - PBFT、Hotstuff
     - [P2P 核心算法](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md)
