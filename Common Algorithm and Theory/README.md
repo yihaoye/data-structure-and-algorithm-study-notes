@@ -68,7 +68,7 @@
     - [映射-归约 | MapReduce](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md)
     - [分块/分桶法 | Range Block/Bucketing](./分桶法.md) (若为平方分割，则时间复杂度 `O(√N)`)
       - [莫队算法 | Mo Algorithm](https://oi-wiki.org/misc/mo-algo/)
-    - [蓄水池抽样算法 | Reservoir Sampling](./蓄水池抽样算法.md) (时间复杂度为一次遍历即可，空间复杂度 `O(m)` m 为随机选出 m 个比如可能为 1)
+    - [蓄水池抽样算法 | Reservoir Sampling](./蓄水池抽样算法.md) (时间复杂度为 `O(N)` 且为一次遍历即可，空间复杂度 `O(m)` m 为从流中随机选出 m 个，因为 m 通常为有限的常数，所以空间复杂度可以认为是 `O(1)`)
     - [霍夫曼压缩算法 | Huffman Coding/Compression](./霍夫曼压缩算法.md)
     - [布隆过滤器及其算法 | Bloom Filter](./布隆过滤器及其算法.md)
     - [最小哈希 | MinHash](https://en.wikipedia.org/wiki/MinHash)
@@ -88,14 +88,14 @@
     - [Rsync 算法](https://zh.wikipedia.org/zh-cn/Rsync#%E6%BC%94%E7%AE%97%E6%B3%95)
     - [共识机制/算法 (分布式选举问题) | Consensus Algorithm](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md) ([etcd 实现](../Leetcode%20Practices/system%20design/example%20questions/Leader%20Election.md))
       - 崩溃容错协议 | CFT
-        - Paxos、[Raft](https://cloud.tencent.com/developer/article/1816404)、ZAB、[Quorum](./Quorum算法.md)
-      - 拜占庭容错 | BFT (Ref: [1](https://www.bilibili.com/read/cv14498545)、[2](https://cloud.tencent.com/developer/news/580379)、[3](https://learnku.com/articles/56919))
+        - Paxos、Raft ([Ref 1](https://cloud.tencent.com/developer/article/1816404)、[Ref 2](https://raft.github.io/))、[ZAB](https://houbb.github.io/2018/10/30/zab)、[Quorum](./Quorum算法.md)
+      - 拜占庭容错 | BFT ([Ref 1](https://www.bilibili.com/read/cv14498545)、[Ref 2](https://cloud.tencent.com/developer/news/580379)、[Ref 3](https://learnku.com/articles/56919))
         - PBFT、Hotstuff
     - [P2P 核心算法](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md)
       - BitTorrent 协议
       - DHT 的 Kademlia 协议
       - [DHT 的 Chord 算法](https://en.wikipedia.org/wiki/Chord_(peer-to-peer))
-      - Gossip 协议/流行病协议
+      - [Gossip 协议/流行病协议](../Computer%20System%20Layer/数据库/Dynamo/README.md#Gossip-协议)
   - 人工智能, 机器学习 | Artificial Intelligence, Machine Learning
     - 线性规划 | Linear Regression
     - [决策树算法 | Decision Tree Algorithm](https://www.ibm.com/cn-zh/topics/decision-trees)
