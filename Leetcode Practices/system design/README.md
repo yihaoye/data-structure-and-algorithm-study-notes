@@ -198,10 +198,10 @@
 * [消息队列与流处理](./消息队列与流处理.md)（RabbitMQ、Kafka）[阅读材料](http://www.52im.net/thread-1979-1-1.html)
 * 对象/文件/非结构化数据存储（S3、Hadoop HDFS、Blob Storage - Binary Large Object Storage）（e.g. distributed file storage system for storing photos and videos）
 * 镜像/备份/归档（如为云主机、容器或数据库及其存储卷等等的镜像/快照的服务，可以存储至文件存储如 S3 等）
-* 统一认证中心（用户的注册、登录验证、token 鉴权；内部信息系统用户的管理、权限和登录鉴权；应用管理，应用的 secret 生成，应用信息的验证 - 如验证接口签名等）
+* 认证中心（用户的注册、登录验证、token 鉴权；内部信息系统用户的管理、权限和登录鉴权；应用管理，应用的 secret 生成，应用信息的验证 - 如验证接口签名等）
 * 加密解密（如 KMS）、压缩解压（无损，如图像多媒体文件、通信、存储备份等）
 * 单点登录系统（Central Authentication Service - CAS）
-* [统一配置中心](https://en.wikipedia.org/wiki/Configuration_management)（Config Server、propeties、yaml）
+* [配置中心](https://en.wikipedia.org/wiki/Configuration_management)（可分布式，Config Server、propeties、yaml）
 * 管理后台/管理控制台（允许客服或工程师直接访问和管理数据库数据以支持用户，比如 Django Admin、WordPress）
 * [服务调用/服务治理框架（REST API、RPC）](./System%20Design%20Fundamentals.md#API%20Design)，服务发现、注册、查询（如 Consul、etcd、ZooKeeper）
 * 统一调度中心（定时调度 cron job，如定时抓取数据、刷新状态等）
@@ -260,7 +260,14 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
   * 攻击防护（DDoS、伪造或注入攻击）
   * 监控与日志
     
-## [Load Balancing](./Load%20Balancing.md)
+## API Gateway
+API 网关是位于客户端与后端服务集之间的大门 - API 管理工具。通常 API 网关与其他关键组件服务一起集成。[Spring Cloud 方案](https://github.com/yihaoye/spring-framework-example/tree/master/spring-cloud-fundamentals)  
+### [服务注册与服务发现](https://docshome.gitbook.io/microservices/4-service-discovery)
+### [负载均衡与路由](./Load%20Balancing.md)
+### 配置管理
+### 认证权限
+### 服务治理（[Service Meltdown, Service Downgrade and Service Circuit Breaker](./服务降级与服务熔断.md)）
+### 监控统计日志
 
 ## Cache vs Message Queue / Stream
 相比之下 Cache 更像 Java 的 HashMap，Message Queue / Stream 更像 Java 的 Queue / Deque / Stream：
@@ -304,8 +311,6 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 ## [SQL vs NoSQL](./SQL%20vs%20NoSQL.md)
 
 ## [CAP Theorem](./CAP.md)
-
-## [Service Meltdown, Service Downgrade and Service Circuit Breaker](./服务降级与服务熔断.md)
 
 ## [I/O 模型与 Web 服务器工作模型](./IO模型与Web服务器工作模型.md)
 
