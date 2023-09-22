@@ -273,7 +273,7 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 
 ### [Message Queue and Stream](./消息队列与流处理.md)
 注意，一般的消息队列（Kafka、Redis、ActiveMQ etc）不支持索引查询，但是时序数据库、时间序列数据库（Time Series Database，如 InfluxDB、MongoDB、Prometheus、RedisTimeSeries etc）除了能当简单的消息队列（比一般数据库吞吐性能更强，但仅限低吞吐量等有限场景。大规模、高吞吐量场景还是要用专门的消息队列系统）还可以索引查询（时间序列数据库通常会使用时间戳作为主要的索引字段，以便快速按时间范围查询数据。这使得在时间序列数据库中执行时间范围查询非常高效）。  
-[对象存储也可以实现简单的消息队列](./README.md#设计分布式云消息队列)，比如把 bucket 分成未处理和已处理两个路径，从未处理的 bucket 读出最前面的文件，处理它，然后把文件转移至已处理路径即可（此办法不足以应对多个消费者订阅同一个主题消息的场景，需要进一步改动）。  
+[对象存储也可以实现简单的消息队列](./README.md#设计分布式云消息队列（包括-Notification-系统）)，比如把 bucket 分成未处理和已处理两个路径，从未处理的 bucket 读出最前面的文件，处理它，然后把文件转移至已处理路径即可（此办法不足以应对多个消费者订阅同一个主题消息的场景，需要进一步改动）。  
 
 ## 处理编程范式
 * 请求响应模式 - 延迟最小的一种范式，响应时间处于亚毫秒到毫秒之间，而且响应时间一般非常稳定。这种处理模式一般是阻塞的（同步），应用程序向处理系统发出请求，然后等待响应。在数据库领域，这种范式就是线上交易处理（OLTP）。通常的形式是 SOAP、REST API、RPC 等。
@@ -426,7 +426,7 @@ Cache (cache eviction policy - e.g. Least Recently Used (LRU) with LinkedHashMap
 * 步骤 5：系统 API - SOAP 或 REST API
   * addPaste(api_dev_key, paste_data, custom_url=None user_name=None, paste_name=None, expire_date=None)
   * getPaste(api_dev_key, api_paste_key)
-  * deletePaste(api_dev_key, api_paste_key)
+  * deletePaste(api_dev_key, api_paste_key) (该部分 cronjob 可以是按每天执行)
 * 步骤 6：数据库设计
   * Paste {URLHash: varchar(16), ContentKey: varchar(512), ExpirationDate: datatime, CreationDate: datetime}
   * User {UserID: int, Name: varchar(20), Email: varchar(32), CreationDate: datetime, LastLogin: datatime}
@@ -441,6 +441,7 @@ Cache (cache eviction policy - e.g. Least Recently Used (LRU) with LinkedHashMap
 * 步骤 9: Purging or DB Cleanup (参考 TinyURL)
 * 步骤 10: Data Partitioning and Replication (参考 TinyURL)
 * 步骤 11: 缓存与负载均衡 (参考 TinyURL)
+  * 如果需要为 content 或 URL 设置过时限制，对于缓存端可以采用 TTL 来简化缓存端的读一致性。
 * 步骤 12: 安全与权限 (参考 TinyURL)
 
 进阶：[设计协同编辑系统](./README.md#设计协同编辑系统)  
@@ -1229,7 +1230,7 @@ Dropbox 异步任务框架 ATF：
 </details>
 
 
-## 设计 WhatsApp / Slack（IM）
+## 设计 WhatsApp、Slack（IM）
 <details>
 <summary>details</summary>
 
@@ -1445,7 +1446,7 @@ WebSocket 连接由客户端启动。它是双向和持久的。它从 HTTP 连�
 </details>
 
 
-## 设计 Amazon（电商 / 秒杀网站）
+## 设计 Amazon（电商、秒杀网站）
 <details>
 <summary>details</summary>
 
@@ -2164,7 +2165,7 @@ KV 数据库主要的考点是高可用性、扩展性及高性能：
 </details>
 
 
-## 设计分布式 Unique ID Generator / 计数器
+## 设计分布式 Unique ID Generator、计数器
 <details>
 <summary>details</summary>
 
@@ -2192,7 +2193,7 @@ KV 数据库主要的考点是高可用性、扩展性及高性能：
 </details>
 
 
-## 设计分布式 Job Scheduler / ETL / ELT / Migrator 系统
+## 设计分布式 Job Scheduler、ETL、ELT、Migrator 系统
 <details>
 <summary>details</summary>
 
@@ -2279,7 +2280,7 @@ ETL 系统其实与 cronjob / batch process 系统有一些类似。
 </details>
 
 
-## 设计点赞系统（Facebook / TikTok / Twitter / Youtube Like）
+## 设计点赞系统（Facebook、TikTok、Twitter、Youtube Like）
 <details>
 <summary>details</summary>
 
@@ -2515,10 +2516,11 @@ void addItemTag(String itemId, String[] tagIds) {
 </details>
 
 
-## 设计分布式/云消息队列
+## 设计分布式云消息队列（包括 Notification 系统）
 <details>
 <summary>details</summary>
 
+云消息队列是构建分布式互联网应用的基础设施，它能够提供可靠的基于消息的异步通信机制，能够将分布式部署的不同应用（或同一应用的不同组件）之间的收发消息，存储在可靠有效的 CMQ 队列中，防止消息丢失。CMQ 支持多进程同时读写，收发互不干扰，无需各应用或组件始终处于运行状态。  
 * 功能需求
   * 写入
   * 读取
@@ -2554,7 +2556,7 @@ offset 的实现可以结合 message_table 和 consumer_partition_table 的 last
 
 其他参考方案：[Pub-Sub Architecture Design and Scale](./example%20questions/Pub-Sub%20Architecture%20Design%20and%20Scale.md)  
 
-### 其他
+### 类似系统（Notification 系统）
 设计 Notification 系统：与 SQS 的 pull-based 不同，SNS 是 push-based 的，其他都很类似（比如订阅发布模式、主题等等）。  
 * Notification 系统适用于实时通知、事件驱动、消息广播等场景，消息通常是短暂性的，不需要长期存储。
 * Notification 系统通常需要订阅者自行处理消息，它不保留消息。
