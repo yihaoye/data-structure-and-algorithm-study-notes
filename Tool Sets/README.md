@@ -48,6 +48,8 @@ Tool Sets 是 Online / Take Home assessment、算法解题、编码过程中常�
 * [Java 注解、自定义及其原理](./Annotation.java)
 * [更多其他](../Program%20Languages%20Features/README.md)
   
+[其他 Java 常用库](https://zhuanlan.zhihu.com/p/54716716)如 SLF4J（比 Log4j 好）、Jackson、JMS、javax.mail、Apache Commons、Netty 等等。  
+
 ### Java 数据类型转换
 http://interviewquestionjava.blogspot.com/2014/01/java-data-types-conversion-chart.html  
 ![](./Java%20Data%20Type%20Conversion%20Chart.jpeg)  
