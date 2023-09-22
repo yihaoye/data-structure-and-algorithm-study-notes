@@ -79,6 +79,7 @@ Keep at least 3 project examples/stories which better to be large scale.
 * [框架](./框架.md)
 * [架构](./架构.md)
 * 问题解决软技能 [[1]](https://medium.com/@SantalTech/no-leetcode-the-stripe-interview-experience-cf1b29e6f55d),[[2]](https://plantegg.github.io/2018/05/24/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%B7%A5%E4%BD%9C%E4%B8%AD%E5%AD%A6%E4%B9%A0V1.1/)
+* [反面模式](./反面模式.md)
 
 # 自我介绍
 应该在 1 分钟之内完成，不超过 2 分钟。  
