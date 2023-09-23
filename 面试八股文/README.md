@@ -68,9 +68,11 @@
 * [LSM 树](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/LSMTree/README.md)
 * [MySQL 中的 UTF8 和 UTF8mb4 编码的详细区别](https://cloud.tencent.com/developer/article/1930660)
 
-## 机器学习高频
+## 统计、机器学习高频
 * [七大最常见的机器学习面试问题](https://www.youtube.com/watch?v=j340MdN0QSY)
 * [机器学习高频概念](https://www.youtube.com/watch?v=D641Ucd_xuw&list=PLxIHUhMHF8okwhq8poRuiHBChWjkVUHLL)
+* [假阳性、假阴性、灵敏度、特异度](https://www.youtube.com/watch?v=Seje2u1fltQ)
+* [卷积、感知机、损失函数、交叉熵、梯度下降、softmax、SVM 等等](https://www.youtube.com/watch?v=D641Ucd_xuw&list=PLxIHUhMHF8okwhq8poRuiHBChWjkVUHLL)
 
 ## 硬件与操作系统（Linux & bash）高频
 * [进程、线程、协程的区别](./../Computer%20System%20Layer/进程与线程.md)

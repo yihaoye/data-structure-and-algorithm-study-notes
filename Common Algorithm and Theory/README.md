@@ -44,7 +44,7 @@
       - 随机化算法/搜索 | Random Algorithm/Search
         - [模拟退火 | Simulated Annealing](./模拟退火.md)
         - [遗传算法 | Genetic Algorithm](./遗传算法.md)
-        - 粒子群优化算法 | Particle Swarm Optimization
+        - [粒子群优化算法 | Particle Swarm Optimization](./粒子群优化算法.md)
         - 蒙特卡洛算法 | Monte Carlo Algorithm
         - 拉斯维加斯算法 | Las Vegas Algorithm
     - [图匹配 | Graph Match](./图匹配.md)
@@ -110,22 +110,24 @@
       - 卷积神经网络 | CNN
       - 长短期记忆, 循环神经网络 | LSTM, RNN
       - 生成对抗网络 | GAN
-      - [Transformer 模型, 大语言模型 (LLM)](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)) (Related: [build GPT from scratch](https://www.youtube.com/watch?v=kCc8FmEb1nY))
+      - [Transformer 模型, 大语言模型 (LLM)](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)) (Related: [build GPT from scratch](https://www.youtube.com/watch?v=kCc8FmEb1nY)、[注意力机制](https://en.wikipedia.org/wiki/Attention_(machine_learning)))
   - [数学](../Computer%20Science%20Maths/README.md)
-    - [鸽巢原理 | Pigeonhole Principle](./鸽巢原理.md)
-    - 容斥原理 | Inclusion–Exclusion Principle
-    - [取模运算 | Modulo](./取模运算.md)
-    - [快速幂法 | Binary Exponentiation](../Tool%20Sets/Math.java)
-    - [高斯消元法 | Gaussian Elimination](./高斯消元法.md)
+    - 专项
+      - [鸽巢原理 | Pigeonhole Principle](./鸽巢原理.md)
+      - 容斥原理 | Inclusion–Exclusion Principle
+      - [取模运算 | Modulo](./取模运算.md)
+      - [快速幂法 | Binary Exponentiation](../Tool%20Sets/Math.java)
+      - [高斯消元法 | Gaussian Elimination](./高斯消元法.md)
+      - [高精度计算 | Arbitrary-Precision Arithmetic](https://oi-wiki.org/math/bignum/)
+      - [约瑟夫环/问题 | Josephus Problem](./约瑟夫环.md)
+      - 计算几何
+        - [扫描线 | Line Sweep](./扫描线.md)
+        - [凸包 | Convex Hull](./凸包.md)
+        - [三分搜索 | Ternary Search](https://www.cnblogs.com/PJQOOO/p/4161891.html)
+        - [向量计算 | Vector](https://cp.wiwiho.me/vector/)
+      - [其他数学工具、操作与套路](../Tool%20Sets/Math.java)
     - [博弈论 | Game Theory](https://zhuanlan.zhihu.com/p/183168457)
-    - [高精度计算 | Arbitrary-Precision Arithmetic](https://oi-wiki.org/math/bignum/)
-    - [约瑟夫环/问题 | Josephus Problem](./约瑟夫环.md)
-    - 计算几何
-      - [扫描线 | Line Sweep](./扫描线.md)
-      - [凸包 | Convex Hull](./凸包.md)
-      - [三分搜索 | Ternary Search](https://www.cnblogs.com/PJQOOO/p/4161891.html)
-      - [向量计算 | Vector](https://cp.wiwiho.me/vector/)
-    - [其他数学工具、操作与套路](../Tool%20Sets/Math.java)
+    - [最优化 | Mathematical Optimization](https://en.wikipedia.org/wiki/Mathematical_optimization) (最优化是应用数学的一个分支，是计算机与人工智能的一个重要研究领域)
   - 其他常见优化思想、技巧
     - 剪枝 | Pruning
     - [预处理 (打表) | Precompute (Hard Coding)](https://www.cnblogs.com/hxtblogs/p/7654635.html)
@@ -136,4 +138,6 @@
     - [比较优化，减少比较次数 (算法导论 9.1)](./../Leetcode%20Practices/algorithms/easy/1491%20Average%20Salary%20Excluding%20the%20Minimum%20and%20Maximum%20Salary.java)
 
 
-部分参考自链接：[Ref 1](https://oi-wiki.org/basic/)、[Ref 2](https://www.acoier.com/tags/)。  
+</br>
+
+以上部分参考自链接：[Ref 1](https://oi-wiki.org/basic/)、[Ref 2](https://www.acoier.com/tags/)。  
