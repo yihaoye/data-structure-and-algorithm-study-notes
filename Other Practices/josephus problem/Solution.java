@@ -12,6 +12,6 @@ class Solution {
             dp = (dp + K) % i;
         }
 
-        return dp;
+        return dp + 1; // 题目要求返回的是人的编号，编号从 1 开始，而不是从 0 开始，所以要加上 1
     }
 }

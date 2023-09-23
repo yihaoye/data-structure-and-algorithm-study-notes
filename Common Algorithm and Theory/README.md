@@ -118,7 +118,7 @@
     - [高斯消元法 | Gaussian Elimination](./高斯消元法.md)
     - [博弈论 | Game Theory](https://zhuanlan.zhihu.com/p/183168457)
     - [高精度计算 | Arbitrary-Precision Arithmetic](https://oi-wiki.org/math/bignum/)
-    - [约瑟夫环/问题 | Josephus Problem](./../Other%20Practices/josephus%20problem/Solution.java)
+    - [约瑟夫环/问题 | Josephus Problem](./约瑟夫环.md)
     - 计算几何
       - [扫描线 | Line Sweep](./扫描线.md)
       - [凸包 | Convex Hull](./凸包.md)
