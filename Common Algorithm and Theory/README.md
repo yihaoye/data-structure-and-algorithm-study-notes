@@ -105,14 +105,16 @@
     - 隐马尔可夫模型 | Hidden Markov Model, HMM
       - 前向与后向算法
       - 维特比算法
-    - [多模态学习 | Multimodal Learning](https://zhuanlan.zhihu.com/p/53511144)
     - [深度学习, 神经网络 | Deep Learning, Neural Networks](https://www.zhihu.com/question/314879954/answer/638380202)
-      - 卷积神经网络 | CNN
-      - 长短期记忆, 循环神经网络 | LSTM, RNN
-      - 生成对抗网络 | GAN
-      - [Transformer 模型, 大语言模型 (LLM)](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)) (Related: [build GPT from scratch](https://www.youtube.com/watch?v=kCc8FmEb1nY)、[注意力机制](https://en.wikipedia.org/wiki/Attention_(machine_learning)))
+      - [感知器 | Perceptron Learning Algorithm](https://www.youtube.com/watch?v=BS_CVhalVGw&list=PLxIHUhMHF8okwhq8poRuiHBChWjkVUHLL&index=2)
+      - 卷积神经网络 | Convolutional Neural Network, CNN
+      - 循环神经网络 | Recurrent Neural Network, RNN
+        - 长短期记忆 | Long Short-Term Memory, LSTM
+      - 生成对抗网络 | Generative Adversarial Network, GAN
+      - [Transformer 模型, 大语言模型 (Large Language Model)](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)) (Related: [build GPT from scratch](https://www.youtube.com/watch?v=kCc8FmEb1nY)、[注意力机制](https://en.wikipedia.org/wiki/Attention_(machine_learning)))
+    - [多模态学习 | Multimodal Learning](https://zhuanlan.zhihu.com/p/53511144)
   - [数学](../Computer%20Science%20Maths/README.md)
-    - 专项
+    - 专项专题
       - [鸽巢原理 | Pigeonhole Principle](./鸽巢原理.md)
       - 容斥原理 | Inclusion–Exclusion Principle
       - [取模运算 | Modulo](./取模运算.md)
