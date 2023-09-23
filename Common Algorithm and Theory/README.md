@@ -40,6 +40,7 @@
       - [A&ast; 搜索算法 | A&ast; Search Algorithm](./A*搜索算法.md)
         - IDA&ast; 算法 | IDA&ast; Algorithm
       - 爬山算法 | Hill Climbing
+      - [随机数生成算法 | Random Number Generator](./随机数生成算法.md)
       - 随机化算法/搜索 | Random Algorithm/Search
         - [模拟退火 | Simulated Annealing](./模拟退火.md)
         - [遗传算法 | Genetic Algorithm](./遗传算法.md)
