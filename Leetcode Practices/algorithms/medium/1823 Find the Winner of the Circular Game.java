@@ -68,6 +68,8 @@ class Solution {
 class Solution {
     public int findTheWinner(int n, int k) {
         // 递归写法 - https://mp.weixin.qq.com/s/-FW_4GC_g72sQ-AcTm2tVA
+        // 每次往同一方向，以固定步长 k 进行消数。由于下一次操作的发起点为消除位置的下一个点（即前后两次操作发起点在原序列下标中相差 k），
+        // 同时问题规模会从 n 变为 n-1，因此原问题答案等价于 findTheWinner(n - 1, k) + k。
         if (n <= 1) return n;
         int ans = (findTheWinner(n - 1, k) + k) % n;
         return ans == 0 ? n : ans;
