@@ -188,7 +188,7 @@
 - [ ] 172	Factorial Trailing Zeroes		
 - [x] 343	Integer Break		
 - [ ] 396	Rotate Function		
-- [ ] 390	Elimination Game		
+- [x] 390	Elimination Game		
 - [x] 386	Lexicographical Numbers		
 - [ ] 357	Count Numbers with Unique Digits		
 - [x] 360	Sort Transformed Array		
