@@ -31,6 +31,39 @@ You may assume that there are no duplicate edges in the input prerequisites.
 
 
 
+// My Solution:
+class Solution {
+    Map<Integer, List<Integer>> map = new HashMap<>();// Map<Node, List<others it points to>>
+    Set<Integer> visited = new HashSet<>(); // Set<Node> visited
+    Set<Integer> mem = new HashSet<>(); // Set<Node> mem
+
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        for (int[] prereq : prerequisites) { // init
+            map.computeIfAbsent(prereq[1], k -> new ArrayList<>()).add(prereq[0]);
+        }
+
+        for (int i=0; i<numCourses; i++) {
+            if (!map.containsKey(i)) continue;
+            if (!dfs(i)) return false;
+        }
+        return true;
+    }
+
+    public boolean dfs(int node) {
+        if (mem.contains(node)) return true;
+        if (visited.contains(node)) return false;
+        visited.add(node);
+        for (int next : map.getOrDefault(node, new ArrayList<>())) {
+            if (!dfs(next)) return false;
+        }
+        visited.remove(node);
+        mem.add(node);
+        return true;
+    }
+}
+
+
+
 // Other's Solution:
 // http://zxi.mytechroad.com/blog/graph/leetcode-207-course-schedule/
 // HashMap is slower than ArrayList in this problem.
