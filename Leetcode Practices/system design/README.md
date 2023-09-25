@@ -192,7 +192,7 @@
 * 自动扩展与 fail-over（ECS、K8S）
 * 业务应用和后端基础框架（MVC、IOC、ORM）
 * 缓存、CDN（本地缓存即内存中的缓存机制：ConcurrentHashMap etc；分布式缓存即单独的缓存服务：Redis、Memcached etc）
-* 主机、计算实例、服务器（EC2、Docker、Serverless）
+* 主机、计算实例（[CPU、GPU](./CPU-vs-GPU.md)）、服务器（EC2、Docker、Serverless）、[集群](./集群.md)
 * 数据库（SQL、NoSQL、分库分表、主从复制）
 * 搜索引擎（全文搜索、ElasticSearch、MySQL）
 * [消息队列与流处理](./消息队列与流处理.md)（RabbitMQ、Kafka）[阅读材料](http://www.52im.net/thread-1979-1-1.html)
