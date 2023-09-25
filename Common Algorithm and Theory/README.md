@@ -42,11 +42,12 @@
       - 爬山算法 | Hill Climbing
       - [随机数生成算法 | Random Number Generator](./随机数生成算法.md)
       - 随机化算法/搜索 | Random Algorithm/Search
-        - [模拟退火 | Simulated Annealing](./模拟退火.md)
-        - [遗传算法 | Genetic Algorithm](./遗传算法.md)
-        - [粒子群优化算法 | Particle Swarm Optimization](./粒子群优化算法.md)
-        - 蒙特卡洛算法 | Monte Carlo Algorithm
-        - 拉斯维加斯算法 | Las Vegas Algorithm
+        - [蒙特卡洛方法 | Monte Carlo Method](https://renns.top/post/59/) (采样越多，越近似最优解)
+          - [模拟退火 | Simulated Annealing](./模拟退火.md)
+          - [遗传算法 | Genetic Algorithm](./遗传算法.md)
+          - [粒子群优化算法 | Particle Swarm Optimization](./粒子群优化算法.md)
+          - 蒙特卡洛树搜索 | Monte Carlo Tree Search (用于搜索树型结构的算法，广泛应用于博弈和决策问题，如 AlphaGo)
+        - 拉斯维加斯方法 | Las Vegas Method (采样越多，越可能找到最优解)
     - [图匹配 | Graph Match](./图匹配.md)
       - [匈牙利算法 | Hungarian Algorithm](./匈牙利算法.md) (时间复杂度 `O(N^3)`)
     - [迪杰斯特拉算法 | Dijkstra Algorithm](./Dijkstra算法.md) (时间复杂度 `O((E+V)*logV)` - 仅计算了指定的一个起点到其他各点)
@@ -106,13 +107,14 @@
       - 前向与后向算法
       - 维特比算法
     - [深度学习, 神经网络 | Deep Learning, Neural Networks](https://www.zhihu.com/question/314879954/answer/638380202)
-      - [感知器 | Perceptron Learning Algorithm](https://www.youtube.com/watch?v=BS_CVhalVGw&list=PLxIHUhMHF8okwhq8poRuiHBChWjkVUHLL&index=2)
+      - [感知器 | Perceptron Learning Algorithm](https://www.youtube.com/watch?v=BS_CVhalVGw&list=PLxIHUhMHF8okwhq8poRuiHBChWjkVUHLL&index=2) (感知器是神经网络的基础)
       - 卷积神经网络 | Convolutional Neural Network, CNN
       - 循环神经网络 | Recurrent Neural Network, RNN
         - 长短期记忆 | Long Short-Term Memory, LSTM
       - 生成对抗网络 | Generative Adversarial Network, GAN
       - [Transformer 模型, 大语言模型 (Large Language Model)](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)) (Related: [build GPT from scratch](https://www.youtube.com/watch?v=kCc8FmEb1nY)、[注意力机制](https://en.wikipedia.org/wiki/Attention_(machine_learning)))
     - [多模态学习 | Multimodal Learning](https://zhuanlan.zhihu.com/p/53511144)
+  - [并行算法](https://blog.51cto.com/luweir/4873113?articleABtest=0) (并行算法尚在发展中，远不及串行算法丰富。目前最常用的的方法是 PCAM 方法，即划分，通信，组合，映射。并行算法与串行算法最大的不同之处在于，并行算法不仅要考虑问题本身，而且还要考虑所使用的并行模型，网络连接等等)
   - [数学](../Computer%20Science%20Maths/README.md)
     - 专项专题
       - [鸽巢原理 | Pigeonhole Principle](./鸽巢原理.md)

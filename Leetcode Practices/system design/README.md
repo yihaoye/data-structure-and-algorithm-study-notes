@@ -192,7 +192,7 @@
 * 自动扩展与 fail-over（ECS、K8S）
 * 业务应用和后端基础框架（MVC、IOC、ORM）
 * 缓存、CDN（本地缓存即内存中的缓存机制：ConcurrentHashMap etc；分布式缓存即单独的缓存服务：Redis、Memcached etc）
-* 主机、计算实例（[CPU、GPU](./CPU-vs-GPU.md)）、服务器（EC2、Docker、Serverless）、[集群](./集群.md)
+* 主机、计算实例（[CPU、GPU](./CPU-vs-GPU.md)）、服务器（EC2、Docker、Serverless）
 * 数据库（SQL、NoSQL、分库分表、主从复制）
 * 搜索引擎（全文搜索、ElasticSearch、MySQL）
 * [消息队列与流处理](./消息队列与流处理.md)（RabbitMQ、Kafka）[阅读材料](http://www.52im.net/thread-1979-1-1.html)
@@ -266,8 +266,10 @@ API 网关是位于客户端与后端服务集之间的大门 - API 管理工具
 ### [负载均衡与路由](./Load%20Balancing.md)
 ### 配置管理
 ### 认证权限
-### 服务治理（[Service Meltdown, Service Downgrade and Service Circuit Breaker](./服务降级与服务熔断.md)）
+### [服务治理（Service Meltdown, Service Downgrade and Service Circuit Breaker）](./服务降级与服务熔断.md)
 ### 监控统计日志
+
+## [集群（Cluster）](./集群.md)
 
 ## Cache vs Message Queue / Stream
 相比之下 Cache 更像 Java 的 HashMap，Message Queue / Stream 更像 Java 的 Queue / Deque / Stream：
