@@ -36,6 +36,7 @@ MongoDB 的适用场景为：数据不是特别重要（例如通知，推送这
 * MongoDB 占用空间过大
 * MongoDB 没有如 MySQL 那样成熟的维护工具，这对于开发和 IT 运营都是个值得注意的地方  
   
+注意：以上只针对旧版本，现版本的 MongoDB（从 4.0 开始）已支持多文档事务。  
   
 ### 其他例子
 #### Redis
@@ -112,9 +113,21 @@ https://aws.amazon.com/cn/nosql/columnar/
 
 <br/>
 
+### 数据仓库与普通数据库的区别
+* 数据库 (Database) 的特点是：
+  * 相对复杂的表格结构，存储结构相对紧致，少冗余数据。
+  * 读和写都有优化。
+  * 相对简单的 read/write query，单次作用于相对的少量数据。
+* 数据仓库 (Datawarehouse) 的特点是：
+  * 相对简单的 (Denormalized) 表格结构，存储结构相对松散，多冗余数据。
+  * 一般只是读优化。
+  * 相对复杂的 read query，单次作用于相对大量的数据（历史数据）。
+
+链接：https://www.zhihu.com/question/20623931/answer/750367153  
+
 ### 其他
 数据量和性能的比较：当物理内存够用的时候，Redis > MongoDB > MySQL 。  
 当物理内存不够用的时候，Redis 和 MongoDB 都会使用虚拟内存。  
-MySQL 支持 join，MongoDB 没有 join（因为 MongoDB 这类数据库就是设计成单个数据记录是聚合的/Aggregation。MongoDB 中有一个 lookup 操作，可以做 join 查询，但是理想情况下，这个 lookup 操作应该不会经常使用，如果开发者需要经常使用它，那么开发者就使用了错误的数据库存储了，如果有相关联的数据，应该使用关系型数据库）。  
+MySQL 支持 join，MongoDB 没有 join（因为 MongoDB 这类数据库就是设计成单个数据记录是聚合的/Aggregation。MongoDB 中有一个 lookup 操作，可以做 join 查询，但是理想情况下，这个 lookup 操作应该不会经常使用，如果开发者需要经常使用它，那么开发者就使用了错误的数据库存储了，如果有相关联的数据，应该使用关系型数据库）（注意：前面仅针对旧版本 MongoDB，从版本 3.2 开始，MongoDB 已支持 left outer join）。  
   
 参考链接：https://www.jianshu.com/p/ad8992223812  
