@@ -39,6 +39,7 @@
     - 启发式算法/搜索 | Heuristic Algorithm/Search (启发式搜索通常不讨论时空复杂度)
       - [A&ast; 搜索算法 | A&ast; Search Algorithm](./A*搜索算法.md)
         - IDA&ast; 算法 | IDA&ast; Algorithm
+      - 禁忌搜索 | Tabu Search
       - 爬山算法 | Hill Climbing
       - [随机数生成算法 | Random Number Generator](./随机数生成算法.md)
       - 随机化算法/搜索 | Random Algorithm/Search
@@ -112,9 +113,9 @@
       - 循环神经网络 | Recurrent Neural Network, RNN
         - 长短期记忆 | Long Short-Term Memory, LSTM
       - 生成对抗网络 | Generative Adversarial Network, GAN
-      - [Transformer 模型, 大语言模型 (Large Language Model)](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)) (Related: [build GPT from scratch](https://www.youtube.com/watch?v=kCc8FmEb1nY)、[注意力机制](https://en.wikipedia.org/wiki/Attention_(machine_learning)))
+      - [Transformer 模型, 大语言模型 (Large Language Model)](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)) (Related: [build GPT from scratch](https://www.youtube.com/watch?v=kCc8FmEb1nY)、[注意力机制 1](https://en.wikipedia.org/wiki/Attention_(machine_learning))、[注意力机制 2](https://www.youtube.com/watch?v=nzqlFIcCSWQ))
     - [多模态学习 | Multimodal Learning](https://zhuanlan.zhihu.com/p/53511144)
-  - [并行算法](https://blog.51cto.com/luweir/4873113?articleABtest=0) (并行算法尚在发展中，远不及串行算法丰富。目前最常用的的方法是 PCAM 方法，即划分，通信，组合，映射。并行算法与串行算法最大的不同之处在于，并行算法不仅要考虑问题本身，而且还要考虑所使用的并行模型，网络连接等等)
+  - [并行算法 | Parallel Algorithm](https://blog.51cto.com/luweir/4873113?articleABtest=0) ([Wiki](https://en.wikipedia.org/wiki/Parallel_algorithm)：并行算法尚在发展中，远不及串行算法丰富。目前最常用的的方法是 PCAM 方法，即划分，通信，组合，映射。并行算法与串行算法最大的不同之处在于，并行算法不仅要考虑问题本身，而且还要考虑所使用的并行模型，网络连接等等)
   - [数学](../Computer%20Science%20Maths/README.md)
     - 专项专题
       - [鸽巢原理 | Pigeonhole Principle](./鸽巢原理.md)
@@ -132,6 +133,8 @@
       - [其他数学工具、操作与套路](../Tool%20Sets/Math.java)
     - [博弈论 | Game Theory](https://zhuanlan.zhihu.com/p/183168457)
     - [最优化 | Mathematical Optimization](https://en.wikipedia.org/wiki/Mathematical_optimization) (最优化是应用数学的一个分支，是计算机与人工智能的一个重要研究领域)
+      - 梯度下降法 | Gradient Descent
+      - 牛顿法 | Newton's Method
   - 其他常见优化思想、技巧
     - 剪枝 | Pruning
     - [预处理 (打表) | Precompute (Hard Coding)](https://www.cnblogs.com/hxtblogs/p/7654635.html)

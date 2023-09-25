@@ -73,6 +73,7 @@
 * [机器学习高频概念](https://www.youtube.com/watch?v=D641Ucd_xuw&list=PLxIHUhMHF8okwhq8poRuiHBChWjkVUHLL)
 * [假阳性、假阴性、灵敏度、特异度](https://www.youtube.com/watch?v=Seje2u1fltQ)
 * [卷积、感知器、损失函数、交叉熵、梯度下降、softmax、L1 L2 正则化、SVM 等等](https://www.youtube.com/watch?v=D641Ucd_xuw&list=PLxIHUhMHF8okwhq8poRuiHBChWjkVUHLL)
+* [张量 tensor：rank、shape、type](https://zhuanlan.zhihu.com/p/48982978)
 
 ## 硬件与操作系统（Linux & bash）高频
 * [进程、线程、协程的区别](./../Computer%20System%20Layer/进程与线程.md)
