@@ -7,6 +7,7 @@ import java.util.concurrent.CopyOnWriteArraySet;
 @ServerEndpoint("/websocket")
 public class WebSocketServer {
     private static Set<Session> sessions = new CopyOnWriteArraySet<>(); // 用于存储所有连接的 WebSocket 会话
+    private static BlockingQueue<String> queue = new ArrayBlockingQueue<>(100);
 
     @OnOpen
     public void onOpen(Session session) {
@@ -14,13 +15,34 @@ public class WebSocketServer {
     }
 
     @OnMessage
-    public void onMessage(String message, Session session) {
-        // 处理客户端发送的消息，可以在这里往消息队列里 publish 新消息等逻辑
+    public void onMessage(String message, Session session) { // 处理客户端发送的消息，可以在这里往消息队列里 publish 新消息等逻辑
+        try {
+            queue.put(message);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 
     @OnClose
     public void onClose(Session session) {
         sessions.remove(session); // 当连接关闭时，从集合中移除会话
+    }
+
+    public static void run(int threadCount) {
+        ExecutorService executor = Executors.newFixedThreadPool(threadCount);
+        for (int i = 0; i < threadCount; i++) { // 启动多个线程从队列中读取数据并进行处理
+            executor.execute(() -> {
+                try {
+                    while (true) {
+                        String msg = queue.take(); // 阻塞直到队列非空
+                        pushMessageToSubscribers(msg);
+                    }
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            });
+        }
+        executor.shutdown();
     }
 
     public static void pushMessageToSubscribers(String message) {
