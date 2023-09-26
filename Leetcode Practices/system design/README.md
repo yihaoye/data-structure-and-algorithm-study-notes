@@ -499,6 +499,15 @@ Twitter System Publish Flow - by ByteByteGo
 </details>
 
 
+## Design Social Graph (Facebook)
+<details>
+<summary>details</summary>
+
+![](./social-graph-design.png)  
+
+</details>
+
+
 ## Designing an API Rate Limiter
 <details>
 <summary>details</summary>
