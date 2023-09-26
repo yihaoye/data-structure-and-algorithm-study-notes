@@ -367,7 +367,7 @@ API 网关是位于客户端与后端服务集之间的大门 - API 管理工具
 <br />
   
 # Practice Examples
-## Design TinyURL
+## 设计 TinyURL
 <details>
 <summary>details</summary>
 
@@ -420,7 +420,7 @@ Cache (cache eviction policy - e.g. Least Recently Used (LRU) with LinkedHashMap
 </details>
 
 
-## Design Pastebin
+## 设计 Pastebin
 <details>
 <summary>details</summary>
 
@@ -456,7 +456,7 @@ Cache (cache eviction policy - e.g. Least Recently Used (LRU) with LinkedHashMap
 </details>
 
 
-## Design Twitter
+## 设计 Twitter
 <details>
 <summary>details</summary>
 
@@ -499,7 +499,7 @@ Twitter System Publish Flow - by ByteByteGo
 </details>
 
 
-## Design Social Graph (Facebook)
+## 设计 Social Graph (Facebook)
 <details>
 <summary>details</summary>
 
@@ -508,7 +508,7 @@ Twitter System Publish Flow - by ByteByteGo
 </details>
 
 
-## Designing an API Rate Limiter
+## 设计 API Rate Limiter
 <details>
 <summary>details</summary>
 

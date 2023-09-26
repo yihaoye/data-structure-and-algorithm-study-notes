@@ -17,7 +17,7 @@
 * [计算机系统基础 | Computer System Layer & Basics](./Computer%20System%20Layer/README.md) 包括：
   * [CAS、并发相关的 Java 数据结构的用例与详解](./Computer%20System%20Layer/并发与并行(Java)/README.md)
   * [并发编程模型](./Computer%20System%20Layer/并发编程模型.md)
-  * [数据库详解](./Computer%20System%20Layer/数据库/README.md)
+  * [数据库](./Computer%20System%20Layer/数据库/README.md)
   * [数据建模](./Leetcode%20Practices/system%20design/数据库数据建模分库分表.md#数据模型设计)
 * [领域知识、面试八股文 | Domain Knowledge](./面试八股文/README.md)
   * [编程语言特性 | Programming Languages Features](./Program%20Languages%20Features/README.md)

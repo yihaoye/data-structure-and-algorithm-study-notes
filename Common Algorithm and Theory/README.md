@@ -83,7 +83,7 @@
     - 反向索引 | Inverted Index ([README](../Leetcode%20Practices/system%20design/README.md#设计搜索引擎-Twitter-Search)、[代码实现](../Leetcode%20Practices/object%20oriented%20design/other%20practices/inverted%20index/InvertedIndex.java))
     - Frugal Streaming 算法
     - [Geohash 算法, S2 Geometry 算法](../Leetcode%20Practices/system%20design/README.md#设计-Uber)
-    - [漏桶算法, 令牌桶算法 | Leaky Bucket, Token Bucket](../Leetcode%20Practices/system%20design/README.md#Designing-an-API-Rate-Limiter)
+    - [漏桶算法, 令牌桶算法 | Leaky Bucket, Token Bucket](../Leetcode%20Practices/system%20design/README.md#设计-API-Rate-Limiter)
     - Loosy Counting 算法
     - [OT 算法 | Operational Transformation](../Leetcode%20Practices/system%20design/README.md#设计协同编辑系统)
     - [四叉树算法, R 树算法 | QuadTree, RTree Algorithm](./QuadTree-RTree-算法.md)
@@ -134,7 +134,8 @@
         - [向量计算 | Vector](https://cp.wiwiho.me/vector/)
       - [其他数学工具、操作与套路](../Tool%20Sets/Math.java)
     - [博弈论 | Game Theory](https://zhuanlan.zhihu.com/p/183168457)
-    - [最优化 | Mathematical Optimization](https://en.wikipedia.org/wiki/Mathematical_optimization) (最优化是应用数学的一个分支，是计算机与人工智能的一个重要研究领域)
+    - [最优化 | Mathematical Optimization](https://en.wikipedia.org/wiki/Mathematical_optimization) ([Ref 1](https://space.bilibili.com/97068901/channel/collectiondetail?sid=1387071)；最优化是应用数学的一个分支，是计算机与人工智能的一个重要研究领域)
+      - 线搜索 | Line Search
       - 梯度下降法 | Gradient Descent
       - 牛顿法 | Newton's Method
   - 其他常见优化思想、技巧
