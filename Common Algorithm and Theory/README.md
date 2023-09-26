@@ -50,6 +50,7 @@
           - 蒙特卡洛树搜索 | Monte Carlo Tree Search (用于搜索树型结构的算法，广泛应用于博弈和决策问题，如 AlphaGo)
         - 拉斯维加斯方法 | Las Vegas Method (采样越多，越可能找到最优解)
     - [图匹配 | Graph Match](./图匹配.md)
+      - 染色法 | Coloring Method
       - [匈牙利算法 | Hungarian Algorithm](./匈牙利算法.md) (时间复杂度 `O(N^3)`)
     - [迪杰斯特拉算法 | Dijkstra Algorithm](./Dijkstra算法.md) (时间复杂度 `O((E+V)*logV)` - 仅计算了指定的一个起点到其他各点)
     - 贝尔曼-福特算法 | Bellman-Ford Algorithm
@@ -125,6 +126,7 @@
       - [高斯消元法 | Gaussian Elimination](./高斯消元法.md)
       - [高精度计算 | Arbitrary-Precision Arithmetic](https://oi-wiki.org/math/bignum/)
       - [约瑟夫环/问题 | Josephus Problem](./约瑟夫环.md)
+      - [欧拉图 | Euler Diagram](https://oi-wiki.org/graph/euler/)
       - 计算几何
         - [扫描线 | Line Sweep](./扫描线.md)
         - [凸包 | Convex Hull](./凸包.md)
