@@ -205,7 +205,7 @@
 * 管理后台/管理控制台（允许客服或工程师直接访问和管理数据库数据以支持用户，比如 Django Admin、WordPress）
 * [服务调用/服务治理框架（REST API、RPC）](./System%20Design%20Fundamentals.md#API%20Design)，服务发现、注册、查询（如 Consul、etcd、ZooKeeper）
 * 统一调度中心（定时调度 cron job，如定时抓取数据、刷新状态等）
-* 统一日志服务（log4j、logback、Kibana、CloudWatch）
+* 统一日志服务（log4j、logback、Kibana、CloudWatch）与[日志管理](./日志管理.md)
 * 数据基础设施（大数据：Hadoop、Spark、数据仓库；数据管道：Kafka、Kinesis；数据分析：Hadoop、Spark、Tableau、Python、SAS、Excel）
 * 故障监控（系统监控、业务监控；Datadog、ELK、故障定位、警报等级、IM 或 oncall）(Telemetry)
 * DX（内部服务：包括大数据、构建交付工具、通用运行时服务类库、数据持久化、安全等）
