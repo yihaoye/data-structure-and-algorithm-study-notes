@@ -136,7 +136,7 @@
     - [博弈论 | Game Theory](https://zhuanlan.zhihu.com/p/183168457)
     - [最优化 | Mathematical Optimization](https://en.wikipedia.org/wiki/Mathematical_optimization) ([Ref 1](https://space.bilibili.com/97068901/channel/collectiondetail?sid=1387071)；最优化是应用数学的一个分支，是计算机与人工智能的一个重要研究领域)
       - 线搜索 | Line Search
-      - 梯度下降法 | Gradient Descent
+      - 梯度下降法 | Gradient Descent (梯度其实是高维导数的另一种称呼)
       - 牛顿法 | Newton's Method
   - 其他常见优化思想、技巧
     - 剪枝 | Pruning
