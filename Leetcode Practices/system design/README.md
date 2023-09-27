@@ -176,7 +176,7 @@
 * [物化视图](https://learn.microsoft.com/zh-cn/azure/architecture/patterns/materialized-view) - 对经常查询或者展示的数据建立 prepopulated views，提高查询效率以及应用处理的性能。
   * [许多数据库提供了物化视图的功能](./../../Computer%20System%20Layer/%E6%95%B0%E6%8D%AE%E5%BA%93/SQL/README.md#物化视图)
 * [速率限制模式](https://learn.microsoft.com/zh-cn/azure/architecture/patterns/rate-limiting-pattern) - 节流模式用于减少流量以及增加带宽吞吐量，节流策略可以从每秒请求数，请求数据量，费用等维度进行配置。
-  * 具体参考下面 Practice Examples 的 `Designing an API Rate Limiter`
+  * 具体参考下面 Practice Examples 的 `设计 API Rate Limiter`
 * [更多：计算资源合并、外部配置存储、网关路由、运行状况 endpoint 监视、领导选择、优先级队列、发布方/订阅方、基于队列的负载调控、分片、静态内容托管、Geodes、竞争性使用者等等](https://learn.microsoft.com/zh-cn/azure/architecture/patterns/)
 
 </details>
@@ -210,7 +210,7 @@
 * 故障监控（系统监控、业务监控；Datadog、ELK、故障定位、警报等级、IM 或 oncall）(Telemetry)
 * DX（内部服务：包括大数据、构建交付工具、通用运行时服务类库、数据持久化、安全等）
 * 分布式锁、[分布式一致性](./System%20Design%20Fundamentals.md)与[选举算法/共识机制](./example%20questions/Leader%20Election.md)
-* 网络、拓扑（如 AWS VPC 等），点对点网络/去中心化（Peer-to-peer Networks，如 VPC Peering、指数增长的高效的针对大规模目标对象的数据拷贝传输、区块链项目如 Bitcoin、等等）  
+* 网络（如 VPN 等）、拓扑（如 AWS VPC 等），点对点网络/去中心化（Peer-to-peer Networks，如 VPC Peering、指数增长的高效的针对大规模目标对象的数据拷贝传输、区块链项目如 Bitcoin、等等）  
   
 ![](./System%20Design%20Blueprint.jpeg)
 
@@ -261,12 +261,15 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
   * 监控与日志
     
 ## API Gateway
-API 网关是位于客户端与后端服务集之间的大门 - API 管理工具，本身包括访问控制、防火墙等功能。通常 API 网关与其他关键组件服务一起集成，又或者是负载均衡器既承担了服务发现的角色，又承担了网关的角色，所以经常叫 API 网关服务器（Http 服务器，Nginx、Nginx Plus 就是此类服务端发现模式的负载均衡器）。[Spring Cloud 方案](https://github.com/yihaoye/spring-framework-example/tree/master/spring-cloud-fundamentals)、[服务发现和负载均衡](https://bbs.huaweicloud.com/blogs/193876)、[负载均衡器和 API 网关](https://z.itpub.net/article/detail/194354318C67A5BF584DBB6F9F78F945)  
+API 网关是位于客户端与后端服务集之间的大门 - API 管理工具，本身包括访问控制、防火墙等功能。通常 API 网关还与其他关键组件服务一起集成，又或者是负载均衡器既承担了服务发现的角色，又承担了网关的角色，所以经常叫 API 网关服务器（Http 服务器，Nginx、Nginx Plus 就是此类服务端发现模式的负载均衡器）。[Spring Cloud 方案](https://github.com/yihaoye/spring-framework-example/tree/master/spring-cloud-fundamentals)、[服务发现和负载均衡](https://bbs.huaweicloud.com/blogs/193876)、[负载均衡器和 API 网关](https://z.itpub.net/article/detail/194354318C67A5BF584DBB6F9F78F945)  
 ![](./aws-load-balancer.webp)  
 ![](./api-gateway.jpeg)  
-### 自动扩展
+### 自动扩展与容器编排
+底层实现中需要调度器（硬件机器、端口）、命令行（镜像、启动/停止容器）、状态机等。[具体参考](https://github.com/gogococo/orchestrator-in-go)  
+现成方案：Kubernetes、Docker Swarm、AWS ECS 等等。  
 ### [服务注册与服务发现](https://docshome.gitbook.io/microservices/4-service-discovery)
 ![](./service-register-discovery.jpeg)  
+现成方案：Etcd（共享配置、服务发现和的调度协调）、ZooKeeper（数据发布/订阅、负载均衡、命名服务、分布式协调/通知、集群管理、Master 选举、分布式锁和分布式队列等功能）。  
 ### [负载均衡与路由](./Load%20Balancing.md)
 因为负载均衡器是中心式的，所以它也必须是一个集群，单个实例不足以支撑高并发访问，针对负载均衡器本身的服务发现和负载均衡通常借助 DNS。  
 ### 配置管理
