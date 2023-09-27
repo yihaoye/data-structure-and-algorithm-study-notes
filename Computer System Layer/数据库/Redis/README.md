@@ -28,11 +28,45 @@ MongoDB 和 Redis 都是 NoSQL，采用结构型数据存储，二者之间的�
 * 应用场景不同，MongoDB 适合海量数据，侧重于访问效率的提升，而 Redis 适合于较小数据量，侧重于性能。
   
 ## Redis 常用数据类型
+![](./Redis-数据结构.webp)  
 * String（字符串），是 Redis 最基本的数据类型，二进制安全的，可以包含任何数据，比如 JPG 图片或者序列化的对象，最大能存储 512 MB。
 * Hash（哈希），是一个键值对（key => value）集合，特别适合用于存储对象。
 * List（列表），Redis 列表是简单的字符串列表，按照插入顺序排序，可以添加一个元素到列表的头部（左边）或者尾部（右边）。
 * Set（集合），是 String 类型的无序集合，通过哈希表实现，添删查找操作的复杂度都是 O(1)。
 * Sorted Set（有序集合），和 Set 一样也是 String 类型元素的集合，且不允许元素重复，不同的是每个元素都会关联一个 Double 类型的分数（可重复），通过此分数来为集合中的成员进行从小到大的排序。  
+  
+### Redis 数据结构的实现
+Redis 是基于内存存储实现的数据库，相对于数据存在磁盘的数据库，就省去磁盘磁盘 I/O 的消耗。  
+![](./Redis-HashTable.webp)  
+
+**SDS 简单动态字符串**  
+```c
+struct sdshdr { // SDS 简单动态字符串
+   int len;    // 记录 buf 中已使用的空间
+   int free;   // buf 中空闲空间长度
+   char buf[]; // 存储的实际内容
+}
+```  
+减少内存重新分配的次数：在 C 语言中，修改一个字符串，需要重新分配内存，修改越频繁，内存分配就越频繁，而分配内存是会消耗性能的。而在 Redis 中，SDS 提供了两种优化策略：空间预分配和惰性空间释放。  
+
+**哈希**  
+Redis 作为一个 KV 的内存数据库，它使用用一张全局的哈希来保存所有的键值对。这张哈希表，有多个哈希桶组成，哈希桶中的 entry 元素保存了 `*key` 和 `*value` 指针，其中 `*key` 指向了实际的键，`*value` 指向了实际的值。  
+
+**数据编码**  
+Redis 支持多种数据基本类型，每种基本类型对应不同的数据结构，每种数据结构对应不一样的编码。为了提高性能，Redis 设计者总结出，数据结构最适合的编码搭配。  
+Redis 是使用对象（redisObject）来表示数据库中的键值，当在 Redis 中创建一个键值对时，至少创建两个对象，一个对象是用做键值对的键对象，另一个是键值对的值对象。  
+```h
+typedef struct redisObject {
+   unsigned type:4;
+   unsigned encoding:4;
+   unsigned lru:22;        /* lru time (relative to server.lruclock) */
+   int refcount;
+   void *ptr;
+} robj;
+```  
+redisObject中，type 对应的是对象类型，包含 String 对象、List 对象、Hash 对象、Set 对象、zset 对象。encoding 对应的是编码。  
+
+以上转载自：https://juejin.cn/post/6978280894704386079  
   
 ## 如何实现 Redis 的定时机制
 Redis 服务器是一个`事件驱动程序`，服务器需要处理以下两类事件：文件事件（服务器对套接字操作的抽象）和时间事件（服务器对定时操作的抽象）。Redis 的定时机制就是借助时间事件实现的。  
