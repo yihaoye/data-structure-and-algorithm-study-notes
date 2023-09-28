@@ -141,7 +141,7 @@
 更多：  
 ![](刷题技巧.png)  
 花花酱刷题题目列表：https://bit.ly/2E8yBHq  
-<sub>刷题或面试的[编程语言选择](./Program%20Languages%20Features/)：有传言 Google 的工程师说是尽量使用 C++ 和 Java 实现，另外一亩三分地上的讨论也是建议尽量使用 C++ 或 Java。另外用自己熟悉的熟练的语言即可，比如没必要想着 Python 可能比较简洁就从 Java 切换成 Python，总体而言实际中带来的优势可能不大（除非一些语言特定较为麻烦的场景比如大数相关 Java 就比 Python 麻烦）。</sub>  
+*刷题或面试的[编程语言选择](./Program%20Languages%20Features/)：有传言 Google 的工程师说是尽量使用 C++ 和 Java 实现，另外一亩三分地上的讨论也是建议尽量使用 C++ 或 Java。另外用自己熟悉的熟练的语言即可，比如没必要想着 Python 可能比较简洁就从 Java 切换成 Python，总体而言实际中带来的优势可能不大（除非一些语言特定较为麻烦的场景比如大数相关 Java 就比 Python 麻烦）。*  
 **另外，如果离面试时间不是很紧或处于预备阶段时，应当注重做经典题以及定期参加周赛打好基础，若是已接近面试阶段时，可以使用 Leetcode 的各个公司板块各自高频题列表（如[谷歌高频题列表](https://leetcode.com/company/google/)）针对性地刷题，即使真实面试时出原题并不常见也仍有很大助益。**  
   
 [养成 6 个习惯](https://www.youtube.com/watch?v=AvcJ9VcQweI)：  

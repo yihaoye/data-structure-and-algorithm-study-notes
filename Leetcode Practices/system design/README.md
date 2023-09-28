@@ -223,8 +223,8 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 
 ## Key Characteristics of Distributed Systems
 * **Scalability** - the capability of a system, process, or a network to continuously evolve/grow and manage increased demand. (相关组件与手段：负载均衡、自动扩展、分库分表、数据备份、分布式)
-  * <small>Horizontal Scaling - Add more servers (e.g. Cassandra and MongoDB easy to scale horizontally).</small>
-  * <small>Vertical Scaling - Add more resource/power (CPU, RAM, Storage etc) to same server (e.g. MySQL easy to scale vertically) (scaling involves downtime).</small>
+  * *Horizontal Scaling - Add more servers (e.g. Cassandra and MongoDB easy to scale horizontally).*
+  * *Vertical Scaling - Add more resource/power (CPU, RAM, Storage etc) to same server (e.g. MySQL easy to scale vertically) (scaling involves downtime).*
 * **Reliability** - the probability a system will fail in a given period. （相关组件与手段： API 网关、测试、CI/CD 与回滚、故障监控与 failover/故障转移、服务降级），故障分类 - DDIA 里故障的分类可以分为三大类：硬件故障、软件错误、人为错误 - [来源参考](https://xie.infoq.cn/article/a83e33394a05086a1514c2826)。Reliability 指标有两个：MTTF（Mean Time To Failure）平均故障前的时间，即系统平均能够正常运行多长时间才发生一次故障，系统的可靠性越高，MTTF 越长；MTTR（Mean Time To Repair）平均修复时间，即从故障出现到故障修复的这段时间，这段时间越短越好。
   * 硬件故障
     * 过去一般通过增加冗余度来提高单台机器的可靠性（比如磁盘可以做 RAID，服务器可以双路电源、备用发电机等）。现代系统一般都通过云平台使用大量的机器，硬件故障也变得非常常见。
@@ -237,13 +237,13 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
   * 人为错误
     * 系统总是在更新和修改，运维过程中就配置错误是导致服务中断的首要因数。
 * **Availability** - the time a system remains operational to perform its required function in a specific period. (相关组件与手段：负载均衡、故障监控与 failover/故障转移、数据备份、无主分布式)
-  * <small>Reliability Vs Availability - If a system is reliable, it is available. However, if it is available, it is not necessarily reliable. high reliability contributes to high availability, but it is possible to achieve a high availability even with an unreliable product by minimizing repair time and ensuring that spares are always available when they are needed.</small>
+  * *Reliability Vs Availability - If a system is reliable, it is available. However, if it is available, it is not necessarily reliable. high reliability contributes to high availability, but it is possible to achieve a high availability even with an unreliable product by minimizing repair time and ensuring that spares are always available when they are needed.*
 * **Efficiency or Performance** - Two standard measures of efficiency are response time (or latency) and the throughput (or bandwidth). （相关组件与手段：CDN、异步处理耗时任务如消息队列、缓存、读写分离、索引、分页）. The two measures correspond to the following unit costs:
-  * <small>Number of messages globally sent by the nodes of the system regardless of the message size.</small>
-  * <small>Size of messages representing the volume of data exchanges.</small>
+  * *Number of messages globally sent by the nodes of the system regardless of the message size.*
+  * *Size of messages representing the volume of data exchanges.*
 * **Serviceability or Manageability** - how easy to operate and maintain. simplicity and speed with which a system can be repaired or maintained. （相关组件与手段：日志系统、CI/CD、统一配置中心、应用框架、IaC、版本管理、标准制定如协议、解耦）
-  * <small>If the time to fix a failed system increases, then availability will decrease.</small>
-  * <small>Ease of diagnosing and understanding problems when they occur, ease of making updates or modifications, and how simple the system is to operate.</small>
+  * *If the time to fix a failed system increases, then availability will decrease.*
+  * *Ease of diagnosing and understanding problems when they occur, ease of making updates or modifications, and how simple the system is to operate.*
 * **Consistency** - 一致性，比如事务以及数据是否总是最新的（相关组件与手段：多数从节点写入、锁/分布式锁、CAS 及版本、WAL 预写日志、消息队列、时间戳、唯一 ID 等等）
   * Strong Consistency
   * Eventual Consistency (Tradeoff with Availability)
