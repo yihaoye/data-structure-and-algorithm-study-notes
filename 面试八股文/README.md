@@ -69,15 +69,15 @@
 * [MySQL 中的 UTF8 和 UTF8mb4 编码的详细区别](https://cloud.tencent.com/developer/article/1930660)
 
 ## 统计、机器学习高频
-* [七大最常见的机器学习面试问题](https://www.youtube.com/watch?v=j340MdN0QSY)
-* [机器学习高频概念](https://www.youtube.com/watch?v=D641Ucd_xuw&list=PLxIHUhMHF8okwhq8poRuiHBChWjkVUHLL)
+* [七大最常见的机器学习面试问题：模型性能评估、过拟合、训练与评估数据分配、梯度下降、MLE 和 MAP、Kernel、PCA 和 SVD/EVD](https://www.youtube.com/watch?v=j340MdN0QSY)
 * [假阳性、假阴性、灵敏度、特异度](https://www.youtube.com/watch?v=Seje2u1fltQ)
-* [卷积、感知器、损失函数、交叉熵、梯度下降、softmax、L1 L2 正则化、SVM 等等](https://www.youtube.com/watch?v=D641Ucd_xuw&list=PLxIHUhMHF8okwhq8poRuiHBChWjkVUHLL)
+* [机器学习高频概念：卷积、感知器、损失函数（极大似然估计、交叉熵）、激活函数（sigmoid、softmax）、梯度下降及其改良优化算法、反向传播算法、L1 L2 正则化、SVM 等等](https://www.youtube.com/watch?v=D641Ucd_xuw&list=PLxIHUhMHF8okwhq8poRuiHBChWjkVUHLL)
 * [张量 tensor：rank、shape、type](https://zhuanlan.zhihu.com/p/48982978)
 * [随机优化、批量 batch](https://www.jiqizhixin.com/articles/071502)
 * [通道 channel](https://zhuanlan.zhihu.com/p/95573093)
-* [学习率](https://zh.wikipedia.org/zh-hans/%E5%AD%A6%E4%B9%A0%E7%8E%87) - 每一轮深度学习都是通过梯度下降进行一次参数优化一小步。学习率是一个超参数，控制了每次参数更新的步长或大小。它是一个重要的调整参数，如果学习率设置得太小，收敛速度可能会很慢，而如果设置得太大，模型可能会发散而不是收敛。通常，学习率的选择需要经过实验来调整。
-* 迭代轮数 Epochs - 训练一个深度学习模型通常需要多个迭代轮数，每个轮次都包括对整个训练数据的一次完整遍历。在每个迭代轮数中，模型的参数都会根据损失和梯度进行更新。迭代轮数的选择通常取决于许多因素，包括数据集的大小、模型的复杂性、学习率的设置、训练目标以及计算资源的可用性：一些深度学习项目可能需要数百轮迭代，而其他项目可能只需要几十轮。因此，没有固定的迭代轮数，它会根据具体情况而变化。
+* [学习率](https://zh.wikipedia.org/zh-hans/%E5%AD%A6%E4%B9%A0%E7%8E%87) - 每一轮深度学习（迭代）都是通过梯度下降进行一次参数优化一小步。学习率是一个超参数，控制了每次参数更新的步长或大小。它是一个重要的调整参数，如果学习率设置得太小，收敛速度可能会很慢，而如果设置得太大，模型可能会发散而不是收敛。通常，学习率的选择需要经过实验来调整。
+* 迭代轮数 epochs - 训练一个深度学习模型通常需要多个迭代轮数，每个轮次都包括对整个训练数据的一次完整遍历。在每个迭代轮数中，模型的参数都会根据损失和梯度进行更新。迭代轮数的选择通常取决于许多因素，包括数据集的大小、模型的复杂性、学习率的设置、训练目标以及计算资源的可用性：一些深度学习项目可能需要数百轮迭代，而其他项目可能只需要几十轮。因此，没有固定的迭代轮数，它会根据具体情况而变化。
+* 池化 pooling - 其本质，其实就是降采样，对于输入的 Feature Map，选择某种方式对其进行降维压缩，以加快运算速度。实施池化的目的：(1) 降低信息冗余；(2) 提升模型的尺度不变性、旋转不变性；(3) 防止过拟合。池化层的常见操作包含以下几种：最大值池化，均值池化，随机池化，中值池化，组合池化等。
 
 ## 硬件与操作系统（Linux & bash）高频
 * [进程、线程、协程的区别](./../Computer%20System%20Layer/进程与线程.md)
