@@ -42,7 +42,7 @@
       - 禁忌搜索 | Tabu Search
       - 爬山算法 | Hill Climbing
       - [随机数生成算法 | Random Number Generator](./随机数生成算法.md)
-      - 随机化算法/搜索 | Random Algorithm/Search
+      - 随机化算法/搜索 | Random Algorithm/Search (随机化算法高效的原因是它跳过不必要的枝节、搜索空间。另外，有些随机化算法如随机森林可以容易地并行化，因为它们的操作不一定依赖于前一步骤的结果，这使得它们在多核或分布式计算环境中更高效)
         - [蒙特卡洛方法 | Monte Carlo Method](https://renns.top/post/59/) (采样越多，越近似最优解)
           - [模拟退火 | Simulated Annealing](./模拟退火.md)
           - [遗传算法 | Genetic Algorithm](./遗传算法.md)
@@ -103,6 +103,7 @@
   - 人工智能, 机器学习 | Artificial Intelligence, Machine Learning
     - 线性规划 | Linear Regression
     - [决策树算法 | Decision Tree Algorithm](https://www.ibm.com/cn-zh/topics/decision-trees)
+      - [随机森林 | Random Forest](https://www.nvidia.cn/glossary/data-science/random-forest/)
     - 朴素贝叶斯 | Naive Bayes
     - 支持向量机 | Support Vector Machine, SVM
     - 隐马尔可夫模型 | Hidden Markov Model, HMM
