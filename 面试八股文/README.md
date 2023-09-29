@@ -38,11 +38,11 @@
 * JMM 中内存模型是怎样的？什么是指令序列重排序？  （中等）
 * JVM 内存是如何对应到操作系统内存的？  （中等）
 * Java 怎么防止内存溢出？避免创建不必要的对象、尽量重用对象，关闭不再需要的资源，分析堆内存、递归深度和 GC。
-* Java 线程间有多少通信方式？  （简单）
+* Java 线程间有多少通信方式？
 * [Java 中接口和抽象类的区别](../Leetcode%20Practices/object%20oriented%20design/README.md#何时使用抽象类，何时使用接口)  （简单）
-* hashcode 和 equals 方法的联系  （简单）
+* hashcode 和 equals 方法的联系？
 * Java 常见锁有哪些？ReetrantLock 是怎么实现的？  （中等）
-* ThreadLocal 实现原理是什么？  （简单）
+* ThreadLocal 实现原理是什么？每个线程都有自己的 ThreadLocalMap，它是一个哈希表，用于存储线程的局部变量。这个哈希表的键是 ThreadLocal 对象，值是对应线程的局部变量。
 * 简述 Spring 的初始化流程（bean 的生命周期）？加载配置文件 -> 创建容器 -> Bean 的定义 -> Bean 的实例化 -> 依赖注入 -> Bean 的初始化回调 -> 应用程序使用 Bean -> Bean 的销毁回调 -> 容器关闭。
 * 简述 Netty 线程模型，Netty 为什么如此高效？[高效的 I/O 模型](./../Leetcode%20Practices/system%20design/IO模型与Web服务器工作模型.md)以及零拷贝技术等等。
 * 简述 Spring 的 IOC 机制？依赖注入。
@@ -71,13 +71,13 @@
 ## 统计、机器学习高频
 * [七大最常见的机器学习面试问题：模型性能评估、过拟合、训练与评估数据分配、梯度下降、MLE 和 MAP、Kernel、PCA 和 SVD/EVD](https://www.youtube.com/watch?v=j340MdN0QSY)
 * [假阳性、假阴性、灵敏度、特异度](https://www.youtube.com/watch?v=Seje2u1fltQ)
-* [机器学习高频概念：卷积、感知器、损失函数（极大似然估计、交叉熵）、激活函数（sigmoid、softmax）、梯度下降及其改良优化算法、反向传播算法、L1 L2 正则化、SVM 等等](https://www.youtube.com/watch?v=D641Ucd_xuw&list=PLxIHUhMHF8okwhq8poRuiHBChWjkVUHLL)
-* [张量 tensor：rank、shape、type](https://zhuanlan.zhihu.com/p/48982978)
-* [随机优化、批量 batch](https://www.jiqizhixin.com/articles/071502)
-* [通道 channel](https://zhuanlan.zhihu.com/p/95573093)
+* [机器学习高频概念：卷积、感知器、损失函数（极大似然估计、交叉熵、KL 散度）、激活函数（sigmoid、softmax）、梯度下降及其改良优化算法、反向传播算法、L1 L2 正则化、SVM 等等](https://www.youtube.com/watch?v=D641Ucd_xuw&list=PLxIHUhMHF8okwhq8poRuiHBChWjkVUHLL) - 其中 sigmoid 可以被认为是一种特殊的 softmax，简单来讲就是 sigmoid 用于单一分类（非此即彼或百分比/概率），softmax 用于多类的分类（A、B、C、D... 里其中一个或哪个百分比/概率更接近），选择哪一个本质上是要符合最大熵原理。
+* [张量 tensor：rank、shape、type](https://zhuanlan.zhihu.com/p/48982978) - 在深度学习中，tensor 实际上就是一个多维数组，其目的是能够创造更高维度的矩阵、向量。
+* [随机优化、批量 batch](https://www.jiqizhixin.com/articles/071502) - 使用批量训练有助于提高深度学习模型的训练效率、内存利用、并行计算、稳定性和泛化性能，使训练过程更高效、更稳定，并能够处理大规模数据。批量大小是一个超参数，通常需要根据具体任务和硬件资源来进行调整。较大的批量大小可能可以提高训练速度，但也会增加内存需求，因此需要权衡。
+* [通道 channel](https://zhuanlan.zhihu.com/p/95573093) - 一般 channels 的含义是，每个卷积层中卷积核的数量；另一种解释是 channels 就是网络提取的特征数（模型的宽度），channel 越多特征越丰富，层深越深，细节越多。
 * [学习率](https://zh.wikipedia.org/zh-hans/%E5%AD%A6%E4%B9%A0%E7%8E%87) - 每一轮深度学习（迭代）都是通过梯度下降进行一次参数优化一小步。学习率是一个超参数，控制了每次参数更新的步长或大小。它是一个重要的调整参数，如果学习率设置得太小，收敛速度可能会很慢，而如果设置得太大，模型可能会发散而不是收敛。通常，学习率的选择需要经过实验来调整。
 * 迭代轮数 epochs - 训练一个深度学习模型通常需要多个迭代轮数，每个轮次都包括对整个训练数据的一次完整遍历。在每个迭代轮数中，模型的参数都会根据损失和梯度进行更新。迭代轮数的选择通常取决于许多因素，包括数据集的大小、模型的复杂性、学习率的设置、训练目标以及计算资源的可用性：一些深度学习项目可能需要数百轮迭代，而其他项目可能只需要几十轮。因此，没有固定的迭代轮数，它会根据具体情况而变化。
-* 池化 pooling - 其本质，其实就是降采样，对于输入的 Feature Map，选择某种方式对其进行降维压缩，以加快运算速度。实施池化的目的：(1) 降低信息冗余；(2) 提升模型的尺度不变性、旋转不变性；(3) 防止过拟合。池化层的常见操作包含以下几种：最大值池化，均值池化，随机池化，中值池化，组合池化等。
+* 池化 pooling - 其本质，其实就是降采样，对于输入的 feature map，选择某种方式对其进行降维压缩，以加快运算速度。实施池化的目的：(1) 降低信息冗余；(2) 提升模型的尺度不变性、旋转不变性；(3) 防止过拟合。池化层的常见操作包含以下几种：最大值池化，均值池化，随机池化，中值池化，组合池化等。
 
 ## 硬件与操作系统（Linux & bash）高频
 * [进程、线程、协程的区别](./../Computer%20System%20Layer/进程与线程.md)
@@ -169,7 +169,7 @@
   * 避免非加密信息/数据在非安全处（比如邮件）存放/发送
 
 ## Redis 高频
-* [redis 有哪些数据类型？可以应用在什么场景？](https://cloud.tencent.com/developer/article/1975464)
+* redis 有哪些数据类型？可以应用在什么场景？[Ref 1](https://cloud.tencent.com/developer/article/1975464)、[Ref 2](../Computer%20System%20Layer/数据库/Redis/README.md)
 * [redis 的过期键的删除策略有哪些？](https://cloud.tencent.com/developer/article/1975464)
 * [缓存穿透、缓存击穿、缓存雪崩是什么？怎么解决呢？](https://cloud.tencent.com/developer/article/1975464)
 

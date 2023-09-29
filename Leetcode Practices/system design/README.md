@@ -3,6 +3,7 @@
 而且[系统设计与现实生活有许多共通的哲学与智慧](https://www.youtube.com/watch?v=th_73AVA4dY)。有专门的学科[系统科学](https://en.wikipedia.org/wiki/Systems_science)，系统设计就是其内容之一，软件的系统设计可以说是其子集。  
   
 ## 针对面试
+* 白板工具：比如 https://excalidraw.com/
 * [Grokking-System-Design](https://github.com/lei-hsia/grokking-system-design)
 * [Systems Design Youtube Playlist](https://www.youtube.com/watch?v=ZgdS0EUmn70&list=PL73KFetZlkJSZ9vTDSJ1swZhe6CIYkqTL)
 * [systemdesign.one](https://systemdesign.one/system-design-interview-cheatsheet/)
