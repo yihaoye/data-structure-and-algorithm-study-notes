@@ -36,6 +36,24 @@
     - [位运算 | Bitwise Operation](./位运算.md)
     - [洗牌算法 | Knuth-Shuffle](./../Leetcode%20Practices/algorithms/medium/384%20Shuffle%20an%20Array.java)
   - 进阶
+    - [动态规划, 状态机, 规则引擎 | Dynamic Programming, State Machine, Rule Engine](./动态规划与状态机.md)
+      - [前缀和, 差分, 树状数组, 线段树 | Prefix Sum, Difference, Binary Indexed Tree, Segment Tree](./前缀和与差分.md)
+      - [记忆化搜索 | Memory Search](./记忆化搜索.md)
+      - [倍增法 | Binary Lifting](./倍增法.md) (时间复杂度 - 预处理 `O(N*logN)`，之后查询 `O(logN)`) ([倍增法与二分法的区别](./倍增法.md#二分-vs-倍增))
+      - [弗洛伊德算法 | Floyd-Warshall Algorithm](./弗洛伊德算法.md) (时间复杂度 `O(N^3)`)
+      - [Kadane 算法 | Kadane's Algorithm](./Kadane算法.md) (时间复杂度 `O(N)`)
+      - [词法分析 | Lexical Analysis](https://zh.wikipedia.org/wiki/%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90)
+    - [KMP 算法 | Knuth–Morris–Pratt Algorithm](./KMP算法.md) (时间复杂度 `O(N+M)`)
+    - [AC 自动机 | Aho–Corasick Algorithm](./AC自动机.md)
+    - 马拉车算法 | Manacher Algorithm
+    - [并查集联合查找算法 | Disjoint-Set Union-Find Algorithm](./并查集与联合查找算法.md) (时间复杂度 `O(a(N))` - a(N) 为反阿克曼函数，对于大部分 N，a(N) 均小于 5，所以并查集的时间复杂度也可视为 `O(1)`)
+    - [图匹配 | Graph Match](./图匹配.md)
+      - 染色法 | Coloring Method
+      - [匈牙利算法 | Hungarian Algorithm](./匈牙利算法.md) (时间复杂度 `O(N^3)`)
+    - [迪杰斯特拉算法 | Dijkstra Algorithm](./Dijkstra算法.md) (时间复杂度 `O((E+V)*logV)` - 仅计算了指定的一个起点到其他各点)
+    - 贝尔曼-福特算法 | Bellman-Ford Algorithm
+    - [最小生成树相关算法 | Minimum Spanning Tree Algorithms](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/MinimumSpanningTree/README.md)
+    - 网络流相关算法 | Flow Network Algorithms
     - 启发式算法/搜索 | Heuristic Algorithm/Search (启发式搜索通常不讨论时空复杂度)
       - [A&ast; 搜索算法 | A&ast; Search Algorithm](./A*搜索算法.md)
         - IDA&ast; 算法 | IDA&ast; Algorithm
@@ -49,24 +67,6 @@
           - [粒子群优化算法 | Particle Swarm Optimization](./粒子群优化算法.md)
           - 蒙特卡洛树搜索 | Monte Carlo Tree Search (用于搜索树型结构的算法，广泛应用于博弈和决策问题，如 AlphaGo)
         - 拉斯维加斯方法 | Las Vegas Method (采样越多，越可能找到最优解)
-    - [图匹配 | Graph Match](./图匹配.md)
-      - 染色法 | Coloring Method
-      - [匈牙利算法 | Hungarian Algorithm](./匈牙利算法.md) (时间复杂度 `O(N^3)`)
-    - [迪杰斯特拉算法 | Dijkstra Algorithm](./Dijkstra算法.md) (时间复杂度 `O((E+V)*logV)` - 仅计算了指定的一个起点到其他各点)
-    - 贝尔曼-福特算法 | Bellman-Ford Algorithm
-    - [动态规划, 状态机, 规则引擎 | Dynamic Programming, State Machine, Rule Engine](./动态规划与状态机.md)
-      - [前缀和, 差分, 树状数组, 线段树 | Prefix Sum, Difference, Binary Indexed Tree, Segment Tree](./前缀和与差分.md)
-      - [记忆化搜索 | Memory Search](./记忆化搜索.md)
-      - [倍增法 | Binary Lifting](./倍增法.md) (时间复杂度 - 预处理 `O(N*logN)`，之后查询 `O(logN)`) ([倍增法与二分法的区别](./倍增法.md#二分-vs-倍增))
-      - [弗洛伊德算法 | Floyd-Warshall Algorithm](./弗洛伊德算法.md) (时间复杂度 `O(N^3)`)
-      - [Kadane 算法 | Kadane's Algorithm](./Kadane算法.md) (时间复杂度 `O(N)`)
-      - [词法分析 | Lexical Analysis](https://zh.wikipedia.org/wiki/%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90)
-    - [KMP 算法 | Knuth–Morris–Pratt Algorithm](./KMP算法.md) (时间复杂度 `O(N+M)`)
-    - [AC 自动机 | Aho–Corasick Algorithm](./AC自动机.md)
-    - 马拉车算法 | Manacher Algorithm
-    - [并查集联合查找算法 | Disjoint-Set Union-Find Algorithm](./并查集与联合查找算法.md) (时间复杂度 `O(a(N))` - a(N) 为反阿克曼函数，对于大部分 N，a(N) 均小于 5，所以并查集的时间复杂度也可视为 `O(1)`)
-    - [最小生成树相关算法 | Minimum Spanning Tree Algorithms](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/MinimumSpanningTree/README.md)
-    - 网络流相关算法 | Flow Network Algorithms
   - 系统级
     - [字典树算法 | Trie Algorithm](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/Trie/README.md)
     - [映射-归约 | MapReduce](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md)
