@@ -274,6 +274,13 @@ API 网关是位于客户端与后端服务集之间的大门 - API 管理工具
 ### 自动扩展与容器编排
 底层实现中需要调度器（硬件机器、端口）、命令行（镜像、启动/停止容器）、状态机等。[具体参考](https://github.com/gogococo/orchestrator-in-go)  
 现成方案：Kubernetes、Docker Swarm、AWS ECS 等等。  
+#### 概念：[集群（Cluster）](./集群.md)
+#### IaaS 如何管理硬件基础设施
+包括物理服务器、网络设备、存储设备等，这些硬件资源通常分布在多个数据中心或可用区域中：
+* 虚拟化技术：提供商使用虚拟化技术将物理硬件资源抽象为虚拟资源。这包括使用虚拟机监视器（VM Hypervisor）将物理服务器划分为多个虚拟机（VM）。每个 VM 都具有自己的操作系统和资源分配，但它们在物理硬件上共享资源。
+* 资源池管理：IaaS 提供商创建资源池，其中包含一组虚拟资源，如 CPU、内存、存储容量等。这些资源池可用于分配给客户。
+* 请求和分配：当客户发送资源请求时，IaaS 提供商会根据客户的需求动态分配资源。这通常包括指定所需的虚拟机规格（例如，CPU 核数、内存大小、存储容量）和其他配置选项。
+
 ### [服务注册与服务发现](https://docshome.gitbook.io/microservices/4-service-discovery)
 ![](./service-register-discovery.jpeg)  
 现成方案：Etcd（共享配置、服务发现和的调度协调）、ZooKeeper（数据发布/订阅、负载均衡、命名服务、分布式协调/通知、集群管理、Master 选举、分布式锁和分布式队列等功能）。  
@@ -283,8 +290,6 @@ API 网关是位于客户端与后端服务集之间的大门 - API 管理工具
 ### 认证权限
 ### [服务治理（Service Meltdown, Service Downgrade and Service Circuit Breaker）](./服务降级与服务熔断.md)
 ### 监控统计日志
-
-## [集群（Cluster）](./集群.md)
 
 ## Cache vs Message Queue / Stream
 相比之下 Cache 更像 Java 的 HashMap，Message Queue / Stream 更像 Java 的 Queue / Deque / Stream：
