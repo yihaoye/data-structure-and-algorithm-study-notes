@@ -71,7 +71,7 @@
     - [字典树算法 | Trie Algorithm](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/Trie/README.md)
     - [映射-归约 | MapReduce](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md)
     - [多路归并 | K-Way Merge](https://en.wikipedia.org/wiki/K-way_merge_algorithm) ([代码示例](../Leetcode%20Practices/algorithms/hard/23%20Merge%20k%20Sorted%20Lists.java))
-    - [环形队列及其算法 | Ring Buffer](https://zh.wikipedia.org/wiki/%E7%92%B0%E5%BD%A2%E7%B7%A9%E8%A1%9D%E5%8D%80) (注意，可以用一个最长的环实现多环复用，用一个变量或指针记录当前的长环尾部，若想获取短环则只需从长环尾部往前回溯一次短环长度再开始遍历即可)
+    - [环形缓冲器及其算法 | Ring Buffer](https://zh.wikipedia.org/wiki/%E7%92%B0%E5%BD%A2%E7%B7%A9%E8%A1%9D%E5%8D%80) (注意，可以用一个最长的环实现多环复用，用一个变量或指针记录当前的长环尾部，若想获取短环则只需从长环尾部往前回溯一次短环长度再开始遍历即可)
     - [分块/分桶法 | Range Block/Bucketing](./分桶法.md) (若为平方分割，则时间复杂度 `O(√N)`)
       - [莫队算法 | Mo Algorithm](https://oi-wiki.org/misc/mo-algo/)
     - [蓄水池抽样算法 | Reservoir Sampling](./蓄水池抽样算法.md) (时间复杂度为 `O(N)` 且为一次遍历即可，空间复杂度 `O(m)` m 为从流中随机选出 m 个，因为 m 通常为有限的常数，所以空间复杂度可以认为是 `O(1)`)
