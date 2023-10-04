@@ -1,6 +1,6 @@
 # 系统设计学习资源
 系统设计重要性：在 Senior 或 Team Leader 或更高级别的岗位招聘面试中，系统设计常常拥有一票否决权。  
-而且[系统设计与现实生活有许多共通的哲学与智慧](https://www.youtube.com/watch?v=th_73AVA4dY)，例如二八法则、边际效益递减、系统冗余、机会成本（取舍策略）、墨菲定律、正负反馈（马太效应）、连锁反应（耦合解耦）、分工分级（类似[分级诊疗](https://zh.wikipedia.org/wiki/%E5%88%9D%E7%B4%9A%E7%85%A7%E8%AD%B7)）、长尾效应等等。  
+而且[系统设计与现实生活有许多共通的哲学与智慧](https://www.youtube.com/watch?v=th_73AVA4dY)，例如二八法则、边际效益递减、系统冗余、机会成本（取舍策略）、墨菲定律、正负反馈（马太效应）、连锁反应（耦合解耦）、过滤分工分级（类似[分级诊疗](https://zh.wikipedia.org/wiki/%E5%88%9D%E7%B4%9A%E7%85%A7%E8%AD%B7)、梯次纵深防御）、长尾效应等等。  
 有专门的学科[系统科学](https://en.wikipedia.org/wiki/Systems_science)，系统设计就是其内容之一，软件的系统设计可以说是其子集。  
   
 ## 针对面试
@@ -2305,11 +2305,13 @@ KV 数据库主要的考点是高可用性、扩展性及高性能：
 * 可以设置、限制消费者处理的消息数量（请参阅 Backpressure）
 * Kafka 提供消息排序
 
-**其他问题和担忧**：  
+**其他问题和进阶**：  
 不可靠的时钟/时间：在分布式系统中，有不可靠的时钟和时间（比如由于请求 NTP 时间时的无限延迟，因为使用的是 packet-switched networks/分组交换网络，通常不是 circuit-switched networks/电路交换网络），不可靠的 NTP 服务器（即 Time server/时间服务器），石英时钟会产生偏移量等问题。当想要可靠地调度 Jobs 并在正确的时间执行它们时，时钟和时间起着重要的作用。因此，需要确保节点上的时间是同步的并且不会相差太大。实现这一目标的一种方法是使用多个 NTP 服务器并过滤掉那些偏差很大的服务器。另一种更可靠但成本更高的方法是在数据中心使用原子钟。  
 
 给一个 DAG（Directed Acyclic Graph 有向无环图）表示 execution nodes 之间的依赖关系，每个 node 会根据 dependency nodes 的结果做一系列计算（比如给一个 list of node 得到每个 node 对应的结果）。  
 具体的方案如下：NoSQL 数据库表为每个 node 设置 column: `parents [node_ids...]`, `children [node_ids...]`, parents_pending_cnt，当依赖（父）节点完成后，从 children 获取下游节点的 id 并对 parents_pending_cnt - 1，当下游节点 parents_pending_cnt 为 0 时说明它们也准备好被执行了（此时可以直接触发或等下一次查询触发），如是类推。  
+
+可以使用缓存系统实现一个多路归并表，记录每一个数据库分库中将最早执行的 job id（表键为分库键，值为 job id），Worker 们从缓存中获取最早 ready 的 job 并执行之后可以再从对应数据库里查询下一个 job id 并替换到缓存里（如果全都尚未到时间就不执行只是干轮询），这样可以尽量减少对数据库的请求压力。注意如果数据库分库分表增加新节点的话需要清空该缓存并重建。  
 
 **System APIs**  
 * String createAndRunJob() - 创建并执行下一个可准备执行的 Job，返回它的 ID
