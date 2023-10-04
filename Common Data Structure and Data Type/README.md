@@ -19,17 +19,17 @@
     - [链表 | LinkedList](./Data%20Structure%20Implementation/LinkedList/README.md) (同上)
     - [数组双端队列 | ArrayDeque](./../HackerRank%20Practises/java/medium/Java%20Dequeue.java)
     - 基于链表的线程安全无界双端队列 | ConcurrentLinkedDeque
-    - 基于链表的FIFO双端阻塞队列 | LinkedBlockingDeque
+    - 基于链表的 FIFO 双端阻塞队列 | LinkedBlockingDeque
   - [环形队列 | CircularQueue (RingBuffer)](./../Leetcode%20Practices/algorithms/medium/622%20Design%20Circular%20Queue.java) (可以用数组+双指针实现，也可以用循环链表实现)
   - 基于链表的线程安全无界队列 | ConcurrentLinkedQueue
   - [阻塞队列 | BlockingQueue](./Data%20Structure%20Implementation/BlockingQueue/README.md) (注意，[非阻塞队列也可以通过 CAS 实现线程安全](./Data%20Structure%20Implementation/BlockingQueue/non-blocking-queue.PNG))
     - [基于数组的并发阻塞队列 | ArrayBlockingQueue](./Data%20Structure%20Implementation/ArrayBlockingQueue/ArrayBlockingQueue.java) (入队/出队 O(1)，首值 O(1))
     - 延期阻塞队列 | DelayQueue (入队/出队 O(logN)，首值 O(1))
-    - 基于链表的FIFO双端阻塞队列 | LinkedBlockingDeque
-    - [基于链表的FIFO阻塞队列 | LinkedBlockingQueue](./Data%20Structure%20Implementation/LinkedBlockingQueue/LinkedBlockingQueue.java) (入队/出队 O(1)，首值 O(1))
+    - 基于链表的 FIFO 双端阻塞队列 | LinkedBlockingDeque
+    - [基于链表的 FIFO 阻塞队列 | LinkedBlockingQueue](./Data%20Structure%20Implementation/LinkedBlockingQueue/LinkedBlockingQueue.java) (入队/出队 O(1)，首值 O(1))
     - 并发同步阻塞队列 | SynchronousQueue (入队/出队 O(1)，首值 O(1))
     - 带优先级的无界阻塞队列 | PriorityBlockingQueue (入队/出队 O(logN)，首值 O(1))
-    - [基于链表的FIFO无界阻塞队列 | LinkedTransferQueue](./Data%20Structure%20Implementation/LinkedTransferQueue/README.md)
+    - [基于链表的 FIFO 无界阻塞队列 | LinkedTransferQueue](./Data%20Structure%20Implementation/LinkedTransferQueue/README.md)
 - 栈 | Stack (入栈/出栈 O(1))
   - 双端队列 | Deque
   - [最值栈 | Extreme (Min/Max etc) Stack](../Leetcode%20Practices/algorithms/easy/155%20Min%20Stack.java)
