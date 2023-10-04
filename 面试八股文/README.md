@@ -127,6 +127,11 @@
 * [inode](https://www.ruanyifeng.com/blog/2011/12/inode.html)
 * [虚拟内存](https://learn.lianglianglee.com/%e4%b8%93%e6%a0%8f/%e9%87%8d%e5%ad%a6%e6%93%8d%e4%bd%9c%e7%b3%bb%e7%bb%9f-%e5%ae%8c/24%20%20%e8%99%9a%e6%8b%9f%e5%86%85%e5%ad%98%20%ef%bc%9a%e4%b8%80%e4%b8%aa%e7%a8%8b%e5%ba%8f%e6%9c%80%e5%a4%9a%e8%83%bd%e4%bd%bf%e7%94%a8%e5%a4%9a%e5%b0%91%e5%86%85%e5%ad%98%ef%bc%9f.md)
 * [Interview best 20 questions on OPERATING SYSTEM](https://leetcode.com/discuss/interview-question/operating-system/3816083/Interview-best-20-questions-on-OPERATING-SYSTEM)
+* 操作系统内核是什么？有什么基本能力？
+  * 管理进程、线程，决定哪个进程、线程使用 CPU，也就是进程调度的能力；
+  * 管理内存，决定内存的分配和回收，也就是内存管理的能力；
+  * 管理硬件设备，为进程与硬件设备之间提供通信能力，也就是硬件通信能力；
+  * 提供系统调用，如果应用程序要运行更高权限运行的服务，那么就需要有系统调用，它是用户程序与操作系统之间的接口。
 
 ## 网络高频
 * [计算机网络面试突击](https://juejin.cn/post/6932001161532669960)
