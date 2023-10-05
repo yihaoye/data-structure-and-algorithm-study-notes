@@ -112,7 +112,7 @@
       - 前向与后向算法
       - 维特比算法
     - [深度学习, 神经网络 | Deep Learning, Neural Networks](https://www.zhihu.com/question/314879954/answer/638380202)
-      - [感知器 | Perceptron](https://www.youtube.com/watch?v=BS_CVhalVGw&list=PLxIHUhMHF8okwhq8poRuiHBChWjkVUHLL&index=2) (又称感知机，该基本模型是神经网络的基础，是模拟了人工神经元的模型)
+      - [感知器 | Perceptron](https://www.youtube.com/watch?v=BS_CVhalVGw&list=PLxIHUhMHF8okwhq8poRuiHBChWjkVUHLL&index=2) (又称感知机、Neuron、Unit，该基本模型是神经网络的基础，是模拟了人工神经元的模型)
       - 卷积神经网络 | Convolutional Neural Network, CNN
       - 循环神经网络 | Recurrent Neural Network, RNN
         - 长短期记忆 | Long Short-Term Memory, LSTM
