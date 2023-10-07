@@ -54,3 +54,15 @@
 
 # 重要数学公式
 ![](./math-formulas.jpeg)  
+  
+[Guest Editors Introduction to the top 10 algorithms:](https://ieeexplore.ieee.org/document/814652)
+* Metropolis Algorithm for Monte Carlo
+* Simplex Method for Linear Programming
+* Krylov Subspace Iteration Methods
+* The Decompositional Approach to Matrix Computations
+* The Fortran Optimizing Compiler
+* QR Algorithm for Computing Eigenvalues
+* Quicksort Algorithm for Sorting
+* Fast Fourier Transform
+* Integer Relation Detection
+* Fast Multipole Method
