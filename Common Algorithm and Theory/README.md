@@ -1,6 +1,6 @@
 ## 小章目录 | Table of Contents
 
-This personal Blog includes implementation or explanation of Advanced Algorithms.  
+This personal Blog contains explanation and **Java library implementation of some Advanced Algorithms**. For Advanced Data Structure library implementation, please check [here](../Common%20Data%20Structure%20and%20Data%20Type/README.md).  
   
 - 理论与概念 | Theory and Concept ([Wiki](https://oi-wiki.org/misc/cc-basic/))
   - [时空复杂度 | Time and Space Complexity](./时空复杂度.md)
@@ -72,7 +72,7 @@ This personal Blog includes implementation or explanation of Advanced Algorithms
   - 系统级 | System Level
     - [字典树算法 | Trie Algorithm](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/Trie/README.md)
     - [映射-归约 | MapReduce](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md)
-    - 多路归并 | K-Way Merge ([Wiki](https://en.wikipedia.org/wiki/K-way_merge_algorithm)、[代码示例](../Leetcode%20Practices/algorithms/hard/23%20Merge%20k%20Sorted%20Lists.java))
+    - 多路归并 | K-Way Merge ([Wiki](https://en.wikipedia.org/wiki/K-way_merge_algorithm)、[Code](../Leetcode%20Practices/algorithms/hard/23%20Merge%20k%20Sorted%20Lists.java))
     - 环形缓冲器及其算法 | Ring Buffer ([Wiki](https://zh.wikipedia.org/wiki/%E7%92%B0%E5%BD%A2%E7%B7%A9%E8%A1%9D%E5%8D%80)；注意，可以用一个最长的环实现多环复用，用一个变量或指针记录当前的长环尾部，若想获取短环则只需从长环尾部往前回溯一次短环长度再开始遍历即可)
     - [分块/分桶法 | Range Block/Bucketing](./分桶法.md) (若为平方分割，则时间复杂度 `O(√N)`)
       - 莫队算法 | Mo Algorithm ([Wiki](https://oi-wiki.org/misc/mo-algo/))
@@ -83,15 +83,15 @@ This personal Blog includes implementation or explanation of Advanced Algorithms
     - 最小哈希 | MinHash ([Wiki](https://en.wikipedia.org/wiki/MinHash))
     - [HyperLogLog 算法](./HyperLogLog.md)
     - [雪花算法 | Snowflake ID](./雪花算法.md)
-    - [一致性哈希 | Consistent Hashing](./../Leetcode%20Practices/system%20design/一致性哈希.md) ([代码实现](../Leetcode%20Practices/object%20oriented%20design/other%20practices/consistent%20hash/README.md))
-    - [反向索引 | Inverted Index]((../Leetcode%20Practices/system%20design/README.md#设计搜索引擎-Twitter-Search)) ([代码实现](../Leetcode%20Practices/object%20oriented%20design/other%20practices/inverted%20index/InvertedIndex.java))
+    - [一致性哈希 | Consistent Hashing](./../Leetcode%20Practices/system%20design/一致性哈希.md) ([Code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/consistent%20hash/README.md))
+    - [反向索引 | Inverted Index]((../Leetcode%20Practices/system%20design/README.md#设计搜索引擎-Twitter-Search)) ([Code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/inverted%20index/InvertedIndex.java))
     - Frugal Streaming 算法
     - [Geohash 算法, S2 Geometry 算法](../Leetcode%20Practices/system%20design/README.md#设计-Uber)
     - [漏桶算法, 令牌桶算法 | Leaky Bucket, Token Bucket](../Leetcode%20Practices/system%20design/README.md#设计-API-Rate-Limiter)
     - Loosy Counting 算法
     - [OT 算法 | Operational Transformation](../Leetcode%20Practices/system%20design/README.md#设计协同编辑系统)
     - [四叉树算法, R 树算法 | QuadTree, RTree Algorithm](./QuadTree-RTree-算法.md)
-    - 默克尔树算法 | Merkle Tree Algorithm ([Wiki](https://en.wikipedia.org/wiki/Merkle_tree)、[简易代码实现](./../Leetcode%20Practices/algorithms/easy/572%20Subtree%20of%20Another%20Tree.java))
+    - 默克尔树算法 | Merkle Tree Algorithm ([Wiki](https://en.wikipedia.org/wiki/Merkle_tree)、[Code](./../Leetcode%20Practices/algorithms/easy/572%20Subtree%20of%20Another%20Tree.java))
     - 光线投射算法 | Ray Casting
     - Rsync 算法 ([Wiki](https://zh.wikipedia.org/zh-cn/Rsync#%E6%BC%94%E7%AE%97%E6%B3%95))
     - [共识机制/算法 (分布式选举问题) | Consensus Algorithm](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md) ([etcd 实现](../Leetcode%20Practices/system%20design/example%20questions/Leader%20Election.md))
@@ -119,7 +119,7 @@ This personal Blog includes implementation or explanation of Advanced Algorithms
       - 循环神经网络 | Recurrent Neural Network, RNN
         - 长短期记忆 | Long Short-Term Memory, LSTM
       - 生成对抗网络 | Generative Adversarial Network, GAN
-      - Transformer 模型, 大语言模型 (Large Language Model) (Related: [Wiki](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model))、[build GPT from scratch](https://www.youtube.com/watch?v=kCc8FmEb1nY)、[注意力机制 1](https://en.wikipedia.org/wiki/Attention_(machine_learning))、[注意力机制 2](https://www.youtube.com/watch?v=nzqlFIcCSWQ))
+      - [Transformer 模型, 大语言模型 (Large Language Model)](https://github.com/yihaoye/lyrics-gpt) (Related: [Wiki](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model))、[build GPT from scratch](https://www.youtube.com/watch?v=kCc8FmEb1nY)、[注意力机制 1](https://en.wikipedia.org/wiki/Attention_(machine_learning))、[注意力机制 2](https://www.youtube.com/watch?v=nzqlFIcCSWQ))
     - 多模态学习 | Multimodal Learning ([Ref](https://zhuanlan.zhihu.com/p/53511144))
   - 并行算法 | Parallel Algorithm ([Wiki](https://en.wikipedia.org/wiki/Parallel_algorithm)、[Ref](https://blog.51cto.com/luweir/4873113?articleABtest=0)：并行算法尚在发展中，不及串行算法丰富。目前最常用的的方法是 PCAM 方法，即划分，通信，组合，映射。并行算法与串行算法最大的不同之处在于，并行算法不仅要考虑问题本身，而且还要考虑所使用的并行模型，网络连接等等)
   - [数学 | Maths](../Computer%20Science%20Maths/README.md)
@@ -138,9 +138,9 @@ This personal Blog includes implementation or explanation of Advanced Algorithms
         - [凸包 | Convex Hull](./凸包.md)
         - 三分搜索 | Ternary Search ([Ref](https://www.cnblogs.com/PJQOOO/p/4161891.html))
         - 向量计算 | Vector ([Ref](https://cp.wiwiho.me/vector/))
-      - [其他数学工具、操作与套路 | Others](../Tool%20Sets/Math.java)
+      - [其他数学工具、操作与套路 | Other Math Tools](../Tool%20Sets/Math.java)
     - 博弈论 | Game Theory ([Ref](https://zhuanlan.zhihu.com/p/183168457))
-    - 最优化 | Mathematical Optimization ([Wiki](https://en.wikipedia.org/wiki/Mathematical_optimization)、[Ref](https://space.bilibili.com/97068901/channel/collectiondetail?sid=1387071)；最优化是应用数学的一个分支，是计算机与人工智能的一个重要研究领域：[从很大程度上来说，深度学习实际上是在解决大量复杂的优化问题，神经网络仅仅是一个非常复杂的函数，包含数百万个参数，这些参数代表的是一个问题的数学解答，实质上，训练神经网络是在最小化一个损失函数，这个损失函数的值衡量了网络的性能在给定数据集上离完美还差多少](https://www.jiqizhixin.com/articles/071502))
+    - 最优化 | Mathematical Optimization ([Wiki](https://en.wikipedia.org/wiki/Mathematical_optimization)、[Ref](https://space.bilibili.com/97068901/channel/collectiondetail?sid=1387071)；最优化是应用数学的一个分支，是计算机与人工智能的一个重要研究领域：从很大程度上来说，[深度学习实际上是在解决大量复杂的优化问题](https://www.jiqizhixin.com/articles/071502)，神经网络仅仅是一个非常复杂的函数，包含数百万个参数，这些参数代表的是一个问题的数学解答，实质上，训练神经网络是在最小化一个损失函数，这个损失函数的值衡量了网络的性能在给定数据集上离完美还差多少)
       - 线搜索 | Line Search
       - 梯度下降法 | Gradient Descent (梯度其实是高维导数的另一种称呼)
       - 牛顿法 | Newton's Method
