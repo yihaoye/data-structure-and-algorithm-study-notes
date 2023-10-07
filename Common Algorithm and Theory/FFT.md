@@ -8,7 +8,9 @@ FFT 支持在 O(nlogn) 的时间内计算两个 n 度的多项式的乘法，比
 下面这个模板用于计算复数数组的离散傅立叶变换：
 ```java
 // by ChatGPT
-// 另外还可以参考华盛顿大学 C 语言模版 https://www.math.wustl.edu/~victor/mfmm/fourier/fft.c
+// 另外还可以参考：
+// 华盛顿大学 C 语言模版 https://www.math.wustl.edu/~victor/mfmm/fourier/fft.c
+// 普林斯顿大学 Java 模版 https://algs4.cs.princeton.edu/99scientific/FFT.java.html
 import java.util.*;
 
 public class FFT {
@@ -118,4 +120,4 @@ class Complex {
 其他：[并行快速傅立叶变换](https://zh.wikipedia.org/zh-hans/%E5%B9%B6%E8%A1%8C%E5%BF%AB%E9%80%9F%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2)  
 
 例题：  
-Leetcode Q43 可以被 FFT 优化。  
+* Leetcode Q43 可以被 FFT 优化
