@@ -1,25 +1,25 @@
-## 小章目录
+## 小章目录 | Table of Contents
   
-- [理论与概念](https://oi-wiki.org/misc/cc-basic/)
+- [理论与概念 | Theory and Concept](https://oi-wiki.org/misc/cc-basic/)
   - [时空复杂度 | Time and Space Complexity](./时空复杂度.md)
     - 渐进分析 | Asymptotic Analysis
     - 平摊分析 | Amortized Analysis
-    - 随机算法分析（涉及到概率和期望值的计算）
+    - 随机算法分析 | Random Algorithm Analysis（涉及到概率和期望值的计算）
   - [多项式时间 | Polynomial Time](./多项式时间.md)
-  - [搜索](./搜索.md)
+  - [搜索 | Search](./搜索.md)
   - [在线/离线算法 | Online/Offline Algorithm](./在线离线算法.md)
   - 离散与连续 (数据集) | Discrete and Continuous
-- 算法分析工具
+- 算法分析工具 | Algorithm Analysis Tools
   - [递归树 | Recursion Tree](./递归树.md)
   - 循环不变量 | Loop Invariants
-- 算法
-  - 基础
+- 算法 | Algorithms
+  - 基础 | Foundation
     - [排序 (常用排序算法) | Sorting](./Common%20Sorts/README.md)
     - [枚举/穷举 | Enumerate](./枚举(穷举)算法.md)
     - [模拟 | Simulation](./模拟算法.md)
     - [递归, 迭代 | Recursion, Iteration](./递归与迭代.md)
     - [分治法 | Divide-and-Conquer](./分治法.md) (通常被认为一种方案思路或算法范型而非具体算法，时间复杂度不固定，比如快速幂的开方分解则为 `O(logN)`，而更通常的线性分解则为 `O(N)` 或 `O(N*f(N))` 或 `O(N*logN)` 比如归并排序，其他分解情况下亦有可能是其他大 O) ([分治法与二分算法的区别](./分治法.md#分治法-vs-二分算法))
-  - 中阶
+  - 中阶 | Intermediate
     - [二分搜索/二分算法 | Binary Search](./二分搜索.md) (时间复杂度 `O(logN)`)
     - [双指针法, 滑动窗口算法 | Two Pointer, Sliding Window](./双指针法与滑动窗口算法.md)
     - [深度优先, 广度优先, 树图遍历 | Depth First Search, Breadth First Search](./树图遍历.md)
@@ -35,7 +35,7 @@
     - [快速选择 (霍尔选择算法) | Quickselect (Randomized Selection)](./快速选择.md)
     - [位运算 | Bitwise Operation](./位运算.md)
     - [洗牌算法 | Knuth-Shuffle](./../Leetcode%20Practices/algorithms/medium/384%20Shuffle%20an%20Array.java)
-  - 进阶
+  - 进阶 | Advanced
     - [动态规划, 状态机, 规则引擎 | Dynamic Programming, State Machine, Rule Engine](./动态规划与状态机.md)
       - [前缀和, 差分, 树状数组, 线段树 | Prefix Sum, Difference, Binary Indexed Tree, Segment Tree](./前缀和与差分.md)
       - [记忆化搜索 | Memory Search](./记忆化搜索.md)
@@ -67,7 +67,7 @@
           - [粒子群优化算法 | Particle Swarm Optimization](./粒子群优化算法.md)
           - 蒙特卡洛树搜索 | Monte Carlo Tree Search (用于搜索树型结构的算法，广泛应用于博弈和决策问题，如 AlphaGo)
         - 拉斯维加斯方法 | Las Vegas Method (采样越多，越可能找到最优解)
-  - 系统级
+  - 系统级 | System Level
     - [字典树算法 | Trie Algorithm](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/Trie/README.md)
     - [映射-归约 | MapReduce](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md)
     - [多路归并 | K-Way Merge](https://en.wikipedia.org/wiki/K-way_merge_algorithm) ([代码示例](../Leetcode%20Practices/algorithms/hard/23%20Merge%20k%20Sorted%20Lists.java))
@@ -120,8 +120,8 @@
       - [Transformer 模型, 大语言模型 (Large Language Model)](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)) (Related: [build GPT from scratch](https://www.youtube.com/watch?v=kCc8FmEb1nY)、[注意力机制 1](https://en.wikipedia.org/wiki/Attention_(machine_learning))、[注意力机制 2](https://www.youtube.com/watch?v=nzqlFIcCSWQ))
     - [多模态学习 | Multimodal Learning](https://zhuanlan.zhihu.com/p/53511144)
   - [并行算法 | Parallel Algorithm](https://blog.51cto.com/luweir/4873113?articleABtest=0) ([Wiki](https://en.wikipedia.org/wiki/Parallel_algorithm)：并行算法尚在发展中，远不及串行算法丰富。目前最常用的的方法是 PCAM 方法，即划分，通信，组合，映射。并行算法与串行算法最大的不同之处在于，并行算法不仅要考虑问题本身，而且还要考虑所使用的并行模型，网络连接等等)
-  - [数学](../Computer%20Science%20Maths/README.md)
-    - 专项专题
+  - [数学 | Maths](../Computer%20Science%20Maths/README.md)
+    - 专项专题 | Special Topics
       - [鸽巢原理 | Pigeonhole Principle](./鸽巢原理.md)
       - 容斥原理 | Inclusion–Exclusion Principle
       - [取模运算 | Modulo](./取模运算.md)
@@ -131,18 +131,18 @@
       - [约瑟夫环/问题 | Josephus Problem](./约瑟夫环.md)
       - [欧拉图 | Euler Diagram](https://oi-wiki.org/graph/euler/)
       - [快速傅立叶变换 | Fast Fourier Transform](./FFT.md) (时间复杂度 `O(N*logN)`)
-      - 计算几何
+      - 计算几何 | Computational Geometry
         - [扫描线 | Line Sweep](./扫描线.md)
         - [凸包 | Convex Hull](./凸包.md)
         - [三分搜索 | Ternary Search](https://www.cnblogs.com/PJQOOO/p/4161891.html)
         - [向量计算 | Vector](https://cp.wiwiho.me/vector/)
-      - [其他数学工具、操作与套路](../Tool%20Sets/Math.java)
+      - [其他数学工具、操作与套路 | Others](../Tool%20Sets/Math.java)
     - [博弈论 | Game Theory](https://zhuanlan.zhihu.com/p/183168457)
     - [最优化 | Mathematical Optimization](https://en.wikipedia.org/wiki/Mathematical_optimization) ([Ref 1](https://space.bilibili.com/97068901/channel/collectiondetail?sid=1387071)；最优化是应用数学的一个分支，是计算机与人工智能的一个重要研究领域：[从很大程度上来说，深度学习实际上是在解决大量复杂的优化问题，神经网络仅仅是一个非常复杂的函数，包含数百万个参数，这些参数代表的是一个问题的数学解答，实质上，训练神经网络是在最小化一个损失函数，这个损失函数的值衡量了网络的性能在给定数据集上离完美还差多少](https://www.jiqizhixin.com/articles/071502))
       - 线搜索 | Line Search
       - 梯度下降法 | Gradient Descent (梯度其实是高维导数的另一种称呼)
       - 牛顿法 | Newton's Method
-  - 其他常见优化思想、技巧
+  - 其他常见优化思想、技巧 | Common Tricks
     - 剪枝 | Pruning
     - [预处理 (打表) | Precompute (Hard Coding)](https://www.cnblogs.com/hxtblogs/p/7654635.html)
     - [懒更新 | Lazy Update](./懒更新.md)
