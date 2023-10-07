@@ -1,6 +1,8 @@
 ## 小章目录 | Table of Contents
+
+This personal Blog includes implementation or explanation of Advanced Algorithms.  
   
-- [理论与概念 | Theory and Concept](https://oi-wiki.org/misc/cc-basic/)
+- 理论与概念 | Theory and Concept ([Wiki](https://oi-wiki.org/misc/cc-basic/))
   - [时空复杂度 | Time and Space Complexity](./时空复杂度.md)
     - 渐进分析 | Asymptotic Analysis
     - 平摊分析 | Amortized Analysis
@@ -24,10 +26,10 @@
     - [双指针法, 滑动窗口算法 | Two Pointer, Sliding Window](./双指针法与滑动窗口算法.md)
     - [深度优先, 广度优先, 树图遍历 | Depth First Search, Breadth First Search](./树图遍历.md)
       - [回溯法 | Backtracking](./NQueen.java)
-      - [双向搜索/中途相遇 | Bidirectional-Search/Meet-in-the-Middle-Search](https://oi-wiki.org/search/bidirectional/)
+      - 双向搜索/中途相遇 | Bidirectional-Search/Meet-in-the-Middle-Search ([Wiki](https://oi-wiki.org/search/bidirectional/))
     - [贪心算法 | Greedy Algorithm](./贪婪算法.md)
       - [耐心排序 | Patience Sorting](./耐心排序.md)
-      - [摩尔投票 | Boyer–Moore Majority Vote Algorithm](https://zh.wikipedia.org/wiki/%E5%A4%9A%E6%95%B0%E6%8A%95%E7%A5%A8%E7%AE%97%E6%B3%95)
+      - 摩尔投票 | Boyer–Moore Majority Vote Algorithm ([Wiki](https://zh.wikipedia.org/wiki/%E5%A4%9A%E6%95%B0%E6%8A%95%E7%A5%A8%E7%AE%97%E6%B3%95))
     - [拓扑排序 | Topological Sorting](./拓扑排序.md) (时间复杂度 `O(N)`)
     - [单调栈 (包括单调队列) | Monotone Stack](./单调栈.md) (时间复杂度 `O(N)`)
     - [自定义哈希/指纹 | Customized HashCode/FingerPrint](./自定义哈希指纹.md) (时间复杂度 `O(N)`)
@@ -42,7 +44,7 @@
       - [倍增法 | Binary Lifting](./倍增法.md) (时间复杂度 - 预处理 `O(N*logN)`，之后查询 `O(logN)`) ([倍增法与二分法的区别](./倍增法.md#二分-vs-倍增))
       - [弗洛伊德算法 | Floyd-Warshall Algorithm](./弗洛伊德算法.md) (时间复杂度 `O(N^3)`)
       - [Kadane 算法 | Kadane's Algorithm](./Kadane算法.md) (时间复杂度 `O(N)`)
-      - [词法分析 | Lexical Analysis](https://zh.wikipedia.org/wiki/%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90)
+      - 词法分析 | Lexical Analysis ([Wiki](https://zh.wikipedia.org/wiki/%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90))
     - [KMP 算法 | Knuth–Morris–Pratt Algorithm](./KMP算法.md) (时间复杂度 `O(N+M)`)
     - [AC 自动机 | Aho–Corasick Algorithm](./AC自动机.md)
     - 马拉车算法 | Manacher Algorithm
@@ -61,7 +63,7 @@
       - 爬山算法 | Hill Climbing
       - [随机数生成算法 | Random Number Generator](./随机数生成算法.md)
       - 随机化算法/搜索 | Random Algorithm/Search (随机化算法高效的原因是它跳过不必要的枝节、搜索空间。另外，有些随机化算法如随机森林可以容易地并行化，因为它们的操作不一定依赖于前一步骤的结果，这使得它们在多核或分布式计算环境中更高效)
-        - [蒙特卡洛方法 | Monte Carlo Method](https://renns.top/post/59/) (采样越多，越近似最优解)
+        - 蒙特卡洛方法 | Monte Carlo Method ([Ref](https://renns.top/post/59/)，采样越多，越近似最优解)
           - [模拟退火 | Simulated Annealing](./模拟退火.md)
           - [遗传算法 | Genetic Algorithm](./遗传算法.md)
           - [粒子群优化算法 | Particle Swarm Optimization](./粒子群优化算法.md)
@@ -70,28 +72,28 @@
   - 系统级 | System Level
     - [字典树算法 | Trie Algorithm](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/Trie/README.md)
     - [映射-归约 | MapReduce](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md)
-    - [多路归并 | K-Way Merge](https://en.wikipedia.org/wiki/K-way_merge_algorithm) ([代码示例](../Leetcode%20Practices/algorithms/hard/23%20Merge%20k%20Sorted%20Lists.java))
-    - [环形缓冲器及其算法 | Ring Buffer](https://zh.wikipedia.org/wiki/%E7%92%B0%E5%BD%A2%E7%B7%A9%E8%A1%9D%E5%8D%80) (注意，可以用一个最长的环实现多环复用，用一个变量或指针记录当前的长环尾部，若想获取短环则只需从长环尾部往前回溯一次短环长度再开始遍历即可)
+    - 多路归并 | K-Way Merge ([Wiki](https://en.wikipedia.org/wiki/K-way_merge_algorithm)、[代码示例](../Leetcode%20Practices/algorithms/hard/23%20Merge%20k%20Sorted%20Lists.java))
+    - 环形缓冲器及其算法 | Ring Buffer ([Wiki](https://zh.wikipedia.org/wiki/%E7%92%B0%E5%BD%A2%E7%B7%A9%E8%A1%9D%E5%8D%80)；注意，可以用一个最长的环实现多环复用，用一个变量或指针记录当前的长环尾部，若想获取短环则只需从长环尾部往前回溯一次短环长度再开始遍历即可)
     - [分块/分桶法 | Range Block/Bucketing](./分桶法.md) (若为平方分割，则时间复杂度 `O(√N)`)
-      - [莫队算法 | Mo Algorithm](https://oi-wiki.org/misc/mo-algo/)
+      - 莫队算法 | Mo Algorithm ([Wiki](https://oi-wiki.org/misc/mo-algo/))
     - [蓄水池抽样算法 | Reservoir Sampling](./蓄水池抽样算法.md) (时间复杂度为 `O(N)` 且为一次遍历即可，空间复杂度 `O(m)` m 为从流中随机选出 m 个，因为 m 通常为有限的常数，所以空间复杂度可以认为是 `O(1)`)
     - [霍夫曼压缩算法 | Huffman Coding/Compression](./霍夫曼压缩算法.md)
     - [布隆过滤器及其算法 | Bloom Filter](./布隆过滤器及其算法.md)
     - [Count-Min Sketch 算法](./Count-Min-Sketch.md)
-    - [最小哈希 | MinHash](https://en.wikipedia.org/wiki/MinHash)
+    - 最小哈希 | MinHash ([Wiki](https://en.wikipedia.org/wiki/MinHash))
     - [HyperLogLog 算法](./HyperLogLog.md)
     - [雪花算法 | Snowflake ID](./雪花算法.md)
-    - 一致性哈希 | Consistent Hashing ([README](./../Leetcode%20Practices/system%20design/一致性哈希.md)、[代码实现](../Leetcode%20Practices/object%20oriented%20design/other%20practices/consistent%20hash/README.md))
-    - 反向索引 | Inverted Index ([README](../Leetcode%20Practices/system%20design/README.md#设计搜索引擎-Twitter-Search)、[代码实现](../Leetcode%20Practices/object%20oriented%20design/other%20practices/inverted%20index/InvertedIndex.java))
+    - [一致性哈希 | Consistent Hashing](./../Leetcode%20Practices/system%20design/一致性哈希.md) ([代码实现](../Leetcode%20Practices/object%20oriented%20design/other%20practices/consistent%20hash/README.md))
+    - [反向索引 | Inverted Index]((../Leetcode%20Practices/system%20design/README.md#设计搜索引擎-Twitter-Search)) ([代码实现](../Leetcode%20Practices/object%20oriented%20design/other%20practices/inverted%20index/InvertedIndex.java))
     - Frugal Streaming 算法
     - [Geohash 算法, S2 Geometry 算法](../Leetcode%20Practices/system%20design/README.md#设计-Uber)
     - [漏桶算法, 令牌桶算法 | Leaky Bucket, Token Bucket](../Leetcode%20Practices/system%20design/README.md#设计-API-Rate-Limiter)
     - Loosy Counting 算法
     - [OT 算法 | Operational Transformation](../Leetcode%20Practices/system%20design/README.md#设计协同编辑系统)
     - [四叉树算法, R 树算法 | QuadTree, RTree Algorithm](./QuadTree-RTree-算法.md)
-    - [默克尔树算法 | Merkle Tree Algorithm](https://en.wikipedia.org/wiki/Merkle_tree) ([简易代码实现](./../Leetcode%20Practices/algorithms/easy/572%20Subtree%20of%20Another%20Tree.java))
+    - 默克尔树算法 | Merkle Tree Algorithm ([Wiki](https://en.wikipedia.org/wiki/Merkle_tree)、[简易代码实现](./../Leetcode%20Practices/algorithms/easy/572%20Subtree%20of%20Another%20Tree.java))
     - 光线投射算法 | Ray Casting
-    - [Rsync 算法](https://zh.wikipedia.org/zh-cn/Rsync#%E6%BC%94%E7%AE%97%E6%B3%95)
+    - Rsync 算法 ([Wiki](https://zh.wikipedia.org/zh-cn/Rsync#%E6%BC%94%E7%AE%97%E6%B3%95))
     - [共识机制/算法 (分布式选举问题) | Consensus Algorithm](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md) ([etcd 实现](../Leetcode%20Practices/system%20design/example%20questions/Leader%20Election.md))
       - 崩溃容错协议 | CFT
         - Paxos、Raft ([Ref 1](https://cloud.tencent.com/developer/article/1816404)、[Ref 2](https://raft.github.io/))、[ZAB](https://houbb.github.io/2018/10/30/zab) (这 3 种协议有许多共同的内容，比如 Leader-Follower、[Quorum 仲裁机制](./Quorum算法.md)、状态机等等)
@@ -100,26 +102,26 @@
     - [P2P 核心算法](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md)
       - BitTorrent 协议
       - DHT 的 Kademlia 协议
-      - [DHT 的 Chord 算法](https://en.wikipedia.org/wiki/Chord_(peer-to-peer))
+      - DHT 的 Chord 算法 ([Wiki](https://en.wikipedia.org/wiki/Chord_(peer-to-peer)))
       - [Gossip 协议/流行病协议](../Computer%20System%20Layer/数据库/Dynamo/README.md#Gossip-协议)
   - 人工智能, 机器学习 | Artificial Intelligence, Machine Learning
     - 线性规划 | Linear Regression
-    - [决策树算法 | Decision Tree Algorithm](https://www.ibm.com/cn-zh/topics/decision-trees)
-      - [随机森林 | Random Forest](https://www.nvidia.cn/glossary/data-science/random-forest/)
+    - 决策树算法 | Decision Tree Algorithm ([Ref](https://www.ibm.com/cn-zh/topics/decision-trees))
+      - 随机森林 | Random Forest ([Ref](https://www.nvidia.cn/glossary/data-science/random-forest/))
     - 朴素贝叶斯 | Naive Bayes
     - 支持向量机 | Support Vector Machine, SVM
     - 隐马尔可夫模型 | Hidden Markov Model, HMM
       - 前向与后向算法
       - 维特比算法
-    - [深度学习, 神经网络 | Deep Learning, Neural Networks](https://www.zhihu.com/question/314879954/answer/638380202)
-      - [感知器 | Perceptron](https://www.youtube.com/watch?v=BS_CVhalVGw&list=PLxIHUhMHF8okwhq8poRuiHBChWjkVUHLL&index=2) (又称感知机、Neuron、Unit，该基本模型是神经网络的基础，是模拟了人工神经元的模型)
+    - 深度学习, 神经网络 | Deep Learning, Neural Networks ([Ref](https://www.zhihu.com/question/314879954/answer/638380202))
+      - 感知器 | Perceptron ([Ref](https://www.youtube.com/watch?v=BS_CVhalVGw&list=PLxIHUhMHF8okwhq8poRuiHBChWjkVUHLL&index=2)；又称感知机、Neuron、Unit，该基本模型是神经网络的基础，是模拟了人工神经元的模型)
       - 卷积神经网络 | Convolutional Neural Network, CNN
       - 循环神经网络 | Recurrent Neural Network, RNN
         - 长短期记忆 | Long Short-Term Memory, LSTM
       - 生成对抗网络 | Generative Adversarial Network, GAN
-      - [Transformer 模型, 大语言模型 (Large Language Model)](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model)) (Related: [build GPT from scratch](https://www.youtube.com/watch?v=kCc8FmEb1nY)、[注意力机制 1](https://en.wikipedia.org/wiki/Attention_(machine_learning))、[注意力机制 2](https://www.youtube.com/watch?v=nzqlFIcCSWQ))
-    - [多模态学习 | Multimodal Learning](https://zhuanlan.zhihu.com/p/53511144)
-  - [并行算法 | Parallel Algorithm](https://blog.51cto.com/luweir/4873113?articleABtest=0) ([Wiki](https://en.wikipedia.org/wiki/Parallel_algorithm)：并行算法尚在发展中，远不及串行算法丰富。目前最常用的的方法是 PCAM 方法，即划分，通信，组合，映射。并行算法与串行算法最大的不同之处在于，并行算法不仅要考虑问题本身，而且还要考虑所使用的并行模型，网络连接等等)
+      - Transformer 模型, 大语言模型 (Large Language Model) (Related: [Wiki](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model))、[build GPT from scratch](https://www.youtube.com/watch?v=kCc8FmEb1nY)、[注意力机制 1](https://en.wikipedia.org/wiki/Attention_(machine_learning))、[注意力机制 2](https://www.youtube.com/watch?v=nzqlFIcCSWQ))
+    - 多模态学习 | Multimodal Learning ([Ref](https://zhuanlan.zhihu.com/p/53511144))
+  - 并行算法 | Parallel Algorithm ([Wiki](https://en.wikipedia.org/wiki/Parallel_algorithm)、[Ref](https://blog.51cto.com/luweir/4873113?articleABtest=0)：并行算法尚在发展中，不及串行算法丰富。目前最常用的的方法是 PCAM 方法，即划分，通信，组合，映射。并行算法与串行算法最大的不同之处在于，并行算法不仅要考虑问题本身，而且还要考虑所使用的并行模型，网络连接等等)
   - [数学 | Maths](../Computer%20Science%20Maths/README.md)
     - 专项专题 | Special Topics
       - [鸽巢原理 | Pigeonhole Principle](./鸽巢原理.md)
@@ -127,24 +129,24 @@
       - [取模运算 | Modulo](./取模运算.md)
       - [快速幂法 | Binary Exponentiation](../Tool%20Sets/Math.java)
       - [高斯消元法 | Gaussian Elimination](./高斯消元法.md)
-      - [高精度计算 | Arbitrary-Precision Arithmetic](https://oi-wiki.org/math/bignum/)
+      - 高精度计算 | Arbitrary-Precision Arithmetic ([Wiki](https://oi-wiki.org/math/bignum/))
       - [约瑟夫环/问题 | Josephus Problem](./约瑟夫环.md)
-      - [欧拉图 | Euler Diagram](https://oi-wiki.org/graph/euler/)
+      - 欧拉图 | Euler Diagram ([Wiki](https://oi-wiki.org/graph/euler/))
       - [快速傅立叶变换 | Fast Fourier Transform](./FFT.md) (时间复杂度 `O(N*logN)`)
       - 计算几何 | Computational Geometry
         - [扫描线 | Line Sweep](./扫描线.md)
         - [凸包 | Convex Hull](./凸包.md)
-        - [三分搜索 | Ternary Search](https://www.cnblogs.com/PJQOOO/p/4161891.html)
-        - [向量计算 | Vector](https://cp.wiwiho.me/vector/)
+        - 三分搜索 | Ternary Search ([Ref](https://www.cnblogs.com/PJQOOO/p/4161891.html))
+        - 向量计算 | Vector ([Ref](https://cp.wiwiho.me/vector/))
       - [其他数学工具、操作与套路 | Others](../Tool%20Sets/Math.java)
-    - [博弈论 | Game Theory](https://zhuanlan.zhihu.com/p/183168457)
-    - [最优化 | Mathematical Optimization](https://en.wikipedia.org/wiki/Mathematical_optimization) ([Ref 1](https://space.bilibili.com/97068901/channel/collectiondetail?sid=1387071)；最优化是应用数学的一个分支，是计算机与人工智能的一个重要研究领域：[从很大程度上来说，深度学习实际上是在解决大量复杂的优化问题，神经网络仅仅是一个非常复杂的函数，包含数百万个参数，这些参数代表的是一个问题的数学解答，实质上，训练神经网络是在最小化一个损失函数，这个损失函数的值衡量了网络的性能在给定数据集上离完美还差多少](https://www.jiqizhixin.com/articles/071502))
+    - 博弈论 | Game Theory ([Ref](https://zhuanlan.zhihu.com/p/183168457))
+    - 最优化 | Mathematical Optimization ([Wiki](https://en.wikipedia.org/wiki/Mathematical_optimization)、[Ref](https://space.bilibili.com/97068901/channel/collectiondetail?sid=1387071)；最优化是应用数学的一个分支，是计算机与人工智能的一个重要研究领域：[从很大程度上来说，深度学习实际上是在解决大量复杂的优化问题，神经网络仅仅是一个非常复杂的函数，包含数百万个参数，这些参数代表的是一个问题的数学解答，实质上，训练神经网络是在最小化一个损失函数，这个损失函数的值衡量了网络的性能在给定数据集上离完美还差多少](https://www.jiqizhixin.com/articles/071502))
       - 线搜索 | Line Search
       - 梯度下降法 | Gradient Descent (梯度其实是高维导数的另一种称呼)
       - 牛顿法 | Newton's Method
   - 其他常见优化思想、技巧 | Common Tricks
     - 剪枝 | Pruning
-    - [预处理 (打表) | Precompute (Hard Coding)](https://www.cnblogs.com/hxtblogs/p/7654635.html)
+    - 预处理 (打表) | Precompute (Hard Coding) ([Ref](https://www.cnblogs.com/hxtblogs/p/7654635.html))
     - [懒更新 | Lazy Update](./懒更新.md)
     - [状态压缩 | State Compression](../Tool%20Sets/StateCompression.java)
     - [坐标离散化 | Coordinate Compression](./坐标离散化.md)

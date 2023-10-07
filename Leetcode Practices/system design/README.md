@@ -2168,6 +2168,15 @@ OOD 还可以参考 [Hotel Management System](./../object%20oriented%20design/gr
 </details>
 
 
+## 设计推荐系统
+<details>
+<summary>details</summary>
+
+参考：[推荐系统基础系列](https://www.youtube.com/watch?v=5dTOPen28ts&list=PLvOO0btloRntAi-VnV06M1Bu0X1xljUUP)
+
+</details>
+
+
 ## 设计分布式 KV 数据库（Dynamo）
 <details>
 <summary>details</summary>
@@ -2922,8 +2931,10 @@ Ref：
 
 * [从 0 到 1：构建强大且易用的规则引擎](https://tech.meituan.com/2017/06/09/maze-framework.html)
 
-最简单的方式是 hard coding 规则，更进一步的是可以使用[模式匹配](https://hillside.net/plop/plop99/proceedings/Metayer/MatcherHandler.pdf)或[元编程（Metaprogramming）](https://zh.wikipedia.org/zh-hans/%E5%85%83%E7%BC%96%E7%A8%8B)，支持元编程的语言有 Lisp、Python、Ruby、Golang 等。  
+最简单的方式是 hard coding 规则、操作，hard coding 可以进一步简化，比如把相关的操作 - 即函数程序或单独服务设计成更通用的接口，然后根据给予不同的参数再进行更细微的执行方式（比如多少时间之后进行删除，具体视给定的时间参数执行）。更进一步的是可以使用[模式匹配](https://hillside.net/plop/plop99/proceedings/Metayer/MatcherHandler.pdf)或[元编程（Metaprogramming）](https://zh.wikipedia.org/zh-hans/%E5%85%83%E7%BC%96%E7%A8%8B)，支持元编程的语言有 Lisp、Python、Ruby、Golang 等。  
 应该可以用 NoSQL 数据库存储规则（决策树结构或规则数据模型 - 规则本质是一个函数，由 n 个输入、1 个输出和函数计算逻辑三部分组成），构建管理后台/管理控制台可以支持动态规则（分析师添加、更新规则）。  
+
+架构上来说，事件可以从消息队列中读取，根据 NoSQL 里的持久化数据进行规则判定，然后按判定的规则设为新的 topic 事件（包括针对的数据信息）写入消息队列，供后续执行使用。  
 
 </details>
 
