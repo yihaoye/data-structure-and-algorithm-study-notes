@@ -3,7 +3,7 @@
 FFT 支持在 O(nlogn) 的时间内计算两个 n 度的多项式的乘法，比朴素的 O(n^2) 算法更高效。由于两个整数的乘法也可以被当作多项式乘法，因此这个算法也可以用来加速大整数的乘法计算。  
 
 * [快速傅里叶变换详细讲解](https://www.youtube.com/watch?v=RlxT4Nmd45I&list=PLEUKC88yR4_al2oa2LF0SKS2RPpxmWg3n&index=9)
-* [快速傅里叶变换 io wiki](https://oi-wiki.org/math/poly/fft/)
+* [io wiki - 快速傅里叶变换应用](https://oi-wiki.org/math/poly/fft/)
 
 下面这个模板用于计算复数数组的离散傅立叶变换：
 ```java
