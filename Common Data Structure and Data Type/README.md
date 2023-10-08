@@ -4,7 +4,7 @@
   - [树状数组 | Binary Indexed Tree](../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/BinaryIndexedTree(FenwickTree)/README.md) (单点修改、区间查询均为 O(logN))
   - [ST 表 | Sparse Table](https://oi-wiki.org/ds/sparse-table/)
 - 线性表 | Linear List
-  - 顺序表 | ArrayList (索引 O(1)，遍历 O(N)，添加节点 O(1)，插入/删除节点 O(N)，如果不严格要求，删除可以通过对换删除节点与尾节点的值，然后删除尾节点来降低到 O(1))
+  - 顺序表 | ArrayList (索引 O(1)，遍历 O(N)，添加节点 O(1)，插入/删除节点 O(N)，如果不严格要求（比如不要求保留顺序），删除可以通过对换删除节点与尾节点的值，然后删除尾节点来降低到 O(1))
   - [向量 | Vector](./Data%20Structure%20Implementation/Vector/) (索引 O(1)，遍历 O(N)，添加节点 O(1)，插入/删除节点 O(N))
   - [链表 | LinkedList](./Data%20Structure%20Implementation/LinkedList/README.md) (索引 O(N)，遍历 O(N)，插入/删除节点 O(1))
     - 单链表 | Singly Linked List
