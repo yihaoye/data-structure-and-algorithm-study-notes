@@ -1,4 +1,4 @@
-# 常用数据结构
+# 常用数据结构 | Data Structure
   
 - 数组 | Array (索引 O(1)，遍历 O(N)，插入/删除节点 O(N))
   - [树状数组 | Binary Indexed Tree](../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/BinaryIndexedTree(FenwickTree)/README.md) (单点修改、区间查询均为 O(logN))
@@ -48,7 +48,7 @@
     - [布隆过滤器 | Bloom Filter](./../Common%20Algorithm%20and%20Theory/布隆过滤器及其算法.md)
   - 枚举集 | EnumSet
 - [树 | Tree](./Data%20Structure%20Implementation/Tree/README.md)
-  - 完全二叉树
+  - 完全二叉树 | Complete Binary Tree
     - 堆 | Heap
       - [二叉堆 | Binary Heap](./Data%20Structure%20Implementation/BinaryHeap/README.md) (构造 O(N)，遍历 O(N)，插入/删除节点 O(logN))
         - 优先队列 | PriorityQueue
@@ -64,8 +64,8 @@
       - [B/B+ 树 | B/B+ Tree](./Data%20Structure%20Implementation/BPlusTree/README.md)
       - 2–3 树 | 2-3 Tree
     - [线段树 | Segment Tree](./Data%20Structure%20Implementation/SegmentTree/README.md) (区间查询 O(logN + K)，更新 O(logN)，构建 O(N) - K is the number of reported segments)
-  - [树套树](https://www.cnblogs.com/Flying2018/p/13615844.html)
-  - [划分树](https://oi-wiki.org/ds/dividing/)
+  - [树套树 | Tree of Trees](https://www.cnblogs.com/Flying2018/p/13615844.html)
+  - [划分树 | Dividing Tree](https://oi-wiki.org/ds/dividing/)
   - [字典树 | Trie](./Data%20Structure%20Implementation/Trie/README.md)
     - 后缀树 | Suffix Tree [Ref 1](https://www.cnblogs.com/gaochundong/p/suffix_tree.html)、[Ref 2](https://yanglei253.github.io/2020/07/26/dataStructure/dataStructure-tiretree/)
   - [并查集 | Disjoint-Set/Union-Find Forest](./../Common%20Algorithm%20and%20Theory/并查集与联合查找算法.md)
@@ -78,10 +78,12 @@
   - [分形树 | Fractal Tree](./../Computer%20System%20Layer/数据库/README.md#分形树)
 - [图 | Graph](./Data%20Structure%20Implementation/Graph/README.md)
   - 有向图 | Directed Graph
+    - 有向无环图 | Directed Acyclic Graph, DAG (常用于系统)
   - 无向图 | Undirected Graph
     - [二分图 | Bipartite Graph](./Data%20Structure%20Implementation/BipartiteGraph/README.md)
   - 加权图（有向或无向）| Weighted Graph
     - 多阶段图 | Multistage Graph (通常与动态规划同时使用)
+  - [状态机 | State Machine](../Common%20Algorithm%20and%20Theory/动态规划与状态机.md) (有广泛的使用场景)
   - [生成树 | Spanning Tree](./Data%20Structure%20Implementation/SpanningTree/README.md)
     - [最小生成树 | Minimum Spanning Tree](./Data%20Structure%20Implementation/MinimumSpanningTree/README.md)
   

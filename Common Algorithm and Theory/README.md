@@ -1,4 +1,4 @@
-## 小章目录 | Table of Contents
+## 算法与理论 | Algorithms and Theory
 
 This personal Blog contains explanation and **Java library/template implementation of some Advanced Algorithms**. For Advanced Data Structure library implementation, please check [here](../Common%20Data%20Structure%20and%20Data%20Type/README.md).  
   
