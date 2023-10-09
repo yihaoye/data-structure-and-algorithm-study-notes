@@ -44,7 +44,7 @@ This personal Blog contains explanation and **Java library/template implementati
       - [倍增法 | Binary Lifting](./倍增法.md) (时间复杂度 - 预处理 `O(N*logN)`，之后查询 `O(logN)`) ([倍增法与二分法的区别](./倍增法.md#二分-vs-倍增))
       - [弗洛伊德算法 | Floyd-Warshall Algorithm](./弗洛伊德算法.md) (时间复杂度 `O(N^3)`)
       - [Kadane 算法 | Kadane's Algorithm](./Kadane算法.md) (时间复杂度 `O(N)`)
-      - 词法分析 | Lexical Analysis ([Wiki](https://zh.wikipedia.org/wiki/%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90))
+      - 词法分析 | Lexical Analysis ([Wiki](https://zh.wikipedia.org/wiki/%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90)、[Simple Example: JSON Parser](../Leetcode%20Practices/object%20oriented%20design/other%20practices/json%20parser/README.md))
     - [KMP 算法 | Knuth–Morris–Pratt Algorithm](./KMP算法.md) (时间复杂度 `O(N+M)`)
     - [AC 自动机 | Aho–Corasick Algorithm](./AC自动机.md)
     - 马拉车算法 | Manacher Algorithm
@@ -115,10 +115,11 @@ This personal Blog contains explanation and **Java library/template implementati
       - 维特比算法
     - [深度学习, 神经网络 | Deep Learning, Neural Networks](./机器学习.md#deep-learning) ([Ref](https://www.zhihu.com/question/314879954/answer/638380202))
       - [感知器 | Perceptron](./机器学习.md#single-neuron) ([Ref](https://www.youtube.com/watch?v=BS_CVhalVGw&list=PLxIHUhMHF8okwhq8poRuiHBChWjkVUHLL&index=2)；又称感知机、Neuron、Unit，该基本模型是神经网络的基础，是模拟了人工神经元的模型)
-      - 卷积神经网络 | Convolutional Neural Network, CNN
-      - 循环神经网络 | Recurrent Neural Network, RNN
+      - 卷积神经网络 | Convolutional Neural Network, CNN (用于处理网格数据，如图像、视频、音频等，进行特征提取和分类。结构由卷积层、池化层和全连接层组成，用于捕获局部特征和构建层次结构)
+      - 循环神经网络 | Recurrent Neural Network, RNN (用于处理序列数据，如文本、语音、时间序列等，具有记忆性质。结构包括循环层 RNN、LSTM、GRU 等，用于处理序列中的时间依赖关系)
         - 长短期记忆 | Long Short-Term Memory, LSTM
-      - 生成对抗网络 | Generative Adversarial Network, GAN
+      - 图神经网络 | Graph Neural Network, GNN (用于处理图数据，如社交网络、推荐系统、知识图谱、分子结构等，进行节点分类、链接预测等任务。结构包括图卷积层、图池化层和节点分类层，用于捕获图的结构和节点之间的关系)
+      - 生成对抗网络 | Generative Adversarial Network, GAN (用于生成新的数据，例如图像、音频等。结构由生成器 Generator 和判别器 Discriminator 组成。生成器生成伪造数据，判别器评估生成器生成的数据与真实数据之间的相似性)
       - [Transformer 模型, 大语言模型 (Large Language Model)](https://github.com/yihaoye/lyrics-gpt) (Related: [Wiki](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model))、[build GPT from scratch](https://www.youtube.com/watch?v=kCc8FmEb1nY)、[注意力机制 1](https://en.wikipedia.org/wiki/Attention_(machine_learning))、[注意力机制 2](https://www.youtube.com/watch?v=nzqlFIcCSWQ))
     - 多模态学习 | Multimodal Learning ([Ref](https://zhuanlan.zhihu.com/p/53511144))
   - 并行算法 | Parallel Algorithm ([Wiki](https://en.wikipedia.org/wiki/Parallel_algorithm)、[Ref](https://blog.51cto.com/luweir/4873113?articleABtest=0)：并行算法尚在发展中，不及串行算法丰富。目前最常用的的方法是 PCAM 方法，即划分，通信，组合，映射。并行算法与串行算法最大的不同之处在于，并行算法不仅要考虑问题本身，而且还要考虑所使用的并行模型，网络连接等等)
