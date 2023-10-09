@@ -1,4 +1,6 @@
-# 线段树
+# 线段树 | Segment Tree
+
+[Java Code](./SegmentTree4.java)  
 
 线段树也被称为区间树，英文名为 Segment Tree 或者 Interval Tree，是一种高级的数据结构。这种数据结构更多出现在竞赛中，通常基础教材里较少介绍这种数据结构，但是是重要的需掌握的数据结构。  
   

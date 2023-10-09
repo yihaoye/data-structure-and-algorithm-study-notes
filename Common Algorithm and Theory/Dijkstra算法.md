@@ -7,7 +7,7 @@ Dijkstra (迪杰斯特拉) 算法通常用于解决图数据的最值权重路�
 ## 前置知识
 [图数据结构](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/Graph/README.md)  
 
-## 代码示例与经典例题
+## Code and Example
 [Leetcode Q743](./../Leetcode%20Practices/algorithms/medium/743%20Network%20Delay%20Time.java)  
 
 ## 进阶

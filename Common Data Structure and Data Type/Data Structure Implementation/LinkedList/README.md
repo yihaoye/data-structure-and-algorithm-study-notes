@@ -1,6 +1,6 @@
 ### Design Linked List
   
-[参考](https://zxi.mytechroad.com/blog/list/leetcode-707-design-linked-list/): [优化版实现代码](./LinkedList.cpp)  
+[参考](https://zxi.mytechroad.com/blog/list/leetcode-707-design-linked-list/): [优化版实现代码 Code](./LinkedList.cpp)  
   
 ![](./Design%20Linked%20List.png)  
   

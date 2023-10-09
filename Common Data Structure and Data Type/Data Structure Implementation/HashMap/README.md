@@ -1,5 +1,5 @@
 ## HashMap 实现
-这里有一个粗略版的 [Java 实现](./../../../Leetcode%20Practices/algorithms/easy/706%20Design%20HashMap.java#L91-L151)。  
+[Simple Version Java Code 实现](./../../../Leetcode%20Practices/algorithms/easy/706%20Design%20HashMap.java#L91-L151)。  
 代码模仿大致原理，但是尚不严谨。  
 官方版在[此](https://hg.openjdk.java.net/jdk8/jdk8/jdk/file/687fd7c7986d/src/share/classes/java/util/HashMap.java)。  
   

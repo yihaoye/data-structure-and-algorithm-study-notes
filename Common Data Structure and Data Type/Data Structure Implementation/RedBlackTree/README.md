@@ -5,7 +5,7 @@
 
 ## 原理及实现
 [红黑树之原理和算法详细介绍](https://www.cnblogs.com/skywang12345/p/3245399.html) (似乎增添部分图例稍不准确，以下面的 Java 实现代码为准)  
-[Java 实现](./RBTree.java) (重要)  
+[Java Code 实现](./RBTree.java) (重要)  
 
 ### 难点核心：删除节点的 RB-DELETE-FIXUP 部分
 参考自：https://www.cnblogs.com/skywang12345/p/3245399.html  

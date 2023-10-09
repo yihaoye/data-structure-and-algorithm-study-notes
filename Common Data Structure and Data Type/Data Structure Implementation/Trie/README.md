@@ -17,8 +17,8 @@ Trie 的结构非常好懂，用 next(u,c) 表示结点 u 的 c 字符指向的�
 Trie 的核心思想是空间换时间，利用字符串的公共前缀来降低查询时间的开销以达到提高效率的目的。  
 假设字符的种数有 M 个 (字符集元素个数)，有若干个长度为 L 的字符串构成了一个 Trie 树，则每个节点的出度为 M（即每个节点的可能子节点数量为 M），Trie 树的高度为 L。很明显使用了大量的空间来存储字符，此时 Trie 树的最坏空间复杂度为 O(M^L)。也正由于每个节点的出度为 M，所以算法能够沿着树的一个个分支高效的向下逐个字符的查询，而不是遍历所有的字符串来查询，此时 Trie 树的最坏时间复杂度为 O(L)。这正是空间换时间的体现，也是利用公共前缀降低查询时间开销的体现。[参考](https://blog.csdn.net/u010599509/article/details/54410619)  
   
-[C++ 代码实现](Trie.cpp)  
-[Java 代码实现](../../../Leetcode%20Practices/algorithms/medium/208%20Implement%20Trie%20(Prefix%20Tree).java)  
+[C++ Code](Trie.cpp)  
+[Java Code](../../../Leetcode%20Practices/algorithms/medium/208%20Implement%20Trie%20(Prefix%20Tree).java)  
   
 ### 其他例题
 * [Leetcode Q211](./../../../Leetcode%20Practices/algorithms/medium/211%20Design%20Add%20and%20Search%20Words%20Data%20Structure.java)  
