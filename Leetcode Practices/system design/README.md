@@ -1712,6 +1712,8 @@ Twitter 可以让用户通过选择要关注的感兴趣的帐户来对其进行
 索引延迟  
 搜索系统的关键指标之一是索引延迟，即新信息在搜索索引中可用所需的时间。这个指标很重要，因为它决定了新结果出现的速度。并非所有搜索系统都需要快速更新其内容。例如，在仓库库存系统中，每天更新一次搜索索引可能是可以接受的。在 Twitter 这类社交网络系统上，用户总是查询正在发生的事情，所以实时搜索是必须的。  
   
+**[GitHub Code Search](https://www.youtube.com/watch?v=CqZA_KmygKw)**  
+  
 **ElasticSearch**  
 前面讲到 Twitter 使用 MySQL 和 Lucene 构建自己的搜索引擎，实际上 Lucene 还是一个库，必须要懂一点搜索引擎原理的人才能用的好，所以后来又有人基于 Lucene 进行封装，写出了 ElasticSearch 这一开源（分布式）搜索引擎。通过 ElasticSearch，开发者可以更容易、高效地搭建、自定义属于自己的高性能搜索服务（ElasticSearch 把操作都封装成了 HTTP 的 API，只要给 ElasticSearch 发送 HTTP 请求就行。并且 ElasticSearch 支持、实现了分布式以支持海量数据、跨区的场景）。  
 ElasticSearch 类比关系型数据库：  
