@@ -55,7 +55,8 @@ This personal Blog contains explanation and **Java library/template implementati
     - [迪杰斯特拉算法 | Dijkstra Algorithm](./Dijkstra算法.md) (时间复杂度 `O((E+V)*logV)` - 仅计算了指定的一个起点到其他各点)
     - 贝尔曼-福特算法 | Bellman-Ford Algorithm
     - [最小生成树相关算法 | Minimum Spanning Tree Algorithms](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/MinimumSpanningTree/README.md)
-    - 网络流相关算法 | Flow Network Algorithms
+    - [网络流相关算法 | Flow Network Algorithms](./网络流.md)
+      - [增广路 | Augmenting Path](../Common%20Algorithm%20and%20Theory/图匹配.md#增广路定理-Berge's-lemma)
     - 启发式算法/搜索 | Heuristic Algorithm/Search (启发式搜索通常不讨论时空复杂度)
       - [A&ast; 搜索算法 | A&ast; Search Algorithm](./A*搜索算法.md)
         - IDA&ast; 算法 | IDA&ast; Algorithm
