@@ -16,12 +16,16 @@ This personal Blog contains explanation and **Java library/template implementati
   - [递归树 | Recursion Tree](./递归树.md)
   - 循环不变量 | Loop Invariants
 - 算法 | Algorithms
-  - 基础 | Foundation
+  - 基础与思维 | Foundation and Thought
     - [排序 (常用排序算法) | Sorting](./Common%20Sorts/README.md)
     - [枚举/穷举 | Enumerate](./枚举(穷举)算法.md)
     - [模拟 | Simulation](./模拟算法.md)
     - [递归, 迭代 | Recursion, Iteration](./递归与迭代.md)
     - [分治法 | Divide-and-Conquer](./分治法.md) (通常被认为一种方案思路或算法范型而非具体算法，时间复杂度不固定，比如快速幂的开方分解则为 `O(logN)`，而更通常的线性分解则为 `O(N)` 或 `O(N*f(N))` 或 `O(N*logN)` 比如归并排序，其他分解情况下亦有可能是其他大 O) ([分治法与二分算法的区别](./分治法.md#分治法-vs-二分算法))
+    - 推理 | Reasoning ([Wiki](https://zh.wikipedia.org/zh-hans/%E6%8E%A8%E7%90%86))
+      - 演绎法 | Deductive Reasoning ([Wiki](https://zh.wikipedia.org/zh-hans/%E6%BC%94%E7%BB%8E%E6%8E%A8%E7%90%86)；Dynamic Programming 或任意 Top-Down、Bottom-Up 的算法都基于此法)
+      - 溯因法 | Abductive Reasoning ([Wiki](https://zh.wikipedia.org/zh-hans/%E6%BA%AF%E5%9B%A0%E6%8E%A8%E7%90%86)；常用于 debug 和改善性能)
+      - 归纳法 | Inductive Reasoning ([Wiki](https://zh.wikipedia.org/zh-hans/%E5%BD%92%E7%BA%B3%E6%8E%A8%E7%90%86)；可用于基于测试数据的输入输出案例进行目标算法逻辑的先期猜测、过滤)
   - 中阶 | Intermediate
     - [二分搜索/二分算法 | Binary Search](./二分搜索.md) (时间复杂度 `O(logN)`)
     - [双指针法, 滑动窗口算法 | Two Pointer, Sliding Window](./双指针法与滑动窗口算法.md)
