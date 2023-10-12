@@ -4,6 +4,7 @@ This personal Blog contains explanation and **Java library/template implementati
   
 - 理论与概念 | Theory and Concept ([Wiki](https://oi-wiki.org/misc/cc-basic/))
   - [时空复杂度 | Time and Space Complexity](./时空复杂度.md)
+  - [算法分析初步 | Algorithm Analysis](../算法竞赛入门经典/README.md)
     - 渐进分析 | Asymptotic Analysis
     - 平摊分析 | Amortized Analysis
     - 随机算法分析 | Random Algorithm Analysis（涉及到概率和期望值的计算）
@@ -48,7 +49,7 @@ This personal Blog contains explanation and **Java library/template implementati
     - [KMP 算法 | Knuth–Morris–Pratt Algorithm](./KMP算法.md) (时间复杂度 `O(N+M)`)
     - [AC 自动机 | Aho–Corasick Algorithm](./AC自动机.md)
     - 马拉车算法 | Manacher Algorithm
-    - [并查集联合查找算法 | Disjoint-Set Union-Find Algorithm](./并查集与联合查找算法.md) (时间复杂度 `O(a(N))` - a(N) 为反阿克曼函数，对于大部分 N，a(N) 均小于 5，所以并查集的时间复杂度也可视为 `O(1)`)
+    - [并查集联合查找算法 | Disjoint-Set Union-Find Algorithm, DSU](./并查集与联合查找算法.md) (时间复杂度 `O(a(N))` - a(N) 为反阿克曼函数，对于大部分 N，a(N) 均小于 5，所以并查集的时间复杂度也可视为 `O(1)`)
     - [图匹配 | Graph Match](./图匹配.md)
       - 染色法 | Coloring Method
       - [匈牙利算法 | Hungarian Algorithm](./匈牙利算法.md) (时间复杂度 `O(N^3)`)
@@ -76,7 +77,7 @@ This personal Blog contains explanation and **Java library/template implementati
     - 多路归并 | K-Way Merge ([Wiki](https://en.wikipedia.org/wiki/K-way_merge_algorithm)、[Code](../Leetcode%20Practices/algorithms/hard/23%20Merge%20k%20Sorted%20Lists.java))
     - 环形缓冲器及其算法 | Ring Buffer ([Wiki](https://zh.wikipedia.org/wiki/%E7%92%B0%E5%BD%A2%E7%B7%A9%E8%A1%9D%E5%8D%80)；注意，可以用一个最长的环实现多环复用，用一个变量或指针记录当前的长环尾部，若想获取短环则只需从长环尾部往前回溯一次短环长度再开始遍历即可)
     - [分块/分桶法 | Range Block/Bucketing](./分桶法.md) (若为平方分割，则时间复杂度 `O(√N)`)
-      - 莫队算法 | Mo Algorithm ([Wiki](https://oi-wiki.org/misc/mo-algo/))
+      - 莫队算法 | Mo Algorithm ([Wiki](https://oi-wiki.org/misc/mo-algo/)，通常用于离线算法)
     - [蓄水池抽样算法 | Reservoir Sampling](./蓄水池抽样算法.md) (时间复杂度为 `O(N)` 且为一次遍历即可，空间复杂度 `O(m)` m 为从流中随机选出 m 个，因为 m 通常为有限的常数，所以空间复杂度可以认为是 `O(1)`)
     - [霍夫曼压缩算法 | Huffman Coding/Compression](./霍夫曼压缩算法.md)
     - [布隆过滤器及其算法 | Bloom Filter](./布隆过滤器及其算法.md)
@@ -112,8 +113,8 @@ This personal Blog contains explanation and **Java library/template implementati
     - 朴素贝叶斯 | Naive Bayes
     - 支持向量机 | Support Vector Machine, SVM
     - 隐马尔可夫模型 | Hidden Markov Model, HMM
-      - 前向与后向算法
-      - 维特比算法
+      - 前向与后向算法 | Forward–Backward Algorithm
+      - 维特比算法 | Viterbi Algorithm
     - [深度学习, 神经网络 | Deep Learning, Neural Networks](./机器学习.md#deep-learning) ([Ref](https://www.zhihu.com/question/314879954/answer/638380202))
       - [感知器 | Perceptron](./机器学习.md#single-neuron) ([Ref](https://www.youtube.com/watch?v=BS_CVhalVGw&list=PLxIHUhMHF8okwhq8poRuiHBChWjkVUHLL&index=2)；又称感知机、Neuron、Unit，该基本模型是神经网络的基础，是模拟了人工神经元的模型)
       - 卷积神经网络 | Convolutional Neural Network, CNN (用于处理网格数据，如图像、视频、音频等，进行特征提取和分类。结构由卷积层、池化层和全连接层组成，用于捕获局部特征和构建层次结构)
@@ -146,6 +147,7 @@ This personal Blog contains explanation and **Java library/template implementati
       - 线搜索 | Line Search
       - 梯度下降法 | Gradient Descent (梯度其实是高维导数的另一种称呼)
       - 牛顿法 | Newton's Method
+      - Adam 优化算法 [Ref](https://zhuanlan.zhihu.com/p/32626442)
   - 其他常见优化思想、技巧 | Common Tricks
     - 剪枝 | Pruning
     - 预处理 (打表) | Precompute (Hard Coding) ([Ref](https://www.cnblogs.com/hxtblogs/p/7654635.html))
