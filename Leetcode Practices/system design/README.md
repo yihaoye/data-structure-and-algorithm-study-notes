@@ -269,9 +269,10 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
   * 监控与日志
     
 ## API Gateway
-API 网关是位于客户端与后端服务集之间的大门 - API 管理工具，本身包括访问控制、防火墙等功能。通常 API 网关还与其他关键组件服务一起集成，又或者是负载均衡器既承担了服务发现的角色，又承担了网关的角色，所以经常叫 API 网关服务器（Http 服务器，Nginx、Nginx Plus、Kong 就是此类服务端发现模式的负载均衡器）。[Spring Cloud 方案](https://github.com/yihaoye/spring-framework-example/tree/master/spring-cloud-fundamentals)、[服务发现和负载均衡](https://bbs.huaweicloud.com/blogs/193876)、[负载均衡器和 API 网关](https://z.itpub.net/article/detail/194354318C67A5BF584DBB6F9F78F945)  
+API 网关是位于客户端与后端服务集之间的大门 - API 管理工具，本身包括访问控制、防火墙等功能。通常 API 网关还与其他关键组件服务一起集成，又或者是负载均衡器既承担了服务发现的角色，又承担了网关的角色，所以经常叫 API 网关服务器（Http 服务器，Nginx、Nginx Plus、Kong 就是此类服务端发现模式的负载均衡器）。[Spring Cloud 方案](https://github.com/yihaoye/spring-framework-example/tree/master/spring-cloud-fundamentals)、[服务发现和负载均衡](https://bbs.huaweicloud.com/blogs/193876)、[负载均衡器和 API 网关](https://z.itpub.net/article/detail/194354318C67A5BF584DBB6F9F78F945)、[API Gateway 使用场景](./api-gateway-use-cases.gif)。  
 ![](./aws-load-balancer.webp)  
 ![](./api-gateway.jpeg)  
+
 ### 自动扩展与容器编排
 底层实现中需要调度器（硬件机器、端口）、命令行（镜像、启动/停止容器）、状态机等。[具体参考](https://github.com/gogococo/orchestrator-in-go)  
 现成方案：Kubernetes、Docker Swarm、AWS ECS 等等。  
@@ -1424,7 +1425,7 @@ Thread Table 链式消息
 在一个典型的 IM（即时通讯）系统中，多个客户端可以连接到同一个服务端且同一个端口，而每个客户端与服务端之间都使用相同的 [Socket（套接字，即 IP + Port）](https://zh.wikipedia.org/zh-hans/%E7%B6%B2%E8%B7%AF%E6%8F%92%E5%BA%A7)进行通信。也就是说，服务端会监听一个指定的端口（通常是一个固定的端口号），用于接受来自多个客户端的连接请求。  
 一旦客户端发送连接请求到服务端，服务端会为其创建 Unix/Linux Socket 文件，以便在服务端与该客户端之间建立一个独立的通信通道。因为 IP + Port 是唯一的，所以不用担心多个客户端互相冲突。[Java Socket 代码示例](../../Tool%20Sets/TCP.java)  
 这样做的目的是为了支持多个客户端同时连接到服务端，并且为每个连接分配独立的通信通道，以保证数据传输的可靠性和安全性。  
-**[Java 代码完整模拟 IM 系统：多客户端 Websocket 通信并集成消息队列](../../Tool%20Sets/WebSocket.java)。**  
+**[Java 代码完整模拟 IM 系统：多客户端 Websocket 通信并集成消息队列](../../Tool%20Sets/WebSocket.java)**，因为通常单个服务器支持的 socket 链接远多于其可有效支持的线程数 [Ref](./README.md#其他硬件服务器数据)，因此前面的示例代码 + [NIO 选择器通道模式](../../Tool%20Sets/NIO.java)可有效地实现如何用更少的线程支持更多的 socket。  
 
 **网络协议**  
 轮询  
@@ -3466,6 +3467,13 @@ To Be Continue ...
 ## 数量单位中英对照
 ![](./数量单位中英对照.jpeg)  
 
+## 其他硬件、服务器数据
+* 网络连接数：
+  * HTTP 连接：中等服务器通常可以处理几千到一万个并发的 HTTP 连接，具体数量取决于服务器硬件、操作系统和网络配置。
+  * WebSocket 连接：WebSocket 连接通常更轻量级，因此中等服务器可能能够处理更多的 WebSocket 连接，可能在一万到数万个之间。
+* CPU 核数与线程限制：
+  * CPU 核数：中等服务器通常配备 4 到 16 个 CPU 核心。这是一个一般范围，根据需求可能会有更多核心的高性能服务器或更少核心的低成本服务器。
+  * 线程数：线程数通常取决于服务器的操作系统和应用程序。对于典型的多线程服务器应用程序，可能会有 2 到 4 倍或更多的线程数，以充分利用多核 CPU。这意味着中等服务器可能会运行 8 到 64 个线程或更多。
 
 
 # 其他
