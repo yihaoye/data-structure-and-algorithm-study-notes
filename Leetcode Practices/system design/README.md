@@ -449,7 +449,7 @@ Cache (cache eviction policy - e.g. Least Recently Used (LRU) with LinkedHashMap
 其他：  
 * Telemetry.
 * Security and Permissions (user permission).
-  * 该系统的一个安全考虑是：使用 `ID <-> 短链接` 容易被外部推测有多少记录从而可能泄露业务信息，一种办法是使用 [Unique ID Generator](./README.md#Unique-ID-Generator) 来创建 ID 而不是简单地使用数据库的自增主键。
+  * 该系统的一个安全考虑是：使用 `ID <-> 短链接` 容易被外部推测有多少记录从而可能泄露业务信息，一种办法是使用 [Unique ID Generator](./README.md#设计分布式-unique-id-generator计数器) 来创建 ID 而不是简单地使用数据库的自增主键。
 
 </details>
 
