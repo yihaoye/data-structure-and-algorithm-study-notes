@@ -7,7 +7,7 @@ This personal Blog contains explanation and **Java library/template implementati
   - [算法分析初步 | Algorithm Analysis](../算法竞赛入门经典/README.md)
     - 渐进分析 | Asymptotic Analysis
     - 平摊分析 | Amortized Analysis
-    - 随机算法分析 | Random Algorithm Analysis（涉及到概率和期望值的计算）
+    - 随机算法分析 | Random Algorithm Analysis (涉及到概率和期望值的计算)
   - [多项式时间 | Polynomial Time](./多项式时间.md)
   - [搜索 | Search](./搜索.md)
   - [在线/离线算法 | Online/Offline Algorithm](./在线离线算法.md)
