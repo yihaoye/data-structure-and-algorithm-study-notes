@@ -408,6 +408,7 @@ Functional Requirements:
 * 访问短链接时可以重定向到对应的长链接
 * （进阶）自定义短链接
 * （进阶）设置短链接过期时间（Purging or DB cleanup）
+* （进阶）长链接也保证唯一（即如果之前为其创建了短链接，就复用返回）
 
 Non-Functional Requirements:
 * Scalability（分库分表）
@@ -441,9 +442,14 @@ Data Partitioning and Replication - come up with a partitioning scheme that woul
 
 Cache (cache eviction policy - e.g. Least Recently Used (LRU) with LinkedHashMap).  
 
+长链接保证唯一并复用之前为其创建的短链接：引入布隆过滤器，对长链接进行检查，若不存在则必不存在，若显示存在则可能存在可能不存在，此时需要去数据库检索求证（且如果已有则直接返回短链接），因长链接为长字符串，对数据库索引不友好不理想，因此可以每次存入时增加对长链接进行哈希计算获取定长哈希值添加进同记录的额外列中并索引，如此，检查是否有该长链接时可以用后面的 SQL 进行优化 `SELECT * FROM table WHERE hash = xxx AND long_url = xxxxxx`。采用较好、理想的哈希算法可以尽量减少重复冲突。  
+以上思想与 Java 对象的 hashCode()、equals() 思想类似。  
+自定义短链接如果需要查重，则可以先将其转换成 ID，然后再检查 ID 记录是否已存在即可。  
+
 其他：  
 * Telemetry.
 * Security and Permissions (user permission).
+  * 该系统的一个安全考虑是：使用 `ID <-> 短链接` 容易被外部推测有多少记录从而可能泄露业务信息，一种办法是使用 [Unique ID Generator](./README.md#Unique-ID-Generator) 来创建 ID 而不是简单地使用数据库的自增主键。
 
 </details>
 
