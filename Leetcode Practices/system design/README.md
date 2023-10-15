@@ -2339,7 +2339,9 @@ KV 数据库主要的考点是高可用性、扩展性及高性能：
 * String createTrigger(String TriggerType, JSON Config) - 创建 Trigger 并返回其 ID
 * Boolean updateTrigger(String TriggerID, String TriggerType, JSON Config) - 更新已有的 Trigger
 
-**CDC**  
+### CDC
+![](./cdc.webp)  
+CDC（Change Data Capture）系统通常被设计为一种主动监测和捕获数据变更的机制，它不需要周期性轮询检查更新。相反，CDC 系统会主动订阅和捕获数据库中的变更事件，一旦有数据变化，CDC 系统会立即捕获并触发相应的动作，如将变更事件异步传输给目标系统（消息队列、API 接口等）。  
 * https://medium.com/meroxa/stream-your-database-changes-with-change-data-capture-part-two-8fa4daee6afc
 * https://www.modb.pro/db/70259
 * https://en.wikipedia.org/wiki/Change_data_capture

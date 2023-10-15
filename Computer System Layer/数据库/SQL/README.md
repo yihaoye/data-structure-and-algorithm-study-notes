@@ -1362,6 +1362,13 @@ EXEC procedure_name;
 ```
 
 
+## 触发器
+[MySQL 触发器 trigger 的使用](https://www.cnblogs.com/geaozhang/p/6819648.html)  
+> 尽量少使用触发器，不建议使用。  
+> 假设触发器触发每次执行 1s，insert table 500 条数据，那么就需要触发 500 次触发器，光是触发器执行的时间就花费了 500s，而 insert 500 条数据一共是 1s，那么这个 insert 的效率就非常低了。因此特别需要注意的一点是触发器的 begin end; 之间的语句的执行效率一定要高，资源消耗要小。  
+> 触发器尽量少的使用，因为不管如何，它还是很消耗资源，如果使用的话要谨慎的使用，确定它是非常高效的：触发器是针对每一行的；对增删改非常频繁的表上切记不要使用触发器，因为它会非常消耗资源。  
+
+
 ## 其他 (Misc)
 ### MySQL Common Table Expression (CTE)
 https://www.cnblogs.com/careyson/archive/2011/12/12/2284740.html  
