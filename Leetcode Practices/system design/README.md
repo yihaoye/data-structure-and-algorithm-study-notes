@@ -2,6 +2,7 @@
 系统设计重要性：在 Senior 或 Team Leader 或更高级别的岗位招聘面试中，系统设计常常拥有一票否决权。  
 而且[系统设计与现实生活有许多共通的哲学与智慧](https://www.youtube.com/watch?v=th_73AVA4dY)，例如二八法则、边际效益递减、系统冗余、机会成本（取舍策略）、墨菲定律、正负反馈（马太效应）、连锁反应（耦合解耦）、过滤分工分级（类似[分级诊疗](https://zh.wikipedia.org/wiki/%E5%88%9D%E7%B4%9A%E7%85%A7%E8%AD%B7)、梯次纵深防御）、长尾效应等等。  
 有专门的学科[系统科学](https://en.wikipedia.org/wiki/Systems_science)，系统设计就是其内容之一，软件的系统设计可以说是其子集。  
+另外，虽然身为工程师，但是系统设计时也需要具备产品经理的思维，比如要注意应对用户的不可预测的非预期的操作（即通常的错误使用方式）。  
   
 ## 针对面试
 * 白板工具：比如 https://excalidraw.com/
@@ -2235,9 +2236,10 @@ KV 数据库主要的考点是高可用性、扩展性及高性能：
   * 难以与多个数据中心一起扩展
   * 跨多个服务器，ID 不会随时间递增。
   * 当添加或删除服务器时，它的扩展性不佳。
-* UUID
+* UUID / TSID
 * Ticket Server - 单个中心数据库（包括从数据库副本）自增 ID 提供给所有其他系统，优点是针对中小系统容易实现，缺点是容易单点故障和低性能
 * [Twitter Snowflake](./../../Common%20Algorithm%20and%20Theory/雪花算法.md)
+* 随机化且非重复 ID（避免数据库数据量被外界得知）- 初始化一个 [0, 10000] 表示范围的 2 元素数组，然后用 random 产生这个范围内的一个数字，假设为 2001，那么剩下的就是 [0, 2000] 和 [2002, 10000]，然后下一次挑范围更大的数组（可通过优先队列或数据库索引实现），此处即 [2002, 10000] 产生下一个随机数，如此类推。
 
 ![](./unique-id-generator.png)  
 
@@ -2336,6 +2338,11 @@ KV 数据库主要的考点是高可用性、扩展性及高性能：
 * String checkFailure() - 查询出现故障的 Executor，并返回其正在执行的 JobID 如果没有则为空
 * String createTrigger(String TriggerType, JSON Config) - 创建 Trigger 并返回其 ID
 * Boolean updateTrigger(String TriggerID, String TriggerType, JSON Config) - 更新已有的 Trigger
+
+**CDC**  
+* https://medium.com/meroxa/stream-your-database-changes-with-change-data-capture-part-two-8fa4daee6afc
+* https://www.modb.pro/db/70259
+* https://en.wikipedia.org/wiki/Change_data_capture
 
 **其他**  
 ETL 系统其实与 cronjob / batch process 系统有一些类似。  
