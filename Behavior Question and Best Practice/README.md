@@ -151,3 +151,7 @@ Tell me about a challenging interaction with a team member. How do you handle di
 Apart from professional knowledge, what did you learn in your last role?
 * This question is testing several things: (1) the candidate’s interest in learning outside their specific domain; (2) the candidate’s ability to explain a new subject to a lay audience; and (3) the candidate’s self-reflectiveness and growth mindset.
 </details>
+</br>
+
+# 开源软件
+* [知识共享许可协议](https://zh.wikipedia.org/zh-hans/%E7%9F%A5%E8%AF%86%E5%85%B1%E4%BA%AB%E8%AE%B8%E5%8F%AF%E5%8D%8F%E8%AE%AE)
