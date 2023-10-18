@@ -4,6 +4,7 @@
 # [初等数学/基础](https://zh.wikipedia.org/wiki/%E5%88%9D%E7%AD%89%E6%95%B0%E5%AD%A6)
 * [数学归纳法](./Mathematical%20Induction.md)
 * [排列组合](./Combinatorics.md)
+  * [卡特兰数](https://zh.wikipedia.org/zh-hans/%E5%8D%A1%E5%A1%94%E5%85%B0%E6%95%B0)
 * [对数及运算法则](./Logarithm.md)
 * 初等概率
 * 集合论：关系模型、关系代数（数据库）
