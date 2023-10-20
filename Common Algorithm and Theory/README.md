@@ -111,7 +111,6 @@ This personal Blog contains explanation and **Java library/template implementati
       - DHT 的 Chord 算法 ([Wiki](https://en.wikipedia.org/wiki/Chord_(peer-to-peer)))
       - [Gossip 协议/流行病协议](../Computer%20System%20Layer/数据库/Dynamo/README.md#Gossip-协议)
   - [人工智能, 机器学习 | Artificial Intelligence, Machine Learning](./机器学习.md)
-    - 线性规划 | Linear Regression
     - [决策树算法 | Decision Tree Algorithm](./机器学习.md#决策树) ([Ref](https://www.ibm.com/cn-zh/topics/decision-trees))
       - [随机森林 | Random Forest](./机器学习.md#随机森林) ([Ref](https://www.nvidia.cn/glossary/data-science/random-forest/))
     - 朴素贝叶斯 | Naive Bayes
@@ -131,6 +130,10 @@ This personal Blog contains explanation and **Java library/template implementati
   - 并行算法 | Parallel Algorithm ([Wiki](https://en.wikipedia.org/wiki/Parallel_algorithm)、[Ref](https://blog.51cto.com/luweir/4873113?articleABtest=0)：并行算法尚在发展中，不及串行算法丰富。目前最常用的的方法是 PCAM 方法，即划分，通信，组合，映射。并行算法与串行算法最大的不同之处在于，并行算法不仅要考虑问题本身，而且还要考虑所使用的并行模型，网络连接等等)
   - [数学 | Maths](../Computer%20Science%20Maths/README.md)
     - 专项专题 | Special Topics
+      - 排序网络 | Sorting Network
+      - 矩阵运算 | Matrix Operations
+        - 施特拉森算法 | Strassen Algorithm ([Ref](https://www.youtube.com/watch?v=0oJyNmEbS4w)；时间复杂度 `~O(n^(2.8))`)
+      - 线性规划 | Linear Regression
       - [快速傅立叶变换 | Fast Fourier Transform](./FFT.md) (时间复杂度 `O(N*logN)`)
       - [鸽巢原理 | Pigeonhole Principle](./鸽巢原理.md)
       - 容斥原理 | Inclusion–Exclusion Principle

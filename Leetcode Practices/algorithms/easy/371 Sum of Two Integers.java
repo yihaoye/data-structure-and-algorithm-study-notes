@@ -16,13 +16,13 @@ Output: 1
 // Other's Solution 1:
 class Solution {
     public int getSum(int a, int b) {
-        return b == 0 ? a : getSum(a^b, (a&b)<<1);
+        return b == 0 ? a : getSum(a ^ b, (a & b) << 1);
     }
 
     // Above is the shorten of follow:
     /*
     public int getSum(int a, int b) {
-        if(b == 0) return a;
+        if (b == 0) return a;
         int carry = (a & b) << 1;
         int sum = a ^ b;
         return getSum(sum, carry);
