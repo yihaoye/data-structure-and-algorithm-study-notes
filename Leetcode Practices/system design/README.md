@@ -2249,10 +2249,12 @@ KV 数据库主要的考点是高可用性、扩展性及高性能：
 * 部分长度调整。例如，在低并发和长期应用程序中，减少序列号但增加时间戳位是有效的。
 * 高可用性。由于 ID 生成器是一个关键任务的系统，它必须具备高可用性。
 
-### 计数器
-参考：
-* [系统设计之分布式计数器](https://www.51cto.com/article/705970.html)
+其他参考：  
 * [How to Generate Unique IDs in Distributed Systems: 6 Key Strategies](https://levelup.gitconnected.com/how-to-generate-unique-ids-in-distributed-systems-6-key-strategies-37a8ab3b367d)
+
+### 计数器
+参考：  
+* [系统设计之分布式计数器](https://www.51cto.com/article/705970.html)
 * [System Design: Distributed Counter (12 approaches)](https://www.youtube.com/watch?v=V1HlNh4IhUo)
 
 </details>
