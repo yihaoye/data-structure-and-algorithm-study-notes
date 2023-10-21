@@ -2252,6 +2252,7 @@ KV 数据库主要的考点是高可用性、扩展性及高性能：
 ### 计数器
 参考：
 * [系统设计之分布式计数器](https://www.51cto.com/article/705970.html)
+* [How to Generate Unique IDs in Distributed Systems: 6 Key Strategies](https://levelup.gitconnected.com/how-to-generate-unique-ids-in-distributed-systems-6-key-strategies-37a8ab3b367d)
 * [System Design: Distributed Counter (12 approaches)](https://www.youtube.com/watch?v=V1HlNh4IhUo)
 
 </details>
