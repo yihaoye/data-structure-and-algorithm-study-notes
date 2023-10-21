@@ -2902,7 +2902,7 @@ Ref：
 * https://newsletter.pragmaticengineer.com/p/designing-a-payment-system
   
 支付系统是用于通过货币价值转移来结算金融交易的系统。这包括使其交易成为可能的机构、工具、人员、规则、程序、标准和技术。  
-该系统只是面向、支持公司主营业务的支付集成子系统，而不是设计更底层的 PSP 或支付网关，因为后者需要保证遵守许多标准（standard）、合规性（compliance）如 PCI-DSS 等。  
+该系统只是面向、支持公司主营业务的支付集成子系统，而不是设计更底层的 PSP 或支付网关，因为后者需要保证遵守许多标准（standard）、合规性（compliance）如 [PCI-DSS](https://www.youtube.com/watch?v=dlK7jec2rXo) 等。  
 
 **需求分析**  
 * Functional requirements

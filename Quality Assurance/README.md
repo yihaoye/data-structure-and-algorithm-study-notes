@@ -1,5 +1,6 @@
 # Quality Assurance
 在面试的 Take Home Project 或 OOD Exam 环节里经常会或多或少地考核代码质量以及测试相关，所以也需要特别注意。  
+![](./tests.jpeg)  
 
 ## 代码质量
 ### <代码整洁之道>
