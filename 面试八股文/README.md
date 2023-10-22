@@ -100,6 +100,8 @@
 * 结果模型的持久化 - 训练好的模型可以通过不同的方式进行持久化存储，以便在之后的时间点重新加载和使用。以下是一些常见的模型持久化存储方法：模型参数保存文件中（常见的格式包括 HDF5、TensorFlow 的 SavedModel、PyTorch 的 .pth 文件等）、模型序列化（将整个模型对象，包括权重、结构和训练配置保存到文件中，这通常用于保存完整的模型架构和状态）、ONNX 格式。另外还可以对存储压缩和优化，以及上传云存储和进行版本控制。
 * [自动机器学习 AutoML](https://zh.wikipedia.org/wiki/%E8%87%AA%E5%8A%A8%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0) - 是将机器学习应用于现实世界问题的任务自动化的过程。自动机器学习可能包括从原始数据集开始到构建准备部署的机器学习模型的每个阶段。
 * [联邦学习](https://zh.wikipedia.org/wiki/%E8%81%AF%E9%82%A6%E5%AD%B8%E7%BF%92) - 联合学习使多个参与者能够在不共享数据的情况下建立一个共同的、强大的机器学习模型，从而可以解决数据隐私、数据安全、数据访问权限和异构数据访问等关键问题（力求在保护隐私的前提下提高模型效果，比如在金融、医疗、政府中起到重要作用）。
+* [OpenAI: New and improved content moderation tooling](https://openai.com/blog/new-and-improved-content-moderation-tooling)
+  * [A Holistic Approach to Undesired Content Detection in the Real World](https://browse.arxiv.org/pdf/2208.03274.pdf)
 
 ## 硬件与操作系统（Linux & bash）高频
 * [进程、线程、协程的区别](./../Computer%20System%20Layer/进程与线程.md)

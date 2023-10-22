@@ -102,6 +102,8 @@ Keep at least 3 project examples/stories which better to be large scale.
 我在过去整个 xx 年的职业生涯中都从事软件工程工作，对批判性思维的承诺和对细节的关注使我走到了今天的位置：XXX 公司的高级软件工程师。我对流程充满热情，而且我是一位经验丰富的团队领导者，通常在任何给定时间管理 X 名开发人员。  
 在担任高级职位之前，我曾担任 XXX 公司的软件工程师和 XXX 公司/项目的程序员。因为我已经担任过该领域的所有其他职位，所以我对成功开展项目的条件有着敏锐的洞察力。我的职业目标是作为 CTO 进入管理层，我知道这个角色会帮助我磨练我的领导技能。  
 
+# [个人品牌](https://wiki.mbalib.com/wiki/%E4%B8%AA%E4%BA%BA%E5%93%81%E7%89%8C)
+
 # 软技能
 * [Improving Communication Skills](https://www.coursera.org/learn/wharton-communication-skills)
 * [Creative Thinking: Techniques and Tools for Success](https://www.coursera.org/learn/creative-thinking-techniques-and-tools-for-success)
