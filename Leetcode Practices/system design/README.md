@@ -1424,6 +1424,9 @@ Thread Table 链式消息
 * Thread Table - 如果使用 SQL 的话，需要对 thread_id (查询某个对话的信息)和 participant_hash_code (查询用户之间是否已经有 thread 存在了)添加索引，因为会有频繁的查询操作。如果使用 NoSQL 的话，对于需要建立多个索引的情况，可以分成两个表
 * UserThread Table - 也可以使用 NoSQL
 
+Discord 海量数据存储方案：  
+![](./discord-data-store.jpeg)  
+
 参考：
 * https://www.acwing.com/blog/content/26646/
 * https://www.youtube.com/watch?v=uzeJb7ZjoQ4
