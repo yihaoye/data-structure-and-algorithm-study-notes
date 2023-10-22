@@ -57,6 +57,7 @@
 * [go routine 和 thread、process 区别](https://huweicai.com/process-thread-goroutine/)
 * panic 相关 - [panic](https://www.yiibai.com/go/golang-panic.html)、[panic 和 recover](https://draveness.me/golang/docs/part2-foundation/ch05-keyword/golang-panic-recover/)
 * [上下文 Context](https://draveness.me/golang/docs/part3-runtime/ch06-concurrency/golang-context/)
+* [Golang 的 select、defer、Context](https://github.com/yihaoye/go-example/blob/master/general-demo/README.md)
 * [什么是 Go Scheduler](https://golang.design/go-questions/sched/what-is/)
 * [GPM 是什么](https://golang.design/go-questions/sched/gpm/)
 
