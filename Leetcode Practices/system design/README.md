@@ -40,7 +40,7 @@
 * No more no less. 不要总想着设计最牛的系统，要设计够用的系统。
 * Work solution first. 先设计一个基本能工作的系统，然后再逐步优化。
 * Analysis is important than solution. 系统设计没有标准答案，记住答案是没用的，通过分析过程展示知识储备，权衡各种设计方式的利弊。
-* 另外不要总是只局限于如何在服务端工作/优化，有时还可以根据具体情况把相关工作/优化搬到客户端去做，比如缓存、重试策略、限流等等，可能会比服务端更高效、适用，又比如如果一个服务端 API 实现多个功能如果太过困难复杂 -- 比如 SQL 要做多个 JOIN 甚至跨库操作等等，可以根据情况把单个 API 拆分成多个 API（或者有时是相反的如 SQL 处理更简便比如 GROUP_CONCAT）然后让客户端负责分别调用它们、聚合返回的数据以降低复杂性、提高健壮性。永远记着两个方向上都考虑到，而且这有时还会影响整个系统架构的设计变动。
+* 另外不要总是只局限于如何在服务端工作/优化，有时还可以根据具体情况把相关工作/优化搬到客户端去做，比如缓存、重试策略、限流、reCaptcha 等等，可能会比服务端更高效、适用，又比如如果一个服务端 API 实现多个功能如果太过困难复杂 -- 比如 SQL 要做多个 JOIN 甚至跨库操作等等，可以根据情况把单个 API 拆分成多个 API（或者有时是相反的如 SQL 处理更简便比如 GROUP_CONCAT）然后让客户端负责分别调用它们、聚合返回的数据以降低复杂性、提高健壮性。永远记着两个方向上都考虑到，而且这有时还会影响整个系统架构的设计变动。
   
 ## 系统学习
 * [Grok System Design Tutorial](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/blob/master/Leetcode%20Practices/system%20design/grok_system_design_interview.pdf)
@@ -1503,6 +1503,8 @@ WebSocket 连接由客户端启动。它是双向和持久的。它从 HTTP 连�
 
 转载自：https://osjobs.net/system/posts/spike-system/  
 其他参考资料：https://www.youtube.com/watch?v=2BWr0fsDSs0  
+
+![](./amazon-prime-day-sales.jpeg)  
 
 现在的电商系统功能繁多，除了最基本的购买商品功能，还有物流跟踪，订单管理，社区交互等功能。不过面试中关注的主要是购买商品功能，这里将其他次要功能归类为其他业务功能，购买商品流程如下：  
 ![](./购买商品.svg)  
