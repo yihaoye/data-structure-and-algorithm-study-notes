@@ -140,6 +140,7 @@ This personal Blog contains explanation and **Java library/template implementati
       - [取模运算 | Modulo](./取模运算.md)
       - [快速幂法 | Binary Exponentiation](../Tool%20Sets/Math.java)
       - [高斯消元法 | Gaussian Elimination](./高斯消元法.md)
+      - 中国剩余定理 | Chinese Remainder Theorem ([Wiki](https://zh.wikipedia.org/wiki/%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86))
       - 高精度计算 | Arbitrary-Precision Arithmetic ([Wiki](https://oi-wiki.org/math/bignum/))
       - [约瑟夫环/问题 | Josephus Problem](./约瑟夫环.md)
       - 欧拉图 | Euler Diagram ([Wiki](https://oi-wiki.org/graph/euler/))
