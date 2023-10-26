@@ -150,7 +150,7 @@ This personal Blog contains explanation and **Java library/template implementati
         - 三分搜索 | Ternary Search ([Ref](https://www.cnblogs.com/PJQOOO/p/4161891.html))
         - 向量计算 | Vector ([Ref](https://cp.wiwiho.me/vector/))
       - [其他数学工具、操作与套路 | Other Math Tools](../Tool%20Sets/Math.java)
-    - 博弈论 | Game Theory ([Ref](https://zhuanlan.zhihu.com/p/183168457))
+    - [博弈论 | Game Theory](./博弈论.md)
     - 最优化 | Mathematical Optimization ([Wiki](https://en.wikipedia.org/wiki/Mathematical_optimization)、[Ref](https://space.bilibili.com/97068901/channel/collectiondetail?sid=1387071)；最优化是应用数学的一个分支，是计算机与人工智能的一个重要研究领域：从很大程度上来说，[深度学习实际上是在解决大量复杂的优化问题](https://www.jiqizhixin.com/articles/071502)，神经网络仅仅是一个非常复杂的函数，包含数百万个参数，这些参数代表的是一个问题的数学解答，实质上，训练神经网络是在最小化一个损失函数，这个损失函数的值衡量了网络的性能在给定数据集上离完美还差多少)
       - 线搜索 | Line Search
       - 梯度下降法 | Gradient Descent (梯度其实是高维导数的另一种称呼)
