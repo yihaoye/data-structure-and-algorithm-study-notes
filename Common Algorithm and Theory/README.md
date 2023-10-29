@@ -89,7 +89,12 @@ This personal Blog contains explanation and **Java library/template implementati
     - 最小哈希 | MinHash ([Wiki](https://en.wikipedia.org/wiki/MinHash))
     - [HyperLogLog 算法](./HyperLogLog.md)
     - [雪花算法 | Snowflake ID](./雪花算法.md)
-    - [一致性哈希 | Consistent Hashing](./../Leetcode%20Practices/system%20design/一致性哈希.md) ([Code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/consistent%20hash/README.md))
+    - 一致性哈希 | Consistent Hashing ([Ref](https://dgryski.medium.com/consistent-hashing-algorithmic-tradeoffs-ef6b8e2fcae8))
+      - [环形哈希 (虚拟节点) | Ring Hashing](./../Leetcode%20Practices/system%20design/一致性哈希.md) ([Code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/consistent%20hash/README.md))
+      - 跳跃哈希 | Jump Hashing
+      - Multi-Probe Consistent Hashing
+      - Rendezvous Hashing
+      - Maglev Hashing
     - [反向索引 | Inverted Index]((../Leetcode%20Practices/system%20design/README.md#设计搜索引擎-Twitter-Search)) ([Code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/inverted%20index/InvertedIndex.java))
     - Frugal Streaming 算法
     - [Geohash 算法, S2 Geometry 算法](../Leetcode%20Practices/system%20design/README.md#设计-Uber)

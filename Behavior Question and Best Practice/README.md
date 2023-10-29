@@ -111,6 +111,7 @@ Books:
 # [个人品牌](https://wiki.mbalib.com/wiki/%E4%B8%AA%E4%BA%BA%E5%93%81%E7%89%8C)
 
 # 软技能
+* [搜索技术](https://www.youtube.com/watch?v=tiN6T1LewmQ)
 * [Improving Communication Skills](https://www.coursera.org/learn/wharton-communication-skills)
 * [Creative Thinking: Techniques and Tools for Success](https://www.coursera.org/learn/creative-thinking-techniques-and-tools-for-success)
 * [Communication For Everyone Specialization](https://www.coursera.org/specializations/communicationforeveryone)
