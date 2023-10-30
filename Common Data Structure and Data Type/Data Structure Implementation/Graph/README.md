@@ -119,7 +119,7 @@ for (Edge e : es) {
 ```
 
 
-总结  
+## 总结
 对于邻接矩阵存图来说，由于内存消耗的局限性，它的适用范围比较狭窄，几乎只能在简单图论题目中见到。  
 
 邻接表存图是最为常见的一种，绝大部分采用 C++ STL 中的 vector 实现，一般情况下大部分图论题目都能使用该存图方式。  
@@ -131,3 +131,7 @@ for (Edge e : es) {
 https://leetcode.cn/problems/network-delay-time/solution/gong-shui-san-xie-yi-ti-wu-jie-wu-chong-oghpz/  
 https://jzqt.github.io/2015/07/21/ACM%E5%9B%BE%E8%AE%BA%E4%B9%8B%E5%AD%98%E5%9B%BE%E6%96%B9%E5%BC%8F/  
 https://zhuanlan.zhihu.com/p/43069713  
+
+
+# 连通分量
+无向图 G 的极大连通子图称为 G 的连通分量 (Connected Component)。任何连通图的连通分量只有一个，即是其自身，非连通的无向图有多个连通分量。  
