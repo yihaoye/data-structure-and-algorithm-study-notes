@@ -141,7 +141,7 @@ This personal Blog contains explanation and **Java library/template implementati
       - 线性规划 | Linear Regression
       - [快速傅立叶变换 | Fast Fourier Transform](./FFT.md) (时间复杂度 `O(N*logN)`)
       - [鸽巢原理 | Pigeonhole Principle](./鸽巢原理.md)
-      - 容斥原理 | Inclusion–Exclusion Principle
+      - 容斥原理 | Inclusion–Exclusion Principle ([Wiki](https://oi-wiki.org/math/combinatorics/inclusion-exclusion-principle/))
       - [取模运算 | Modulo](./取模运算.md)
       - [快速幂法 | Binary Exponentiation](../Tool%20Sets/Math.java)
       - [高斯消元法 | Gaussian Elimination](./高斯消元法.md)
@@ -160,7 +160,8 @@ This personal Blog contains explanation and **Java library/template implementati
       - 线搜索 | Line Search
       - 梯度下降法 | Gradient Descent (梯度其实是高维导数的另一种称呼)
       - 牛顿法 | Newton's Method
-      - Adam 优化算法 [Ref](https://zhuanlan.zhihu.com/p/32626442)
+      - Adam 优化算法 ([Ref](https://zhuanlan.zhihu.com/p/32626442))
+      - 凸函数/凸优化 | Convex Function/Optimization ([Wiki 1](https://zh.wikipedia.org/zh-hans/%E5%87%B8%E5%87%BD%E6%95%B0)、[Wiki 2](https://zh.wikipedia.org/zh-hans/%E5%87%B8%E5%84%AA%E5%8C%96)、[非凸优化](https://zhuanlan.zhihu.com/p/70127314))
   - 其他常见优化思想、技巧 | Common Tricks
     - [剪枝 | Pruning](./剪枝.md)
     - 预处理 (打表) | Precompute (Hard Coding) ([Ref](https://www.cnblogs.com/hxtblogs/p/7654635.html))
