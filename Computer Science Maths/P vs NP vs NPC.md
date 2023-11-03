@@ -1,7 +1,7 @@
 ## NP-Hard and NP-Complete Problems
 https://www.youtube.com/watch?v=e2cF8a5aAhE  
 
-
+## [重谈 P 和 NP](http://www.matrix67.com/blog/archives/7084)
 
 ## P vs NP vs NPC
 ```

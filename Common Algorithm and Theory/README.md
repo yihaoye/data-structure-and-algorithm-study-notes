@@ -135,7 +135,7 @@ This personal Blog contains explanation and **Java library/template implementati
   - 并行算法 | Parallel Algorithm ([Wiki](https://en.wikipedia.org/wiki/Parallel_algorithm)、[Ref](https://blog.51cto.com/luweir/4873113?articleABtest=0)：并行算法尚在发展中，不及串行算法丰富。目前最常用的的方法是 PCAM 方法，即划分，通信，组合，映射。并行算法与串行算法最大的不同之处在于，并行算法不仅要考虑问题本身，而且还要考虑所使用的并行模型，网络连接等等)
   - [数学 | Maths](../Computer%20Science%20Maths/README.md)
     - 专项专题 | Special Topics
-      - 排序网络 | Sorting Network
+      - 排序网络 | Sorting Network ([Ref](http://www.matrix67.com/blog/archives/185))
       - 矩阵运算 | Matrix Operations
         - 施特拉森算法 | Strassen Algorithm ([Ref](https://www.youtube.com/watch?v=0oJyNmEbS4w)；时间复杂度 `~O(n^(2.8))`)
       - 线性规划 | Linear Regression
@@ -173,4 +173,4 @@ This personal Blog contains explanation and **Java library/template implementati
 
 </br>
 
-以上部分参考自链接：[Ref 1](https://oi-wiki.org/basic/)、[Ref 2](https://www.acoier.com/tags/)。  
+以上部分参考自链接：[Ref 1](https://oi-wiki.org/basic/)、[Ref 2](https://www.acoier.com/tags/)、[Ref 3](http://www.matrix67.com/blog/)。  
