@@ -73,6 +73,9 @@ Javadoc 是一款能根据源代码中的文档注释来产生 HTML 格式的 AP
 * 非增量测试所占用的机器时间显得少一些。
 * 模块测试阶段开始时，如果使用的是非增量测试，就会有更多的机会进行并行操作 (也就是说，所有的模块可以同时测试)。
 
+### [混沌工程](https://principlesofchaos.org/zh/)
+混沌工程（CHAOS ENGINEERING）是在系统上进行实验的学科, 目的是建立对系统抵御生产环境中失控条件的能力以及信心。  
+
 ### Modern Best Practices for Testing in Java
 * [资料](https://phauer.com/2019/modern-best-practices-testing-java/)
 
