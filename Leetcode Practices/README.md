@@ -177,7 +177,7 @@
 - [x] 326	Power of Three		
 - [ ] 342	Power of Four		
 - [ ] 372	Super Pow		
-- [ ] 233	Number of Digit One		
+- [x] 233	Number of Digit One		
 - [x] 319	Bulb Switcher		
 - [x] 292	Nim Game		
 - [x] 202	Happy Number		
