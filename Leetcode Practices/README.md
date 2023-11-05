@@ -185,7 +185,7 @@
 - [x] 263	Ugly Number		
 - [ ] 264	Ugly Number II		
 - [ ] 306	Additive Number		
-- [ ] 172	Factorial Trailing Zeroes		
+- [x] 172	Factorial Trailing Zeroes		
 - [x] 343	Integer Break		
 - [ ] 396	Rotate Function		
 - [x] 390	Elimination Game		
