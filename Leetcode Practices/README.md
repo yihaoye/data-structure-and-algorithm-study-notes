@@ -273,7 +273,7 @@
 - [x] 46	Permutations		
 - [x] 47	Permutations II		
 - [x] 31	Next Permutation		                        String
-- [ ] 60	Permutation Sequence		                    String
+- [x] 60	Permutation Sequence		                    String
 - [ ] 291	Word Pattern II		
 - [x] 17	Letter Combinations of a Phone Number		
 - [ ] 320	Generalized Abbreviation		
@@ -561,7 +561,7 @@
 - [x] 56	Merge Intervals		
 - [x] 57	Insert Interval		
 - [ ] 59	Spiral Matrix II		
-- [ ] 60	Permutation Sequence		
+- [x] 60	Permutation Sequence		
 - [x] 62	Unique Paths		
 - [x] 64	Minimum Path Sum		
 - [ ] 65	Valid Number		
