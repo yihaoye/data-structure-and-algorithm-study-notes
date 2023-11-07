@@ -24,6 +24,8 @@
 * RPC 与 REST 区别与选择 - [解答一](https://www.cnblogs.com/wongbingming/p/11086773.html)、[解答二](https://zhuanlan.zhihu.com/p/102760613)、[服务调用 / API 设计](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md#API%20Design)
 * [CI 服务有什么用途](https://www.modb.pro/db/404626)
 * [服务降级、服务熔断](./../Leetcode%20Practices/system%20design/%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E4%B8%8E%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD.md)
+* [态势感知](https://www.amazonaws.cn/en/knowledge/what-is-situation-awareness/)
+* 云计算的定义 - 云计算就是指通过互联网，以按需服务的形式提供计算资源。这样企业就无需自行采购、配置或管理资源，而且只需要为实际使用的资源付费。本质上云计算就是第三方数据中心托管的一堆 Linux（或其他 OS）服务器。
   
 ## Java 高频
 * Java 中垃圾回收机制中如何判断对象需要回收？常见的 GC 回收算法有哪些？ （中等）
