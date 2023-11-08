@@ -203,6 +203,7 @@
   * 多重要素验证（应用在例如后勤办公室等）
   * 对敏感数据进行 AES 加密
   * 避免非加密信息/数据在非安全处（比如邮件）存放/发送
+* [伪基站](https://zh.wikipedia.org/wiki/%E4%BC%AA%E5%9F%BA%E7%AB%99)
 
 ## Redis 高频
 * redis 有哪些数据类型？可以应用在什么场景？[Ref 1](https://cloud.tencent.com/developer/article/1975464)、[Ref 2](../Computer%20System%20Layer/数据库/Redis/README.md)

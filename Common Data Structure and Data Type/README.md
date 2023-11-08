@@ -75,6 +75,7 @@
   - [四叉树 | Quad Tree](./../Common%20Algorithm%20and%20Theory/QuadTree-RTree-算法.md)
     - [八叉树 | OcTree](./../Common%20Algorithm%20and%20Theory/QuadTree-RTree-算法.md)
   - [R 树 | R Tree](./../Common%20Algorithm%20and%20Theory/QuadTree-RTree-算法.md)
+  - [H 树 | H Tree](https://en.wikipedia.org/wiki/HTree)
   - VEB 树 | Van Emde Boas Tree ([Ref](https://www.luogu.com.cn/blog/RuntimeErrror/ni-suo-fou-zhi-dao-di-shuo-ju-jie-gou-van-emde-boas-shu)；所有操作皆为 O(loglogN)，但是该数据结构本身有一定限制)
   - [分形树 | Fractal Tree](./../Computer%20System%20Layer/数据库/README.md#分形树)
 - [图 | Graph](./Data%20Structure%20Implementation/Graph/README.md)
