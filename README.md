@@ -106,12 +106,12 @@
   * [快慢指针 | Leetcode Q142](./Leetcode%20Practices/algorithms/medium/142%20Linked%20List%20Cycle%20II.java)
   * [单调栈（单调队列）| Leetcode Q503](./Common%20Algorithm%20and%20Theory/单调栈.md)
   * [位运算实现加减乘除 | Leetcode Q371](./Leetcode%20Practices/algorithms/easy/371%20Sum%20of%20Two%20Integers.java)
+  * [分块分桶 | Leetcode Q901](./Common%20Algorithm%20and%20Theory/分桶法.md)
   * [树复原 | Leetcode Q105 Q106](./Leetcode%20Practices/algorithms/medium/105%20Construct%20Binary%20Tree%20from%20Preorder%20and%20Inorder%20Traversal.java)
   * [穷举递增子序列 | Leetcode Q491](./Leetcode%20Practices/algorithms/medium/491%20Increasing%20Subsequences.java)
   * [翻转树 | Leetcode Q156 Q226](./Leetcode%20Practices/algorithms/medium/156%20Binary%20Tree%20Upside%20Down.java)
   * [K 数之和 | Leetcode Q18](./Leetcode%20Practices/algorithms/medium/18%204Sum.java)
   * [倍增法 | Leetcode Q1483](./Common%20Algorithm%20and%20Theory/倍增法.md)
-  * [分块分桶 | Leetcode Q901](./Common%20Algorithm%20and%20Theory/分桶法.md)
 * 高级算法
   * [拓扑排序 | Leetcode Q210](./Common%20Algorithm%20and%20Theory/拓扑排序.md)
   * [多路归并 | Leetcode Q23-合并排序链表 Q355-设计推特时间线 Q373-最值-TopK-组合](./Leetcode%20Practices/algorithms/hard/23%20Merge%20k%20Sorted%20Lists.java)
