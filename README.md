@@ -6,11 +6,17 @@
 ### 本笔记包括以下内容:  
 * [行为型问题与工作实践 | Behavior Question & Best Practice](./Behavior%20Question%20and%20Best%20Practice/README.md)
   * [质量保证 | Quality Assurance](./Quality%20Assurance/README.md)
-* [Practices](./Leetcode%20Practices/) (主要包含了 [Leetcode 算法](./Leetcode%20Practices/algorithms/)、[SQL 练习](./Leetcode%20Practices/database/)、[Object Oriented Design](./Leetcode%20Practices/object%20oriented%20design/README.md) 、[System Design](./Leetcode%20Practices/system%20design/README.md) 和 [API Design](./Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md#api-design)；算法题第一次提交 round 1 是自己的首次解答方法，第二次提交 round 2 是进行复盘复习后并添加、理解他人的更优解以及增添其他语言解题实现，round 0 则是首次答题没头绪参考他人解题思路)
+* [Coding Practices](./Leetcode%20Practices/) (主要包含了 [Leetcode 算法](./Leetcode%20Practices/algorithms/)、[SQL 练习](./Leetcode%20Practices/database/)；算法题第一次提交 round 1 是自己的首次解答方法，第二次提交 round 2 是进行复盘复习后并添加、理解他人的更优解以及增添其他语言解题实现，round 0 则是首次答题没头绪参考他人解题思路)
   * **[重点：分类分析套路](./分析套路.md)**
   * [Codeforces](./Codeforces/README.md)
   * [HackerRank](./HackerRank%20Practises/) (包括一些 [Java 语言实例解析](./HackerRank%20Practises/java/)、[Linux Bash](./HackerRank%20Practises/bash/))
   * [其他算法实践、真题、面经笔记](./Other%20Practices/)
+* 系统工程实践及理论相关
+  * [Object Oriented Design](./Leetcode%20Practices/object%20oriented%20design/README.md)
+  * [System Design](./Leetcode%20Practices/system%20design/README.md)
+  * [API Design](./Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md#api-design)
+  * 系统论、控制论、信息论 | Systems Theory、Control Theory、Information Theory (又称 SCI 理论或老三论，《控制论与科学方法论》：[Ref 1](https://writings.sh/post/cybernetics-and-scientific-methodology-notes)、[Ref 2](https://book.douban.com/subject/1322336/))
+  * 耗散结构论、协同论、突变论 | Dissipative System、Synergetics、Catastrophe Theory (又称 DSC 理论或新三论)
 * [工具集 | Tool Sets](./Tool%20Sets/README.md) (常用编码逻辑工具集查询手册，包括一些 Java 语言实例解析、非 Java 语言内置但是重要的数学工具等等)
 * [算法及理论 | Common Algorithm & Theory](./Common%20Algorithm%20and%20Theory/README.md)
 * [数据结构、数据类型及其实现 | Common Data Structure & Data Type & Implementation](./Common%20Data%20Structure%20and%20Data%20Type/README.md) (包括并发相关的数据结构的详解)
