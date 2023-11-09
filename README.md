@@ -16,7 +16,7 @@
   * [System Design](./Leetcode%20Practices/system%20design/README.md)
   * [API Design](./Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md#api-design)
   * 系统论、控制论、信息论 | Systems Theory、Control Theory、Information Theory (又称 SCI 理论或老三论，《控制论与科学方法论》：[Ref 1](https://writings.sh/post/cybernetics-and-scientific-methodology-notes)、[Ref 2](https://book.douban.com/subject/1322336/))
-  * 耗散结构论、协同论、突变论 | Dissipative System、Synergetics、Catastrophe Theory (又称 DSC 理论或新三论)
+  * 耗散结构论、协同论、突变论 | Dissipative Structure Theory、Synergetics、Catastrophe Theory (又称 DSC 理论或新三论，[Ref](https://groups.google.com/g/academictokyo/c/GGKwiFLZYRE))
 * [工具集 | Tool Sets](./Tool%20Sets/README.md) (常用编码逻辑工具集查询手册，包括一些 Java 语言实例解析、非 Java 语言内置但是重要的数学工具等等)
 * [算法及理论 | Common Algorithm & Theory](./Common%20Algorithm%20and%20Theory/README.md)
 * [数据结构、数据类型及其实现 | Common Data Structure & Data Type & Implementation](./Common%20Data%20Structure%20and%20Data%20Type/README.md) (包括并发相关的数据结构的详解)
