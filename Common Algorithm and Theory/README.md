@@ -162,6 +162,7 @@ This personal Blog contains explanation and **Java library/template implementati
       - 牛顿法 | Newton's Method
       - Adam 优化算法 ([Ref](https://zhuanlan.zhihu.com/p/32626442))
       - 凸函数/凸优化 | Convex Function/Optimization ([Wiki 1](https://zh.wikipedia.org/zh-hans/%E5%87%B8%E5%87%BD%E6%95%B0)、[Wiki 2](https://zh.wikipedia.org/zh-hans/%E5%87%B8%E5%84%AA%E5%8C%96)、[非凸优化](https://zhuanlan.zhihu.com/p/70127314))
+    - 控制论、信息论、系统论 | Cybernetics、Information Theory、Systems Theory (控制论与科学方法论：[Ref 1](https://writings.sh/post/cybernetics-and-scientific-methodology-notes)、[Ref 2](https://book.douban.com/subject/1322336/))
   - 其他常见优化思想、技巧 | Common Tricks
     - [剪枝 | Pruning](./剪枝.md)
     - 预处理 (打表) | Precompute (Hard Coding) ([Ref](https://www.cnblogs.com/hxtblogs/p/7654635.html))
