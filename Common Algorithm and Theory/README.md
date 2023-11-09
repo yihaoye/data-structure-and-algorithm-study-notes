@@ -93,7 +93,7 @@ This personal Blog contains explanation and **Java library/template implementati
       - [环形哈希 (虚拟节点) | Ring Hashing](./../Leetcode%20Practices/system%20design/一致性哈希.md) ([Code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/consistent%20hash/README.md))
       - 跳跃哈希 | Jump Hashing ([Ref](https://writings.sh/post/consistent-hashing-algorithms-part-3-jump-consistent-hash))
       - Multi-Probe Consistent Hashing
-      - Rendezvous Hashing
+      - Rendezvous Hashing ([Wiki](https://en.m.wikipedia.org/wiki/Rendezvous_hashing))
       - Maglev Hashing
     - [反向索引 | Inverted Index]((../Leetcode%20Practices/system%20design/README.md#设计搜索引擎-Twitter-Search)) ([Code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/inverted%20index/InvertedIndex.java))
     - Frugal Streaming 算法

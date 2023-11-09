@@ -11,16 +11,16 @@
   * [Codeforces](./Codeforces/README.md)
   * [HackerRank](./HackerRank%20Practises/) (包括一些 [Java 语言实例解析](./HackerRank%20Practises/java/)、[Linux Bash](./HackerRank%20Practises/bash/))
   * [其他算法实践、真题、面经笔记](./Other%20Practices/)
-* 系统工程实践及理论相关
+* [工具集 | Tool Sets](./Tool%20Sets/README.md) (常用编码逻辑工具集查询手册，包括一些 Java 语言实例解析、非 Java 语言内置但是重要的数学工具等等)
+* [算法及理论 | Common Algorithm & Theory](./Common%20Algorithm%20and%20Theory/README.md)
+* [数据结构、数据类型及其实现 | Common Data Structure & Data Type & Implementation](./Common%20Data%20Structure%20and%20Data%20Type/README.md) (包括并发相关的数据结构的详解)
+* [计算机数学 | Computer Science Maths](./Computer%20Science%20Maths/README.md) (包括理论信息学如 [P/NP 问题](./Computer%20Science%20Maths/P%20vs%20NP%20vs%20NPC.md)，基础数学如[数学归纳法](./Computer%20Science%20Maths/Mathematical%20Induction.md)、[排列组合](./Computer%20Science%20Maths/Combinatorics.md)，高等数学以及算法常用数学工具、ACM 数论等等)
+* 系统工程实践及理论相关 | System Engineering & Theory
   * [Object Oriented Design](./Leetcode%20Practices/object%20oriented%20design/README.md)
   * [System Design](./Leetcode%20Practices/system%20design/README.md)
   * [API Design](./Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md#api-design)
   * 系统论、控制论、信息论 | Systems Theory、Control Theory、Information Theory (又称 SCI 理论或老三论，《控制论与科学方法论》：[Ref 1](https://writings.sh/post/cybernetics-and-scientific-methodology-notes)、[Ref 2](https://book.douban.com/subject/1322336/))
   * 耗散结构论、协同论、突变论 | Dissipative Structure Theory、Synergetics、Catastrophe Theory (又称 DSC 理论或新三论，[Ref](https://groups.google.com/g/academictokyo/c/GGKwiFLZYRE))
-* [工具集 | Tool Sets](./Tool%20Sets/README.md) (常用编码逻辑工具集查询手册，包括一些 Java 语言实例解析、非 Java 语言内置但是重要的数学工具等等)
-* [算法及理论 | Common Algorithm & Theory](./Common%20Algorithm%20and%20Theory/README.md)
-* [数据结构、数据类型及其实现 | Common Data Structure & Data Type & Implementation](./Common%20Data%20Structure%20and%20Data%20Type/README.md) (包括并发相关的数据结构的详解)
-* [计算机数学 | Computer Science Maths](./Computer%20Science%20Maths/README.md) (包括理论信息学如 [P/NP 问题](./Computer%20Science%20Maths/P%20vs%20NP%20vs%20NPC.md)，基础数学如[数学归纳法](./Computer%20Science%20Maths/Mathematical%20Induction.md)、[排列组合](./Computer%20Science%20Maths/Combinatorics.md)，高等数学以及算法常用数学工具、ACM 数论等等)
 * [计算机系统基础 | Computer System Layer & Basics](./Computer%20System%20Layer/README.md) 包括：
   * [CAS、并发相关的 Java 数据结构的用例与详解](./Computer%20System%20Layer/并发与并行(Java)/README.md)
   * [并发编程模型 | Parallel Programming Model](./Computer%20System%20Layer/并发编程模型.md)
