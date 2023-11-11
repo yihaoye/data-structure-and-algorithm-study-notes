@@ -63,6 +63,7 @@
 * [Golang 的 select、defer、Context](https://github.com/yihaoye/go-example/blob/master/general-demo/README.md)
 * [什么是 Go Scheduler](https://golang.design/go-questions/sched/what-is/)
 * [GPM 是什么](https://golang.design/go-questions/sched/gpm/)
+* Golang 字符型的实际类型 ![](./go-char.png)
 
 ## 数据库高频
 * [为什么 InnoDB 表必须有主键，并且推荐使用整型的自增主键？](https://blog.csdn.net/weixin_41699562/article/details/104139458)

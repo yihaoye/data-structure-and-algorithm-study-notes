@@ -199,8 +199,7 @@ ConcurrentSkipListMap | O(log n) |   O(log n)  | O(1)     | Skip List
   
   
 # 常用数据类型
-- 比特 | Bit
-- 布尔型 | Boolean
+- 比特、布尔型 | Bit、Boolean (注意，虽然多数情况下两者类似且占空间一样，但要注意有些系统可能允许一种可以为 NULL 而另一种不允许)
 - 字节 | Byte
 - 整型 | Integer
   - 有符号整型 | Signed Integer
