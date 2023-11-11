@@ -205,8 +205,10 @@ ConcurrentSkipListMap | O(log n) |   O(log n)  | O(1)     | Skip List
   - 有符号整型 | Signed Integer
   - 无符号整型 | Unsigned Integer
 - 浮点型
-  - 单精度 | Float ![](./Data%20Type/Float%20and%20Double/Float_example.svg.png)
-  - 双精度 | Double  ![](./Data%20Type/Float%20and%20Double/IEEE_754_Double_Floating_Point_Format.svg.png)
+  - 单精度 | Float
+    - ![](./Data%20Type/Float%20and%20Double/Float_example.svg.png)
+  - 双精度 | Double
+    - ![](./Data%20Type/Float%20and%20Double/IEEE_754_Double_Floating_Point_Format.svg.png)
 - [字符串 | String](./Data%20Type/String/README.md)
 - 字符 | Character
   
