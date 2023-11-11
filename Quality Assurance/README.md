@@ -75,6 +75,13 @@ Javadoc 是一款能根据源代码中的文档注释来产生 HTML 格式的 AP
 
 ### [混沌工程](https://principlesofchaos.org/zh/)
 混沌工程（CHAOS ENGINEERING）是在系统上进行实验的学科, 目的是建立对系统抵御生产环境中失控条件的能力以及信心。  
+可以把混沌工程看作是为了揭示系统弱点而进行的实验。破坏稳态的难度越大，对系统行为的信心就越强。如果发现了一个弱点，那么就有了一个改进目标，避免在系统规模化之后被放大。  
+高级原则：
+* 建立一个围绕稳定状态行为的假说
+* 多样化真实世界的事件
+* 在生产环境中运行实验
+* 持续自动化运行实验
+* 最小化爆炸半径
 
 ### Modern Best Practices for Testing in Java
 * [资料](https://phauer.com/2019/modern-best-practices-testing-java/)
