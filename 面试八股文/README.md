@@ -58,6 +58,9 @@
 * [什么是 golang 内存逃逸](./../Computer%20System%20Layer/内存与程序.md#内存逃逸)
 * [go routine 和 thread、process 区别](https://huweicai.com/process-thread-goroutine/)
 * panic 相关 - [panic](https://www.yiibai.com/go/golang-panic.html)、panic 和 recover：[Ref 1](https://draveness.me/golang/docs/part2-foundation/ch05-keyword/golang-panic-recover/) + [Ref 2](https://xiaomi-info.github.io/2020/01/20/go-trample-panic-recover/)
+  * recover（对应 Java 的 try catch）等机制会将程序当前状态（主要是 cpu 的栈指针寄存器 sp 和程序计数器 pc，Go 的 recover 是依赖 defer 来维护 sp 和 pc ）保存到一个与 panic（对应 Java 的 throw）共享的内存里。当有异常的时候，从该内存中提取之前保存的 sp 和 pc 寄存器值，直接将函数栈调回到 sp 指向的位置，并执行 ip 寄存器指向的下一条指令，将程序从异常状态中恢复到正常状态。
+  * recover 应且只能在 defer 里面用：[示例代码](https://go.dev/blog/defer-panic-and-recover)
+  * panic 内部主要流程是这样：获取当前调用者所在的 g，也就是 goroutine -> 遍历并执行 g 中的 defer 函数 -> 如果 defer 函数中有调用 recover，并发现已经发生了 panic，则将 panic 标记为 recovered -> 在遍历 defer 的过程中，如果发现已经被标记为 recovered，则提取出该 defer 的 sp 与 pc，保存在 g 的两个状态码字段中 -> 调用 runtime.mcall 切到 m->g0 并跳转到 recovery 函数，将前面获取的 g 作为参数传给 recovery 函数。
 * [go code examples](https://github.com/yihaoye/go-example/tree/master/general-demo)
 * [上下文 Context](https://draveness.me/golang/docs/part3-runtime/ch06-concurrency/golang-context/)
 * [Golang 的 select、defer、Context](https://github.com/yihaoye/go-example/blob/master/general-demo/README.md)
