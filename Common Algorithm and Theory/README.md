@@ -89,9 +89,9 @@ This personal Blog contains explanation and **Java library/template implementati
     - 最小哈希 | MinHash ([Wiki](https://en.wikipedia.org/wiki/MinHash))
     - [HyperLogLog 算法](./HyperLogLog.md)
     - [雪花算法 | Snowflake ID](./雪花算法.md)
-    - 一致性哈希 | Consistent Hashing ([Ref](https://dgryski.medium.com/consistent-hashing-algorithmic-tradeoffs-ef6b8e2fcae8))
+    - 一致性哈希 | Consistent Hashing ([Ref](https://dgryski.medium.com/consistent-hashing-algorithmic-tradeoffs-ef6b8e2fcae8)) (数据操作时间复杂度为 `O(logN)`，节点增删时间复杂度为 `~O(N/M)` 其中 M 为实际节点数)
       - [环形哈希 (虚拟节点) | Ring Hashing](./../Leetcode%20Practices/system%20design/一致性哈希.md) ([Code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/consistent%20hash/README.md))
-      - 跳跃哈希 | Jump Hashing ([Ref](https://writings.sh/post/consistent-hashing-algorithms-part-3-jump-consistent-hash))
+      - 跳跃哈希 | Jump Hashing ([Ref 1](https://arxiv.org/pdf/1406.2294.pdf)、[Ref 2](https://writings.sh/post/consistent-hashing-algorithms-part-3-jump-consistent-hash))
       - Multi-Probe Consistent Hashing
       - Rendezvous Hashing ([Wiki](https://en.m.wikipedia.org/wiki/Rendezvous_hashing))
       - Maglev Hashing
