@@ -211,6 +211,7 @@ ConcurrentSkipListMap | O(log n) |   O(log n)  | O(1)     | Skip List
     - ![](./Data%20Type/Float%20and%20Double/IEEE_754_Double_Floating_Point_Format.svg.png)
 - [字符串 | String](./Data%20Type/String/README.md)
 - 字符 | Character
+- 自定义的类/结构体 | Class/Struct
   
 以上总结未完待续...  
   
