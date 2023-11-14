@@ -173,11 +173,11 @@ This personal Blog contains explanation and **Java library/template implementati
     - 预处理 (打表) | Precompute (Hard Coding) ([Ref](https://www.cnblogs.com/hxtblogs/p/7654635.html))
     - [懒更新 | Lazy Update](./懒更新.md)
     - [状态压缩 | State Compression](../Tool%20Sets/StateCompression.java)
-    - [坐标离散化 | Coordinate Compression](./坐标离散化.md)
+    - [稀疏压缩/坐标离散化 | Sparse/Coordinate Compression](./坐标离散化.md)
     - [集合的整数表示 (位集、位向量) | Bit Set](./集合的整数表示.md)
     - [比较优化，减少比较次数 (算法导论 9.1)](./../Leetcode%20Practices/algorithms/easy/1491%20Average%20Salary%20Excluding%20the%20Minimum%20and%20Maximum%20Salary.java)
 
 
 </br>
 
-以上部分参考自链接：[Ref 1](https://oi-wiki.org/basic/)、[Ref 2](https://www.acoier.com/tags/)、[Ref 3](http://www.matrix67.com/blog/)、[Ref 4](https://writings.sh/)。  
+以上部分参考自链接：[Ref 1](https://oi-wiki.org/basic/)、[Ref 2](https://www.acoier.com/tags/)、[Ref 3](http://www.matrix67.com/blog/)、[Ref 4](https://writings.sh/)、[Ref 5](https://github.com/halfrost/LeetCode-Go#algorithm)。  
