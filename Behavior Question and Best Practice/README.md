@@ -63,6 +63,7 @@ Keep at least 3 project examples/stories which better to be large scale.
 
 Books:  
 * [Staff Engineer: Leadership Beyond the Management Track](https://staffeng.com/book)
+* [The Starter Manager Guide](https://commoncog.com/g/starter-manager/)
 * [Managing Humans - Biting and Humorous Tales of a Software Engineering Manager](https://link.springer.com/book/10.1007/978-1-4842-2158-7?source=post_page-----4594bfd4b9a--------------------------------)
 * [The Manager's Path](https://www.oreilly.com/library/view/the-managers-path/9781491973882/?source=post_page-----4594bfd4b9a--------------------------------)
 * [Peopleware: Productive Projects and Teams](https://www.goodreads.com/book/show/67825.Peopleware?source=post_page-----4594bfd4b9a--------------------------------)
