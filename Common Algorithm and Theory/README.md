@@ -63,7 +63,7 @@ This personal Blog contains explanation and **Java library/template implementati
     - [迪杰斯特拉算法 | Dijkstra Algorithm](./Dijkstra算法.md) (时间复杂度 `O((E+V)*logV)` - 仅计算了指定的一个起点到其他各点)
     - 贝尔曼-福特算法 | Bellman-Ford Algorithm
     - 启发式算法/搜索 | Heuristic Algorithm/Search (启发式搜索通常不讨论时空复杂度)
-      - [A&ast; 搜索算法 | A&ast; Search Algorithm](./A*搜索算法.md)
+      - [A&ast; 搜索算法 | A&ast; Search Algorithm](./A*搜索算法.md) (基于 Dijkstra 算法添加了启发式函数，最坏时间复杂度：`O(E*logV)`)
         - IDA&ast; 算法 | IDA&ast; Algorithm
       - 禁忌搜索 | Tabu Search
       - 爬山算法 | Hill Climbing

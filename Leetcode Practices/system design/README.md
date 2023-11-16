@@ -191,7 +191,7 @@
 * 数据库（SQL、NoSQL、分库分表、主从复制）
 * 搜索引擎（全文搜索、ElasticSearch、MySQL）
 * [消息队列与流处理](./消息队列与流处理.md)（RabbitMQ、Kafka）[阅读材料](http://www.52im.net/thread-1979-1-1.html)
-* 对象/文件/非结构化数据存储（S3、Hadoop HDFS、Blob Storage - Binary Large Object Storage）（e.g. distributed file storage system for storing photos and videos）
+* 对象/文件/非结构化数据存储（S3、Hadoop HDFS、Blob Storage - Binary Large Object Storage）（e.g. distributed file storage system for storing photos and videos，另外其实数据湖 i.e. Data Lake 本质上也是 blob storage 且存的是 CSV 这类半结构化文件）
 * 镜像/备份/归档（如为云主机、容器或数据库及其存储卷等等的镜像/快照的服务，可以存储至文件存储如 S3 等）
 * 认证中心（用户的注册、登录验证、token 鉴权；内部信息系统用户的管理、权限和登录鉴权；应用管理，应用的 secret 生成，应用信息的验证 - 如验证接口签名等）
 * 加密解密（如 KMS）、压缩解压（无损，如图像多媒体文件、通信、存储备份等）

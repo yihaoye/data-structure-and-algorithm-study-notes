@@ -78,7 +78,7 @@
   - [H 树 | H Tree](https://en.wikipedia.org/wiki/HTree)
   - VEB 树 | Van Emde Boas Tree ([Ref](https://www.luogu.com.cn/blog/RuntimeErrror/ni-suo-fou-zhi-dao-di-shuo-ju-jie-gou-van-emde-boas-shu)；所有操作皆为 O(loglogN)，但是该数据结构本身有一定限制)
   - [分形树 | Fractal Tree](./../Computer%20System%20Layer/数据库/README.md#分形树)
-- [图 | Graph](./Data%20Structure%20Implementation/Graph/README.md)
+- [图 | Graph](./Data%20Structure%20Implementation/Graph/README.md) ([Ref](https://mp.weixin.qq.com/s/wnRQ_9CckAmlQaAjo7q_0w))
   - 有向图 | Directed Graph
     - 有向无环图 | Directed Acyclic Graph, DAG (常用于系统)
   - 无向图 | Undirected Graph
