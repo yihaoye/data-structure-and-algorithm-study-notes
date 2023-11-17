@@ -1,8 +1,10 @@
+## A* Search Algorithm
 https://www.youtube.com/watch?v=ibFvkG-7h38  
 
+![](./A*-Search-1.png)  
+![](./A*-Search-2.png)  
 
-## A&ast;算法总结 (Summary of the A&ast; Method)  
-
+## A&ast;算法总结 (Summary of the A&ast; Method)
 原文地址： http://www.gamedev.net/reference/articles/article2003.asp  
 翻译： https://blog.csdn.net/hitwhylz/article/details/23089415  
   
