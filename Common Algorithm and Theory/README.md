@@ -101,6 +101,7 @@ This personal Blog contains explanation and **Java library/template implementati
     - [Geohash 算法, S2 Geometry 算法](../Leetcode%20Practices/system%20design/README.md#设计-Uber)
     - [漏桶算法, 令牌桶算法 | Leaky Bucket, Token Bucket](../Leetcode%20Practices/system%20design/README.md#设计-API-Rate-Limiter)
     - Loosy Counting 算法
+    - [散列与分层时序轮算法 | Hashed and Hierarchical Timing Wheels Algorithm](./散列与分层时序轮.md) (操作时间复杂度皆为 `O(1)`)
     - [OT 算法 | Operational Transformation](../Leetcode%20Practices/system%20design/README.md#设计协同编辑系统)
     - [四叉树算法, R 树算法 | QuadTree, RTree Algorithm](./QuadTree-RTree-算法.md)
     - 默克尔树算法 | Merkle Tree Algorithm ([Wiki](https://en.wikipedia.org/wiki/Merkle_tree)、[Code](./../Leetcode%20Practices/algorithms/easy/572%20Subtree%20of%20Another%20Tree.java))
