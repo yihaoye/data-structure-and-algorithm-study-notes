@@ -160,7 +160,11 @@ https://aws.amazon.com/cn/nosql/columnar/
   * 一般只是读优化。
   * 相对复杂的 read query，单次作用于相对大量的数据（历史数据）。
 
-链接：https://www.zhihu.com/question/20623931/answer/750367153  
+数据库与数据仓库的区别实际讲的是 OLTP 与 OLAP 的区别。  
+
+链接：
+* https://www.zhihu.com/question/20623931/answer/750367153
+* https://www.modb.pro/db/383514
 
 ### 其他
 数据量和性能的比较：当物理内存够用的时候，Redis > MongoDB > MySQL 。  
