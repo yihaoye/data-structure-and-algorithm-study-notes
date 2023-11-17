@@ -4,6 +4,15 @@ https://www.youtube.com/watch?v=ibFvkG-7h38
 ![](./A*-Search-1.png)  
 ![](./A*-Search-2.png)  
 
+可以看出，A* 算法就是 Dijkstra 算法 + 启发式函数 h(i)，最简单的启发式函数如下：
+```java
+int h(int x, int y, Node dest) {
+   // 曼哈顿距离作为启发式函数
+   return Math.abs(x - dest.x) + Math.abs(y - dest.y);
+}
+```  
+A* 算法的最小堆排序部分将根据 f(i) 来对节点进行排序，因此在节点的选择上会优先考虑 f(i) = g(i) + h(i)，其中 g(i) 是从起始节点到节点 i 的实际路径代价，h(i) 是从节点 i 到目标节点的估计代价。  
+
 ## A&ast;算法总结 (Summary of the A&ast; Method)
 原文地址： http://www.gamedev.net/reference/articles/article2003.asp  
 翻译： https://blog.csdn.net/hitwhylz/article/details/23089415  
