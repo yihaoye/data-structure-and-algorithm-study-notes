@@ -59,10 +59,14 @@
     - 自平衡二叉搜索树 | Self-Balanced Binary Search Tree
       - [AVL 树 | AVL Tree](./Data%20Structure%20Implementation/AVLTree/) (搜索 O(logN)，插入/删除节点 O(logN))
       - [红黑树 | Red-Black Tree](./Data%20Structure%20Implementation/RedBlackTree/README.md) (搜索 O(logN)，插入/删除节点 O(logN))
+      - 替罪羊树 | Scapegoat Tree
       - [T 树 | T Tree](https://en.wikipedia.org/wiki/T-tree)
     - 自平衡搜索树 | Self-Balanced Search Tree
       - [B/B+ 树 | B/B+ Tree](./Data%20Structure%20Implementation/BPlusTree/README.md)
       - 2–3 树 | 2-3 Tree
+    - [R 树 | R Tree](./../Common%20Algorithm%20and%20Theory/QuadTree-RTree-算法.md)
+    - [H 树 | H Tree](https://en.wikipedia.org/wiki/HTree)
+    - [K-D 树 | K-D Tree](https://zh.wikipedia.org/zh-hans/K-d%E6%A0%91) (最坏情况下可能会退化成链表，因此其平衡性并不稳定)
   - [线段树 | Segment Tree](./Data%20Structure%20Implementation/SegmentTree/README.md) (区间查询 O(logN + K)，更新 O(logN)，构建 O(N) - K is the number of reported segments)
   - [树套树 | Tree of Trees](https://www.cnblogs.com/Flying2018/p/13615844.html)
   - [划分树 | Dividing Tree](https://oi-wiki.org/ds/dividing/)
@@ -71,11 +75,8 @@
   - [并查集 | Disjoint-Set/Union-Find Forest](./../Common%20Algorithm%20and%20Theory/并查集与联合查找算法.md)
   - [LSM 树 | Log-Structured Merge-Tree](./Data%20Structure%20Implementation/LSMTree/README.md)
   - [默克尔树 | Merkle Tree](./../Leetcode%20Practices/algorithms/easy/572%20Subtree%20of%20Another%20Tree.java)
-  - [K-D 树 | K-D Tree](https://zh.wikipedia.org/zh-hans/K-d%E6%A0%91)
   - [四叉树 | Quad Tree](./../Common%20Algorithm%20and%20Theory/QuadTree-RTree-算法.md)
     - [八叉树 | OcTree](./../Common%20Algorithm%20and%20Theory/QuadTree-RTree-算法.md)
-  - [R 树 | R Tree](./../Common%20Algorithm%20and%20Theory/QuadTree-RTree-算法.md)
-  - [H 树 | H Tree](https://en.wikipedia.org/wiki/HTree)
   - VEB 树 | Van Emde Boas Tree ([Ref](https://www.luogu.com.cn/blog/RuntimeErrror/ni-suo-fou-zhi-dao-di-shuo-ju-jie-gou-van-emde-boas-shu)；所有操作皆为 O(loglogN)，但是该数据结构本身有一定限制)
   - [分形树 | Fractal Tree](./../Computer%20System%20Layer/数据库/README.md#分形树)
 - [图 | Graph](./Data%20Structure%20Implementation/Graph/README.md) ([Ref](https://mp.weixin.qq.com/s/wnRQ_9CckAmlQaAjo7q_0w))
