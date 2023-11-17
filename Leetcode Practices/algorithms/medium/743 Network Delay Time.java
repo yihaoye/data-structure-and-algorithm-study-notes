@@ -36,7 +36,7 @@ All the pairs (ui, vi) are unique. (i.e., no multiple edges.)
 // My Solution:
 class Solution {
     // Dijkstra - https://leetcode.cn/problems/network-delay-time/solution/gong-shui-san-xie-yi-ti-wu-jie-wu-chong-oghpz/
-    // 时间复杂度：O((E+V)*logV)，空间复杂度：O(E+V)
+    // 单点到单点时间复杂度：O(V+E*logV)，本模版计算了单点到所有其他点故总时间复杂度：O((E+V)*logV)，总空间复杂度：O(E+V)
 
     public int networkDelayTime(int[][] times, int n, int k) {
         /* Dijkstra 使用模版 */
@@ -51,7 +51,7 @@ class Solution {
         return res == Integer.MAX_VALUE ? -1 : res;
     }
 
-    public class Graph { // Dijkstra 算法模版
+    public class Graph { // Dijkstra 算法模版，本模版计算了单点到所有其他点，如果只需要计算单点到单点，可以自行裁减并提高性能
         public Map<Integer, Map<Integer, Integer>> adj; // 邻接表 <from, <to, weight>>，使用 Map 而非 List 可以更好地适配其他数据类型的节点，比如字符串等等
         public Map<Integer, Map<Integer, Integer>> dists; // <from, <to, min_dist>> dists[from][to] 即 from 到 to 的最短距离/时间，一开始全部设为最大值，每次调用 dijkstra(src) 后可以缓存以提高性能，但是如果有新的 addEdge() 调用后，所有 src 都应该重新 dijkstra(src) 而非直接调用 getDist(src)
 
