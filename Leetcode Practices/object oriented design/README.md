@@ -214,6 +214,9 @@ Books：《Head first object-oriented analysis and design》《Head first design
 以上来源：https://www.1point3acres.com/bbs/thread-176958-1-1.html  
   
 ## 面向对象 vs 面向过程 vs 函数式编程
+[深入理解函数式编程](https://tech.meituan.com/2022/10/13/dive-into-functional-programming-01.html)  
+[无需设计模式的函数式编程](https://juejin.cn/post/6844903890261901319)  
+
 编程说穿了就是两个方面，data 和这些 data 上的 operation。  
 oop，就是让 operation 围绕 data，这样的好处是，当要添加新的 data type 的时候，好方便！原来写的代码都不用改。但是要给已经写好的 data type 添加方法怎么办？比如要你给 java 自带的 string 加个 python 那种乘法。  
 functional programming 采取的是另一种思路，data 更多的围绕 operation，所以添加新的方法很容易。  
