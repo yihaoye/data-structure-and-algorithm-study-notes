@@ -15,10 +15,10 @@
     - [跳表 | Skip List](./Data%20Structure%20Implementation/SkipList/README.md) (有序链表，查找、插入、删除均为 O(logN))
       - [ConcurrentSkipListMap](./Data%20Structure%20Implementation/ConcurrentSkipListMap/README.md)
 - 队列 | Queue
-  - 顺序队列 | Sequential Queue (实际可由链表实现，入队/出队 O(1)，首值 O(1))
+  - 顺序队列 | Sequential Queue (通常由链表 LinkedList 实现，入队/出队 O(1)，首值 O(1))
   - 优先队列 | PriorityQueue (遍历 O(N)，入队/出队 O(logN)，首值 O(1)，具体实现参考下面的二叉堆)
   - 双端队列 | Deque
-    - 链表 | LinkedList (同上)
+    - 链表双端队列 | LinkedList (同上)
     - [数组双端队列 | ArrayDeque](./../HackerRank%20Practises/java/medium/Java%20Dequeue.java)
     - 基于链表的线程安全无界双端队列 | ConcurrentLinkedDeque
     - 基于链表的 FIFO 双端阻塞队列 | LinkedBlockingDeque
