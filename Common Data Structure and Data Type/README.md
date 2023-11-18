@@ -3,7 +3,7 @@
 - 数组 | Array (索引 O(1)，遍历 O(N)，插入/删除节点 O(N))
   - [树状数组 | Binary Indexed Tree](../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/BinaryIndexedTree(FenwickTree)/README.md) (单点修改、区间查询均为 O(logN))
   - [ST 表 | Sparse Table](https://oi-wiki.org/ds/sparse-table/)
-  - [环形队列 | CircularQueue (RingBuffer)](./../Leetcode%20Practices/algorithms/medium/622%20Design%20Circular%20Queue.java) (可以用数组+双指针实现，也可以用顺序表+双指针或循环链表实现)
+  - [环形队列 | Circular Queue (Ring Buffer)](./../Leetcode%20Practices/algorithms/medium/622%20Design%20Circular%20Queue.java) (可以用数组+双指针实现，也可以用顺序表+双指针或用循环链表实现)
     - [散列与分层时序轮 | Hashed and Hierarchical Timing Wheels](../Common%20Algorithm%20and%20Theory/散列与分层时序轮.md) (索引/插入/删除皆为 `O(1)`)
 - 线性表 | Linear List
   - 顺序表 | ArrayList (索引 O(1)，遍历 O(N)，添加节点 O(1)，插入/删除节点 O(N)，如果不严格要求（比如不要求保留顺序），删除可以通过对换删除节点与尾节点的值，然后删除尾节点来降低到 O(1))
@@ -15,10 +15,10 @@
     - [跳表 | Skip List](./Data%20Structure%20Implementation/SkipList/README.md) (有序链表，查找、插入、删除均为 O(logN))
       - [ConcurrentSkipListMap](./Data%20Structure%20Implementation/ConcurrentSkipListMap/README.md)
 - 队列 | Queue
-  - [链表 | LinkedList](./Data%20Structure%20Implementation/LinkedList/README.md) (入队/出队 O(1)，首值 O(1))
-  - 优先队列 | PriorityQueue (遍历 O(N)，入队/出队 O(logN)，首值 O(1))
+  - 顺序队列 | Sequential Queue (实际可由链表实现，入队/出队 O(1)，首值 O(1))
+  - 优先队列 | PriorityQueue (遍历 O(N)，入队/出队 O(logN)，首值 O(1)，具体实现参考下面的二叉堆)
   - 双端队列 | Deque
-    - [链表 | LinkedList](./Data%20Structure%20Implementation/LinkedList/README.md) (同上)
+    - 链表 | LinkedList (同上)
     - [数组双端队列 | ArrayDeque](./../HackerRank%20Practises/java/medium/Java%20Dequeue.java)
     - 基于链表的线程安全无界双端队列 | ConcurrentLinkedDeque
     - 基于链表的 FIFO 双端阻塞队列 | LinkedBlockingDeque
@@ -60,7 +60,7 @@
     - 自平衡二叉搜索树 | Self-Balanced Binary Search Tree
       - [AVL 树 | AVL Tree](./Data%20Structure%20Implementation/AVLTree/) (搜索 O(logN)，插入/删除节点 O(logN))
       - [红黑树 | Red-Black Tree](./Data%20Structure%20Implementation/RedBlackTree/README.md) (搜索 O(logN)，插入/删除节点 O(logN))
-      - 替罪羊树 | Scapegoat Tree
+      - 替罪羊树 | Scapegoat Tree ([Wiki](https://oi-wiki.org/ds/sgt/))
       - [T 树 | T Tree](https://en.wikipedia.org/wiki/T-tree)
     - 自平衡搜索树 | Self-Balanced Search Tree
       - [B/B+ 树 | B/B+ Tree](./Data%20Structure%20Implementation/BPlusTree/README.md)
