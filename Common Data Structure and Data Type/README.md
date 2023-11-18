@@ -3,7 +3,7 @@
 - 数组 | Array (索引 O(1)，遍历 O(N)，插入/删除节点 O(N))
   - [树状数组 | Binary Indexed Tree](../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/BinaryIndexedTree(FenwickTree)/README.md) (单点修改、区间查询均为 O(logN))
   - [ST 表 | Sparse Table](https://oi-wiki.org/ds/sparse-table/)
-  - [环形队列 | CircularQueue (RingBuffer)](./../Leetcode%20Practices/algorithms/medium/622%20Design%20Circular%20Queue.java) (可以用数组+双指针实现，也可以用循环链表实现)
+  - [环形队列 | CircularQueue (RingBuffer)](./../Leetcode%20Practices/algorithms/medium/622%20Design%20Circular%20Queue.java) (可以用数组+双指针实现，也可以用顺序表+双指针或循环链表实现)
     - [散列与分层时序轮 | Hashed and Hierarchical Timing Wheels](../Common%20Algorithm%20and%20Theory/散列与分层时序轮.md) (索引/插入/删除皆为 `O(1)`)
 - 线性表 | Linear List
   - 顺序表 | ArrayList (索引 O(1)，遍历 O(N)，添加节点 O(1)，插入/删除节点 O(N)，如果不严格要求（比如不要求保留顺序），删除可以通过对换删除节点与尾节点的值，然后删除尾节点来降低到 O(1))
