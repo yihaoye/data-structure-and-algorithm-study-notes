@@ -175,6 +175,7 @@
 * [Network Protocols Behind Server Push](https://blog.bytebytego.com/p/network-protocols-behind-server-push)
 * [Websocket](https://www.ruanyifeng.com/blog/2017/05/websocket.html)
 * [Server Sent Events (SSE)](https://www.ruanyifeng.com/blog/2017/05/server-sent_events.html)
+* URL 结构 ![](./url-structure.jpeg)
 
 ## 安全高频
 * [CORS（跨域访问）及其工作流程](./CORS.PNG)
