@@ -158,7 +158,7 @@ This personal Blog contains explanation and **Java library/template implementati
         - 向量计算 | Vector ([Ref](https://cp.wiwiho.me/vector/))
       - 函数 (离散或连续、周期性或非周期性、有界或无界) | Function (注意：函数既满足算法的定义，也满足数据类型的定义，比如可以被处理、运算、传递、赋值等，例子如波可以被叠加。因此函数也可以被设计为自定义的类，在某些编程语言中，函数被视为第一类对象)
         - 波 (三角函数) | Wave (Trigonometric Function)
-        - 分段函数 | Piecewise
+        - 分段函数 | Piecewise (比如阶跃函数)
         - 多项式 (包括常数函数、线性函数、开方函数等等) | Polynomial
         - 指数函数 ｜ Exponential Function
         - 反函数 (比如对数函数是指数函数的反函数) | Inverse Function

@@ -20,6 +20,7 @@
   * [系统设计 | System Design](./Leetcode%20Practices/system%20design/README.md)
   * [接口设计 | API Design](./Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md#api-design)
   * 系统论、控制论、信息论 | Systems Theory、Control Theory、Information Theory (又称 SCI 理论或老三论，《控制论与科学方法论》：[Ref 1](https://writings.sh/post/cybernetics-and-scientific-methodology-notes)、[Ref 2](https://book.douban.com/subject/1322336/))
+    * [稳定性判据](https://zh.wikipedia.org/wiki/%E7%A8%B3%E5%AE%9A%E6%80%A7%E5%88%A4%E6%8D%AE) (比如奈奎斯特稳定判据)
   * 耗散结构论、协同论、突变论 | Dissipative Structure Theory、Synergetics、Catastrophe Theory (又称 DSC 理论或新三论，[Ref](https://groups.google.com/g/academictokyo/c/GGKwiFLZYRE))
 * [计算机系统基础 | Computer System Layer & Basics](./Computer%20System%20Layer/README.md) 包括：
   * [CAS、并发相关的 Java 数据结构的用例与详解](./Computer%20System%20Layer/并发与并行(Java)/README.md)
