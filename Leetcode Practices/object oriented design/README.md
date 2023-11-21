@@ -20,6 +20,7 @@
       * [L 里氏替换原则](./SOLID/LiskovSubstitution.java): 任何一个子类或派生类应该可以替换它们的基类或父类（参考契约式设计）（通常与 I 接口隔离原则互为表里）。
       * [I 接口隔离原则](./SOLID/InterfaceSeggregation.java): 多个特定客户端接口要好于一个宽泛用途的接口（不应该强迫一个类实现它用不上的接口）（通常与 L 里氏替换原则互为表里）。
       * [D 依赖反转原则](./SOLID/DependencyInversion.java): 抽象不应该依赖于具体实现，具体实现应该依赖于抽象。High level 实体不应该依赖于 Low level 实体。
+    * [抽象泄漏](../../Behavior%20Question%20and%20Best%20Practice/降低软件复杂性一般原则和方法.md#抽象泄漏)
   * OOD 面试应对方法
     * 6 步解题法
       * Clarify requirement - 问清楚那些是必须的，那些可以不用考虑
