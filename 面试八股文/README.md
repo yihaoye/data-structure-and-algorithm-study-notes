@@ -22,6 +22,10 @@
 * 产生死锁的必要条件有哪些？如何解决死锁？
 * [[微服務] 什麼是 gRPC，架構上為什麼要使用 gRPC](https://www.youtube.com/watch?v=qEB3yFzETVs)
 * RPC 与 REST 区别与选择 - [解答一](https://www.cnblogs.com/wongbingming/p/11086773.html)、[解答二](https://zhuanlan.zhihu.com/p/102760613)、[服务调用 / API 设计](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md#API%20Design)
+* 基于文本的数据格式如 JSON 为什么比一些二进制序列化格式会占用更多的空间？
+  * 文本字符的额外开销：JSON 使用可读的文本字符来表示数据，这包括了各种标记、键、值以及字符间的分隔符号（如大括号、逗号、冒号等）。这些额外的字符和标记增加了数据的体积。
+  * 数据类型表示：JSON 为了支持不同的数据类型（字符串、数字、布尔值等）而增加了额外的字符，比如字符串需要用引号括起来，数字和布尔值等需要明确标识。
+  * 编码问题：相比于二进制编码（如 Protocol Buffers、MessagePack 等），文本编码（如 JSON）需要更多的字节来表示相同的数据（比如 UTF-8 包含一些非 ASCII 字符的数据时会占用更多的字节空间；压缩能力受限，通常用压缩算法例如 Gzip 来减少文本数据的大小，但是相比于二进制格式，因为文本格式的数据已经尽可能地被编码为文本字符，而这些字符可能已经被优化得足够好，因此在压缩时不能得到很大的优化空间）。
 * [CI 服务有什么用途](https://www.modb.pro/db/404626)
 * [服务降级、服务熔断](./../Leetcode%20Practices/system%20design/%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E4%B8%8E%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD.md)
 * [态势感知](https://www.amazonaws.cn/en/knowledge/what-is-situation-awareness/)
