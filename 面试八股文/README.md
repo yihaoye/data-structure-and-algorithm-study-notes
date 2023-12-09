@@ -30,6 +30,7 @@
 * [服务降级、服务熔断](./../Leetcode%20Practices/system%20design/%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E4%B8%8E%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD.md)
 * [态势感知](https://www.amazonaws.cn/en/knowledge/what-is-situation-awareness/)
 * 云计算的定义 - 云计算就是指通过互联网，以按需服务的形式提供计算资源。这样企业就无需自行采购、配置或管理资源，而且只需要为实际使用的资源付费。本质上云计算就是第三方数据中心托管的一堆 Linux（或其他 OS）服务器。
+* 哈希、加密、编码的区别 ![](./hash-encrpt-encode.png)
   
 ## Java 高频
 * Java 中垃圾回收机制中如何判断对象需要回收？常见的 GC 回收算法有哪些？ （中等）
@@ -217,6 +218,7 @@
   * 对敏感数据进行 AES 加密
   * 避免非加密信息/数据在非安全处（比如邮件）存放/发送
 * [伪基站](https://zh.wikipedia.org/wiki/%E4%BC%AA%E5%9F%BA%E7%AB%99)
+* 主要攻击类型 ![](./cyber-attacks.jpeg)
 
 ## Redis 高频
 * redis 有哪些数据类型？可以应用在什么场景？[Ref 1](https://cloud.tencent.com/developer/article/1975464)、[Ref 2](../Computer%20System%20Layer/数据库/Redis/README.md)

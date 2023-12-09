@@ -1137,6 +1137,10 @@ https://shardingsphere.apache.org/index_zh.html
 * 相比字符串类型，更推荐使用整型作为主键类型（MySQL 主键一定是自增长并且是 bigint 类型的）。  
 
 
+## 其他规范教训
+![](./sql-5-lessons.png)  
+
+
 ## SQL 优化
 参考：https://dbaplus.cn/news-155-4717-1.html  
 * 尽量避免使用子查询

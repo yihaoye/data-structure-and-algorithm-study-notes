@@ -76,7 +76,7 @@ This personal Blog contains explanation and **Java library/template implementati
           - [粒子群优化算法 | Particle Swarm Optimization](./粒子群优化算法.md)
           - 蒙特卡洛树搜索 | Monte Carlo Tree Search (用于搜索树型结构的算法，广泛应用于博弈和决策问题，如 AlphaGo)
         - 拉斯维加斯方法 | Las Vegas Method (采样越多，越可能找到最优解)
-  - 系统级 | System Level
+  - 系统级或领域相关 | System Level or Domain Related
     - [字典树算法 | Trie Algorithm](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/Trie/README.md)
     - [映射-归约 | MapReduce](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md)
     - 多路归并 | K-Way Merge ([Wiki](https://en.wikipedia.org/wiki/K-way_merge_algorithm)、[Code](../Leetcode%20Practices/algorithms/hard/23%20Merge%20k%20Sorted%20Lists.java))
