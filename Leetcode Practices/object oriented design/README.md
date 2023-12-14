@@ -256,11 +256,22 @@ functional programming 采取的是另一种思路，data 更多的围绕 operat
 > 和函数式对比的应该的命令式编程，函数式编程关心数据的映射，命令式编程关心解决问题的步骤。  
   
 
+函数式编程（Functional Programming）的关键特点包括：  
+1. **纯函数（Pure Functions）**：函数的输出完全取决于输入，不依赖于外部状态或全局变量。给定相同的输入，纯函数总是返回相同的输出，不会产生副作用。
+2. **不可变性（Immutability）**：数据在创建后不能被修改。一旦创建，数据将保持不变，这有助于减少状态的复杂性和副作用。
+3. **高阶函数（Higher-order Functions）**：函数可以接受其他函数作为参数，也可以返回函数作为输出。这种能力使得函数能够更加灵活地组合和重用。
+4. **递归（Recursion）**：函数式编程鼓励使用递归而不是循环来进行迭代。递归是一种强大的工具，它允许编写简洁、优雅的代码。
+5. **引用透明度（Referential Transparency）**：表达式或函数的结果只取决于其输入，不受上下文环境的影响。具有引用透明度的代码更容易推理和测试。
+6. **惰性评估（Lazy Evaluation）**：延迟计算，只在需要时才对表达式进行计算，这有助于提高性能和资源利用率。
+7. **模式匹配（Pattern Matching）**：一种可以用于检查数据结构的方式，可以根据数据结构的形状进行分支处理。
+  
+
 来源：  
-https://book.douban.com/review/8534721/  
-https://blog.csdn.net/jerry11112/article/details/79027834  
-https://www.liaoxuefeng.com/wiki/1016959663602400/1017328525009056  
-https://www.jianshu.com/p/e074b85b84ef  
+* https://book.douban.com/review/8534721/
+* https://blog.csdn.net/jerry11112/article/details/79027834
+* https://www.liaoxuefeng.com/wiki/1016959663602400/1017328525009056
+* https://www.jianshu.com/p/e074b85b84ef
+* ChatGPT
   
   
 ## 代码质量

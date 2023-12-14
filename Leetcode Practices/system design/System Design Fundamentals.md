@@ -73,6 +73,11 @@ https://www.algoexpert.io/systems/fundamentals
     * 保留时间
 * Publish/Subscribe Pattern
 * MapReduce
+  * 代码诠释
+    * Python 诠释
+      * `map(f, [x1, x2, x3, x4]) = [f(x1), f(x2), f(x3), f(x4)]`
+      * `reduce(f, [x1, x2, x3, x4]) = f(f(f(x1, x2), x3), x4)`
+    * [Node.js 代码示例 MapReduce 编程模型](https://github.com/yihaoye/stem-notes/tree/master/e-software-architecture/Systems-Design/map_reduce)，其中的 `run.sh` 脚本扮演着`中央控制器`的角色。
   * 大规模数据集的运算处理场景 - 此时需要 horizontally scale system，即引入大量机器、服务器并行进行运算处理分割的子任务/子数据然后归并结果以降低总处理时间，这非常困难，因为分布式（文件）系统的服务器有的可能会遭遇机器宕机或网络卡顿等等一系列问题，所以设计系统时还要考虑该分布式系统的容错性。[MapReduce](./mapreduce-osdi04.pdf) 就是为了解决这个问题的。MapReduce 是一种编程模型，是一种编程方法，抽象理论。
   * 可以使用 MapReduce 处理的大数据需满足 2 个条件：数据处理任务可以通过 Map 步骤和 Reduce 步骤进行分割和归并（归约、重组）。MapReduce 的主要思想，都是从函数式编程语言借鉴的，还有从矢量编程语言借来的特性。其实现是指定一个 Map（映射）函数，用来把一组键值对映射成一组新的键值对，指定并发的 Reduce（归约）函数，用来保证所有映射的键值对中的每一个共享相同的键组。 
   * 有一个中央控制器通讯、监控整个系统里所有的 Map 和 Reduce 及其他工作机器，知道哪部分分割子数据/子任务在哪个机器，以及输出的终点。
@@ -83,7 +88,6 @@ https://www.algoexpert.io/systems/fundamentals
   * 可靠且容错 - 当一个 Map 或 Reduce 操作失败时，只需要重新将其执行一次（中央控制器会去监控执行），但是要注意一个 Map 或 Reduce 操作应保证幂等。
   * 整个 MapReduce 实际使用中最重要最需要关心的是要执行的 Map、Reduce 程序以及它们的输入输出，因为其他具体的分布式系统的问题由 MapReduce 框架（比如 Hadoop）或库去解决。
   * 以下是应用 MapReduce 统计各字母出现次数的简单示例： ![](./MapReduce%20Example.png)
-  * [Node.js 代码示例 MapReduce 编程模型](https://github.com/yihaoye/stem-notes/tree/master/e-software-architecture/Systems-Design/map_reduce)，其中的 `run.sh` 脚本扮演着`中央控制器`的角色。
 * Security And HTTPS
 
 
