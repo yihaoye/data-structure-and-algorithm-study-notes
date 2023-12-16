@@ -2,6 +2,12 @@
   
 *本项目仅为私人笔记而非任何盈利或正规项目，其中引用、摘录了学习过程中看过的大量的网络资料（所有引用与摘录皆有写明出处），若涉及版权问题烦请版权所有者不吝沟通以便解决此类问题，在这里提前说声抱歉。*  
 *This repository is just a personal study note and blog, but not any profitable or regular project. Contents may contains/quotes plenty of online materials I learned from (and all these contents are referenced with their source). Please contact me if there is any copyright issues. Sorry about that.*  
+
+---  
+
+**For english reader, please feel free to request a translation request by raising github issue with the link of the particular session which you are interested in, will try to translate it asap.**  
+
+---  
   
 ### 本笔记包括以下内容:  
 * [行为型问题与工作实践 | Behavior Question & Best Practice](./Behavior%20Question%20and%20Best%20Practice/README.md)
