@@ -2231,6 +2231,12 @@ OOD 还可以参考 [Hotel Management System](./../object%20oriented%20design/gr
 
 参考：[推荐系统基础系列](https://www.youtube.com/watch?v=5dTOPen28ts&list=PLvOO0btloRntAi-VnV06M1Bu0X1xljUUP)
 
+主要流程（Cascade Ranking 整体如漏斗型）：
+* 召回（Recall）- 指根据用户的偏好和行为，从海量的物品（商品、内容等）中快速筛选出可能符合用户兴趣的候选物品的过程。使用物品的属性和特征进行召回，根据物品的描述、关键词、标签等信息匹配用户的兴趣，双塔模型、并进行去重、过滤（比如用户反映了不感兴趣）；召回通道可以是多个
+* 粗排 - 小型神经网络（用户特征、物品特征、统计特征）
+* 精排 - 大型神经网络（用户特征、物品特征、统计特征）
+* 重排 - 多样性抽样（如 MMR、DPP）、规则打散相似物品、安排插入推广物品的顺序位置
+
 </details>
 
 
