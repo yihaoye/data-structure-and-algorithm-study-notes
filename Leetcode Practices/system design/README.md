@@ -329,6 +329,7 @@ API 网关是位于客户端与后端服务集之间的大门 - API 管理工具
 ## [I/O 模型与 Web 服务器工作模型](./IO模型与Web服务器工作模型.md)
 
 ## Access Pattern
+适用于硬盘与内存：
 * Random I/O (slower)
 * Sequential I/O (much faster)
 
