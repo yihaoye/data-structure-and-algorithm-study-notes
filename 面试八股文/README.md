@@ -186,6 +186,8 @@
 * URL 结构 ![](./url-structure.jpeg)
 
 ## 安全高频
+* [安全模型](https://en.wikipedia.org/wiki/Security_modes)
+  * [零信任网络](https://www.cloudflare.com/zh-cn/learning/security/glossary/what-is-zero-trust/)
 * [CORS（跨域访问）及其工作流程](./CORS.PNG)
   * [为什么浏览器要限制跨域访问](https://www.zhihu.com/question/26379635/answer/534866558)
   * [CORS 为什么能保障安全？为什么只对复杂请求做预检？](https://www.51cto.com/article/705584.html)

@@ -2958,7 +2958,10 @@ http1.1 允许客户端不用等待上一次请求结果返回，就可以发出
 可以采用 NoSQL 负责写请求。分库分表时，应该可以以时间戳为 Key 进行一致性哈希分区（以 user_id 的话可能会造成部分分区过热，因为总是有一些网站远比其他网站热门）。  
 
 **日志-监控-告警**  
-![](log-mornitor-alert.jpeg)  
+![](./log-mornitor-alert.jpeg)  
+
+**日志-追踪-指标**  
+![](./log-trace-metric.gif)  
 
 其他参考方案：
 * [GA system design](https://github.com/southernkasaist/ga-system-design)
