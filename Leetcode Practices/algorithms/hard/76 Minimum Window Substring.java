@@ -41,7 +41,7 @@ Follow up: Could you find an algorithm that runs in O(m + n) time?
 // My Solution:
 class Solution {
     public String minWindow(String s, String t) {
-        // 双指针 + 哈希表 + 旗帜变量
+        // 双指针 + 哈希表 + 哨兵变量
         int m = s.length(), n = t.length(), res = Integer.MAX_VALUE, resL = -1, resR = -1;
         if (m < n) return "";
         Map<Character, Integer> tMap = new HashMap<>();

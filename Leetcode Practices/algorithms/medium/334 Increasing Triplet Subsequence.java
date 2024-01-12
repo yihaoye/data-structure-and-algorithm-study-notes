@@ -34,7 +34,7 @@ Follow up: Could you implement a solution that runs in O(n) time complexity and 
 // Other's Solution:
 class Solution {
     public boolean increasingTriplet(int[] nums) {
-        // 旗帜变量 - https://leetcode.com/problems/increasing-triplet-subsequence/discuss/79004/Concise-Java-solution-with-comments.
+        // 哨兵变量 - https://leetcode.com/problems/increasing-triplet-subsequence/discuss/79004/Concise-Java-solution-with-comments.
         // start with two largest values, as soon as we find a number bigger than both, while both have been updated, return true.
         // Time: O(N), Space: O(1)
         int small = Integer.MAX_VALUE, big = Integer.MAX_VALUE;

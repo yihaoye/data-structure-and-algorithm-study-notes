@@ -47,7 +47,7 @@ class TopVotedCandidate {
     TreeMap<Integer, Integer> tMap = new TreeMap<>();; // <time, winner>
 
     public TopVotedCandidate(int[] persons, int[] times) {
-        // HashMap + 旗帜变量 + 二分搜索（TreeMap）
+        // HashMap + 哨兵变量 + 二分搜索（TreeMap）
         int max = 0, winner = -1, n = times.length;
         for (int i=0; i<n; i++) {
             int cnt = records.getOrDefault(persons[i], 0) + 1;

@@ -53,7 +53,7 @@ class MyCircularQueue {
     private boolean isEmpty, isFull;
 
     public MyCircularQueue(int k) {
-        // 双指针 + 旗帜变量
+        // 双指针 + 哨兵变量
         arr = new int[k];
         first = 0;
         last = 0;

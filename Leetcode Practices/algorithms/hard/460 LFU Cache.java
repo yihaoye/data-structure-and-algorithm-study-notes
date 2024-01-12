@@ -63,7 +63,7 @@ class LFUCache {
 
     public LFUCache(int capacity) {
         // 双哈希表（freqMap, keyMap）+ 两个自定义对象（Node, 双向链表 DoublyLinkedList） - https://leetcode.cn/problems/lfu-cache/solution/lfuhuan-cun-by-leetcode-solution/
-        // Time: O(N), Space: O(min(capacity, k)) - k 为插入的不同键的数量
+        // Time: O(1), Space: O(min(capacity, k)) - k 为插入的不同键的数量
         this.minfreq = 0;
         this.capacity = capacity;
         keyMap = new HashMap<Integer, Node>();

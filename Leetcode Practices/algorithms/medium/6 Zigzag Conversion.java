@@ -42,7 +42,7 @@ s consists of English letters (lower-case and upper-case), ',' and '.'.
 // Other's Solution:
 class Solution {
     public String convert(String s, int numRows) {
-        // 模拟+旗帜变量 - https://leetcode.cn/problems/zigzag-conversion/solution/zzi-xing-bian-huan-by-jyd/
+        // 模拟+哨兵变量 - https://leetcode.cn/problems/zigzag-conversion/solution/zzi-xing-bian-huan-by-jyd/
         // Time: O(n), Space: O(n), n 为字符串 s 的长度
         if (numRows < 2) return s;
         List<StringBuilder> rows = new ArrayList<StringBuilder>();

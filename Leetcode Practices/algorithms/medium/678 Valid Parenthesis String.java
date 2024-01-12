@@ -34,7 +34,7 @@ s[i] is '(', ')' or '*'.
 // Other's Solution:
 class Solution {
     public boolean checkValidString(String s) {
-        // 旗帜变量 - https://leetcode.com/problems/valid-parenthesis-string/discuss/543521/Java-Count-Open-Parenthesis-O(n)-time-O(1)-space-Picture-Explain
+        // 哨兵变量 - https://leetcode.com/problems/valid-parenthesis-string/discuss/543521/Java-Count-Open-Parenthesis-O(n)-time-O(1)-space-Picture-Explain
         // Time: O(N), Space: O(1)
         int cmin = 0, cmax = 0; // open parentheses count in range [cmin, cmax]
         for (char c : s.toCharArray()) {
