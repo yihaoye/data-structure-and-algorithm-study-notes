@@ -46,6 +46,7 @@ This personal Blog contains explanation and **Java library/template implementati
     - [动态规划, 状态机, 规则引擎 | Dynamic Programming, State Machine, Rule Engine](./动态规划与状态机.md) (动态规划本质上属于分治法的应用)
       - [前缀和, 差分, 树状数组, 线段树 | Prefix Sum, Difference, Binary Indexed Tree, Segment Tree](./前缀和与差分.md)
       - [记忆化搜索 | Memory Search](./记忆化搜索.md)
+      - [埃氏筛法 | Sieve of Eratosthenes](../Leetcode%20Practices/algorithms/medium/204%20Count%20Primes.java) (时间复杂度 `O(N*loglogN)`)
       - [倍增法 | Binary Lifting](./倍增法.md) (时间复杂度 - 预处理 `O(N*logN)`，之后查询 `O(logN)`) ([倍增法与二分法的区别](./倍增法.md#二分-vs-倍增))
       - [弗洛伊德算法 | Floyd-Warshall Algorithm](./弗洛伊德算法.md) (时间复杂度 `O(N^3)`)
       - [Kadane 算法 | Kadane's Algorithm](./Kadane算法.md) (时间复杂度 `O(N)`)
@@ -64,7 +65,7 @@ This personal Blog contains explanation and **Java library/template implementati
     - 贝尔曼-福特算法 | Bellman-Ford Algorithm ([Ref](https://mp.weixin.qq.com/s/wnRQ_9CckAmlQaAjo7q_0w))
       - 最短路径快速算法 | Shortest Path Faster Algorithm (又称 SPFA，是带有队列优化的 Bellman-Ford 算法，最坏情况下时间复杂度为 `O(V*E)`，在特定情况下其效率优于 Dijkstra 算法，近似 `O(E)`)
     - 启发式算法/搜索 | Heuristic Algorithm/Search (启发式搜索通常不讨论时空复杂度)
-      - [A&ast; 搜索算法 | A&ast; Search Algorithm](./A*搜索算法.md) (基于 Dijkstra 算法添加了启发式函数，单起点单终点最坏时间复杂度：`O(V+E*logV)`)
+      - [A&ast; 搜索算法 | A&ast; Search Algorithm](./A*搜索算法.md) ([Ref](https://theory.stanford.edu/~amitp/GameProgramming/)；基于 Dijkstra 算法添加了启发式函数，单起点单终点最坏时间复杂度：`O(V+E*logV)`)
         - IDA&ast; 算法 | IDA&ast; Algorithm
       - 禁忌搜索 | Tabu Search
       - 爬山算法 | Hill Climbing

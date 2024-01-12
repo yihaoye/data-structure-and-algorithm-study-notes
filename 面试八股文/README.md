@@ -31,6 +31,7 @@
 * [态势感知](https://www.amazonaws.cn/en/knowledge/what-is-situation-awareness/)
 * 云计算的定义 - 云计算就是指通过互联网，以按需服务的形式提供计算资源。这样企业就无需自行采购、配置或管理资源，而且只需要为实际使用的资源付费。本质上云计算就是第三方数据中心托管的一堆 Linux（或其他 OS）服务器。
 * 哈希、加密、编码的区别 ![](./hash-encrpt-encode.png)
+* [SDN（软件定义网络）](https://www.cloudflare.com/zh-cn/learning/network-layer/what-is-sdn/) - SDN 通过将控制平面与转发平面分离，实现了网络的集中控制，从而可以灵活地控制网络流量，满足各种应用的需求，最终达成：提高系统的灵活性和可编程性、降低系统的管理和运维成本、提高系统的安全性。
   
 ## Java 高频
 * Java 中垃圾回收机制中如何判断对象需要回收？常见的 GC 回收算法有哪些？ （中等）
