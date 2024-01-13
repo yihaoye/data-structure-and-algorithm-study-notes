@@ -39,6 +39,8 @@
 * [状态 | State](./State.java)
 * [策略 | Strategy](./Strategy.java)
   * (包括命令模式，在 Go 中有其他更直接的方式来达到相同的目的，例如使用函数闭包或接口组合 - [Go 示例](./Strategy.go))
+* 重试 | Retry
+  * ([Go 示例](./Retry.go))
 * [模板 | Template](./Template.java)
 * [访问者 | Visitor](./Visitor.java)
 * [责任链 | Chain of Responsibility](./CoR.java)
