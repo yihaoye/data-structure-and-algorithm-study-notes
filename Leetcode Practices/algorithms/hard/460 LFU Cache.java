@@ -64,7 +64,7 @@ class LFUCache {
     int min; // 存储当前最小频次
 
     public LFUCache(int capacity) {
-        // https://leetcode.cn/problems/lfu-cache/solutions/48636/java-13ms-shuang-100-shuang-xiang-lian-biao-duo-ji/
+        // HashMap + LinkedHashSet + Node - https://leetcode.cn/problems/lfu-cache/solutions/48636/java-13ms-shuang-100-shuang-xiang-lian-biao-duo-ji/
         // Time: O(1), Space: O(capacity)
         cache = new HashMap<> (capacity);
         freqMap = new HashMap<>();
@@ -145,6 +145,86 @@ class Node {
         this.value = value;
     }
 }
+/**
+ * Your LFUCache object will be instantiated and called as such:
+ * LFUCache obj = new LFUCache(capacity);
+ * int param_1 = obj.get(key);
+ * obj.put(key,value);
+ */
+
+
+
+// My Solution:
+class LFUCache {
+    HashMap<Integer, Node> hMap;
+    TreeSet<Node> tSet;
+    int size;
+    int time; // simple timestamp for checking least recently used
+
+    public LFUCache(int capacity) {
+        // HashMap + TreeSet + Object
+        // Time: O(logN), Space: O(N)
+        hMap = new HashMap<>();
+        tSet = new TreeSet<>((n1, n2) -> n1.freq == n2.freq ? n2.time - n1.time : n2.freq - n1.freq);
+        size = capacity;
+        time = 0;
+    }
+    
+    public int get(int key) {
+        if (!hMap.containsKey(key)) return -1;
+        Node node = hMap.get(key);
+        tSet.remove(node); // remove 必须在对象成员更新前进行，原理原因具体参考结尾处的解析
+        node.freq++; node.time = time++;
+        tSet.add(node);
+        return node.val;
+    }
+    
+    public void put(int key, int value) {
+        if (!hMap.containsKey(key) && tSet.size() == size) {
+            hMap.remove(tSet.last().key);
+            tSet.remove(tSet.last());
+        }
+        Node node = hMap.getOrDefault(key, new Node());
+        tSet.remove(node); // remove 必须在对象成员更新前进行
+        node.key = key; node.val = value; node.freq++; node.time = time++;
+        tSet.add(node); hMap.put(key, node);
+    }
+}
+
+class Node {
+    int key, val, freq, time;
+
+    Node() {
+        this(-1, -1, 0, 0);
+    }
+
+    Node(int key, int val, int freq, int time) {
+        this.key = key;
+        this.val = val;
+        this.freq = freq;
+        this.time = time;
+    }
+
+    @Override
+    public int hashCode() {
+        return this.key;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null) return false;
+        Node obj = (Node) o;
+        return this.key == obj.key;
+    }
+}
+/*
+TreeSet是基于红黑树实现的，其元素的顺序是根据元素的自然顺序或者通过提供的比较器来确定的。在你的代码中，使用TreeSet来维护Node对象的顺序，其中比较器是通过节点的频率和时间。
+关于为什么remove必须在对象成员更新前进行，原因涉及到红黑树的内部实现和比较器的作用。
+在红黑树中，当你调用remove方法时，它会根据比较器找到匹配的节点并将其删除。在删除节点之前，比较器会根据删除前的节点值来进行比较。如果在更新成员之前删除了节点，那么比较器就会使用删除前的节点值进行比较，从而找到正确的节点并进行删除。
+如果在更新成员之后再进行删除，节点的值已经发生变化，比较器会使用更新后的值进行比较，这可能导致在红黑树中找不到正确的节点，从而无法成功删除。
+在你的代码中，Node对象是TreeSet的元素，而remove操作依赖于Node类中的比较器。因此，确保在更新成员之前调用remove是为了保证红黑树中的节点按照正确的顺序进行删除。
+总的来说，这涉及到红黑树的内部实现和Java中TreeSet的比较器工作原理，确保在更新成员之前调用remove是为了保证正确的节点被删除。
+*/
 
 
 
@@ -268,9 +348,3 @@ class DoublyLinkedList {
         return dummyTail.prev;
     }
 }
-/**
- * Your LFUCache object will be instantiated and called as such:
- * LFUCache obj = new LFUCache(capacity);
- * int param_1 = obj.get(key);
- * obj.put(key,value);
- */

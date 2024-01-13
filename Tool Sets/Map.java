@@ -9,6 +9,8 @@ int firstKey = tmap.firstKey();
 // TreeMap.floorKey(K key) Returns the greatest key less than or equal to the given key, or null if there is no such key.
 Integer key = tmap.floorKey(100);
 
+// TreeMap / TreeSet remove() 需对自定义类额外注意，具体参考 LC Q460 LFU Cache
+
 
 
 // General map methods
