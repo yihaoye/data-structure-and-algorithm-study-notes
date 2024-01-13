@@ -1,5 +1,8 @@
 这里只列举比较重要的常用的设计模式。  
 
+一些设计模式的出现是为了弥补特定语言的限制，提供更灵活、可扩展、可维护的代码结构。而一些新兴的语言如 Go 等，其设计哲学鼓励简单的代码和少使用复杂的设计模式，因此设计和编写 Go 代码时通常会更注重简单性、直观性和实用性。Go 提供了一些内置工具，如接口和类型组合，可以在不使用传统设计模式的情况下实现相似的功能。  
+总的来说，Go 的设计理念和语言特性可能会减少对某些设计模式的需求，但并不意味着设计模式在 Go 中变得无关紧要。在实际编码中，还是需要根据具体情况灵活运用设计模式或其他编程范式，下面实现了 Go 代码的设计模式是对 Go 实用的其余则较少。  
+
 推荐阅读材料：  
 * https://refactoringguru.cn/design-patterns/catalog
 * [设计模式二三事](https://tech.meituan.com/2022/03/10/interesting-talk-about-design-patterns.html)
@@ -11,13 +14,16 @@
 ## 创建型模式
 创建型模式关注点是如何创建对象，其核心思想是要把对象的创建和使用相分离，这样使得两者能相对独立地变换。  
 * [工厂方法 | Factory](./Factory.java)
+  * ([Go 示例](./Factory.go))
 * [建造者 | Builder](./Builder.java)
 * [单例 | Singleton](./Singleton.java)
+  * ([Go 示例](./Singleton.go))
 * [原型 | Prototype](./Prototype.java)  
   
 ## 结构型模式
 结构型模式主要涉及如何组合各种对象以便获得更好、更灵活的结构。虽然面向对象的继承机制提供了最基本的子类扩展父类的功能，但结构型模式不仅仅简单地使用继承，而更多地通过组合与运行期的动态组合来实现更灵活的功能。  
 * [适配器 | Adapter](./Adapter.java)
+  * ([Go 示例](./Adapter.go))
 * [桥接 | Bridge](./Bridge.java)
 * [组合 | Composite](./Composite.java)
 * [代理 | Proxy](./Proxy.java)
@@ -27,12 +33,15 @@
 ## 行为型模式
 行为型模式主要涉及算法和对象间的职责分配。通过使用对象组合，行为型模式可以描述一组对象应该如何协作来完成一个整体任务。  
 * [迭代器 | Iterator](./Iterator.java)
+  * (在 Go 更多直接使用内置的 slice 和 for range 结构，因其足够简洁而有效的迭代功能)
 * [观察者 | Observer(Listener)](./Observer.java)
+  * ([Go 示例](./Observer.go))
 * [状态 | State](./State.java)
 * [策略 | Strategy](./Strategy.java)
+  * (包括命令模式，在 Go 中有其他更直接的方式来达到相同的目的，例如使用函数闭包或接口组合 - [Go 示例](./Strategy.go))
 * [模板 | Template](./Template.java)
 * [访问者 | Visitor](./Visitor.java)
-* [责任链 | Chain of Responsibility](./CoR.java)  
+* [责任链 | Chain of Responsibility](./CoR.java)
   
 以上引用自[来源](https://www.liaoxuefeng.com/wiki/1252599548343744/1264742167474528)  
   

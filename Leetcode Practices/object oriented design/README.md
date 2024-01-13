@@ -222,7 +222,7 @@ Books：《Head first object-oriented analysis and design》《Head first design
 编程说穿了就是两个方面，data 和这些 data 上的 operation。  
 oop，就是让 operation 围绕 data，这样的好处是，当要添加新的 data type 的时候，好方便！原来写的代码都不用改。但是要给已经写好的 data type 添加方法怎么办？比如要你给 java 自带的 string 加个 python 那种乘法。  
 functional programming 采取的是另一种思路，data 更多的围绕 operation，所以添加新的方法很容易。  
-这就是著名的 the expression problem。谁优谁劣，要看应用场景，写 GUI 用 oop 好不畅快，写 interpreter 函数式可能更方便。  
+这就是著名的 the expression problem。谁优谁劣，要看应用场景，写 GUI 用 oop 好不畅快，写 interpreter 函数式可能更方便。总结就是两者能力都是一样的，只是一些场景下其中一个比另一个更好实现、好写好看、少副作用一些。  
 这些都是 idiom，不是宗教，具体问题具体分析。但是学习 functional programming 绝对大有裨益，因为国内的计算机教育太强调图灵模型（也就是 C 语言一脉）了，而对 lambda calculus 涉及太少，造成了很多偏见和误解。[参考链接](https://www.zhihu.com/question/19732025/answer/24498043)  
 
 > 例如五子棋，面向过程的设计思路就是首先分析问题的步骤：1、开始游戏，2、黑子先走，3、绘制画面，4、判断输赢，5、轮到白子，6、绘制画面，7、判断输赢，8、返回步骤2，9、输出最后结果。把上面每个步骤用分别的函数来实现，问题就解决了。  
