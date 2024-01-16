@@ -150,8 +150,11 @@ This personal Blog contains explanation and **Java library/template implementati
         - [埃氏筛法 | Eratosthenes Sieve](../Leetcode%20Practices/algorithms/medium/204%20Count%20Primes.java) (向前动态规划+排除法，时间复杂度 `O(N*loglogN)`)
           - [线性筛法 | Linear Sieve](../Leetcode%20Practices/algorithms/medium/204%20Count%20Primes.java) (埃氏筛法、欧拉筛法的优化，时间复杂度 `O(N)`)
         - 中国剩余定理 | Chinese Remainder Theorem ([Wiki](https://zh.wikipedia.org/wiki/%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86))
+      - 概率论 | Probability Theory
+        - 贝叶斯定理 | Bayes Theorem ([Wiki](https://zh.wikipedia.org/wiki/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%AE%9A%E7%90%86)；`P(A|B) = P(A)*P(B|A)/P(B)`)
+        - 马尔可夫链 | Markov Chain ([Wiki](https://zh.wikipedia.org/wiki/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E9%93%BE))
       - [快速幂法 | Binary Exponentiation](../Tool%20Sets/Math.java)
-      - [高斯消元法 | Gaussian Elimination](./高斯消元法.md)
+      - [高斯消元法 | Gaussian Elimination](./高斯消元法.md) (时间复杂度 `O(N^3)`)
       - 高精度计算 | Arbitrary-Precision Arithmetic ([Wiki](https://oi-wiki.org/math/bignum/))
       - [约瑟夫环/问题 | Josephus Problem](./约瑟夫环.md)
       - 欧拉图 | Euler Diagram ([Wiki](https://oi-wiki.org/graph/euler/))
