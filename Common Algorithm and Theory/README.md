@@ -136,13 +136,14 @@ This personal Blog contains explanation and **Java library/template implementati
       - [Transformer 模型, 大语言模型 (Large Language Model)](https://github.com/yihaoye/lyrics-gpt) (Related: [Wiki](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model))、[build GPT from scratch](https://www.youtube.com/watch?v=kCc8FmEb1nY)、[注意力机制 1](https://en.wikipedia.org/wiki/Attention_(machine_learning))、[注意力机制 2](https://www.youtube.com/watch?v=nzqlFIcCSWQ))
     - 多模态学习 | Multimodal Learning ([Ref](https://zhuanlan.zhihu.com/p/53511144))
   - 并行算法 | Parallel Algorithm ([Wiki](https://en.wikipedia.org/wiki/Parallel_algorithm)、[Ref](https://blog.51cto.com/luweir/4873113?articleABtest=0)：并行算法尚在发展中，不及串行算法丰富。目前最常用的的方法是 PCAM 方法，即划分，通信，组合，映射。并行算法与串行算法最大的不同之处在于，并行算法不仅要考虑问题本身，而且还要考虑所使用的并行模型，网络连接等等)
+    - 阿姆达尔定律 | Amdahl's Law ([Wiki](https://zh.wikipedia.org/wiki/%E9%98%BF%E5%A7%86%E8%BE%BE%E5%B0%94%E5%AE%9A%E5%BE%8B))
   - [数学 | Maths](../Computer%20Science%20Maths/README.md)
     - 专项专题 | Special Topics
       - 排序网络 | Sorting Network ([Ref](http://www.matrix67.com/blog/archives/185))
       - 矩阵运算 | Matrix Operations
         - 施特拉森算法 | Strassen Algorithm ([Ref](https://www.youtube.com/watch?v=0oJyNmEbS4w)；时间复杂度 `~O(n^(2.8))`)
       - 线性规划 | Linear Regression
-      - [快速傅立叶变换 | Fast Fourier Transform](./FFT.md) (时间复杂度 `O(N*logN)`)
+      - [快速傅立叶变换 | Fast Fourier Transform](./FFT.md) (时间复杂度 `O(N*logN)`，另外还有[并行快速傅立叶变换](https://zh.wikipedia.org/wiki/%E5%B9%B6%E8%A1%8C%E5%BF%AB%E9%80%9F%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2))
       - [鸽巢原理 | Pigeonhole Principle](./鸽巢原理.md)
       - 容斥原理 | Inclusion–Exclusion Principle ([Wiki](https://oi-wiki.org/math/combinatorics/inclusion-exclusion-principle/))
       - 数论 | Number Theory
