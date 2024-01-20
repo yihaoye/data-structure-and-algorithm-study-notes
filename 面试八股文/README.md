@@ -53,7 +53,7 @@
 * ThreadLocal 实现原理是什么？每个线程都有自己的 ThreadLocalMap，它是一个哈希表，用于存储线程的局部变量。这个哈希表的键是 ThreadLocal 对象，值是对应线程的局部变量。
 * 简述 Spring 的初始化流程（bean 的生命周期）？加载配置文件 -> 创建容器 -> Bean 的定义 -> Bean 的实例化 -> 依赖注入 -> Bean 的初始化回调 -> 应用程序使用 Bean -> Bean 的销毁回调 -> 容器关闭。
 * 简述 Netty 线程模型，Netty 为什么如此高效？[高效的 I/O 模型](./../Leetcode%20Practices/system%20design/IO模型与Web服务器工作模型.md)以及零拷贝技术等等。
-* 简述 Spring 的 IOC 机制？依赖注入。
+* [简述 Spring 的 IOC 机制？依赖注入](../Leetcode%20Practices/object%20oriented%20design/README.md)
 * 简述 Spring AOP 的原理？核心原理是基于代理模式和动态代理技术，通过代理对象拦截方法调用并应用通知，以实现横切关注点的功能。
 * 简述动态代理（在运行时动态生成代理类。动态代理不需要预先创建代理类的代码，而是在运行时使用反射等机制动态生成代理类）与静态代理（代理类的代码是在编译时期就已经生成的，它们在编译时与具体的目标类绑定）
 * [Java IO](https://www.cnblogs.com/czwbig/p/10007201.html)
