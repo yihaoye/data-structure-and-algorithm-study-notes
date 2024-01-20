@@ -17,10 +17,20 @@
 建议各种类、接口、API 多查看 [Java 官方文档](https://docs.oracle.com/javase/8/docs/api/overview-summary.html)  
 另外，需熟记 [Java 的关键字](Java%20关键字.pdf) 以及 [Java 标准库](./Java%20标准库.md)  
   
-## Python 特性
-ToDo ...  
+## Golang 特性
+Go Core
+* [容器集合](./Go%20Container.md)
+* 指针
+* 核心语法 [select](https://github.com/yihaoye/go-example/tree/master/general-demos#select)、[defer](https://github.com/yihaoye/go-example/tree/master/general-demos#defer)
+* [并发](https://github.com/yihaoye/go-example/tree/master/general-demos#%E5%B9%B6%E5%8F%91)
+* [时间](https://github.com/yihaoye/go-example/tree/master/general-demos#time)
+* [IO](https://github.com/yihaoye/go-example/tree/master/general-demos#io)
+* 反射
+* [泛型](https://github.com/yihaoye/go-example/tree/master/general-demos#%E6%B3%9B%E5%9E%8B)
+* [Context](https://github.com/yihaoye/go-example/tree/master/general-demos#context)
+* GC
   
-## C++ 特性
+## Python 特性
 ToDo ...  
   
 ## 编程语言间的差别
