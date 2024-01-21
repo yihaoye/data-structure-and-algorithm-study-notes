@@ -19,16 +19,16 @@
   
 ## Golang 特性
 Go Core
-* [容器集合](./Go%20Container.md)
+* [容器集合](./Go-数据结构.md)
 * 指针
 * 核心语法 [select](https://github.com/yihaoye/go-example/tree/master/general-demos#select)、[defer](https://github.com/yihaoye/go-example/tree/master/general-demos#defer)
 * [并发](https://github.com/yihaoye/go-example/tree/master/general-demos#%E5%B9%B6%E5%8F%91)
 * [时间](https://github.com/yihaoye/go-example/tree/master/general-demos#time)
 * [IO](https://github.com/yihaoye/go-example/tree/master/general-demos#io)
-* 反射
+* [反射](https://github.com/yihaoye/go-example/tree/master/general-demos#%E5%8F%8D%E5%B0%84)
 * [泛型](https://github.com/yihaoye/go-example/tree/master/general-demos#%E6%B3%9B%E5%9E%8B)
 * [Context](https://github.com/yihaoye/go-example/tree/master/general-demos#context)
-* GC
+* [GC](https://github.com/yihaoye/go-example/tree/master/general-demos#gc)
   
 ## Python 特性
 ToDo ...  
