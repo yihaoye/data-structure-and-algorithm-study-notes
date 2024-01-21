@@ -62,6 +62,7 @@
       - [红黑树 | Red-Black Tree](./Data%20Structure%20Implementation/RedBlackTree/README.md) (搜索 O(logN)，插入/删除节点 O(logN))
       - 替罪羊树 | Scapegoat Tree ([Wiki](https://oi-wiki.org/ds/sgt/))
       - [T 树 | T Tree](https://en.wikipedia.org/wiki/T-tree)
+      - [LCT 树 | Link-Cut Tree](https://oi-wiki.org/ds/lct/)
     - 自平衡搜索树 | Self-Balanced Search Tree
       - [B/B+ 树 | B/B+ Tree](./Data%20Structure%20Implementation/BPlusTree/README.md)
       - 2–3 树 | 2-3 Tree
@@ -90,6 +91,8 @@
   - [状态机 | State Machine](../Common%20Algorithm%20and%20Theory/动态规划与状态机.md) (有广泛的使用场景)
   - [生成树 | Spanning Tree](./Data%20Structure%20Implementation/SpanningTree/README.md)
     - [最小生成树 | Minimum Spanning Tree](./Data%20Structure%20Implementation/MinimumSpanningTree/README.md)
+- [可持久化数据结构 | Persistent Data Structure](https://oi-wiki.org/ds/persistent/) (总是可以保留每一个历史版本，并且支持操作的不可变特性 immutable)
+  - [绳索 | Rope](https://en.wikipedia.org/wiki/Rope_%28data_structure%29) (支持 O(logN) 的时间复杂度内插入删除合并分裂等操作)
   
 以上有些数据结构可能只有 Java 提供了官方实现 [more](https://www.zhihu.com/question/325814788) ，以上总结未完待续...  
   
