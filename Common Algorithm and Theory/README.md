@@ -49,10 +49,10 @@ This personal Blog contains explanation and **Java library/template implementati
       - [倍增法 | Binary Lifting](./倍增法.md) (时间复杂度 - 预处理 `O(N*logN)`，之后查询 `O(logN)`) ([倍增法与二分法的区别](./倍增法.md#二分-vs-倍增))
       - [弗洛伊德算法 | Floyd-Warshall Algorithm](./弗洛伊德算法.md) (时间复杂度 `O(N^3)`)
       - [Kadane 算法 | Kadane's Algorithm](./Kadane算法.md) (时间复杂度 `O(N)`)
+      - [马拉车算法 | Manacher Algorithm](./马拉车算法.md) (时间复杂度 `O(N)`)
       - 词法分析 | Lexical Analysis ([Wiki](https://zh.wikipedia.org/wiki/%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90)、[Simple Example: JSON Parser](../Leetcode%20Practices/object%20oriented%20design/other%20practices/json%20parser/README.md))
     - [KMP 算法 | Knuth–Morris–Pratt Algorithm](./KMP算法.md) (时间复杂度 `O(N+M)`)
     - [AC 自动机 | Aho–Corasick Algorithm](./AC自动机.md)
-    - 马拉车算法 | Manacher Algorithm
     - [并查集联合查找算法 | Disjoint-Set Union-Find Algorithm, DSU](./并查集与联合查找算法.md) (时间复杂度 `O(a(N))` - a(N) 为反阿克曼函数，对于大部分 N，a(N) 均小于 5，所以并查集的时间复杂度也可视为 `O(1)`)
     - [图匹配 | Graph Match](./图匹配.md)
       - 染色法 | Coloring Method
