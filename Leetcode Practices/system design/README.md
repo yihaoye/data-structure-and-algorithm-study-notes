@@ -263,6 +263,7 @@ API 网关是位于客户端与后端服务集之间的大门 - API 管理工具
 ![](./aws-load-balancer.webp)  
 ![](./api-gateway.jpeg)  
 ![](./api-gateway-vs-load-balancer.jpeg)  
+![](./firewall.gif)  
 
 ### 自动扩展与容器编排
 底层实现中需要调度器（硬件机器、端口）、命令行（镜像、启动/停止容器）、状态机等。[具体参考](https://github.com/gogococo/orchestrator-in-go)  
