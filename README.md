@@ -54,7 +54,7 @@
 2. 是否需要做一些[预处理](./Tool%20Sets/)，如排序，又或者先做一些额外预处理比如补零数位（例子如 Leetcode Q415）以及遍历至尾，再从尾部往回处理（如面试金典 9.2-2.5 进阶），又或者中间有一些不直观、麻烦但有规律的处理或输出可以采用语法糖比如 [Java Stream](./Tool%20Sets/Stream.java) 来灵活处理并使得代码紧凑简洁。这种情况往往出现在题目明显有违常规思路时，即总是有些条件、可能、边缘情况阻碍常规思路，意味着出题者可能是故意增加了一些难度需要解题者预处理。这些预处理工作即使看起来复杂且一开始不确定是否对解题有帮助也不妨试试，尽量按常规系统性方法解题（即上面所有 Leetcode 内的解题法分类如递归、动态规划等等，经验足够的话大的解题类方向通常一开始就可以定下来），可以分割困难，但不要苦思奇法。
    * 大部分情况下，如果无法或未经过预处理（如有序保证）且没有索引（如哈希）的情况下对原数据进行查询（非数组位置访问，而是比如是否存在某个/范围值）、遍历或操作，难以避免时间复杂度低于 O(N)，顶多只能优化空间复杂度（如 in-place O(1)）。
 3. 当题目已暗示可能要进行大规模输入检测题解效率时，可以考虑进行一些预处理、动态规划思路，例子如 Leetcode Q244。
-4. (草稿时)引入一些[数学工具、模型](./Tool%20Sets/Math.java) - 如[状态机](./Tool%20Sets/FSM(DFA).java)等等有助于理清思路与解题(例子如 Leetcode Q309，KMP 算法实现)，辅助的数学思想还可以包括且不限于加减乘除(商、余数、取模)、开方、[指数](./Tool%20Sets/Math.java)、对数(例如 Leetcode Q818)、微积分(例如 Leetcode Q367 牛顿法)、[素数](./Leetcode%20Practices/algorithms/medium/204%20Count%20Primes.java)、[公约数](./Tool%20Sets/Math.java)、[公倍数](./Tool%20Sets/Math.java)、概率(例如 Leetcode Q688 Q478)、阶乘/[组合数学](./Computer%20Science%20Maths/Combinatorics.md)(例如 Leetcode Q62)、数列(例如 Leetcode Q818)、坐标(例如 Leetcode Q149)、二元一次方程(例如 Leetcode Q149)、几何函数(sin、cos、tan)、[矩阵](./Tool%20Sets/Math.java)(例如 Leetcode Q311)、穷举法(例如 Leetcode Q818)、不等式、多项式、进位转换等等。
+4. (草稿时)引入一些[数学工具、模型](./Tool%20Sets/Math.java) - 如[确定有限状态自动机](./Tool%20Sets/FSM(DFA).java)等等有助于理清思路与解题(例子如 Leetcode Q309，KMP 算法实现)，辅助的数学思想还可以包括且不限于加减乘除(商、余数、取模)、开方、[指数](./Tool%20Sets/Math.java)、对数(例如 Leetcode Q818)、微积分(例如 Leetcode Q367 牛顿法)、[素数](./Leetcode%20Practices/algorithms/medium/204%20Count%20Primes.java)、[公约数](./Tool%20Sets/Math.java)、[公倍数](./Tool%20Sets/Math.java)、概率(例如 Leetcode Q688 Q478)、阶乘/[组合数学](./Computer%20Science%20Maths/Combinatorics.md)(例如 Leetcode Q62)、数列(例如 Leetcode Q818)、坐标(例如 Leetcode Q149)、二元一次方程(例如 Leetcode Q149)、几何函数(sin、cos、tan)、[矩阵](./Tool%20Sets/Math.java)(例如 Leetcode Q311)、穷举法(例如 Leetcode Q818)、不等式、多项式、进位转换等等。
 5. 有时有些题目未必是完整使用某个算法来解题，有可能只是使用该算法的一部分或其某个某些工具（例如 Leetcode Q459 Q1392 只使用 KMP 的 Partial Match Table）。
 6. 有些问题或子问题未必需要使用正式的算法或计算处理（即使有适用的算法也未必是效率最好的），很可能仅需简单地打表（hard coding）一些预备数据（特别是当这些问题的可能的结果/子结果的集合是有限的、在不大的区间时），然后再基于这些预备数据简单处理一下即可给出答案（比如问题：随机产生多个 4 位数字的 PIN 码且每个码都是独一无二的且每个码都符合连续两位不能相同连续三位不能递增，其解决方案即 hard coding 一个包含所有合规的 PINs 的数组，然后再通过随机函数从中不重叠地选取即可，但是也有一些面试情况希望给出产生这些 PIN 的算法，见[实例](./Other%20Practices/15-05-2021%20pin%20generator/)）。此种方法也可与某些算法（如动态规划）结合使用。
 7. 当一些题目要求在 O(N) 时间复杂度 O(1) 空间复杂度等苛刻条件内完成时，可能需要通过一些特别的适用于该题情况的方法（比如位运算）而不是先排序再处理或基于哈希表数组等工具的惯常做法（例如 Leetcode Q136 Q137）。又比如如何在 O(1) 的空间代价完成两两链表合并或反转，这个问题在面试中常常出现，为了达到空间代价是 O(1)，通常宗旨是原地调整链表元素的 next 指针完成合并或反转。
@@ -111,7 +111,7 @@
   * [线段树](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/SegmentTree/SegmentTree4.java)
   * [跳表 | Leetcode Q1206](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/SkipList/SkipList.java)
   * [红黑树](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/RedBlackTree/RBTree.java)
-  * [状态机](./Tool%20Sets/FSM(DFA).java)
+  * [确定有限状态自动机（状态机）](./Tool%20Sets/FSM(DFA).java)
   * 其他：[1](./Leetcode%20Practices/object%20oriented%20design/other%20practices/README.md)、[2](./Common%20Data%20Structure%20and%20Data%20Type/README.md)、[3](./Other%20Practices/)、[4](./Tool%20Sets/README.md)
 * 中级算法
   * [二分搜索 | Leetcode Q34 Q2517 etc](./Common%20Algorithm%20and%20Theory/二分搜索.md)
