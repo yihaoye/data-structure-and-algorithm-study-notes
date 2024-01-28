@@ -2770,8 +2770,8 @@ ref: https://swoopnow.com/how-does-two-factor-authentication-work/
 https://blog.bytebytego.com/p/password-session-cookie-token-jwt  
 
 ![](./two-factor-auth.webp)  
-![](./cookie-and-session.webp)
-![](./cookies-and-sessions.jpeg)
+![](./cookie-and-session.webp)  
+![](./cookies-and-sessions.jpeg)  
 
 1. 网站或应用程序提示用户登录。
 2. 用户输入他们知道的信息 - 这通常是传统的用户名和密码组合。该站点的服务器找到匹配项并识别用户，成功后返回一个 cookie、token 或重定向到一个第二步登录的 URL（限时有效地址，带一个临时创建的 unique 字符串）。
