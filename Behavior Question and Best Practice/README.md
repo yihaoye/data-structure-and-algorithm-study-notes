@@ -121,6 +121,7 @@ Books:
 * [Learning How to Learn: Powerful mental tools to help you master tough subjects](https://www.coursera.org/learn/learning-how-to-learn)
 * [People and Soft Skills for Professional and Personal Success](https://www.coursera.org/specializations/people-and-soft-skills-for-professional-success)
 * [Improve Your English Communication Skills Specialization](https://www.coursera.org/specializations/improve-english)
+  * [1 on 1](https://www.atlassian.com/software/confluence/templates/1-on-1-meeting)
 * [Teamwork Skills: Communicating Effectively in Groups](https://www.coursera.org/learn/teamwork-skills-effective-communication)
 * [Developing Interpersonal Skills](https://www.coursera.org/learn/interpersonal-skills)
 
