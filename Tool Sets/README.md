@@ -16,7 +16,9 @@ Tool Sets 是 Online / Take Home assessment、算法解题、编码过程中常�
 * [Comparable](./Comparable.java)
 * [Comparator](./Comparator.java)
 * [数据类型转换](./DataTypeConversion.java)
-* [状态机相关](./FSM(DFA).java)
+* 状态机相关
+  * [DFA](./FSM(DFA).java)
+  * [NFA](./FSM(NFA).java)
 * [HashCode](./HashCode.java)
 * [I/O 与 Serializable (序列化与反序列化)](./IO(Serializable).java)
   * [管道](./Pipe.java)
