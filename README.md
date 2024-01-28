@@ -134,6 +134,7 @@
   * [Dijkstra 算法 | Leetcode Q743-图-最值权重路径](./Leetcode%20Practices/algorithms/medium/743%20Network%20Delay%20Time.java)
   * [滚动哈希](./Common%20Algorithm%20and%20Theory/滚动哈希.md)
   * [LCA | Leetcode Q236](./Leetcode%20Practices/algorithms/medium/236%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree.java)
+  * [马拉车算法 | Leetcode Q5](./Common%20Algorithm%20and%20Theory/马拉车算法.md)
   * [扫描线 | Leetcode Q218](./Leetcode%20Practices/algorithms/hard/218%20The%20Skyline%20Problem.java)
   * [最小生成树 | Leetcode Q1135](./Leetcode%20Practices/algorithms/medium/1135%20Connecting%20Cities%20With%20Minimum%20Cost.java)
   * [表达式求值/模拟计算器 | Leetcode Q772 Q227 etc](./Leetcode%20Practices/algorithms/hard/772%20Basic%20Calculator%20III.java)

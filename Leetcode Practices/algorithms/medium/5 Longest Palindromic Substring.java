@@ -14,6 +14,66 @@ Output: "bb"
 */
 
 
+// 马拉车算法 O(N) by ChatGPT
+class Solution {
+    public String longestPalindrome(String s) {
+        if (s == null || s.length() == 0) {
+            return "";
+        }
+
+        // 预处理字符串，插入特殊字符
+        StringBuilder modifiedString = new StringBuilder("#");
+        for (char c : s.toCharArray()) {
+            modifiedString.append(c).append("#");
+        }
+
+        int n = modifiedString.length();
+        int[] radius = new int[n];  // 记录以每个位置为中心的回文串半径
+
+        int center = 0;  // 当前处理过程中最右的回文串的中心
+        int rightBoundary = 0;  // 当前处理过程中最右的回文串的右边界
+
+        int maxRadius = 0;  // 最长回文串半径
+        int maxCenter = 0;  // 最长回文串中心位置
+
+        for (int i = 0; i < n; i++) {
+            if (i < rightBoundary) {
+                // 利用已知回文串信息，避免重复计算
+                int mirror = 2 * center - i; // i 关于 center 的对称点
+                radius[i] = Math.min(rightBoundary - i, radius[mirror]); // 防止超出最右边界，取最小值，避免重复计算，取已知回文串的半径
+            }
+
+            // 尝试扩展回文串
+            int left = i - (radius[i] + 1);
+            int right = i + (radius[i] + 1);
+
+            while (left >= 0 && right < n && modifiedString.charAt(left) == modifiedString.charAt(right)) { // 这里的判断条件意思是：如果左边界和右边界没有超出字符串范围，并且左右边界的字符相等，那么就可以继续扩展回文串
+                radius[i]++;
+                left--;
+                right++;
+            }
+
+            // 如果当前回文串的右边界超过了最右边界，那么就更新最右边界和中心位置
+            if (i + radius[i] > rightBoundary) {
+                center = i;
+                rightBoundary = i + radius[i];
+            }
+
+            // 如果当前回文串的半径大于最长回文串的半径，那么就更新最长回文串的半径和中心位置
+            if (radius[i] > maxRadius) {
+                maxRadius = radius[i];
+                maxCenter = i;
+            }
+        }
+
+        // 从原始字符串中还原最长回文串
+        int start = (maxCenter - maxRadius) / 2;
+        int end = start + maxRadius;
+        return s.substring(start, end);
+    }
+}
+
+
 // Other's Solution:
 public class Solution {
     private int lo, maxLen;
