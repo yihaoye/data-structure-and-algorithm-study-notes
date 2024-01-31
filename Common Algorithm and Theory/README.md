@@ -110,6 +110,7 @@ This personal Blog contains explanation and **Java library/template implementati
     - [OT 算法 | Operational Transformation](../Leetcode%20Practices/system%20design/README.md#设计协同编辑系统)
     - [四叉树算法, R 树算法 | QuadTree, RTree Algorithm](./QuadTree-RTree-算法.md)
     - 默克尔树算法 | Merkle Tree Algorithm ([Wiki](https://en.wikipedia.org/wiki/Merkle_tree)、[Code](./../Leetcode%20Practices/algorithms/easy/572%20Subtree%20of%20Another%20Tree.java))
+    - Rete 匹配算法 | Rete Algorithm ([Wiki](https://en.wikipedia.org/wiki/Rete_algorithm))
     - 光线投射算法 | Ray Casting
     - Rsync 算法 ([Wiki](https://zh.wikipedia.org/zh-cn/Rsync#%E6%BC%94%E7%AE%97%E6%B3%95))
     - [非对称加密算法 | Asymmetric Cryptography](./非对称加密算法.md)

@@ -42,3 +42,8 @@ BASE 解决了 CAP 中理论没有网络延迟，在 BASE 中用软状态和最�
 
 作者：咖啡拿铁
 链接：https://juejin.cn/post/6844903647197806605
+
+### FLP
+* [FLP 不可能定理](https://zhuanlan.zhihu.com/p/384511433)
+* [参考](https://alexstocks.github.io/html/alg.html)
+* [Wiki](https://en.wikipedia.org/wiki/Consensus_(computer_science)#The_FLP_impossibility_result_for_asynchronous_deterministic_consensus)
