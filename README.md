@@ -105,7 +105,7 @@
   * [线段树](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/SegmentTree/SegmentTree4.java)
   * [跳表 | Leetcode Q1206](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/SkipList/SkipList.java)
   * [红黑树](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/RedBlackTree/RBTree.java)
-  * [确定有限状态自动机（状态机）](./Tool%20Sets/FSM(DFA).java)
+  * [状态机（确定有限状态自动机）](./Tool%20Sets/FSM(DFA).java)
   * 其他：[1](./Leetcode%20Practices/object%20oriented%20design/other%20practices/README.md)、[2](./Common%20Data%20Structure%20and%20Data%20Type/README.md)、[3](./Other%20Practices/)、[4](./Tool%20Sets/README.md)
 * 中级算法
   * [二分搜索 | Leetcode Q34 Q2517 etc](./Common%20Algorithm%20and%20Theory/二分搜索.md)
@@ -116,7 +116,7 @@
   * [位运算实现加减乘除 | Leetcode Q371](./Leetcode%20Practices/algorithms/easy/371%20Sum%20of%20Two%20Integers.java)
   * [分块分桶 | Leetcode Q901](./Common%20Algorithm%20and%20Theory/分桶法.md)
   * [树复原 | Leetcode Q105 Q106](./Leetcode%20Practices/algorithms/medium/105%20Construct%20Binary%20Tree%20from%20Preorder%20and%20Inorder%20Traversal.java)
-  * [穷举递增子序列 | Leetcode Q491](./Leetcode%20Practices/algorithms/medium/491%20Increasing%20Subsequences.java)
+  * [回溯法 | Leetcode Q51-N-皇后 Q491-穷举递增子序列](./Leetcode%20Practices/algorithms/medium/491%20Increasing%20Subsequences.java)
   * [翻转树 | Leetcode Q156 Q226](./Leetcode%20Practices/algorithms/medium/156%20Binary%20Tree%20Upside%20Down.java)
   * [K 数之和 | Leetcode Q18](./Leetcode%20Practices/algorithms/medium/18%204Sum.java)
   * [倍增法 | Leetcode Q1483](./Common%20Algorithm%20and%20Theory/倍增法.md)
