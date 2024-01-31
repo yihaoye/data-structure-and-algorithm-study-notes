@@ -146,6 +146,10 @@ Books:
 
 by ChatGPT  
 
+## 产品思维
+* [52 条设计原则](https://rpdc.xiaohongshu.com/52-design-principles)  
+
+
 # Debugging Workflow
 ![](./debugging-workflow.jpeg)  
 
