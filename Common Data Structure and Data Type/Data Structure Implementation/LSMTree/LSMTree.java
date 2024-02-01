@@ -19,6 +19,7 @@ public class LSMTree<K extends Comparable<K>, V> {
     }
 
     // 插入键值对到内存表
+    // 另外还可以拓展设置过期时间戳，这样就可以在后续合并时处理过期数据
     public void put(K key, V value) {
         memTable.put(key, value);
         if (memTable.size() >= maxMemTableSize) merge();
