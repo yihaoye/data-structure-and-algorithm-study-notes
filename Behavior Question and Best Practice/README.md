@@ -126,6 +126,10 @@ Books:
 * [Teamwork Skills: Communicating Effectively in Groups](https://www.coursera.org/learn/teamwork-skills-effective-communication)
 * [Developing Interpersonal Skills](https://www.coursera.org/learn/interpersonal-skills)
 
+## 工程师高阶与低阶的区别
+* 低阶 - 建立的系统仅自己或小范围的使用
+* 高阶 - 建立的系统供大部分人使用或行业标准方案
+
 ## 团队领导者/架构师技能
 架构师需要具备一系列技能和能力，以下是其中几项重要的：
 1. **技术深度和广度：** 架构师需要在多个技术领域有深入的理解和经验，涵盖软件开发、网络、数据库、安全性等方面，并且需要跟上技术的发展趋势。
