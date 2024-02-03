@@ -82,6 +82,7 @@ Books:
 * [SOP: Standard Operating Procedures 标准作业程序](https://wiki.mbalib.com/wiki/SOP)
 
 # Best Practice 工作实践
+* [软件设计哲学](https://go7hic.github.io/A-Philosophy-of-Software-Design/#/)
 * [软件复杂度](./软件复杂度.md)
 * [降低软件复杂性一般原则和方法](./降低软件复杂性一般原则和方法.md)
 * [后端复杂问题](./后端复杂问题.md)
