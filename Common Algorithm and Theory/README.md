@@ -68,7 +68,7 @@ This personal Blog contains explanation and **Java library/template implementati
     - 贝尔曼-福特算法 | Bellman-Ford Algorithm ([Ref](https://mp.weixin.qq.com/s/wnRQ_9CckAmlQaAjo7q_0w))
       - 最短路径快速算法 | Shortest Path Faster Algorithm (又称 SPFA，是带有队列优化的 Bellman-Ford 算法，最坏情况下时间复杂度为 `O(V*E)`，在特定情况下其效率优于 Dijkstra 算法，近似 `O(E)`)
     - 近似算法 | Approximation Algorithm ([Wiki](https://en.wikipedia.org/wiki/Approximation_algorithm))
-      - 多项式时间近似算法 | Polynomial-Time Approximation Scheme (PTAS) (时间复杂度 `O(N^a+N^b+...)` ~= `O(N^a)`)
+      - 多项式时间近似算法 | Polynomial-Time Approximation Scheme (PTAS) (时间复杂度 `O(N^c1+N^c2+...)` ~= `O(N^c1)`，指数为常数)
     - 启发式算法/搜索 | Heuristic Algorithm/Search (启发式搜索通常不讨论时空复杂度)
       - [A&ast; 搜索算法 | A&ast; Search Algorithm](./A*搜索算法.md) ([Ref](https://theory.stanford.edu/~amitp/GameProgramming/)；基于 Dijkstra 算法添加了启发式函数，单起点单终点最坏时间复杂度：`O(V+E*logV)`)
         - IDA&ast; 算法 | IDA&ast; Algorithm
