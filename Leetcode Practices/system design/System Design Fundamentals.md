@@ -22,7 +22,7 @@ https://www.algoexpert.io/systems/fundamentals
   * LRU
 * Proxies
   * Reverse Proxy - Agent represent/hide Server，对所代理的服务器负责。（例子：网关、静态资源缓存、负载均衡、限流器、防火墙等等）
-  * (Forward) Proxy - Agent represent/hide Client，对客户端负责。（例子：VPN 等等）
+  * (Forward) Proxy - Agent represent/hide Client，对客户端负责。（例子：[VPN](./VPN.gif) 等等）
   * ![](./forward-proxy-vs-reverse-proxy.jpeg)
 * Load Balancers
 * Hashing
