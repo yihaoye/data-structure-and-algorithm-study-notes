@@ -227,7 +227,7 @@
   * 避免非加密信息/数据在非安全处（比如邮件）存放/发送
 * [伪基站](https://zh.wikipedia.org/wiki/%E4%BC%AA%E5%9F%BA%E7%AB%99)
 * SIM 卡 - SIM 由 CPU、ROM、RAM、EEPROM 和 I/O 电路组成。用户使用 SIM 时，实际上是手机向 SIM 卡发出命令，SIM 卡应该根据标准规范来执行或者拒绝；SIM 卡并不是单纯的消息存储器。SIM 卡本身最重要的是存储其中的密钥和算法，并使用它们来进行身份验证（握手阶段时，设备启动并尝试连接到移动网络，设备和 SIM 卡与网络中的身份验证中心进行通信）
-* [算法复杂度攻击](https://en.wikipedia.org/wiki/Algorithmic_complexity_attack) - 通常为设计各类算法的最差场景：包括如哈希冲突、词法分析高耗、正则表达式回溯、快速排序性能退化、压缩高耗性能等，已被 OWASP 收录
+* [算法复杂度攻击](https://en.wikipedia.org/wiki/Algorithmic_complexity_attack) - 通常为设计各类算法的最差场景：包括如哈希高碰撞、词法分析高耗、正则表达式回溯灾难、快速排序性能退化、压缩高耗性能等，已被 OWASP 收录
 * 身份认证协议
   * [Kerberos](https://zh.wikipedia.org/wiki/Kerberos)
 * 主要攻击类型 ![](./cyber-attacks.jpeg)
