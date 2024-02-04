@@ -125,6 +125,7 @@ Books:
   * [1 on 1](https://www.atlassian.com/software/confluence/templates/1-on-1-meeting)
 * [Teamwork Skills: Communicating Effectively in Groups](https://www.coursera.org/learn/teamwork-skills-effective-communication)
 * [Developing Interpersonal Skills](https://www.coursera.org/learn/interpersonal-skills)
+* [工作中的技术深度](https://mp.weixin.qq.com/s/wImyzpbGHV_zO9FB3omooA)
 
 ## 工程师高阶与低阶的区别
 * 低阶 - 建立的系统仅自己或小范围的使用
