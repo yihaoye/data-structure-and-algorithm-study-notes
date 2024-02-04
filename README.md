@@ -4,8 +4,9 @@
 *This repository is just a personal study note and blog, but not any profitable or regular project. Contents may contains/quotes plenty of online materials I learned from (and all these contents are referenced with their source). Please contact me if there is any copyright issues. Sorry about that.*  
   
 ### 本笔记包括以下内容:  
-* [行为型问题与工作实践 | Behavior Question & Best Practice](./Behavior%20Question%20and%20Best%20Practice/README.md)
+* [行为型问题与工作实践 | Behavior Question & Best Practice](./Behavior%20Question%20and%20Best%20Practice/README.md) (包括 Soft Skills)
   * [质量保证 | Quality Assurance](./Quality%20Assurance/README.md)
+  * [数据分析 | Data Analysis](./Data%20Analysis/README.md)
 * [Coding Practices](./Leetcode%20Practices/) (主要包含了 [Leetcode 算法](./Leetcode%20Practices/algorithms/)、[SQL 练习](./Leetcode%20Practices/database/)；算法题第一次提交 round 1 是自己的首次解答方法，第二次提交 round 2 是进行复盘复习后并添加、理解他人的更优解以及增添其他语言解题实现，round 0 则是首次答题没头绪参考他人解题思路)
   * **[重点：分类分析套路](./分析套路.md)**
   * [Codeforces](./Codeforces/README.md)
