@@ -2,6 +2,8 @@
 在面试的 Take Home Project 或 OOD Exam 环节里经常会或多或少地考核代码质量以及测试相关，所以也需要特别注意。  
 ![](./tests.gif)  
 
+另外还有基准测试 benchmark，以 Go 为例子[参考](https://geektutu.com/post/hpg-benchmark.html)。  
+
 ## 代码质量
 ### <代码整洁之道>
 * 函数
