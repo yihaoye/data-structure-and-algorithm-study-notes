@@ -174,6 +174,8 @@
 * 芯片微架构与指令集 - 所谓微架构说白点就是 CPU 硬件图纸，设计这里有几个晶体管，那里怎么连接晶体管。核心对应的是逻辑图，是一种逻辑关系，微架构是逻辑关系的硬件实现（把逻辑门转换为硬件设计）。指令集是机器代码和硬件功能的对应，比如 x86 的指令集中 010110 代表把 a 和 b 加起来，而 arm 指令集 10011 代表把 a 和 b 加起来。编译器，你在电脑上敲的代码 a+b 是高级语言，x86 对应编译器把 a+b 翻译为 a 010110 b，arm 编译器则翻译为 a 10011 b，然后给对应的 CPU 看。所谓的 soc 整合设计，一个芯片，上方放 4 个 A75 cpu 下方放 8 个 mali gpu 左边放内存右边放 dsp，然后拿塑料片盖上。[链接](https://zhuanlan.zhihu.com/p/19893066)
 * 内存的读取速度通常不会因内存大小增加而变慢，内存速度受到访问内存的硬件和体系结构的限制，而不是内存容量本身。SSD 的随机读取时间复杂度通常可视为接近 O(1)。
 * [写入放大](https://zh.wikipedia.org/zh-hans/%E5%86%99%E5%85%A5%E6%94%BE%E5%A4%A7) - 是闪存和固态硬盘（SSD）中一种不良的现象，即实际写入的物理资料量是写入资料量的多倍。
+* [运行时](https://www.zhihu.com/question/20607178/answer/2133648600)
+* [GCC 优化](https://www.linuxjournal.com/article/7269)
 * [SSH 进阶技巧](https://plantegg.github.io/2019/06/02/%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8_SSH_%E6%9A%97%E9%BB%91%E6%8A%80%E5%B7%A7%E8%AF%A6%E8%A7%A3--%E6%94%B6%E8%97%8F%E4%BF%9D%E5%B9%B3%E5%AE%89/)
   * [A Visual Guide to SSH Tunnels: Local and Remote Port Forwarding](https://iximiuz.com/en/posts/ssh-tunnels/)
 

@@ -14,7 +14,7 @@ This personal Blog contains explanation and **Java library/template implementati
   - 离散与连续 (数据集) | Discrete and Continuous
 - 算法分析工具 | Algorithm Analysis Tools
   - [递归树 | Recursion Tree](./递归树.md)
-  - 循环不变量 | Loop Invariants
+  - 循环不变量 | Loop Invariants (本质上是数学归纳法)
 - 算法 | Algorithms
   - 基础与思维 | Foundation and Thought
     - [排序 (常用排序算法) | Sorting](./Common%20Sorts/README.md)
