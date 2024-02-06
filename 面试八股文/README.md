@@ -73,6 +73,7 @@
 * [什么是 Go Scheduler](https://golang.design/go-questions/sched/what-is/)
 * [GPM 是什么](https://golang.design/go-questions/sched/gpm/)
 * goroutine 泄露 - 在应用程序中创建的 goroutine 没有正确地退出或释放资源，导致它们持续存在而不被使用，从而浪费了系统资源。为了避免 goroutine 泄露，需要确保在不再需要时正确退出 goroutine，并释放其占用的资源。这通常需要使用适当的控制机制，例如 context 包、sync 包中的 WaitGroup 或者通道来通知 goroutine 退出；[其余参考](https://alexstocks.github.io/html/lessons.html)
+* [Golang unsafe 包](https://juejin.cn/post/6844903453303504910)
 * Golang 字符型的实际类型 ![](./go-char.png)
 
 ## 数据库高频
@@ -234,8 +235,8 @@
 * [算法复杂度攻击](https://en.wikipedia.org/wiki/Algorithmic_complexity_attack) - 通常为设计各类算法的最差场景：包括如[哈希高碰撞、词法分析高耗、正则表达式回溯灾难、快速排序性能退化、压缩高耗性能等](https://blog.csdn.net/Solstice/article/details/514)，已被 OWASP 收录
   * Bebug 不易 - 通常如果日志不全面的话，算法复杂度攻击的 debug 都比较困难，因为通常需要觉察数据倾斜或是超时是哪一行代码造成的时候，都需要拿到具体的输入进行复现才能找到根因。
 * 身份认证协议
-  * [Kerberos](https://zh.wikipedia.org/wiki/Kerberos) - 一种计算机网络授权协议，用来在非安全网络中，对个人通信以安全的手段进行身份认证。软件设计上采用客户端/服务器结构，并且能够进行相互认证，即客户端和服务器端均可对对方进行身份认证。可以用于防止窃听、防止重放攻击、保护数据完整性等场合，是一种应用对称密钥体制进行密钥管理的系统（其扩展产品也使用非对称加密方法进行认证）。当有 N 个人使用该系统时，为确保在任意两个人之间进行秘密对话，系统至少保存有它与每个人的共享密钥，所需的最少会话密钥数为 N 个。
-    * [Kinit Linux 命令](https://juejin.cn/post/7114236312382603295)
+  * [Kerberos](https://zh.wikipedia.org/wiki/Kerberos) - 一种计算机网络授权协议，用来在非安全网络中，对个人通信以安全的手段进行身份认证。加密方式有比如使用预共享密钥 PSK 或基于避免明文传输的用户密码派生的会话密钥。软件设计上采用客户端/服务器结构，并且能够进行相互认证，即客户端和服务器端均可对对方进行身份认证。可以用于防止窃听、防止重放攻击、保护数据完整性等场合，是一种应用对称密钥体制进行密钥管理的系统（其扩展产品也使用非对称加密方法进行认证）。当有 N 个人使用该系统时，为确保在任意两个人之间进行秘密对话，系统至少保存有它与每个人的共享密钥，所需的最少会话密钥数为 N 个。因其在协议设计上的优秀特性，使得其在大规模的网络环境，尤其是在安全性要求较高的环境中得到了广泛的应用。
+    * [kinit Linux 命令](https://juejin.cn/post/7114236312382603295) - Kerberos 使用称为“票”的令牌，允许用户和服务之间的安全通信。票由它的密钥分发中心（KDC）发放。KDC 是 Kerberos 的核心，管理所有的票据和密钥。用户首先要向 KDC 请求一个 Ticket Granting Ticket（TGT），这一步通常由 `kinit` 命令完成。
     * [Kerberos 工作流](https://www.freecodecamp.org/news/how-does-kerberos-work-authentication-protocol/) ![](./kerberos-flow.png)
   * [OpenID](https://zh.wikipedia.org/wiki/OpenID) - 去中心化的网上身份认证系统。对于支持 OpenID 的网站，用户不需要记住像用户名和密码这样的传统验证标记。取而代之的是，他们只需要预先在一个作为 OpenID 身份提供者（identity provider, IdP）的网站上注册。OpenID 是去中心化的，任何网站都可以使用 OpenID 来作为用户登录的一种方式，任何网站也都可以作为 OpenID 身份提供者。OpenID 既解决了问题而又不需要依赖于中心性的网站来确认数字身份。
 * 主要攻击类型 ![](./cyber-attacks.jpeg)
