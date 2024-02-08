@@ -151,33 +151,34 @@ This personal Blog contains explanation and **Java library/template implementati
         - 施特拉森算法 | Strassen Algorithm ([Ref](https://www.youtube.com/watch?v=0oJyNmEbS4w)；时间复杂度 `~O(n^(2.8))`)
       - 线性规划 | Linear Regression
       - [快速傅立叶变换 | Fast Fourier Transform](./FFT.md) (时间复杂度 `O(N*logN)`，另外还有[并行快速傅立叶变换](https://zh.wikipedia.org/wiki/%E5%B9%B6%E8%A1%8C%E5%BF%AB%E9%80%9F%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2))
-      - [鸽巢原理 | Pigeonhole Principle](./鸽巢原理.md)
-      - 容斥原理 | Inclusion–Exclusion Principle ([Wiki](https://oi-wiki.org/math/combinatorics/inclusion-exclusion-principle/))
-      - 数论 | Number Theory
-        - [取模运算 | Modulo](./取模运算.md)
-        - [埃氏筛法 | Eratosthenes Sieve](../Leetcode%20Practices/algorithms/medium/204%20Count%20Primes.java) (向前动态规划+排除法，时间复杂度 `O(N*loglogN)`)
-          - [线性筛法 | Linear Sieve](../Leetcode%20Practices/algorithms/medium/204%20Count%20Primes.java) (埃氏筛法、欧拉筛法的优化，时间复杂度 `O(N)`)
-        - 中国剩余定理 | Chinese Remainder Theorem ([Wiki](https://zh.wikipedia.org/wiki/%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86))
-      - 概率论 | Probability Theory
-        - 贝叶斯定理 | Bayes Theorem ([Wiki](https://zh.wikipedia.org/wiki/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%AE%9A%E7%90%86)；`P(A|B) = P(A)*P(B|A)/P(B)`)
-        - 马尔可夫链 | Markov Chain ([Wiki](https://zh.wikipedia.org/wiki/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E9%93%BE))
       - [快速幂法 | Binary Exponentiation](../Tool%20Sets/Math.java)
       - [高斯消元法 | Gaussian Elimination](./高斯消元法.md) (时间复杂度 `O(N^3)`)
       - 高精度计算 | Arbitrary-Precision Arithmetic ([Wiki](https://oi-wiki.org/math/bignum/))
       - [约瑟夫环/问题 | Josephus Problem](./约瑟夫环.md)
       - 欧拉图 | Euler Diagram ([Wiki](https://oi-wiki.org/graph/euler/))
-      - 计算几何 | Computational Geometry
-        - [扫描线 | Line Sweep](./扫描线.md)
-        - [凸包 | Convex Hull](./凸包.md)
-        - 三分搜索 | Ternary Search ([Ref](https://www.cnblogs.com/PJQOOO/p/4161891.html))
-        - 向量计算 | Vector ([Ref](https://cp.wiwiho.me/vector/))
-      - 函数 | Function (离散或连续、周期性或非周期性、有界或无界) (注意：函数既满足算法的定义，也满足数据类型的定义，比如可以被处理、运算、传递、赋值等，例子如波可以被叠加。因此函数也可以被设计为自定义的类，在某些编程语言中，函数被视为第一类对象)
-        - 波 (三角函数) | Wave (Trigonometric Function)
-        - 分段函数 | Piecewise (比如阶跃函数)
-        - 多项式 (包括常数函数、线性函数、开方函数等等) | Polynomial
-        - 指数函数 ｜ Exponential Function
-        - 反函数 (比如对数函数是指数函数的反函数) | Inverse Function
       - [其他数学工具、操作与套路 | Other Math Tools](../Tool%20Sets/Math.java)
+    - [组合 | Combinatorics](../Computer%20Science%20Maths/Combinatorics.md)
+      - [鸽巢原理 | Pigeonhole Principle](./鸽巢原理.md)
+      - 容斥原理 | Inclusion–Exclusion Principle ([Wiki](https://oi-wiki.org/math/combinatorics/inclusion-exclusion-principle/))
+    - 数论 | Number Theory
+      - [取模运算 | Modulo](./取模运算.md)
+      - [埃氏筛法 | Eratosthenes Sieve](../Leetcode%20Practices/algorithms/medium/204%20Count%20Primes.java) (向前动态规划+排除法，时间复杂度 `O(N*loglogN)`)
+        - [线性筛法 | Linear Sieve](../Leetcode%20Practices/algorithms/medium/204%20Count%20Primes.java) (埃氏筛法、欧拉筛法的优化，时间复杂度 `O(N)`)
+      - 中国剩余定理 | Chinese Remainder Theorem ([Wiki](https://zh.wikipedia.org/wiki/%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86))
+    - 概率论 | Probability Theory
+      - 贝叶斯定理 | Bayes Theorem ([Wiki](https://zh.wikipedia.org/wiki/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%AE%9A%E7%90%86)；`P(A|B) = P(A)*P(B|A)/P(B)`)
+      - 马尔可夫链 | Markov Chain ([Wiki](https://zh.wikipedia.org/wiki/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E9%93%BE))
+    - 计算几何 | Computational Geometry
+      - [扫描线 | Line Sweep](./扫描线.md)
+      - [凸包 | Convex Hull](./凸包.md)
+      - 三分搜索 | Ternary Search ([Ref](https://www.cnblogs.com/PJQOOO/p/4161891.html))
+      - 向量计算 | Vector ([Ref](https://cp.wiwiho.me/vector/))
+    - 函数 | Function (离散或连续、周期性或非周期性、有界或无界) (注意：函数既满足算法的定义，也满足数据类型的定义，比如可以被处理、运算、传递、赋值等，例子如波可以被叠加。因此函数也可以被设计为自定义的类，在某些编程语言中，函数被视为第一类对象)
+      - 波 (三角函数) | Wave (Trigonometric Function)
+      - 分段函数 | Piecewise (比如阶跃函数)
+      - 多项式 (包括常数函数、线性函数、开方函数等等) | Polynomial
+      - 指数函数 ｜ Exponential Function
+      - 反函数 (比如对数函数是指数函数的反函数) | Inverse Function
     - [博弈论 | Game Theory](./博弈论.md)
     - 最优化 | Mathematical Optimization ([Wiki](https://en.wikipedia.org/wiki/Mathematical_optimization)、[Ref](https://space.bilibili.com/97068901/channel/collectiondetail?sid=1387071)；最优化是应用数学的一个分支，是计算机与人工智能的一个重要研究领域：从很大程度上来说，[深度学习实际上是在解决大量复杂的优化问题](https://www.jiqizhixin.com/articles/071502)，神经网络仅仅是一个非常复杂的函数，包含数百万个参数，这些参数代表的是一个问题的数学解答，实质上，训练神经网络是在最小化一个损失函数，这个损失函数的值衡量了网络的性能在给定数据集上离完美还差多少)
       - 线搜索 | Line Search
