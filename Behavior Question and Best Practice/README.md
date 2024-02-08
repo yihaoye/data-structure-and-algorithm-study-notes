@@ -82,11 +82,12 @@ Books:
 * [SOP: Standard Operating Procedures 标准作业程序](https://wiki.mbalib.com/wiki/SOP)
 
 # Best Practice 工作实践
-* [软件设计哲学](https://go7hic.github.io/A-Philosophy-of-Software-Design/#/)
-* [软件复杂度](./软件复杂度.md)
-* [降低软件复杂性一般原则和方法](./降低软件复杂性一般原则和方法.md)
-* [后端复杂问题](./后端复杂问题.md)
-* [框架](./框架.md)
+* 复杂性管理
+  * [软件设计哲学](https://go7hic.github.io/A-Philosophy-of-Software-Design/#/)
+  * [软件复杂度](./软件复杂度.md)
+  * [降低软件复杂性一般原则和方法](./降低软件复杂性一般原则和方法.md)
+  * [后端复杂问题](./后端复杂问题.md)
+  * [框架](./框架.md)
 * [架构](./架构.md)
 * 问题解决软技能 [[1]](https://medium.com/@SantalTech/no-leetcode-the-stripe-interview-experience-cf1b29e6f55d),[[2]](https://plantegg.github.io/2018/05/24/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%B7%A5%E4%BD%9C%E4%B8%AD%E5%AD%A6%E4%B9%A0V1.1/)
 * [反面模式](./反面模式.md)
@@ -126,6 +127,7 @@ Books:
 * [Teamwork Skills: Communicating Effectively in Groups](https://www.coursera.org/learn/teamwork-skills-effective-communication)
 * [Developing Interpersonal Skills](https://www.coursera.org/learn/interpersonal-skills)
 * [工作中的技术深度](https://mp.weixin.qq.com/s/wImyzpbGHV_zO9FB3omooA)
+* [述职法](https://www.youtube.com/watch?v=b0kYEpjenL0)
 
 ## 工程师高阶与低阶的区别
 * 低阶 - 建立的系统仅自己或小范围的使用
