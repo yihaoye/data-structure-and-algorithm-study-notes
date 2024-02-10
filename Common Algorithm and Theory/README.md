@@ -147,16 +147,17 @@ This personal Blog contains explanation and **Java library/template implementati
   - [数学 | Maths](../Computer%20Science%20Maths/README.md)
     - 专项专题 | Special Topics
       - 排序网络 | Sorting Network ([Ref](http://www.matrix67.com/blog/archives/185))
-      - 矩阵运算 | Matrix Operations
-        - 施特拉森算法 | Strassen Algorithm ([Ref](https://www.youtube.com/watch?v=0oJyNmEbS4w)；时间复杂度 `~O(n^(2.8))`)
-      - 线性规划 | Linear Regression
-      - [快速傅立叶变换 | Fast Fourier Transform](./FFT.md) (时间复杂度 `O(N*logN)`，另外还有[并行快速傅立叶变换](https://zh.wikipedia.org/wiki/%E5%B9%B6%E8%A1%8C%E5%BF%AB%E9%80%9F%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2))
-      - [快速幂法 | Binary Exponentiation](../Tool%20Sets/Math.java)
-      - [高斯消元法 | Gaussian Elimination](./高斯消元法.md) (时间复杂度 `O(N^3)`)
-      - 高精度计算 | Arbitrary-Precision Arithmetic ([Wiki](https://oi-wiki.org/math/bignum/))
       - [约瑟夫环/问题 | Josephus Problem](./约瑟夫环.md)
       - 欧拉图 | Euler Diagram ([Wiki](https://oi-wiki.org/graph/euler/))
       - [其他数学工具、操作与套路 | Other Math Tools](../Tool%20Sets/Math.java)
+    - 数值分析 | Numerical Analysis ([Wiki](https://zh.wikipedia.org/wiki/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90))
+      - 矩阵运算 | Matrix Operations
+        - 施特拉森算法 | Strassen Algorithm ([Ref](https://www.youtube.com/watch?v=0oJyNmEbS4w)；时间复杂度 `~O(n^(2.8))`)
+      - [快速傅立叶变换 | Fast Fourier Transform](./FFT.md) (时间复杂度 `O(N*logN)`，另外还有[并行快速傅立叶变换](https://zh.wikipedia.org/wiki/%E5%B9%B6%E8%A1%8C%E5%BF%AB%E9%80%9F%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2))
+      - [快速幂法 | Binary Exponentiation](../Tool%20Sets/Math.java)
+      - 平方根倒数速算法 | Fast Inverse Square Root ([Wiki 以及 Q_rsqrt](https://zh.wikipedia.org/wiki/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E9%80%9F%E7%AE%97%E6%B3%95))
+      - [高斯消元法 | Gaussian Elimination](./高斯消元法.md) (时间复杂度 `O(N^3)`)
+      - 高精度计算 | Arbitrary-Precision Arithmetic ([Wiki](https://oi-wiki.org/math/bignum/))
     - [组合 | Combinatorics](../Computer%20Science%20Maths/Combinatorics.md)
       - [鸽巢原理 | Pigeonhole Principle](./鸽巢原理.md)
       - 容斥原理 | Inclusion–Exclusion Principle ([Wiki](https://oi-wiki.org/math/combinatorics/inclusion-exclusion-principle/))
@@ -181,8 +182,9 @@ This personal Blog contains explanation and **Java library/template implementati
       - 反函数 (比如对数函数是指数函数的反函数) | Inverse Function
     - [博弈论 | Game Theory](./博弈论.md)
     - 最优化 | Mathematical Optimization ([Wiki](https://en.wikipedia.org/wiki/Mathematical_optimization)、[Ref](https://space.bilibili.com/97068901/channel/collectiondetail?sid=1387071)；最优化是应用数学的一个分支，是计算机与人工智能的一个重要研究领域：从很大程度上来说，[深度学习实际上是在解决大量复杂的优化问题](https://www.jiqizhixin.com/articles/071502)，神经网络仅仅是一个非常复杂的函数，包含数百万个参数，这些参数代表的是一个问题的数学解答，实质上，训练神经网络是在最小化一个损失函数，这个损失函数的值衡量了网络的性能在给定数据集上离完美还差多少)
+      - 线性规划 | Linear Regression
       - 线搜索 | Line Search
-      - 梯度下降法 | Gradient Descent (梯度其实是高维导数的另一种称呼)
+      - 梯度下降法 | Gradient Descent (梯度其实是高维导数的另一种称呼，[梯度法](https://zh.wikipedia.org/wiki/%E6%A2%AF%E5%BA%A6%E6%B3%95)其实也是属于数值分析领域)
       - 牛顿法 | Newton's Method
       - Adam 优化算法 ([Ref](https://zhuanlan.zhihu.com/p/32626442))
       - 凸函数/凸优化 | Convex Function/Optimization ([Wiki 1](https://zh.wikipedia.org/zh-hans/%E5%87%B8%E5%87%BD%E6%95%B0)、[Wiki 2](https://zh.wikipedia.org/zh-hans/%E5%87%B8%E5%84%AA%E5%8C%96)、[非凸优化](https://zhuanlan.zhihu.com/p/70127314))
