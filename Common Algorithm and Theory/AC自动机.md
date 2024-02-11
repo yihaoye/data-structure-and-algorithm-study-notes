@@ -20,3 +20,4 @@ Aho–Corasick algorithm 是一种字符串搜索算法，用于在输入的一�
 
 参考：https://oi-wiki.org/string/ac-automaton/  
   
+## [Java 代码实现](./AhoCorasick.java)
