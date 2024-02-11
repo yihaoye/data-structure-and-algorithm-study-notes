@@ -144,7 +144,7 @@ This personal Blog contains explanation and **Java library/template implementati
     - 多模态学习 | Multimodal Learning ([Ref](https://zhuanlan.zhihu.com/p/53511144))
   - 并行算法 | Parallel Algorithm ([Wiki](https://en.wikipedia.org/wiki/Parallel_algorithm)、[Ref](https://blog.51cto.com/luweir/4873113?articleABtest=0)：并行算法尚在发展中，不及串行算法丰富。目前最常用的的方法是 PCAM 方法，即划分，通信，组合，映射。并行算法与串行算法最大的不同之处在于，并行算法不仅要考虑问题本身，而且还要考虑所使用的并行模型，网络连接等等)
     - 阿姆达尔定律 | Amdahl's Law ([Wiki](https://zh.wikipedia.org/wiki/%E9%98%BF%E5%A7%86%E8%BE%BE%E5%B0%94%E5%AE%9A%E5%BE%8B))
-  - [数学 | Maths](../Computer%20Science%20Maths/README.md)
+  - [数学 | Maths](../Computer%20Science%20Maths/README.md) (以下分类不严格界限，互相可以有重叠)
     - 专项专题 | Special Topics
       - 排序网络 | Sorting Network ([Ref](http://www.matrix67.com/blog/archives/185))
       - [约瑟夫环/问题 | Josephus Problem](./约瑟夫环.md)
@@ -155,7 +155,7 @@ This personal Blog contains explanation and **Java library/template implementati
         - 施特拉森算法 | Strassen Algorithm ([Ref](https://www.youtube.com/watch?v=0oJyNmEbS4w)；时间复杂度 `~O(n^(2.8))`)
       - [快速傅立叶变换 | Fast Fourier Transform](./FFT.md) (时间复杂度 `O(N*logN)`，另外还有[并行快速傅立叶变换](https://zh.wikipedia.org/wiki/%E5%B9%B6%E8%A1%8C%E5%BF%AB%E9%80%9F%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2))
       - [快速幂法 | Binary Exponentiation](../Tool%20Sets/Math.java)
-      - 平方根倒数速算法 | Fast Inverse Square Root ([Wiki 以及 Q_rsqrt](https://zh.wikipedia.org/wiki/%E5%B9%B3%E6%96%B9%E6%A0%B9%E5%80%92%E6%95%B0%E9%80%9F%E7%AE%97%E6%B3%95))
+      - [平方根倒数速算法 | Fast Inverse Square Root](./平方根倒数速算法.md)
       - [高斯消元法 | Gaussian Elimination](./高斯消元法.md) (时间复杂度 `O(N^3)`)
       - 高精度计算 | Arbitrary-Precision Arithmetic ([Wiki](https://oi-wiki.org/math/bignum/))
     - [组合 | Combinatorics](../Computer%20Science%20Maths/Combinatorics.md)
@@ -184,8 +184,8 @@ This personal Blog contains explanation and **Java library/template implementati
     - 最优化 | Mathematical Optimization ([Wiki](https://en.wikipedia.org/wiki/Mathematical_optimization)、[Ref](https://space.bilibili.com/97068901/channel/collectiondetail?sid=1387071)；最优化是应用数学的一个分支，是计算机与人工智能的一个重要研究领域：从很大程度上来说，[深度学习实际上是在解决大量复杂的优化问题](https://www.jiqizhixin.com/articles/071502)，神经网络仅仅是一个非常复杂的函数，包含数百万个参数，这些参数代表的是一个问题的数学解答，实质上，训练神经网络是在最小化一个损失函数，这个损失函数的值衡量了网络的性能在给定数据集上离完美还差多少)
       - 线性规划 | Linear Regression
       - 线搜索 | Line Search
-      - 梯度下降法 | Gradient Descent (梯度其实是高维导数的另一种称呼，[梯度法](https://zh.wikipedia.org/wiki/%E6%A2%AF%E5%BA%A6%E6%B3%95)其实也是属于数值分析领域)
-      - 牛顿法 | Newton's Method
+      - 梯度下降法 | Gradient Descent (梯度其实是高维导数的另一种称呼，[梯度法](https://zh.wikipedia.org/wiki/%E6%A2%AF%E5%BA%A6%E6%B3%95)是数值分析在最优化的应用之一)
+      - 牛顿法 | Newton's Method (数值分析在最优化的应用之一)
       - Adam 优化算法 ([Ref](https://zhuanlan.zhihu.com/p/32626442))
       - 凸函数/凸优化 | Convex Function/Optimization ([Wiki 1](https://zh.wikipedia.org/zh-hans/%E5%87%B8%E5%87%BD%E6%95%B0)、[Wiki 2](https://zh.wikipedia.org/zh-hans/%E5%87%B8%E5%84%AA%E5%8C%96)、[非凸优化](https://zhuanlan.zhihu.com/p/70127314))
   - 其他常见优化思想、技巧 | Common Tricks
