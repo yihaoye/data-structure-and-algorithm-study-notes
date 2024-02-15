@@ -48,7 +48,7 @@ This personal Blog contains explanation and **Java library/template implementati
       - [记忆化搜索 | Memory Search](./记忆化搜索.md)
       - [倍增法 | Binary Lifting](./倍增法.md) (时间复杂度 - 预处理 `O(N*logN)`，之后查询 `O(logN)`) ([倍增法与二分法的区别](./倍增法.md#二分-vs-倍增))
       - [弗洛伊德算法 | Floyd-Warshall Algorithm](./弗洛伊德算法.md) (时间复杂度 `O(N^3)`)
-      - [Kadane 算法 | Kadane's Algorithm](./Kadane算法.md) (时间复杂度 `O(N)`)
+      - [Kadane 算法 | Kadane's Algorithm](./Kadane算法.md) (时间复杂度 `O(N)`，空间复杂度 `O(1)`)
       - [马拉车算法 | Manacher Algorithm](./马拉车算法.md) (时间复杂度 `O(N)`)
       - 词法分析 | Lexical Analysis ([Wiki](https://zh.wikipedia.org/wiki/%E8%AF%8D%E6%B3%95%E5%88%86%E6%9E%90)、[Simple Example: JSON Parser](../Leetcode%20Practices/object%20oriented%20design/other%20practices/json%20parser/README.md))
         - [正则表达式 | Regular Expression](./正则表达式.md) (正则引擎是基于自动机的)

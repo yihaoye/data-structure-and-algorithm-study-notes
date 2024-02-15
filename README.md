@@ -99,10 +99,9 @@
   * [设计哈希表 | Leetcode Q706](./Leetcode%20Practices/algorithms/easy/706%20Design%20HashMap.java)
   * [设计最值栈 | Leetcode Q155](./Leetcode%20Practices/algorithms/easy/155%20Min%20Stack.java)
   * [设计最小/大堆](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/BinaryHeap/MinHeap.java)
-  * [设计自定义完整双向链表](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/DoublyLinkedList/DoublyLinkedList.java)
-* 高级设计/构造/数据结构
-  * [LRU 缓存 | Leetcode Q146](./Leetcode%20Practices/algorithms/medium/146%20LRU%20Cache.java)、[LFU 缓存 | Leetcode Q460](./Leetcode%20Practices/algorithms/hard/460%20LFU%20Cache.java)
+  * [设计自定义完整双向链表](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/DoublyLinkedList/DoublyLinkedList.java)（[LRU 缓存](./Leetcode%20Practices/algorithms/medium/146%20LRU%20Cache.java)、[LFU 缓存](./Leetcode%20Practices/algorithms/hard/460%20LFU%20Cache.java)）
   * [前缀树（字典树）| Leetcode Q208](./Leetcode%20Practices/algorithms/medium/208%20Implement%20Trie%20(Prefix%20Tree).java)
+* 高级设计/构造/数据结构
   * [并查集与联合查找 | Leetcode Q200 Q684 UF-解法](./Leetcode%20Practices/algorithms/medium/200%20Number%20of%20Islands.java)
   * [线段树](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/SegmentTree/SegmentTree4.java)
   * [跳表 | Leetcode Q1206](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/SkipList/SkipList.java)
@@ -125,10 +124,8 @@
 * 高级算法
   * [拓扑排序 | Leetcode Q210](./Common%20Algorithm%20and%20Theory/拓扑排序.md)
   * [多路归并 | Leetcode Q23-合并排序链表 Q355-设计推特时间线 Q373-最值-TopK-组合](./Leetcode%20Practices/algorithms/hard/23%20Merge%20k%20Sorted%20Lists.java)
-  * [Kadane 算法 | Leetcode Q53](./Leetcode%20Practices/algorithms/easy/53%20Maximum%20Subarray.java)
-  * [弗洛伊德算法 | Leetcode Q1462](./Leetcode%20Practices/algorithms/medium/1462%20Course%20Schedule%20IV.java)
   * [Dijkstra 算法 | Leetcode Q743-图-最值权重路径](./Leetcode%20Practices/algorithms/medium/743%20Network%20Delay%20Time.java)
-  * [滚动哈希](./Common%20Algorithm%20and%20Theory/滚动哈希.md)
+  * [滚动哈希](./Common%20Algorithm%20and%20Theory/滚动哈希.md)、[KMP 算法](./Common%20Algorithm%20and%20Theory/KMP算法.md)
   * [LCA | Leetcode Q236](./Leetcode%20Practices/algorithms/medium/236%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree.java)
   * [马拉车算法 | Leetcode Q5](./Common%20Algorithm%20and%20Theory/马拉车算法.md)
   * [扫描线 | Leetcode Q218](./Leetcode%20Practices/algorithms/hard/218%20The%20Skyline%20Problem.java)
