@@ -103,7 +103,7 @@
   * [前缀树（字典树）| Leetcode Q208](./Leetcode%20Practices/algorithms/medium/208%20Implement%20Trie%20(Prefix%20Tree).java)
 * 高级设计/构造/数据结构
   * [并查集与联合查找 | Leetcode Q200 Q684 UF-解法](./Leetcode%20Practices/algorithms/medium/200%20Number%20of%20Islands.java)
-  * [线段树](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/SegmentTree/SegmentTree4.java)
+  * [线段树 | Leetcode Q732](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/SegmentTree/SegmentTree4.java)
   * [跳表 | Leetcode Q1206](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/SkipList/SkipList.java)
   * [红黑树](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/RedBlackTree/RBTree.java)
   * [状态机（确定有限状态自动机）](./Tool%20Sets/FSM(DFA).java)
