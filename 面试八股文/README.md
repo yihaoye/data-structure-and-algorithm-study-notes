@@ -87,6 +87,22 @@
 * 什么是 Hive？- [解答一](https://zhuanlan.zhihu.com/p/25608332)、[解答二](https://dunwu.github.io/bigdata-tutorial/hive/hive-quickstart.html)
   * [Hive 优化](https://blog.csdn.net/Swofford/article/details/126651171)
 
+### Redis 高频
+* redis 有哪些数据类型？可以应用在什么场景？[Ref 1](https://cloud.tencent.com/developer/article/1975464)、[Ref 2](../Computer%20System%20Layer/数据库/Redis/README.md)
+* [redis 的过期键的删除策略有哪些？](https://cloud.tencent.com/developer/article/1975464)
+* [缓存穿透、缓存击穿、缓存雪崩是什么？怎么解决呢？](https://cloud.tencent.com/developer/article/1975464)
+* [Redis 事务](https://pdai.tech/md/db/nosql-redis/db-redis-x-trans.html)
+* [Redis 管道](https://redis.io/docs/manual/pipelining/)
+
+## Kafka 高频
+* [System Design: Why is Kafka fast?](https://www.youtube.com/watch?v=UNUz1-msbOM)
+  * 顺序 I/O
+  * [Zero-Copy (DMA)](./../Leetcode%20Practices/system%20design/IO模型与Web服务器工作模型.md#零拷贝)
+* [kafka 架构](https://cloud.tencent.com/developer/article/1853417)
+* [如何确定当前能读到哪一条消息](https://cloud.tencent.com/developer/article/1853417)
+* [Kafka consumer group](https://www.cnblogs.com/huxi2b/p/6223228.html)
+* [Kafka 如何保证消息顺序性](https://cloud.tencent.com/developer/article/1839597)
+
 ## 统计、机器学习高频
 * [七大最常见的机器学习面试问题：模型性能评估、过拟合/欠拟合、训练与评估数据分配、梯度下降、MLE 和 MAP（最大似然估计和最大后验估计）、Kernel、PCA 和 SVD/EVD](https://www.youtube.com/watch?v=j340MdN0QSY)
   * 过拟合（overfitting）是一种不受欢迎的机器学习行为，当机器学习模型为训练数据提供准确的预测而不是新数据时，就会发生这种行为。当使用机器学习模型进行预测时，首先在已知数据集上训练模型。然后，根据这些信息，该模型尝试预测新数据集的结果。过度拟合模型可能给出不准确的预测，并且无法对所有类型的新数据表现良好。过拟合产生原因包括：训练数据大小过小，并且未包含足够的数据样本，无法准确代表所有可能的输入数据值；训练数据包含大量不相关的信息，称为噪声数据；模型在单个数据样本集上训练的时间过长；模型复杂程度较高，因此其可以学习训练数据中的噪声。
@@ -183,6 +199,20 @@
 * [SSH 进阶技巧](https://plantegg.github.io/2019/06/02/%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8_SSH_%E6%9A%97%E9%BB%91%E6%8A%80%E5%B7%A7%E8%AF%A6%E8%A7%A3--%E6%94%B6%E8%97%8F%E4%BF%9D%E5%B9%B3%E5%AE%89/)
   * [A Visual Guide to SSH Tunnels: Local and Remote Port Forwarding](https://iximiuz.com/en/posts/ssh-tunnels/)
 
+### Docker 高频
+* [Dockerfile 配置文件中的 COPY 和 ADD 指令有什么不同](https://www.modb.pro/db/404626)
+* [Docker Image 是什么](https://www.modb.pro/db/404626)
+* [Docker Container 是什么](https://www.modb.pro/db/404626)
+* [Docker Hub 什么概念](https://www.modb.pro/db/404626)
+* [Docker 容器可能存在的运行阶段](https://www.modb.pro/db/404626)
+* [Dockerfile 配置文件中最常用的指令](https://www.modb.pro/db/404626)
+* [什么类型的应用（无状态性或有状态性）更适合 Docker 容器技术](https://www.modb.pro/db/404626)
+* [基本 Docker 应用流程](https://www.modb.pro/db/404626)
+* [Docker Image 和 Docker Layer 有什么不同](https://www.modb.pro/db/404626)
+* [Docker Compose 是什么](https://www.cnblogs.com/sparkdev/p/9753793.html)
+* [Docker 群（Swarm）是什么](https://www.modb.pro/db/404626)
+* [在使用 Docker 技术的产品中如何监控其运行](https://www.modb.pro/db/404626)
+
 ## 网络高频
 * [计算机网络面试突击](https://juejin.cn/post/6932001161532669960)
   * [RFC1180 A TCP/IP Tutorial](https://datatracker.ietf.org/doc/html/rfc1180)
@@ -245,40 +275,10 @@
   * [OpenID](https://zh.wikipedia.org/wiki/OpenID) - 去中心化的网上身份认证系统。对于支持 OpenID 的网站，用户不需要记住像用户名和密码这样的传统验证标记。取而代之的是，他们只需要预先在一个作为 OpenID 身份提供者（identity provider, IdP）的网站上注册。OpenID 是去中心化的，任何网站都可以使用 OpenID 来作为用户登录的一种方式，任何网站也都可以作为 OpenID 身份提供者。OpenID 既解决了问题而又不需要依赖于中心性的网站来确认数字身份。
 * 主要攻击类型 ![](./cyber-attacks.jpeg)
 
-## Redis 高频
-* redis 有哪些数据类型？可以应用在什么场景？[Ref 1](https://cloud.tencent.com/developer/article/1975464)、[Ref 2](../Computer%20System%20Layer/数据库/Redis/README.md)
-* [redis 的过期键的删除策略有哪些？](https://cloud.tencent.com/developer/article/1975464)
-* [缓存穿透、缓存击穿、缓存雪崩是什么？怎么解决呢？](https://cloud.tencent.com/developer/article/1975464)
-* [Redis 事务](https://pdai.tech/md/db/nosql-redis/db-redis-x-trans.html)
-* [Redis 管道](https://redis.io/docs/manual/pipelining/)
-
 ## Nginx 高频
 * [Nginx epoll 模型](./../Leetcode%20Practices/system%20design/IO%E6%A8%A1%E5%9E%8B%E4%B8%8EWeb%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%9E%8B.md)
 * [Nginx 多进程模型是如何实现高并发的](./../Leetcode%20Practices/system%20design/IO%E6%A8%A1%E5%9E%8B%E4%B8%8EWeb%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%9E%8B.md)
 * [Nginx 高效原理](https://zhuanlan.zhihu.com/p/108031600)
-
-## Kafka 高频
-* [System Design: Why is Kafka fast?](https://www.youtube.com/watch?v=UNUz1-msbOM)
-  * 顺序 I/O
-  * [Zero-Copy (DMA)](./../Leetcode%20Practices/system%20design/IO模型与Web服务器工作模型.md#零拷贝)
-* [kafka 架构](https://cloud.tencent.com/developer/article/1853417)
-* [如何确定当前能读到哪一条消息](https://cloud.tencent.com/developer/article/1853417)
-* [Kafka consumer group](https://www.cnblogs.com/huxi2b/p/6223228.html)
-* [Kafka 如何保证消息顺序性](https://cloud.tencent.com/developer/article/1839597)
-
-## Docker 高频
-* [Dockerfile 配置文件中的 COPY 和 ADD 指令有什么不同](https://www.modb.pro/db/404626)
-* [Docker Image 是什么](https://www.modb.pro/db/404626)
-* [Docker Container 是什么](https://www.modb.pro/db/404626)
-* [Docker Hub 什么概念](https://www.modb.pro/db/404626)
-* [Docker 容器可能存在的运行阶段](https://www.modb.pro/db/404626)
-* [Dockerfile 配置文件中最常用的指令](https://www.modb.pro/db/404626)
-* [什么类型的应用（无状态性或有状态性）更适合 Docker 容器技术](https://www.modb.pro/db/404626)
-* [基本 Docker 应用流程](https://www.modb.pro/db/404626)
-* [Docker Image 和 Docker Layer 有什么不同](https://www.modb.pro/db/404626)
-* [Docker Compose 是什么](https://www.cnblogs.com/sparkdev/p/9753793.html)
-* [Docker 群（Swarm）是什么](https://www.modb.pro/db/404626)
-* [在使用 Docker 技术的产品中如何监控其运行](https://www.modb.pro/db/404626)
 
 ## 前端高频
 * [reactjs interview questions](https://github.com/sudheerj/reactjs-interview-questions)
