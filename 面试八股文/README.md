@@ -85,8 +85,7 @@
 * [MySQL 中的 UTF8 和 UTF8mb4 编码的详细区别](https://cloud.tencent.com/developer/article/1930660)
 * [什么是 SPL（structured process language）以及为什么基于 SQL 的复杂计算不那么直观](https://mp.weixin.qq.com/s/LHSlD4OJ_k4E_6gbI5OTFg)
 * 什么是 Hive？- [解答一](https://zhuanlan.zhihu.com/p/25608332)、[解答二](https://dunwu.github.io/bigdata-tutorial/hive/hive-quickstart.html)
-* [Redis 事务](https://pdai.tech/md/db/nosql-redis/db-redis-x-trans.html)
-* [Redis 管道](https://redis.io/docs/manual/pipelining/)
+  * [Hive 优化](https://blog.csdn.net/Swofford/article/details/126651171)
 
 ## 统计、机器学习高频
 * [七大最常见的机器学习面试问题：模型性能评估、过拟合/欠拟合、训练与评估数据分配、梯度下降、MLE 和 MAP（最大似然估计和最大后验估计）、Kernel、PCA 和 SVD/EVD](https://www.youtube.com/watch?v=j340MdN0QSY)
@@ -196,6 +195,7 @@
 * [Websocket](https://www.ruanyifeng.com/blog/2017/05/websocket.html)
 * [Server Sent Events (SSE)](https://www.ruanyifeng.com/blog/2017/05/server-sent_events.html)
 * URL 结构 ![](./url-structure.jpeg)
+* [等价多路径路由](https://zh.wikipedia.org/wiki/%E7%AD%89%E5%83%B9%E5%A4%9A%E8%B7%AF%E5%BE%91%E8%B7%AF%E7%94%B1)
 
 ## 安全高频
 * [安全模型](https://en.wikipedia.org/wiki/Security_modes)
@@ -249,6 +249,8 @@
 * redis 有哪些数据类型？可以应用在什么场景？[Ref 1](https://cloud.tencent.com/developer/article/1975464)、[Ref 2](../Computer%20System%20Layer/数据库/Redis/README.md)
 * [redis 的过期键的删除策略有哪些？](https://cloud.tencent.com/developer/article/1975464)
 * [缓存穿透、缓存击穿、缓存雪崩是什么？怎么解决呢？](https://cloud.tencent.com/developer/article/1975464)
+* [Redis 事务](https://pdai.tech/md/db/nosql-redis/db-redis-x-trans.html)
+* [Redis 管道](https://redis.io/docs/manual/pipelining/)
 
 ## Nginx 高频
 * [Nginx epoll 模型](./../Leetcode%20Practices/system%20design/IO%E6%A8%A1%E5%9E%8B%E4%B8%8EWeb%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%9E%8B.md)
