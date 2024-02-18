@@ -95,6 +95,10 @@ This personal Blog contains explanation and **Java library/template implementati
     - [布隆过滤器及其算法 | Bloom Filter](./布隆过滤器及其算法.md)
     - [Count-Min Sketch 算法](./Count-Min-Sketch.md)
     - 最小哈希 | MinHash ([Wiki](https://en.wikipedia.org/wiki/MinHash))
+    - 校验和 | Checksum ([Wiki](https://zh.wikipedia.org/wiki/%E6%A0%A1%E9%AA%8C%E5%92%8C))
+      - 循环冗余校验 | Cyclic Redundancy Check (CRC) ([Wiki](https://zh.wikipedia.org/wiki/%E5%BE%AA%E7%92%B0%E5%86%97%E9%A4%98%E6%A0%A1%E9%A9%97))
+      - MD5 消息摘要算法
+      - 安全哈希算法 | Secure Hash Algorithm (SHA) ([Wiki](https://zh.wikipedia.org/wiki/SHA%E5%AE%B6%E6%97%8F))
     - [HyperLogLog 算法](./HyperLogLog.md)
     - [雪花算法 | Snowflake ID](./雪花算法.md)
     - 一致性哈希 | Consistent Hashing ([Ref](https://dgryski.medium.com/consistent-hashing-algorithmic-tradeoffs-ef6b8e2fcae8)) (数据操作时间复杂度为 `O(logN)`，节点增删时间复杂度为 `~O(N/M)` 其中 M 为实际节点数)
