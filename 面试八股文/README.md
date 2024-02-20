@@ -216,6 +216,7 @@
 ## 网络高频
 * [计算机网络面试突击](https://juejin.cn/post/6932001161532669960)
   * [RFC1180 A TCP/IP Tutorial](https://datatracker.ietf.org/doc/html/rfc1180)
+* [深入理解 Port（端口）](https://zhuanlan.zhihu.com/p/225777212)
 * [Linux network ring buffers](https://medium.com/coccoc-engineering-blog/linux-network-ring-buffers-cea7ead0b8e8)
 * [Linux 网络栈接收数据过程](https://blog.packagecloud.io/monitoring-tuning-linux-networking-stack-receiving-data/)
 * [TCP 三次握手](https://www.zhihu.com/question/24853633/answer/63668444)
