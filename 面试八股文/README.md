@@ -86,10 +86,11 @@
 * [什么是 SPL（structured process language）以及为什么基于 SQL 的复杂计算不那么直观](https://mp.weixin.qq.com/s/LHSlD4OJ_k4E_6gbI5OTFg)
 * 什么是 Hive？- [解答一](https://zhuanlan.zhihu.com/p/25608332)、[解答二](https://dunwu.github.io/bigdata-tutorial/hive/hive-quickstart.html)
   * [Hive 优化](https://blog.csdn.net/Swofford/article/details/126651171)
+  * [Hive 为什么不支持更新和删除](https://blog.csdn.net/zhulangfly/article/details/128904982)
 
 ### Redis 高频
-* redis 有哪些数据类型？可以应用在什么场景？[Ref 1](https://cloud.tencent.com/developer/article/1975464)、[Ref 2](../Computer%20System%20Layer/数据库/Redis/README.md)
-* [redis 的过期键的删除策略有哪些？](https://cloud.tencent.com/developer/article/1975464)
+* Redis 有哪些数据类型？可以应用在什么场景？[Ref 1](https://cloud.tencent.com/developer/article/1975464)、[Ref 2](../Computer%20System%20Layer/数据库/Redis/README.md)
+* [Redis 的过期键的删除策略有哪些？](https://cloud.tencent.com/developer/article/1975464)
 * [缓存穿透、缓存击穿、缓存雪崩是什么？怎么解决呢？](https://cloud.tencent.com/developer/article/1975464)
 * [Redis 事务](https://pdai.tech/md/db/nosql-redis/db-redis-x-trans.html)
 * [Redis 管道](https://redis.io/docs/manual/pipelining/)
