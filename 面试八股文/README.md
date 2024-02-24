@@ -33,7 +33,8 @@
 * 哈希、加密、编码的区别 ![](./hash-encrpt-encode.png)
 * [SDN（软件定义网络）](https://www.cloudflare.com/zh-cn/learning/network-layer/what-is-sdn/) - SDN 通过将控制平面与转发平面分离，实现了网络的集中控制，从而可以灵活地控制网络流量，满足各种应用的需求，最终达成：提高系统的灵活性和可编程性、降低系统的管理和运维成本、提高系统的安全性。
   
-## Java 高频
+## 编程语言
+### Java 高频
 * Java 中垃圾回收机制中如何判断对象需要回收？常见的 GC 回收算法有哪些？ （中等）
 * HashMap 与 ConcurrentHashMap 的实现原理是怎样的？HashMap 为什么使用红黑树？[ConcurrentHashMap 是如何保证线程安全的？](https://github.com/JasonGaoH/KnowledgeSummary/blob/master/Docs/Java/ConcurrentHashMap%E6%98%AF%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84.md) （中等）
 * ConcurrentHashMap 的写操作会对读操作产生性能影响吗？[1](https://stackoverflow.com/a/71805283/6481829)、[2](https://stackoverflow.com/questions/68968305/how-can-i-block-concurrenthashmap-get-operations-during-a-put)
@@ -60,7 +61,7 @@
 * [Java 注解原理](../Tool%20Sets/Annotation.java)
 * [Java 编译部署](../Computer%20System%20Layer/编译部署/README.md)
 
-## Golang 高频
+### Golang 高频
 * [什么是 golang 内存逃逸](./../Computer%20System%20Layer/内存与程序.md#内存逃逸)
 * [go routine 和 thread、process 区别](https://huweicai.com/process-thread-goroutine/)
 * panic 相关 - [panic](https://www.yiibai.com/go/golang-panic.html)、panic 和 recover：[Ref 1](https://draveness.me/golang/docs/part2-foundation/ch05-keyword/golang-panic-recover/) + [Ref 2](https://xiaomi-info.github.io/2020/01/20/go-trample-panic-recover/)
@@ -103,6 +104,22 @@
 * [如何确定当前能读到哪一条消息](https://cloud.tencent.com/developer/article/1853417)
 * [Kafka consumer group](https://www.cnblogs.com/huxi2b/p/6223228.html)
 * [Kafka 如何保证消息顺序性](https://cloud.tencent.com/developer/article/1839597)
+
+## Flink 高频
+* [流式计算核心概念](https://juejin.cn/post/7316591784623407130)
+  * 数据流、数据源、消息队列
+  * 窗口
+  * 流处理模型，定义了如何对数据流进行处理和分析。流处理模型可以分为 2 种类型：事件驱动模型和时间驱动模型。事件驱动模型是基于事件的发生顺序进行处理的，而时间驱动模型是基于时间点进行处理的
+  * 核心算法
+    * 事件驱动
+      * 基于状态的算法：这种算法将数据流分为多个窗口，并为每个窗口维护一个状态。当新的数据元素进入窗口时，算法会更新窗口的状态。当数据元素离开窗口时，算法会根据窗口的状态计算结果
+      * 基于操作的算法：这种算法对数据流进行一系列操作，例如过滤、聚合、连接等。这些操作会改变数据流的结构和内容
+    * 时间驱动
+      * 基于时间窗口的算法：这种算法将数据流分为多个时间窗口，并为每个时间窗口维护一个状态。当时间窗口到达时，算法会根据窗口的状态计算结果
+      * 基于时间触发的算法：这种算法会在特定的时间点进行处理。这些时间点可以是固定的，也可以是动态的
+  * 中间存储，以及状态维护（是流式计算的关键组件，它用于存储和管理数据流的状态。状态可以是简单的键值对，也可以是复杂的数据结构，如树、图等）
+  * 结果输出 - 数据库、下游等等
+* [Flink Checkpoint 机制](https://tech.youzan.com/flink_checkpoint_mechanism/)
 
 ## 统计、机器学习高频
 * [七大最常见的机器学习面试问题：模型性能评估、过拟合/欠拟合、训练与评估数据分配、梯度下降、MLE 和 MAP（最大似然估计和最大后验估计）、Kernel、PCA 和 SVD/EVD](https://www.youtube.com/watch?v=j340MdN0QSY)
@@ -272,6 +289,7 @@
   * Bebug 不易 - 通常如果日志不全面的话，算法复杂度攻击的 debug 都比较困难，因为通常需要觉察数据倾斜或是超时是哪一行代码造成的时候，都需要拿到具体的输入进行复现才能找到根因。
 * 身份认证协议
   * [Kerberos](https://zh.wikipedia.org/wiki/Kerberos) - 一种计算机网络授权协议，用来在非安全网络中，对个人通信以安全的手段进行身份认证。加密方式有比如使用预共享密钥 PSK 或基于避免明文传输的用户密码派生的会话密钥。软件设计上采用客户端/服务器结构，并且能够进行相互认证，即客户端和服务器端均可对对方进行身份认证。可以用于防止窃听、防止重放攻击、保护数据完整性等场合，是一种应用对称密钥体制进行密钥管理的系统（其扩展产品也使用非对称加密方法进行认证）。当有 N 个人使用该系统时，为确保在任意两个人之间进行秘密对话，系统至少保存有它与每个人的共享密钥，所需的最少会话密钥数为 N 个。因其在协议设计上的优秀特性，使得其在大规模的网络环境，尤其是在安全性要求较高的环境中得到了广泛的应用。
+    * Kerberos 可用于：身份认证、SSO、授权、安全通信
     * [kinit Linux 命令](https://juejin.cn/post/7114236312382603295) - Kerberos 使用称为“票”的令牌，允许用户和服务之间的安全通信。票由它的密钥分发中心（KDC）发放。KDC 是 Kerberos 的核心，管理所有的票据和密钥。用户首先要向 KDC 请求一个 Ticket Granting Ticket（TGT），这一步通常由 `kinit` 命令完成。
     * [Kerberos 工作流](https://www.freecodecamp.org/news/how-does-kerberos-work-authentication-protocol/) ![](./kerberos-flow.png)
   * [OpenID](https://zh.wikipedia.org/wiki/OpenID) - 去中心化的网上身份认证系统。对于支持 OpenID 的网站，用户不需要记住像用户名和密码这样的传统验证标记。取而代之的是，他们只需要预先在一个作为 OpenID 身份提供者（identity provider, IdP）的网站上注册。OpenID 是去中心化的，任何网站都可以使用 OpenID 来作为用户登录的一种方式，任何网站也都可以作为 OpenID 身份提供者。OpenID 既解决了问题而又不需要依赖于中心性的网站来确认数字身份。
