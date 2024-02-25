@@ -82,9 +82,10 @@ Books:
 * [SOP: Standard Operating Procedures 标准作业程序](https://wiki.mbalib.com/wiki/SOP)
 
 # Best Practice 工作实践
-* 复杂性管理
-  * [软件设计哲学](https://go7hic.github.io/A-Philosophy-of-Software-Design/#/)
-    * 复杂性本质：**变更放大、认知负荷、未知的未知**；另外复杂性是递增的
+* 工程复杂性管理
+  * [软件设计哲学 | A Philosophy of Software Design](https://go7hic.github.io/A-Philosophy-of-Software-Design/#/)
+    * [降低软件复杂性一般原则和方法](./降低软件复杂性一般原则和方法.md)
+    * 复杂性本质：**变更放大（修改扩散，修改时有连锁反应）、认知负荷、未知的未知（不可知）**；另外复杂性是递增的
     * 浅接口与深模块、分隔通用与专用
     * 封装与（信息）隐藏、减少模块间的联系与依赖（高内聚低耦合）- 反信息泄漏
     * 不同的层采用不同的抽象（越底层越通用）
@@ -93,8 +94,7 @@ Books:
     * 非必要不定义异常（尽量减少异常抛出）
     * 精准名称、显见逻辑（比如[约定优于配置](https://zh.wikipedia.org/wiki/%E7%BA%A6%E5%AE%9A%E4%BC%98%E4%BA%8E%E9%85%8D%E7%BD%AE)）、保持一致
   * [软件复杂度](./软件复杂度.md)
-  * [降低软件复杂性一般原则和方法](./降低软件复杂性一般原则和方法.md)
-  * 代码大全 [Ref 1](https://blog.codingnow.com/cloud/CodeComplete)、[Ref 2](https://book.douban.com/review/1075004/)、[Ref 3](https://www.cnblogs.com/janes/p/4506310.html)
+  * 代码大全 | Code Complete [Ref 1](https://blog.codingnow.com/cloud/CodeComplete)、[Ref 2](https://book.douban.com/review/1075004/)、[Ref 3](https://www.cnblogs.com/janes/p/4506310.html)
     * 需求阶段
       * 发现错误的时间要尽量接近进入该错误的时间。由于需求是首先进行的活动，所以需求阶段引入的缺陷可能在系统中潜伏的时间最长，代价也更昂贵
       * 如果没有一个良好的问题定义，你努力解决的可能是一个错误的问题

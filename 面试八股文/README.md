@@ -119,7 +119,7 @@
       * 基于时间触发的算法：这种算法会在特定的时间点进行处理。这些时间点可以是固定的，也可以是动态的
   * 中间存储，以及状态维护（是流式计算的关键组件，它用于存储和管理数据流的状态。状态可以是简单的键值对，也可以是复杂的数据结构，如树、图等）
   * 结果输出 - 数据库、下游等等
-* [Flink Checkpoint 机制](https://tech.youzan.com/flink_checkpoint_mechanism/)
+* [Flink Checkpoint 机制](https://tech.youzan.com/flink_checkpoint_mechanism/) - Flink 里 EXACTLY ONCE 的实现方法
 
 ## 统计、机器学习高频
 * [七大最常见的机器学习面试问题：模型性能评估、过拟合/欠拟合、训练与评估数据分配、梯度下降、MLE 和 MAP（最大似然估计和最大后验估计）、Kernel、PCA 和 SVD/EVD](https://www.youtube.com/watch?v=j340MdN0QSY)
