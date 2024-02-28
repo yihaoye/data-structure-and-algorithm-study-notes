@@ -90,6 +90,7 @@
   * [Hive 为什么不支持更新和删除](https://blog.csdn.net/zhulangfly/article/details/128904982)
 * 关系数据库的 schema 意义 - 缺乏 schema 的最重要的劣势是数据完整性和一致性难以得到保证，另外就是 JOIN 操作必须基于 schema
 * JOIN 操作的 2 个主要优点 - 提高效率（查询优化，减少数据库扫描的数据量）、降低成本（减少存储冗余）
+* AOF（Append Only File）对比 LSM 树 - 对于写入操作，AOF 和 LSM 的时间复杂度都可以近似为 O(1)，但 LSM 可能会受到合并和压缩操作的影响；而对于读取操作，LSM 的时间复杂度通常比 AOF 更优，尤其是在数据量较大时。因此，在读多写少的场景下，LSM 可能会更适合，而在写多读少的场景下，AOF 可能更为合适
 
 ### Redis 高频
 * Redis 有哪些数据类型？可以应用在什么场景？[Ref 1](https://cloud.tencent.com/developer/article/1975464)、[Ref 2](../Computer%20System%20Layer/数据库/Redis/README.md)
@@ -97,6 +98,7 @@
 * [缓存穿透、缓存击穿、缓存雪崩是什么？怎么解决呢？](https://cloud.tencent.com/developer/article/1975464)
 * [Redis 事务](https://pdai.tech/md/db/nosql-redis/db-redis-x-trans.html)
 * [Redis 管道](https://redis.io/docs/manual/pipelining/)
+* [AOF 持久化机制](https://zq99299.github.io/note-book/cache-pdp/redis/010.html#aof-%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6%E7%9A%84%E4%BC%98%E7%82%B9)
 
 ## Kafka 高频
 * [System Design: Why is Kafka fast?](https://www.youtube.com/watch?v=UNUz1-msbOM)
