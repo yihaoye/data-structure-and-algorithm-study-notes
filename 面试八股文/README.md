@@ -76,6 +76,7 @@
 * goroutine 泄露 - 在应用程序中创建的 goroutine 没有正确地退出或释放资源，导致它们持续存在而不被使用，从而浪费了系统资源。为了避免 goroutine 泄露，需要确保在不再需要时正确退出 goroutine，并释放其占用的资源。这通常需要使用适当的控制机制，例如 context 包、sync 包中的 WaitGroup 或者通道来通知 goroutine 退出；[其余参考](https://alexstocks.github.io/html/lessons.html)
 * [Golang unsafe 包](https://juejin.cn/post/6844903453303504910)
 * Golang 字符型的实际类型 ![](./go-char.png)
+* Golang 里传递的类型 - 引用传递类型 slice、map 和 channel（本质上它们仍然是指针的值传递）；值传递类型包括 int、float、bool、string、array 和 struct 等
 
 ## 数据库高频
 * [为什么 InnoDB 表必须有主键，并且推荐使用整型的自增主键？](https://blog.csdn.net/weixin_41699562/article/details/104139458)
