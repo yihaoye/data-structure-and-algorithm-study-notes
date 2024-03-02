@@ -250,6 +250,21 @@
 * [Server Sent Events (SSE)](https://www.ruanyifeng.com/blog/2017/05/server-sent_events.html)
 * URL 结构 ![](./url-structure.jpeg)
 * [等价多路径路由](https://zh.wikipedia.org/wiki/%E7%AD%89%E5%83%B9%E5%A4%9A%E8%B7%AF%E5%BE%91%E8%B7%AF%E7%94%B1)
+* [常用状态码](https://juejin.cn/post/6844904202863394830)
+  * 1xx - 信息状态码
+  * 2xx - 成功状态码
+    * 200 - OK
+  * 3xx - 重定向状态码
+    * 301 - 永久性重定向
+    * 302 - 临时性重定向
+  * 4xx - 客户端错误状态码
+    * 400 - 客户端请求报文中存在语法错误，服务器无法理解
+    * 401 - 请求要求用户的身份认证
+    * 403 - 服务器理解请求客户端的请求，但是拒绝执行此请求
+    * 404 - 服务器无法根据客户端的请求找到资源
+  * 5xx - 服务器错误状态码
+    * 500 - 服务器内部错误，无法完成请求
+    * 503 - 由于超载或系统维护，服务器暂时的无法处理客户端的请求
 
 ## [安全高频](https://tldrsec.com/)
 * [安全模型](https://en.wikipedia.org/wiki/Security_modes)
