@@ -133,6 +133,8 @@ This personal Blog contains explanation and **Java library/template implementati
     - ![](./ML-Algorithms-Time-Complexity.jpeg)
     - [决策树算法 | Decision Tree Algorithm](./机器学习.md#决策树) ([Ref](https://www.ibm.com/cn-zh/topics/decision-trees))
       - [随机森林 | Random Forest](./机器学习.md#随机森林) ([Ref](https://www.nvidia.cn/glossary/data-science/random-forest/))
+      - 梯度提升决策树 | Gradient Boosted Decision Trees ([Ref 1](https://github.com/NLP-LOVE/ML-NLP/blob/master/Machine%20Learning/3.2%20GBDT/3.2%20GBDT.md)、[Ref 2](https://developers.google.com/machine-learning/decision-forests/intro-to-gbdt))
+        - XGBoost 树 ([Ref](https://www.cnblogs.com/mantch/p/11164221.html))
     - 朴素贝叶斯 | Naive Bayes
     - 支持向量机 | Support Vector Machine, SVM
     - 隐马尔可夫模型 | Hidden Markov Model, HMM
