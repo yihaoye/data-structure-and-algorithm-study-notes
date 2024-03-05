@@ -251,7 +251,7 @@
 * [Server Sent Events (SSE)](https://www.ruanyifeng.com/blog/2017/05/server-sent_events.html)
 * URL 结构 ![](./url-structure.jpeg)
 * [等价多路径路由](https://zh.wikipedia.org/wiki/%E7%AD%89%E5%83%B9%E5%A4%9A%E8%B7%AF%E5%BE%91%E8%B7%AF%E7%94%B1)
-* 分块下载 - [分块下载（Chunked Transfer Encoding）](https://zh.wikipedia.org/wiki/%E5%88%86%E5%9D%97%E4%BC%A0%E8%BE%93%E7%BC%96%E7%A0%81)是 HTTP/1.1 协议的一部分。HTTP/1.1 引入了分块传输编码机制，允许服务器将响应消息分成多个块，并且在发送每个块之前不需要知道整个消息的长度。这使得服务器可以在生成响应时逐块发送数据，而不必等待整个响应消息完全准备好。客户端接收到每个块后可以立即开始处理，这在大文件下载和流式传输等场景下非常有用。
+* 分块下载 - [分块下载（Chunked Transfer Encoding）](https://zh.wikipedia.org/wiki/%E5%88%86%E5%9D%97%E4%BC%A0%E8%BE%93%E7%BC%96%E7%A0%81)是 HTTP/1.1 协议的一部分。HTTP/1.1 引入了分块传输编码机制，允许服务器将响应消息分成多个块，并且在发送每个块之前不需要知道整个消息的长度。这使得服务器可以在生成响应时逐块发送数据，而不必等待整个响应消息完全准备好。客户端接收到每个块后可以立即开始处理，这在大文件下载和流式传输等场景下非常有用。[Go 示例代码](https://go.dev/play/p/nbOz8nhSnis)
   * 分块上传则通常不是 HTTP 协议的一部分，而是由特定的服务或框架实现。通常情况下，分块上传是通过多部分上传（multipart upload）来实现的，这是一种将大文件分成多个小块进行上传的方法，每个小块可以独立上传，然后在服务器端进行合并。常见的使用场景是在文件存储服务（如云存储服务）中，例如 AWS S3 的分块上传。HTTP 协议本身并没有直接支持分块上传的功能，但是 HTTP 协议提供了一些特性（如分块传输编码），可以用于实现分块上传的相关功能。
 * 影响网络带宽的因素
   * 物理网络设备（例如路由器、交换机、网络接口卡等）的规格、性能及其基本配置与设置
@@ -325,6 +325,8 @@
   * [OpenID](https://zh.wikipedia.org/wiki/OpenID) - 去中心化的网上身份认证系统。对于支持 OpenID 的网站，用户不需要记住像用户名和密码这样的传统验证标记。取而代之的是，他们只需要预先在一个作为 OpenID 身份提供者（identity provider, IdP）的网站上注册。OpenID 是去中心化的，任何网站都可以使用 OpenID 来作为用户登录的一种方式，任何网站也都可以作为 OpenID 身份提供者。OpenID 既解决了问题而又不需要依赖于中心性的网站来确认数字身份。
 * 主要攻击类型 ![](./cyber-attacks.jpeg)
 * 敏感数据管理 ![](./sensitive-data-management.jpeg)
+* [CISSP 考试认证](https://mp.weixin.qq.com/s/YRuiZ81dQKqNuhYkyFTtAA)
+  * ![](./CISSP.jpeg)
 
 ## Nginx 高频
 * [Nginx epoll 模型](./../Leetcode%20Practices/system%20design/IO%E6%A8%A1%E5%9E%8B%E4%B8%8EWeb%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%9E%8B.md)
