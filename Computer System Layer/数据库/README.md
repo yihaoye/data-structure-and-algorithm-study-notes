@@ -9,9 +9,7 @@
   * [Redis 基本功](./Redis/README.md)
   * [图数据库](./../../Leetcode%20Practices/system%20design/NoSQL.md#图数据库)
   * [时序数据库](./../../Leetcode%20Practices/system%20design/NoSQL.md#时序数据库)
-  * 向量数据库
-    * ![](./向量数据库.jpeg)
-    * ![](./向量数据库2.png)
+  * [向量数据库](./../../Leetcode%20Practices/system%20design/NoSQL.md#向量数据库)
 * [SQL vs NoSQL](./../../Leetcode%20Practices/system%20design/SQL%20vs%20NoSQL.md)
 * [数据模型与查询语言](./../../Leetcode%20Practices/system%20design/README.md#数据模型与查询语言)
   * 关系模型、文档模型（树模型/KV模型）、图模型（网络模型）

@@ -32,6 +32,7 @@
 * 云计算的定义 - 云计算就是指通过互联网，以按需服务的形式提供计算资源。这样企业就无需自行采购、配置或管理资源，而且只需要为实际使用的资源付费。本质上云计算就是第三方数据中心托管的一堆 Linux（或其他 OS）服务器。
 * 哈希、加密、编码的区别 ![](./hash-encrpt-encode.png)
 * [SDN（软件定义网络）](https://www.cloudflare.com/zh-cn/learning/network-layer/what-is-sdn/) - SDN 通过将控制平面与转发平面分离，实现了网络的集中控制，从而可以灵活地控制网络流量，满足各种应用的需求，最终达成：提高系统的灵活性和可编程性、降低系统的管理和运维成本、提高系统的安全性。
+* [服务网格 | Service Mesh](https://www.redhat.com/zh/topics/microservices/what-is-a-service-mesh) - 可以认为是一种分布式通信系统的架构模式，用网格描述其实即图数据结构。
   
 ## 编程语言
 ### Java 高频
@@ -260,7 +261,7 @@
   * 网络拥塞和负载 - 当网络中的流量过大，超过了设备和链路的处理能力时，网络可能会拥塞，从而影响带宽
   * 软件、网络协议和传输机制 - 使用的网络协议和软件也可以影响网络的带宽。一些协议可能更高效，而另一些可能会产生较大的开销
   * 网络供应商和服务计划
-* [常用状态码](https://juejin.cn/post/6844904202863394830)
+* [常用 HTTP 状态码](https://juejin.cn/post/6844904202863394830)
   * 1xx - 信息状态码
   * 2xx - 成功状态码
     * 200 - OK
@@ -275,6 +276,16 @@
   * 5xx - 服务器错误状态码
     * 500 - 服务器内部错误，无法完成请求
     * 503 - 由于超载或系统维护，服务器暂时的无法处理客户端的请求
+* [gRPC 状态码](https://grpc.github.io/grpc/core/md_doc_statuscodes.html)
+  * OK (0) - 调用成功
+  * CANCELLED (1) - 调用被取消
+  * UNKNOWN (2) - 调用发生未知错误
+  * INVALID_ARGUMENT (3) - 无效参数
+  * DEADLINE_EXCEEDED (4) - 调用超时
+  * NOT_FOUND (5) - 请求资源未找到
+  * PERMISSION_DENIED (7) - 没有权限执行该操作
+  * INTERNAL (13) - 服务器内部错误
+  * UNAUTHENTICATED (16) - 请求没有该操作要求的有效身份验证凭据
 
 ## [安全高频](https://tldrsec.com/)
 * [安全模型](https://en.wikipedia.org/wiki/Security_modes)
