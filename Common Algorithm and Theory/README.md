@@ -55,7 +55,7 @@ This personal Blog contains explanation and **Java library/template implementati
       - [自动机 | Automaton](./自动机.md) ([Wiki](https://zh.wikipedia.org/wiki/%E8%87%AA%E5%8B%95%E6%A9%9F%E7%90%86%E8%AB%96)；有 DFA、NFA 两种类别，实际上 DFA 与 NFA 是形式理论等价的、可互相转换的)
         - [确定性有限状态自动机 | Deterministic Finite Automaton (DFA)](../Tool%20Sets/FSM(DFA).java) ([Wiki](https://zh.wikipedia.org/wiki/%E7%A1%AE%E5%AE%9A%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E8%87%AA%E5%8A%A8%E6%9C%BA))
           - [KMP 算法 | Knuth–Morris–Pratt Algorithm](./KMP算法.md) (时间复杂度 `O(N+M)`)
-          - [AC 自动机 | Aho–Corasick Algorithm](./AC自动机.md)
+          - [AC 自动机 | Aho–Corasick Algorithm](./AC自动机.md) (时间复杂度 - 构建自动机 `O(M)`，其中 M 是模式串总长度；匹配文本为 `O(N)`，其中 N 是文本串长度)
         - [非确定性有限状态自动机 | Nondeterministic Finite Automaton (NFA)](../Tool%20Sets/FSM(NFA).java) ([Wiki](https://zh.wikipedia.org/wiki/%E9%9D%9E%E7%A1%AE%E5%AE%9A%E6%9C%89%E9%99%90%E7%8A%B6%E6%80%81%E8%87%AA%E5%8A%A8%E6%9C%BA)，相比 DFA 构造更简单、功能更强大；时间复杂度最差通常为 `O(2^N)`)
     - [并查集联合查找算法 | Disjoint-Set Union-Find Algorithm, DSU](./并查集与联合查找算法.md) (时间复杂度 `O(a(N))` - a(N) 为反阿克曼函数，对于大部分 N，a(N) 均小于 5，所以并查集的时间复杂度也可视为 `O(1)`)
     - [图匹配 | Graph Match](./图匹配.md)

@@ -289,6 +289,7 @@
   * PERMISSION_DENIED (7) - 没有权限执行该操作
   * INTERNAL (13) - 服务器内部错误
   * UNAUTHENTICATED (16) - 请求没有该操作要求的有效身份验证凭据
+* [BGP](https://zhuanlan.zhihu.com/p/25433049)
 
 ## [安全高频](https://tldrsec.com/)
 * [安全模型](https://en.wikipedia.org/wiki/Security_modes)
