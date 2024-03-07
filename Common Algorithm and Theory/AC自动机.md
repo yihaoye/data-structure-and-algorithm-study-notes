@@ -43,3 +43,4 @@ console.log(match(ac, "one day she say her has eaten many shrimps"));
 参考：https://oi-wiki.org/string/ac-automaton/  
   
 ## [JS 代码实现](./ac_automaton.js)
+## [Java 代码实现](./AcAutomaton.java)
