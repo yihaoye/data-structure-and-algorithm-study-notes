@@ -96,6 +96,7 @@
 * 关系数据库的 schema 意义 - 缺乏 schema 的最重要的劣势是数据完整性和一致性难以得到保证，另外就是 JOIN 操作必须基于 schema
 * JOIN 操作的 2 个主要优点 - 提高效率（查询优化，减少数据库扫描的数据量）、降低成本（减少存储冗余）
 * [ElasticSearch 详解](https://pdai.tech/md/db/nosql-es/elasticsearch.html)
+  * ![](./es-introduce-1-3.png)
 
 ### Redis 高频
 * Redis 有哪些数据类型？可以应用在什么场景？[Ref 1](https://cloud.tencent.com/developer/article/1975464)、[Ref 2](../Computer%20System%20Layer/数据库/Redis/README.md)
