@@ -33,6 +33,7 @@
 * 哈希、加密、编码的区别 ![](./hash-encrpt-encode.png)
 * [SDN（软件定义网络）](https://www.cloudflare.com/zh-cn/learning/network-layer/what-is-sdn/) - SDN 通过将控制平面与转发平面分离，实现了网络的集中控制，从而可以灵活地控制网络流量，满足各种应用的需求，最终达成：提高系统的灵活性和可编程性、降低系统的管理和运维成本、提高系统的安全性。
 * [服务网格 | Service Mesh](https://www.redhat.com/zh/topics/microservices/what-is-a-service-mesh) - 可以认为是一种分布式通信系统的架构模式，用网格描述其实即图数据结构。
+  * [Service Mesh 起源、演进、定义](https://www.lixueduan.com/posts/istio/02-service-mesh/)
 * 规则引擎 vs 代码编程
   * 采用规则引擎场景：业务规则频繁变化、非技术人员参与规则定义、规则复杂度高、动态配置调整扩展和决策。
   * 采用代码编程场景：业务逻辑复杂度低、性能要求高、技术团队熟悉或好的技术积累。
