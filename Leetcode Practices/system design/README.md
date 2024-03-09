@@ -2908,7 +2908,9 @@ http1.1 允许客户端不用等待上一次请求结果返回，就可以发出
 <details>
 <summary>details</summary>
 
-参考：https://cloud.google.com/bigtable#section-8  
+参考：
+* https://pdai.tech/md/db/nosql-es/elasticsearch-x-introduce-2.html#beats-logstath-elasticsearch-kibana
+* https://cloud.google.com/bigtable#section-8
 
 需求分析：
 * Func Reqs:
