@@ -1,4 +1,4 @@
-这里只列举比较重要的常用的设计模式，主要为 Java 实现。  
+这里只列举比较重要的常用的设计模式，主要为 Java 实现或 Go 实现。  
 
 一些设计模式的出现是为了弥补特定语言的限制（如 Java 的设计遗留问题），提供更灵活、可扩展、可维护的代码结构。而一些新兴的语言如 Go 等，其设计哲学鼓励简单的代码和少使用复杂的设计模式，因此设计和编写 Go 代码时通常会更注重简单性、直观性和实用性。Go 提供了一些内置工具，如接口和类型组合，可以在不使用传统设计模式的情况下实现相似的功能。  
 总的来说，Go 的设计理念和语言特性可能会减少对某些设计模式的需求，但并不意味着设计模式在 Go 中变得无关紧要。在实际编码中，还是需要根据具体情况灵活运用设计模式或其他编程范式，下面实现了 Go 代码的设计模式是对 Go 实用的其余则较少。  
@@ -46,8 +46,20 @@
   * ([Go 示例](./CircuitBreaker.go))
 * [模板 | Template](./Template.java)
 * [访问者 | Visitor](./Visitor.java)
-  
-以上引用自[来源](https://www.liaoxuefeng.com/wiki/1252599548343744/1264742167474528)  
+
+## 并发型模式
+* 管道和过滤器模式 | Pipeline and Filters - [Ref](https://learnku.com/docs/go-patterns/1.0.0/guan-dao-he-guo-lv-qi-mo-shi-pipeline-and-filters-pattern/14762)
+  * ([Go 示例](./PipelineFilters.go))
+
+## Web 型模式
+* 中间件模式 | Middleware
+  * ([Go 示例](./Middleware.go))
+* 路由器模式 | Router
+  * ([Go 示例](./Router.go))
+
+以上引用自
+* https://www.liaoxuefeng.com/wiki/1252599548343744/1264742167474528
+* https://learnku.com/docs/go-patterns/1.0.0
   
 ## 更多
 ### 单例模式与工厂模式的区别
