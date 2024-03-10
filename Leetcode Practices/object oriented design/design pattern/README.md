@@ -48,13 +48,25 @@
 * [访问者 | Visitor](./Visitor.java)
 
 ## 并发型模式
-* 管道和过滤器模式 | Pipeline and Filters - [Ref](https://learnku.com/docs/go-patterns/1.0.0/guan-dao-he-guo-lv-qi-mo-shi-pipeline-and-filters-pattern/14762)
+* 生产消费 | Producer Consumer
+  * ([Go 示例](./ProducerConsumer.go))
+* 扇入 | Fan-In
+  * ([Go 示例](./FanIn.go))
+* 扇出 | Fan-Out
+  * ([Go 示例](./FanOut.go))
+* 管道和过滤器 | Pipeline and Filters - [Ref](https://learnku.com/docs/go-patterns/1.0.0/guan-dao-he-guo-lv-qi-mo-shi-pipeline-and-filters-pattern/14762)
   * ([Go 示例](./PipelineFilters.go))
+* 互斥锁 | Mutex
+  * ([Go 示例](./Mutex.go))
+* 工作池 | Worker Pool
+  * ([Go 示例](./WorkerPool.go))
+* 定时器与超时 | Tick Timeout
+  * ([Go 示例](./TickTimeout.go))
 
 ## Web 型模式
-* 中间件模式 | Middleware
+* 中间件 | Middleware
   * ([Go 示例](./Middleware.go))
-* 路由器模式 | Router
+* 路由器 | Router
   * ([Go 示例](./Router.go))
 
 以上引用自
