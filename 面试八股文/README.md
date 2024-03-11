@@ -82,6 +82,7 @@
 * [Golang unsafe 包](https://juejin.cn/post/6844903453303504910)
 * Golang 字符型的实际类型 ![](./go-char.png)
 * Golang 里传递的类型 - 引用传递类型 func、slice、map 和 channel（本质上它们仍然是指针的值传递）；值传递类型包括 int、float、bool、string、array 和 struct 等
+* [for loop 指针错误](https://colobu.com/2023/12/17/Less-Error-Prone-Loop-Variable-Scopin/)
 
 ## 数据库高频
 * [为什么 InnoDB 表必须有主键，并且推荐使用整型的自增主键？](https://blog.csdn.net/weixin_41699562/article/details/104139458)
