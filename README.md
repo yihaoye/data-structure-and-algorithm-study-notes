@@ -125,7 +125,7 @@
   * [拓扑排序 | Leetcode Q210](./Common%20Algorithm%20and%20Theory/拓扑排序.md)
   * [多路归并 | Leetcode Q23-合并排序链表 Q355-设计推特时间线 Q373-最值-TopK-组合](./Leetcode%20Practices/algorithms/hard/23%20Merge%20k%20Sorted%20Lists.java)
   * [Dijkstra 算法 | Leetcode Q743-图-最值权重路径](./Leetcode%20Practices/algorithms/medium/743%20Network%20Delay%20Time.java)
-  * [AC 自动机（多模式串字符串匹配）](./Common%20Algorithm%20and%20Theory/AcAutomaton.java)（单模式串字符串匹配：[滚动哈希](./Common%20Algorithm%20and%20Theory/滚动哈希.md)、[KMP 算法](./Common%20Algorithm%20and%20Theory/KMP算法.md)）
+  * [AC 自动机 | 多模式串字符串匹配](./Common%20Algorithm%20and%20Theory/AcAutomaton.java)（[滚动哈希](./Common%20Algorithm%20and%20Theory/滚动哈希.md)、[KMP 算法](./Common%20Algorithm%20and%20Theory/KMP算法.md) | 单模式串字符串匹配）
   * [LCA | Leetcode Q236](./Leetcode%20Practices/algorithms/medium/236%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree.java)
   * [马拉车算法 | Leetcode Q5](./Common%20Algorithm%20and%20Theory/马拉车算法.md)
   * [扫描线 | Leetcode Q218](./Leetcode%20Practices/algorithms/hard/218%20The%20Skyline%20Problem.java)
