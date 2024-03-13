@@ -34,9 +34,9 @@ func sink(in <-chan string, end chan struct{}) {
 
 func main() {
 	// 创建三个管道
-	sourceChan := make(chan string)
-	uppercaseChan := make(chan string)
-	sinkChan := make(chan struct{})
+	sourceChan := make(chan string)    // 可以设置缓冲区大小 sourceChan := make(chan string, 3)，写入超过缓冲区大小的数据会阻塞，但是不会被丢弃
+	uppercaseChan := make(chan string) // 可以设置缓冲区大小 uppercaseChan := make(chan string, 3)
+	sinkChan := make(chan struct{})    // 可以设置缓冲区大小 sinkChan := make(chan struct{}, 3)
 
 	// 启动三个过滤器，分别将它们串联起来
 	go source(sourceChan)
