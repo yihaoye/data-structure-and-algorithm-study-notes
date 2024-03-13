@@ -84,6 +84,7 @@
 * Golang 字符型的实际类型 ![](./go-char.png)
 * Golang 里传递的类型 - 引用传递类型 func、slice、map 和 channel（本质上它们仍然是指针的值传递）；值传递类型包括 int、float、bool、string、array 和 struct 等
 * [for loop 指针错误](https://colobu.com/2023/12/17/Less-Error-Prone-Loop-Variable-Scopin/)
+* Go channel 使用 make 声明并指定缓冲区大小时，会在缓冲区写满时阻塞写入；但是 slice 或 map 进行 make 声明并指定缓冲区大小时，不会在缓冲区写满时阻塞写入，而是会动态地扩展大小
 
 ## 数据库高频
 * [为什么 InnoDB 表必须有主键，并且推荐使用整型的自增主键？](https://blog.csdn.net/weixin_41699562/article/details/104139458)
@@ -340,7 +341,7 @@
   * 避免非加密信息/数据在非安全处（比如邮件）存放/发送
 * [伪基站](https://zh.wikipedia.org/wiki/%E4%BC%AA%E5%9F%BA%E7%AB%99)
 * SIM 卡 - SIM 由 CPU、ROM、RAM、EEPROM 和 I/O 电路组成。用户使用 SIM 时，实际上是手机向 SIM 卡发出命令，SIM 卡应该根据标准规范来执行或者拒绝；SIM 卡并不是单纯的消息存储器。SIM 卡本身最重要的是存储其中的密钥和算法，并使用它们来进行身份验证（握手阶段时，设备启动并尝试连接到移动网络，设备和 SIM 卡与网络中的身份验证中心进行通信）
-* [算法复杂度攻击](https://en.wikipedia.org/wiki/Algorithmic_complexity_attack) - 通常为设计各类算法的最差场景：包括如[哈希高碰撞、词法分析高耗、正则表达式回溯灾难、快速排序性能退化、压缩高耗性能等](https://blog.csdn.net/Solstice/article/details/514)，已被 OWASP 收录
+* [算法复杂度攻击](https://en.wikipedia.org/wiki/Algorithmic_complexity_attack) - 通常为设计各类算法的最差场景：包括如[哈希洪水攻击](https://www.zhihu.com/question/286529973/answer/676290355)以及[词法分析高耗、正则表达式回溯灾难、快速排序性能退化、压缩高耗性能等](https://blog.csdn.net/Solstice/article/details/514)，已被 OWASP 收录
   * Bebug 不易 - 通常如果日志不全面的话，算法复杂度攻击的 debug 都比较困难，因为通常需要觉察数据倾斜或是超时是哪一行代码造成的时候，都需要拿到具体的输入进行复现才能找到根因
 * 身份认证协议
   * [Kerberos](https://zh.wikipedia.org/wiki/Kerberos) - 一种计算机网络授权协议，用来在非安全网络中，对个人通信以安全的手段进行身份认证。加密方式有比如使用预共享密钥 PSK 或基于避免明文传输的用户密码派生的会话密钥。软件设计上采用客户端/服务器结构，并且能够进行相互认证，即客户端和服务器端均可对对方进行身份认证。可以用于防止窃听、防止重放攻击、保护数据完整性等场合，是一种应用对称密钥体制进行密钥管理的系统（其扩展产品也使用非对称加密方法进行认证）。当有 N 个人使用该系统时，为确保在任意两个人之间进行秘密对话，系统至少保存有它与每个人的共享密钥，所需的最少会话密钥数为 N 个。因其在协议设计上的优秀特性，使得其在大规模的网络环境，尤其是在安全性要求较高的环境中得到了广泛的应用

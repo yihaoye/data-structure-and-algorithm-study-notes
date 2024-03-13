@@ -35,7 +35,7 @@
   - 双端队列 | Deque
   - [最值栈 | Extreme (Min/Max etc) Stack](../Leetcode%20Practices/algorithms/easy/155%20Min%20Stack.java)
 - 映射表 | Map/Table
-  - [散列表 | HashMap](./Data%20Structure%20Implementation/HashMap/README.md) (索引搜索 O(1)，插入/删除节点 O(1))
+  - [散列表 | HashMap](./Data%20Structure%20Implementation/HashMap/README.md) (索引搜索 O(1)，插入/删除节点 O(1)；注意：最差时间复杂度为 O(N) - 即哈希值全部冲突，如果输入冲突数据为 N 则最差为 O(N^2))
   - 并发散列表 | ConcurrentHashMap (索引搜索 O(1)，插入/删除节点 O(1))
   - 链散列表 | LinkedHashMap (按插入顺序的散列表，索引搜索 O(1)，插入/删除节点 O(1))
   - 树状映射表 | TreeMap (索引搜索 O(logN)，插入/删除节点 O(logN))
