@@ -2278,6 +2278,8 @@ https://aws.amazon.com/blogs/machine-learning/analyze-live-video-at-scale-in-rea
 ![](./kinesis-sagemaker-live-video-analyze.gif)  
 https://mrmaheshrajput.medium.com/real-time-anomaly-detection-how-amazon-kinesis-can-help-you-stay-ahead-of-the-game-229ae8b32e62  
 ![](./Real-time%20Anomaly%20Detection.webp)  
+https://infohub.delltechnologies.com/en-US/p/streaming-for-edge-inferencing-empowering-real-time-ai-applications/  
+![](./Dell%20Edge%20Inferencing%20with%20SDP.png)  
 
 
 </details>
