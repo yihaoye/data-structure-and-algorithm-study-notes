@@ -2225,8 +2225,12 @@ OOD 还可以参考 [Hotel Management System](./../object%20oriented%20design/gr
 <details>
 <summary>details</summary>
 
-参考：https://towardsdatascience.com/architecting-a-machine-learning-pipeline-a847f094d1c7  
+参考：  
+https://towardsdatascience.com/architecting-a-machine-learning-pipeline-a847f094d1c7  
+https://aws.amazon.com/blogs/machine-learning/building-automating-managing-and-scaling-ml-workflows-using-amazon-sagemaker-pipelines/  
+https://docs.oracle.com/en-us/iaas/data-science/using/pipelines-about.htm  
 
+* ![](./SageMaker-Pipelines-Architecture.jpg)
 * ![](./AI-system-architecture.jpeg)
 * ![](./ML%20Pipeline%20System%20Architecture.png)
 * ![](./Data%20to%20Al%20-%20real%20time%20fraud%20detection%20architecture%20on%20Google%20Cloud.png)
@@ -2266,6 +2270,13 @@ OOD 还可以参考 [Hotel Management System](./../object%20oriented%20design/gr
 1. 特征提取与模型预测 - 首先，从用户行为数据中提取特征，例如用户的浏览历史、购买记录等。然后，将这些特征输入到预训练的机器学习模型中，模型将根据用户的特征向量进行预测，得出用户可能感兴趣的商品特征向量。
 2. 相似性搜索 - 接下来，可以使用向量数据库中的商品向量来进行相似性搜索。通过计算预测的用户特征向量与每个商品特征向量之间的相似度，可以找到与用户喜好最匹配的商品。
 3. 推荐生成 - 根据相似度排序，将相似度最高的商品推荐给用户。可以根据需要对推荐结果进行排序、过滤或其他后处理操作，以生成最终的推荐列表。
+
+其他 ML 应用  
+https://aws.amazon.com/blogs/architecture/realtime-in-stream-inference-kinesis-sagemaker-flink/  
+![](./Run-Apache-Flink-applications-with-KDA-for-Apache-Flink-applications-1024x408.png)  
+https://aws.amazon.com/blogs/machine-learning/analyze-live-video-at-scale-in-real-time-using-amazon-kinesis-video-streams-and-amazon-sagemaker/  
+![](./kinesis-sagemaker-live-video-analyze.gif)  
+
 
 </details>
 
