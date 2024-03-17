@@ -2276,6 +2276,8 @@ https://aws.amazon.com/blogs/architecture/realtime-in-stream-inference-kinesis-s
 ![](./Run-Apache-Flink-applications-with-KDA-for-Apache-Flink-applications-1024x408.png)  
 https://aws.amazon.com/blogs/machine-learning/analyze-live-video-at-scale-in-real-time-using-amazon-kinesis-video-streams-and-amazon-sagemaker/  
 ![](./kinesis-sagemaker-live-video-analyze.gif)  
+https://mrmaheshrajput.medium.com/real-time-anomaly-detection-how-amazon-kinesis-can-help-you-stay-ahead-of-the-game-229ae8b32e62  
+![](./Real-time%20Anomaly%20Detection.webp)  
 
 
 </details>
