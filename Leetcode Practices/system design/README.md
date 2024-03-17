@@ -2229,6 +2229,7 @@ OOD 还可以参考 [Hotel Management System](./../object%20oriented%20design/gr
 
 * ![](./AI-system-architecture.jpeg)
 * ![](./ML%20Pipeline%20System%20Architecture.png)
+* ![](./Data%20to%20Al%20-%20real%20time%20fraud%20detection%20architecture%20on%20Google%20Cloud.png)
 * ![](./ChatGPT.jpeg)
 
 相关：  
