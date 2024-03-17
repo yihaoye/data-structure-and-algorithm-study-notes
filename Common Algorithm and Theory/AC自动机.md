@@ -22,6 +22,10 @@ console.log(match(ac, "one day she say her has eaten many shrimps"));
 
 以上参考：https://zhuanlan.zhihu.com/p/80325757  
 
+### 构造优化
+比如在每次添加一个匹配模式后自动触发并只改相关的局部节点？  
+可能的方案比如使用一个全局哈希表记录需要改动的节点？[可能的参考](https://burningmime.gitlab.io/setmatch/implementation-overview.html#supporting-add-remove-in-an-aho-corasick-trie)  
+
 ## 补充
 > AC 自动机是以 Trie（字典树）的结构为基础，结合 KMP 的思想建立的。  
 > 简单来说，建立一个 AC 自动机有两个步骤：  
