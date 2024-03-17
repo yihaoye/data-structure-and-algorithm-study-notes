@@ -22,7 +22,7 @@ console.log(match(ac, "one day she say her has eaten many shrimps"));
 
 以上参考：https://zhuanlan.zhihu.com/p/80325757  
 
-### 构造优化
+### 构造优化以及删除实现
 比如在每次添加一个匹配模式后自动触发并只改相关的局部节点？  
 可能的方案比如使用一个全局哈希表记录需要改动的节点？[可能的参考](https://burningmime.gitlab.io/setmatch/implementation-overview.html#supporting-add-remove-in-an-aho-corasick-trie)  
 

@@ -37,14 +37,14 @@ class Trie {
     }
 }
 
-public class AhoCorasick {
-    public static void createGoto(Trie trie, String[] patterns) {
+public class AcAutomaton {
+    public static void addPatterns(Trie trie, String[] patterns) {
         for (String pattern : patterns) {
             trie.insert(pattern);
         }
     }
 
-    public static void createFail(Trie ac) {
+    public static void buildFailPoints(Trie ac) {
         Node root = ac.root;
         Queue<Node> queue = new LinkedList<>();
         queue.add(root); // root 所在层为第 0 层
@@ -103,8 +103,8 @@ public class AhoCorasick {
 
     public static void main(String[] args) {
         Trie ac = new Trie();
-        createGoto(ac, new String[]{"she", "shr", "say", "he", "her"});
-        createFail(ac);
+        addPatterns(ac, new String[]{"she", "shr", "say", "he", "her"});
+        buildFailPoints(ac);
         List<String> result = match(ac, "one day she say her has eaten many shrimps");
         System.out.println(result);
     }
