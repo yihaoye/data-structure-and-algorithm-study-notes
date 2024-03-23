@@ -211,6 +211,9 @@ by ChatGPT
 ## 产品思维
 * [52 条设计原则](https://rpdc.xiaohongshu.com/52-design-principles)  
 
+## 用语
+![](./email-words.jpeg)  
+
 
 # Debugging Workflow
 ![](./debugging-workflow.jpeg)  
