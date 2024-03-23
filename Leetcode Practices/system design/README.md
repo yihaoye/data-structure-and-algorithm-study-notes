@@ -3115,6 +3115,18 @@ DNS 根服务器采用分布式架构，并通过任播和多层缓存、高性�
 </details>
 
 
+## 设计 AB 实验系统
+<details>
+<summary>details</summary>
+
+实验组分发算法：
+* 通过哈希对目标键进行映射
+* 使用分桶，每个哈希值都有且只会落入其中一个桶（哈希算法应尽量均匀，否则桶数需要质数）
+* 按设置比例在这多个桶中挑选等比例的桶里的数据对应实验组
+
+</details>
+
+
 ## 设计 CICD Pipeline
 <details>
 <summary>details</summary>
