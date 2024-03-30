@@ -38,6 +38,39 @@ Constraints:
 
 
 
+// Other's Solution:
+class Solution {
+    public int maxSubarrayLength(int[] nums) {
+        // 单调栈 + 贪心 - https://leetcode.com/problems/maximum-length-of-semi-decreasing-subarrays/
+        // Time: O(N)
+        Deque<Integer> st = new LinkedList<>();
+        int n = nums.length;
+        for(int i=0; i<n; i++) {
+            if(st.isEmpty() || nums[st.peek()] < nums[i]) st.push(i);
+        }
+        int ans = 0;
+        for(int i=n-1; i>=0; i--) {
+            while(!st.isEmpty() && nums[st.peek()] > nums[i]) {
+                ans = Math.max(ans, i - st.peek() + 1);
+                st.pop();
+            }
+        }
+        return ans;
+    }
+}
+/*
+We'll use a stack to keep track of indices of elements in the array. First, we'll go through the array from left to right and keep pushing
+indices into the stack if the current element is greater than the top element of the stack.
+
+Then, we'll iterate from right to left and check how far we can
+extend a semi-decreasing subarray for each element.
+
+We'll pop elements from the stack and update the maximum length
+when we find an element that is greater than the current element.
+*/
+
+
+
 // My Solution:
 class Solution {
     public int maxSubarrayLength(int[] nums) {
