@@ -74,6 +74,7 @@
   - [划分树 | Dividing Tree](https://oi-wiki.org/ds/dividing/)
   - [字典树 | Trie](./Data%20Structure%20Implementation/Trie/README.md)
     - 后缀树 | Suffix Tree [Ref 1](https://www.cnblogs.com/gaochundong/p/suffix_tree.html)、[Ref 2](https://yanglei253.github.io/2020/07/26/dataStructure/dataStructure-tiretree/)
+    - [基数树 | Radix Tree](https://github.com/hyponet/eventbus/blob/main/bus/exchange.go#L38) ([Ref](https://blog.ihypo.net/16506944639091.html))
   - [并查集 | Disjoint-Set/Union-Find Forest](./../Common%20Algorithm%20and%20Theory/并查集与联合查找算法.md)
   - [LSM 树 | Log-Structured Merge-Tree](./Data%20Structure%20Implementation/LSMTree/README.md)
   - [默克尔树 | Merkle Tree](./../Leetcode%20Practices/algorithms/easy/572%20Subtree%20of%20Another%20Tree.java)
