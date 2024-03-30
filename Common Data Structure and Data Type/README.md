@@ -69,6 +69,7 @@
     - [R 树 | R Tree](./../Common%20Algorithm%20and%20Theory/QuadTree-RTree-算法.md)
     - [H 树 | H Tree](https://en.wikipedia.org/wiki/HTree)
     - [K-D 树 | K-D Tree](https://zh.wikipedia.org/zh-hans/K-d%E6%A0%91) (最坏情况下可能会退化成链表，因此其平衡性并不稳定)
+  - [绳索 | Rope](https://en.wikipedia.org/wiki/Rope_%28data_structure%29) (支持 O(logN) 的时间复杂度内插入删除合并分裂等操作)
   - [线段树 | Segment Tree](./Data%20Structure%20Implementation/SegmentTree/README.md) (区间查询 O(logN + K)，更新 O(logN)，构建 O(N) - K is the number of reported segments)
   - [树套树 | Tree of Trees](https://www.cnblogs.com/Flying2018/p/13615844.html)
   - [划分树 | Dividing Tree](https://oi-wiki.org/ds/dividing/)
@@ -93,7 +94,6 @@
   - [生成树 | Spanning Tree](./Data%20Structure%20Implementation/SpanningTree/README.md)
     - [最小生成树 | Minimum Spanning Tree](./Data%20Structure%20Implementation/MinimumSpanningTree/README.md)
 - [可持久化数据结构 | Persistent Data Structure](https://oi-wiki.org/ds/persistent/) (总是可以保留每一个历史版本，并且支持操作的不可变特性 immutable)
-  - [绳索 | Rope](https://en.wikipedia.org/wiki/Rope_%28data_structure%29) (支持 O(logN) 的时间复杂度内插入删除合并分裂等操作)
   
 以上有些数据结构可能只有 Java 提供了官方实现 [more](https://www.zhihu.com/question/325814788) ，以上总结未完待续...  
   
