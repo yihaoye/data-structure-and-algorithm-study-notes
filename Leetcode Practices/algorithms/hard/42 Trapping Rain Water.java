@@ -24,6 +24,36 @@ n == height.length
 
 
 
+// Other's Solution:
+class Solution {
+    public int trap(int[] height) {
+        // 单调栈 - https://leetcode.cn/problems/trapping-rain-water/solutions/185879/dan-diao-zhan-jie-jue-jie-yu-shui-wen-ti-by-sweeti/
+        // Time: O(N), Space: O(N)
+        if (height == null) return 0;
+        Deque<Integer> stack = new LinkedList<>();
+        int ans = 0;
+        for (int i = 0; i < height.length; i++) {
+            while(!stack.isEmpty() && height[stack.peek()] < height[i]) {
+                int curIdx = stack.pop();
+                // 如果栈顶元素一直相等，那么全都 pop 出去，只留第一个
+                while (!stack.isEmpty() && height[stack.peek()] == height[curIdx]) stack.pop();
+
+                if (!stack.isEmpty()) {
+                    int stackTop = stack.peek();
+                    // stackTop此时指向的是此次接住的雨水的左边界的位置。右边界是当前的柱体，即 i
+                    // Math.min(height[stackTop], height[i]) 是左右柱子高度的 min，减去 height[curIdx] 就是雨水的高度
+                    // i - stackTop - 1 是雨水的宽度
+                    ans += (Math.min(height[stackTop], height[i]) - height[curIdx]) * (i - stackTop - 1);
+                }
+            }
+            stack.push(i);
+        }
+        return ans;
+    }
+}
+
+
+
 // My Solution:
 class Solution {
     public int trap(int[] height) {
