@@ -74,6 +74,7 @@ when we find an element that is greater than the current element.
 // My Solution:
 class Solution {
     public int maxSubarrayLength(int[] nums) {
+        // DP + 二分搜索
         // Time: O(N*logN), Space: O(N)
         int res = 0;
         TreeSet<Integer> tSet = new TreeSet<>(); // map<nums[i]>
