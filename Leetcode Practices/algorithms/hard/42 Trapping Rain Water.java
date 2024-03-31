@@ -54,6 +54,31 @@ class Solution {
 
 
 
+// Other's Solution:
+class Solution {
+    public int trap(int[] height) {
+        // 双指针 - 两边往中间迭代，找到两个边界，取较低的一侧单向推进并累加，直到找到新边界（重复整个过程）
+        // Time: O(N), Space: O(1)
+        if (height == null || height.length <= 2) return 0;
+        int left = 0, right = height.length - 1;
+        int leftMax = 0, rightMax = 0, ans = 0;
+        while (left < right) {
+            if (height[left] < height[right]) {
+                if (height[left] >= leftMax) leftMax = height[left];
+                else ans += leftMax - height[left];
+                left++;
+            } else {
+                if (height[right] >= rightMax) rightMax = height[right];
+                else ans += rightMax - height[right];
+                right--;
+            }
+        }
+        return ans;
+    }
+}
+
+
+
 // My Solution:
 class Solution {
     public int trap(int[] height) {
