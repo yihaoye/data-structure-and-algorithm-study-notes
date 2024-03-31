@@ -192,6 +192,7 @@ This personal Blog contains explanation and **Java library/template implementati
     - 最优化 | Mathematical Optimization ([Wiki](https://en.wikipedia.org/wiki/Mathematical_optimization)、[Ref](https://space.bilibili.com/97068901/channel/collectiondetail?sid=1387071)；最优化是应用数学的一个分支，是计算机与人工智能的一个重要研究领域：从很大程度上来说，[深度学习实际上是在解决大量复杂的优化问题](https://www.jiqizhixin.com/articles/071502)，神经网络仅仅是一个非常复杂的函数，包含数百万个参数，这些参数代表的是一个问题的数学解答，实质上，训练神经网络是在最小化一个损失函数，这个损失函数的值衡量了网络的性能在给定数据集上离完美还差多少)
       - 线性规划 | Linear Regression
       - 线搜索 | Line Search
+      - 最小二乘法 | Least Squares Method ([Wiki](https://zh.wikipedia.org/wiki/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95))
       - 梯度下降法 | Gradient Descent (梯度其实是高维导数的另一种称呼，[梯度法](https://zh.wikipedia.org/wiki/%E6%A2%AF%E5%BA%A6%E6%B3%95)是数值分析在最优化的应用之一)
       - 牛顿法 | Newton's Method (数值分析在最优化的应用之一)
       - Adam 优化算法 ([Ref](https://zhuanlan.zhihu.com/p/32626442))
