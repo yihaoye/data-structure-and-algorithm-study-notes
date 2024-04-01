@@ -111,7 +111,7 @@
 * 中级算法
   * [二分搜索 | Leetcode Q34 Q2517 etc](./Common%20Algorithm%20and%20Theory/二分搜索.md)
   * [反转链表 | Leetcode Q92](./Leetcode%20Practices/algorithms/medium/92%20Reverse%20Linked%20List%20II.java)
-  * [滑动窗口](./Common%20Algorithm%20and%20Theory/双指针法与滑动窗口算法.md)
+  * [双指针与滑动窗口](./Common%20Algorithm%20and%20Theory/双指针法与滑动窗口算法.md)
   * [快慢指针 | Leetcode Q142](./Leetcode%20Practices/algorithms/medium/142%20Linked%20List%20Cycle%20II.java)
   * [单调栈（单调队列）| Leetcode Q503 Q42-接雨水](./Common%20Algorithm%20and%20Theory/单调栈.md)
   * [位运算实现加减乘除 | Leetcode Q371](./Leetcode%20Practices/algorithms/easy/371%20Sum%20of%20Two%20Integers.java)
