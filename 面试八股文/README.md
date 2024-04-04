@@ -235,7 +235,7 @@
   * ln (create hard/soft link)、open、date、piping (i.e. |)
 * [硬链接和软链接](https://blog.csdn.net/LEON1741/article/details/100136449)
 * [实时监控日志文件](https://blog.csdn.net/rlnLo2pNEfx9c/article/details/122852275)
-* [systemd / systemctl](https://www.youtube.com/watch?v=5JVBpXiYMKo)
+* [systemd / systemctl](https://www.youtube.com/watch?v=5JVBpXiYMKo) - 守护进程管理解决方案。Systemd 并不是一个命令，而是一组命令，涉及到系统管理的方方面面，systemctl 是 Systemd 的主命令，用于管理系统。[其他参考](https://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html)
 * [NIO 相关基础](../Leetcode%20Practices/system%20design/IO模型与Web服务器工作模型.md)
 * 多路复用 - 多路复用是指使用一个线程来检查多个文件描述符（Socket）的就绪状态，比如调用 select、poll、epoll 函数，传入多个文件描述符，如果有一个文件描述符就绪，则返回。
 * [eBPF](https://ebpf.io/what-is-ebpf/)
