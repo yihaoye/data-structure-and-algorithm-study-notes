@@ -209,7 +209,9 @@ Books:
 by ChatGPT  
 
 ## 产品思维
-* [52 条设计原则](https://rpdc.xiaohongshu.com/52-design-principles)  
+* [52 条设计原则](https://rpdc.xiaohongshu.com/52-design-principles)
+* [产品经理必会的 30 个组件](https://www.woshipm.com/pd/5423893.html)
+* 消息管理系统（站内信等）
 
 ## 用语
 ![](./email-words.jpeg)  
