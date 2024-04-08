@@ -119,6 +119,7 @@ This personal Blog contains explanation and **Java library/template implementati
     - Rete 匹配算法 | Rete Algorithm ([Wiki](https://en.wikipedia.org/wiki/Rete_algorithm)；Rete 算法通过构建高效的数据结构和利用条件之间的共享信息，避免了重复匹配和不必要的计算，从而实现了高效的规则匹配。由于其高效性和灵活性，被广泛应用于规则引擎、专家系统、数据挖掘等领域，是规则匹配的重要技术之一；时间复杂度通常为 `O(N)`)
     - 光线投射算法 | Ray Casting
     - Rsync 算法 ([Wiki](https://zh.wikipedia.org/zh-cn/Rsync#%E6%BC%94%E7%AE%97%E6%B3%95))
+    - 垃圾回收算法 | Garbage Collection Algorithm ([Ref](https://mp.weixin.qq.com/s/M8R4QPidlCrr6vix4JUWmg))
     - [非对称加密算法 | Asymmetric Cryptography](./非对称加密算法.md)
     - [共识机制/算法 (分布式选举问题) | Consensus Algorithm](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md) ([etcd 实现](../Leetcode%20Practices/system%20design/example%20questions/Leader%20Election.md))
       - 崩溃容错协议 | CFT
