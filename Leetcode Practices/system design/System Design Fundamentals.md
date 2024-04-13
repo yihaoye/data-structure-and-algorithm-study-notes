@@ -112,6 +112,7 @@ https://www.algoexpert.io/systems/fundamentals
 * ![](./REST%20API%20Design.jpeg)
 * ![](./effective-safe-api-design.jpeg)
 * ![](./secure-api.jpeg)
+* ![](./api-security.gif)
 * ![](./API%20Architectural%20Styles%20Comparison.jpeg)
 * ![](./api-protocols.jpeg)
   * 新一代的 RPC 框架 gRPC 支持流，其中一个调用不仅包括一个请求和一个响应，还可以是随时间的一系列请求和响应。
