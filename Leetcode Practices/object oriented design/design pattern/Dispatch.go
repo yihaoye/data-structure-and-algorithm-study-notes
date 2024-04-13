@@ -11,6 +11,12 @@ type Request struct {
 
 type Handler func(request Request)
 
+var handlers = make(map[string]Handler)
+
+func addHandler(reqType string, handler Handler) {
+	handlers[reqType] = handler
+}
+
 func dispatch(request Request, handlers map[string]Handler) {
 	if handler, ok := handlers[request.Type]; ok {
 		handler(request)
@@ -20,14 +26,12 @@ func dispatch(request Request, handlers map[string]Handler) {
 }
 
 func main() {
-	handlers := map[string]Handler{
-		"add": func(request Request) {
-			fmt.Println("Adding:", request.Data)
-		},
-		"subtract": func(request Request) {
-			fmt.Println("Subtracting:", request.Data)
-		},
-	}
+	addHandler("add", func(request Request) {
+		fmt.Println("Adding:", request.Data)
+	})
+	addHandler("subtract", func(request Request) {
+		fmt.Println("Subtracting:", request.Data)
+	})
 
 	dispatch(Request{Type: "add", Data: 1}, handlers)
 	dispatch(Request{Type: "subtract", Data: 2}, handlers)

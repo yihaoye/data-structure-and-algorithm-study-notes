@@ -36,11 +36,11 @@
   * (在 Go 更多直接使用内置的 slice 和 for range 结构，因其足够简洁而有效的迭代功能)
 * [观察者 | Observer(Listener)](./Observer.java)
   * ([Go 示例](./Observer.go))
-* [分发 | Dispatch] - 用于将来自多个来源的请求调度到不同的处理程序，它通常用于构建事件驱动系统或 GUI 应用程序。优点：提高了代码的可维护性、可扩展性、灵活性
-  * ([Go 示例](./Dispatch.go))
 * [状态 | State](./State.java)
 * [策略 | Strategy](./Strategy.java)
   * (包括命令模式，在 Go 中有其他更直接的方式来达到相同的目的，例如使用函数闭包或接口组合 - [Go 示例](./Strategy.go))
+* 分发 | Dispatch - 类似策略模式，用于将来自多个来源的请求调度到不同的处理程序，它通常用于构建事件驱动系统或 GUI 应用程序。优点：提高了代码的可维护性、可扩展性、灵活性
+  *  ([Go 示例](./Dispatch.go))
 * 重试 | Retry
   * ([Go 示例](./Retry.go))
 * [责任链 | Chain of Responsibility](./CoR.java) - 衍生的有过滤器模式
