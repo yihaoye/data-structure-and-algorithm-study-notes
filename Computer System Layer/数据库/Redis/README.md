@@ -4,7 +4,7 @@
 ## Redis 缓存的特点
 作为一个高性能的 Key-Value 数据库，Redis 与其他 Key-Value 缓存产品相比，有以下三个特点：  
 * Redis 运行在内存中但是可以持久化到磁盘，重启的时候可以再次加载进行使用。
-* Redis 不仅仅支持简单的 Key-Value 类型的数据，同时还提供 String，List，Set，Sorted Set，Hash 等数据结构的存储，Redis 还有更高级得数据结构比如：HyperLogLog、Geo、BloomFilter 这几个数据结构。
+* Redis 不仅仅支持简单的 Key-Value 类型的数据，同时还提供 String，List，Set，Sorted Set，Hash 等数据结构的存储，Redis 还有更高级得数据结构比如：BitMap、HyperLogLog、Geo、BloomFilter 这几个数据结构。
 * Redis 还支持数据的备份，即 Master-Slave 主从模式的数据备份。  
 
 另外要注意 redis 的数据是 flat 的，比如不能 set 里又嵌套一个 set。  
@@ -218,6 +218,226 @@ Redis 提供哨兵（Sentinel）机制，它的作用是实现主从节点故障
 
 ## 架构
 ![](./Redis-Architecture.gif)  
+
+## 其他高级用法
+Lua 脚本：Redis 支持 Lua 脚本，可以使用 Lua 脚本在 Redis 服务器端执行复杂的逻辑。这使得 Redis 可以用于更复杂的应用，例如数据分析、机器学习等。
+```go
+func main() {
+    // 创建 Redis 客户端
+    client := redis.NewClient(&redis.Options{
+        Addr: "localhost:6379",
+    })
+
+    // 执行 Lua 脚本
+    script := `
+        local function calculate_average(key)
+            local sum = 0
+            local count = 0
+
+            local values = redis.scan(key, "*", 0)
+            for _, value in ipairs(values) do
+                sum = sum + tonumber(value)
+                count = count + 1
+            end
+
+            if count == 0 then
+                return nil
+            else
+                return sum / count
+            end
+        end
+
+        return calculate_average("user:scores")
+    `
+
+    result, err := client.Eval(script).Result()
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    fmt.Println("Average score:", result)
+}
+```
+
+延迟队列：Redis 的延迟队列功能可以用于在未来某个时间点执行任务。这对于需要异步执行任务的应用非常有用。
+```go
+func main() {
+	// 创建 Redis 客户端
+	client := redis.NewClient(&redis.Options{
+		Addr: "localhost:6379",
+	})
+
+	// 添加任务到延迟队列
+	err := client.ZAdd("delayed_queue", time.Now().Add(10*time.Second).Unix(), "send_email").Err()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// 处理延迟队列中的任务
+	for {
+		// 获取当前时间戳
+		now := time.Now().Unix()
+
+		// 从延迟队列中获取分数小于或等于当前时间戳的任务
+		score, task, err := client.ZRangeWithScores("delayed_queue", 0, 0, 0, 1).Result()
+		if err != nil {
+			log.Fatal(err)
+		}
+
+		if score != 0 {
+			// 从延迟队列中移除任务
+			err := client.ZRem("delayed_queue", score).Err()
+			if err != nil {
+				log.Fatal(err)
+			}
+			if task == "send_email" {
+				sendEmail()
+			} else {
+				log.Printf("未知任务：%s", task)
+			}
+		}
+		time.Sleep(1 * time.Second)
+	}
+}
+
+func sendEmail() {
+	// 模拟发送电子邮件
+	fmt.Println("发送电子邮件...")
+	time.Sleep(1 * time.Second)
+	fmt.Println("电子邮件已发送。")
+}
+```
+
+发布/订阅：Redis 的发布/订阅功能可以实现实时的消息通信。发布者可以将消息发布到一个频道，订阅者可以订阅该频道以接收消息。这种机制常用于构建聊天应用、实时数据推送等应用。
+```go
+func main() {
+    // 创建 Redis 客户端
+    client := redis.NewClient(&redis.Options{
+        Addr: "localhost:6379",
+    })
+
+    // 发布消息
+    err := client.Publish("chat:channel", "Hello, world!").Err()
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    // 订阅消息
+    pubsub := client.Subscribe("chat:channel")
+    ch, err := pubsub.Channel()
+    if err != nil {
+        log.Fatal(err)
+    }
+    defer ch.Close()
+
+    for msg := range ch.Messages() {
+        fmt.Println("Received message:", msg.Payload)
+    }
+}
+```
+
+分布式锁：Redis 的分布式锁功能可以用于在多个 Redis 实例之间实现互斥访问。这对于需要协调多个节点操作的应用非常有用。
+```go
+func main() {
+    // 创建 Redis 客户端
+    client := redis.NewClient(&redis.Options{
+        Addr: "localhost:6379",
+    })
+
+    // 获取锁
+    lock, err := client.SetNX("my_lock", "1", 10*time.Second).Result()
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if lock {
+        // 执行需要互斥访问的操作
+        fmt.Println("Executing critical section")
+        time.Sleep(2 * time.Second)
+
+        // 释放锁
+        err := client.Del("my_lock").Err()
+        if err != nil {
+            log.Fatal(err)
+        }
+        fmt.Println("Lock released")
+    } else {
+        fmt.Println("Failed to acquire lock")
+    }
+}
+```
+
+会话管理：Redis 可以用于存储用户会话信息，例如登录状态、购物车内容等。这使得 Redis 可以用于构建 Web 应用程序。
+```go
+func main() {
+	// 创建 Redis 客户端
+	client := redis.NewClient(&redis.Options{
+		Addr: "localhost:6379",
+	})
+
+	// 创建会话存储
+	store, err := redis.NewStore(client)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// 创建新的会话
+	session, err := store.New()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// 设置会话值
+	err = session.Set("user_id", 12345)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// 保存会话
+	err = session.Save()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// 获取会话值
+	user_id, err := session.Get("user_id")
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println("User ID:", user_id)
+
+	// 销毁会话
+	err = session.Destroy()
+	if err != nil {
+		log.Fatal(err)
+	}
+}
+```
+
+缓存预热：Redis 的缓存预热功能可以提前将数据加载到缓存中，以减少实际使用时的数据加载时间。这对于需要快速访问大量数据的应用非常有用。
+```go
+func main() {
+    // 创建 Redis 客户端
+    client := redis.NewClient(&redis.Options{
+        Addr: "localhost:6379",
+    })
+
+    // 从数据库中加载数据
+    data := load_data_from_database()
+
+    // 将数据预热到缓存中
+    err := client.Set("cached_data", data, 0).Err()
+    if err != nil {
+        log.Fatal(err)
+    }
+    fmt.Println("Data preheated successfully")
+}
+
+func load_data_from_database() []byte {
+    // 模拟从数据库加载数据
+    return []byte(`{"name": "John Doe", "age": 30, "city": "New York"}`)
+}
+```
 
 
 

@@ -25,7 +25,7 @@
   - 基于链表的线程安全无界队列 | ConcurrentLinkedQueue
   - [阻塞队列 | BlockingQueue](./Data%20Structure%20Implementation/BlockingQueue/README.md) (注意，[非阻塞队列也可以通过 CAS 实现线程安全](./Data%20Structure%20Implementation/BlockingQueue/non-blocking-queue.PNG))
     - [基于数组的并发阻塞队列 | ArrayBlockingQueue](./Data%20Structure%20Implementation/ArrayBlockingQueue/ArrayBlockingQueue.java) (入队/出队 O(1)，首值 O(1))
-    - 延期阻塞队列 | DelayQueue (入队/出队 O(logN)，首值 O(1))
+    - 延期阻塞队列 | DelayQueue (入队/出队 O(logN)，首值 O(1)) ([延迟队列 Ref](https://zhuanlan.zhihu.com/p/480105174))
     - 基于链表的 FIFO 双端阻塞队列 | LinkedBlockingDeque
     - [基于链表的 FIFO 阻塞队列 | LinkedBlockingQueue](./Data%20Structure%20Implementation/LinkedBlockingQueue/LinkedBlockingQueue.java) (入队/出队 O(1)，首值 O(1))
     - 并发同步阻塞队列 | SynchronousQueue (入队/出队 O(1)，首值 O(1))
