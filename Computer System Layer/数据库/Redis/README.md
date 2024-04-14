@@ -219,8 +219,9 @@ Redis 提供哨兵（Sentinel）机制，它的作用是实现主从节点故障
 ## 架构
 ![](./Redis-Architecture.gif)  
 
-## 其他高级用法
-Lua 脚本：Redis 支持 Lua 脚本，可以使用 Lua 脚本在 Redis 服务器端执行复杂的逻辑。这使得 Redis 可以用于更复杂的应用，例如数据分析、机器学习等。
+# 其他高级用法
+## Lua 脚本
+Redis 支持 Lua 脚本，可以使用 Lua 脚本在 Redis 服务器端执行复杂的逻辑。这使得 Redis 可以用于更复杂的应用，例如数据分析、机器学习等。
 ```go
 func main() {
     // 创建 Redis 客户端
@@ -259,7 +260,8 @@ func main() {
 }
 ```
 
-延迟队列：Redis 的延迟队列功能可以用于在未来某个时间点执行任务。这对于需要异步执行任务的应用非常有用。
+## 延迟队列
+Redis 的延迟队列功能可以用于在未来某个时间点执行任务。这对于需要异步执行任务的应用非常有用。
 ```go
 func main() {
 	// 创建 Redis 客户端
@@ -308,7 +310,8 @@ func sendEmail() {
 }
 ```
 
-发布/订阅：Redis 的发布/订阅功能可以实现实时的消息通信。发布者可以将消息发布到一个频道，订阅者可以订阅该频道以接收消息。这种机制常用于构建聊天应用、实时数据推送等应用。
+## 发布/订阅
+Redis 的发布/订阅功能可以实现实时的消息通信。发布者可以将消息发布到一个频道，订阅者可以订阅该频道以接收消息。这种机制常用于构建聊天应用、实时数据推送等应用。
 ```go
 func main() {
     // 创建 Redis 客户端
@@ -336,7 +339,8 @@ func main() {
 }
 ```
 
-分布式锁：Redis 的分布式锁功能可以用于在多个 Redis 实例之间实现互斥访问。这对于需要协调多个节点操作的应用非常有用。
+## 分布式锁
+Redis 的分布式锁功能可以用于在多个 Redis 实例之间实现互斥访问。这对于需要协调多个节点操作的应用非常有用。
 ```go
 func main() {
     // 创建 Redis 客户端
@@ -367,7 +371,8 @@ func main() {
 }
 ```
 
-会话管理：Redis 可以用于存储用户会话信息，例如登录状态、购物车内容等。这使得 Redis 可以用于构建 Web 应用程序。
+## 会话管理
+Redis 可以用于存储用户会话信息，例如登录状态、购物车内容等。这使得 Redis 可以用于构建 Web 应用程序。
 ```go
 func main() {
 	// 创建 Redis 客户端
@@ -414,7 +419,8 @@ func main() {
 }
 ```
 
-缓存预热：Redis 的缓存预热功能可以提前将数据加载到缓存中，以减少实际使用时的数据加载时间。这对于需要快速访问大量数据的应用非常有用。
+## 缓存预热
+Redis 的缓存预热功能可以提前将数据加载到缓存中，以减少实际使用时的数据加载时间。这对于需要快速访问大量数据的应用非常有用。
 ```go
 func main() {
     // 创建 Redis 客户端
@@ -436,6 +442,69 @@ func main() {
 func load_data_from_database() []byte {
     // 模拟从数据库加载数据
     return []byte(`{"name": "John Doe", "age": 30, "city": "New York"}`)
+}
+```
+
+## 地理空间数据
+```go
+func main() {
+    // 创建 Redis 客户端
+    client := redis.NewClient(&redis.Options{
+        Addr: "localhost:6379",
+    })
+
+    // 添加地理空间数据
+    err := client.GeoAdd("cities", 13.410340, 55.762330, "Copenhagen").Err()
+    if err != nil {
+        log.Fatal(err)
+    }
+    err = client.GeoAdd("cities", 48.856614, 2.352200, "Paris").Err()
+    if err != nil {
+        log.Fatal(err)
+    }
+    err = client.GeoAdd("cities", 51.507200, -0.127500, "London").Err()
+    if err != nil {
+        log.Fatal(err)
+    }
+    fmt.Println("GeoSpatial data added successfully")
+
+    // 查询地理空间数据
+    location := "London"
+    radius := 50.0 // 公里
+    members, err := client.GeoRadius("cities", location, radius).Result()
+    if err != nil {
+        log.Fatal(err)
+    }
+    for _, member := range members {
+        fmt.Printf("City: %s, Distance: %f km\n", member.Name, member.Distance)
+    }
+
+    // 计算地理空间距离
+    city1 := "Copenhagen"
+    city2 := "Paris"
+    distance, err := client.GeoDist("cities", city1, city2, "km").Result()
+    if err != nil {
+        log.Fatal(err)
+    }
+    fmt.Printf("Distance between %s and %s: %f km\n", city1, city2, distance)
+
+    // 创建地理空间索引
+    err := client.GeoIndex("cities", "latitude", "longitude").Err()
+    if err != nil {
+        log.Fatal(err)
+    }
+    fmt.Println("GeoSpatial index created successfully")
+
+    // 查询地理空间索引
+    bbox := [2]float64{12.0, 54.0} // 西北角坐标
+    bbox := [2]float64{14.0, 56.0} // 东南角坐标
+    members, err := client.GeoSearch("cities", bbox, "MATCH", "1000").Result()
+    if err != nil {
+        log.Fatal(err)
+    }
+    for _, member := range members {
+        fmt.Printf("City: %s, Distance: %f km\n", member.Name, member.Distance)
+    }
 }
 ```
 
