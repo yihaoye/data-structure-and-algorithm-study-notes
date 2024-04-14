@@ -111,7 +111,7 @@ This personal Blog contains explanation and **Java library/template implementati
     - [反向索引 | Inverted Index]((../Leetcode%20Practices/system%20design/README.md#设计搜索引擎-Twitter-Search)) ([Code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/inverted%20index/InvertedIndex.java))
     - Frugal Streaming 算法
     - [Geohash 算法, S2 Geometry 算法](../Leetcode%20Practices/system%20design/README.md#设计-Uber)
-    - [漏桶算法, 令牌桶算法 | Leaky Bucket, Token Bucket](../Leetcode%20Practices/system%20design/README.md#设计-API-Rate-Limiter)
+    - [漏桶算法, 令牌桶算法 | Leaky Bucket, Token Bucket](../Leetcode%20Practices/system%20design/README.md#设计-API-Rate-Limiter) ([Code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/rate%20limiter%203/Solution.java))
     - Loosy Counting 算法
     - [OT 算法 | Operational Transformation](../Leetcode%20Practices/system%20design/README.md#设计协同编辑系统)
     - [四叉树算法, R 树算法 | QuadTree, RTree Algorithm](./QuadTree-RTree-算法.md)
