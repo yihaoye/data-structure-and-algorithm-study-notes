@@ -100,13 +100,13 @@ This personal Blog contains explanation and **Java library/template implementati
       - 循环冗余校验 | Cyclic Redundancy Check ([Wiki](https://zh.wikipedia.org/wiki/%E5%BE%AA%E7%92%B0%E5%86%97%E9%A4%98%E6%A0%A1%E9%A9%97)，不可逆，CRC32 是一种用于生成 32 位循环冗余校验码的哈希函数，主要用于检测数据传输中的错误，例如文件传输、网络通信等。其计算速度快、实现简单，但安全性较低，不适用于对数据完整性要求较高的场景)
       - MD5 消息摘要算法 (不可逆)
       - 安全哈希算法 | Secure Hash Algorithm (SHA) ([Wiki](https://zh.wikipedia.org/wiki/SHA%E5%AE%B6%E6%97%8F)，不可逆)
-      - bcrypt、scrypt、Argon2 (不可逆，对称加密算法，不仅可以用于数据完整性校验，还可以用于密码存储和验证。它们通常包含一些安全特性，如盐和工作因子，以提高抵抗暴力破解和彩虹表攻击的能力)
-    - 加密算法 | Cryptography
-      - [AES 对称加密算法](https://goodapple.top/archives/162) (可逆)
-      - RSA 加密算法 (可逆，最重要的[非对称加密算法](./非对称加密算法.md))
+      - bcrypt、scrypt、Argon2 (不可逆，不仅可以用于数据完整性校验，还可以用于密码存储和验证。它们通常包含一些安全特性，如盐和工作因子，以提高抵抗暴力破解和彩虹表攻击的能力)
     - 均匀哈希 | Uniform Hash
       - MurmurHash3 (不可逆，是一种非加密哈希函数，有速度快、均匀性好、易于使用等优点，常用于哈希表、布隆过滤器等数据结构中，以提高性能和减少哈希碰撞)
       - xxHash (同上)
+    - 加密算法 | Cryptography (可逆)
+      - [AES 对称加密算法](https://goodapple.top/archives/162) (可逆)
+      - RSA 加密算法 (可逆，最重要的[非对称加密算法](./非对称加密算法.md))
     - [HyperLogLog 算法](./HyperLogLog.md)
     - [雪花算法 | Snowflake ID](./雪花算法.md)
     - 一致性哈希 | Consistent Hashing ([Ref](https://dgryski.medium.com/consistent-hashing-algorithmic-tradeoffs-ef6b8e2fcae8)) (数据操作时间复杂度为 `O(logN)`，节点增删时间复杂度为 `~O(N/M)` 其中 M 为实际节点数)
