@@ -97,9 +97,15 @@ This personal Blog contains explanation and **Java library/template implementati
     - [Count-Min Sketch 算法](./Count-Min-Sketch.md)
     - 最小哈希 | MinHash ([Wiki](https://en.wikipedia.org/wiki/MinHash))
     - 校验和 | Checksum ([Wiki](https://zh.wikipedia.org/wiki/%E6%A0%A1%E9%AA%8C%E5%92%8C))
-      - 循环冗余校验 | Cyclic Redundancy Check (CRC) ([Wiki](https://zh.wikipedia.org/wiki/%E5%BE%AA%E7%92%B0%E5%86%97%E9%A4%98%E6%A0%A1%E9%A9%97))
+      - 循环冗余校验 | Cyclic Redundancy Check ([Wiki](https://zh.wikipedia.org/wiki/%E5%BE%AA%E7%92%B0%E5%86%97%E9%A4%98%E6%A0%A1%E9%A9%97)，CRC32 是一种用于生成 32 位循环冗余校验码的哈希函数，主要用于检测数据传输中的错误，例如文件传输、网络通信等。其计算速度快、实现简单，但安全性较低，不适用于对数据完整性要求较高的场景)
       - MD5 消息摘要算法
-      - 安全哈希算法 | Secure Hash Algorithm (SHA) ([Wiki](https://zh.wikipedia.org/wiki/SHA%E5%AE%B6%E6%97%8F))
+      - bcrypt、scrypt、Argon2 (对称加密算法，不仅可以用于数据完整性校验，还可以用于密码存储和验证。它们通常包含一些安全特性，如盐和工作因子，以提高抵抗暴力破解和彩虹表攻击的能力)
+    - 加密算法 | Cryptography
+      - [AES 对称加密算法](https://goodapple.top/archives/162)
+      - 安全哈希算法 | Secure Hash Algorithm (SHA) ([Wiki](https://zh.wikipedia.org/wiki/SHA%E5%AE%B6%E6%97%8F)，最重要的[非对称加密算法](./非对称加密算法.md))
+    - 均匀哈希 | Uniform Hash
+      - MurmurHash3 (MurmurHash3 是一种非加密哈希函数，有速度快、均匀性好、易于使用等优点，常用于哈希表、布隆过滤器等数据结构中，以提高性能和减少哈希碰撞)
+      - xxHash (同上)
     - [HyperLogLog 算法](./HyperLogLog.md)
     - [雪花算法 | Snowflake ID](./雪花算法.md)
     - 一致性哈希 | Consistent Hashing ([Ref](https://dgryski.medium.com/consistent-hashing-algorithmic-tradeoffs-ef6b8e2fcae8)) (数据操作时间复杂度为 `O(logN)`，节点增删时间复杂度为 `~O(N/M)` 其中 M 为实际节点数)
@@ -120,7 +126,6 @@ This personal Blog contains explanation and **Java library/template implementati
     - 光线投射算法 | Ray Casting
     - Rsync 算法 ([Wiki](https://zh.wikipedia.org/zh-cn/Rsync#%E6%BC%94%E7%AE%97%E6%B3%95))
     - 垃圾回收算法 | Garbage Collection Algorithm ([Ref](https://mp.weixin.qq.com/s/M8R4QPidlCrr6vix4JUWmg))
-    - [非对称加密算法 | Asymmetric Cryptography](./非对称加密算法.md)
     - [共识机制/算法 (分布式选举问题) | Consensus Algorithm](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md) ([etcd 实现](../Leetcode%20Practices/system%20design/example%20questions/Leader%20Election.md))
       - 崩溃容错协议 | CFT
         - Paxos、Raft ([Ref 1](https://cloud.tencent.com/developer/article/1816404)、[Ref 2](https://raft.github.io/))、[ZAB](https://houbb.github.io/2018/10/30/zab) (这 3 种协议有许多共同的内容，比如 Leader-Follower、[Quorum 仲裁机制](./Quorum算法.md)、状态机等等)
