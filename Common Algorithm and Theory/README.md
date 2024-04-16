@@ -98,7 +98,7 @@ This personal Blog contains explanation and **Java library/template implementati
     - 最小哈希 | MinHash ([Wiki](https://en.wikipedia.org/wiki/MinHash))
     - 校验和 | Checksum ([Wiki](https://zh.wikipedia.org/wiki/%E6%A0%A1%E9%AA%8C%E5%92%8C))
       - 循环冗余校验 | Cyclic Redundancy Check ([Wiki](https://zh.wikipedia.org/wiki/%E5%BE%AA%E7%92%B0%E5%86%97%E9%A4%98%E6%A0%A1%E9%A9%97)，不可逆，CRC32 是一种用于生成 32 位循环冗余校验码的哈希函数，主要用于检测数据传输中的错误，例如文件传输、网络通信等。其计算速度快、实现简单，但安全性较低，不适用于对数据完整性要求较高的场景)
-      - MD5 消息摘要算法 (不可逆，但是因为抗碰撞能力和原像抗性较差所以不安全)
+      - MD5 消息摘要算法 (性质上不可逆，但是因为原像抗性不够高所以可通过彩虹表和剪枝暴力破解造成事实上可逆，而且抗碰撞能力也不够高，所以不安全)
       - 安全哈希算法系列 | Secure Hash Algorithm (SHA) ([Wiki](https://zh.wikipedia.org/wiki/SHA%E5%AE%B6%E6%97%8F)，不可逆。安全性主要指的是它的抗碰撞能力和原像抗性，即使输入数据发生细微的变化，输出的哈希值也会发生巨大的变化，且不可能从哈希值反推出原始数据)
       - bcrypt、scrypt、Argon2 (不可逆，不仅可以用于数据完整性校验，还可以用于密码存储和验证。它们通常包含一些安全特性，如盐和工作因子，以提高抵抗暴力破解和彩虹表攻击的能力)
       - 数字签名算法 | DSA ([Wiki](https://zh.wikipedia.org/wiki/%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E7%AE%97%E6%B3%95)，不可逆。DSA 算法包含了四种操作：密钥生成、密钥分发、签名、验证。数字签名算法可以用于身份验证，发送方使用自己的私钥对数据进行签名，接收方使用发送方的公钥对签名进行验证)
