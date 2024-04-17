@@ -150,6 +150,9 @@ Redis 提供了一系列原子操作（Atomic Operations），这些操作是在
 
 这些原子操作允许在多个线程或客户端之间执行并发操作，同时保证数据的一致性和完整性。在编写具有高并发性要求的应用程序时，Redis 的原子操作能够帮助避免竞态条件和数据不一致的问题。  
 
+## 第三方 API
+一些库，比如 go-redis 还提供了[限流](https://redis.uptrace.dev/guide/go-redis-rate-limiting.html)以及 [Cuckoo Filter、Count-Min Sketch 与 Top-K 等高级算法功能的实现](https://redis.uptrace.dev/guide/bloom-cuckoo-count-min-top-k.html)。  
+
 ## 事务
 Redis 事务通过 MULTI、EXEC 和 DISCARD 三个命令来实现。
 * MULTI: 开启一个事务
