@@ -76,7 +76,7 @@ This personal Blog contains explanation and **Java library/template implementati
       - 禁忌搜索 | Tabu Search
       - 爬山算法 | Hill Climbing
       - [随机数生成算法 | Random Number Generator](./随机数生成算法.md)
-      - 随机化算法/搜索 | Random Algorithm/Search (随机化算法高效的原因是它跳过不必要的枝节、搜索空间。另外，有些随机化算法如随机森林可以容易地并行化，因为它们的操作不一定依赖于前一步骤的结果，这使得它们在多核或分布式计算环境中更高效)
+      - 随机化算法/搜索 | Random Algorithm/Search (随机化算法高效的原因是它跳过不必要的枝节、搜索空间，即其本质是剪枝优化。另外，有些随机化算法如随机森林可以容易地并行化，因为它们的操作不一定依赖于前一步骤的结果，这使得它们在多核或分布式计算环境中更高效)
         - 蒙特卡洛方法 | Monte Carlo Method ([Ref](https://renns.top/post/59/)，采样越多，越近似最优解)
           - [模拟退火 | Simulated Annealing](./模拟退火.md)
           - [遗传算法 | Genetic Algorithm](./遗传算法.md)
@@ -102,7 +102,7 @@ This personal Blog contains explanation and **Java library/template implementati
       - MD5 消息摘要算法 (性质上不可逆，但是因为原像抗性不够高所以可通过彩虹表和剪枝暴力破解造成事实上可逆，而且抗碰撞能力也不够高，所以不安全)
       - 安全哈希算法系列 | Secure Hash Algorithm (SHA) ([Wiki](https://zh.wikipedia.org/wiki/SHA%E5%AE%B6%E6%97%8F)，不可逆。安全性主要指的是它的抗碰撞能力和原像抗性，即使输入数据发生细微的变化，输出的哈希值也会发生巨大的变化，且不可能从哈希值反推出原始数据)
       - bcrypt、scrypt、Argon2 (不可逆，不仅可以用于数据完整性校验，还可以用于密码存储和验证。它们通常包含一些安全特性，如盐和工作因子，以提高抵抗暴力破解和彩虹表攻击的能力)
-      - 数字签名算法 | DSA ([Wiki](https://zh.wikipedia.org/wiki/%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E7%AE%97%E6%B3%95)，不可逆。DSA 算法包含了四种操作：密钥生成、密钥分发、签名、验证。数字签名算法可以用于身份验证，发送方使用自己的私钥对数据进行签名，接收方使用发送方的公钥对签名进行验证)
+      - 数字签名算法 | Digital Signature Algorithm (DSA) ([Wiki](https://zh.wikipedia.org/wiki/%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E7%AE%97%E6%B3%95)，不可逆。DSA 算法包含了四种操作：密钥生成、密钥分发、签名、验证。数字签名算法可以用于身份验证，发送方使用自己的私钥对数据进行签名，接收方使用发送方的公钥对签名进行验证)
         - 椭圆曲线数字签名算法 | ECDSA (不可逆)
     - 均匀哈希 | Uniform Hash
       - MurmurHash3 (不可逆，是一种非加密哈希函数，有速度快、均匀性好、易于使用等优点，常用于哈希表、布隆过滤器等数据结构中，以提高性能和减少哈希碰撞)
