@@ -33,7 +33,9 @@
 * 哈希、加密、编码的区别 - 哈希和加密的一个重要区别是前者不可逆而后者可逆 ![](./hash-encrpt-encode.png)
 * [SDN（软件定义网络）](https://www.cloudflare.com/zh-cn/learning/network-layer/what-is-sdn/) - SDN 通过将控制平面与转发平面分离，实现了网络的集中控制，从而可以灵活地控制网络流量，满足各种应用的需求，最终达成：提高系统的灵活性和可编程性、降低系统的管理和运维成本、提高系统的安全性。
 * [服务网格 | Service Mesh](https://www.redhat.com/zh/topics/microservices/what-is-a-service-mesh) - 可以认为是一种分布式通信系统的架构模式，用网格描述其实即图数据结构。
+  * [控制面板（Control Panel）](https://www.zhihu.com/tardis/zm/art/397945267?source_id=1003)- 是用来从全局的角度上控制 SideCar，相当于 Service Mesh 架构的大脑，控制着 SideCar 来实现服务治理的各项功能。比如，它负责所有 SideCar 的注册，存储统一的路由表，帮助各个 SideCar 进行负载均衡和请求调度，配置分发以及证书配置；它收集所有 SideCar 的监控信息和日志数据。![](./service-mesh-control-panel.jpg)
   * [Service Mesh 起源、演进、定义](https://www.lixueduan.com/posts/istio/02-service-mesh/)
+  * [Why Istio](https://jimmysong.io/en/blog/why-do-you-need-istio-when-you-already-have-kubernetes/)
 * 规则引擎 vs 代码编程
   * 采用规则引擎场景：系统解耦（比如多个程序应用基础代码一样只是业务逻辑不同）、业务规则频繁变化、非技术人员参与规则定义、规则复杂度高、动态配置调整扩展和决策。
   * 采用代码编程场景：业务逻辑复杂度低、性能要求高、技术团队熟悉或好的技术积累。
