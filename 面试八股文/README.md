@@ -317,6 +317,16 @@
   * 网络拥塞和负载 - 当网络中的流量过大，超过了设备和链路的处理能力时，网络可能会拥塞，从而影响带宽
   * 软件、网络协议和传输机制 - 使用的网络协议和软件也可以影响网络的带宽。一些协议可能更高效，而另一些可能会产生较大的开销
   * 网络供应商和服务计划
+* 网络抓包中的头（Header）包含以下 HTTP 协议的部分，即在客户端和服务器之间传递元数据信息；而响应（Response）则通常就是 HTML
+  * 请求头 (Request Header)：请求方法（Request Method）指定了客户端要对服务器执行的操作，比如 GET、POST、PUT、DELETE 等；目标 URL（Request URL）请求要发送到的目标 URL；用户代理（User-Agent）发起请求的客户端的标识信息，通常是浏览器的类型和版本号；内容类型（Content-Type）请求的主体内容的 MIME 类型，比如 text/plain、application/json 等；接受内容类型（Accept）指定客户端接受的内容类型，用于指示服务器返回的响应应该是什么类型的数据；授权信息（Authorization）包含了客户端的身份验证信息，比如用户名和密码；Cookie 包含了客户端的会话信息，用于在客户端和服务器之间跟踪用户的状态；缓存控制（Cache-Control）指示请求和响应是否应该被缓存的指令；Referer（Referer）包含了发送请求页面的 URL，用于告诉服务器请求是从哪个页面发起的；连接控制（Connection）控制客户端和服务器之间连接的行为，比如 keep-alive、close 等；[地址相关](https://www.cnblogs.com/luxiaojun/p/10451860.html)。
+  * 响应头 (Response Header)：状态码（Status Code）；内容类型（Content-Type）响应的主体内容的 MIME 类型；内容长度（Content-Length）响应主体内容的长度；缓存控制（Cache-Control）指示客户端如何缓存响应的指令；服务器（Server）服务器的软件信息，通常包含了服务器的名称和版本号；日期（Date）响应的日期和时间；Cookie（Set-Cookie）服务器设置的新的 Cookie；跨域资源共享（CORS）指示客户端是否可以跨域访问资源的指令，比如 Access-Control-Allow-Origin；重定向（Location）重定向的目标 URL，当服务器返回 3xx 状态码时使用；内容压缩（Content-Encoding）指示服务器对响应主体进行了压缩的编码方式，比如 gzip、deflate 等。
+  * 请求参数（Query String Parameter）- GET 请求的参数
+  * 表单数据（Form Data）- POST 请求的参数
+* [抓包工具](https://cloud.tencent.com/developer/article/1506253)
+  * 如果只分析网页数据，用浏览器提供的工具就足够了
+  * HTTP 抓包还可以使用 Charles
+  * 其他平台比如 Android，则需要 Fiddler。用 Fiddler 抓 App 的数据包大概思路：电脑开一个代理，手机连接电脑代理后，手机上的流量都会经过电脑，那这个时候就可以在电脑端抓取 app 的数据。
+  * 全协议抓包则可以使用 WireShark ![](./WireShark.png) 1 处表示开始抓包；2 处表示停止抓包；过滤器可以过滤想看的内容，比如过滤 TCP，就会只列出 TCP 协议的会话；3 处表示已抓取的会话列表；4 处是对应会话的全部内容；5 处是数据包原始的内容。
 * [常用 HTTP 状态码](https://juejin.cn/post/6844904202863394830)
   * 1xx - 信息状态码
   * 2xx - 成功状态码
