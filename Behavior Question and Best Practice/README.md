@@ -128,6 +128,8 @@ Books:
       * 表驱动法帮助厘清复杂的数据类型、关系模型与逻辑
       * 重视编程工具
       * 协同构建、结对开发有益于发现缺陷、提高效率、优化设计
+  * [领域驱动设计 | DDD](https://tech.meituan.com/2017/12/22/ddd-in-practice.html)
+    * [DDD 知识点](https://juejin.cn/post/7146116779905908772)
   * [后端复杂问题](./后端复杂问题.md)
   * [框架](./框架.md)
 * [架构](./架构.md)
@@ -229,7 +231,7 @@ by ChatGPT
 ## 产品思维
 * [52 条设计原则](https://rpdc.xiaohongshu.com/52-design-principles)
 * [产品经理必会的 30 个组件](https://www.woshipm.com/pd/5423893.html)
-* 消息管理系统（站内信等）
+* 消息管理系统（站内信 / inbox message 等）
 
 ## 用语
 ![](./email-words.jpeg)  

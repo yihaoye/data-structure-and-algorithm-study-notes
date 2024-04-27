@@ -279,6 +279,7 @@
 * [SSH 进阶技巧](https://plantegg.github.io/2019/06/02/%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8_SSH_%E6%9A%97%E9%BB%91%E6%8A%80%E5%B7%A7%E8%AF%A6%E8%A7%A3--%E6%94%B6%E8%97%8F%E4%BF%9D%E5%B9%B3%E5%AE%89/)
   * [A Visual Guide to SSH Tunnels: Local and Remote Port Forwarding](https://iximiuz.com/en/posts/ssh-tunnels/)
 * FPGA - 是一种可编程硬件设备，允许用户根据其特定的应用需求对芯片进行定制和配置，简单来说就是可以把软件系统/逻辑通过硬件实现（因为硬件层面的实现会比软件性能更好）。优点包括：灵活性（可编程性）、并行性、低功耗、低延迟。应用领域：数字信号处理、网络设备、加密和安全应用、科学计算与仿真、硬件加速、实时系统、嵌入式系统等任何需要定制化的高效硬件计算或控制的场景。
+* [运维工程师基本功](https://zhuanlan.zhihu.com/p/562269117) - [其他](http://www.sa-log.com/389.html)
 
 ### Docker 高频
 * [Dockerfile 配置文件中的 COPY 和 ADD 指令有什么不同](https://www.modb.pro/db/404626)
