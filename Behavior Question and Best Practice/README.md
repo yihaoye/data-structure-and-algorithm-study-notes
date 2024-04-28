@@ -213,7 +213,7 @@ Books:
 
 by ChatGPT  
 
-### 企业家思维
+### 创业家思维
 * 明确目标与重点、规划、坚持，[好的规划](https://wiki.mbalib.com/wiki/%E8%A7%84%E5%88%92)类似 OKR 如下：
   * [强自驱自激励的目标](https://book.douban.com/subject/1395123/)
   * 充足的前期调研
