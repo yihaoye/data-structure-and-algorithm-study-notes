@@ -1,4 +1,5 @@
-Data partitioning (aka sharding) is a technique to break up a big database into many smaller parts. It improve the manageability, performance, availability, load balancing of an application and less scale cost.  
+Data partitioning (aka sharding) is a technique to break up a big database into many smaller parts. It improve the manageability, performance, availability, load balancing of an application and less scale cost.
+![](./sharding.gif)    
 * Partitioning Methods
   * Horizontal partitioning - same feature data distribute diff servers (e.g. design twitter db sharding)
   * Vertical Partitioning - divide data to store tables related to a specific feature in their own server (but this single server approach is not practical when feature data grow large, it will finally need to be Horizontal partitioning).
