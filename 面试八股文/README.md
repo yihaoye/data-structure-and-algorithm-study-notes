@@ -135,6 +135,7 @@
 * JOIN 操作的 2 个主要优点 - 提高效率（查询优化，减少数据库扫描的数据量）、降低成本（减少存储冗余）
 * [ElasticSearch 详解](https://pdai.tech/md/db/nosql-es/elasticsearch.html)
   * [Ref 1](../Leetcode%20Practices/system%20design/README.md#设计搜索引擎-Twitter-Search) ![](./es-introduce-1-3.png)
+* DBA 职责 - 负责数据库的设计、规划和建模，包括数据库的结构设计、表设计、索引设计等，满足业务需求，并具备良好的性能和扩展性；管理和实施数据库的安全策略，包括用户身份验证、访问控制、数据加密、审计日志、安全补丁更新等；数据备份与恢复；监控和调优数据库系统的性能，识别和解决性能瓶颈，优化数据库查询、索引、存储过程等，提高数据库系统的响应速度和吞吐量；异常与故障排除；版本升级与维护；用户权限管理与支持；硬件、容量规划等；
 
 ### Redis 高频
 * Redis 有哪些数据类型？可以应用在什么场景？[Ref 1](https://cloud.tencent.com/developer/article/1975464)、[Ref 2](../Computer%20System%20Layer/数据库/Redis/README.md)
