@@ -46,6 +46,7 @@ This personal Blog contains explanation and **Java library/template implementati
     - [动态规划, 状态机 | Dynamic Programming, State Machine](./动态规划与状态机.md) (动态规划本质上属于分治法的应用)
       - [前缀和, 差分, 树状数组, 线段树 | Prefix Sum, Difference, Binary Indexed Tree, Segment Tree](./前缀和与差分.md)
       - [记忆化搜索 | Memory Search](./记忆化搜索.md)
+      - [编辑距离 | Edit Distance](./编辑距离.md) ([Wiki](https://zh.wikipedia.org/wiki/%E7%B7%A8%E8%BC%AF%E8%B7%9D%E9%9B%A2)，[Code](../Leetcode%20Practices/algorithms/hard/72%20Edit%20Distance.java)；常用比如莱文斯坦距离)
       - [倍增法 | Binary Lifting](./倍增法.md) (时间复杂度 - 预处理 `O(N*logN)`，之后查询 `O(logN)`) ([倍增法与二分法的区别](./倍增法.md#二分-vs-倍增))
       - [弗洛伊德算法 | Floyd-Warshall Algorithm](./弗洛伊德算法.md) (时间复杂度 `O(N^3)`)
       - [Kadane 算法 | Kadane's Algorithm](./Kadane算法.md) (时间复杂度 `O(N)`，空间复杂度 `O(1)`)
