@@ -1,7 +1,15 @@
 I/O（英语：Input/Output），即输入／输出，通常指数据在存储器（内部和外部）或其他周边设备之间的输入和输出，是信息处理系统（例如计算机）与外部世界（可能是人类或另一信息处理系统）之间的通信。输入是系统接收的信号或数据，输出则是从其发送的信号或数据。  
   
-Asynchronous I/O、NIO（异步 I/O、Non-blocking I/O），通常也与并发息息相关
-
-[IO 模型](../../Leetcode%20Practices/system%20design/IO模型与Web服务器工作模型.md)
+Asynchronous I/O、NIO（异步 I/O、Non-blocking I/O），通常也与并发息息相关。  
+  
+计算机的主要 I/O 有以下几个：
+* 网络 IO
+* 磁盘 IO（数据库、文件系统）
+* 内存 IO
+* 外设 IO（包括用户输入输出的键盘、鼠标、打印机、显示器、USB 设备、摄像头等）
+  
+在计算机系统中，IO 操作是非常常见和重要的，影响着系统的性能、响应速度和用户体验。因此，对不同类型的 IO 操作进行有效管理和优化是很重要的。  
+  
+[IO 模型](../../Leetcode%20Practices/system%20design/IO模型与Web服务器工作模型.md)  
   
 [Java I/O](./IO(Java).md)  

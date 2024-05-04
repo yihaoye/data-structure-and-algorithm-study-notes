@@ -202,7 +202,7 @@
 * 单点登录系统（Central Authentication Service - CAS）
 * [配置中心](https://en.wikipedia.org/wiki/Configuration_management)（可分布式，Config Server、propeties、yaml）
 * 管理后台/管理控制台（允许客服或工程师直接访问和管理数据库数据以支持用户，比如 Django Admin、WordPress）
-* [服务调用/服务治理框架（REST API、RPC）](./System%20Design%20Fundamentals.md#API%20Design)，服务发现、注册、查询（如 Consul、etcd、ZooKeeper）
+* [服务调用/服务治理框架（REST API、RPC、GraphQL）](./System%20Design%20Fundamentals.md#API%20Design)，服务发现、注册、查询（如 Consul、etcd、ZooKeeper）
 * 统一调度中心（定时调度 cron job，如定时抓取数据、刷新状态等）
 * 统一日志服务（log4j、logback、Kibana、CloudWatch）与[日志管理](./日志管理.md)
 * 数据基础设施（大数据：Hadoop、Spark、数据仓库；数据管道：Kafka、Kinesis；数据分析：Hadoop、Spark、Tableau、Python、SAS、Excel）
@@ -313,7 +313,7 @@ API 网关是位于客户端与后端服务集之间的大门 - API 管理工具
 [对象存储也可以实现简单的消息队列](./README.md#设计分布式云消息队列（包括-Notification-系统）)，比如把 bucket 分成未处理和已处理两个路径，从未处理的 bucket 读出最前面的文件，处理它，然后把文件转移至已处理路径即可（此办法不足以应对多个消费者订阅同一个主题消息的场景，需要进一步改动）。  
 
 ## 处理编程范式
-* 请求响应模式 - 延迟最小的一种范式，响应时间处于亚毫秒到毫秒之间，而且响应时间一般非常稳定。这种处理模式一般是阻塞的（同步），应用程序向处理系统发出请求，然后等待响应。在数据库领域，这种范式就是线上交易处理（OLTP）。通常的形式是 SOAP、REST API、RPC 等。
+* 请求响应模式 - 延迟最小的一种范式，响应时间处于亚毫秒到毫秒之间，而且响应时间一般非常稳定。这种处理模式一般是阻塞的（同步），应用程序向处理系统发出请求，然后等待响应。在数据库领域，这种范式就是线上交易处理（OLTP）。通常的形式是 SOAP、REST API、RPC、GraphQL 等。
   * 轮询、长轮询、全双工（例如 Websocket）。
 * 回调模式 - 系统级：Webhook、API 调用等；线程/进程级：JavaScript 回调、CompletableFuture、接口回调等。通常情况下，回调是在一个不同于主线程/主服务的另一个线程/服务中执行的。回调常用于异步处理中，当某个特定事件发生时，会触发回调函数的执行。
 * 批处理 - 该范式有高延迟和高吞吐量的特点。处理系统按照设定的时间启动处理进程。
