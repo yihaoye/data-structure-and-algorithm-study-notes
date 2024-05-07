@@ -430,6 +430,7 @@
 * [SSL 证书劫持](https://www.zhihu.com/question/22795329/answer/138770468) - [Ref](https://www.invicti.com/learn/mitm-ssl-hijacking/)
 * LLM 提示注入 - 是一种用于劫持语言模型输出的技术。当不可信的文本作为提示的一部分使用时，就会发生这种情况。[Ref](https://learnprompting.org/docs/prompt_hacking/injection)
   * [OWASP Top 10 for LLM](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
+* 搜寻引擎最佳化（SEO）- 是透过了解搜寻引擎的运作规则来调整网站，以及提高目的网站在有关搜寻引擎内排名的方式
 
 ## Nginx 高频
 * [Nginx epoll 模型](./../Leetcode%20Practices/system%20design/IO%E6%A8%A1%E5%9E%8B%E4%B8%8EWeb%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%9E%8B.md)
