@@ -183,6 +183,10 @@ Books:
 * [Developing Interpersonal Skills](https://www.coursera.org/learn/interpersonal-skills)
 * [工作中的技术深度](https://mp.weixin.qq.com/s/wImyzpbGHV_zO9FB3omooA)
 * [述职法](https://www.youtube.com/watch?v=b0kYEpjenL0)
+* 高效能人士的七个习惯
+  * 积极主动、以始为终、要事第一：从依赖型人格转向独立型人格
+  * 双赢思维、知己知彼、综合统效：从独立型人格转向互赖型人格，因为一个人可以走得很快，但一群人可以走得更远
+  * 不断更新
 
 ## 工程师高阶与低阶的区别
 * 低阶 - 建立的系统仅自己或小范围的使用
