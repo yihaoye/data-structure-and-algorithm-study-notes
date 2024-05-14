@@ -364,9 +364,12 @@ API 网关是位于客户端与后端服务集之间的大门 - API 管理工具
 
 ![](./access-performances.png)  
 
-## [分布式事务](./分布式事务.md)
+## 事务
+### [分布式事务](./分布式事务.md)
 
-## [分布式锁](./分布式锁.md)
+## 锁
+![](./deadlock.gif)  
+### [分布式锁](./分布式锁.md)
 
 ## [网络相关](https://github.com/yihaoye/stem-notes/blob/master/e-computer-network/README.md)
 ![](./data-transmitted-between-applications.jpeg)  

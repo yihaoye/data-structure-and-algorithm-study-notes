@@ -4,7 +4,7 @@
   * 类/对象基础知识
     * 继承、接口、多态、组合、封装、抽象
     * hashCode()、equals() 函数
-  * [设计模式 Design Pattern](./design%20pattern/README.md)
+  * [设计模式 Design Pattern](./design%20pattern/README.md) - 可复用面向对象软件的基础
   * 简单的数据结构以及算法
     * 数组、线性表
     * FIFO 用队列、FILO 用栈
