@@ -1,11 +1,11 @@
 // https://en.wikipedia.org/wiki/Longest_path_problem
-// NP-Hard Problem if the graph is not a DAG
-// if the graph is a DAG, then the longest path can be found by topological sort, and the Time Complexity is O(V+E)
+// NP-Hard Problem for general graph. If the graph is a DAG, then the longest path can be found by topological sort, and the Time Complexity is O(V+E)
 import java.util.*;
 
 public class Solution {
     public Set<Set<Node>> longestPaths(List<Node> graph) { // target graph as input param
         // BFS, and apply HashSet to deduplicate paths, apply LinkedHashSet for combine both Queue and HashSet for simplify the code
+        // Time Complexity: O(2^V)
         Set<Set<Node>> res = new HashSet<>();
         for (Node node : graph) res.add(new LinkedHashSet<>(Arrays.asList(node)));
         
