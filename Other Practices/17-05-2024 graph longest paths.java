@@ -4,10 +4,8 @@
 import java.util.*;
 
 public class Solution {
-    List<Node> graph; // init graph
-
-    public Set<Set<Node>> longestPaths() {
-        // BFS
+    public Set<Set<Node>> longestPaths(List<Node> graph) { // target graph as input param
+        // BFS, and apply HashSet to deduplicate paths, apply LinkedHashSet for combine both Queue and HashSet for simplify the code
         Set<Set<Node>> res = new HashSet<>();
         for (Node node : graph) res.add(new LinkedHashSet<>(Arrays.asList(node)));
         
