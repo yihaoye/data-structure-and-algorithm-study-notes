@@ -143,6 +143,8 @@ public class ConsistentHashCluster implements NodeEventHandler {
      * the hash value is uniformly distributed in [0, 1) and assume no collision in this example (for simplicity, and reference method in https://web.archive.org/web/20221230083731/https://michaelnielsen.org/blog/consistent-hashing/)
      * the easiest way to solve it is apply a new Node with new Node ID (UUID)
      * otherwise, we could apply better hash function or add hash collision resolver or higher precision data type as return hash such as BigDecimal
+     * 
+     * 这里采用 MD5 作为哈希函数，一般还可以采用 SHA-1、SHA-256 等哈希函数，也可以采用一些非加密哈希函数，比如 MurmurHash（尤其适合于需要高性能的场景）等
      */
     private Double hash(String key) {
         try {

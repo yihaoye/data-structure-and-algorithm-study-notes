@@ -107,7 +107,7 @@ This personal Blog contains explanation and **Java library/template implementati
       - 数字签名算法 | Digital Signature Algorithm (DSA) ([Wiki](https://zh.wikipedia.org/wiki/%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E7%AE%97%E6%B3%95)，不可逆。DSA 算法包含了四种操作：密钥生成、密钥分发、签名、验证。数字签名算法可以用于身份验证，发送方使用自己的私钥对数据进行签名，接收方使用发送方的公钥对签名进行验证)
         - 椭圆曲线数字签名算法 | ECDSA (不可逆)
     - 均匀哈希 | Uniform Hash
-      - MurmurHash3 (不可逆，是一种非加密哈希函数，有速度快、均匀性好、易于使用等优点，常用于哈希表、布隆过滤器等数据结构中，以提高性能和减少哈希碰撞)
+      - MurmurHash3 (不可逆，是一种非加密哈希函数，有速度快、均匀性好、易于使用等优点，常用于哈希表、布隆过滤器等数据结构中，以提高性能和减少哈希碰撞；[Code](https://commons.apache.org/proper/commons-codec/jacoco/org.apache.commons.codec.digest/MurmurHash3.java.html))
       - xxHash (同上)
     - 加密算法 | Cryptography (可逆)
       - [AES 对称加密算法](https://goodapple.top/archives/162) (可逆)
