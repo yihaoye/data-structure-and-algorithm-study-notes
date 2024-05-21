@@ -3166,6 +3166,23 @@ AB 实验的一个特点是通常在大型网络产品、平台、企业里才�
 </details>
 
 
+## 设计内容相似度检测系统
+<details>
+<summary>details</summary>
+
+Content Similarity Detection [Wiki](https://zh.wikipedia.org/wiki/%E6%96%87%E7%AB%A0%E7%9B%B8%E4%BC%BC%E5%BA%A6%E6%AA%A2%E6%B8%AC)  
+
+基本方法：
+* 哈希指纹识别
+* 字符串匹配
+* 词袋分析
+
+其他：
+* [编辑距离](../../Common%20Algorithm%20and%20Theory/编辑距离.md)
+
+</details>
+
+
 ## 设计 CICD Pipeline
 <details>
 <summary>details</summary>
