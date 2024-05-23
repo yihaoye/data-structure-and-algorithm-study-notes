@@ -97,7 +97,7 @@ Matrix67原创
   * ? 图的最大独立集（Maximum Independent Set）
   * ? 图的最大团（Maximum Clique）
 * 组合优化类问题：
-  * 旅行商问题（Traveling Salesman Problem，TSP）
+  * [旅行商问题（Traveling Salesman Problem，TSP）](https://zh.wikipedia.org/zh-hans/%E6%97%85%E8%A1%8C%E6%8E%A8%E9%94%80%E5%91%98%E9%97%AE%E9%A2%98)- 给定一系列城市和每对城市之间的距离，求解访问每座城市一次并回到起始城市的最短回路。
   * 子集和问题（Subset Sum Problem）
   * 最大割问题（Max Cut Problem）
   * ? 背包问题的变种（Knapsack Problem Variations）
