@@ -3188,11 +3188,22 @@ AB 实验的一个特点是通常在大型网络产品、平台、企业里才�
 * Span：用于记录表达请求路径上的节点父子关系。简单来说就是 parent id 是同一个 trace id 下的 last source id，span id 是同一个 trace id 下的 next target id。
 * 采样：由于每一个请求都会生成一个链路，为了减少性能消耗，避免存储资源的浪费，所以并不会上报所有的 span 数据，而是使用采样的方式。举例，每秒有 1000 个请求访问系统，如果设置采样率为 1/1000，那么只会上报一个请求到存储。
 * 存储：链路中的 span 等数据经过收集和上报后会集中存储在一个地方，常用的存储有 ElasticSearch、HBase、In-memory DB、BigTable 数据仓库等。
+* Instrumentation（仪器化）指的是在代码中插入特定的逻辑或代码（即[拦截过滤器模式](https://www.runoob.com/design-pattern/intercepting-filter-pattern.html)），以便收集关于程序执行的各种信息，如性能指标、调用堆栈、函数参数、执行时间等。
+* 什么是 OpenTracing？跟踪库有很多，其中最流行的可能是 Zipkin 和 Jaeger。会选择哪个库？这总是令人头疼，因为可以选择目前最流行的一个，但如果以后有更好的出现怎么办？OpenTracing 试图通过为跟踪库创建通用接口来解决这个问题，这样将来就可以切换到不同的实现库而无需更改代码。
 
 实现案例  
 * [Uber 分布式链路追踪实现](https://www.uber.com/en-AU/blog/distributed-tracing/) ![](./Distributed_Tracing_Header_Facebook.avif)
 * AWS X-Ray ![](./xray-how-it-works.png)
 * New Relic ![](./distributed-tracing_diagram_intro-to-dist-tracing-cbe08218d18814a0a868367427d1e959.webp)
+
+[简易实现](https://medium.com/swlh/distributed-tracing-for-go-microservice-with-opentracing-1fc1aec76b3e)  
+单应用系统组成![](./tracing_system_components.webp)
+* Recorder (记录器)：记录跟踪数据
+* Reporter or collecting agent (报告器或收集代理)：从记录器收集数据并将数据发送到 UI 程序
+* Tracer：生成跟踪数据，比如链路的 trace id、span id 等等
+* UI：负责在图形 UI 中显示跟踪数据
+
+最终以上组件均是在 gRPC（或 HTTP/S 等）调用过程中通过拦截器模式进行请求生命周期的记录。  
 
 </details>
 
