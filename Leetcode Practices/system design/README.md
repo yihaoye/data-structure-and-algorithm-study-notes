@@ -187,7 +187,7 @@
 <summary>主要组件：https://www.cnblogs.com/ilinuxer/p/6697015.html </summary>
 
 * 负载均衡、虚拟 IP、DNS 服务（通常情况下，大型互联网公司在不同的数据中心中存储的数据是相同的或者是部分相同的。这是为了实现高可用性、容错性和性能优化而采用的策略之一。其中全球负载均衡通常通过 DNS 解析来实现。这种方法被称为 “全局负载均衡 DNS” 或 “全球负载均衡 DNS”。DNS 还可以返回客户端虚拟 IP 以重定向请求到不同的负载均衡节点）
-* API 网关（身份验证、路由、速率限制、流量控制、计费、监控、分析、协议转换、安全防护）、[Firewall 防火墙（访问控制）](./firewall.jpg)
+* API 网关（身份验证、路由、速率限制、流量控制治理调度、计费、监控、分析、协议转换、安全防护）、[Firewall 防火墙（访问控制）](./firewall.jpg)
 * 自动扩展与 fail-over（ECS、K8S）
 * 业务应用和后端基础框架（MVC、IOC、ORM）
 * 缓存、CDN（本地缓存即内存中的缓存机制：ConcurrentHashMap etc；分布式缓存即单独的缓存服务：Redis、Memcached etc）
@@ -204,7 +204,7 @@
 * 管理后台/管理控制台（允许客服或工程师直接访问和管理数据库数据以支持用户，比如 Django Admin、WordPress）
 * [服务调用/服务治理框架（REST API、RPC、GraphQL）](./System%20Design%20Fundamentals.md#API%20Design)，服务发现、注册、查询（如 Consul、etcd、ZooKeeper）
 * 统一调度中心（定时调度 cron job，如定时抓取数据、刷新状态等）
-* 统一日志服务（log4j、logback、Kibana、CloudWatch）与[日志管理](./日志管理.md)
+* 统一日志服务（log4j、logback、Kibana、CloudWatch）、[分布式链路追踪](https://github.com/CoderLeixiaoshuai/java-eight-part/blob/master/docs/distributed/%E5%8E%9F%E6%9D%A510%E5%BC%A0%E5%9B%BE%E5%B0%B1%E5%8F%AF%E4%BB%A5%E6%90%9E%E6%87%82%E5%88%86%E5%B8%83%E5%BC%8F%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86.md#%E4%BB%80%E4%B9%88%E6%98%AF%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA)（X-Ray）与[日志管理](./日志管理.md)
 * 数据基础设施（大数据：Hadoop、Spark、数据仓库；数据管道：Kafka、Kinesis；数据分析：Hadoop、Spark、Tableau、Python、SAS、Excel）
 * 故障监控（系统监控、业务监控；Datadog、ELK、故障定位、警报等级、IM 或 oncall）(Telemetry)
 * DX（内部服务：包括大数据、构建交付工具、通用运行时服务类库、数据持久化、安全等）
@@ -298,6 +298,25 @@ API 网关是位于客户端与后端服务集之间的大门 - API 管理工具
 ### 认证权限
 ### [服务降级、服务熔断、断路器](./服务降级与服务熔断.md)
 ### 监控统计日志
+
+## [链路追踪](https://github.com/CoderLeixiaoshuai/java-eight-part/blob/master/docs/distributed/%E5%8E%9F%E6%9D%A510%E5%BC%A0%E5%9B%BE%E5%B0%B1%E5%8F%AF%E4%BB%A5%E6%90%9E%E6%87%82%E5%88%86%E5%B8%83%E5%BC%8F%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA%E7%B3%BB%E7%BB%9F%E5%8E%9F%E7%90%86.md#%E4%BB%80%E4%B9%88%E6%98%AF%E9%93%BE%E8%B7%AF%E8%BF%BD%E8%B8%AA)
+分布式链路追踪（Tracing）就是将一次分布式请求还原成调用链路，将一次分布式请求的调用情况集中展示，比如各个服务节点上的耗时、请求具体到达哪台机器上、每个服务节点的请求状态等等。  
+![](./Tracing.png)  
+链路跟踪主要功能：
+* 故障快速定位：可以通过调用链结合业务日志快速定位错误信息。
+* 链路性能可视化：各个阶段链路耗时、服务依赖关系可以通过可视化界面展现出来。
+* 链路分析：通过分析链路耗时、服务依赖关系可以得到用户的行为路径，汇总分析应用在很多业务场景。
+
+链路信息的还原依赖于带内和带外两种数据。
+* 带外数据是各个节点产生的事件，如客户端请求开始、服务端请求开始，这些数据可以由节点独立生成，并且需要集中上报到存储端。通过带外数据，可以在存储端分析更多链路的细节。
+* 带内数据如 traceid、spanid、parentid，用来标识 trace，span，以及 span 在一个 trace 中的位置，这些数据需要从链路的起点一直传递到终点。 通过带内数据的传递，可以将一个链路的所有过程串起来。
+
+术语  
+* Span：用于记录表达请求路径上的节点父子关系。简单来说就是 parent id 是同一个 trace id 下的 last source id，span id 是同一个 trace id 下的 next target id。
+* 采样：由于每一个请求都会生成一个链路，为了减少性能消耗，避免存储资源的浪费，所以并不会上报所有的 span 数据，而是使用采样的方式。举例，每秒有 1000 个请求访问系统，如果设置采样率为 1/1000，那么只会上报一个请求到存储。
+* 存储：链路中的 span 等数据经过收集和上报后会集中存储在一个地方，常用的存储有 ElasticSearch、HBase、In-memory DB、BigTable 数据仓库等。
+
+![](./xray-how-it-works.png)  
 
 ## Cache vs Message Queue / Stream
 相比之下 Cache 更像 Java 的 HashMap，Message Queue / Stream 更像 Java 的 Queue / Deque / Stream：
