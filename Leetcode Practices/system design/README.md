@@ -221,6 +221,7 @@ During designing a large system, investing in scaling before it is needed is gen
 Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Theorem`, `Load Balancing`, `Caching`, `Data Partitioning`, `Indexes`, `Proxies`, `Queues`, `Replication`, and choosing between `SQL vs NoSQL`.  
 
 ## Key Characteristics of Distributed Systems
+其实不止大型互联网系统的设计，所以的软件（包括单体单机系统）都应该考虑以下特性
 * **Scalability** - the capability of a system, process, or a network to continuously evolve/grow and manage increased demand. (相关组件与手段：负载均衡、自动扩展、分库分表、数据备份、分布式)
   * *Horizontal Scaling - Add more servers (e.g. Cassandra and MongoDB easy to scale horizontally).*
   * *Vertical Scaling - Add more resource/power (CPU, RAM, Storage etc) to same server (e.g. MySQL easy to scale vertically) (scaling involves downtime).*
@@ -237,6 +238,8 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
     * 系统总是在更新和修改，运维过程中就配置错误是导致服务中断的首要因数。
 * **Availability** - the time a system remains operational to perform its required function in a specific period. (相关组件与手段：负载均衡、故障监控与 failover/故障转移、数据备份、无主分布式)
   * *Reliability Vs Availability - If a system is reliable, it is available. However, if it is available, it is not necessarily reliable. high reliability contributes to high availability, but it is possible to achieve a high availability even with an unreliable product by minimizing repair time and ensuring that spares are always available when they are needed.*
+  * 可用性（Availability）= MTBF / (MTBF + MTTR) * 100% ![](./availability-9.png)
+  * [异地多活](http://kaito-kidd.com/2021/10/15/what-is-the-multi-site-high-availability-design/)
 * **Efficiency or Performance** - Two standard measures of efficiency are response time (or latency) and the throughput (or bandwidth). （相关组件与手段：CDN、异步处理耗时任务如消息队列、缓存、读写分离、索引、分页）. The two measures correspond to the following unit costs:
   * *Number of messages globally sent by the nodes of the system regardless of the message size.*
   * *Size of messages representing the volume of data exchanges.*
@@ -413,6 +416,19 @@ API 网关是位于客户端与后端服务集之间的大门 - API 管理工具
    - 例子：HTTP 请求、REST API 请求、DNS 查询等等。
 
 无论是有状态还是无状态的设计，都取决于具体的应用场景和需求。一些应用可能需要维护状态以跟踪用户活动，而另一些应用可能更适合使用无状态的设计以获得更好的可扩展性和性能。  
+
+> 状态化的判断是指两个来自相同发起者的请求在服务器端是否具备上下文关系。  
+> 如果是状态化请求，那么服务器端一般都要保存请求的相关信息，每个请求可以默认地使用以前的请求信息。  
+> 而无状态的请求，服务器端的处理信息必须全部来自于请求所携带的信息以及可以被所有请求所使用的公共信息。  
+> 
+> 可以理解为 “有数据” 就等价于 “有状态”。  
+> 数据在程序中的作用范围分为`局部`和`全局`（对应局部变量和全局变量），因此`状态`其实也可以分为两种，一种是局部的`会话状态`，一种是全局的`资源状态`。
+> 与有状态相反的是无状态，无状态意味着每次 “加工” 的所需的 “原料” 全部由外界提供，服务端内部不做任何的暂存区。并且请求可以提交到服务端的任意副本节点上，处理结果都是完全一样的。  
+> 有一类方法天生是无状态，就是负责表达移动和组合的 “算法”。因为它的本质就是：接收 “原料”（入参）、“加工” 并返回 “成果”（出参）。纯函数式编程，就是无状态的。有状态，也叫有副作用。  
+> 
+> 为什么主流观点都在说要将方法多做成无状态的呢？因为人们更习惯于编写有状态的代码，但是有状态不利于系统的易伸缩性和可维护性。  
+
+以上来源：https://cloud.tencent.com/developer/article/1620559  
 
 ## [Deployment](https://www.youtube.com/watch?v=AWVTKBUnoIg)
 * ![](./top-5-most-used-deployment-strategies.png) (by ByteByteGo)
