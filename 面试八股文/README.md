@@ -443,6 +443,7 @@
     * [Kerberos 工作流](https://www.freecodecamp.org/news/how-does-kerberos-work-authentication-protocol/) ![](./kerberos-flow.png)
   * [OpenID](https://zh.wikipedia.org/wiki/OpenID) - 去中心化的网上身份认证系统。对于支持 OpenID 的网站，用户不需要记住像用户名和密码这样的传统验证标记。取而代之的是，他们只需要预先在一个作为 OpenID 身份提供者（identity provider, IdP）的网站上注册。OpenID 是去中心化的，任何网站都可以使用 OpenID 来作为用户登录的一种方式，任何网站也都可以作为 OpenID 身份提供者。OpenID 既解决了问题而又不需要依赖于中心性的网站来确认数字身份。
 * 原像抗性 - 是指对于给定的哈希值，找到相应的原始输入的难度。
+* 伪随机与哈希的区别 - 在算法不变的情况下，一个是以输入数据来决定输出值，一个是以序列（以及随机种子）来决定输出值。
 * 主要攻击类型 ![](./cyber-attacks.jpeg)
 * 敏感数据管理 ![](./sensitive-data-management.jpeg)
 * [CISSP 考试认证](https://mp.weixin.qq.com/s/YRuiZ81dQKqNuhYkyFTtAA)
