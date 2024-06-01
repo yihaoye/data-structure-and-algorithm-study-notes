@@ -403,6 +403,8 @@ API 网关是位于客户端与后端服务集之间的大门 - API 管理工具
 * FTP/SFTP - 文件传输的工作原理：文件切块、数据连接、数据传输、确认和重试、汇总文件。另外还有认证机制以及安全性考虑。
 * QUIC/WebSocket/MQTT - 双工通信协议，可根据具体情况在开发中使用、替换。![](./QUIC.jpeg)
 
+### [路由](./路由.md)
+
 ## 状态有无
 在计算机系统中，"stateful"（有状态）和 "stateless"（无状态）是两种不同的概念，用于描述系统或组件在处理请求和交互时是否保存状态信息。state (for instance user session data). A good practice is to store session data in the persistent storage such as relational database or NoSQL.  
 1. **Stateful（有状态）：**
