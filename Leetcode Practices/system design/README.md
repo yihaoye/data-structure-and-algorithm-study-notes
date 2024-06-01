@@ -328,9 +328,10 @@ API 网关是位于客户端与后端服务集之间的大门 - API 管理工具
 
 ## [并发编程模型](../../Computer%20System%20Layer/并发编程模型.md)
 
-## Sharding or Data Partitioning
+## DB Scaling, Sharding or Data Partitioning
 * [分片的几种方式、标准](./Sharding%20or%20Data%20Partitioning.md)
 * [数据库数据建模分库分表](./数据库数据建模分库分表.md)
+* ![](./db-scale.gif)
 
 ### [Consistent Hashing](./一致性哈希.md)
 
