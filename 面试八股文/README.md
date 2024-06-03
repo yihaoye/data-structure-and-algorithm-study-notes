@@ -464,7 +464,7 @@
   * [OWASP Top 10 for LLM](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
 * 搜寻引擎最佳化（SEO）- 是透过了解搜寻引擎的运作规则来调整网站，以及提高目的网站在有关搜寻引擎内排名的方式。[黑帽 SEO](https://zhuanlan.zhihu.com/p/93168290)
 * [内容农场](https://zh.wikipedia.org/zh-hans/%E5%85%A7%E5%AE%B9%E8%BE%B2%E5%A0%B4) - 指为了牟取广告费等商业利益或出于控制舆论、带风向等特殊目的，快速生产大量网路文章来吸引流量的网站，通常，其也利用搜索引擎来达到吸睛点击；农场文则是此类网站制造的文章。
-  * 常见特征：大量剽窃、二手转载、垃圾劣质极造内容、免洗网站、社群导流、夸大标题、匿名作者、广告行销、恶意程式。
+  * 常见特征：大量剽窃、二手转载、垃圾劣质机造内容、免洗网站、社群导流、夸大标题、匿名作者、广告行销、恶意程式。
 
 ## Nginx 高频
 * [Nginx epoll 模型](./../Leetcode%20Practices/system%20design/IO%E6%A8%A1%E5%9E%8B%E4%B8%8EWeb%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%9E%8B.md)

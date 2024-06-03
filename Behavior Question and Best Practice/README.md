@@ -155,6 +155,7 @@ Books:
   * Restrict Pointers Use
   * Be Pedantic
   * Test Test Test
+* [约定式提交](https://www.conventionalcommits.org/zh-hans/v1.0.0/) - 包括 git 分支名、commit 内容格式等等
 
 # 自我介绍
 应该在 1 分钟之内完成，不超过 2 分钟。  
