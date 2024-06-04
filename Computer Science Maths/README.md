@@ -1,5 +1,6 @@
 # 理论信息学
 * [P/NP/NPC问题](./P%20vs%20NP%20vs%20NPC.md)  
+* [可计算性理论](./可计算性理论.md)
   
 # [初等数学/基础](https://zh.wikipedia.org/wiki/%E5%88%9D%E7%AD%89%E6%95%B0%E5%AD%A6)
 * [数学归纳法](./Mathematical%20Induction.md)
