@@ -356,6 +356,8 @@
   * 网络拥塞和负载 - 当网络中的流量过大，超过了设备和链路的处理能力时，网络可能会拥塞，从而影响带宽
   * 软件、网络协议和传输机制 - 使用的网络协议和软件也可以影响网络的带宽。一些协议可能更高效，而另一些可能会产生较大的开销
   * 网络供应商和服务计划
+* 局域网 - 以太网是目前应用最普遍的局域网技术，取代了其他局域网标准如令牌环、FDDI 和 ARCNET
+  * 以太网的标准拓扑结构为[总线拓扑（Bus Topology）](https://zh.wikipedia.org/wiki/%E5%8C%AF%E6%B5%81%E6%8E%92%E6%8B%93%E6%92%B2)，该网络拓扑之节点直接连接到一个共用的半双工的线性网络上。由于该拓扑是由一条主缆线串接所有的电脑或其他网络设备，因此也称为线性总线（Linear Bus）
 * 网络抓包中的头（Header）包含以下 HTTP 协议的部分，即在客户端和服务器之间传递元数据信息；而响应（Response）则通常就是 HTML
   * 请求头 (Request Header)：请求方法（Request Method）指定了客户端要对服务器执行的操作，比如 GET、POST、PUT、DELETE 等；目标 URL（Request URL）请求要发送到的目标 URL；用户代理（User-Agent）发起请求的客户端的标识信息，通常是浏览器的类型和版本号；内容类型（Content-Type）请求的主体内容的 MIME 类型，比如 text/plain、application/json 等；接受内容类型（Accept）指定客户端接受的内容类型，用于指示服务器返回的响应应该是什么类型的数据；授权信息（Authorization）包含了客户端的身份验证信息，比如用户名和密码；Cookie 包含了客户端的会话信息，用于在客户端和服务器之间跟踪用户的状态；缓存控制（Cache-Control）指示请求和响应是否应该被缓存的指令；Referer（Referer）包含了发送请求页面的 URL，用于告诉服务器请求是从哪个页面发起的；连接控制（Connection）控制客户端和服务器之间连接的行为，比如 keep-alive、close 等；[地址相关](https://www.cnblogs.com/luxiaojun/p/10451860.html)。
   * 响应头 (Response Header)：状态码（Status Code）；内容类型（Content-Type）响应的主体内容的 MIME 类型；内容长度（Content-Length）响应主体内容的长度；缓存控制（Cache-Control）指示客户端如何缓存响应的指令；服务器（Server）服务器的软件信息，通常包含了服务器的名称和版本号；日期（Date）响应的日期和时间；Cookie（Set-Cookie）服务器设置的新的 Cookie；跨域资源共享（CORS）指示客户端是否可以跨域访问资源的指令，比如 Access-Control-Allow-Origin；重定向（Location）重定向的目标 URL，当服务器返回 3xx 状态码时使用；内容压缩（Content-Encoding）指示服务器对响应主体进行了压缩的编码方式，比如 gzip、deflate 等。
