@@ -491,6 +491,11 @@
 * [JavaScript 异步、非阻塞](https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/Asynchronous/Introducing)
 * [React build 输出](https://handsonreact.com/docs/build-deploy)
 * [什么是 SSR](https://zhuanlan.zhihu.com/p/90746589)
+* 浏览器存储
+  * Web Storage 适用于少量、简单数据的持久化和临时存储，如用户设置、购物车内容和会话状态。
+    * LocalStorage - 数据持久化，除非被明确删除，否则数据不会过期。每个源（origin）有大约 5-10 MB的存储空间。
+    * SessionStorage - 数据在会话结束后（例如浏览器标签关闭时）自动删除。每个源（origin）有大约 5-10 MB的存储空间。
+  * IndexedDB 适合存储大量（存储空间大小仅受限于用户设备的存储能力）、复杂数据（包括二进制），支持离线使用、大数据管理和复杂客户端数据库操作，如离线应用和数据同步、事务等。
 
 
 以上部分参考：https://osjobs.net/topk/  
