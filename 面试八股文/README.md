@@ -496,7 +496,7 @@
   * [Web Storage](https://www.w3schools.com/js/js_api_web_storage.asp)：适用于少量、简单数据的持久化和临时存储，如用户设置、购物车内容和会话状态。
     * LocalStorage - 数据持久化，除非被明确删除，否则数据不会过期。每个源（origin）有大约 5-10 MB的存储空间。
     * SessionStorage - 数据在会话结束后（例如浏览器标签关闭时）自动删除。每个源（origin）有大约 5-10 MB的存储空间。
-  * [IndexedDB](https://developer.mozilla.org/zh-CN/docs/Web/API/IndexedDB_API)：适合存储大量（存储空间大小仅受限于用户设备的存储能力）、复杂数据（包括二进制），支持离线使用、大数据管理和复杂客户端数据库操作，如离线应用和数据同步、事务等。
+  * [IndexedDB](https://developer.mozilla.org/zh-CN/docs/Web/API/IndexedDB_API)：适合存储大量（存储空间大小仅受限于用户设备的存储能力）、复杂数据（包括二进制），支持离线使用、大数据管理和复杂客户端数据库操作，如离线应用和数据同步、事务等。[另外在安全上它也是使用同源原则](https://developer.mozilla.org/zh-CN/docs/Web/API/IndexedDB_API/Using_IndexedDB)。
 
 
 以上部分参考：https://osjobs.net/topk/  
