@@ -65,7 +65,8 @@ This personal Blog contains explanation and **Java library/template implementati
       - [匈牙利算法 | Hungarian Algorithm](./匈牙利算法.md) (时间复杂度 `O(N^3)`)
     - [最小生成树相关算法 | Minimum Spanning Tree Algorithms](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/MinimumSpanningTree/README.md)
     - [网络流相关算法 | Flow Network Algorithms](./网络流.md) (概念：[最大流最小割](https://zh.wikipedia.org/zh-hans/%E6%9C%80%E5%A4%A7%E6%B5%81%E6%9C%80%E5%B0%8F%E5%89%B2%E5%AE%9A%E7%90%86)同时也是最优化理论的定理，[增广路 | Augmenting Path](../Common%20Algorithm%20and%20Theory/图匹配.md#增广路定理-Berge's-lemma))
-      - [迪尼茨算法 | Dinic Algorithm](./网络流.md#dinic-算法) (时间复杂度 `O(E*V^2)`)
+      - Ford-Fulkerson 算法
+        - [迪尼茨算法 | Dinic Algorithm](./网络流.md#dinic-算法) (网络流重点算法，时间复杂度 `O(E*V^2)`)
     - [迪杰斯特拉算法 | Dijkstra Algorithm](./Dijkstra算法.md) (时间复杂度：单起点单终点 `O(V+E*logV)`，单起点到其他各点 `O((V+E)*logV)`)
     - 贝尔曼-福特算法 | Bellman-Ford Algorithm ([Ref](https://mp.weixin.qq.com/s/wnRQ_9CckAmlQaAjo7q_0w))
       - 最短路径快速算法 | Shortest Path Faster Algorithm (又称 SPFA，是带有队列优化的 Bellman-Ford 算法，最坏情况下时间复杂度为 `O(V*E)`，在特定情况下其效率优于 Dijkstra 算法，近似 `O(E)`)
@@ -221,4 +222,4 @@ This personal Blog contains explanation and **Java library/template implementati
 
 </br>
 
-以上部分参考自链接：[Ref 1](https://oi-wiki.org/basic/)、[Ref 2](https://www.acoier.com/tags/)、[Ref 3](http://www.matrix67.com/blog/)、[Ref 4](https://writings.sh/)、[Ref 5](https://github.com/halfrost/LeetCode-Go#algorithm)。  
+以上部分参考自链接：[Ref 1](https://oi-wiki.org/basic/)、[Ref 2](https://www.acoier.com/tags/)、[Ref 3](http://www.matrix67.com/blog/)、[Ref 4](https://writings.sh/)、[Ref 5](https://github.com/halfrost/LeetCode-Go#algorithm)、[Ref 6](https://cp-algorithms.com/navigation.html)。  
