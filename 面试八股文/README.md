@@ -497,6 +497,8 @@
     * LocalStorage - 数据持久化，除非被明确删除，否则数据不会过期。每个源（origin）有大约 5-10 MB的存储空间。
     * SessionStorage - 数据在会话结束后（例如浏览器标签关闭时）自动删除。每个源（origin）有大约 5-10 MB的存储空间。
   * [IndexedDB](https://developer.mozilla.org/zh-CN/docs/Web/API/IndexedDB_API)：适合存储大量（存储空间大小仅受限于用户设备的存储能力）、复杂数据（包括二进制），支持离线使用、大数据管理和复杂客户端数据库操作，如离线应用和数据同步、事务等。[另外在安全上它也是使用同源原则](https://developer.mozilla.org/zh-CN/docs/Web/API/IndexedDB_API/Using_IndexedDB)。
+* iframe 使用场景及安全风险 - `iframe` 常用于嵌入第三方内容（如广告、视频、社交媒体插件）、多域内容整合（展示不同来源的数据或应用）和隔离不受信任的组件（避免影响主页面）。此外，它还能嵌入文档或网页，提供多功能展示。然而，`iframe` 带来了一些安全风险。跨站脚本（XSS）攻击可能通过 `iframe` 嵌入恶意内容；点击劫持（Clickjacking）引诱用户执行意想不到的操作；数据泄露可能通过内嵌第三方内容发生；不当的跨域资源共享（CORS）设置可能允许未授权访问；混合内容问题在 HTTPS 页面嵌入 HTTP 内容会导致安全漏洞；过多权限可能执行危险操作。
+  * 防护措施包括：设置严格的 Content Security Policy（CSP）限制外部资源；使用 `X-Frame-Options` 或 `Content-Security-Policy` 响应头防止点击劫持；使用 `sandbox` 属性限制 `iframe` 行为；配置严格的 CORS 策略确保信任来源；确保所有嵌入内容使用 HTTPS 协议；最小化 `iframe` 权限，使用 `allow` 属性控制功能。通过这些措施，可以显著提高 `iframe` 的安全性。
 
 
 以上部分参考：https://osjobs.net/topk/  
