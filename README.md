@@ -132,6 +132,7 @@
   * [最小生成树 | Leetcode Q1135](./Leetcode%20Practices/algorithms/medium/1135%20Connecting%20Cities%20With%20Minimum%20Cost.java)
   * [表达式求值/模拟计算器 | Leetcode Q772 Q227 etc](./Leetcode%20Practices/algorithms/hard/772%20Basic%20Calculator%20III.java)
   * [背包问题 | Leetcode Q2585 etc](./Leetcode%20Practices/algorithms/hard/2585%20Number%20of%20Ways%20to%20Earn%20Points.java)
+  * [最大流最小割](./Common%20Algorithm%20and%20Theory/网络流.md#Dinic-算法)
   * [凸包 | Leetcode Q587](./Leetcode%20Practices/algorithms/hard/587%20Erect%20the%20Fence.java)
   * [模拟退火 | Leetcode Q1879 Q1723](./Leetcode%20Practices/algorithms/hard/1879%20Minimum%20XOR%20Sum%20of%20Two%20Arrays.java)、[遗传算法](./Common%20Algorithm%20and%20Theory/遗传算法.md)
   * [水塘抽样 | Leetcode Q382 Q398 未知流随机](./Common%20Algorithm%20and%20Theory/蓄水池抽样算法.md#核心代码及原理)
