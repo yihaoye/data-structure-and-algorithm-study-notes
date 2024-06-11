@@ -64,7 +64,7 @@ This personal Blog contains explanation and **Java library/template implementati
       - 染色法 | Coloring Method
       - [匈牙利算法 | Hungarian Algorithm](./匈牙利算法.md) (时间复杂度 `O(N^3)`)
     - [最小生成树相关算法 | Minimum Spanning Tree Algorithms](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/MinimumSpanningTree/README.md)
-    - [网络流相关算法 | Flow Network Algorithms](./网络流.md) (概念：[最大流最小割](https://zh.wikipedia.org/zh-hans/%E6%9C%80%E5%A4%A7%E6%B5%81%E6%9C%80%E5%B0%8F%E5%89%B2%E5%AE%9A%E7%90%86)同时也是最优化理论的定理，[增广路 | Augmenting Path](../Common%20Algorithm%20and%20Theory/图匹配.md#增广路定理-Berge's-lemma))
+    - [网络流相关算法 | Flow Network Algorithms](./网络流.md) (概念：[最大流最小割](./网络流.md#最大流最小割)同时也是最优化理论的定理，[增广路 | Augmenting Path](../Common%20Algorithm%20and%20Theory/图匹配.md#增广路定理-Berge's-lemma))
       - Ford-Fulkerson 算法
         - [迪尼茨算法 | Dinic Algorithm](./网络流.md#dinic-算法) (网络流重点算法，时间复杂度 `O(E*V^2)`)
     - [迪杰斯特拉算法 | Dijkstra Algorithm](./Dijkstra算法.md) (时间复杂度：单起点单终点 `O(V+E*logV)`，单起点到其他各点 `O((V+E)*logV)`)
