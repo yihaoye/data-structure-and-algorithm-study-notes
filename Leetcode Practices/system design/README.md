@@ -265,8 +265,8 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
     
 ## 服务治理与 API Gateway
 API 网关是位于客户端与后端服务集之间的大门 - API 管理工具，本身包括访问控制、防火墙等功能。通常 API 网关还与其他关键组件服务（服务治理）一起集成，又或者是负载均衡器既承担了服务发现的角色，又承担了网关的角色，所以经常叫 API 网关服务器（Http 服务器，Nginx、Nginx Plus、Kong 就是此类服务端发现模式的负载均衡器）。[Spring Cloud 方案](https://github.com/yihaoye/spring-framework-example/tree/master/spring-cloud-fundamentals)、[服务发现和负载均衡](https://bbs.huaweicloud.com/blogs/193876)、[负载均衡器和 API 网关](https://z.itpub.net/article/detail/194354318C67A5BF584DBB6F9F78F945)、[API Gateway 使用场景](./api-gateway-use-cases.gif)。  
-![](./aws-load-balancer.webp)  
 ![](./api-gateway.jpeg)  
+![](./aws-load-balancer.webp)  
 ![](./api-gateway-vs-load-balancer.jpeg)  
 ![](./firewall.gif)  
 
