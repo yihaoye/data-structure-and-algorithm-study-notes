@@ -1,8 +1,13 @@
 /*
 https://zh.wikipedia.org/zh-hans/%E5%9B%BE%E7%81%B5%E6%9C%BA
 
+基本思想是用机器来模拟人们用纸笔进行数学运算的过程，这样的过程看作下列两种简单的动作：
+    * 在纸上写上或擦除某个符号；
+    * 把注意力从纸的一处移动到另一处；
+而在每个阶段，人要决定下一步的动作，依赖于此人当前所关注的纸上某个位置的符号和此人当前思维的状态。
+
 图灵机由以下几个部分组成：
-    1. 一条无限长的纸带TAPE。纸带被划分为一个接一个的小格子，每个格子上包含一个来自有限字母表的符号，字母表中有一个特殊的符号表示空白。纸带上的格子从左到右依次被编号为 0, 1, 2, ...，纸带的右端可以无限伸展。
+    1. 一条无限长的纸带 TAPE。纸带被划分为一个接一个的小格子，每个格子上包含一个来自有限字母表的符号，字母表中有一个特殊的符号表示空白。纸带上的格子从左到右依次被编号为 0, 1, 2, ...，纸带的右端可以无限伸展。
     2. 一个读写头 HEAD。它可以在纸带上左右移动，能读出当前所指的格子上的符号，并能改变它。
     3. 一套控制规则数量有限的 TABLE（A finite table of instructions）。它根据当前机器所处的状态以及当前读写头所指的格子上的符号来确定读写头下一步的动作，并改变状态寄存器的值，令机器进入一个新的状态。
         按照以下顺序告知图灵机命令：
@@ -65,7 +70,8 @@ public class TuringMachine { // by ChatGPT
             
             Transition transition = transitionFunction.get(currentState).get(currentSymbol);
             tape[headPosition] = transition.writeSymbol;
-            headPosition += (transition.moveDirection == 'R' ? 1 : -1);
+            headPosition += (transition.moveDirection == 'R' ? 1 : 0);
+            headPosition += (transition.moveDirection == 'L' ? -1 : 0);
             currentState = transition.nextState;
             
             if (headPosition < 0 || headPosition >= tape.length) {
