@@ -176,6 +176,7 @@ This personal Blog contains explanation and **Java library/template implementati
         - 施特拉森算法 | Strassen Algorithm ([Ref](https://www.youtube.com/watch?v=0oJyNmEbS4w)，时间复杂度 `~O(n^(2.8))`；其他的优化算法还有 Coppersmith-Winograd，这些算法在特定条件下可以降低时间复杂度，但通常在实际应用中，由于其常数项较大，可能并不总是比朴素方法更快。因此，在实践中，朴素的方法仍然是常用的选择)
       - [快速傅立叶变换 | Fast Fourier Transform](./FFT.md) (时间复杂度 `O(N*logN)`，另外还有[并行快速傅立叶变换](https://zh.wikipedia.org/wiki/%E5%B9%B6%E8%A1%8C%E5%BF%AB%E9%80%9F%E5%82%85%E9%87%8C%E5%8F%B6%E5%8F%98%E6%8D%A2))
       - [快速幂法 | Binary Exponentiation](../Tool%20Sets/Math.java)
+        - 矩阵快速幂 | Matrix Binary Exponentiation ([Ref](https://hezhaojiang.github.io/post/2020/41da3a83/)：是一种基础算法，本身与动态规划没有关系，但常用于优化线性递推关系的计算，并且其思路比较固定，动态规划主要用于解决两类问题，一类是优化问题，求最优解，另一类是组合计数，求方案数。矩阵快速幂主要用在第二类，即组合计数，求方法数这类问题，可以将时间复杂度从 O(N) 降到 `O(logN)`)
       - [平方根倒数速算法 | Fast Inverse Square Root](./平方根倒数速算法.md)
       - [高斯消元法 | Gaussian Elimination](./高斯消元法.md) (时间复杂度 `O(N^3)`)
       - 高精度计算 | Arbitrary-Precision Arithmetic ([Wiki](https://oi-wiki.org/math/bignum/))
