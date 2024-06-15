@@ -68,7 +68,7 @@
       - 2–3 树 | 2-3 Tree
     - [R 树 | R Tree](./../Common%20Algorithm%20and%20Theory/QuadTree-RTree-算法.md)
     - [H 树 | H Tree](https://en.wikipedia.org/wiki/HTree)
-    - [K-D 树 | K-D Tree](https://zh.wikipedia.org/zh-hans/K-d%E6%A0%91) (最坏情况下可能会退化成链表，因此其平衡性并不稳定)
+    - [K-D 树 | K-D Tree](./Data%20Structure%20Implementation/KDTree/KDTree.java) ([Wiki](https://zh.wikipedia.org/zh-hans/K-d%E6%A0%91)，最坏情况下可能会退化成链表，因此其平衡性并不稳定)
   - [绳索 | Rope](https://en.wikipedia.org/wiki/Rope_%28data_structure%29) (支持 O(logN) 的时间复杂度内插入删除合并分裂等操作)
   - [线段树 | Segment Tree](./Data%20Structure%20Implementation/SegmentTree/README.md) (区间查询 O(logN + K)，更新 O(logN)，构建 O(N) - K is the number of reported segments)
   - [树套树 | Tree of Trees](https://www.cnblogs.com/Flying2018/p/13615844.html)
