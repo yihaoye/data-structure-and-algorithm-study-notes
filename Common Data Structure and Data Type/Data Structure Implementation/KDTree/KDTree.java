@@ -15,7 +15,7 @@ class KDTree {
         this.root = null;
     }
 
-    public void buildTree(int[][] points) { // ToDo 动态添加节点，实际有两种方法：1. 初始化直接把所有可能的点写进树和哈希表中但时空复杂度为 O(INF^k)；2. 在方法 1 的基础之上采用类似线段树的动态开点
+    public void buildTree(int[][] points) { // ToDo 动态添加节点，采用类似线段树的动态开点以及可能需要改用 TreeMap
         this.k = points[0].length;
         for (int[] point : points) {
             nodes.computeIfAbsent(point, v -> new Node(point)).count++;
