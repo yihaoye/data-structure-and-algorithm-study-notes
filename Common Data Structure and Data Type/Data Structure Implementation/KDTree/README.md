@@ -1,4 +1,11 @@
 # KD 树
+https://oi-wiki.org/ds/kdt/  
+在结点数 n 远大于 2^k 时，应用 k-D Tree 的时间效率很好。  
+在算法竞赛的题目中，一般有 k=2，因此在这些情况下分析时间复杂度时，将认为 k 是常数。  
+
+![](https://oi-wiki.org/ds/images/kdt1.jpg)  
+![](https://oi-wiki.org/ds/images/kdt2.jpg)  
+
 ## KNN 与 KD 树
 以下参考：https://www.cnblogs.com/zjh225901/p/7635651.html
 

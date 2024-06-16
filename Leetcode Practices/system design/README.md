@@ -323,7 +323,7 @@ API 网关是位于客户端与后端服务集之间的大门 - API 管理工具
   * 轮询、长轮询、全双工（例如 Websocket）。
 * 回调模式 - 系统级：Webhook、API 调用等；线程/进程级：JavaScript 回调、CompletableFuture、接口回调等。通常情况下，回调是在一个不同于主线程/主服务的另一个线程/服务中执行的。回调常用于异步处理中，当某个特定事件发生时，会触发回调函数的执行。
 * 批处理 - 该范式有高延迟和高吞吐量的特点。处理系统按照设定的时间启动处理进程。
-* 流式处理 [Ref 1](https://github.com/yihaoye/big-data-training/blob/main/kafka/README.md#%E6%B5%81%E5%BC%8F%E5%A4%84%E7%90%86)、[Ref 2](https://keys961.github.io/2018/07/05/%E6%B5%81%E5%BC%8F%E5%A4%84%E7%90%86%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/) - 这种范式介于上述两者之间。大部分的业务不要求亚毫秒级的响应，不过也接受不了要等到第二天才知道结果。大部分业务流程都是持续进行的，只要业务报告保持更新，业务产品线能够持续响应，那么业务流程就可以进行下去，而无需等待特定的响应，也不要求在几毫秒内得到响应。一些业务流程具有持续性和非阻塞的特点。
+* 流式处理 [Ref 1](https://github.com/yihaoye/big-data-training/blob/main/kafka/README.md#%E6%B5%81%E5%BC%8F%E5%A4%84%E7%90%86)、[Ref 2](https://keys961.github.io/2018/07/05/%E6%B5%81%E5%BC%8F%E5%A4%84%E7%90%86%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/)、[Usage in AI System](https://www.nvidia.cn/glossary/data-science/stream-processing/) - 这种范式介于上述两者之间。大部分的业务不要求亚毫秒级的响应，不过也接受不了要等到第二天才知道结果。大部分业务流程都是持续进行的，只要业务报告保持更新，业务产品线能够持续响应，那么业务流程就可以进行下去，而无需等待特定的响应，也不要求在几毫秒内得到响应。一些业务流程具有持续性和非阻塞的特点。
   * 发布订阅模式。
 
 ## [并发编程模型](../../Computer%20System%20Layer/并发编程模型.md)
