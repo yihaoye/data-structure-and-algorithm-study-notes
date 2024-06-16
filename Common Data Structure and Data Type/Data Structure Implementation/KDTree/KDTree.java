@@ -46,11 +46,11 @@ class KDTree {
         return root;
     }
 
-    public void rangeSearch(Node node, int[] minBound, int[] maxBound, int depth, List<int[]> list, PriorityQueue<int[]> pq) {
+    public void rangeSearch(Node node, int[] minBound, int[] maxBound, int depth, List<Node> list, PriorityQueue<Node> pq) {
         if (node == null) return;
         if (node.count > 0 && isWithinBounds(node.point, minBound, maxBound)) {
-            if (list != null) list.add(node.point);
-            if (pq != null) pq.add(node.point);
+            if (list != null) list.add(node);
+            if (pq != null) pq.add(node);
         }
         int axis = depth % k;
         if (minBound[axis] <= node.point[axis]) rangeSearch(node.left, minBound, maxBound, depth + 1, list, pq);
