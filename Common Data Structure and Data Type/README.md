@@ -60,7 +60,7 @@
     - 自平衡二叉搜索树 | Self-Balanced Binary Search Tree
       - [AVL 树 | AVL Tree](./Data%20Structure%20Implementation/AVLTree/) (搜索 O(logN)，插入/删除节点 O(logN))
       - [红黑树 | Red-Black Tree](./Data%20Structure%20Implementation/RedBlackTree/README.md) (搜索 O(logN)，插入/删除节点 O(logN))
-      - 替罪羊树 | Scapegoat Tree ([Wiki](https://oi-wiki.org/ds/sgt/))
+      - [替罪羊树 | Scapegoat Tree](./Data%20Structure%20Implementation/ScapegoatTree/README.md) ([Wiki](https://oi-wiki.org/ds/sgt/))
       - [T 树 | T Tree](https://en.wikipedia.org/wiki/T-tree)
       - [LCT 树 | Link-Cut Tree](https://oi-wiki.org/ds/lct/)
     - 自平衡搜索树 | Self-Balanced Search Tree

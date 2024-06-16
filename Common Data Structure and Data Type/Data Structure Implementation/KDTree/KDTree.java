@@ -15,7 +15,7 @@ class KDTree {
         this.root = null;
     }
 
-    public void buildTree(int[][] points) { // ToDo 动态添加节点，采用类似线段树的动态开点以及可能需要改用 TreeMap
+    public void buildTree(int[][] points) { // ToDo 动态添加节点，采用类似线段树的动态开点以及可能需要改用 TreeMap 并添加进 Node 类中（wiki：在动态插入删除点且不允许预处理插入操作的情况下，一种平衡的方法是使用类似替罪羊树的方法重构整棵树）？
         this.k = points[0].length;
         for (int[] point : points) {
             nodes.computeIfAbsent(point, v -> new Node(point)).count++;
@@ -64,7 +64,7 @@ class KDTree {
         return true;
     }
 
-    public boolean delete(int[] point) {
+    public boolean delete(int[] point) { // ToDo 在支持动态添加节点后，也许也可以支持硬删除节点（当 count == 0 时）
         if (!nodes.containsKey(point)) return false;
         Node node = nodes.get(point);
         node.count--;
