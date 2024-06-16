@@ -264,6 +264,13 @@ by ChatGPT
 # 日志打印最佳实践
 ![](./日志打印最佳实践.jpeg)  
 
+# 发布
+* [灰度发布](https://www.woshipm.com/pd/4381854.html) - 灰度，就是存在于黑与白之间的一个平滑过渡的区域。对于互联网产品来说，上线和未上线就是黑与白之分，而实现未上线功能平稳过渡的一种方式就叫做灰度发布。小产品（受众、流量较小）时使用灰度发布工程成本、迭代效率代价过高。
+  * 实现方式
+    * AB 实验
+    * 正式上线流量控制
+  * 兼容变更 vs 不兼容变更 - 比如 API 版本控制
+
 # 系统工程（系统科学内容之一）
 * [What is systems engineering](https://www.freecodecamp.org/news/what-is-systems-engineering/)
 * [系统工程 wiki](https://zh.wikipedia.org/zh-hans/%E7%B3%BB%E7%BB%9F%E5%B7%A5%E7%A8%8B)

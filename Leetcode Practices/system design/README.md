@@ -271,6 +271,16 @@ API 网关是位于客户端与后端服务集之间的大门 - API 管理工具
 ![](./firewall.gif)  
 
 ### [流量治理](https://icyfenix.cn/distribution/traffic-management/)
+流量治理可以看作是基于 API 网关与负载均衡等功能之上的更高层次的管理，实际上是对流量分配、控制和优化的一个更全面和高级的策略集合，包含但不限于 API 网关和负载均衡（整合并扩展了这些组件的功能），具有更广泛的管理和优化能力：
+* [Ref](https://www.cnblogs.com/jiagoubaiduren/p/15253253.html)
+* [Azure Traffic Manager](https://learn.microsoft.com/zh-cn/azure/traffic-manager/traffic-manager-overview)
+* [GCP Traffic Management](https://www.cloudskillsboost.google/paths/31/course_templates/35/video/432916?locale=en)
+* 异地多活 - 流量治理是实现和优化异地多活的关键技术手段
+  * 智能路由
+  * 故障切换
+  * 延迟优化
+  * 流量分配
+
 ### 自动扩展与容器编排
 底层实现中需要调度器（硬件机器、端口）、命令行（镜像、启动/停止容器）、状态机等。[具体参考](https://github.com/gogococo/orchestrator-in-go)  
 现成方案：Kubernetes、Docker Swarm、AWS ECS 等等。  
