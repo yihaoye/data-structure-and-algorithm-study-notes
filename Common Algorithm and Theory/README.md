@@ -155,7 +155,7 @@ This personal Blog contains explanation and **Java library/template implementati
       - 维特比算法 | Viterbi Algorithm
     - [深度学习, 神经网络 | Deep Learning, Neural Networks](./机器学习.md#deep-learning) ([Ref](https://www.zhihu.com/question/314879954/answer/638380202))
       - [感知器 | Perceptron](./机器学习.md#single-neuron) ([Ref](https://www.youtube.com/watch?v=BS_CVhalVGw&list=PLxIHUhMHF8okwhq8poRuiHBChWjkVUHLL&index=2)；又称感知机、Neuron、Unit，该基本模型是神经网络的基础，是模拟了人工神经元的模型)
-      - 卷积神经网络 | Convolutional Neural Network, CNN (用于处理网格数据，如图像、视频、音频等，进行特征提取和分类。结构由卷积层、池化层和全连接层组成，用于捕获局部特征和构建层次结构)
+      - 卷积神经网络 | Convolutional Neural Network, CNN ([Wiki](https://zh.wikipedia.org/zh-hans/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C)、[Ref](https://www.nvidia.cn/glossary/data-science/convolutional-neural-network/)：用于处理网格数据，如图像、视频、音频等，进行特征提取和分类。结构由卷积层、池化层和全连接层组成，用于捕获局部特征和构建层次结构)
       - 循环神经网络 | Recurrent Neural Network, RNN (用于处理序列数据，如文本、语音、时间序列等，具有记忆性质。结构包括循环层 RNN、LSTM、GRU 等，用于处理序列中的时间依赖关系)
         - 长短期记忆 | Long Short-Term Memory, LSTM
       - 图神经网络 | Graph Neural Network, GNN (用于处理图数据，如社交网络、推荐系统、知识图谱、分子结构等，进行节点分类、链接预测等任务。结构包括图卷积层、图池化层和节点分类层，用于捕获图的结构和节点之间的关系)
