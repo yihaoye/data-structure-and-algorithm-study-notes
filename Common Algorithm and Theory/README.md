@@ -150,7 +150,7 @@ This personal Blog contains explanation and **Java library/template implementati
         - [XGBoost](./机器学习.md#XGBoost) ([Ref](https://www.cnblogs.com/mantch/p/11164221.html))
     - 朴素贝叶斯 | Naive Bayes
     - 支持向量机 | Support Vector Machine, SVM
-    - 隐马尔可夫模型 | Hidden Markov Model, HMM (用来描述一个含有隐含未知参数的[马尔可夫过程](https://zh.wikipedia.org/wiki/%E9%A6%AC%E5%8F%AF%E5%A4%AB%E9%81%8E%E7%A8%8B)。其难点是从可观察的参数中确定该过程的隐含参数。然后利用这些参数来作进一步的分析，例如模式识别)
+    - 隐马尔可夫模型 | Hidden Markov Model, HMM (用来描述一个含有隐含未知参数的[马尔可夫过程/随机状态转移](https://zh.wikipedia.org/wiki/%E9%A6%AC%E5%8F%AF%E5%A4%AB%E9%81%8E%E7%A8%8B)。其难点是从可观察的参数中确定该过程的隐含参数。然后利用这些参数来作进一步的分析，例如模式识别)
       - 前向与后向算法 | Forward–Backward Algorithm
       - 维特比算法 | Viterbi Algorithm
     - [深度学习, 神经网络 | Deep Learning, Neural Networks](./机器学习.md#deep-learning) ([Ref](https://www.zhihu.com/question/314879954/answer/638380202))
