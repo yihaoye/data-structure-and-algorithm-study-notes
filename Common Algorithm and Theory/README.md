@@ -146,23 +146,25 @@ This personal Blog contains explanation and **Java library/template implementati
   - [人工智能, 机器学习 | Artificial Intelligence, Machine Learning](./机器学习.md) ([人工智能分类](./人工智能分类.jpeg)、[ML 算法时间复杂度](./ML-Algorithms-Time-Complexity.jpeg)、[训练与推断过程](./Training-and-Inference-workflow-diagram.png))
     - [决策树算法 | Decision Tree Algorithm](./机器学习.md#决策树) ([Ref 1](./decision-tree.png)、[Ref 2](https://www.ibm.com/cn-zh/topics/decision-trees))
       - [随机森林 | Random Forest](./机器学习.md#随机森林) ([Ref](https://www.nvidia.cn/glossary/data-science/random-forest/))
-      - 梯度提升决策树 | Gradient Boosted Decision Trees ([Ref 1](https://github.com/NLP-LOVE/ML-NLP/blob/master/Machine%20Learning/3.2%20GBDT/3.2%20GBDT.md)、[Ref 2](https://developers.google.com/machine-learning/decision-forests/intro-to-gbdt))
-        - XGBoost 树 ([Ref](https://www.cnblogs.com/mantch/p/11164221.html))
+      - [梯度提升决策树 | Gradient Boosted Decision Trees](./机器学习.md#GBDT) ([Ref 1](https://github.com/NLP-LOVE/ML-NLP/blob/master/Machine%20Learning/3.2%20GBDT/3.2%20GBDT.md)、[Ref 2](https://developers.google.com/machine-learning/decision-forests/intro-to-gbdt))
+        - [XGBoost](./机器学习.md#XGBoost) ([Ref](https://www.cnblogs.com/mantch/p/11164221.html))
     - 朴素贝叶斯 | Naive Bayes
     - 支持向量机 | Support Vector Machine, SVM
-    - 隐马尔可夫模型 | Hidden Markov Model, HMM
+    - 隐马尔可夫模型 | Hidden Markov Model, HMM (用来描述一个含有隐含未知参数的[马尔可夫过程](https://zh.wikipedia.org/wiki/%E9%A6%AC%E5%8F%AF%E5%A4%AB%E9%81%8E%E7%A8%8B)。其难点是从可观察的参数中确定该过程的隐含参数。然后利用这些参数来作进一步的分析，例如模式识别)
       - 前向与后向算法 | Forward–Backward Algorithm
       - 维特比算法 | Viterbi Algorithm
     - [深度学习, 神经网络 | Deep Learning, Neural Networks](./机器学习.md#deep-learning) ([Ref](https://www.zhihu.com/question/314879954/answer/638380202))
       - [感知器 | Perceptron](./机器学习.md#single-neuron) ([Ref](https://www.youtube.com/watch?v=BS_CVhalVGw&list=PLxIHUhMHF8okwhq8poRuiHBChWjkVUHLL&index=2)；又称感知机、Neuron、Unit，该基本模型是神经网络的基础，是模拟了人工神经元的模型)
-      - 卷积神经网络 | Convolutional Neural Network, CNN ([Wiki](https://zh.wikipedia.org/zh-hans/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C)、[Ref](https://www.nvidia.cn/glossary/data-science/convolutional-neural-network/)：用于处理网格数据，如图像、视频、音频等，进行特征提取和分类。结构由卷积层、池化层和全连接层组成，用于捕获局部特征和构建层次结构)
-      - 循环神经网络 | Recurrent Neural Network, RNN (用于处理序列数据，如文本、语音、时间序列等，具有记忆性质。结构包括循环层 RNN、LSTM、GRU 等，用于处理序列中的时间依赖关系)
+        - 卷积神经网络 | Convolutional Neural Network, CNN ([Wiki](https://zh.wikipedia.org/zh-hans/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C)、[Ref](https://www.nvidia.cn/glossary/data-science/convolutional-neural-network/)：用于处理网格数据，如图像、视频、音频等，进行特征提取和分类。结构由卷积层、池化层和全连接层组成，用于捕获局部特征和构建层次结构)
+        - 循环神经网络 | Recurrent Neural Network, RNN (用于处理序列数据，如文本、语音、时间序列等，具有记忆性质。结构包括循环层 RNN、LSTM、GRU 等，用于处理序列中的时间依赖关系)
         - 长短期记忆 | Long Short-Term Memory, LSTM
-      - 图神经网络 | Graph Neural Network, GNN (用于处理图数据，如社交网络、推荐系统、知识图谱、分子结构等，进行节点分类、链接预测等任务。结构包括图卷积层、图池化层和节点分类层，用于捕获图的结构和节点之间的关系)
-      - 生成对抗网络 | Generative Adversarial Network, GAN (用于生成新的数据，例如图像、音频等。结构由生成器 Generator 和判别器 Discriminator 组成。生成器生成伪造数据，判别器评估生成器生成的数据与真实数据之间的相似性)
-      - 多头模型 | Multi-Head Model ([Ref 1](https://debuggercafe.com/multi-head-deep-learning-models-for-multi-label-classification/)、[Ref 2](./multi_head_nn_diff_outputs.jpg))
+        - 图神经网络 | Graph Neural Network, GNN (用于处理图数据，如社交网络、推荐系统、知识图谱、分子结构等，进行节点分类、链接预测等任务。结构包括图卷积层、图池化层和节点分类层，用于捕获图的结构和节点之间的关系)
+        - 生成对抗网络 | Generative Adversarial Network, GAN (用于生成新的数据，例如图像、音频等。结构由生成器 Generator 和判别器 Discriminator 组成。生成器生成伪造数据，判别器评估生成器生成的数据与真实数据之间的相似性)
+      - 多头模型 | Multi-Head Model ([Ref 1](https://debuggercafe.com/multi-head-deep-learning-models-for-multi-label-classification/)、[Ref 2](./multi_head_nn_diff_outputs.jpg)，在深度学习中，多头模型通常指的是在同一层或同一网络中使用多个独立的注意力头或输出头。每个头可以关注数据的不同方面或产生不同类型的输出)
       - [Transformer 模型, 大语言模型 (Large Language Model)](https://github.com/yihaoye/lyrics-gpt) (Related: [Wiki](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model))、[build GPT from scratch](https://www.youtube.com/watch?v=kCc8FmEb1nY)、[注意力机制 1](https://en.wikipedia.org/wiki/Attention_(machine_learning))、[注意力机制 2](https://www.youtube.com/watch?v=nzqlFIcCSWQ)、[检索增强生成（RAG）](https://aws.amazon.com/cn/what-is/retrieval-augmented-generation/)、[提示工程](https://en.wikipedia.org/wiki/Prompt_engineering))
-    - 多模态学习 | Multimodal Learning ([Ref](https://zhuanlan.zhihu.com/p/53511144))
+        - BERT
+        - GPT
+    - [多模态学习 | Multimodal Learning](./机器学习.md#多模态学习) ([Ref](https://zhuanlan.zhihu.com/p/53511144))
   - 并行算法 | Parallel Algorithm ([Wiki](https://en.wikipedia.org/wiki/Parallel_algorithm)、[Ref](https://blog.51cto.com/luweir/4873113?articleABtest=0)：并行算法尚在发展中，不及串行算法丰富。目前最常用的的方法是 PCAM 方法，即划分，通信，组合，映射。并行算法与串行算法最大的不同之处在于，并行算法不仅要考虑问题本身，而且还要考虑所使用的并行模型，网络连接等等)
     - 阿姆达尔定律 | Amdahl's Law ([Wiki](https://zh.wikipedia.org/wiki/%E9%98%BF%E5%A7%86%E8%BE%BE%E5%B0%94%E5%AE%9A%E5%BE%8B))
   - [数学 | Maths](../Computer%20Science%20Maths/README.md) (以下分类不严格界限，互相可以有重叠)
