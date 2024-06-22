@@ -193,7 +193,14 @@ Books:
 * [Teamwork Skills: Communicating Effectively in Groups](https://www.coursera.org/learn/teamwork-skills-effective-communication)
 * [Developing Interpersonal Skills](https://www.coursera.org/learn/interpersonal-skills)
 * [工作中的技术深度](https://mp.weixin.qq.com/s/wImyzpbGHV_zO9FB3omooA)
-* [述职法](https://www.youtube.com/watch?v=b0kYEpjenL0)
+* [述职法](https://www.youtube.com/watch?v=b0kYEpjenL0) - 主要为年、季度述职，因为平常述职对实际 KPI 作用较低
+  * SS 述职法：So What, Same Page
+    * 强调效果而非任务流水账（其中效果应该与企业、组织当前关注方向匹配）
+      * 提高增长、利润
+      * 减少风险、成本
+    * 解释达成原因，以及可否一般化泛用（类似方法论）
+      * 为什么之前的量化指标不佳
+      * 具体解决了什么问题？为什么新方法起作用？可否总结推广？
 * 高效能人士的七个习惯
   * 积极主动、以始为终、要事第一：从依赖型人格转向独立型人格
   * 双赢思维、知己知彼、综合统效：从独立型人格转向互赖型人格，因为一个人可以走得很快，但一群人可以走得更远
