@@ -71,6 +71,7 @@ This personal Blog contains explanation and **Java library/template implementati
     - [迪杰斯特拉算法 | Dijkstra Algorithm](./Dijkstra算法.md) (时间复杂度：单起点单终点 `O(V+E*logV)`，单起点到其他各点 `O((V+E)*logV)`)
     - 贝尔曼-福特算法 | Bellman-Ford Algorithm ([Ref](https://mp.weixin.qq.com/s/wnRQ_9CckAmlQaAjo7q_0w))
       - 最短路径快速算法 | Shortest Path Faster Algorithm (又称 SPFA，是带有队列优化的 Bellman-Ford 算法，最坏情况下时间复杂度为 `O(V*E)`，在特定情况下其效率优于 Dijkstra 算法，近似 `O(E)`)
+    - [分层可导航小世界算法 | Hierarchical Navigable Small World Algorithm](./HNSW.md) (时间复杂度：搜索平均 `O(logN)` 最差 `O(N^(1-1/d))`，插入 `O(logN)`，其中 N 为节点数、d 为维度数)
     - 近似算法 | Approximation Algorithm ([Wiki](https://en.wikipedia.org/wiki/Approximation_algorithm))
       - 多项式时间近似算法 | Polynomial-Time Approximation Scheme (PTAS) (时间复杂度 `O(N^c1+N^c2+...)` ~= `O(N^c1)`，指数为常数)
     - 启发式算法/搜索 | Heuristic Algorithm/Search (启发式搜索通常不讨论时空复杂度)

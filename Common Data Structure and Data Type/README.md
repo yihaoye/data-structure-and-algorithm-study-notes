@@ -66,9 +66,9 @@
     - 自平衡搜索树 | Self-Balanced Search Tree
       - [B/B+ 树 | B/B+ Tree](./Data%20Structure%20Implementation/BPlusTree/README.md)
       - 2–3 树 | 2-3 Tree
-    - [R 树 | R Tree](./../Common%20Algorithm%20and%20Theory/QuadTree-RTree-算法.md)
+    - [R 树 | R Tree](./../Common%20Algorithm%20and%20Theory/QuadTree-RTree-算法.md) (2D、3D 的空间索引，理论上不如 K-D 树通用)
     - [H 树 | H Tree](https://en.wikipedia.org/wiki/HTree)
-    - [K-D 树 | K-D Tree](./Data%20Structure%20Implementation/KDTree/README.md) ([Wiki](https://zh.wikipedia.org/zh-hans/K-d%E6%A0%91)，最坏情况下可能会退化成链表，因此其平衡性并不稳定)
+    - [K-D 树 | K-D Tree](./Data%20Structure%20Implementation/KDTree/README.md) ([Wiki](https://zh.wikipedia.org/zh-hans/K-d%E6%A0%91)，最坏情况下可能会退化成链表，因此其平衡性并不稳定，因此业界实际使用更高级的数据结构 - 分层可导航小世界图 / HNSW)
   - [绳索 | Rope](https://en.wikipedia.org/wiki/Rope_%28data_structure%29) (支持 O(logN) 的时间复杂度内插入删除合并分裂等操作)
   - [线段树 | Segment Tree](./Data%20Structure%20Implementation/SegmentTree/README.md) (区间查询 O(logN + K)，更新 O(logN)，构建 O(N) - K is the number of reported segments)
   - [树套树 | Tree of Trees](https://www.cnblogs.com/Flying2018/p/13615844.html)
@@ -93,6 +93,10 @@
   - [状态机 | State Machine](../Common%20Algorithm%20and%20Theory/动态规划与状态机.md) (有广泛的使用场景)
   - [生成树 | Spanning Tree](./Data%20Structure%20Implementation/SpanningTree/README.md)
     - [最小生成树 | Minimum Spanning Tree](./Data%20Structure%20Implementation/MinimumSpanningTree/README.md)
+  - 层次化图 | Hierarchical Graph (表示一种树状的层次结构、通常有明确的父子关系、每个层级图上的节点通常代表不同粒度的信息)
+  - 多层图 | Multilayer Graph (与层次化图 Hierarchical Graph 有一些区别，它包含多个可能相互关联的图层、层与层之间可能没有严格的层次关系、每层可能代表同一组实体的不同关系或属性)
+    - [分层可导航小世界图 | Hierarchical Navigable Small World Graph](../Common%20Algorithm%20and%20Theory/HNSW.md) (结构更接近 Multilayer Graph 而非典型的 Hierarchical Graph。原因：它包含多个层，每层都是一个完整的图、层与层之间不存在严格的父子关系、较高层是较低层的稀疏表示而不是更高级别的抽象)
+    - 多维网络 | Multidimensional Network (或称 Multiplex Network 等等，[Wiki](https://en.wikipedia.org/wiki/Multidimensional_network))
 - [可持久化数据结构 | Persistent Data Structure](https://oi-wiki.org/ds/persistent/) (总是可以保留每一个历史版本，并且支持操作的不可变特性 immutable)
   
 以上有些数据结构可能只有 Java 提供了官方实现 [more](https://www.zhihu.com/question/325814788) ，以上总结未完待续...  
