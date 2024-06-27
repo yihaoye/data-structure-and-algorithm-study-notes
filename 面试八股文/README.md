@@ -413,6 +413,7 @@
 * [网络传播类型](https://support.biamp.com/General/Networking/Multicast_traffic_and_IGMP) - 单播、广播、[组播](https://cshihong.github.io/2018/02/12/IP%E7%BB%84%E6%92%AD%E5%9F%BA%E7%A1%80/)
   * ![](./ip_cast_types.png)
 * [BGP](https://zhuanlan.zhihu.com/p/25433049)
+* [网速及信号传输](https://www.youtube.com/watch?v=7uWLEGahyW4)
 
 ## [安全高频](https://tldrsec.com/)
 * [安全模型](https://en.wikipedia.org/wiki/Security_modes)
