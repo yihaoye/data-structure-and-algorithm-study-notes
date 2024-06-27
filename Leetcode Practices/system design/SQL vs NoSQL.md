@@ -10,7 +10,7 @@
     * 缓存数据库用于 read heavy 且读性能高且不需要持久化存储
     * KV 或 Column 数据库用于 read heavy 且读性能高且需要持久化存储需要简单 schema（与文档数据库的主要区别是实际上该类数据库更新 Value/Columns 时把 Value 的数据 -- 字符串读出来转换成对象然后再更新后再写回去）
     * 文档数据库用于需要持久化存储且灵活 schema 且支持 ACID 操作且支持相当复杂的 Query、Operation、比 Column 数据库更好的二级索引支持等等
-    * 在 KV 数据库中，只能通过 key 查找到整个 value，数据库并不知道 value 里面存的内容到底是什么，而是通过应用程序将 value 里面的东西进行翻译解析；在文档数据库中，不仅可以通过 key 查找 value，也可以通过 document 中对应的 key 找到具体内容，value 对数据库来说是透明的。
+    * 在 KV 数据库中，只能通过 key 查找到整个 value，数据库并不知道 value 里面存的内容到底是什么，而是通过应用程序将 value 里面的东西进行翻译解析；在文档数据库中，不仅可以通过 key 查找 value，也可以通过 document 中对应的 key 找到具体内容，value 对数据库来说是透明的。**即文档数据库还可以对 value 里的内容片段进行索引（因为实际业界的关系数据库与文档数据库也在渐渐地互相融合）而 KV 数据库不行。**
 * High level differences between SQL and NoSQL
   * Storage
     * SQL row represents an entity and each column represents a data point about that entity
