@@ -116,7 +116,25 @@ MongoDB 的适用场景为：数据不是特别重要（例如通知，推送这
 
 对比传统数据库的 B+ 树，向量数据库通常采用一些特定的向量索引结构和相似度搜索算法来存储和检索向量数据。  
 常见的多维索引结构包括 KD 树、球树（Ball Tree）、VP 树（Vantage Point Tree）等。  
-在实际的高维向量数据的存储和检索过程中，向量数据库会使用一些高效的数据结构与相似度搜索算法，其中数据结构通常使用 [分层可导航小世界图（HNSW）](../../Common%20Algorithm%20and%20Theory/HNSW.md)，而算法则如最近邻搜索（Nearest Neighbor Search）和近似最近邻搜索 ANN（Approximate Nearest Neighbor Search），以及一些聚类算法（如 K-Means 聚类）来支持数据的分析和检索。  
+
+[Understanding Vector Indexing: A Comprehensive Guide](https://medium.com/@myscale/understanding-vector-indexing-a-comprehensive-guide-d1abe36ccd3c)  
+在实际的高维向量数据的存储和检索过程中，向量数据库会使用一些高效的数据结构与相似度搜索算法，其中通常包括
+* 数据结构[分层可导航小世界图（HNSW）](../../Common%20Algorithm%20and%20Theory/HNSW.md)，而算法则如最近邻搜索（Nearest Neighbor Search）和近似最近邻搜索 ANN（Approximate Nearest Neighbor Search），以及一些聚类算法（如 K-Means 聚类）来支持数据的分析和检索。
+* IVF（IVFFLAT、IVFPQ、IVFSQ）- 基于 K-Means（均值）聚类算法
+  * 向量空间划分：将高维向量空间划分为多个子空间（簇）
+  * 聚类中心：每个子空间有一个聚类中心（称为质心）
+  * 向量分配：每个向量被分配到最近的聚类中心
+  * 倒排索引：为每个聚类创建一个列表，存储属于该聚类的所有向量
+
+**语义搜索**  
+工作流程：
+* 预处理（词嵌入）：文本 -> NLP 模型 -> 向量
+* 存储：向量 -> 向量数据库（建立索引）
+* 查询：查询文本 -> 向量 -> 向量数据库搜索 -> 相似向量 -> 原始数据
+  * 其中向量与原始数据的映射实现：
+    * 每个向量在存储时都会被分配一个唯一的 ID
+    * 数据库维护一个映射表，将向量 ID 与原始数据的引用（如文档 ID、数据库记录 ID 等）关联起来。
+
 以上 by ChatGPT  
 
 #### 列数据库

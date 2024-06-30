@@ -199,7 +199,7 @@ This personal Blog contains explanation and **Java library/template implementati
       - [扫描线 | Line Sweep](./扫描线.md)
       - [凸包 | Convex Hull](./凸包.md)
       - 三分搜索 | Ternary Search ([Ref](https://www.cnblogs.com/PJQOOO/p/4161891.html))
-      - 向量计算 | Vector ([Ref](https://cp.wiwiho.me/vector/))
+      - 向量计算 | Vector ([Ref](https://cp.wiwiho.me/vector/)，其实就是多维数据，一些工具如 MATLAB、NumPy 内置支持[阵列编程](https://zh.wikipedia.org/zh-hans/%E9%98%B5%E5%88%97%E7%BC%96%E7%A8%8B)，阵列编程原语 primitive 简明的表达了关于数据运算的宽泛想法，这种简明程度在特定情况下可能是戏剧性的：不难发现与阵列编程语言的一行程序相对应 Java 程序有时需要很多页代码)
     - 函数 | Function (离散或连续、周期性或非周期性、有界或无界) (注意：函数既满足算法的定义，也满足数据类型的定义，比如可以被处理、运算、传递、赋值等，例子如波可以被叠加。因此函数也可以被设计为自定义的类，在某些编程语言中，函数被视为第一类对象)
       - 波 (三角函数) | Wave (Trigonometric Function)
       - 分段函数 | Piecewise (比如阶跃函数)
