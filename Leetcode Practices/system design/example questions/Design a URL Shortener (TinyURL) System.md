@@ -89,7 +89,7 @@ Following is the pseudo code for example,
   
 **Other factors:**  
   
-* 快速检查 URL 是否已有、已处理过 - 用布隆过滤器（用于高效检索一个元素是否在一个集合中）。如果这个 URL 已被移除（比如长久未用），则可以用另一个布隆过滤器（存储已被移除的 URL，因为布隆过滤器容易放入但不容易移除已有元素）。
+* 快速检查 URL 是否已有、已处理过 - 用布隆过滤器（用于高效检索一个元素是否在一个集合中）。如果这个 URL 已被移除（比如长久未用），则可以 Count–Min Sketch 算法替代布隆过滤器或使用变种 Counting Bloom Filter，解决传统布隆过滤器不能删除记录的缺陷。
 * Design Distributed ID Generator（[雪花算法](https://zh.wikipedia.org/wiki/%E9%9B%AA%E8%8A%B1%E7%AE%97%E6%B3%95)）
 * One thing I’d like to further discuss here is that by using GUID (Globally Unique Identifier) as the entry ID, what would be pros/cons versus incremental ID in this problem? If you dig into the insert/query process, you will notice that using random string as IDs may sacrifice performance a little bit. More specifically, when you already have millions of records, insertion can be costly. Since IDs are not sequential, so every time a new record is inserted, the database needs to go look at the correct page for this ID. However, when using incremental IDs, insertion can be much easier – just go to the last page.  
   
