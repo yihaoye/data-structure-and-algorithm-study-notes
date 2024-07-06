@@ -32,6 +32,7 @@ This personal Blog contains explanation and **Java library/template implementati
     - [深度优先, 广度优先, 树图遍历 | Depth First Search, Breadth First Search](./树图遍历.md)
       - [回溯法 | Backtracking](./回溯法.md) (回溯法通常用于解决 NP 问题 i.e. 非确定性多项式问题)
       - 双向搜索/中途相遇 | Bidirectional-Search/Meet-in-the-Middle-Search ([Wiki](https://oi-wiki.org/search/bidirectional/))
+      - DSW 算法 | Day–Stout–Warren Algorithm ([Ref](https://developer.baidu.com/article/details/3061860)；基本思想是将任意的二叉查找树转换为类似于链表的树，称为主链或主干。通过旋转操作，将二叉查找树转换为平衡状态，然后使用中序遍历将元素放入数组中，最后重建该树。这个过程可以在 O(N) 时间内完成)
     - [贪心算法 | Greedy Algorithm](./贪婪算法.md)
       - [耐心排序 | Patience Sorting](./耐心排序.md)
       - 摩尔投票 | Boyer–Moore Majority Vote Algorithm ([Wiki](https://zh.wikipedia.org/wiki/%E5%A4%9A%E6%95%B0%E6%8A%95%E7%A5%A8%E7%AE%97%E6%B3%95))
