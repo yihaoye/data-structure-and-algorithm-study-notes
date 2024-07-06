@@ -99,9 +99,9 @@ This personal Blog contains explanation and **Java library/template implementati
     - 编码算法 | Coding Algorithm ([熵编码](https://zh.wikipedia.org/wiki/%E7%86%B5%E7%B7%A8%E7%A2%BC%E6%B3%95)、[字典编码](https://en.wikipedia.org/wiki/Dictionary_coder))
       - [霍夫曼压缩算法 | Huffman Coding/Compression](./霍夫曼压缩算法.md)
     - [布隆过滤器及其算法 | Bloom Filter](./布隆过滤器及其算法.md)
-      - 计数布隆过滤器 | Counting Bloom Filter
+      - 计数布隆过滤器 | Counting Bloom Filter (支持删除操作)
       - 布谷鸟过滤器及其算法 | Cuckoo Filter (相比布隆过滤器的空间占用高一些且性能低一些，优势在于低假阳率、支持删除操作)
-    - [Count-Min Sketch 算法](./Count-Min-Sketch.md) (可以替代上面的布隆过滤器)
+    - [Count-Min Sketch 算法](./Count-Min-Sketch.md) (可以替代上面的布隆过滤器以提供统计、删除功能)
       - Count-Mean-Min Sketch 算法
     - 最小哈希 | MinHash ([Wiki](https://en.wikipedia.org/wiki/MinHash))
     - 校验和 | Checksum ([Wiki](https://zh.wikipedia.org/wiki/%E6%A0%A1%E9%AA%8C%E5%92%8C))
