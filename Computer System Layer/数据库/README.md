@@ -1,17 +1,33 @@
 # 数据库基础
 
-* SQL
+* SQL（关系数据库）
   * [关系数据库物理原理、SQL 及其优化](./SQL/README.md)
   * [InnoDB 原理](./InnoDB/README.md)
   * [重要：数据库相关系统设计、分库分表](../../Leetcode%20Practices/system%20design/数据库数据建模分库分表.md)
 * [NoSQL](./../../Leetcode%20Practices/system%20design/NoSQL.md)
-  * [Dynamo](./Dynamo/README.md)
-  * [Redis 基本功](./Redis/README.md)
-  * [ElasticSearch](./ElasticSearch/README.md)
+  * 文档数据库
+    * [Dynamo](./Dynamo/README.md)
+    * MongoDB
+  * 键值数据库 | KV 数据库
+    * Dynamo
+    * [Redis 基本功](./Redis/README.md)
+    * RocksDB
+    * Cassandra
+  * 全文搜索数据库
+    * [ElasticSearch](./ElasticSearch/README.md)
   * [列式数据库](./../../Leetcode%20Practices/system%20design/NoSQL.md#列数据库)
+    * HBase
+    * Cassandra
+    * ClickHouse
+    * Google Bigtable
+    * AWS Redshift
   * [图数据库](./../../Leetcode%20Practices/system%20design/NoSQL.md#图数据库)
+    * Neo4j
   * [时序数据库](./../../Leetcode%20Practices/system%20design/NoSQL.md#时序数据库)
+    * InfluxDB
   * [向量数据库](./../../Leetcode%20Practices/system%20design/NoSQL.md#向量数据库)
+    * Pinecone
+    * Faiss
 * [SQL vs NoSQL](./../../Leetcode%20Practices/system%20design/SQL%20vs%20NoSQL.md)
 * [数据模型与查询语言](./../../Leetcode%20Practices/system%20design/README.md#数据模型与查询语言)
   * 关系模型、文档模型（树模型/KV模型）、图模型（网络模型）
