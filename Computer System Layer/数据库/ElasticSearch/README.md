@@ -1,3 +1,6 @@
+# ElasticSearch
+该数据库引擎是基于跳表支持倒排索引（[Ref](https://stackoverflow.com/a/43203339/6481829)）。  
+
 ![](./ElasticSearch%20Usage%20Case.gif)  
 
 ## 1. API
