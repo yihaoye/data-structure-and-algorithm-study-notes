@@ -13,13 +13,13 @@
     * [Redis 基本功](./Redis/README.md)
     * RocksDB
     * Cassandra
+    * HBase
   * 全文搜索数据库
     * [ElasticSearch](./ElasticSearch/README.md)
   * [列式数据库](./../../Leetcode%20Practices/system%20design/NoSQL.md#列数据库)
-    * HBase
     * Cassandra
     * ClickHouse
-    * Google Bigtable
+    * Google BigQuery
     * AWS Redshift
   * [图数据库](./../../Leetcode%20Practices/system%20design/NoSQL.md#图数据库)
     * Neo4j
