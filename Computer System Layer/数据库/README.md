@@ -8,6 +8,7 @@
   * [Dynamo](./Dynamo/README.md)
   * [Redis 基本功](./Redis/README.md)
   * [ElasticSearch](./ElasticSearch/README.md)
+  * [列式数据库](./../../Leetcode%20Practices/system%20design/NoSQL.md#列数据库)
   * [图数据库](./../../Leetcode%20Practices/system%20design/NoSQL.md#图数据库)
   * [时序数据库](./../../Leetcode%20Practices/system%20design/NoSQL.md#时序数据库)
   * [向量数据库](./../../Leetcode%20Practices/system%20design/NoSQL.md#向量数据库)
