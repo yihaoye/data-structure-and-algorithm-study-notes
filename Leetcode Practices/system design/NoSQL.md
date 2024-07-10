@@ -1,6 +1,18 @@
 NoSQL 的全称是 Not Only SQL，也可以理解非关系型的数据库，是一种新型的数据库设计方式，不过它不是为了取代传统的关系型数据库而被设计的，它们分别代表了不同的数据库设计思路。  
+
+# 键值数据库
+## RocksDB
+ToDo...  
+## Redis
+* 是一个纯粹的内存数据库（内存满了会发生删除数据或拒绝写入）。
+* 持久化方式：Redis 所有数据都是放在内存中的，持久化是使用 RDB 方式或者 aof 方式。  
   
-## 以 MongoDB 为例
+# 文档数据库
+其实是 KV 数据库的子集。  
+除了可以存储常见数据外还可以直接存储图片、视频等对象文件，有不俗的支持，另外半结构化的的数据支持使得可以作为前期快速 demo 的基础，比关系数据库灵活且读写性能也更好（ES 只适合读多写少）、比关系数据库易扩展，支持一些 NoSQL 不支持的操作如事务、JOIN（lookup）等。  
+和 ES 有些类似，但是文档只支持有限的嵌值查询没有 ES 那么强大。总体来说文档数据库有点像万金油但是各项能力都不是最出众的。  
+
+## MongoDB
 * 它是一个内存数据库，数据都是放在内存里面的。
 * 对数据的操作大部分都在内存中，但 MongoDB 并不是单纯的内存数据库。
 * MongoDB 是由 C++ 语言进行编写的，是一个基于分布式文件存储的开源数据库系统。
@@ -8,7 +20,6 @@ NoSQL 的全称是 Not Only SQL，也可以理解非关系型的数据库，是�
 * MongoDB 旨为 WEB 应用提供可扩展的高性能数据存储解决方案。
 * MongoDB 将数据存储为一个文档，将数据结构由键值（key => value）对组成。MongoDB 文档类似于 JSON 对象。字段值可以包含其他文档，数组及文档数组。
 * MongoDB 与 MySQL 对比，传统的关系数据库一般由数据库（database）、表（table）、记录（record）三个层次概念组成，MongoDB 是由数据库（database）、集合（collection）、文档对象（document）三个层次组成。集合对应关系型数据库里的表，但是集合中没有列、行和关系概念，这体现了模式自由的特点。  
-  
   
 ### MongoDB 的存储特点
 在传统的关系型数据库中，数据是以表单为媒介进行存储的，每个表单均拥有纵向的列和横向的列。相比较 MySQL，MongoDB 以一种直观文档的方式来完成数据的存储。它很像 JavaScript 中定义的 JSON 格式，不过数据在存储的时候 MongoDB 数据库为文档增加了序列化操作，最终存进磁盘的其实是叫做 BSON 的格式，即 Binary-JSON。  
@@ -30,27 +41,21 @@ MongoDB 的适用场景为：数据不是特别重要（例如通知，推送这
     * MongoDB 有一个最大的缺点，就是它占用的空间很大，因为它属于典型空间换时间原则的类型。那么它的磁盘空间比普通数据库会浪费一些。
     * 另外一个就是在一定的时间后，所占空间会莫明其妙地增大，所以要定期把数据库做修复，定期重新做索引，这样会提升 MongoDB 的稳定性和效率，在最新的版本里，它已经在实现在线压缩，可以在后台执行 repair database 的一些操作，有助于解决这一问题。  
   
-  
 ### MongoDB 缺点（主要是无事务机制）
 * MongoDB 不支持事务操作（最主要的缺点）
 * MongoDB 占用空间过大
 * MongoDB 没有如 MySQL 那样成熟的维护工具，这对于开发和 IT 运营都是个值得注意的地方  
   
 注意：以上只针对旧版本，现版本的 MongoDB（从 4.0 开始）已支持多文档事务。  
-  
-### 其他例子
-#### Redis
-* 是一个纯粹的内存数据库（内存满了会发生删除数据或拒绝写入）。
-* 持久化方式：Redis 所有数据都是放在内存中的，持久化是使用 RDB 方式或者 aof 方式。  
-  
-#### DynamoDB
+    
+## DynamoDB
 * Key-Value 和 Document 的数据库。
 * 比 MongoDB 安全性更高。
 * 比 MongoDB 更方便（AWS 完全托管的，将用户从底层基础结构中解放出来，并且仅通过远程端点与数据库进行交互，用户使用 DynamoDB 时无需担心操作问题或关注其他硬件规定）。
 * 费用比 MongoDB 昂贵。
 * 支持的语言和工具没有 MongoDB 多、生态比 MongoDB 小。  
   
-#### 图数据库
+# 图数据库
 用于解决复杂的多对多关系等问题（当关系数据库无法胜任其复杂性、性能要求或数据量扩展性时，同时值得留意的是图数据库支持 ACID 事务）。图数据库内置了许多图算法，以提供对图数据的高级分析功能。  
 常见应用场景：
 * 路径搜索、网络节点定位 - 比如最短路径是图计算中一类最常见的问题等：
@@ -95,7 +100,7 @@ MongoDB 的适用场景为：数据不是特别重要（例如通知，推送这
 其他参考：
 * [AWS Neptune](https://sides-share.s3.cn-north-1.amazonaws.com.cn/AWS+Webinar+2020/0225/Amazon+Neptune+Webinar-.pdf)
 
-#### 时序数据库
+# 时序数据库
 时序数据库 vs 关系型数据库？  
 当对时序数据库有一定了解后，可能会疑惑，虽然时序数据是非常好的结构化数据，但是关系数据库自上世纪 80 年代开始就支持时间戳数据类型，那么为什么不使用关系数据库处理时序数据，而要开发专门的时序数据库呢？  
 这要从关系数据库的存储引擎说起，传统关系数据库使用行存储引擎存储数据，通过 B+ 树来提升查询的性能。B+ 树是一种为读而优化的数据结构，数据写入时会引起 B+ 树分页，而分页会造成随机磁盘 IO，随机磁盘 IO 会大幅降低数据写入的性能。此外 B+ 树的压缩比也较低。  
@@ -108,9 +113,9 @@ MongoDB 的适用场景为：数据不是特别重要（例如通知，推送这
 
 以上转载自：https://www.ymatrix.cn/article/4  
 
-##### [In-memory indexing and the Time-Structured Merge Tree (TSM)](https://docs.influxdata.com/influxdb/v1/concepts/storage_engine/)
+### [In-memory indexing and the Time-Structured Merge Tree (TSM)](https://docs.influxdata.com/influxdb/v1/concepts/storage_engine/)
 
-#### 向量数据库
+# 向量数据库
 * ![](./向量数据库.jpeg)
 * ![](./向量数据库2.png)
 
@@ -137,7 +142,7 @@ MongoDB 的适用场景为：数据不是特别重要（例如通知，推送这
 
 以上 by ChatGPT  
 
-#### 列数据库
+# 列数据库
 [列数据库 - 维基百科](https://zh.m.wikipedia.org/zh-hans/%E5%88%97%E5%BC%8F%E6%95%B0%E6%8D%AE%E5%BA%93)  
 [列数据库在处理大量数据分析查询时表现较好，尤其是涉及聚合和统计分析的操作。](https://cloud.baidu.com/article/3031766)如果聚合有条件筛选时，性能可能会有所下降，但仍然通常优于行式数据库，特别是当筛选条件涉及的列数量相对较少时。但是对数据进行更新或删除操作时性能通常较差。  
 
@@ -230,7 +235,7 @@ https://aws.amazon.com/cn/nosql/columnar/
 
 <br/>
 
-### 数据仓库与普通数据库的区别
+# 数据仓库与普通数据库的区别
 * 数据库 (Database) 的特点是：
   * 相对复杂的表格结构，存储结构相对紧致，少冗余数据。
   * 读和写都有优化。
@@ -246,7 +251,7 @@ https://aws.amazon.com/cn/nosql/columnar/
 * https://www.zhihu.com/question/20623931/answer/750367153
 * https://www.modb.pro/db/383514
 
-### 其他
+## 其他
 数据量和性能的比较：当物理内存够用的时候，Redis > MongoDB > MySQL 。  
 当物理内存不够用的时候，Redis 和 MongoDB 都会使用虚拟内存。  
 MySQL 支持 join，MongoDB 没有 join（因为 MongoDB 这类数据库就是设计成单个数据记录是聚合的/Aggregation。MongoDB 中有一个 lookup 操作，可以做 join 查询，但是理想情况下，这个 lookup 操作应该不会经常使用，如果开发者需要经常使用它，那么开发者就使用了错误的数据库存储了，如果有相关联的数据，应该使用关系型数据库）（注意：前面仅针对旧版本 MongoDB，从版本 3.2 开始，MongoDB 已支持 left outer join）。  

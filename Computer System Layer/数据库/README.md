@@ -5,11 +5,10 @@
   * [InnoDB 原理](./InnoDB/README.md)
   * [重要：数据库相关系统设计、分库分表](../../Leetcode%20Practices/system%20design/数据库数据建模分库分表.md)
 * [NoSQL](./../../Leetcode%20Practices/system%20design/NoSQL.md)
-  * 文档数据库
-    * [Dynamo](./Dynamo/README.md)
-    * MongoDB
   * 键值数据库 | KV 数据库
-    * Dynamo
+    * [文档数据库](./../../Leetcode%20Practices/system%20design/NoSQL.md#文档数据库)
+      * [Dynamo](./Dynamo/README.md)
+      * [MongoDB](./../../Leetcode%20Practices/system%20design/NoSQL.md#MongoDB)
     * [Redis 基本功](./Redis/README.md)
     * RocksDB
     * Cassandra
