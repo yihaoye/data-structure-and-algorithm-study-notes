@@ -1,6 +1,8 @@
 # ElasticSearch
 该数据库引擎是基于跳表支持倒排索引（[Ref](https://stackoverflow.com/a/43203339/6481829)）。  
 
+ES 的设计是针对查询搜索的，对写的性能一般，应对 CRUD 就是 Create 性能可接受、Read 查询良好、Update 或 Delete 性能勉强（因为涉及之前的分词数据等，所以实际比如分词是通过标记删除来实现的）。ES 是为数据不经常变化的日志分析而设计的。  
+
 ![](./ElasticSearch%20Usage%20Case.gif)  
 
 ## 1. API

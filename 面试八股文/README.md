@@ -436,6 +436,7 @@
   * 带宽由物理介质（光纤电缆）、网络设备（路由器、交换机、网卡）、通信协议、环境条件（信号干扰与距离）、网络架构（拓扑结构、分段和汇聚）、ISP/骨干网提供的带宽、网络负载等因素决定，这些因素综合影响网络的最大数据传输能力。
 * [网络传播类型](https://support.biamp.com/General/Networking/Multicast_traffic_and_IGMP) - 单播、广播、[组播](https://cshihong.github.io/2018/02/12/IP%E7%BB%84%E6%92%AD%E5%9F%BA%E7%A1%80/)
   * ![](./ip_cast_types.png)
+* [蓝牙](https://zh.wikipedia.org/zh/%E8%97%8D%E7%89%99) - 是一種无线通讯技術標準，用來讓固定與行動裝置，在短距離間交換資料，以形成個人區域網絡（PAN）。其使用短波特高頻（UHF）無線電波，經由 2.4 至 2.485 GHz 的 ISM 頻段來進行通信。1994 年由電信商愛立信（Ericsson）發展出该技術。最初的設計是希望建立一個 RS-232 數據線的無線通訊替代版本。它能夠連結多個裝置，以克服同步的亦被干擾等問題。
 * [BGP](https://zhuanlan.zhihu.com/p/25433049)
 * [网速及信号传输](https://www.youtube.com/watch?v=7uWLEGahyW4)
 
