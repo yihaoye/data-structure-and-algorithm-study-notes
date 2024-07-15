@@ -112,7 +112,7 @@
 * [上下文 Context](https://draveness.me/golang/docs/part3-runtime/ch06-concurrency/golang-context/)
 * [Golang 的 select、defer、Context](https://github.com/yihaoye/go-example/blob/master/general-demo/README.md)
 * [什么是 Go Scheduler](https://golang.design/go-questions/sched/what-is/)
-* [GPM 是什么](https://golang.design/go-questions/sched/gpm/)
+* [GPM（或 GMP）模型](../Computer%20System%20Layer/并发编程模型.md#gmp-模型) - [更多资料](https://golang.design/go-questions/sched/gpm/)
 * goroutine 泄露 - 在应用程序中创建的 goroutine 没有正确地退出或释放资源，导致它们持续存在而不被使用，从而浪费了系统资源。为了避免 goroutine 泄露，需要确保在不再需要时正确退出 goroutine，并释放其占用的资源。这通常需要使用适当的控制机制，例如 context 包、sync 包中的 WaitGroup 或者通道来通知 goroutine 退出；[其余参考](https://alexstocks.github.io/html/lessons.html)
 * [Golang unsafe 包](https://juejin.cn/post/6844903453303504910)
 * Golang 字符型的实际类型 ![](./go-char.png)
