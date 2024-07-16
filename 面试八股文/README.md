@@ -290,6 +290,7 @@
     * Frequency Penalty：frequency penalty 是对下一个生成的 token 进行惩罚，这个惩罚和 token 在响应和提示中出现的次数成比例，frequency penalty 越高，某个词再次出现的可能性就越小，这个设置通过给重复数量多的 Token 设置更高的惩罚来减少响应中单词的重复。
     * Presence Penalty：presence penalty 也是对重复的 token 施加惩罚，但与 frequency penalty 不同的是，惩罚对于所有重复 token 都是相同的。出现两次的 token 和出现 10 次的 token 会受到相同的惩罚。此设置可防止模型在响应中过于频繁地生成重复的词。如果希望模型生成多样化或创造性的文本，可以设置更高的 presence penalty，如果希望模型生成更专注的内容，可以设置更低的 presence penalty。
 * 置信 - 用一个范围来对一个事情进行估计的方式称为区间估计，得出来的区间就是置信区间 (confidence interval)。估算出一个区间了，但是估算的准不准呢？准确度又有多大呢？把这个估算的区间的准确度/可信度称为置信度。比如说有 95% 的把握估计考试得分是 600-650，这里的置信区间就是 (600,650)，置信度就是 95%。一般置信度和置信区间是同向的，意思就是置信度和置信区间一般是相同趋势。当置信度很高时，置信区间也会很大；当置信区间很大时，置信度也会很高。[Ref](https://cloud.tencent.com/developer/article/1521732)
+* 语义网 - 通过给万维网上的文档（如: HTML 文档）添加能够被计算机所理解的语义（元数据），从而使整个互联网成为一个通用的信息交换媒介。语义万维网通过使用标准、置标语言和相关的处理工具来扩展万维网的能力。[语义网络（Semantic Network）](https://zh.wikipedia.org/wiki/%E8%AF%AD%E4%B9%89%E7%BD%91%E7%BB%9C)常常用作知识表示的一种形式，它其实是一种有向图，其中，顶点代表的是概念，而边则表示的是这些概念之间的语义关系，语义网络是机读型字典（machine-readable dictionary）的一种常见类型。
 
 ## 硬件与操作系统（Linux & bash）高频
 * [进程、线程、协程的区别](./../Computer%20System%20Layer/进程与线程.md)
