@@ -278,6 +278,9 @@ by ChatGPT
 # Debugging Workflow
 ![](./debugging-workflow.jpeg)  
 
+## 根本原因分析 RCA
+* [根本原因分析](https://aws.amazon.com/cn/what-is/root-cause-analysis/)  
+
 # Code Review
 ![](./code_review_pyramid.png)  
 
