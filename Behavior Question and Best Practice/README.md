@@ -305,6 +305,11 @@ by ChatGPT
 * [What is systems engineering](https://www.freecodecamp.org/news/what-is-systems-engineering/)
 * [系统工程 wiki](https://zh.wikipedia.org/zh-hans/%E7%B3%BB%E7%BB%9F%E5%B7%A5%E7%A8%8B)
 
+## 控制理论
+https://zh.wikipedia.org/wiki/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA  
+![](./控制理论.webp)  
+![](./控制理论2.webp)  
+
 # 例题
 <details>
 <summary>Behavioral Question Set</summary>
