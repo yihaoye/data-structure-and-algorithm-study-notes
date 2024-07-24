@@ -60,8 +60,9 @@
   * ([Go 示例](./PipelineFilters.go))
 * 互斥锁 | Mutex
   * ([Go 示例](./Mutex.go))
-* 工作池 | Worker Pool
+* 工作池（协程池）| Worker Pool
   * ([Go 示例](./WorkerPool.go))
+  * ([Go 示例 2](./WorkerPool2.go))
 * 定时器与超时 | Tick Timeout
   * ([Go 示例](./TickTimeout.go))
 
