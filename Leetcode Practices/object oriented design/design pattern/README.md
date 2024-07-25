@@ -65,6 +65,7 @@
   * ([Go 示例 2](./WorkerPool2.go))
 * 定时器与超时 | Tick Timeout
   * ([Go 示例](./TickTimeout.go))
+  * ([Go 示例 2](./TickTimeout2.go))
 
 ## Web 型模式
 * 中间件 | Middleware
