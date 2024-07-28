@@ -182,17 +182,6 @@ Books:
 # [个人品牌](https://wiki.mbalib.com/wiki/%E4%B8%AA%E4%BA%BA%E5%93%81%E7%89%8C)
 
 # 软技能
-* [搜索技术](https://www.youtube.com/watch?v=tiN6T1LewmQ)
-* [Improving Communication Skills](https://www.coursera.org/learn/wharton-communication-skills)
-* [Creative Thinking: Techniques and Tools for Success](https://www.coursera.org/learn/creative-thinking-techniques-and-tools-for-success)
-* [Communication For Everyone Specialization](https://www.coursera.org/specializations/communicationforeveryone)
-* [Learning How to Learn: Powerful mental tools to help you master tough subjects](https://www.coursera.org/learn/learning-how-to-learn)
-* [People and Soft Skills for Professional and Personal Success](https://www.coursera.org/specializations/people-and-soft-skills-for-professional-success)
-* [Improve Your English Communication Skills Specialization](https://www.coursera.org/specializations/improve-english)
-  * [1 on 1](https://www.atlassian.com/software/confluence/templates/1-on-1-meeting)
-* [Teamwork Skills: Communicating Effectively in Groups](https://www.coursera.org/learn/teamwork-skills-effective-communication)
-* [Developing Interpersonal Skills](https://www.coursera.org/learn/interpersonal-skills)
-* [工作中的技术深度](https://mp.weixin.qq.com/s/wImyzpbGHV_zO9FB3omooA)
 * [述职法](https://www.youtube.com/watch?v=b0kYEpjenL0) - 主要为年、季度述职，因为平常述职对实际 KPI 作用较低
   * SS 述职法：So What, Same Page
     * 强调效果而非任务流水账（其中效果应该与企业、组织当前关注方向匹配）
@@ -218,6 +207,18 @@ Books:
   4. 加速（Accelerate），在前三步的基础上加快迭代（注意是迭代而不是速度，迭代是一个循环，通过这个循环可以不停的验证当前推进的方向，并且持续的进行改进和优化）
   5. 自动化（Automate），最后一步是自动化，即通过技术手段，将系统中的重复性和标准化操作自动化。这不仅可以提高效率，还可以减少人为错误
     * 在期待自动化的优点前需先知道自动化的弊端有三个，分别是 1）高昂的成本；2）极高的出错几率；3）妨碍引入新特性
+* [凤凰项目 - 三步工作法](https://yummyisminer.xyz/blog/posts/d698d359/)
+* [搜索技术](https://www.youtube.com/watch?v=tiN6T1LewmQ)
+* [Improving Communication Skills](https://www.coursera.org/learn/wharton-communication-skills)
+* [Creative Thinking: Techniques and Tools for Success](https://www.coursera.org/learn/creative-thinking-techniques-and-tools-for-success)
+* [Communication For Everyone Specialization](https://www.coursera.org/specializations/communicationforeveryone)
+* [Learning How to Learn: Powerful mental tools to help you master tough subjects](https://www.coursera.org/learn/learning-how-to-learn)
+* [People and Soft Skills for Professional and Personal Success](https://www.coursera.org/specializations/people-and-soft-skills-for-professional-success)
+* [Improve Your English Communication Skills Specialization](https://www.coursera.org/specializations/improve-english)
+  * [1 on 1](https://www.atlassian.com/software/confluence/templates/1-on-1-meeting)
+* [Teamwork Skills: Communicating Effectively in Groups](https://www.coursera.org/learn/teamwork-skills-effective-communication)
+* [Developing Interpersonal Skills](https://www.coursera.org/learn/interpersonal-skills)
+* [工作中的技术深度](https://mp.weixin.qq.com/s/wImyzpbGHV_zO9FB3omooA)
 
 
 ## 工程师高阶与低阶的区别
