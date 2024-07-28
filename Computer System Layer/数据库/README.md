@@ -33,6 +33,9 @@
 * [数据库设计模式](./数据库设计模式.md)
 * 数据库常见组件：Parser、Binder、Planner、Optimizer、Execution、Storage
 
+## 数据库扩展
+![](./database-scaling-cheatsheet.gif)  
+
 ## 数据库相关的数据结构
 ![](./Data%20Structures%20that%20Power%20Database.PNG)  
 
