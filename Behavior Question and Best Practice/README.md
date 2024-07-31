@@ -48,7 +48,9 @@ Keep at least 3 project examples/stories which better to be large scale.
   * [Leadership Principles](https://www.amazon.jobs/en/principles)
   * 3 Main Product interest Amazon: AWS、Digital Product、Retailer
 * Stripe
-  * [Search and Quick Use, Trace and Real Problem Solve Skill](https://medium.com/@SantalTech/no-leetcode-the-stripe-interview-experience-cf1b29e6f55d)  
+  * [Search and Quick Use, Trace and Real Problem Solve Skill](https://medium.com/@SantalTech/no-leetcode-the-stripe-interview-experience-cf1b29e6f55d)
+* Netflix
+  * [Context, not Control](https://www.linkedin.com/pulse/netflixs-context-control-how-does-work-steve-urban/)
 
 ## ChatGPT 列出的 team leader 最重要的 leadership skills
 * Technical expertise
