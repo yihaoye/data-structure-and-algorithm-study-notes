@@ -3209,6 +3209,8 @@ AB 实验的一个特点是通常在大型网络产品、平台、企业里才�
 * 命中后的记录与分析
 * 在实验之后全量其中一个实验组
 
+[Netflix AB 实验应用](https://netflixtechblog.com/its-all-a-bout-testing-the-netflix-experimentation-platform-4e1ca458c15)
+
 </details>
 
 
