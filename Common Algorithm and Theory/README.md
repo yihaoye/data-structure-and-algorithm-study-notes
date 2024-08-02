@@ -112,9 +112,8 @@ This personal Blog contains explanation and **Java library/template implementati
       - bcrypt、scrypt、Argon2 (不可逆，不仅可以用于数据完整性校验，还可以用于密码存储和验证。它们通常包含一些安全特性，如盐和工作因子，以提高抵抗暴力破解和彩虹表攻击的能力)
       - 数字签名算法 | Digital Signature Algorithm (DSA) ([Wiki](https://zh.wikipedia.org/wiki/%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E7%AE%97%E6%B3%95)，不可逆。DSA 算法包含了四种操作：密钥生成、密钥分发、签名、验证。数字签名算法可以用于身份验证，发送方使用自己的私钥对数据进行签名，接收方使用发送方的公钥对签名进行验证)
         - 椭圆曲线数字签名算法 | ECDSA (不可逆)
-    - 纠错码 | Correcting Code ([Wiki](https://zh.m.wikipedia.org/wiki/%E7%BA%A0%E9%94%99%E7%A0%81)；vs 校验和：纠错码不仅可以检测错误，还能在一定程度上纠正错误，通常计算更复杂，需要更多的冗余数据，用于对数据完整性要求较高的场景如存储系统、卫星通信等)
+    - 纠错码 | Correcting Code ([Wiki](https://zh.m.wikipedia.org/wiki/%E7%BA%A0%E9%94%99%E7%A0%81)，其中[纠删码](https://en.wikipedia.org/wiki/Erasure_code)是其子集；vs 校验和：纠错码不仅可以检测错误，还能在一定程度上纠正错误，通常计算更复杂，需要更多的冗余数据，用于对数据完整性要求较高的场景如存储系统、卫星通信等)
       - 里德-所罗门码 | RS Codes ([Wiki](https://zh.m.wikipedia.org/zh-hans/%E9%87%8C%E5%BE%B7-%E6%89%80%E7%BD%97%E9%97%A8%E7%A0%81))
-      - 纠删码 | Erasure Code ([Wiki](https://en.wikipedia.org/wiki/Erasure_code))
     - 均匀哈希 | Uniform Hash
       - MurmurHash3 (不可逆，是一种非加密哈希函数，有速度快、均匀性好、易于使用等优点，常用于哈希表、布隆过滤器等数据结构中，以提高性能和减少哈希碰撞；[Code](https://commons.apache.org/proper/commons-codec/jacoco/org.apache.commons.codec.digest/MurmurHash3.java.html))
       - xxHash (同上)
