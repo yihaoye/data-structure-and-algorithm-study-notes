@@ -291,6 +291,8 @@ API 网关是位于客户端与后端服务集之间的大门 - API 管理工具
 * 资源池管理：IaaS 提供商创建资源池，其中包含一组虚拟资源，如 CPU、内存、存储容量等。这些资源池可用于分配给客户。
 * 请求和分配：当客户发送资源请求时，IaaS 提供商会根据客户的需求动态分配资源。这通常包括指定所需的虚拟机规格（例如，CPU 核数、内存大小、存储容量）和其他配置选项。
 
+![](./K8S-design-pattern.gif)
+
 ### [服务注册与服务发现](https://docshome.gitbook.io/microservices/4-service-discovery)
 ![](./service-register-discovery.jpeg)  
 现成方案：Etcd（共享配置、服务发现和的调度协调）、ZooKeeper（数据发布/订阅、负载均衡、命名服务、分布式协调/通知、集群管理、Master 选举、分布式锁和分布式队列等功能）。  
@@ -3187,6 +3189,8 @@ Ref：
 ![](./dns-system.png)  
 
 DNS 根服务器采用分布式架构，并通过任播和多层缓存、高性能硬件来应对每天的海量请求。  
+
+![](./CDN.gif)  
 
 </details>
 
