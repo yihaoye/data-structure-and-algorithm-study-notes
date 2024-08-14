@@ -236,6 +236,7 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
     * 级联故障。一个组件小问题引发其它组件级联故障。
   * 人为错误
     * 系统总是在更新和修改，运维过程中就配置错误是导致服务中断的首要因数。
+  * Fault Tolerant ![](./Fault-Tolerant%20System%20Design.jpeg)
 * **Availability** - the time a system remains operational to perform its required function in a specific period. (相关组件与手段：负载均衡、故障监控与 failover/故障转移、数据备份、无主分布式)
   * *Reliability Vs Availability - If a system is reliable, it is available. However, if it is available, it is not necessarily reliable. high reliability contributes to high availability, but it is possible to achieve a high availability even with an unreliable product by minimizing repair time and ensuring that spares are always available when they are needed.*
   * 可用性（Availability）= MTBF / (MTBF + MTTR) * 100% ![](./availability-9.png)
