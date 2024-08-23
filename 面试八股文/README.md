@@ -567,7 +567,7 @@
 * [SSL 证书劫持](https://www.zhihu.com/question/22795329/answer/138770468) - [Ref](https://www.invicti.com/learn/mitm-ssl-hijacking/)
 * LLM 提示注入 - 是一种用于劫持语言模型输出的技术。当不可信的文本作为提示的一部分使用时，就会发生这种情况。[Ref](https://learnprompting.org/docs/prompt_hacking/injection)
   * [OWASP Top 10 for LLM](https://owasp.org/www-project-top-10-for-large-language-model-applications/)
-  * 防御方案 - [LLM Guard](https://github.com/protectai/llm-guard)、[Prompt Guard](http://www.mfbz.cn/a/870426.html)
+  * 防御方案 - [LLM Guard](https://github.com/protectai/llm-guard)、[Prompt Guard](http://www.mfbz.cn/a/870426.html) - LLM Guard 为大语言模型的输入和输出内容提供了全面的评估和保护功能，包括清理、有害语言和数据泄漏检测以及防止提示注入和越狱攻击。其开发目的很简单：尽管大语言模型可以提高员工生产力，但企业对大语言模型在生产环境的部署始终疑虑重重，因为大语言模型存在数据泄露、提示攻击、分析偏见、错误信息（AI 幻觉）等重大安全风险，而且这些AI模型普遍缺乏控制和可观察性。
 * 搜寻引擎最佳化（SEO）- 是透过了解搜寻引擎的运作规则来调整网站，以及提高目的网站在有关搜寻引擎内排名的方式。[黑帽 SEO](https://zhuanlan.zhihu.com/p/93168290)
 * [内容农场](https://zh.wikipedia.org/zh-hans/%E5%85%A7%E5%AE%B9%E8%BE%B2%E5%A0%B4) - 指为了牟取广告费等商业利益或出于控制舆论、带风向等特殊目的，快速生产大量网路文章来吸引流量的网站，通常，其也利用搜索引擎来达到吸睛点击；农场文则是此类网站制造的文章。
   * 常见特征：大量剽窃、二手转载、垃圾劣质机造内容、免洗网站、社群导流、夸大标题、匿名作者、广告行销、恶意程式。
