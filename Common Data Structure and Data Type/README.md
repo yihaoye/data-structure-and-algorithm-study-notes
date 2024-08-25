@@ -97,6 +97,8 @@
   - 多层图 | Multilayer Graph (与层次化图 Hierarchical Graph 有一些区别，它包含多个可能相互关联的图层、层与层之间可能没有严格的层次关系、每层可能代表同一组实体的不同关系或属性)
     - [分层可导航小世界图 | Hierarchical Navigable Small World Graph](../Common%20Algorithm%20and%20Theory/HNSW.md) (结构更接近 Multilayer Graph 而非典型的 Hierarchical Graph。原因：它包含多个层，每层都是一个完整的图、层与层之间不存在严格的父子关系、较高层是较低层的稀疏表示而不是更高级别的抽象)
     - 多维网络 | Multidimensional Network (或称 Multiplex Network 等等，[Wiki](https://en.wikipedia.org/wiki/Multidimensional_network))
+- 简洁数据结构 | Succinct ([Ref 1](https://www.jianshu.com/p/36781efac8e9))
+  - 小波树 | Wavelet Tree ([Ref 1](https://carl-zk.github.io/blog/2020/09/16/Wavelet-Tree/)、[Ref 2](https://www.modb.pro/db/162480))
 - [可持久化数据结构 | Persistent Data Structure](https://oi-wiki.org/ds/persistent/) (总是可以保留每一个历史版本，并且支持操作的不可变特性 immutable)
   
 以上有些数据结构可能只有 Java 提供了官方实现 [more](https://www.zhihu.com/question/325814788) ，以上总结未完待续...  
