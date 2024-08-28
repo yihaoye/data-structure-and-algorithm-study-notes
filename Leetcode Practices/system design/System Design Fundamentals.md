@@ -98,7 +98,7 @@ https://www.algoexpert.io/systems/fundamentals
 * API 任意细节的设计都要谨慎（比如参数的顺序），因为依赖该 API 的用户增长后，更改和删除 API 将变得困难、麻烦，所以一些大企业（如 Google）对 API 设计会做许多 review、检查
 * 背景知识：HTTP、JSON、YAML、ACL（Access-Control List）
 * 关键知识：
-  * [Pagination](https://www.youtube.com/watch?v=poqTHxtDXwU&list=PLl-K7zZEsYLluG5MCVEzXAQ7ACZBCuZgZ&index=8)
+  * [Pagination](https://www.youtube.com/watch?v=poqTHxtDXwU&list=PLl-K7zZEsYLluG5MCVEzXAQ7ACZBCuZgZ&index=8) ![](./api-pagination.jpeg)
   * CRUD Operations
 * 考核过程
   * 询问关于系统的哪个功能、部分，询问系统规模，询问 API 消费细节
