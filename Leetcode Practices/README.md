@@ -119,7 +119,7 @@
 - [x] 157	Read N Characters Given Read4		
 - [ ] 158	Read N Characters Given Read4 II - Call multiple times		
 - [x] 68	Text Justification		
-- [ ] 65	Valid Number		
+- [x] 65	Valid Number		
 ### Substring			
 - [x] 76	Minimum Window Substring		                                        Sliding Window
 - [ ] 30	Substring with Concatenation of All Words		                        Sliding Window
@@ -564,7 +564,7 @@
 - [x] 60	Permutation Sequence		
 - [x] 62	Unique Paths		
 - [x] 64	Minimum Path Sum		
-- [ ] 65	Valid Number		
+- [x] 65	Valid Number		
 - [x] 66	Plus One		
 - [x] 67	Add Binary		
 - [x] 68	Text Justification		
