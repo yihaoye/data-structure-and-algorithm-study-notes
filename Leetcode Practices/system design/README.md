@@ -2881,7 +2881,7 @@ ref: https://swoopnow.com/how-does-two-factor-authentication-work/
 https://blog.bytebytego.com/p/password-session-cookie-token-jwt  
 
 ![](./two-factor-auth.webp)  
-![](./cookie-and-session.webp)  
+![](./cookie-vs-session.gif)  
 ![](./cookies-and-sessions.jpeg)  
 
 1. 网站或应用程序提示用户登录。
