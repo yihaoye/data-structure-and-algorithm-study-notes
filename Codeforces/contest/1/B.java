@@ -32,7 +32,7 @@ import java.io.*;
 import java.util.*;
 import java.util.regex.*;
 
-public class Solution {
+public class B {
     private static BufferedReader reader;
     private static PrintWriter writer;
     private static Pattern pattern = Pattern.compile("R\\d+C\\d+");
