@@ -32,7 +32,7 @@ import java.io.*;
 import java.util.*;
 import java.util.regex.*;
 
-public class B {
+public class B_Spreadsheets {
     private static BufferedReader reader;
     private static PrintWriter writer;
     private static Pattern pattern = Pattern.compile("R\\d+C\\d+");

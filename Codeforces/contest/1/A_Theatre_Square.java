@@ -24,7 +24,7 @@ output
 import java.io.*;
 import java.util.*;
 
-public class A {
+public class A_Theatre_Square {
     private static BufferedReader reader;
     private static PrintWriter writer;
     private static StringTokenizer st;

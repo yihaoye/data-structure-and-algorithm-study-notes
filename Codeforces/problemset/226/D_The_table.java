@@ -1,4 +1,5 @@
 /*
+https://codeforces.com/problemset/problem/226/D
 Harry Potter has a difficult homework. Given a rectangular table, consisting of n × m cells. Each cell of the table contains the integer. Harry knows how to use two spells: the first spell change the sign of the integers in the selected row, the second — in the selected column. Harry's task is to make non-negative the sum of the numbers in each row and each column using these spells.
 
 Alone, the boy can not cope. Help the young magician!
