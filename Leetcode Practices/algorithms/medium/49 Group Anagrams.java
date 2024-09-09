@@ -20,6 +20,37 @@ The order of your output does not matter.
 
 // My Solution:
 class Solution {
+    long mod = (long)1e9 + 7;
+
+    public List<List<String>> groupAnagrams(String[] strs) {
+        // hashcode + hashmap
+        Map<Long, Integer> map = new HashMap<>(); // hashcode -> res index
+        List<List<String>> res = new ArrayList<>();
+        for (String str : strs) {
+            long hashcode = hash(str);
+            if (!map.containsKey(hashcode)) {
+                res.add(new ArrayList<>());
+                map.put(hashcode, res.size() - 1);
+            }
+            int index = map.get(hashcode);
+            res.get(index).add(str);
+        }
+        return res;
+    }
+
+    public long hash(String str) {
+        long code = 0;
+        int[] map = new int[26];
+        for (char c : str.toCharArray()) map[c - 'a']++;
+        for (int d : map) code = (code * 31 % mod + d) % mod;
+        return code;
+    }
+}
+
+
+
+// My Solution:
+class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
         List<List<String>> res = new ArrayList<List<String>>();
         Map<String, List<String>> map = new HashMap<String, List<String>>();
