@@ -820,6 +820,26 @@ COMMIT;
 ```  
 上面这段 SQL 的 [Java 代码](./../../../Tool%20Sets/JDBC.java)。  
 
+间隙锁（Gap Lock）  
+准备工作：确保使用 InnoDB 引擎并设置隔离级别为 REPEATABLE READ  
+```sql
+SET SESSION TRANSACTION ISOLATION LEVEL REPEATABLE READ;
+```
+间隙锁锁定索引记录之间的间隙，防止其他事务在这些间隙中插入新记录。
+```sql
+START TRANSACTION;
+SELECT * FROM employees WHERE id BETWEEN 1 AND 10 FOR UPDATE;
+-- UPDATE XXX
+COMMIT
+```  
+即使没有匹配的记录，这个查询也会锁定 id 1 到 10 之间的间隙。  
+此时事务 2（如下）会被阻塞，直到事务 1 提交或回滚。  
+```sql
+INSERT INTO employees VALUES (3, 'David', 55000);
+```  
+间隙锁防止其他事务在被锁定的范围内插入新记录，即使这个范围内当前没有匹配的记录。这有效地防止了幻读问题。  
+临键锁（Next-Key Lock）则更进一步，不仅锁定间隙，还锁定实际的记录。这提供了更强的一致性保证，但也可能导致更多的锁竞争。  
+
 乐观锁方案：每次获取商品时，不对该商品加锁。在更新数据的时候需要比较程序中的库存量与数据库中的库存量是否相等，如果相等则进行更新，反之程序重新获取库存量，再次进行比较，直到两个库存量的数值相等才进行数据更新。乐观锁适合读取频繁的场景。  
 ```sql
 /* 不加锁获取 id=1 的商品对象 */
