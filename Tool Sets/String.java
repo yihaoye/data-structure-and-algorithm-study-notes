@@ -47,3 +47,11 @@ Character.isLowerCase(c);
 Character.toUpperCase(c);
 Character.toLowerCase(c);
 Character.toString(c); // char => String
+
+
+
+// 构建 N 个相同字符的字符串
+int n = 10;
+char[] chars = new char[n];
+Arrays.fill(chars, '-');
+String dashes = new String(chars); // "----------"
