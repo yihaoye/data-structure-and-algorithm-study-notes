@@ -51,7 +51,5 @@ Character.toString(c); // char => String
 
 
 // 构建 N 个相同字符的字符串
-int n = 10;
-char[] chars = new char[n];
-Arrays.fill(chars, '-');
+char[] chars = new char[10]; Arrays.fill(chars, '-');
 String dashes = new String(chars); // "----------"
