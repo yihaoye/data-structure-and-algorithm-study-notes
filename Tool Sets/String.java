@@ -61,3 +61,9 @@ String dashes = new String(chars); // "----------"
 StringBuilder strB = new StringBuilder(str1);
 strB.setCharAt(0, 'A');
 String str2 = strB.toString();
+
+
+
+// 字符串转数字
+int num = 5;
+char ch = (char) (num + '0'); // '5'
