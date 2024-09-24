@@ -16,7 +16,7 @@
 * [工具集 | Tool Sets](./Tool%20Sets/README.md) (常用编码逻辑工具集查询手册，包括一些 Java 语言实例解析、非 Java 语言内置但是重要的数学工具等等)
 * [算法及理论 | Common Algorithm & Theory](./Common%20Algorithm%20and%20Theory/README.md)
 * [数据结构、数据类型及其实现 | Common Data Structure & Data Type & Implementation](./Common%20Data%20Structure%20and%20Data%20Type/README.md) (包括并发相关的数据结构的详解)
-* [计算机数学 | Computer Science Maths](./Computer%20Science%20Maths/README.md) (包括理论信息学如 [P/NP 问题](./Computer%20Science%20Maths/P%20vs%20NP%20vs%20NPC.md)，基础数学如[数学归纳法 | Mathematical Induction](./Computer%20Science%20Maths/Mathematical%20Induction.md)、[排列组合 ｜ Combinatorics](./Computer%20Science%20Maths/Combinatorics.md)，高等数学以及算法常用数学工具、ACM 数论等等)
+* [计算机数学 | Computer Science Maths](./Computer%20Science%20Maths/README.md) (包括理论信息学如 [P/NP 问题](./Computer%20Science%20Maths/P%20vs%20NP%20vs%20NPC.md)，基础数学如[数学归纳法 | Mathematical Induction](./Computer%20Science%20Maths/Mathematical%20Induction.md)、[排列组合 | Combinatorics](./Computer%20Science%20Maths/Combinatorics.md)，高等数学以及算法常用数学工具、ACM 数论等等)
 * [计算机论文 | Computer Science Paper](https://www.youtube.com/watch?v=_kynGl5hr9U)
 * 系统工程实践及理论相关 | System Engineering & Theory
   * [面向对象设计及函数式编程 | Object Oriented Design and Functional Programming](./Leetcode%20Practices/object%20oriented%20design/README.md)
