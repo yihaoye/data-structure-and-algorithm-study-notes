@@ -379,6 +379,7 @@
 * [在使用 Docker 技术的产品中如何监控其运行](https://www.modb.pro/db/404626)
 
 ## 网络高频
+* 基本概念：[拓扑、硬件与分类](./network1.jpeg)、[OSI 模型](./network2.jpeg)、[协议与安全](./network3.jpeg)、[NAT 与云](./network4.jpeg)
 * [计算机网络面试突击](https://juejin.cn/post/6932001161532669960)
   * [RFC1180 A TCP/IP Tutorial](https://datatracker.ietf.org/doc/html/rfc1180)
 * [深入理解 Port（端口）](https://zhuanlan.zhihu.com/p/225777212)
@@ -510,6 +511,9 @@
      - 本地回环：::1
      - IPv4 映射地址：::ffff:192.0.2.1
 * IPv6 中的端口使用 - IPv6 系统中同样使用端口，端口号的范围和使用方式与 IPv4 相同（0-65535），通常表示为 `[IPv6地址]:端口`，如 `[2001:db8::1]:80`，注意 IPv6 地址需要用方括号括起来，以区分地址和端口
+* 光纤为什么取代铜线 - 光与电信号的速度理论上是一样的，因此优势主要不是在这部分
+  * 带宽容量：光纤通信的典型工作波长在红外线范围（约 100-400 THz），而铜线的频率范围通常在 MHz 到 GHz 级别（如电话线一般在 1 MHz 以下，光纤的频率则远远超过）。更大的频率范围意味着光纤可以支持更高的带宽，因此可以同时传输更多的数据
+  * 信号衰减与抗干扰：均比传统电话线/铜线强，因为铜线长距离传输电时会因电阻导致信号衰减，且电信号易受电磁干扰
 
 ## [安全高频](https://tldrsec.com/)
 * [安全模型](https://en.wikipedia.org/wiki/Security_modes)
