@@ -309,6 +309,8 @@
 * [Linux for Programmers](https://www.youtube.com/watch?v=ebHX9c75H8I&list=PLzMcBGfZo4-nUIIMsz040W_X-03QH5c5h)
   * `cat`、`rm`、`cd`、`mv`、`cp`
   * `ps`、`top`、`kill`
+    * 其中 kill 主要用途是发送信号到进程，标准的 Unix/Linux 信号主要关注进程的生命周期管理和一些基本的系统事件通知，而不是用于传递复杂的数据或函数参数。[Linux 信号机制](https://ty-chen.github.io/linux-kernel-signal/)
+    * 对于更复杂的进程间通信需求，包括传递类似函数参数的数据，Unix/Linux 系统提供了其他机制如：管道和有名管道，消息队列，信号，共享内存和信号量，套接字
   * `ls -l`、`chmod` (permission)
   * 网络
     * `ssh` (用于远程登录到其他计算机，提供了安全的加密通信。可以在终端中运行远程命令)、`ssh-keygen`、`scp` (用于通过SSH在本地计算机和远程计算机之间复制文件。可以实现安全的文件传输)、`curl` (可发送 HTTP/HTTPS、SFTP、FTP 等协议的网络请求)、`wget` (用于从网络下载文件)
