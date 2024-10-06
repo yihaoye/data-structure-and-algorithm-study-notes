@@ -50,6 +50,56 @@ At most 104 calls will be made to move.
 
 
 
+// My Solution with optimization:
+class SnakeGame {
+    Deque<int[]> snake = new LinkedList<>(), foods = new LinkedList<>();
+    Set<Integer> snakeBodySet = new HashSet<>(); // optimize part, int[0] * max + int[1]
+    int max = 10000, width, height;
+    Map<String, int[]> dirMap = new HashMap<>();
+
+    public SnakeGame(int width, int height, int[][] food) {
+        // metrix (init with food assign 1, snake body assign -1) + deque (snake body index in metrix)
+        this.width = width;
+        this.height = height;
+
+        for (int[] fIdx : food) foods.offerLast(fIdx);
+        snake.offerFirst(new int[]{0, 0});
+        snakeBodySet.add(arrHash(new int[]{0, 0}));
+
+        dirMap.put("U", new int[]{-1, 0});
+        dirMap.put("D", new int[]{1, 0});
+        dirMap.put("L", new int[]{0, -1});
+        dirMap.put("R", new int[]{0, 1});
+    }
+    
+    public int move(String direction) { // O(1)
+        int[] curDir = dirMap.get(direction); int[] curFood = foods.peekFirst();
+        int[] lastHead = snake.peekFirst();
+        int[] nextHead = new int[]{lastHead[0] + curDir[0], lastHead[1] + curDir[1]};
+        if (nextHead[0] < 0 || nextHead[1] < 0 || nextHead[0] >= this.height || nextHead[1] >= this.width) {
+            return -1;
+        }
+        if (curFood == null || (nextHead[0] != curFood[0] || nextHead[1] != curFood[1])) { // new pos is not cur food
+            snakeBodySet.remove(arrHash(snake.pollLast()));
+        }
+        if (curFood != null && nextHead[0] == curFood[0] && nextHead[1] == curFood[1]) { // new pos is cur food and foods list is not empty
+            foods.pollFirst();
+        }
+        if (!snakeBodySet.add(arrHash(nextHead))) { // check last, since allow snake head move to tail
+            return -1;
+        }
+        // success move
+        snake.offerFirst(nextHead);
+        return snake.size() - 1;
+    }
+
+    public int arrHash(int[] arr) {
+        return arr[0] * max + arr[1];
+    }
+}
+
+
+
 // My Solution:
 class SnakeGame {
     Deque<int[]> snake;
@@ -76,7 +126,7 @@ class SnakeGame {
         dirMap.put("R", new int[]{0, 1});
     }
     
-    public int move(String direction) {
+    public int move(String direction) { // O(M), M is the length of snake
         int[] curDir = dirMap.get(direction);
         int[] snakeHead = snake.peekFirst();
         int[] curFood = foods.peekFirst();
