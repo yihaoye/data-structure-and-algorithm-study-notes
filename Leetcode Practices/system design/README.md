@@ -2213,6 +2213,9 @@ URL Frontier 主要是存储一堆待访问的 URL。它有 2 个接口：
 
 相关参考方案：[Web Crawler Detector](./example%20questions/Web%20Crawler%20Detector.md)  
 
+### 设计 Recursive Image Fetching
+TBC...  
+
 </details>
 
 
