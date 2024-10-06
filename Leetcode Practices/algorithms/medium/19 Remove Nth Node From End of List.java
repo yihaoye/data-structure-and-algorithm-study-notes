@@ -17,7 +17,7 @@ Could you do this in one pass?
 
 
 
-// Other's Solution (two pointers - slow and fast):
+// Other's Solution (two pointers - sliding window):
 /**
  * Definition for singly-linked list.
  * public class ListNode {
@@ -28,21 +28,20 @@ Could you do this in one pass?
  */
 class Solution {
     public ListNode removeNthFromEnd(ListNode head, int n) {
+        // O(N) Time, O(1) Space
         ListNode start = new ListNode(0);
-        ListNode slow = start, fast = start;
-        slow.next = head;
+        ListNode l = start, r = start;
+        l.next = head;
 
-        //Move fast in front so that the gap between slow and fast becomes n
-        for(int i=1; i<=n+1; i++)   {
-            fast = fast.next;
+        // Move r in front so that the gap between l and r becomes n
+        for (int i=1; i<=n+1; i++) r = r.next;
+        // Move r to the end, maintaining the n length gap (window)
+        while (r != null) {
+            l = l.next;
+            r = r.next;
         }
-        //Move fast to the end, maintaining the gap
-        while(fast != null) {
-            slow = slow.next;
-            fast = fast.next;
-        }
-        //Skip the desired node
-        slow.next = slow.next.next;
+        // Skip the desired node
+        l.next = l.next.next;
         return start.next;
     }
 }
