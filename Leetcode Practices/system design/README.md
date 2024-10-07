@@ -2545,6 +2545,24 @@ ETL 系统其实与 cronjob / batch process 系统有一些类似。
 </details>
 
 
+## 设计收藏及其分享（YouTube Playlist）
+<details>
+<summary>details</summary>
+
+Design a site that allows users to pick a few colors and save it as a list. The following features were expected to be built - save a color, delete a color, share colors list with a bunch of users through email, access control to allow other users to view your favorite color list. More focus was given on building the actual functionality and the scale of the system.
+
+* 一个关系数据库存储可收藏的目标对象，并生成对象 ID
+* 一个关系数据库存储用户及其元信息（包括邮件地址，邮件地址可设为 UNIQUE 约束字段）
+* 一个数据库表（可使用 KV NoSQL）使得每个用户可以创建多个 list（包括 favorite）且 list 本身有个属性定义其为公开或私有
+* 一个关系数据库表代表访问权限，指定哪些私有 list 的可访问用户（一对一设计），如果 list 本身是公开的则代码逻辑默认不检查访问权限
+* 基于用户邮件地址的邮件发送功能（消息队列及其消费推送服务）
+
+其他
+* 上传目标对象（比如这里的 color 或 Youtube 的视频文件）的功能
+
+</details>
+
+
 ## 设计点赞系统（Facebook、TikTok、Twitter、Youtube Like）
 <details>
 <summary>details</summary>
