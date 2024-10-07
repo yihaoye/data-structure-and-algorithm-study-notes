@@ -158,6 +158,7 @@ Books:
   * Restrict Pointers Use
   * Be Pedantic
   * Test Test Test
+* 软件生命周期 - software development life cycle, how will you lead a project from end to end, how will you split the work amongst your peers etc.
 * [约定式提交](https://www.conventionalcommits.org/zh-hans/v1.0.0/) - 包括 git 分支名、commit 内容格式等等
 
 # 自我介绍
