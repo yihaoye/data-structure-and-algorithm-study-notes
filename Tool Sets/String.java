@@ -50,6 +50,11 @@ Character.toString(c); // char => String
 
 
 
+// 处理字符串数字
+// incrDigitByIndex("123", 1, 1) => "133", incrDigitByIndex("123", 2, -1) => "122", 实现参考 Leetcode Q752
+
+
+
 // 构建 N 个相同字符的字符串
 char[] chars = new char[10];
 Arrays.fill(chars, '-');

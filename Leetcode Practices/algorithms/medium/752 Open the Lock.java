@@ -65,9 +65,9 @@ class Solution {
                 if (stop.contains(last)) continue;
                 if (last.equals(target)) return steps;
                 for (int i=0; i<numLen; i++) {
-                    String next1 = incrByIndex(last, i, 1);
+                    String next1 = incrDigitByIndex(last, i, 1);
                     if (visited.add(next1)) nextQueue.offer(next1);
-                    String next2 = incrByIndex(last, i, -1);
+                    String next2 = incrDigitByIndex(last, i, -1);
                     if (visited.add(next2)) nextQueue.offer(next2);
                 }
             }
@@ -78,7 +78,7 @@ class Solution {
         return -1;
     }
 
-    public String incrByIndex(String str, int i, int inc) {
+    public String incrDigitByIndex(String str, int i, int inc) {
         StringBuilder res = new StringBuilder(str);
         int digit = res.charAt(i) - '0' + 10;
         char c = (char) ((digit + inc) % 10 + '0');
