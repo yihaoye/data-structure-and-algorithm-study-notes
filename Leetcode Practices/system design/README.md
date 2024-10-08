@@ -2545,10 +2545,27 @@ ETL 系统其实与 cronjob / batch process 系统有一些类似。
 </details>
 
 
-## 设计收藏及其分享（YouTube Playlist）
+## 设计权限系统
 <details>
 <summary>details</summary>
 
+权限系统分为两大类：功能权限和数据权限。  
+* 功能权限：用户是否能打开某一个网页，是否能点击编辑按钮等。
+* 数据权限：用户可以使用的数据范围。
+
+**ACL：Access Control List，访问控制列表**  
+起初是被设计出来用于控制路由器接口的指令列表。这些列表用来告诉路由器，哪些数据包可以被接受、哪些数据包需要被拒绝。  
+现在 ACL 被设计为一种最简单的功能权限控制模型，在不同的场景下会有不同的实现。  
+
+模型（白名单）：最简单的数据库表构建。
+* 用户信息表 User
+* 权限信息表 Permission
+* 访问控制表 ACL
+
+详细（总结 + 优缺点 + Follow Up）推荐参考：https://juejin.cn/post/7095300878944436237  
+其他：[7 种权限模型](../../面试八股文/README.md#安全高频)  
+
+### 设计收藏及其分享（YouTube Playlist）
 Design a site that allows users to pick a few colors and save it as a list. The following features were expected to be built - save a color, delete a color, share colors list with a bunch of users through email, access control to allow other users to view your favorite color list. More focus was given on building the actual functionality and the scale of the system.
 
 * 一个关系数据库存储可收藏的目标对象，并生成对象 ID
