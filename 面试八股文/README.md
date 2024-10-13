@@ -159,6 +159,9 @@
   * [AOF 重写机制](https://redis.io/docs/management/persistence/#log-rewriting) - AOF 重写会只保留当前缓存内的数据集
 * [全数据结构及其 API](https://www.cnblogs.com/yidengjiagou/p/17305653.html)
   * ZSet (Sorted Set)
+    * 内部编码有 2 种：
+      * ziplist 编码：当 Zset 中元素个数小于 128 个，并且所有元素的长度都小于 64 字节时，Redis 会使用 ziplist 编码存储 Zset。这种编码方式可以节省内存空间，并且可以提高存取效率，但是不支持随机访问和范围查询
+      * skiplist 编码：当 Zset 中元素个数大于等于 128 个，或者有一个元素的长度大于 64 字节时，Redis 会使用 skiplist 编码存储 Zset。这种编码方式支持高效的随机访问和范围查询，但是需要占用更多的内存空间
     * ZSet 若元素权重（score）相同，如何排序？- 按键的字典顺序排序
     * 有序集合和集合一样也是 string 类型元素的集合，且不允许重复的元素（即 string）。不同的是每个元素都会关联一个 double 类型的权重分数（score）。有序集合的 string 元素是唯一的，但分数（score）不是唯一的
     * 有序集合是通过 `哈希表 + 跳表` 实现的，[参考](https://redis.io/glossary/redis-sorted-sets/#:~:text=In%20Redis%2C%20sorted%20sets%20are,elements%20based%20on%20their%20scores.)
