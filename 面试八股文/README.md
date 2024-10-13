@@ -157,6 +157,14 @@
 * [Redis 管道](https://redis.io/docs/manual/pipelining/)
 * [AOF 持久化机制](https://zq99299.github.io/note-book/cache-pdp/redis/010.html#aof-%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6%E7%9A%84%E4%BC%98%E7%82%B9)
   * [AOF 重写机制](https://redis.io/docs/management/persistence/#log-rewriting) - AOF 重写会只保留当前缓存内的数据集
+* [全数据结构及其 API](https://www.cnblogs.com/yidengjiagou/p/17305653.html)
+  * ZSet (Sorted Set)
+    * ZSet 若元素权重（score）相同，如何排序？- 按键的字典顺序排序
+    * 有序集合和集合一样也是 string 类型元素的集合，且不允许重复的元素（即 string）。不同的是每个元素都会关联一个 double 类型的权重分数（score）。有序集合的 string 元素是唯一的，但分数（score）不是唯一的
+    * 有序集合是通过 `哈希表 + 跳表` 实现的，[参考](https://redis.io/glossary/redis-sorted-sets/#:~:text=In%20Redis%2C%20sorted%20sets%20are,elements%20based%20on%20their%20scores.)
+    * ZRANGE - 返回有序集中，指定区间内的元素，且元素按分数值递增来排序，具有相同分数值的元素按字典序排列。另外还有 ZREVRANGE，但已弃用
+  * String
+    * SETNX - 仅当 key 不存在时，才设置 key 的值
 
 ## Kafka 高频
 * [System Design: Why is Kafka fast?](https://www.youtube.com/watch?v=UNUz1-msbOM)
