@@ -102,6 +102,7 @@
   * [设计最值栈 | Leetcode Q155](./Leetcode%20Practices/algorithms/easy/155%20Min%20Stack.java)
   * [设计最小/大堆](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/BinaryHeap/MinHeap.java)
   * [设计自定义完整双向链表](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/DoublyLinkedList/DoublyLinkedList.java)（[LRU 缓存](./Leetcode%20Practices/algorithms/medium/146%20LRU%20Cache.java)、[LFU 缓存](./Leetcode%20Practices/algorithms/hard/460%20LFU%20Cache.java)）
+  * 限流器（[固定窗口/滑动窗口](./Leetcode%20Practices/object%20oriented%20design/other%20practices/rate%20limiter%202/Solution.java)、[漏桶/令牌桶](./Leetcode%20Practices/object%20oriented%20design/other%20practices/rate%20limiter%203/Solution.java)）
   * [前缀树（字典树）| Leetcode Q208](./Leetcode%20Practices/algorithms/medium/208%20Implement%20Trie%20(Prefix%20Tree).java)
 * 高级设计/构造/数据结构
   * [并查集与联合查找 | Leetcode Q200 Q684 UF-解法](./Leetcode%20Practices/algorithms/medium/200%20Number%20of%20Islands.java)
