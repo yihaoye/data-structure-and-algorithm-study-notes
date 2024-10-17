@@ -28,6 +28,7 @@
     * Pinecone
     * Faiss
 * [SQL vs NoSQL](./../../Leetcode%20Practices/system%20design/SQL%20vs%20NoSQL.md)
+  * PostgreSQL - 比较特别，因为它在关系型数据库功能之外还支持了：Vectors、Metadata、Time-Series、Analytics、Geo-Spatial
 * [数据模型与查询语言](./../../Leetcode%20Practices/system%20design/README.md#数据模型与查询语言)
   * 关系模型、文档模型（树模型/KV模型）、图模型（网络模型）
 * [数据库设计模式](./数据库设计模式.md)
