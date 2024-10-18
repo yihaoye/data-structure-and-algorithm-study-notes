@@ -605,7 +605,7 @@ Twitter System Publish Flow - by ByteByteGo
 <details>
 <summary>details</summary>
 
-具体代码实现可参考 Java 实现 RateLimiter **[漏桶、令牌桶实现](./../object%20oriented%20design/other%20practices/rate%20limiter%203/Solution.java)**、**[固定窗口、滑动窗口实现](./../object%20oriented%20design/other%20practices/rate%20limiter%202/Solution.java)**、[其他例子](./../object%20oriented%20design/other%20practices/rate%20limiter%201/)、[Leetcode 例题](./../algorithms/easy/359%20Logger%20Rate%20Limiter.java)。  
+具体代码实现可参考 Java 实现 RateLimiter **[漏桶、令牌桶](./../object%20oriented%20design/other%20practices/rate%20limiter%203/Solution.java)**、**[固定窗口、滑动窗口](./../object%20oriented%20design/other%20practices/rate%20limiter%202/Solution.java)**、[其他例子](./../object%20oriented%20design/other%20practices/rate%20limiter%201/)、[Leetcode 例题](./../algorithms/easy/359%20Logger%20Rate%20Limiter.java)。  
 
 **[分布式限流：基于 Redis 实现](https://pandaychen.github.io/2020/09/21/A-DISTRIBUTE-GOREDIS-RATELIMITER-ANALYSIS/)**  
 
