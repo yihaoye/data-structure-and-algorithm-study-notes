@@ -605,7 +605,9 @@ Twitter System Publish Flow - by ByteByteGo
 <details>
 <summary>details</summary>
 
-具体代码实现可参考 Java 实现 RateLimiter [例 1](./../object%20oriented%20design/other%20practices/rate%20limiter%203/Solution.java)、[例 2](./../object%20oriented%20design/other%20practices/rate%20limiter%201/)、[例 3](./../object%20oriented%20design/other%20practices/rate%20limiter%202/)、[例 4](./../algorithms/easy/359%20Logger%20Rate%20Limiter.java)。  
+具体代码实现可参考 Java 实现 RateLimiter **[漏桶、令牌桶实现](./../object%20oriented%20design/other%20practices/rate%20limiter%203/Solution.java)**、**[固定窗口、滑动窗口实现](./../object%20oriented%20design/other%20practices/rate%20limiter%202/Solution.java)**、[其他例子](./../object%20oriented%20design/other%20practices/rate%20limiter%201/)、[Leetcode 例题](./../algorithms/easy/359%20Logger%20Rate%20Limiter.java)。  
+
+**[分布式限流：基于 Redis 实现](https://pandaychen.github.io/2020/09/21/A-DISTRIBUTE-GOREDIS-RATELIMITER-ANALYSIS/)**  
 
 * Step 1: Rate Limiter 限制用户发送的请求数量。单个服务每秒可处理的请求是有限的，因此需要机制限制实体（用户、设备、IP 等）单个时间内的请求、事件执行数量。
   * 比如用户每秒可发 1 个消息、用户每天允许 3 次失败的信用卡交易、同一 IP 每天最多可创建 20 个账户
