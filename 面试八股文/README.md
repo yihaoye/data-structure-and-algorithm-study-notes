@@ -308,6 +308,15 @@
 * XLM (Cross-lingual Language Model Pretraining) - [Ref](https://cloud.tencent.com/developer/article/1740267)。尽管原有的BERT模型可以在上百种语言上进行预训练，但是语言之间的信息并不是互通的，不同的语言模型之间没有共享知识。Facebook 的 XLM 模型克服了信息不互通的难题，将不同语言放在一起采用新的训练目标进行训练，从而让模型能够掌握更多的跨语言信息。这种跨语言模型的一个显著优点是，对于预训练后的后续任务（比如文本分类或者翻译等任务），训练语料较为稀少的语言可以利用在其他语料上学习到的信息
   * [XLM-R (Unsupervised Cross-lingual Representation Learning at Scale)](https://www.jiqizhixin.com/articles/2019-11-29-2) - 全称叫做 XLM-RoBERTa。XLM-R 的改进：在 XLM 和 RoBERTa 中使用的跨语言方法的基础上（所以，本质就是 XLM+RoBERTa，没有其他了），在新模型中增加了语种数量和训练数据集的数量，具体来说使用超过 2TB 预处理过的 CommonCrawl 数据集，以自监督的方式训练跨语言表征；在 fine-tuning 期间，基于多语言模型的能力来使用多语言的标注数据，以提升下游任务的性能；调整了模型的参数，以抵消不利因素如使用跨语言迁移来将模型扩展到更多的语言时限制了模型理解每种语言的能力，参数更改包括在训练和词汇构建过程中对低资源语言进行上采样，生成更大的共享词汇表，以及将整体模型增加到 5.5 亿参数量
 * 6 大常见概念问题：[Ref 1](./ai-domain-knowledge-1.jpeg)、[Ref 2](./ai-domain-knowledge-2.jpeg)
+* Model repository, which is a storage location where models developed from any framework such as TensorFlow, PyTorch, Caffe, etc. When the inference server container starts on a GPU or CPU server, it loads the models from the repository into memory. The application then uses an API to call the inference server to run inference on a model. [Ref](https://medium.com/dataseries/easily-deploy-deep-learning-models-in-production-13db48071578)
+  * 模型本身可简单认为是一种函数，模型训练的本质就是调整参数，模型仓库（Model Repository）里存的是：
+    * 模型文件
+      * 模型参数和权重：即训练好的模型的核心数据，包括神经网络的权重、线性模型的系数等
+      * 模型架构：特别是对深度学习模型来说，模型文件中可能还包含网络的层次结构、每层的配置、激活函数等信息
+      * 文件格式：不同的机器学习框架会有各自的模型文件格式，如 TensorFlow 的 .pb、PyTorch 的 .pt、Scikit-Learn 的 .pkl 或 .joblib，以及通用的 .onnx 格式。
+    * 版本信息、元数据
+    * 依赖项和环境信息、推理配置
+  * ![](./inference-server.webp)
 
 
 ## 硬件与操作系统（Linux & bash）高频
