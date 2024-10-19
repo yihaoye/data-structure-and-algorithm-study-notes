@@ -132,8 +132,7 @@ This personal Blog contains explanation and **Java library/template implementati
     - Frugal Streaming 算法
     - [Geohash 算法, S2 Geometry 算法](../Leetcode%20Practices/system%20design/README.md#设计-Uber)
     - [限流算法 | Rate Limiter Algorithm](../Leetcode%20Practices/system%20design/README.md#设计-API-Rate-Limiter)
-      - 计数器 | Counter (即简单的 IncrBy 和 Expire TTL)
-      - 固定窗口, 滑动窗口 | Fixed Window, Sliding Window ([Code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/rate%20limiter%202/Solution.java))
+      - 固定窗口, 滑动窗口 | Fixed Window, Sliding Window ([Code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/rate%20limiter%202/Solution.java)，固定窗口又称计数器法，即简单的 IncrBy 和 Expire TTL，虽然简单但有致命的临界问题)
       - 漏桶算法, 令牌桶算法 | Leaky Bucket, Token Bucket ([Code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/rate%20limiter%203/Solution.java))
     - Loosy Counting 算法
     - [OT 算法 | Operational Transformation](../Leetcode%20Practices/system%20design/README.md#设计协同编辑系统)

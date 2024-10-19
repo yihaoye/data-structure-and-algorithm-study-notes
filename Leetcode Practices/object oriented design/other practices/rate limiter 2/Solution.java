@@ -60,7 +60,7 @@ public class SlidingWindowRateLimiter {
 }
 
 
-public class FixedWindowRateLimiter {
+public class FixedWindowRateLimiter { // 又称计数器限流，容易出现临界问题
     public static Integer counter = 0;  // 统计请求数
     public static long lastAcquireTime =  0L;
     public static final Long windowUnit = 1000L ; // 假设固定时间窗口是1000ms

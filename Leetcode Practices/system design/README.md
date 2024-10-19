@@ -608,6 +608,44 @@ Twitter System Publish Flow - by ByteByteGo
 具体代码实现可参考 Java 实现 RateLimiter **[漏桶、令牌桶](./../object%20oriented%20design/other%20practices/rate%20limiter%203/Solution.java)**、**[固定窗口、滑动窗口](./../object%20oriented%20design/other%20practices/rate%20limiter%202/Solution.java)**、[其他例子](./../object%20oriented%20design/other%20practices/rate%20limiter%201/)、[Leetcode 例题](./../algorithms/easy/359%20Logger%20Rate%20Limiter.java)。  
 
 **[分布式限流：基于 Redis + Lua 实现](https://pandaychen.github.io/2020/09/21/A-DISTRIBUTE-GOREDIS-RATELIMITER-ANALYSIS/)**  
+```lua
+local bucket = redis.call('hmget', KEYS[1], 'last_refill', 'tokens') -- KEYS[1] : 令牌桶的键名
+local last_refill = tonumber(bucket[1]) or 0 -- 上次 refill 的时间
+local tokens = tonumber(bucket[2]) or 0
+
+local capacity = tonumber(ARGV[1]) -- ARGV[1] : 令牌桶容量
+local rate = tonumber(ARGV[2]) -- ARGV[2] : 令牌填充速率（每秒）
+local requested = tonumber(ARGV[3]) -- ARGV[3] : 请求的令牌数（通常为1）
+local now = redis.call('time')[1]  -- 获取当前 Unix 时间戳（秒）
+-- 计算需要添加的令牌数
+local elapsed = math.max(0, now - last_refill)
+local new_tokens = math.min(capacity, tokens + (elapsed / 1000.0) * rate)
+
+-- 如果有足够的令牌，则允许请求
+if new_tokens >= requested then
+    redis.call('hmset', KEYS[1], 'last_refill', now, 'tokens', new_tokens - requested)
+    return 1
+else
+    redis.call('hmset', KEYS[1], 'last_refill', now, 'tokens', new_tokens)
+    return 0
+end
+```
+```python
+# 加载 Lua 脚本
+rate_limiter_script = redis_client.register_script(lua_script)
+
+def try_acquire(key, capacity, rate, requested=1):
+    return rate_limiter_script(
+        keys=[key],
+        args=[capacity, rate, requested]
+    )
+
+# 使用示例
+if try_acquire("bucket_key_x", capacity=10, rate=0.1):
+    print("请求被允许")
+else:
+    print("请求被限流")
+```
 
 * Step 1: Rate Limiter 限制用户发送的请求数量。单个服务每秒可处理的请求是有限的，因此需要机制限制实体（用户、设备、IP 等）单个时间内的请求、事件执行数量。
   * 比如用户每秒可发 1 个消息、用户每天允许 3 次失败的信用卡交易、同一 IP 每天最多可创建 20 个账户
