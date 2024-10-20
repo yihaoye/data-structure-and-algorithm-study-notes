@@ -609,24 +609,28 @@ Twitter System Publish Flow - by ByteByteGo
 
 **[分布式限流：基于 Redis + Lua 实现](https://pandaychen.github.io/2020/09/21/A-DISTRIBUTE-GOREDIS-RATELIMITER-ANALYSIS/)**  
 ```lua
-local bucket = redis.call('hmget', KEYS[1], 'last_refill', 'tokens') -- KEYS[1] : 令牌桶的键名
-local last_refill = tonumber(bucket[1]) or 0 -- 上次 refill 的时间
-local tokens = tonumber(bucket[2]) or 0
-
+local bucket = redis.call('hmget', KEYS[1], 'last_refill_ts', 'tokens') -- KEYS[1] : 令牌桶的键名
 local capacity = tonumber(ARGV[1]) -- ARGV[1] : 令牌桶容量
 local rate = tonumber(ARGV[2]) -- ARGV[2] : 令牌填充速率（每秒）
 local requested = tonumber(ARGV[3]) -- ARGV[3] : 请求的令牌数（通常为1）
-local now = redis.call('time')[1]  -- 获取当前 Unix 时间戳（秒）
+local now_ts = redis.call('time')[1]  -- 获取当前 Unix 时间戳（秒）
+local last_refill_ts = tonumber(bucket[1]) or now_ts -- 上次 refill 的时间
+local tokens = tonumber(bucket[2]) or capacity
+
+-- 每次都设置 TTL 约为填满令牌桶所需时间的两倍或更多，优化节省了 Redis 内存使用，且不会过早过期，如果过期了初始化的 tokens 也是正确的
+local ttl = math.floor(capacity / rate * 2) -- 或至少比 capacity / rate * 2 大的任意时间
+redis.call("expire", KEYS[1], ttl)
+
 -- 计算需要添加的令牌数
-local elapsed = math.max(0, now - last_refill)
-local new_tokens = math.min(capacity, tokens + (elapsed / 1000.0) * rate)
+local gap_ts = math.max(0, now_ts - last_refill_ts)
+local new_tokens = math.min(capacity, tokens + gap_ts * rate)
 
 -- 如果有足够的令牌，则允许请求
 if new_tokens >= requested then
-    redis.call('hmset', KEYS[1], 'last_refill', now, 'tokens', new_tokens - requested)
+    redis.call('hmset', KEYS[1], 'last_refill_ts', now_ts, 'tokens', new_tokens - requested)
     return 1
 else
-    redis.call('hmset', KEYS[1], 'last_refill', now, 'tokens', new_tokens)
+    redis.call('hmset', KEYS[1], 'last_refill_ts', now_ts, 'tokens', new_tokens)
     return 0
 end
 ```
