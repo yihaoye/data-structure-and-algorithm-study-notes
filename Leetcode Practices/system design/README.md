@@ -605,7 +605,7 @@ Twitter System Publish Flow - by ByteByteGo
 <details>
 <summary>details</summary>
 
-具体代码实现可参考 Java 实现 RateLimiter **[漏桶、令牌桶](./../object%20oriented%20design/other%20practices/rate%20limiter%203/Solution.java)**、**[固定窗口、滑动窗口](./../object%20oriented%20design/other%20practices/rate%20limiter%202/Solution.java)**、[其他例子](./../object%20oriented%20design/other%20practices/rate%20limiter%201/)、[Leetcode 例题](./../algorithms/easy/359%20Logger%20Rate%20Limiter.java)。  
+**具体代码实现可参考 Java 实现 RateLimiter [漏桶、令牌桶](./../object%20oriented%20design/other%20practices/rate%20limiter%203/Solution.java)**、**[固定窗口、滑动窗口](./../object%20oriented%20design/other%20practices/rate%20limiter%202/Solution.java)**、[其他例子](./../object%20oriented%20design/other%20practices/rate%20limiter%201/)、[Leetcode 例题](./../algorithms/easy/359%20Logger%20Rate%20Limiter.java)。  
 
 **[分布式限流：基于 Redis + Lua 实现](https://pandaychen.github.io/2020/09/21/A-DISTRIBUTE-GOREDIS-RATELIMITER-ANALYSIS/)**  
 ```lua
@@ -649,7 +649,28 @@ if try_acquire("bucket_key_x", capacity=10, rate=0.1):
     print("请求被允许")
 else:
     print("请求被限流")
+```  
+
+**[使用 Redis 的 ZSet + Lua 实现滑动窗口限流](https://juejin.cn/post/7109055415668867080)**  
+```lua
+local key = KEYS[1] -- 用户号或 IP
+local uuid = KEYS[2]
+local window_len_ts = tonumber(ARGV[1]) -- 窗口时长
+local max_count = tonumber(ARGV[2]) -- 最大次数
+local now_ts = redis.call('time')[1] -- 当前时间
+local start_ts = now_ts - window_len_ts; -- 窗口开始时间
+local cur_count = redis.call('zcount', key, start_ts, now_ts) -- zcount 时间复杂度 O(logN)
+
+if cur_count and tonumber(cur_count) >= max_count then
+    return tonumber(cur_count);
+end
+
+redis.call("ZREMRANGEBYSCORE", key, 0, start_ts); -- 清除所有过期成员，时间复杂度 O(log(N)+M)
+redis.call("zadd", key, tostring(uuid), now_ts);
+redis.call("expire", key, window_len_ts);
+return tonumber(current) -- 返回 key 的当前窗口记录次数
 ```
+
 
 * Step 1: Rate Limiter 限制用户发送的请求数量。单个服务每秒可处理的请求是有限的，因此需要机制限制实体（用户、设备、IP 等）单个时间内的请求、事件执行数量。
   * 比如用户每秒可发 1 个消息、用户每天允许 3 次失败的信用卡交易、同一 IP 每天最多可创建 20 个账户
