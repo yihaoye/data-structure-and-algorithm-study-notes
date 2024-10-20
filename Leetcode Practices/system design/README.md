@@ -655,21 +655,23 @@ else:
 ```lua
 local key = KEYS[1] -- 用户号或 IP
 local uuid = KEYS[2]
-local window_len_ts = tonumber(ARGV[1]) -- 窗口时长
+local window_ts = tonumber(ARGV[1]) -- 窗口时长
 local max_count = tonumber(ARGV[2]) -- 最大次数
 local now_ts = redis.call('time')[1] -- 当前时间
-local start_ts = now_ts - window_len_ts; -- 窗口开始时间
-local cur_count = redis.call('zcount', key, start_ts, now_ts) -- zcount 时间复杂度 O(logN)
+local start_ts = now_ts - window_ts; -- 窗口开始时间
+redis.call("ZREMRANGEBYSCORE", key, 0, start_ts); -- 清除所有过期成员，时间复杂度 O(log(N)+M)
+local cur_count = redis.call('zcard', key) -- zcard 时间复杂度 O(1)，更复杂的统计可以采用 zcount
 
 if cur_count and tonumber(cur_count) >= max_count then
     return tonumber(cur_count);
 end
 
-redis.call("ZREMRANGEBYSCORE", key, 0, start_ts); -- 清除所有过期成员，时间复杂度 O(log(N)+M)
-redis.call("zadd", key, tostring(uuid), now_ts);
-redis.call("expire", key, window_len_ts);
-return tonumber(current) -- 返回 key 的当前窗口记录次数
-```
+redis.call("zadd", key, uuid, now_ts); -- 或者使用 tostring(now_ms) 之类的，因为实际场景里如果毫秒冲突了通常是非预期的
+redis.call("expire", key, window_ts);
+return tonumber(current) -- 返回 key 的当前窗口的元素数量
+```  
+使用 ZSet 而非 List 的原因：ZSet 时间复杂度优势（删除过期元素），ZSet 自然去重而 List 需要额外逻辑处理重复，ZSet 自动按时间戳排序而 List 需要手动维护顺序，多粒度限流（ZSet 可以轻松实现多个时间窗口），ZSet 的大多数操作是原子的、在并发环境中更安全，ZSet 对于进阶功能的实现更简洁高效等等。  
+
 
 
 * Step 1: Rate Limiter 限制用户发送的请求数量。单个服务每秒可处理的请求是有限的，因此需要机制限制实体（用户、设备、IP 等）单个时间内的请求、事件执行数量。
