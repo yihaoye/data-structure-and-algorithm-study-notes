@@ -11,8 +11,11 @@
 
 这种情况下，面试官会从你比较熟悉的点去进行延伸提问。  
 
+
 ## 商品、产品
 * [流媒体](https://zh.wikipedia.org/wiki/%E6%B5%81%E5%AA%92%E4%BD%93)
+  * [常见视频格式](./video-format.jpeg)
+
 
 ## 设计模式、系统设计、DevOps、架构高频
 * MVC 模型和 MVVM 模型的区别
@@ -54,6 +57,7 @@
 * 网络流量（流入、流出）、网络延迟
 * 日志错误率、警告率
   
+
 ## 编程语言
 * OOM 的常见场景
   * 内存泄漏（Memory Leak）- 指应用程序分配了内存，但在不再需要时未释放它们，又比如对象生命周期长，内存过度使用，导致内存使用不断增加。长时间运行的应用程序中，内存泄漏可能会导致内存耗尽，触发 OOM 错误。
@@ -125,6 +129,7 @@
 * [协程泄露](https://iswbm.com/586.html) - 在程序运行过程中，有一些协程由于某些原因，无法正常退出。协程的运行是需要占用内存和 CPU 时间的，一旦这种协程越来越多，会导致内存无端被浪费，CPU 时间片被占用，程序会越来越卡。只要有可能导致程序阻塞的，都有可能会导致协程泄露。
   * 主要原因：通道阻塞、锁阻塞、等待阻塞
 
+
 ## 数据库高频
 * [为什么 InnoDB 表必须有主键，并且推荐使用整型的自增主键？](https://blog.csdn.net/weixin_41699562/article/details/104139458)
 * [TSID for db Primary Key](https://vladmihalcea.com/uuid-database-primary-key/)
@@ -169,6 +174,7 @@
   * String
     * SETNX - 仅当 key 不存在时，才设置 key 的值
 
+
 ## Kafka 高频
 * [System Design: Why is Kafka fast?](https://www.youtube.com/watch?v=UNUz1-msbOM)
   * 顺序 I/O
@@ -182,6 +188,7 @@
   * 反压机制（Pushback）： 消费者通过某种方式向生产者发出信号，告知生产者当前处理速率不足，需要减缓生产速度。生产者收到信号后可以采取相应的措施，例如降低数据生成速率、缓存数据或丢弃部分数据
   * Backpressure 响应式编程（Reactive Programming）： 在响应式编程中，背压是一种处理异步数据流的机制。例如，在使用 RxJava、Project Reactor 等响应式框架时，可以使用背压操作符来处理数据流中的背压情况，例如通过缓存、丢弃、延迟请求等方式来减缓数据流的速率
   * 具体来说，背压通常用于处理数据流式处理场景，特别是在异步、非阻塞的环境中，例如响应式编程、流处理系统等。在这些场景中，数据生产者产生的数据速率可能会超过消费者处理的速率，导致消费者处理不过来，造成内存溢出、系统崩溃等问题。为了解决这个问题，可以采取背压机制，让消费者通知生产者降低生产速率，从而使数据生产和消费达到平衡
+
 
 ## Flink 高频
 * [流式计算核心概念](https://juejin.cn/post/7316591784623407130)
@@ -198,6 +205,7 @@
   * 中间存储，以及状态维护（是流式计算的关键组件，它用于存储和管理数据流的状态。状态可以是简单的键值对，也可以是复杂的数据结构，如树、图等）
   * 结果输出 - 数据库、下游等等
 * [Flink Checkpoint 机制](https://tech.youzan.com/flink_checkpoint_mechanism/) - Flink 里 EXACTLY ONCE 的实现方法
+
 
 ## 统计、机器学习高频
 * [七大最常见的机器学习面试问题：模型性能评估、过拟合/欠拟合、训练与评估数据分配、梯度下降、MLE 和 MAP（最大似然估计和最大后验估计）、Kernel、PCA 和 SVD/EVD](https://www.youtube.com/watch?v=j340MdN0QSY)
@@ -402,6 +410,7 @@
 * [Docker 群（Swarm）是什么](https://www.modb.pro/db/404626)
 * [在使用 Docker 技术的产品中如何监控其运行](https://www.modb.pro/db/404626)
 
+
 ## 网络高频
 * 基本概念：[拓扑、硬件与分类](./network1.jpeg)、[OSI 模型](./network2.jpeg)、[协议与安全](./network3.jpeg)、[NAT 与云](./network4.jpeg)
 * [计算机网络面试突击](https://juejin.cn/post/6932001161532669960)
@@ -540,6 +549,7 @@
   * 信号衰减与抗干扰：均比传统电话线/铜线强，因为铜线长距离传输电时会因电阻导致信号衰减，且电信号易受电磁干扰
 * [近场通讯 NFC](https://zh.wikipedia.org/zh-hans/%E8%BF%91%E5%A0%B4%E9%80%9A%E8%A8%8A) - 是一套通讯协定，让两个电子装置（其中一个通常是行动装置，例如智慧型手机）在相距几公分之内进行通讯，允许行动支付取代或支援这类系统。近场通讯技术由非接触式射频识别（RFID）及互连技术演变而来，是一种短距高频的无线电
 
+
 ## [安全高频](https://tldrsec.com/)
 * [安全模型](https://en.wikipedia.org/wiki/Security_modes)
   * [零信任网络](https://www.cloudflare.com/zh-cn/learning/security/glossary/what-is-zero-trust/)
@@ -622,10 +632,12 @@
   * TBAC - 基于任务的访问控制模型。它从工作流中的任务角度建模，可以依据任务和任务状态的不同，对权限进行动态管理
   * EBAC - 基于受控实体的访问控制技术。对各种客观存在的和逻辑定义的企业信息资源（即主体拥有访问权限的客体），定义为受控实体
 
+
 ## Nginx 高频
 * [Nginx epoll 模型](./../Leetcode%20Practices/system%20design/IO%E6%A8%A1%E5%9E%8B%E4%B8%8EWeb%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%9E%8B.md)
 * [Nginx 多进程模型是如何实现高并发的](./../Leetcode%20Practices/system%20design/IO%E6%A8%A1%E5%9E%8B%E4%B8%8EWeb%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%B7%A5%E4%BD%9C%E6%A8%A1%E5%9E%8B.md)
 * [Nginx 高效原理](https://zhuanlan.zhihu.com/p/108031600)
+
 
 ## 前端高频
 * [reactjs interview questions](https://github.com/sudheerj/reactjs-interview-questions)
