@@ -122,13 +122,13 @@ class Solution {
 class Solution {
     public int strongPasswordChecker(String s) {
         // O(N) - https://leetcode.com/problems/strong-password-checker/solutions/151333/easy-o-n-solution
-        int requiredChar = getRequiredChar(s);
-        if (s.length() < 6) return Math.max(requiredChar, 6 - s.length());
+        int required_char = getRequiredChar(s);
+        if (s.length() < 6) return Math.max(required_char, 6 - s.length());
 
         // only need replacement and deletion now when s.Length >= 6
         int replace = 0; // total replacements for repeated chars. e.g. "aaa" needs 1 replacement to fix
-        int oned = 0; // total deletions for 3n repeated chars. e.g. "aaa" needs 1 deletion to fix
-        int twod = 0; // total deletions for 3n+1 repeated chars. e.g. "aaaa" needs 2 deletions to fix.
+        int one_del = 0; // total deletions for 3n repeated chars. e.g. "aaa" needs 1 deletion to fix
+        int two_del = 0; // total deletions for 3n+1 repeated chars. e.g. "aaaa" needs 2 deletions to fix.
 
         for (int i = 0; i < s.length();) {
             int len = 1; // repeated len
@@ -138,22 +138,22 @@ class Solution {
             i += len;
             if (len < 3) continue;
             replace += len / 3;
-            if (len % 3 == 0) oned += 1;
-            if (len % 3 == 1) twod += 2;
+            if (len % 3 == 0) one_del += 1;
+            if (len % 3 == 1) two_del += 2;
         }
 
         // no need deletion when s.Length <= 20
-        if (s.length() <= 20) return Math.max(requiredChar, replace);
+        if (s.length() <= 20) return Math.max(required_char, replace);
 
-        int deleteCount = s.length() - 20;
+        int delete_count = s.length() - 20;
         // deleting 1 char in (3n) repeated chars will save one replacement
-        replace -= Math.min(deleteCount, oned);
+        replace -= Math.min(delete_count, one_del);
         // deleting 2 chars in (3n+1) repeated chars will save one replacement
-        replace -= Math.min(Math.max(deleteCount - oned, 0), twod) / 2;
+        replace -= Math.min(Math.max(delete_count - one_del, 0), two_del) / 2;
         // deleting 3 chars in (3n+2) repeated chars will save one replacement
-        replace -= Math.max(deleteCount - oned - twod, 0) / 3;
+        replace -= Math.max(delete_count - one_del - two_del, 0) / 3;
 
-        return deleteCount + Math.max(requiredChar, replace);
+        return delete_count + Math.max(required_char, replace);
     }
 
     public int getRequiredChar(String s) {
