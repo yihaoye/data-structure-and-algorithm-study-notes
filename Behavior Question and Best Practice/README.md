@@ -233,6 +233,9 @@ Books:
   5. 自动化（Automate），最后一步是自动化，即通过技术手段，将系统中的重复性和标准化操作自动化。这不仅可以提高效率，还可以减少人为错误
     * 在期待自动化的优点前需先知道自动化的弊端有三个，分别是 1）高昂的成本；2）极高的出错几率；3）妨碍引入新特性
 * [凤凰项目 - 三步工作法](https://yummyisminer.xyz/blog/posts/d698d359/)
+* 程度把握
+   * 从零到一：反完美主义（包括工作中的一个新的子项目）
+   * 从一到十：完美主义（从一到十本身可能包含了许多的子从零到一）
 * [搜索技术](https://www.youtube.com/watch?v=tiN6T1LewmQ)
 * [Improving Communication Skills](https://www.coursera.org/learn/wharton-communication-skills)
 * [Creative Thinking: Techniques and Tools for Success](https://www.coursera.org/learn/creative-thinking-techniques-and-tools-for-success)
