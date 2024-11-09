@@ -17,7 +17,7 @@ This personal Blog contains explanation and **Java library/template implementati
   - 循环不变量 | Loop Invariants (本质上是数学归纳法)
 - 算法 | Algorithms
   - 基础与思维 | Foundation and Thought
-    - [排序 (常用排序算法) | Sorting](./Common%20Sorts/README.md)
+    - [排序 (常用排序算法) | Sorting](./Common%20Sorts/README.md) - 排序算法选择除了考虑数量级、复杂度稳定性之外，有时应该注意场景，比如可以肯定永远是只求一个极值的情况下，最低级的冒泡算法反而是最好的
     - [枚举/穷举 | Enumerate](./枚举(穷举)算法.md)
     - [模拟 | Simulation](./模拟算法.md)
     - [递归, 迭代 | Recursion, Iteration](./递归与迭代.md)

@@ -123,6 +123,7 @@
   * [回溯法 | Leetcode Q51-N-皇后 Q491-穷举递增子序列](./Leetcode%20Practices/algorithms/medium/491%20Increasing%20Subsequences.java)
   * [翻转树 | Leetcode Q156 Q226](./Leetcode%20Practices/algorithms/medium/156%20Binary%20Tree%20Upside%20Down.java)
   * [K 数之和 | Leetcode Q18](./Leetcode%20Practices/algorithms/medium/18%204Sum.java)
+  * [Top-K 优化 | Leetcode Q692](./Leetcode%20Practices/algorithms/medium/692%20Top%20K%20Frequent%20Words.java)
   * [倍增法 | Leetcode Q1483](./Common%20Algorithm%20and%20Theory/倍增法.md)
 * 高级算法
   * [拓扑排序 | Leetcode Q210](./Common%20Algorithm%20and%20Theory/拓扑排序.md)
