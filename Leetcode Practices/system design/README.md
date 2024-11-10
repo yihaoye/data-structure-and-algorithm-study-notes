@@ -244,6 +244,9 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 * **Efficiency or Performance** - Two standard measures of efficiency are response time (or latency) and the throughput (or bandwidth). （相关组件与手段：CDN、异步处理耗时任务如消息队列、缓存、读写分离、索引、分页）. The two measures correspond to the following unit costs:
   * *Number of messages globally sent by the nodes of the system regardless of the message size.*
   * *Size of messages representing the volume of data exchanges.*
+  * 系统设计中的时间复杂度（主要为数据库、数据仓库、缓存、消息队列等持久化数据的操作）
+    * SQL
+      * Group By - 时间复杂度为 O(M*logN)，M 为已经被 WHERE 优化了范围后符合条件的目标数据，因为聚合总是要遍历所有数据行，N 为表的数据总数，如果没有 WHERE 优化则聚合时间复杂度为 O(N)
 * **Serviceability or Manageability** - how easy to operate and maintain. simplicity and speed with which a system can be repaired or maintained. （相关组件与手段：日志系统、CI/CD、统一配置中心、应用框架、IaC、版本管理、标准制定如协议、解耦）
   * *If the time to fix a failed system increases, then availability will decrease.*
   * *Ease of diagnosing and understanding problems when they occur, ease of making updates or modifications, and how simple the system is to operate.*
