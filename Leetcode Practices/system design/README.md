@@ -245,8 +245,17 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
   * *Number of messages globally sent by the nodes of the system regardless of the message size.*
   * *Size of messages representing the volume of data exchanges.*
   * 系统设计中的时间复杂度（主要为数据库、数据仓库、缓存、消息队列等持久化数据的操作）
-    * SQL
-      * Group By - 时间复杂度为 O(M*logN)，M 为已经被 WHERE 优化了范围后符合条件的目标数据，因为聚合总是要遍历所有数据行，N 为表的数据总数，如果没有 WHERE 优化则聚合时间复杂度为 O(N)
+    * SQL - 索引优化影响所有操作，以下描述约定 M 为已经被 WHERE 等查询优化了范围后符合条件的目标数据量，N 为表的数据总数，且约定下面操作皆为查询优化后的复杂度
+      * GROUP BY - 时间复杂度 `O(M)`，因为聚合总是要遍历所有数据行
+      * COUNT、SUM、MAX 等聚合函数 - 时间复杂度 `O(M)`
+      * ORDER BY - 时间复杂度 `O(M*logM)`
+      * JOIN - 时间复杂度有索引 FULL JOIN `O(N1*logN1 + N2*logN2)` 无索引或笛卡尔积 CROSS JOIN `O(N1*N2)`，因为 JOIN 命令顺序在 WHERE 之前，所以不会被 WHERE 优化，但是可以被索引优化，另外索引优化过的 INNER、LEFT、RIGHT JOIN 都是 `O(N1*logN2)`。其中 INNER JOIN 执行时会自动选择选择最小的表当基础表，是 JOIN 中效率最高的，所以通常最佳实践都会建议尽量使用数据量小的表当主表
+      * HAVING - 时间复杂度 `O(M)`
+      * LIMIT - 时间复杂度 `O(K)`
+      * UNION - 时间复杂度 `O(M1 + M2)`
+      * LIKE
+        * 前缀匹配（如 LIKE 'prefix%'）- 时间复杂度 `O(logN)`，因为数据库可以利用索引
+        * 全模糊匹配或中间模糊匹配（如 LIKE '%substring%'）- 时间复杂度 `O(N)`，因为不能使用索引，通常会进行全表扫描
 * **Serviceability or Manageability** - how easy to operate and maintain. simplicity and speed with which a system can be repaired or maintained. （相关组件与手段：日志系统、CI/CD、统一配置中心、应用框架、IaC、版本管理、标准制定如协议、解耦）
   * *If the time to fix a failed system increases, then availability will decrease.*
   * *Ease of diagnosing and understanding problems when they occur, ease of making updates or modifications, and how simple the system is to operate.*
