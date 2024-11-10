@@ -26,7 +26,7 @@
     * InfluxDB
   * [向量数据库](./../../Leetcode%20Practices/system%20design/NoSQL.md#向量数据库)
     * Pinecone
-    * Faiss
+    * ElasticSearch
 * [SQL vs NoSQL](./../../Leetcode%20Practices/system%20design/SQL%20vs%20NoSQL.md)
   * PostgreSQL - 比较特别，因为它在关系型数据库功能之外还支持了：Vectors、Metadata、Time-Series、Analytics、Geo-Spatial
 * [数据模型与查询语言](./../../Leetcode%20Practices/system%20design/README.md#数据模型与查询语言)

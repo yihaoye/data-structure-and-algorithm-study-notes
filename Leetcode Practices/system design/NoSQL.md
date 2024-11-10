@@ -123,6 +123,7 @@ MongoDB 的适用场景为：数据不是特别重要（例如通知，推送这
 
 对比传统数据库的 B+ 树，向量数据库通常采用一些特定的向量索引结构和相似度搜索算法来存储和检索向量数据。  
 常见的多维索引结构包括 KD 树、球树（Ball Tree）、VP 树（Vantage Point Tree）等。  
+https://www.cloudraft.io/blog/top-5-vector-databases  
 
 [Understanding Vector Indexing: A Comprehensive Guide](https://medium.com/@myscale/understanding-vector-indexing-a-comprehensive-guide-d1abe36ccd3c)  
 在实际的高维向量数据的存储和检索过程中，向量数据库会使用一些高效的数据结构与相似度搜索算法，其中通常包括
