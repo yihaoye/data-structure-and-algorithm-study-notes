@@ -245,11 +245,12 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
   * *Number of messages globally sent by the nodes of the system regardless of the message size.*
   * *Size of messages representing the volume of data exchanges.*
   * 系统设计中的时间复杂度（主要为数据库、数据仓库、缓存、消息队列等持久化数据的操作）
-    * SQL - 索引优化影响所有操作，以下描述约定 M 为已经被 WHERE 等查询优化了范围后符合条件的目标数据量，N 为表的数据总数，且约定下面操作皆为查询优化后的复杂度
+    * SQL - 索引优化影响所有操作，以下描述约定 M 为已经被 WHERE 等查询优化了范围后符合条件的目标数据量，N 为表的数据总数，且约定下面操作皆为查询优化后的复杂度。（常见的 SQL 数据库即使千万级数据，全表扫描也仅需 10 至几十秒。理论上，使用 SSD 且前提条件没有复杂的数据存储结构 + 是顺序读取，遍历千万级数据可以在 3-5 秒内完成）
       * GROUP BY - 时间复杂度 `O(M)`，因为聚合总是要遍历所有数据行
       * COUNT、SUM、MAX 等聚合函数 - 时间复杂度 `O(M)`
       * ORDER BY - 时间复杂度 `O(M*logM)`
-      * JOIN - 时间复杂度有索引 FULL JOIN `O(N1*logN1 + N2*logN2)` 无索引或笛卡尔积 CROSS JOIN `O(N1*N2)`，因为 JOIN 命令顺序在 WHERE 之前，所以不会被 WHERE 优化，但是可以被索引优化，另外索引优化过的 INNER、LEFT、RIGHT JOIN 都是 `O(N1*logN2)`。其中 INNER JOIN 执行时会自动选择选择最小的表当基础表，是 JOIN 中效率最高的，所以通常最佳实践都会建议尽量使用数据量小的表当主表
+      * JOIN - 时间复杂度有索引 FULL JOIN `O(N1*logN1 + N2*logN2)` 无索引或笛卡尔积 CROSS JOIN `O(N1*N2)`，因为 JOIN 命令顺序在 WHERE 之前，所以不会被 WHERE 优化，但是可以被索引优化，另外索引优化过的 INNER、LEFT、RIGHT JOIN 都是 `O(N1*logN2)`。其中 INNER JOIN 执行时会自动选择选择最小的表当基础表，是 JOIN 中效率最高的，所以通常最佳实践都会建议尽量使用数据量小的表当主表（前提是索引优化）。[JOIN 优化](https://www.cnblogs.com/wql025/p/14439071.html)
+        * 如果一定想通过 WHERE 优化 JOIN，也是可以的，方法是将 JOIN 的目标表修改为子查询结果（但必须过滤结果较小以避免大的内存消耗）
       * HAVING - 时间复杂度 `O(M)`
       * LIMIT - 时间复杂度 `O(K)`
       * UNION - 时间复杂度 `O(M1 + M2)`
