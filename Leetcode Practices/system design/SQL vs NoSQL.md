@@ -30,7 +30,7 @@
 * SQL vs NoSQL Which one to use? - there’s no one-size-fits-all solution
   * Reasons to use SQL database
     * CP or CA scenario
-    * need to ensure ACID compliance reduces anomalies and protects the integrity of db (for many e-commerce and financial applications, an ACID- compliant database remains the preferred option)
+    * 需要事务或 need to ensure ACID compliance reduces anomalies and protects the integrity of db (for many e-commerce and financial applications, an ACID-compliant database remains the preferred option) - 但实际上有些 NoSQL 也较好地支持事务和强一致性，比如 MongoDB 和 Spanner（Google）
     * data is structured (or have any relational data) and unchanging
     * need JOIN operation (通常情况下，NoSQL 数据库不太支持传统的 SQL 中的 JOIN 操作，因为在 NoSQL 中，数据冗余、重复存储是常见的做法，即其本身设计思路就是鼓励通过反范式的设计来避免、减少关联操作)，因此也意味着如果希望系统更范式化（整洁、减少重复数据维护的工作量、低空间资源成本等）则应选择 SQL 数据库
     * ![](./How%20to%20Select%20SQL%20DB.jpeg)
