@@ -257,6 +257,7 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
       * LIKE
         * 前缀匹配（如 LIKE 'prefix%'）- 时间复杂度 `O(logN)`，因为数据库可以利用索引
         * 全模糊匹配或中间模糊匹配（如 LIKE '%substring%'）- 时间复杂度 `O(N)`，因为不能使用索引，通常会进行全表扫描
+      * IN | NOT IN - 时间复杂度 `O(logN)` ~ `O(N)`，IN 操作通常能利用索引，尤其是当查询中的元素数较少时，如果元素过多，优化器可能会选择全表扫描。NOT IN 操作通常较难通过索引优化，特别是当查询中涉及到排除大量数据时，数据库更倾向于执行全表扫描，若数据表中存在 NULL 值，NOT IN 查询的结果可能会不准确，且性能更差。为提高性能，尽量避免使用 NOT IN，而是考虑使用 NOT EXISTS 或 LEFT JOIN 等替代方案，同时，确保对相关字段创建有效的索引，以优化查询性能
 * **Serviceability or Manageability** - how easy to operate and maintain. simplicity and speed with which a system can be repaired or maintained. （相关组件与手段：日志系统、CI/CD、统一配置中心、应用框架、IaC、版本管理、标准制定如协议、解耦）
   * *If the time to fix a failed system increases, then availability will decrease.*
   * *Ease of diagnosing and understanding problems when they occur, ease of making updates or modifications, and how simple the system is to operate.*

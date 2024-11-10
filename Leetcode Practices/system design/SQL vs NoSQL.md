@@ -20,6 +20,7 @@
   * Querying
     * SQL apply structured query language for defining and manipulating the data
     * NoSQL apply UnQL (Unstructured Query Language), different databases have different syntax for using UnQL.
+    * 聚合 - NoSQL 数据库可以进行聚合操作，但其聚合的方式、功能和效率通常与传统的关系型数据库（SQL）不同（通常是通过数据库的内置 API），且聚合能力有强有弱（比如 ES、MongoDB 内置聚合能力极强，Cassandra、DynamoDB、HBase、Redis 等内置仅提供基础聚合通常需要将复杂聚合操作放到应用层）
   * Scalability
     * SQL, in most common situations, are vertically scalable, horizontal scale is challenging and time-consuming
     * NoSQL, horizontally scalable, many NoSQL tech also distribute data across servers automatically.
@@ -28,17 +29,19 @@
     * NoSQL mostly sacrifice ACID compliance for performance and scalability.
 * SQL vs NoSQL Which one to use? - there’s no one-size-fits-all solution
   * Reasons to use SQL database
+    * CP or CA scenario
     * need to ensure ACID compliance reduces anomalies and protects the integrity of db (for many e-commerce and financial applications, an ACID- compliant database remains the preferred option)
     * data is structured (or have any relational data) and unchanging
-    * need JOIN operation (通常情况下，NoSQL 数据库不太支持传统的 SQL 中的 JOIN 操作)
-  * ![](./How%20to%20Select%20SQL%20DB.jpeg)
+    * need JOIN operation (通常情况下，NoSQL 数据库不太支持传统的 SQL 中的 JOIN 操作，因为在 NoSQL 中，数据冗余、重复存储是常见的做法，即其本身设计思路就是鼓励通过反范式的设计来避免、减少关联操作)，因此也意味着如果希望系统更范式化（整洁、减少重复数据维护的工作量、低空间资源成本等）则应选择 SQL 数据库
+    * ![](./How%20to%20Select%20SQL%20DB.jpeg)
   * Reasons to use NoSQL database (Big data contributes to NoSQL databases' succeed)
-    * Storing large volumes of data that often have little to no structure
+    * AP or CP scenario
+    * Storing large volumes of data that often have little to no structure, or very complex / uncertain structure
     * Making the most of cloud computing and storage, requires data to be easily spread across multiple servers to scale up
     * Rapid development - quick iterations of system which require making frequent updates to the data structure without much downtime between versions
     * 高性能、侧重写操作（LSM 树）
     * 只需要序列化/反序列化数据
-  * ![](./How%20to%20Select%20NoSQL%20DB.jpeg)
+    * ![](./How%20to%20Select%20NoSQL%20DB.jpeg)
 
 参考：https://pingcap.medium.com/how-to-efficiently-choose-the-right-database-for-your-applications-20a109abced3  
 
