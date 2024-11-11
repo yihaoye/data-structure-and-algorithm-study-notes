@@ -217,10 +217,7 @@ Books:
       * 为什么之前的量化指标不佳
       * 具体解决了什么问题？为什么新方法起作用？可否总结推广？
   * 具体 - 针对目标对象关注的主题
-* 高效能人士的七个习惯
-  * 积极主动、以始为终、要事第一：从依赖型人格转向独立型人格
-  * 双赢思维、知己知彼、综合统效：从独立型人格转向互赖型人格，因为一个人可以走得很快，但一群人可以走得更远
-  * 不断更新
+* [工作量管理](https://www.youtube.com/watch?v=9ooC7o-nGio)
 * 五步工作法 - 顺序很重要，因为步骤 1、2 没做好进行步骤 3 也只会事倍功半，进而导致基础流程不固定，此时贸然进行自动化可能会反复大改失去自动化的优势与意义
   1. 提问（Questioning），发现或定位真正的问题
     1. 挑战现状：通过提出尖锐的问题，挑战传统思维和既有假设
@@ -245,6 +242,10 @@ Books:
 * 程度把握
    * 从零到一：反完美主义（包括工作中的一个新的子项目）
    * 从一到十：完美主义（从一到十本身可能包含了许多的子从零到一）
+* 高效能人士的七个习惯
+  * 积极主动、以始为终、要事第一：从依赖型人格转向独立型人格
+  * 双赢思维、知己知彼、综合统效：从独立型人格转向互赖型人格，因为一个人可以走得很快，但一群人可以走得更远
+  * 不断更新
 * [搜索技术](https://www.youtube.com/watch?v=tiN6T1LewmQ)
 * [Improving Communication Skills](https://www.coursera.org/learn/wharton-communication-skills)
 * [Creative Thinking: Techniques and Tools for Success](https://www.coursera.org/learn/creative-thinking-techniques-and-tools-for-success)
