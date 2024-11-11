@@ -116,7 +116,7 @@ This personal Blog contains explanation and **Java library/template implementati
       - 里德-所罗门码 | RS Codes ([Wiki](https://zh.m.wikipedia.org/zh-hans/%E9%87%8C%E5%BE%B7-%E6%89%80%E7%BD%97%E9%97%A8%E7%A0%81))
     - 均匀哈希 | Uniform Hash
       - MurmurHash3 (不可逆，是一种非加密哈希函数，有速度快、均匀性好、易于使用等优点，常用于哈希表、布隆过滤器等数据结构中，以提高性能和减少哈希碰撞；[Code](https://commons.apache.org/proper/commons-codec/jacoco/org.apache.commons.codec.digest/MurmurHash3.java.html))
-      - xxHash (同上)
+      - xxHash (同上，是比 MurmurHash 更快的哈希算法，尤其在较大数据块的哈希运算上表现优异，[Ref](https://github.com/Cyan4973/xxHash))
     - 加密算法 | Cryptography (可逆)
       - [AES 对称加密算法](https://goodapple.top/archives/162) (可逆)
       - RSA 加密算法 (可逆，最重要的[非对称加密算法](./非对称加密算法.md))
