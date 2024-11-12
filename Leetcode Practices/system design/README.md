@@ -176,6 +176,11 @@
   * [许多数据库提供了物化视图的功能](./../../Computer%20System%20Layer/%E6%95%B0%E6%8D%AE%E5%BA%93/SQL/README.md#物化视图)
 * [速率限制模式](https://learn.microsoft.com/zh-cn/azure/architecture/patterns/rate-limiting-pattern) - 节流模式用于减少流量以及增加带宽吞吐量，节流策略可以从每秒请求数，请求数据量，费用等维度进行配置。
   * 具体参考下面 Practice Examples 的 `设计 API Rate Limiter`
+* 集合统计模式 - [Redis 实现 4 种常用统计](https://www.cnblogs.com/520lq/p/14654500.html)
+  * 聚合统计 (指统计多个集合元素的聚合结果，包括：`交集统计`统计多个集合的共有元素；`差集统计`把两个集合相比并统计其中一个集合独有的元素；`并集统计`统计多个集合的所有元素，除此之外还可以延伸出`分布统计`、`频率统计`等)
+  * 排序统计 (涉及到数据的排名和顺序、序列等需求，因此集合本身应是有序集合，除此之外还可以延伸出`趋势分析`)
+  * 二值状态统计 (指集合元素如 Bitmap 的取值只有 0 和 1 两种状态，通常用于表示某个事件是否发生或某个条件是否成立)
+  * 基数统计 (统计一个集合中不重复的元素个数)
 * [更多：计算资源合并、外部配置存储、网关路由、运行状况 endpoint 监视、领导选择、优先级队列、发布方/订阅方、基于队列的负载调控、分片、静态内容托管、Geodes、竞争性使用者等等](https://learn.microsoft.com/zh-cn/azure/architecture/patterns/)
 
 </details>
