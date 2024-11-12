@@ -153,7 +153,7 @@ This personal Blog contains explanation and **Java library/template implementati
       - DHT 的 Kademlia 协议
       - DHT 的 Chord 算法 ([Wiki](https://en.wikipedia.org/wiki/Chord_(peer-to-peer)))
       - [Gossip 协议/流行病协议](../Computer%20System%20Layer/数据库/Dynamo/README.md#Gossip-协议)
-  - [人工智能, 机器学习 | Artificial Intelligence, Machine Learning](./机器学习.md) ([人工智能分类](./人工智能分类.jpeg)、[ML 算法时间复杂度](./ML-Algorithms-Time-Complexity.jpeg)、[训练与推断过程](./Training-and-Inference-workflow-diagram.png))
+  - [人工智能, 机器学习, 数据挖掘 | Artificial Intelligence, Machine Learning, Data Mining](./机器学习.md) ([人工智能分类](./人工智能分类.jpeg)、[ML 算法时间复杂度](./ML-Algorithms-Time-Complexity.jpeg)、[训练与推断过程](./Training-and-Inference-workflow-diagram.png))
     - [决策树算法 | Decision Tree Algorithm](./机器学习.md#决策树) ([Ref 1](./decision-tree.png)、[Ref 2](https://www.ibm.com/cn-zh/topics/decision-trees))
       - [随机森林 | Random Forest](./机器学习.md#随机森林) ([Ref](https://www.nvidia.cn/glossary/data-science/random-forest/))
       - [梯度提升决策树 | Gradient Boosted Decision Trees](./机器学习.md#GBDT) ([Ref 1](https://github.com/NLP-LOVE/ML-NLP/blob/master/Machine%20Learning/3.2%20GBDT/3.2%20GBDT.md)、[Ref 2](https://developers.google.com/machine-learning/decision-forests/intro-to-gbdt))
@@ -175,6 +175,9 @@ This personal Blog contains explanation and **Java library/template implementati
         - BERT
         - GPT ([build GPT from scratch](https://www.youtube.com/watch?v=kCc8FmEb1nY))
     - [多模态学习 | Multimodal Learning](./机器学习.md#多模态学习) ([Ref](https://zhuanlan.zhihu.com/p/53511144))
+    - 关联规则学习 | Association Rule Learning ([Wiki](https://zh.wikipedia.org/wiki/%E5%85%B3%E8%81%94%E8%A7%84%E5%88%99%E5%AD%A6%E4%B9%A0))
+      - 先验算法 | Apriori algorithm ([Wiki](https://en.wikipedia.org/wiki/Apriori_algorithm)，寻找关联性的经典算法)
+      - FP-Growth 算法 (以及相关的 Frequent Pattern Tree；[Ref](https://en.wikipedia.org/wiki/Frequent_pattern_discovery))
   - 并行算法 | Parallel Algorithm ([Wiki](https://en.wikipedia.org/wiki/Parallel_algorithm)、[Ref](https://blog.51cto.com/luweir/4873113?articleABtest=0)：并行算法尚在发展中，不及串行算法丰富。目前最常用的的方法是 PCAM 方法，即划分，通信，组合，映射。并行算法与串行算法最大的不同之处在于，并行算法不仅要考虑问题本身，而且还要考虑所使用的并行模型，网络连接等等)
     - 阿姆达尔定律 | Amdahl's Law ([Wiki](https://zh.wikipedia.org/wiki/%E9%98%BF%E5%A7%86%E8%BE%BE%E5%B0%94%E5%AE%9A%E5%BE%8B))
   - [数学 | Maths](../Computer%20Science%20Maths/README.md) (以下分类不严格界限，互相可以有重叠)
