@@ -365,6 +365,9 @@ by ChatGPT
     * 正式上线流量控制
   * 兼容变更 vs 不兼容变更 - 比如 API 版本控制
 
+## [AB 实验最佳实践](https://tech.meituan.com/2023/08/24/ab-test-practice-in-meituan.html)
+注意不是所有的实验都会被证明对指标增长有显著效果，如果是这样，就没有必要进行实验了。因此对于实验失败（大概率事件）不要灰心，正因为某些实验被证明无效，才会找到有效的增长方式，最好的办法就是增加测试频率、持续测试，而非浅尝辄止，又回到经验决策或直觉拍板的旧思路上。  
+
 # 系统工程（系统科学内容之一）
 * [What is systems engineering](https://www.freecodecamp.org/news/what-is-systems-engineering/)
 * [系统工程 wiki](https://zh.wikipedia.org/zh-hans/%E7%B3%BB%E7%BB%9F%E5%B7%A5%E7%A8%8B)
