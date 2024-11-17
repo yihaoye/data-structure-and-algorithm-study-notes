@@ -127,7 +127,7 @@
   * [倍增法 | Leetcode Q1483](./Common%20Algorithm%20and%20Theory/倍增法.md)
 * 高级算法
   * [拓扑排序 | Leetcode Q210](./Common%20Algorithm%20and%20Theory/拓扑排序.md)
-  * [多路归并 | Leetcode Q23-合并排序链表 Q355-设计推特时间线 Q373-最值-TopK-组合](./Leetcode%20Practices/algorithms/hard/23%20Merge%20k%20Sorted%20Lists.java)（该算法原理基于 [Top-K 优化 | Leetcode Q692](./Leetcode%20Practices/algorithms/medium/692%20Top%20K%20Frequent%20Words.java)，只是多路归并通常使用更复杂的引用、索引而简单的 Top-K 优化是基于哈希表等或完全不需要存取完整数据）
+  * [多路归并 | Leetcode Q23-合并排序链表 Q355-设计推特时间线 Q373-最值-TopK-组合](./Leetcode%20Practices/algorithms/hard/23%20Merge%20k%20Sorted%20Lists.java)（该算法原理基于 [Top-K 优化 | Leetcode Q692](./Leetcode%20Practices/algorithms/medium/692%20Top%20K%20Frequent%20Words.java)，只是多路归并通常使用更复杂的引用、索引，而简单的 Top-K 优化是基于哈希表等或完全不需要存取完整数据）
   * [Dijkstra 算法 | Leetcode Q743-图-最值权重路径](./Leetcode%20Practices/algorithms/medium/743%20Network%20Delay%20Time.java)
   * [AC 自动机 | 多模式串字符串匹配](./Common%20Algorithm%20and%20Theory/AcAutomaton.java)（可以替代单模式串字符串匹配算法如[滚动哈希](./Common%20Algorithm%20and%20Theory/滚动哈希.md)、[KMP 算法](./Common%20Algorithm%20and%20Theory/KMP算法.md)）
   * [LCA | Leetcode Q236](./Leetcode%20Practices/algorithms/medium/236%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree.java)

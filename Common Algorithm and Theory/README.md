@@ -91,7 +91,7 @@ This personal Blog contains explanation and **Java library/template implementati
   - 系统级或领域相关 | System Level or Domain Related
     - [字典树算法 | Trie Algorithm](./../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/Trie/README.md)
     - [映射-归约 | MapReduce](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md)
-    - 多路归并 | K-Way Merge ([Wiki](https://en.wikipedia.org/wiki/K-way_merge_algorithm)、[Code](../Leetcode%20Practices/algorithms/hard/23%20Merge%20k%20Sorted%20Lists.java))
+    - 多路归并 | K-Way Merge ([Wiki](https://en.wikipedia.org/wiki/K-way_merge_algorithm)、[Code](../Leetcode%20Practices/algorithms/hard/23%20Merge%20k%20Sorted%20Lists.java)；该算法原理基于 [Top-K 优化](./Leetcode%20Practices/algorithms/medium/692%20Top%20K%20Frequent%20Words.java)，只是多路归并通常使用更复杂的引用、索引，而简单的 Top-K 优化是基于哈希表等或完全不需要存取完整数据)
     - 环形缓冲器及其算法 | Ring Buffer ([Wiki](https://zh.wikipedia.org/wiki/%E7%92%B0%E5%BD%A2%E7%B7%A9%E8%A1%9D%E5%8D%80)；注意，可以用一个最长的环实现多环复用，用一个变量或指针记录当前的长环尾部，若想获取短环则只需从长环尾部往前回溯一次短环长度再开始遍历即可)
       - [散列与分层时序轮算法 | Hashed and Hierarchical Timing Wheels Algorithm](./散列与分层时序轮.md) (操作时间复杂度皆为 `O(1)`)
     - [分块/分桶法 | Range Block/Bucketing](./分桶法.md) (若为平方分割，则时间复杂度 `O(√N)`，通常在线/离线均可使用)
