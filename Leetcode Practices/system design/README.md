@@ -1096,13 +1096,14 @@ S2 算法进行空间查询的过程与 GeoHash 类似，依旧是将空间区�
 ![](./google-map-rendering.png)  
 
 ### [核心：路径规划算法](https://originlee.com/2023/02/03/routing-algorithm/)
-**基本的图搜索算法 Dijkstra 是无法满足互联网地图检索实时响应这种性能要求，所以各家公司都有各自的预处理方法：分层或者预计算。具体采用何种方式，这取决于采取的加速算法相关。2008 年前后，以 [KIT](http://algo2.iti.kit.edu/routeplanning.php) 为主的研究院产出了多个路径规划加速算法，其中以 Contraction Hierarchies 和 Highway Hierarchies 较出名，加之微软研究院提出的 [Customizable Route Planning](https://www.microsoft.com/en-us/research/publication/customizable-route-planning/)，与传统的 A-Star，基本上支撑了目前工业界地图产品的路径规划服务。**  
+**基本的图搜索算法 Dijkstra 是无法满足互联网地图检索实时响应这种性能要求，所以各家公司都有各自的预处理方法：分层或者预计算。具体采用何种方式，这取决于采取的加速算法相关。2008 年前后，以 [KIT](http://algo2.iti.kit.edu/routeplanning.php) 为主的研究院产出了多个路径规划加速算法，其中以 Contraction Hierarchies 和 Highway Hierarchies 较出名，加之微软研究院提出的 [Customizable Route Planning](https://www.microsoft.com/en-us/research/publication/customizable-route-planning/)，与传统的 A-Star，基本上支撑了目前工业界地图产品的路径规划服务。[参考来源](https://www.zhihu.com/question/24870090)**  
 * CH：https://en.wikipedia.org/wiki/Contraction_hierarchies
+  * [开源代码库](https://github.com/graphhopper/graphhopper)
 * CRP：https://www.microsoft.com/en-us/research/wp-content/uploads/2013/01/crp_web_130724.pdf
   
 Naive Solution：在进行导航时，因为已经由客户输入出发与终点地址，因此简单的设计是可以直接使用 `Dijkstra` 算法（因为地图里每个点可以用二维图数据渲染，其中以一些里程碑地点比如城镇作为图计算的节点以及记录它与周边里程碑地点的路程即权重，原因是距离太大时若地图里每一个像素点都参与图计算的话性能较差也没必要，如果选择的出发点或终点不是里程碑地点的话，可以先用 `BFS` 计算目标点到附近里程碑点的最短路径，然后里程碑地点之间再如上计算），另外路径数据可以预处理计算以优化性能（该数据可以持久化存储，因为地图道路通常较少变更），对于快速判断两个地点是否有路径相连还应该引进并查集（为防止集合太大且没有连接时的大复杂度计算，但是要注意并查集加边容易删边难）且并查集也是可以预处理的。  
 
-**实际应用中用的是 `A* 搜索算法` + [Contraction Hierarchies](https://originlee.com/2023/02/04/routing-ch-algorithm/) 或 [Customizable Route Planning](https://www.cnblogs.com/mfryf/p/15352842.html)，A-Star 与 Dijkstra 算法相似，也是一种图搜索算法，但它引入了启发式函数（heuristic function），以更有效地确定路径，它结合了 Dijkstra 算法的最短路径搜索和启发式函数的优化搜索，通过评估节点到目标节点的估计代价（通常称为启发式代价或启发式值），来决定下一步探索的节点。这使得该算法在许多情况下能够更快地找到最短路径。[代码逻辑类似参考](https://www.acoier.com/2022/05/23/675.%20%E4%B8%BA%E9%AB%98%E5%B0%94%E5%A4%AB%E6%AF%94%E8%B5%9B%E7%A0%8D%E6%A0%91%EF%BC%88%E5%9B%B0%E9%9A%BE%EF%BC%89/#AStar-%E7%AE%97%E6%B3%95-%E5%B9%B6%E6%9F%A5%E9%9B%86%E9%A2%84%E5%A4%84%E7%90%86%E6%97%A0%E8%A7%A3)**  
+**实际应用中（谷歌地图等）用的是 `A* 搜索算法` + [Contraction Hierarchies](https://originlee.com/2023/02/04/routing-ch-algorithm/) 或 [Customizable Route Planning](https://www.cnblogs.com/mfryf/p/15352842.html)，A-Star 与 Dijkstra 算法相似，也是一种图搜索算法，但它引入了启发式函数（heuristic function），以更有效地确定路径，它结合了 Dijkstra 算法的最短路径搜索和启发式函数的优化搜索，通过评估节点到目标节点的估计代价（通常称为启发式代价或启发式值），来决定下一步探索的节点。这使得该算法在许多情况下能够更快地找到最短路径。[代码逻辑类似参考](https://www.acoier.com/2022/05/23/675.%20%E4%B8%BA%E9%AB%98%E5%B0%94%E5%A4%AB%E6%AF%94%E8%B5%9B%E7%A0%8D%E6%A0%91%EF%BC%88%E5%9B%B0%E9%9A%BE%EF%BC%89/#AStar-%E7%AE%97%E6%B3%95-%E5%B9%B6%E6%9F%A5%E9%9B%86%E9%A2%84%E5%A4%84%E7%90%86%E6%97%A0%E8%A7%A3)**  
 
 至于基于车辆还是步行等导航，可以为图的每个点设置不同的值，如此进行 Dijkstra 计算时可以据此当作是否可行还是阻拦来计算。另外，还应该考虑动态重规划：在导航过程中，用户可能会出现导航误差、交通变化等情况，因此，系统通常会使用动态重规划来重新计算最佳路径，并提供实时导航指示。  
 如果想实现地图检测部分路段因实时堵塞而通知用户速度较慢的功能，可以通过数据收集：谷歌通过多种途径收集行车速度数据，其中包括智能手机上的谷歌地图应用，这些应用可以匿名地收集用户位置数据和速度信息，此外，谷歌还使用了实时交通信息，这些信息来自于车载导航设备、交通监控摄像头、交通数据提供商等。  
