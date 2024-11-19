@@ -1,9 +1,7 @@
 # 字符串
-在 Java 中，常见的字符串类型包括 String、StringBuffer 和 StringBuilder。
-
-从 String 的源码可以看到，String 使用数组存储字符串的内容，数组使用关键词 final 修饰，因此数组内容不可变，使用 String 定义的字符串的值也是不可变的。
-
-由于 String 类型的值不可变，因此每次对 String 的修改操作都会创建新的 String 对象，导致效率低下且占用大量内存空间。
+在 Java 中，常见的字符串类型包括 String、StringBuffer 和 StringBuilder。  
+从 String 的源码可以看到，String 使用数组存储字符串的内容，该数组使用关键词 final 修饰，因此数组内容不可变，使用 String 定义的字符串的值也是不可变的。  
+由于 String 类型的值不可变，因此每次对 String 的修改操作都会创建新的 String 对象，导致效率低下且占用大量内存空间。  
 
 ## StringBuffer 和 StringBuilder
 StringBuffer 和 StringBuilder 都是 AbstractStringBuilder 的子类，同样使用数组存储字符串的内容，由于数组没有使用关键词 final 修饰，因此数组内容可变，StringBuffer 和 StringBuilder 都是可变类型，可以对字符串的内容进行修改，且不会因为修改而创建新的对象。

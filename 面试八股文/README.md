@@ -109,6 +109,11 @@
 * [Java IO](https://www.cnblogs.com/czwbig/p/10007201.html)
 * [Java 注解原理](../Tool%20Sets/Annotation.java)
 * [Java 编译部署](../Computer%20System%20Layer/编译部署/README.md)
+* String 不可变的原因（[实际可以利用反射机制改变 value](https://juejin.cn/post/7046055960988614687)）- 字符串在应用中的广泛使用和安全性方面的考虑，[具体细分原因](https://www.cnblogs.com/wkfvawl/p/11693260.html)如下：
+  * 便于实现字符串池，节省资源
+  * 线程安全
+  * 黑客安全
+  * 加快字符串处理速度，因为保证了 hashcode 的唯一性，于是在创建对象时其 hashcode 就可以放心的缓存了，不需要重新计算
 
 ### Golang 高频
 * [什么是 golang 内存逃逸](./../Computer%20System%20Layer/内存与程序.md#内存逃逸)
