@@ -339,6 +339,7 @@ by ChatGPT
 * 定制化服务模式 - 咨询业等
 
 ## 产品思维
+* [如何发现用户的真实需求](https://www.woshipm.com/operate/816018.html)
 * [52 条设计原则](https://rpdc.xiaohongshu.com/52-design-principles)
 * [产品经理必会的 30 个组件](https://www.woshipm.com/pd/5423893.html)
 * 消息管理系统（站内信 / inbox message 等）
