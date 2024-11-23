@@ -81,7 +81,7 @@ This personal Blog contains explanation and **Java library/template implementati
       - 禁忌搜索 | Tabu Search
       - 爬山算法 | Hill Climbing
       - [随机数生成算法 | Random Number Generator](./随机数生成算法.md)
-        - [高性能大规模唯一随机数生成 | Efficient Large Unique Random Number Generator](./lurand.go)
+        - [高性能大规模唯一随机数生成 | Efficient Large Unique Random Number Generator](./lurand/README.md)
       - 随机化算法/搜索 | Random Algorithm/Search (随机化算法高效的原因是它跳过不必要的枝节、搜索空间，即其本质是剪枝优化。另外，有些随机化算法如随机森林可以容易地并行化，因为它们的操作不一定依赖于前一步骤的结果，这使得它们在多核或分布式计算环境中更高效)
         - 蒙特卡洛方法 | Monte Carlo Method ([Ref](https://renns.top/post/59/)，采样越多，越近似最优解)
           - [模拟退火 | Simulated Annealing](./模拟退火.md)
