@@ -525,7 +525,7 @@ Cache (cache eviction policy - e.g. Least Recently Used (LRU) with LinkedHashMap
 其他：  
 * Telemetry.
 * Security and Permissions (user permission).
-  * 该系统的一个安全考虑是：使用 `ID <-> 短链接` 容易被外部推测有多少记录从而可能泄露业务信息，一种办法是使用 [Unique ID Generator](./README.md#设计分布式-unique-id-generator计数器) 如雪花算法来创建 ID 而不是简单地使用数据库的自增主键 - 但要注意，ID 生成很难同时完美地满足随机性与紧凑性，如果一定想完美实现，则一个牺牲空间的可行方案是先要预处理，即每个数据库都先乱序写好所有可用唯一 ID（比如 0-10^9 或更多然后 shuffle）并在后续的使用时取出未使用的来。
+  * 该系统的一个安全考虑是：使用 `ID <-> 短链接` 容易被外部推测有多少记录从而可能泄露业务信息，最佳办法是使用[高性能大规模唯一随机数生成算法](../../Common%20Algorithm%20and%20Theory/lurand.go)
 
 </details>
 
