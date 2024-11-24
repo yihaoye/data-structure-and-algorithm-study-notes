@@ -131,4 +131,22 @@ func TestParallel(t *testing.T) {
 		}
 		time.Sleep(1 * time.Second)
 	})
+
+	t.Run("Test atomic Store and Swap", func(t *testing.T) {
+		// https://gfw.go101.org/article/concurrent-atomic-operation.html
+		type T struct{ a, b, c int }
+		var x = T{1, 2, 3}
+		var y = T{4, 5, 6}
+		var z = T{7, 8, 9}
+		var v atomic.Value
+		v.Store(x)
+		fmt.Println(v)       // {{1 2 3}}
+		old := v.Swap(y)     // old == x
+		fmt.Println(v)       // {{4 5 6}}
+		fmt.Println(old.(T)) // {1 2 3}
+		swapped := v.CompareAndSwap(x, z)
+		fmt.Println(swapped, v) // false {{4 5 6}}
+		swapped = v.CompareAndSwap(y, z)
+		fmt.Println(swapped, v) // true {{7 8 9}}
+	})
 }
