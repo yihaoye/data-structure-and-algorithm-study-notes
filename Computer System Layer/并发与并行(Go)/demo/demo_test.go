@@ -134,6 +134,7 @@ func TestParallel(t *testing.T) {
 
 	t.Run("Test atomic Store and Swap", func(t *testing.T) {
 		// https://gfw.go101.org/article/concurrent-atomic-operation.html
+		// https://cloud.tencent.com/developer/article/2293811
 		type T struct{ a, b, c int }
 		var x = T{1, 2, 3}
 		var y = T{4, 5, 6}

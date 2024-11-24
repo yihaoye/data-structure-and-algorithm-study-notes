@@ -400,8 +400,6 @@ API 网关是位于客户端与后端服务集之间的大门 - API 管理工具
 * Random I/O (slower)
 * Sequential I/O (much faster)
 
-![](./access-performances.png)  
-
 ## 事务
 ### [分布式事务](./分布式事务.md)
 
@@ -3964,6 +3962,12 @@ To Be Continue ...
 * 5B/字节 ID（纯数字）可以表示 2^8^5 => 2^40 => 10^12 => 1000 Billion => 10000 亿 => 1 兆
 * 4B/字节 ID（纯数字）可以表示 2^8^4 => 2^32 => 4 Billion => 40 亿
 * 3B/字节 ID（纯数字）可以表示 2^8^3 => 2^24 => 15 Million => 1500 万
+
+## 延迟时间表
+[Latency Numbers Every Programmer Should Know](https://gist.github.com/jboner/2841832)  
+[每个程序员都应该知道的延迟时间表](https://codingnote.com/2017/10/30/Latency-Numbers-Every-Programmer-Should-Know/)  
+
+![](./access-performances.png)  
 
 ## 数量单位中英对照
 ![](./数量单位中英对照.jpeg)  
