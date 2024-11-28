@@ -345,6 +345,7 @@
   * 基于操作系统的锁：这种锁是通过操作系统提供的原语来实现的，例如 Linux 的互斥锁（mutex），Windows 的临界区（critical section）等。它们是在操作系统层面上实现的，通常会涉及到用户态到内核态的切换，因此相对来说比较重量级。[互斥锁的实现](https://www.zhihu.com/question/332113890)及相关[算法](https://zh.wikipedia.org/wiki/Peterson%E7%AE%97%E6%B3%95)。
   * 基于硬件的锁：这种锁是直接利用处理器提供的原语来实现的，最典型的就是 CAS（Compare and Swap）指令。CAS 指令是一种乐观锁，它尝试将一个变量的值与一个期望的值进行比较，如果相等就将该变量设置为一个新的值。如果失败，则说明其他线程已经修改了这个变量，需要重新尝试。由于 CAS 是在硬件层面上实现的，所以比基于操作系统的锁要轻量级，性能更高。
 * [内存屏障](https://monkeysayhi.github.io/2017/12/28/%E4%B8%80%E6%96%87%E8%A7%A3%E5%86%B3%E5%86%85%E5%AD%98%E5%B1%8F%E9%9A%9C/)
+* [Linux 命令大全手册](https://www.linuxcool.com/)
 * [Linux for Programmers](https://www.youtube.com/watch?v=ebHX9c75H8I&list=PLzMcBGfZo4-nUIIMsz040W_X-03QH5c5h)
   * `cat`、`rm`、`cd`、`mv`、`cp`
   * `ps`、`top`、`kill`
@@ -353,8 +354,10 @@
       * 以 `ps -ef | grep 关键字 | awk '{print $2}' | xargs kill -9` 为例，这里面的竖线 | 就是一个管道。它会将前一个命令的输出，作为后一个命令的输入。从管道的这个名称可以看出来，管道是一种单向传输数据的机制，它其实是一段缓存，里面的数据只能从一端写入，从另一端读出。如果想互相通信，需要创建两个管道才行。管道分为两种类型，| 表示的管道称为匿名管道，意思就是这个类型的管道没有名字，用完了就销毁了。就像上面那个命令里面的一样，竖线代表的管道随着命令的执行自动创建、自动销毁。用户甚至都不知道自己在用管道这种技术，就已经解决了问题。另外一种类型是命名管道。这个类型的管道需要通过 `mkfifo` 命令显式地创建。
   * `ls -l`、`chmod` (permission)
   * 网络
-    * `ssh` (用于远程登录到其他计算机，提供了安全的加密通信。可以在终端中运行远程命令)、`ssh-keygen`、`scp` (用于通过SSH在本地计算机和远程计算机之间复制文件。可以实现安全的文件传输)、`curl` (可发送 HTTP/HTTPS、SFTP、FTP 等协议的网络请求)、`wget` (用于从网络下载文件)
-    * `ifconfig` 或 `ip` (用于显示和配置网络接口的信息，包括 IP 地址、子网掩码、广播地址等)、`netstat` (用于显示网络连接、路由表、接口统计、网络协议统计等信息。可以帮助查看当前网络连接和端口状态)、`ping`、`traceroute` (用于跟踪数据包从本地主机到目标主机的路径)、`route` (Manages IP routing table)、`iptables` (用于设置和管理 Linux 防火墙规则，可以控制网络流量和安全)、`nslookup` (用于查询域名系统 DNS 信息，可以查找域名的 IP 地址以及反向查找 IP 地址对应的域名)、`hostname` (Displays or sets the system's hostname)、`arp` (Manages ARP cache)
+    * `ssh` (用于远程登录到其他计算机，提供了安全的加密通信。可以在终端中运行远程命令)、`ssh-keygen`、`scp` (用于通过 SSH 在本地计算机和远程计算机之间复制文件。可以实现安全的文件传输)、`curl` (可发送 HTTP/HTTPS、SFTP、FTP 等协议的网络请求)、`wget` (用于从网络下载文件)
+    * `ifconfig` 或 `ip` (用于显示和配置网络接口的信息，包括 IP 地址、子网掩码、广播地址等，BSD 系比如 MacOS 通常没有内置 `ip` 命令集所以只能使用前者)、`netstat` (用于显示网络连接、路由表、接口统计、网络协议统计等信息。可以帮助查看当前网络连接和端口状态)、`ping`、`traceroute` (用于跟踪数据包从本地主机到目标主机的路径)、`route` (Manages IP routing table)、`iptables` (用于设置和管理 Linux 防火墙规则，可以控制网络流量和安全，同样不是 BSD 系内置命令集)、`nslookup` (用于查询域名系统 DNS 信息，可以查找域名的 IP 地址以及反向查找 IP 地址对应的域名)、`hostname` (Displays or sets the system's hostname)、`host` (常用的分析域名查询工具，可进行 DNS <-> IP 双向查找)、`arp` (Manages ARP cache)
+    * 重要网络配置文件，通过 `cat` 命令可看
+      * `/etc/hosts` - 负责 ip 地址与域名快速解析的文件
   * `crontab` (i.e. cronjob)、[sleep](https://linuxize.com/post/how-to-use-linux-sleep-command-to-pause-a-bash-script/)
   * [Linux 中最重要的 3 个命令，均为文本操作（因为 Linux 一切皆文本）](https://zhuanlan.zhihu.com/p/110983126)
     * [grep（更适合单纯的查找或匹配）](https://juejin.cn/post/7069591460730896414#heading-21)
@@ -407,6 +410,7 @@
   * 通常不可更改：固件通常被存储在设备的只读存储器（ROM）或者闪存等非易失性存储器中，并且通常不会随意更改。但有些设备也提供了固件升级的机制，允许用户更新固件以修复 bug、增加新功能或提高性能。
 * [Cache 直接映射、组相连映射以及全相连映射](https://www.cnblogs.com/east1203/p/11572500.html) ([Ref](https://en.wikipedia.org/wiki/Cache_placement_policies))
 * [RDMA | 远程直接内存访问](https://zh.wikipedia.org/zh-hans/%E8%BF%9C%E7%A8%8B%E7%9B%B4%E6%8E%A5%E5%86%85%E5%AD%98%E8%AE%BF%E9%97%AE) - 一种绕过远程主机操作系统内核访问其内存中数据的技术，由于不经过操作系统，节省了大量 CPU 资源，提高了系统吞吐量、降低了系统的网络通信延迟，在大规模并行计算机集群中有广泛应用
+* [CompTIA Linux+](https://www.youtube.com/watch?v=NN_xoinL6f4&list=PLw78nfbi6DWjX8ephtrITEqdnWL1wv8qC)
 
 ### Docker 高频
 * [Dockerfile 配置文件中的 COPY 和 ADD 指令有什么不同](https://www.modb.pro/db/404626)
