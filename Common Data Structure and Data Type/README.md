@@ -1,8 +1,9 @@
 # 常用数据结构 | Data Structure
   
 - 数组 | Array (索引 O(1)，遍历 O(N)，插入/删除节点 O(N))
+  - [稀疏数组 | Sparse Array](https://zq99299.github.io/dsalg-tutorial/dsalg-java-hsp/03/01.html#%E7%A8%80%E7%96%8F%E6%95%B0%E7%BB%84) (在大的数组尤其是多维数组且实际数据较少的情况下，可以优化空间利用率和操作效率。使用案例如 Game of Life)
   - [树状数组 | Binary Indexed Tree](../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/BinaryIndexedTree(FenwickTree)/README.md) (单点修改、区间查询均为 O(logN))
-  - [ST 表 | Sparse Table](https://oi-wiki.org/ds/sparse-table/)
+  - [稀疏表 | Sparse Table](https://oi-wiki.org/ds/sparse-table/) (解决可重复贡献问题的 RMQ，O(N*logN) 预处理，O(1) 响应每个查询，但是不支持修改操作。可被线段树替代)
   - [环形队列 | Circular Queue (Ring Buffer)](./../Leetcode%20Practices/algorithms/medium/622%20Design%20Circular%20Queue.java) (可以用数组+双指针实现，也可以用顺序表+双指针或用循环链表实现)
     - [散列与分层时序轮 | Hashed and Hierarchical Timing Wheels](../Common%20Algorithm%20and%20Theory/散列与分层时序轮.md) (索引/插入/删除皆为 `O(1)`)
 - 线性表 | Linear List
