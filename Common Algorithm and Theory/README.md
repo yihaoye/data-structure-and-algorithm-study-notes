@@ -69,7 +69,7 @@ This personal Blog contains explanation and **Java library/template implementati
     - [网络流相关算法 | Flow Network Algorithms](./网络流.md) (概念：[最大流最小割](./网络流.md#最大流最小割)同时也是最优化理论的定理，[增广路 | Augmenting Path](../Common%20Algorithm%20and%20Theory/图匹配.md#增广路定理-Berge's-lemma))
       - Ford-Fulkerson 算法
         - [迪尼茨算法 | Dinic Algorithm](./网络流.md#dinic-算法) (网络流重点算法，时间复杂度 `O(E*V^2)`)
-    - [迪杰斯特拉算法 | Dijkstra Algorithm](./Dijkstra算法.md) (时间复杂度：单起点单终点 `O(V+E*logV)`，单起点到其他各点 `O((V+E)*logV)`)
+    - [迪杰斯特拉算法 | Dijkstra Algorithm](./Dijkstra算法.md) (时间复杂度：单起点单终点 `O(V'+E'*logV')` 这里的 V' 和 E' 意思是计算出结果前遍历的节点和路径，单起点到其他各点 `O((V+E)*logV)` 这里的 V 和 E 是全部的节点和路径)
     - 贝尔曼-福特算法 | Bellman-Ford Algorithm ([Ref](https://mp.weixin.qq.com/s/wnRQ_9CckAmlQaAjo7q_0w))
       - 最短路径快速算法 | Shortest Path Faster Algorithm (又称 SPFA，是带有队列优化的 Bellman-Ford 算法，最坏情况下时间复杂度为 `O(V*E)`，在特定情况下其效率优于 Dijkstra 算法，近似 `O(E)`)
     - [分层可导航小世界算法 | Hierarchical Navigable Small World Algorithm](./HNSW.md) (时间复杂度：搜索平均 `O(logN)` 最差 `O(N^(1-1/d))`，插入 `O(logN)`，其中 N 为节点数、d 为维度数)

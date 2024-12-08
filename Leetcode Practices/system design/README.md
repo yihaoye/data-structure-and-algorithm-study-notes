@@ -1100,7 +1100,7 @@ S2 算法进行空间查询的过程与 GeoHash 类似，依旧是将空间区�
 * CRP：https://www.microsoft.com/en-us/research/wp-content/uploads/2013/01/crp_web_130724.pdf
   
 Naive Solution：在进行导航时，因为已经由客户输入出发与终点地址，因此简单的设计是可以直接使用 [`Dijkstra` 算法](../../Common%20Algorithm%20and%20Theory/Dijkstra算法.md)（其中地图里每个点可以用二维图数据渲染，其中以一些里程碑地点比如城镇作为图计算的节点以及记录它与周边里程碑地点的路程即权重，原因是距离太大时若地图里每一个像素点都参与图计算的话性能较差也没必要），另外路径数据可以预处理计算以优化性能（该数据可以持久化存储，因为地图道路通常较少变更），对于快速判断两个地点是否有路径相连还应该引进并查集（为防止集合太大且没有连接时的大复杂度计算，但是要注意并查集加边容易删边难）且并查集也是可以预处理的。  
-为什么不是使用 `BFS`？因为除非每个路径分支都用一个并发线程去计算，否则平均或最差情况下都是 `Dijkstra` 算法更优，因为理论上单线程下 `BFS` 要穷举所有可能性或至少与最短路径深度相同的所有路径才能算出结果，而 `Dijkstra` 本质是贪心算法只需要探索有限条路径所以即使多了个 `logV` 的堆处理损耗其性能也仍然高很多。  
+为什么不是使用 `BFS`？因为地图场景是有权图（BFS 确实是无权图的最优解），而 `Dijkstra` 本质是贪心算法只需要探索有限条路径所以即使多了个 `logV` 的堆处理损耗其性能也仍然高很多（而且其 V 和 E 是计算出结果前遍历的路径与节点），而 BFS 要遍历所有可能性（[更多详细解释](../../Common%20Algorithm%20and%20Theory/Dijkstra算法.md#为什么不采用-BFS)）。  
   
 **实际应用中（谷歌地图等）用的是 `A* 搜索算法` + [Contraction Hierarchies](https://originlee.com/2023/02/04/routing-ch-algorithm/) 或 [Customizable Route Planning](https://www.cnblogs.com/mfryf/p/15352842.html)，A-Star 与 Dijkstra 算法相似，也是一种图搜索算法，但它引入了启发式函数（heuristic function），以更有效地确定路径，它结合了 Dijkstra 算法的最短路径搜索和启发式函数的优化搜索，通过评估节点到目标节点的估计代价（通常称为启发式代价或启发式值），来决定下一步探索的节点。这使得该算法在许多情况下能够更快地找到最短路径。[代码逻辑类似参考](https://www.acoier.com/2022/05/23/675.%20%E4%B8%BA%E9%AB%98%E5%B0%94%E5%A4%AB%E6%AF%94%E8%B5%9B%E7%A0%8D%E6%A0%91%EF%BC%88%E5%9B%B0%E9%9A%BE%EF%BC%89/#AStar-%E7%AE%97%E6%B3%95-%E5%B9%B6%E6%9F%A5%E9%9B%86%E9%A2%84%E5%A4%84%E7%90%86%E6%97%A0%E8%A7%A3)**  
   
