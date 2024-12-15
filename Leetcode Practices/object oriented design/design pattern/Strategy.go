@@ -6,21 +6,38 @@ import "fmt"
 /* 函数闭包 */
 type Strategy func()
 
-func UseStrategy(strategy Strategy) {
-	strategy()
+func NewStrategyA() Strategy {
+	return func() {
+		fmt.Println("Executing Strategy A")
+	}
 }
 
-func StrategyA() {
-	fmt.Println("Executing Strategy A")
+func NewStrategyB() Strategy {
+	return func() {
+		fmt.Println("Executing Strategy B")
+	}
 }
 
-func StrategyB() {
-	fmt.Println("Executing Strategy B")
+type MyStruct struct {
+	strategy Strategy
+}
+
+func (s *MyStruct) Execute() {
+	if s.strategy == nil {
+		// log error
+		return
+	}
+	s.strategy()
 }
 
 func main() {
-	UseStrategy(StrategyA)
-	UseStrategy(StrategyB)
+	s := &MyStruct{
+		strategy: NewStrategyA(),
+	}
+	s.Execute()
+
+	s.strategy = NewStrategyB()
+	s.Execute()
 }
 
 /* 使用接口组合 */
