@@ -5,9 +5,10 @@
   
 ### 本笔记包括以下内容:  
 * [算法及理论 | Common Algorithm & Theory](./Common%20Algorithm%20and%20Theory/README.md)
+  * **[重点：常用算法模版 | Algorithm Templates](./常用算法模版.md)**
 * [数据结构、数据类型及其实现 | Common Data Structure & Data Type & Implementation](./Common%20Data%20Structure%20and%20Data%20Type/README.md) (包括并发相关的数据结构的详解)
 * [Coding Practices](./Leetcode%20Practices/) (主要包含了 [Leetcode 算法](./Leetcode%20Practices/algorithms/)、[SQL 练习](./Leetcode%20Practices/database/)；算法题第一次提交 round 1 是自己的首次解答方法，第二次提交 round 2 是进行复盘复习后并添加、理解他人的更优解以及增添其他语言解题实现，round 0 则是首次答题没头绪参考他人解题思路)
-  * **[重点：分类分析套路](./分析套路.md)**
+  * **[重点：分类分析套路 | Structured Categorization Approach](./分析套路.md)**
   * [Codeforces](./Codeforces/README.md)
   * [Deep-ML](https://www.deep-ml.com/) (人工智能 Code Challenge)、[HackerRank](./HackerRank%20Practises/) (包括一些 [Java 语言实例解析](./HackerRank%20Practises/java/)、[Linux Bash](./HackerRank%20Practises/bash/))
   * [其他算法实践、真题、面经笔记](./Other%20Practices/)
@@ -85,7 +86,6 @@
     * [使用 `grid[y][x]` 而不是 `grid[x][y]`，又或者可以命名为 `grid[r][c]`](https://www.youtube.com/watch?v=P50r4CDeUYw)
 11. 注意一些基本包装类的对比，比如两个 Java Integer 可能值一样但是使用 `==` 时返回 false（有时返回 true），[具体参考](https://stackoverflow.com/a/4428779/6481829)，所以包装类对比时应该一致使用内置 equals 函数而不是 `==`，使用基本类型如 int、long、double 等等则不会有此问题。  
 
-
 #### 面试、讲解、题解时
 1. 注意有些专业术语的英语要表述正确：比如根号 M - square root of M 或 2th root of M； M^N - M to the power of N
 2. 最好题解过程中，在面板上记录并模拟每一步的处理数据的动态、状态，因为比较直观和易懂甚至有助于发现思考时的盲点
@@ -96,58 +96,10 @@
 7. [数据结构手绘、白板（文本文件）上绘图技巧](./白板绘图(数据结构手绘).md)
 
 #### 预先准备
-熟用熟背常用模版（推荐：或算法长时间手生需重捡复习，可配合[分类分析套路](./分析套路.md)）
-* 中级设计/构造/数据结构
-  * [设计哈希表 | Leetcode Q706](./Leetcode%20Practices/algorithms/easy/706%20Design%20HashMap.java)
-  * [设计最值栈 | Leetcode Q155](./Leetcode%20Practices/algorithms/easy/155%20Min%20Stack.java)
-  * [设计最小/大堆](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/BinaryHeap/MinHeap.java)
-  * [设计自定义完整双向链表](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/DoublyLinkedList/DoublyLinkedList.java)（[LRU 缓存](./Leetcode%20Practices/algorithms/medium/146%20LRU%20Cache.java)、[LFU 缓存](./Leetcode%20Practices/algorithms/hard/460%20LFU%20Cache.java)）
-  * 限流器（[固定窗口/滑动窗口](./Leetcode%20Practices/object%20oriented%20design/other%20practices/rate%20limiter%202/Solution.java)、[漏桶/令牌桶](./Leetcode%20Practices/object%20oriented%20design/other%20practices/rate%20limiter%203/Solution.java)）
-  * [前缀树（字典树）| Leetcode Q208](./Leetcode%20Practices/algorithms/medium/208%20Implement%20Trie%20(Prefix%20Tree).java)
-* 高级设计/构造/数据结构
-  * [并查集与联合查找 | Leetcode Q200 Q684 UF-解法](./Leetcode%20Practices/algorithms/medium/200%20Number%20of%20Islands.java)
-  * [线段树 | Leetcode Q732](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/SegmentTree/SegmentTree4.java)
-  * [跳表 | Leetcode Q1206](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/SkipList/SkipList.java)
-  * [红黑树](./Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/RedBlackTree/RBTree.java)
-  * [状态机（确定有限状态自动机）](./Tool%20Sets/FSM(DFA).java)
-  * 其他：[1](./Leetcode%20Practices/object%20oriented%20design/other%20practices/README.md)、[2](./Common%20Data%20Structure%20and%20Data%20Type/README.md)、[3](./Other%20Practices/)、[4](./Tool%20Sets/README.md)
-* 中级算法
-  * [二分搜索 | Leetcode Q34 Q2517 etc](./Common%20Algorithm%20and%20Theory/二分搜索.md)
-  * [反转链表 | Leetcode Q92](./Leetcode%20Practices/algorithms/medium/92%20Reverse%20Linked%20List%20II.java)
-  * [双指针与滑动窗口](./Common%20Algorithm%20and%20Theory/双指针法与滑动窗口算法.md)
-  * [快慢指针 | Leetcode Q142](./Leetcode%20Practices/algorithms/medium/142%20Linked%20List%20Cycle%20II.java)
-  * [单调栈（单调队列）| Leetcode Q503 Q42-接雨水](./Common%20Algorithm%20and%20Theory/单调栈.md)
-  * [位运算实现加减乘除 | Leetcode Q371](./Leetcode%20Practices/algorithms/easy/371%20Sum%20of%20Two%20Integers.java)
-  * [分块分桶 | Leetcode Q901](./Common%20Algorithm%20and%20Theory/分桶法.md)
-  * [树复原 | Leetcode Q105 Q106](./Leetcode%20Practices/algorithms/medium/105%20Construct%20Binary%20Tree%20from%20Preorder%20and%20Inorder%20Traversal.java)
-  * [回溯法 | Leetcode Q51-N-皇后 Q491-穷举递增子序列](./Leetcode%20Practices/algorithms/medium/491%20Increasing%20Subsequences.java)
-  * [翻转树 | Leetcode Q156 Q226](./Leetcode%20Practices/algorithms/medium/156%20Binary%20Tree%20Upside%20Down.java)
-  * [K 数之和 | Leetcode Q18](./Leetcode%20Practices/algorithms/medium/18%204Sum.java)
-  * [倍增法 | Leetcode Q1483](./Common%20Algorithm%20and%20Theory/倍增法.md)
-* 高级算法
-  * [拓扑排序 | Leetcode Q210](./Common%20Algorithm%20and%20Theory/拓扑排序.md)
-  * [多路归并 | Leetcode Q23-合并排序链表 Q355-设计推特时间线 Q373-最值-TopK-组合](./Leetcode%20Practices/algorithms/hard/23%20Merge%20k%20Sorted%20Lists.java)（该算法原理基于 [Top-K 优化 | Leetcode Q692](./Leetcode%20Practices/algorithms/medium/692%20Top%20K%20Frequent%20Words.java)，只是多路归并通常使用更复杂的引用、索引，而简单的 Top-K 优化是基于哈希表等或完全不需要存取完整数据）
-  * [Dijkstra 算法 | Leetcode Q743-图-最值权重路径](./Leetcode%20Practices/algorithms/medium/743%20Network%20Delay%20Time.java)
-  * [AC 自动机 | 多模式串字符串匹配](./Common%20Algorithm%20and%20Theory/AcAutomaton.java)（可以替代单模式串字符串匹配算法如[滚动哈希](./Common%20Algorithm%20and%20Theory/滚动哈希.md)、[KMP 算法](./Common%20Algorithm%20and%20Theory/KMP算法.md)）
-  * [LCA | Leetcode Q236](./Leetcode%20Practices/algorithms/medium/236%20Lowest%20Common%20Ancestor%20of%20a%20Binary%20Tree.java)
-  * [马拉车算法 | Leetcode Q5](./Common%20Algorithm%20and%20Theory/马拉车算法.md)
-  * [扫描线 | Leetcode Q218](./Leetcode%20Practices/algorithms/hard/218%20The%20Skyline%20Problem.java)
-  * [最小生成树 | Leetcode Q1135](./Leetcode%20Practices/algorithms/medium/1135%20Connecting%20Cities%20With%20Minimum%20Cost.java)
-  * [表达式求值/模拟计算器 | Leetcode Q772 Q227 etc](./Leetcode%20Practices/algorithms/hard/772%20Basic%20Calculator%20III.java)
-  * [背包问题 | Leetcode Q2585 etc](./Leetcode%20Practices/algorithms/hard/2585%20Number%20of%20Ways%20to%20Earn%20Points.java)
-  * [最大流最小割](./Common%20Algorithm%20and%20Theory/网络流.md#Dinic-算法)
-  * [凸包 | Leetcode Q587](./Leetcode%20Practices/algorithms/hard/587%20Erect%20the%20Fence.java)
-  * [模拟退火 | Leetcode Q1879 Q1723](./Leetcode%20Practices/algorithms/hard/1879%20Minimum%20XOR%20Sum%20of%20Two%20Arrays.java)、[遗传算法](./Common%20Algorithm%20and%20Theory/遗传算法.md)
-  * [水塘抽样 | Leetcode Q382 Q398 未知流随机](./Common%20Algorithm%20and%20Theory/蓄水池抽样算法.md#核心代码及原理)
-  * [快速傅立叶变换 | Leetcode Q43](./Common%20Algorithm%20and%20Theory/FFT.md)
-* 并发
-  * [多线程的方案集 A | Leetcode Q1115](./Leetcode%20Practices/algorithms/medium/1115%20Print%20FooBar%20Alternately.java)
-  * [多线程的方案集 B | Leetcode Q1116](./Leetcode%20Practices/algorithms/medium/1116%20Print%20Zero%20Even%20Odd.java)
-* 待补充... 等等
+熟用熟背[刷题常用模版](./常用算法模版.md)（推荐：或算法长时间手生需重捡复习，可配合[分类分析套路](./分析套路.md)）  
   
 #### 题型技巧
 查看[更多题型、细节技巧](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/tree/master/Cracking%20the%20Coding%20Interview)  
-  
   
 #### 感想
 要培养分治法（分而治之）的思维，把一个大的复杂困难的问题分解成多个小的较简单、直白的问题，原问题的解则由子问题的解的合并获得，这种思维在平时工作、生活中也很重要、实用。  
