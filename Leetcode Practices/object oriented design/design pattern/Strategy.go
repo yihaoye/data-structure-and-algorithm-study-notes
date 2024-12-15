@@ -1,3 +1,4 @@
+// https://refactoringguru.cn/design-patterns/strategy/go/example
 package main
 
 import "fmt"
