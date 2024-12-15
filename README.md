@@ -4,11 +4,11 @@
 *This repository is just a personal study note and blog, but not any profitable or regular project. Contents may contains/quotes plenty of online materials I learned from (and all these contents are referenced with their source). Please contact me if there is any copyright issues. Sorry about that.*  
   
 ### 本笔记包括以下内容:  
-* [算法及理论 | Common Algorithm & Theory](./Common%20Algorithm%20and%20Theory/README.md)
-  * **[重点：常用算法模版 | Algorithm Templates](./常用算法模版.md)**
-* [数据结构、数据类型及其实现 | Common Data Structure & Data Type & Implementation](./Common%20Data%20Structure%20and%20Data%20Type/README.md) (包括并发相关的数据结构的详解)
+* [算法及相关理论 | Algorithm & Theory](./Common%20Algorithm%20and%20Theory/README.md) (除了编程级算法外，还包括系统设计级、人工智能级算法等)
+  * **[重点：常用算法模版 | Common Algorithm Templates](./常用算法模版.md)**
+  * [数据结构、数据类型及其实现 | Common Data Structure & Data Type & Implementation](./Common%20Data%20Structure%20and%20Data%20Type/README.md) (包括并发相关的数据结构的详解)
 * [Coding Practices](./Leetcode%20Practices/) (主要包含了 [Leetcode 算法](./Leetcode%20Practices/algorithms/)、[SQL 练习](./Leetcode%20Practices/database/)；算法题第一次提交 round 1 是自己的首次解答方法，第二次提交 round 2 是进行复盘复习后并添加、理解他人的更优解以及增添其他语言解题实现，round 0 则是首次答题没头绪参考他人解题思路)
-  * **[重点：分类分析套路 | Structured Categorization Approach](./分析套路.md)**
+  * **[重点：分类分析套路 | Structured Analyze Approach](./分析套路.md)**
   * [Codeforces](./Codeforces/README.md)
   * [Deep-ML](https://www.deep-ml.com/) (人工智能 Code Challenge)、[HackerRank](./HackerRank%20Practises/) (包括一些 [Java 语言实例解析](./HackerRank%20Practises/java/)、[Linux Bash](./HackerRank%20Practises/bash/))
   * [其他算法实践、真题、面经笔记](./Other%20Practices/)
@@ -42,6 +42,9 @@
 
 
 ### 刷题技巧与笔记:
+  
+#### 预先准备
+熟用熟背[刷题常用模版](./常用算法模版.md)（推荐：或算法长时间手生需重捡复习，可配合[分类分析套路](./分析套路.md)）  
   
 #### 看题
 1. 确定完全看懂题目，题目描述若一下子不理解可先看下面的例子解释来结合理解，再不行建议主动向考官交流、咨询，另外细节与条件或限制也应该在一开始厘清：比如输入数据的集合大小范围、集合是否有顺序、集合内的每个元素的范围（是否有重复、是否正负）、题解是否规定时间复杂度或空间复杂度、输出是否允许重复或是否要求顺序、是否允许更改原输入集合等等。
@@ -94,12 +97,6 @@
 5. 是否给出正确的解法，是否给出较优的解法，以及对 follow up 的预判
 6. 可以开头问有几道题（比如有没有 follow up），简单题开始写代码后可以代码为主解释为辅（面试官可能默认只是热身、更多是期望快速解题，所以最好不要浪费时间）
 7. [数据结构手绘、白板（文本文件）上绘图技巧](./白板绘图(数据结构手绘).md)
-
-#### 预先准备
-熟用熟背[刷题常用模版](./常用算法模版.md)（推荐：或算法长时间手生需重捡复习，可配合[分类分析套路](./分析套路.md)）  
-  
-#### 题型技巧
-查看[更多题型、细节技巧](https://github.com/yihaoye/data-structure-and-algorithm-study-notes/tree/master/Cracking%20the%20Coding%20Interview)  
   
 #### 感想
 要培养分治法（分而治之）的思维，把一个大的复杂困难的问题分解成多个小的较简单、直白的问题，原问题的解则由子问题的解的合并获得，这种思维在平时工作、生活中也很重要、实用。  
