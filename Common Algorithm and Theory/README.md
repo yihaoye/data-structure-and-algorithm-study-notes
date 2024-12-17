@@ -43,6 +43,7 @@ This personal Blog contains explanation and **Java library/template implementati
         - 开放寻址法 | Open Addressing
         - 链地址法（拉链法）| Separate Chaining (Java 等多数编程语言的哈希表实现采用该方法，因为其删除操作比开放寻址法简便)
       - [滚动哈希 | Rolling Hash (Rabin-Karp)](./滚动哈希.md) (时间复杂度 `O(N+M)`)
+      - [哈希表多键索引 | HashMap Composite Key](./哈希表多键索引.md)
     - [快速选择 (霍尔选择算法) | Quickselect (Randomized Selection)](./快速选择.md)
     - [位运算 | Bitwise Operation](./位运算.md)
     - [洗牌算法 | Knuth-Shuffle](./../Leetcode%20Practices/algorithms/medium/384%20Shuffle%20an%20Array.java)
