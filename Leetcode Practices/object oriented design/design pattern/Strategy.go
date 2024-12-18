@@ -1,43 +1,42 @@
 // https://refactoringguru.cn/design-patterns/strategy/go/example
 package main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
 
 /* 函数闭包 */
-type Strategy func()
-
-func NewStrategyA() Strategy {
-	return func() {
+var (
+	StrategyA = func(text string) (string, error) {
 		fmt.Println("Executing Strategy A")
+		return text, nil
 	}
-}
 
-func NewStrategyB() Strategy {
-	return func() {
+	StrategyB = func(text string) (string, error) {
 		fmt.Println("Executing Strategy B")
+		return "", nil
 	}
+)
+
+type Entity struct {
+	strategy func(string) (string, error)
 }
 
-type MyStruct struct {
-	strategy Strategy
-}
-
-func (s *MyStruct) Execute() {
-	if s.strategy == nil {
-		// log error
-		return
+func (en *Entity) Execute() {
+	if en.strategy == nil {
+		panic(errors.New("strategy is nil"))
 	}
-	s.strategy()
+	text, _ := en.strategy("test")
+	fmt.Println("Result: " + text)
 }
 
 func main() {
-	s := &MyStruct{
-		strategy: NewStrategyA(),
-	}
-	s.Execute()
+	en := Entity{StrategyA}
+	en.Execute()
 
-	s.strategy = NewStrategyB()
-	s.Execute()
+	en.strategy = StrategyB
+	en.Execute()
 }
 
 /* 使用接口组合 */
