@@ -109,7 +109,7 @@ This personal Blog contains explanation and **Java library/template implementati
       - 布谷鸟过滤器及其算法 | Cuckoo Filter (相比布隆过滤器的空间占用高一些且性能低一些，优势在于低假阳率、支持删除操作)
     - [Count-Min Sketch 算法](./Count-Min-Sketch.md) (可以替代上面的布隆过滤器以提供统计、删除功能)
       - Count-Mean-Min Sketch 算法
-    - 局部敏感哈希 | Locality-Sensitive Hashing
+    - 局部敏感哈希 | Locality-Sensitive Hashing ([Wiki](https://en.wikipedia.org/wiki/Locality-sensitive_hashing))
       - 最小哈希 | MinHash ([Wiki](https://en.wikipedia.org/wiki/MinHash), [Ref 1](https://www.cnblogs.com/liuxiaochong/p/14552227.html), [Ref 2](https://ansvver.github.io/lsh_minhash.html))
       - 相似哈希 | SimHash
     - 校验和 | Checksum ([Wiki](https://zh.wikipedia.org/wiki/%E6%A0%A1%E9%AA%8C%E5%92%8C))
@@ -165,6 +165,7 @@ This personal Blog contains explanation and **Java library/template implementati
       - [随机森林 | Random Forest](./机器学习.md#随机森林) ([Ref](https://www.nvidia.cn/glossary/data-science/random-forest/))
       - [梯度提升决策树 | Gradient Boosted Decision Trees](./机器学习.md#GBDT) ([Ref 1](https://github.com/NLP-LOVE/ML-NLP/blob/master/Machine%20Learning/3.2%20GBDT/3.2%20GBDT.md)、[Ref 2](https://developers.google.com/machine-learning/decision-forests/intro-to-gbdt))
         - [XGBoost](./机器学习.md#XGBoost) ([Ref](https://www.cnblogs.com/mantch/p/11164221.html))
+    - 最近邻居法 | K-Nearest Neighbors Algorithm, KNN ([Wiki](https://zh.wikipedia.org/zh-hans/K-%E8%BF%91%E9%82%BB%E7%AE%97%E6%B3%95))
     - 朴素贝叶斯 | Naive Bayes
     - 支持向量机 | Support Vector Machine, SVM
     - 隐马尔可夫模型 | Hidden Markov Model, HMM ([Ref](https://zh.wikipedia.org/wiki/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E9%93%BE)，用来描述一个含有隐含未知参数的[马尔可夫过程/随机状态转移](./Markovkate_01.svg.png)。其难点是从可观察的参数中确定该过程的隐含参数。然后利用这些参数来作进一步的分析，例如模式识别)
