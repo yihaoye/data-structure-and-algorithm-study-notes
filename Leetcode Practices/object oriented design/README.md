@@ -68,6 +68,7 @@
 * [ER Diagram](https://en.wikipedia.org/wiki/Entity-relationship_model) 数据库图，只关注类、对象的数据以及类、对象互相间的关系（比如一对多关系，不包含互动关系）。
 * [Class Diagram](https://en.wikipedia.org/wiki/Class_diagram) 类似 ER Diagram，但是还多了对接口、类、对象之间依赖、继承、组成、调用(关联)、互动(动作)、实现等等关系描述。
 * [Sequence Diagram](https://en.wikipedia.org/wiki/Sequence_diagram) - 样子类似 TCP 协议握手解释图（Use Case Diagram 与 Sequence Diagram 的区别是前者描述最高、抽象层级的系统功能与用例/用况，是纯产品设计最高层；后者包括更多实际流程的考虑，是产品设计的底层并考虑、包括许多业务领域、工程领域的专业程序与逻辑）。
+  * [序列图条件语句](https://www.cnblogs.com/cy568searchx/p/6227238.html)
 * [Activity Diagram](https://en.wikipedia.org/wiki/Activity_diagram)、State Diagram - 类比状态机的图解（Sequence Diagram 与 Activity Diagram 的区别是前者关注在某个流程里对象之间的互动走向；后者关注于某个或全部流程里系统、应用的状态之间的互动走向），亦即 [Flow Charts](https://en.wikipedia.org/wiki/Flowchart)（类似编程语言教程的 if else 程序判断流程图）。
 * [Swimlane Diagram](https://en.wikipedia.org/wiki/Swimlane) - 类似 Sequence Diagram 与 Activity Diagram 的结合。  
   
