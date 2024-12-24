@@ -70,6 +70,8 @@
     - [R 树 | R Tree](./../Common%20Algorithm%20and%20Theory/QuadTree-RTree-算法.md) (2D、3D 的空间索引，理论上不如 K-D 树通用)
     - [H 树 | H Tree](https://en.wikipedia.org/wiki/HTree)
     - [K-D 树 | K-D Tree](./Data%20Structure%20Implementation/KDTree/README.md) ([Wiki](https://zh.wikipedia.org/zh-hans/K-d%E6%A0%91)，时间复杂度：索引搜索 O(N^(1-1/d))，最坏情况下可能会退化成链表，所以其平衡性并不稳定，因此业界实际使用更高级的数据结构 - 分层可导航小世界图 / HNSW)
+      - B-K-D 树 | B-K-D Tree ([Ref 1](https://medium.com/@nickgerleman/the-bkd-tree-da19cf9493fb))
+    - 二叉空间分割树 | Binary Space Partitioning (BSP) Tree
   - [绳索 | Rope](https://en.wikipedia.org/wiki/Rope_%28data_structure%29) (支持 O(logN) 的时间复杂度内插入删除合并分裂等操作)
   - [线段树 | Segment Tree](./Data%20Structure%20Implementation/SegmentTree/README.md) (区间查询 O(logN + K)，更新 O(logN)，构建 O(N) - K is the number of reported segments)
   - [树套树 | Tree of Trees](https://www.cnblogs.com/Flying2018/p/13615844.html)
