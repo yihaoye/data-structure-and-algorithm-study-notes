@@ -1,34 +1,39 @@
+// https://longngn.medium.com/introducing-dag-a-simple-way-to-design-backend-application-4a6b3a9e4382
+
 import java.util.*;
 
-class DAG {
-    Node root;
-	Set<Node> nodes;
+public class DAG {
+    static Node root;
+	static Set<Node> nodes;
 
-    public DAG(Node root) {
-        this.root = root;
+    public DAG(Node node) {
+        root = node;
+        nodes = new HashSet<>();
+        nodes.add(node);
         // ...
     }
 
-    public void addEdge(Node from, Node to) {
+    public static void addEdge(Node from, Node to) {
         nodes.add(from); nodes.add(to);
-        nodes.get(from).to.add(to);
-        nodes.get(to).from.add(from);
-        if hasCycle() {
+        from.to.add(to);
+        to.from.add(from);
+        if (hasCycle()) {
             throw new RuntimeException("Cycle detected");
         }
     }
 
-    public boolean hasCycle() {
+    public static boolean hasCycle() {
         // topoSort check ...
+        return false;
     }
 
     public static void main(String[] args) {
-        DAG dag = new DAG(New Node(0, 0));
-        // node1 = New Node(1, 1); node2 = New Node(2, 2); ...
-        // dag.addEdge(root, node1);
-        // dag.addEdge(root, node2);
-        // dag.addEdge(node1, node2);
-        // ...
+        DAG dag = new DAG(new Node(0, 0));
+        Node node1 = new Node(1, 1); Node node2 = new Node(2, 2); // node3, node4 ...
+        dag.addEdge(root, node2);
+        dag.addEdge(root, node1);
+        dag.addEdge(node1, node2);
+        // add edge for node3, node4 ...
 
         Set<Node> nexts = new LinkedHashSet<>();
         nexts.add(dag.root);
@@ -65,6 +70,7 @@ class Node {
         for (Node prev : this.from) {
             this.data += prev.data; // or *, -, /, |, &, ^, <<, >>, >>> ...
         }
+        System.out.println("Node: " + this.key + " processed with data: " + this.data);
 
         // outputs
         Set<Node> nexts = new LinkedHashSet<>(); // apply LinkedHashSet to keep order
