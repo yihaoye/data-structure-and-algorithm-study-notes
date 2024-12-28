@@ -24,16 +24,20 @@ class DAG {
 
     public static void main(String[] args) {
         DAG dag = new DAG(New Node(0, 0));
-        // dag.addEdge(xxx, xxx);
+        // node1 = New Node(1, 1); node2 = New Node(2, 2); ...
+        // dag.addEdge(root, node1);
+        // dag.addEdge(root, node2);
+        // dag.addEdge(node1, node2);
         // ...
 
         Set<Node> nexts = new LinkedHashSet<>();
         nexts.add(dag.root);
         while (!nexts.isEmpty()) {
+            Set<Node> tmp = new LinkedHashSet<>();
             for (Node node : nexts) {
-                Set<Node> tmp = node.process();
-                nexts.addAll(tmp);
+                tmp.addAll(node.process());
             }
+            nexts = tmp;
         }
 
         // clean up ready data for next time usage
@@ -57,11 +61,13 @@ class Node {
     }
 
     public Set<Node> process() { // process and return next prepared process nodes
+        // inputs / dependencies aggregation
         for (Node prev : this.from) {
             this.data += prev.data; // or *, -, /, |, &, ^, <<, >>, >>> ...
         }
 
-        Set<Node> nexts = new LinkedHashSet<>();
+        // outputs
+        Set<Node> nexts = new LinkedHashSet<>(); // apply LinkedHashSet to keep order
         for (Node next : this.to) {
             next.ready++;
             if (next.ready == next.from.size()) {
