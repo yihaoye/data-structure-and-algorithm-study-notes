@@ -70,7 +70,7 @@
 ## Web 型模式
 * 中间件 | Middleware
   * ([Go 示例](./Middleware.go))
-* 路由器 | Router
+* 路由器 | Router - [Command Dispatch Pattern](https://colobu.com/2024/06/03/command-dispacher-pattern/#more)
   * ([Go 示例](./Router.go))
 
 以上引用自

@@ -160,6 +160,7 @@
 * 函数式编程建议不用修改入参，为何有时 Go 程序甚至库仍会这样做？- [出于现实情况考量，基于最佳规范仍然建议能不修改入参就不修改](https://forum.golangbridge.org/t/functional-in-golang-immutable-and-return-vs-manipulation-references/5040)。另外 Go 是值传递而非 Java 这类的引用传递，所以不遵守规范风险相较于后者略低，因为前者可选择值传递或指针传递，问题可控，开发更灵活也应负起更多责任
 * func 不能直接对比，比如 f1 == f2，但是可以判断是否是同一个函数对象：具体为使用 reflect.ValueOf(f).Pointer() 比较函数地址，因此使用单实例函数（全局变量即可 `var SingletonFunc = func(b int) int { return b+1 }`）
 * 函数变量（单实例）可以并发调用，只要不是改写函数变量且函数是纯函数式编程（不读写函数外的全局变量，只使用入参和局部变量）的话就是并发安全的
+* [sqlx 简介及其使用](https://colobu.com/2024/05/10/sqlx-a-brief-introduction/#more)
 
 
 ## 数据库高频
