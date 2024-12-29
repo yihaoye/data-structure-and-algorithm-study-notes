@@ -2,44 +2,36 @@
 
 import java.util.*;
 
+// 通常实现了拓扑排序也就实现了 DAG
 public class DAG {
-    static Set<Node> roots;
-	static Set<Node> nodes;
+    Set<Node> roots;
+	Set<Node> nodes;
 
     public DAG() {
         roots = new HashSet<>();
         nodes = new HashSet<>();
-        // ...
     }
 
-    public static void addRoot(Node node) {
+    public void addRoot(Node node) {
         roots.add(node);
         nodes.add(node);
     }
 
-    public static void addEdge(Node from, Node to) {
+    public void addEdge(Node from, Node to) {
         if (from == null || to == null) throw new RuntimeException("Invalid null node");
         nodes.add(from); nodes.add(to);
         from.to.add(to); to.from.add(from);
         if (hasCycle(from)) throw new RuntimeException("Cycle detected");
     }
 
-    public static boolean hasCycle(Node node) {
+    public boolean hasCycle(Node node) {
         // DFS/BFS check ...
         return false;
     }
 
-    public static void main(String[] args) {
-        DAG dag = new DAG();
-        Node node0 = new Node(0, 0), node1 = new Node(1, 1), node2 = new Node(2, 2); // node3, node4 ...
-        dag.addRoot(node0);
-        dag.addEdge(node0, node2);
-        dag.addEdge(node0, node1);
-        dag.addEdge(node1, node2);
-        // add edge for node3, node4 ...
-
+    public void run() {
         Set<Node> nexts = new LinkedHashSet<>();
-        nexts.addAll(dag.roots);
+        nexts.addAll(this.roots);
         while (!nexts.isEmpty()) {
             Set<Node> tmp = new LinkedHashSet<>();
             for (Node node : nexts) {
@@ -53,8 +45,21 @@ public class DAG {
             node.ready = 0;
             node.result = node.data;
         }
+    }
 
-        // next round ...
+    public static void main(String[] args) {
+        DAG dag = new DAG();
+        Node node0 = new Node(0, 0), node1 = new Node(1, 1), node2 = new Node(2, 2); // node3, node4 ...
+        dag.addRoot(node0);
+        dag.addEdge(node0, node2);
+        dag.addEdge(node0, node1);
+        dag.addEdge(node1, node2);
+        // add edge for node3, node4 ...
+
+        dag.run();
+        // Node: 0 processed with result: 0
+        // Node: 1 processed with result: 1
+        // Node: 2 processed with result: 3
     }
 }
 
