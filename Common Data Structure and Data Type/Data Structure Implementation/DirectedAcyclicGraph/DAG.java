@@ -1,8 +1,7 @@
-// https://longngn.medium.com/introducing-dag-a-simple-way-to-design-backend-application-4a6b3a9e4382
+// https://www.baeldung.com/cs/dag-applications#practical_applications_of_dag
 
 import java.util.*;
 
-// DAG implemented by OOD Solution, could be pure Toposort too
 public class DAG {
     static Set<Node> roots;
 	static Set<Node> nodes;
@@ -26,7 +25,7 @@ public class DAG {
     }
 
     public static boolean hasCycle() {
-        // topoSort check ...
+        // DFS topoSort check ...
         return false;
     }
 

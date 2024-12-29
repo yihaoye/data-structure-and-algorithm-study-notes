@@ -88,7 +88,7 @@
   - [分形树 | Fractal Tree](./../Computer%20System%20Layer/数据库/README.md#分形树)
 - [图 | Graph](./Data%20Structure%20Implementation/Graph/README.md) ([Ref](https://mp.weixin.qq.com/s/wnRQ_9CckAmlQaAjo7q_0w))
   - 有向图 | Directed Graph
-    - [有向无环图 | Directed Acyclic Graph, DAG](./Data%20Structure%20Implementation/DirectedAcyclicGraph/DAG.java) (常用于系统级，诸如任务调度系统、编译器、网络拓扑排序等领域，[Wiki](https://en.wikipedia.org/wiki/Directed_acyclic_graph)，[图示](./DAG.png))
+    - [有向无环图 | Directed Acyclic Graph, DAG](./Data%20Structure%20Implementation/DirectedAcyclicGraph/DAG.java) (常用于系统级，诸如任务调度系统、编译器、网络等领域，通常实现了拓扑排序也就实现了 DAG，[Wiki](https://en.wikipedia.org/wiki/Directed_acyclic_graph)，[图示](./DAG.png))
   - 无向图 | Undirected Graph
     - [二分图 | Bipartite Graph](./Data%20Structure%20Implementation/BipartiteGraph/README.md)
   - 加权图（有向或无向）| Weighted Graph
