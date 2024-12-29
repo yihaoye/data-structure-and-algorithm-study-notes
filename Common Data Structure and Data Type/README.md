@@ -88,12 +88,12 @@
   - [分形树 | Fractal Tree](./../Computer%20System%20Layer/数据库/README.md#分形树)
 - [图 | Graph](./Data%20Structure%20Implementation/Graph/README.md) ([Ref](https://mp.weixin.qq.com/s/wnRQ_9CckAmlQaAjo7q_0w))
   - 有向图 | Directed Graph
-    - [有向无环图 | Directed Acyclic Graph, DAG](./Data%20Structure%20Implementation/DirectedAcyclicGraph/DAG.java) (常用于系统级，诸如任务调度系统、编译器、网络等领域但是通常结合状态机的有条件遍历路径特性，纯 DAG 本身是无条件遍历全部路径，通常实现了拓扑排序也就实现了 DAG，[Wiki](https://en.wikipedia.org/wiki/Directed_acyclic_graph)，[图示](./DAG.png))
+    - [有向无环图 | Directed Acyclic Graph, DAG](./Data%20Structure%20Implementation/DirectedAcyclicGraph/DAG.java) (通常实现了拓扑排序也就实现了 DAG。[Wiki](https://en.wikipedia.org/wiki/Directed_acyclic_graph)，[图示](./DAG.png)，常用于系统级，诸如任务调度系统、编译器、网络等领域，并且节点是一个任务且是有条件触发类似状态机。DAG 天然支持并行执行，只要两个任务之间没有依赖关系，它们就可以并行执行，从而提高任务执行效率。DAG 任务调度有多种的调度算法，比如优先级调度、最短路径调度等，可以根据不同的需求选择不同的调度算法)
   - 无向图 | Undirected Graph
     - [二分图 | Bipartite Graph](./Data%20Structure%20Implementation/BipartiteGraph/README.md)
   - 加权图（有向或无向）| Weighted Graph
     - 多阶段图 | Multistage Graph (通常与动态规划同时使用)
-  - [状态机 | State Machine](../Common%20Algorithm%20and%20Theory/动态规划与状态机.md) (有广泛的使用场景，有点类似有向图，但是有向图路径不是有条件遍历而是无条件全部遍历)
+  - [状态机 | State Machine](../Common%20Algorithm%20and%20Theory/动态规划与状态机.md) (有广泛的使用场景，有点类似有向图，但是状态机的节点是一个状态，并且相比之下有向图路径不是有条件遍历而是无条件全部遍历)
   - [生成树 | Spanning Tree](./Data%20Structure%20Implementation/SpanningTree/README.md)
     - [最小生成树 | Minimum Spanning Tree](./Data%20Structure%20Implementation/MinimumSpanningTree/README.md)
   - 层次化图 | Hierarchical Graph (表示一种树状的层次结构、通常有明确的父子关系、每个层级图上的节点通常代表不同粒度的信息)
