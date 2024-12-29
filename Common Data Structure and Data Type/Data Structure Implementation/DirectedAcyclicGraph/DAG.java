@@ -21,11 +21,11 @@ public class DAG {
         if (from == null || to == null) throw new RuntimeException("Invalid null node");
         nodes.add(from); nodes.add(to);
         from.to.add(to); to.from.add(from);
-        if (hasCycle()) throw new RuntimeException("Cycle detected");
+        if (hasCycle(from)) throw new RuntimeException("Cycle detected");
     }
 
-    public static boolean hasCycle() {
-        // DFS topoSort check ...
+    public static boolean hasCycle(Node node) {
+        // DFS/BFS check ...
         return false;
     }
 
