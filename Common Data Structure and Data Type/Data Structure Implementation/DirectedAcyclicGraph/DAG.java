@@ -3,23 +3,25 @@
 import java.util.*;
 
 public class DAG {
-    static Node root;
+    static Set<Node> roots;
 	static Set<Node> nodes;
 
-    public DAG(Node node) {
-        root = node;
+    public DAG() {
+        roots = new HashSet<>();
         nodes = new HashSet<>();
-        nodes.add(node);
         // ...
     }
 
+    public static void addRoot(Node node) {
+        roots.add(node);
+        nodes.add(node);
+    }
+
     public static void addEdge(Node from, Node to) {
+        if (from == null || to == null) throw new RuntimeException("Invalid null node");
         nodes.add(from); nodes.add(to);
-        from.to.add(to);
-        to.from.add(from);
-        if (hasCycle()) {
-            throw new RuntimeException("Cycle detected");
-        }
+        from.to.add(to); to.from.add(from);
+        if (hasCycle()) throw new RuntimeException("Cycle detected");
     }
 
     public static boolean hasCycle() {
@@ -28,15 +30,16 @@ public class DAG {
     }
 
     public static void main(String[] args) {
-        DAG dag = new DAG(new Node(0, 0));
-        Node node1 = new Node(1, 1); Node node2 = new Node(2, 2); // node3, node4 ...
-        dag.addEdge(root, node2);
-        dag.addEdge(root, node1);
+        DAG dag = new DAG();
+        Node node0 = new Node(0, 0), node1 = new Node(1, 1), node2 = new Node(2, 2); // node3, node4 ...
+        dag.addRoot(node0);
+        dag.addEdge(node0, node2);
+        dag.addEdge(node0, node1);
         dag.addEdge(node1, node2);
         // add edge for node3, node4 ...
 
         Set<Node> nexts = new LinkedHashSet<>();
-        nexts.add(dag.root);
+        nexts.addAll(dag.roots);
         while (!nexts.isEmpty()) {
             Set<Node> tmp = new LinkedHashSet<>();
             for (Node node : nexts) {
@@ -48,6 +51,7 @@ public class DAG {
         // clean up ready data for next time usage
         for (Node node : nodes) {
             node.ready = 0;
+            node.result = node.data;
         }
 
         // next round ...
@@ -55,12 +59,13 @@ public class DAG {
 }
 
 class Node {
-    int key, data, ready;
+    int key, data, ready, result;
     Set<Node> from, to;
 
     public Node(int key, int data) {
         this.key = key;
         this.data = data;
+        this.result = data;
         this.from = new LinkedHashSet<>(); // apply LinkedHashSet for enabling order
         this.to = new LinkedHashSet<>();
     }
@@ -68,9 +73,9 @@ class Node {
     public Set<Node> process() { // process and return next prepared process nodes
         // inputs / dependencies aggregation
         for (Node prev : this.from) {
-            this.data += prev.data; // or *, -, /, |, &, ^, <<, >>, >>> ...
+            this.result += prev.result; // or *, -, /, |, &, ^, <<, >>, >>> ...
         }
-        System.out.println("Node: " + this.key + " processed with data: " + this.data);
+        System.out.println("Node: " + this.key + " processed with result: " + this.result);
 
         // outputs
         Set<Node> nexts = new LinkedHashSet<>(); // apply LinkedHashSet to keep order
