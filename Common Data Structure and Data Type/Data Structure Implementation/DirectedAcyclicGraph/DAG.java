@@ -2,6 +2,7 @@
 
 import java.util.*;
 
+// DAG implemented by OOD Solution, could be pure Toposort too
 public class DAG {
     static Set<Node> roots;
 	static Set<Node> nodes;
