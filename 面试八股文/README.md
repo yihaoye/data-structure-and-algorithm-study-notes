@@ -361,6 +361,7 @@
     * 版本信息、元数据
     * 依赖项和环境信息、推理配置
   * ![](./inference-server.webp)
+* 语义缓存 - [Ref 1](https://redis.io/blog/rediscover-redis-for-vector-similarity-search/)、[Ref 2](https://www.cnblogs.com/smartloli/p/18105994)、[Ref 3](https://platform.openai.com/docs/guides/embeddings)、[Ref 4](https://openai.com/index/new-embedding-models-and-api-updates/)、[Ref 5](https://www.luxiangdong.com/2023/07/09/vecdb/)、[Ref 6](https://www.pinecone.io/learn/series/faiss/locality-sensitive-hashing/)、[Ref 7](https://www.pinecone.io/learn/search-with-pinecone/)、[Ref 8](https://www.pinecone.io/learn/series/faiss/vector-indexes/#Inverted-File-Index)、[Ref 9](https://docs.pinecone.io/guides/get-started/quickstart)、[Ref 10](https://docs.pinecone.io/models/multilingual-e5-large)
 
 
 ## 硬件与操作系统（Linux & bash）高频
