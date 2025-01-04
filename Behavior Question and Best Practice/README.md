@@ -169,6 +169,7 @@ Books:
   * [框架](./框架.md)
   * 数据抽象指只向外界提供关键信息，并隐藏其后台的实现细节，即只表现必要的信息而不呈现细节。是一种依赖于接口和实现分离的编程（设计）技术。
 * [架构](./架构.md)
+  * [架构、复杂度与三原则](./架构、复杂度与三原则.md)
 * 问题解决软技能 [[1]](https://medium.com/@SantalTech/no-leetcode-the-stripe-interview-experience-cf1b29e6f55d),[[2]](https://plantegg.github.io/2018/05/24/%E5%A6%82%E4%BD%95%E5%9C%A8%E5%B7%A5%E4%BD%9C%E4%B8%AD%E5%AD%A6%E4%B9%A0V1.1/)
 * [反面模式](./反面模式.md)
 * [NASA 10 大编程原则](https://www.youtube.com/watch?v=GWYhtksrmhE)
