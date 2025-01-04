@@ -355,10 +355,12 @@ API 网关是位于客户端与后端服务集之间的大门 - API 管理工具
 * 同步处理
   * 请求响应模式 - 延迟最小的一种范式，响应时间处于亚毫秒到毫秒之间，而且响应时间一般非常稳定。这种处理模式一般是阻塞的（同步），应用程序向处理系统发出请求，然后等待响应。在数据库领域，这种范式就是线上交易处理（OLTP）。通常的形式是 SOAP、REST API、RPC、GraphQL 等。
     * 轮询、长轮询、全双工（例如 Websocket）。
+  * 管道 - 一个进程的输出紧联（实时触发）着另一个进程的输入，而且写入管道后必须先被消费掉否则后续写入会被阻塞，Unix 系统管道 bash 示例 ```./producer_app | ./consumer_app```
+  * 流式处理 [Ref 1](https://github.com/yihaoye/big-data-training/blob/main/kafka/README.md#%E6%B5%81%E5%BC%8F%E5%A4%84%E7%90%86)、[Ref 2](https://keys961.github.io/2018/07/05/%E6%B5%81%E5%BC%8F%E5%A4%84%E7%90%86%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/)、[Usage in AI System](https://www.nvidia.cn/glossary/data-science/stream-processing/) - 这种范式介于同步的请求响应和异步的批处理之间（准实时，更接近同步，类似管道）。大部分的业务不要求亚毫秒级的响应，不过也接受不了要等到第二天才知道结果。大部分业务流程都是持续进行的，只要业务报告保持更新，业务产品线能够持续响应，那么业务流程就可以进行下去，而无需等待特定的响应，也不要求在几毫秒内得到响应。一些业务流程具有持续性和非阻塞的特点。
 * 异步处理
   * 回调模式 - 系统级：Webhook、API 调用等；线程/进程级：JavaScript 回调、CompletableFuture、接口回调等。通常情况下，回调是在一个不同于主线程/主服务的另一个线程/服务中执行的。回调常用于异步处理中，当某个特定事件发生时，会触发回调函数的执行。
   * 批处理 - 该范式有高延迟和高吞吐量的特点。处理系统按照设定的时间启动处理进程。处理系统按照设定时间启动一次处理，读取可用数据，输出结果，然后等待下一次处理的启动，数据库领域为 DWH / BI。
-  * 发布订阅、生产消费、流式处理 [Ref 1](https://github.com/yihaoye/big-data-training/blob/main/kafka/README.md#%E6%B5%81%E5%BC%8F%E5%A4%84%E7%90%86)、[Ref 2](https://keys961.github.io/2018/07/05/%E6%B5%81%E5%BC%8F%E5%A4%84%E7%90%86%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/)、[Usage in AI System](https://www.nvidia.cn/glossary/data-science/stream-processing/) - 这种范式介于上述两者之间。大部分的业务不要求亚毫秒级的响应，不过也接受不了要等到第二天才知道结果。大部分业务流程都是持续进行的，只要业务报告保持更新，业务产品线能够持续响应，那么业务流程就可以进行下去，而无需等待特定的响应，也不要求在几毫秒内得到响应。一些业务流程具有持续性和非阻塞的特点。
+  * 发布订阅、生产消费、（消息）队列 - 比批处理更低延时、更实时的异步处理。
 
 ## [并发编程模型](../../Computer%20System%20Layer/并发编程模型.md)
 
