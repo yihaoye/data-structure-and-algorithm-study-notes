@@ -122,6 +122,7 @@
   * 线程安全
   * 黑客安全
   * 加快字符串处理速度，因为保证了 hashcode 的唯一性，于是在创建对象时其 hashcode 就可以放心的缓存了，不需要重新计算
+* ![](./JVM.jpg)
 
 ### Golang 高频
 * [什么是 golang 内存逃逸](./../Computer%20System%20Layer/内存与程序.md#内存逃逸)
