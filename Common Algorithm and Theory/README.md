@@ -210,6 +210,8 @@ This personal Blog contains explanation and **Java library/template implementati
       - [取模运算 | Modulo](./取模运算.md)
       - [埃氏筛法 | Eratosthenes Sieve](../Leetcode%20Practices/algorithms/medium/204%20Count%20Primes.java) (向前动态规划+排除法，时间复杂度 `O(N*loglogN)`)
         - [线性筛法 | Linear Sieve](../Leetcode%20Practices/algorithms/medium/204%20Count%20Primes.java) (埃氏筛法、欧拉筛法的优化，时间复杂度 `O(N)`)
+      - 米勒-拉宾素性检验 | Miller–Rabin Primality Test ([Wiki](https://zh.wikipedia.org/wiki/%E7%B1%B3%E5%8B%92-%E6%8B%89%E5%AE%BE%E6%A3%80%E9%AA%8C)，一种素数判定法则，利用随机化算法判断一个数是合数还是可能是素数)
+      - Pollard's Rho Algorithm ([Wiki](https://en.m.wikipedia.org/wiki/Pollard%27s_rho_algorithm))
       - 中国剩余定理 | Chinese Remainder Theorem ([Wiki](https://zh.wikipedia.org/wiki/%E4%B8%AD%E5%9B%BD%E5%89%A9%E4%BD%99%E5%AE%9A%E7%90%86))
     - 概率论 | Probability Theory
       - 贝叶斯定理 | Bayes Theorem ([Wiki](https://zh.wikipedia.org/wiki/%E8%B4%9D%E5%8F%B6%E6%96%AF%E5%AE%9A%E7%90%86)；`P(A|B) = P(A)*P(B|A)/P(B)`)
