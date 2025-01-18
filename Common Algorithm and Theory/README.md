@@ -236,6 +236,13 @@ This personal Blog contains explanation and **Java library/template implementati
         - 牛顿法 | Newton's Method (数值分析在最优化的应用之一)
       - Adam 优化算法 ([Ref](https://zhuanlan.zhihu.com/p/32626442))
       - 凸函数/凸优化 | Convex Function/Optimization ([Wiki 1](https://zh.wikipedia.org/zh-hans/%E5%87%B8%E5%87%BD%E6%95%B0)、[Wiki 2](https://zh.wikipedia.org/zh-hans/%E5%87%B8%E5%84%AA%E5%8C%96)、[非凸优化](https://zhuanlan.zhihu.com/p/70127314))
+    - 排队论/等候理论 | Queueing Theory ([Wiki](https://en.wikipedia.org/wiki/Queueing_theory)，与计算机系统科学 [Scheduling](https://en.wikipedia.org/wiki/Scheduling_(computing)) 密切相关)
+      - FIFO
+      - LIFO
+      - Processor Sharing
+      - Round-Robin
+      - 最短作业优先 | Shortest Job Next (可能出现处理饥饿，比如不断有短作业/进程到来，可能会导致长作业/进程长时间得不到处理)
+      - 最短剩余时间优先 | Shortest Remaining Time (基于进程的剩余执行时间来确定下一个要执行的进程，SRTF 算法的工作原理如下：当一个进程到达系统时，系统会比较该进程的剩余执行时间与当前正在执行的进程的剩余执行时间。可能出现处理饥饿)
   - 其他常见优化思想、技巧 | Common Tricks
     - [剪枝 | Pruning](./剪枝.md)
     - 预处理 (打表) | Precompute (Hard Coding) ([Ref](https://www.cnblogs.com/hxtblogs/p/7654635.html))
