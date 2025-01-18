@@ -141,6 +141,14 @@ This personal Blog contains explanation and **Java library/template implementati
     - [限流算法 | Rate Limiter Algorithm](../Leetcode%20Practices/system%20design/README.md#设计-API-Rate-Limiter)
       - 固定窗口, 滑动窗口 | Fixed Window, Sliding Window ([Code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/rate%20limiter%202/Solution.java)，固定窗口又称计数器法，即简单的 IncrBy 和 Expire TTL，虽然简单但有致命的临界问题)
       - 漏桶算法, 令牌桶算法 | Leaky Bucket, Token Bucket ([Code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/rate%20limiter%203/Solution.java))
+    - [调度算法 | Scheduling](https://en.wikipedia.org/wiki/Scheduling_(computing)) (相关数学：[排队论 | Queueing Theory](https://en.wikipedia.org/wiki/Queueing_theory))
+      - 非抢占式调度算法
+        - FIFO (FCFS 先来先服务)、LIFO
+        - [Generalized Processor Sharing Algorithm](https://en.wikipedia.org/wiki/Generalized_processor_sharing)、Round-Robin
+        - 最短作业优先 | Shortest Job Next (SJF 可能出现处理饥饿，比如不断有短作业/进程到来，可能会导致长作业/进程长时间得不到处理)
+        - 高响应比优先 | Highest Response Ratio Next (HRRN 综合考虑作业/进程的等待时间和要求服务的时间，所以不会出现处理饥饿，是介于 FCFS 与 SJF 之间的折中算法)
+      - 抢占式调度算法
+        - 最短剩余时间优先 | Shortest Remaining Time (SRTF 基于进程的剩余执行时间来确定下一个要执行的进程，SRTF 算法的工作原理如下：当一个进程到达系统时，系统会比较该进程的剩余执行时间与当前正在执行的进程的剩余执行时间。可能出现处理饥饿)
     - Loosy Counting 算法
     - [OT 算法 | Operational Transformation](../Leetcode%20Practices/system%20design/README.md#设计协同编辑系统)
     - [四叉树算法, R 树算法 | QuadTree, RTree Algorithm](./QuadTree-RTree-算法.md)
@@ -236,13 +244,6 @@ This personal Blog contains explanation and **Java library/template implementati
         - 牛顿法 | Newton's Method (数值分析在最优化的应用之一)
       - Adam 优化算法 ([Ref](https://zhuanlan.zhihu.com/p/32626442))
       - 凸函数/凸优化 | Convex Function/Optimization ([Wiki 1](https://zh.wikipedia.org/zh-hans/%E5%87%B8%E5%87%BD%E6%95%B0)、[Wiki 2](https://zh.wikipedia.org/zh-hans/%E5%87%B8%E5%84%AA%E5%8C%96)、[非凸优化](https://zhuanlan.zhihu.com/p/70127314))
-    - 排队论/等候理论 | Queueing Theory ([Wiki](https://en.wikipedia.org/wiki/Queueing_theory)，与计算机系统科学 [Scheduling](https://en.wikipedia.org/wiki/Scheduling_(computing)) 密切相关)
-      - FIFO
-      - LIFO
-      - Processor Sharing
-      - Round-Robin
-      - 最短作业优先 | Shortest Job Next (可能出现处理饥饿，比如不断有短作业/进程到来，可能会导致长作业/进程长时间得不到处理)
-      - 最短剩余时间优先 | Shortest Remaining Time (基于进程的剩余执行时间来确定下一个要执行的进程，SRTF 算法的工作原理如下：当一个进程到达系统时，系统会比较该进程的剩余执行时间与当前正在执行的进程的剩余执行时间。可能出现处理饥饿)
   - 其他常见优化思想、技巧 | Common Tricks
     - [剪枝 | Pruning](./剪枝.md)
     - 预处理 (打表) | Precompute (Hard Coding) ([Ref](https://www.cnblogs.com/hxtblogs/p/7654635.html))
