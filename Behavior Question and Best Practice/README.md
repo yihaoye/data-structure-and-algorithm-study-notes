@@ -263,6 +263,7 @@ Books:
 * [Teamwork Skills: Communicating Effectively in Groups](https://www.coursera.org/learn/teamwork-skills-effective-communication)
 * [Developing Interpersonal Skills](https://www.coursera.org/learn/interpersonal-skills)
 * [工作中的技术深度](https://mp.weixin.qq.com/s/wImyzpbGHV_zO9FB3omooA)
+* [关于晋升](https://www.reddit.com/r/ExperiencedDevs/comments/vwpj9a/promo_process_is_it_easier_to_be_hired_into_a/)，虽然要视具体情况，但统计显示，对于中高级工程师通常跳槽比内部晋升简单，而一些更高阶层的高级经理或专家工程师以及首席工程师等可能在企业内部会更容易获得待遇提升
 * [职业倦怠过劳（Burnout）的原因及其应对方法](https://www.mayoclinic.org/zh-hans/healthy-lifestyle/adult-health/in-depth/burnout/art-20046642)
   * 原因
     * 缺乏控制。对自己完成工作的方式没有发言权，比如时间安排、工作分配或工作量，这些都可能导致职业倦怠。缺少完成工作所需的条件也会导致倦怠。
