@@ -27,6 +27,7 @@
     * AWS Redshift
   * [图数据库](./../../Leetcode%20Practices/system%20design/NoSQL.md#图数据库)
     * Neo4j
+    * AWS Neptune
   * [时序数据库](./../../Leetcode%20Practices/system%20design/NoSQL.md#时序数据库)
     * InfluxDB
   * [向量数据库](./../../Leetcode%20Practices/system%20design/NoSQL.md#向量数据库)
