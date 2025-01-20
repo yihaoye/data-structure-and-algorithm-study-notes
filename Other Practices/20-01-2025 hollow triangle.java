@@ -15,16 +15,12 @@ public class HollowTriangle {
                 System.out.println("*");
             } else if (i == n - 1) {
                 // 最后一行全部填满 *
-                for (int j = 0; j < 2 * n - 1; j++) {
-                    System.out.print("*");
-                }
+                for (int j = 0; j < 2 * n - 1; j++) System.out.print("*");
                 System.out.println();
             } else {
                 // 中间行
                 System.out.print("*"); // 左边的 *
-                for (int j = 0; j < 2 * i - 1; j++) {
-                    System.out.print(" ");
-                }
+                for (int j = 0; j < 2 * i - 1; j++) System.out.print(" ");
                 System.out.println("*"); // 右边的 *
             }
         }
