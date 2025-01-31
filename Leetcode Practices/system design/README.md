@@ -250,6 +250,7 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
 * **Efficiency or Performance** - Two standard measures of efficiency are response time (or latency) and the throughput (or bandwidth). （相关组件与手段：CDN、异步处理耗时任务如消息队列、缓存、读写分离、索引、分页）. The two measures correspond to the following unit costs:
   * *Number of messages globally sent by the nodes of the system regardless of the message size.*
   * *Size of messages representing the volume of data exchanges.*
+  * Database Performance ![](./db-performance.gif)
   * 系统设计中的时间复杂度（主要为数据库、数据仓库、缓存、消息队列等持久化数据的操作）
     * SQL - 索引优化影响所有操作，以下描述约定 M 为已经被 WHERE 等查询优化了范围后符合条件的目标数据量，N 为表的数据总数，且约定下面操作皆为查询优化后的复杂度。（常见的 SQL 数据库即使千万级数据，全表扫描也仅需 10 至几十秒。理论上，使用 SSD 且前提条件没有复杂的数据存储结构 + 是顺序读取，遍历千万级数据可以在 3-5 秒内完成）
       * GROUP BY - 时间复杂度 `O(M)`，因为聚合总是要遍历所有数据行
