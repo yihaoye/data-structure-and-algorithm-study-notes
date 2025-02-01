@@ -57,7 +57,7 @@ class Solution {
 // Other's Solution:
 class Solution {
     public int trap(int[] height) {
-        // 双指针 - 两边往中间迭代，找到两个边界，取较低的一侧单向推进并累加，直到找到新边界（重复整个过程）
+        // 双指针 + 贪心 - 两边往中间迭代，找到两个边界，取较低的一侧单向推进并累加，直到找到新边界（重复整个过程）
         // Time: O(N), Space: O(1)
         if (height == null || height.length <= 2) return 0;
         int left = 0, right = height.length - 1;
