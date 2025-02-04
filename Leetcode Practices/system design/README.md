@@ -2247,11 +2247,11 @@ https://www.zhihu.com/question/19839828/answer/28434795
   * 下载带宽 - 11574 pages/second * (100KB + 0.5KB) / page = 1.16GB/s (i.e. 9.3Gbps)
 
 **High Level Design**  
-整个网络就像一张图，爬取的过程就如图的遍历过程。而首先需要给定一些起始爬取的点（seed URLs）  
+整个网络就像一张图，爬取的过程就如图的遍历过程。而首先需要给定一些起始爬取的点（seed URLs），又因为互联网有海量网站，因此爬取需要有优先级以提高效率/ROI  
 然后执行以下步骤：  
 1. Pick 一个 URL，爬取对应的网页
 2. 处理下载下来的网页，比如存到数据库并添加索引
-3. 从下载下来的网页里解析抽取未访问过的 URL，加到待爬取的队列里（URL Frontier）
+3. 从下载下来的网页里解析抽取未访问过的 URL（类似 BFS），加到待爬取的队列里（URL Frontier）
 4. 重新回到第 1 个步骤循环
 
 ![](./Web%20Crawler%20High%20Level%20Design.png)  
@@ -2302,7 +2302,7 @@ URL Frontier 主要是存储一堆待访问的 URL。它有 2 个接口：
   * 手动选择种子URL：这是最常见的方法，爬虫系统的操作员手动选择一些重要的、具有代表性的网页作为种子URL。通常选择与爬虫目标相关的网页，确保这些网页包含了系统要收集的数据。
   * 搜索引擎结果页：可以从搜索引擎结果页中提取一些相关的链接作为种子URL。这些链接通常与特定主题或关键字相关，可以帮助爬虫系统开始收集相关内容。
   * 网站地图（Site Map）：一些网站提供了网站地图，其中包含了站点的所有页面链接。爬虫可以从网站地图中选择一些链接作为种子URL，以确保覆盖整个站点。
-* Front Queue 与 Prioritizer 实现选择策略，为 URL 优先级进行了排序（Prioritizer 根据 URL 重要性或上次被访问距今间隔时间等等来评定，然后根据评定的优先级插到对应的队列里面）。假设数字越低优先级越高，优先级为 1 的 URL 就放进 Front Queue 1 队列，以此类推。
+* Front Queue 与 Prioritizer 实现选择策略，为 URL 优先级进行了排序（Prioritizer 根据 URL 重要性或上次被访问距今间隔时间等等来评定，然后根据评定的优先级插到对应的队列里面）。假设数字越低优先级越高，优先级为 1 的 URL 就放进 Front Queue 1 队列，以此类推（优先级高的队列有更高的概率被选中）。
 * Back Queue
   * Back Queues、Politeness Router 以及 Mapping Table `<url, back_queue_id>` 把同一个网站/子网页/URL 都插入到同一个 Back Queue 中，比如 Amazon 的 URLs 只放进 B1、Facebook 的 URLs 只放进 B2 等等。
   * 接着实现礼貌性策略，控制对一个网站访问的频率（politeness selector 协同一个时间戳排序的 heap 以控制每个 Back Queue 何时可以再次读取 - heap 里存储的是每个 Back Queue 下一次可以被访问/读取/poll 的时间）。
