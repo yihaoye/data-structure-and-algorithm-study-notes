@@ -35,7 +35,7 @@ This personal Blog contains explanation and **Java library/template implementati
       - DSW 算法 | Day–Stout–Warren Algorithm ([Ref](https://developer.baidu.com/article/details/3061860)；基本思想是将任意的二叉查找树转换为类似于链表的树，称为主链或主干。通过旋转操作，将二叉查找树转换为平衡状态，然后使用中序遍历将元素放入数组中，最后重建该树。这个过程可以在 `O(N)` 时间内完成)
     - [贪心算法 | Greedy Algorithm](./贪婪算法.md)
       - [耐心排序 | Patience Sorting](./耐心排序.md)
-      - [摩尔投票 | Boyer–Moore Majority Vote Algorithm](../Leetcode%20Practices/algorithms/easy/169%20Majority%20Element.java) ([Wiki](https://zh.wikipedia.org/wiki/%E5%A4%9A%E6%95%B0%E6%8A%95%E7%A5%A8%E7%AE%97%E6%B3%95)，仅局限适用于有得票数大于 1/2 的场景)
+      - [摩尔投票 | Boyer–Moore Majority Vote Algorithm](../Leetcode%20Practices/algorithms/easy/169%20Majority%20Element.java) ([Wiki](https://zh.wikipedia.org/wiki/%E5%A4%9A%E6%95%B0%E6%8A%95%E7%A5%A8%E7%AE%97%E6%B3%95)，仅局限适用于有某元素得票数大于 1/2 的场景)
     - [拓扑排序 | Topological Sorting](./拓扑排序.md) (时间复杂度 `O(N)`)
     - [单调栈 (包括单调队列) | Monotone Stack](./单调栈.md) (时间复杂度 `O(N)`)
     - [自定义哈希/指纹 | Customized HashCode/FingerPrint](./自定义哈希指纹.md) (时间复杂度 `O(N)`)
