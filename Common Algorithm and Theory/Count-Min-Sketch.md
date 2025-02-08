@@ -19,6 +19,12 @@ Count-Min Sketch 算法流程：
 * 时间复杂度 O(n)。Count-Min Sketch 只需要一遍扫描，所以时间复杂度是 O(n)
   
 Count-Min Sketch 算法的优点是省内存，缺点是对于出现次数比较少的元素，准确性很差，因为二维数组相比于原始数据来说还是太小，hash 冲突比较严重，导致结果偏差比较大。  
+  
+* O(k) 的查询时间复杂度
+* 频率越高的项（比如 Heavy hitters，大流量对象），其准确度越高
+* 只会造成重复计算，但不会计算不足（即频率值不会偏低）
+  
+## [Java 实现](../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/CountMinSketch/CountMinSketch.java)
 
 ## Count-Mean-Min Sketch
 Count-Min Sketch 算法对于低频的元素，结果不太准确，主要是因为 hash 冲突比较严重，产生了噪音，例如当 m=20 时，有 1000 个数 hash 到这个 20 桶，平均每个桶会收到 50 个数，这 50 个数的频率重叠在一块了。Count-Mean-Min Sketch 算法做了如下改进：  

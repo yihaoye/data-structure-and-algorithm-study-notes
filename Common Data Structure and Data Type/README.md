@@ -37,6 +37,8 @@
   - [最值栈 | Extreme (Min/Max etc) Stack](../Leetcode%20Practices/algorithms/easy/155%20Min%20Stack.java)
 - 映射表 | Map/Table
   - [散列表 | HashMap](./Data%20Structure%20Implementation/HashMap/README.md) (索引搜索 O(1)，插入/删除节点 O(1)；注意：最差时间复杂度为 O(N) - 即哈希值全部冲突，如果输入冲突数据为 N 则最差为 O(N^2))
+    - [Count-Min Sketch](./Data%20Structure%20Implementation/CountMinSketch/CountMinSketch.java) (概率型数据结构，高效元素计数)
+    - HyperLogLog (概率型数据结构，高效总体去重统计)
   - 并发散列表 | ConcurrentHashMap (索引搜索 O(1)，插入/删除节点 O(1))
   - 链散列表 | LinkedHashMap (按插入顺序的散列表，索引搜索 O(1)，插入/删除节点 O(1)；其实可以用一个顺序表+哈希表实现)
   - 树状映射表 | TreeMap (索引搜索 O(logN)，插入/删除节点 O(logN))
@@ -47,7 +49,7 @@
   - 链散列集 | LinkedHashSet (索引搜索 O(1)，插入/删除节点 O(1))
   - 树集 | TreeSet (索引搜索 O(logN)，插入/删除节点 O(logN))
   - [位集 (位向量) | BitSet](../Common%20Algorithm%20and%20Theory/集合的整数表示.md) (索引搜索 O(1)，插入/删除 O(1)，总空间复杂度总是 O(1))
-    - [布隆过滤器 | Bloom Filter](./../Common%20Algorithm%20and%20Theory/布隆过滤器及其算法.md)
+    - [布隆过滤器 | Bloom Filter](./../Common%20Algorithm%20and%20Theory/布隆过滤器及其算法.md) (概率型数据结构，高效元素存无判定)
   - 枚举集 | EnumSet
 - [树 | Tree](./Data%20Structure%20Implementation/Tree/README.md)
   - 完全二叉树 | Complete Binary Tree
