@@ -32,42 +32,19 @@ Note:
 
 
 
-// Other's Solution:
-class Solution {
-    public int[][] kClosest(int[][] points, int K) {
-        Arrays.sort(points, (p1, p2) -> p1[0] * p1[0] + p1[1] * p1[1] - p2[0] * p2[0] - p2[1] * p2[1]);
-        return Arrays.copyOfRange(points, 0, K);
-    }
-}
-
-
-
 // My Solution:
 class Solution {
     public int[][] kClosest(int[][] points, int K) {
-        ArrayList<int[]> res = new ArrayList<>();
-        TreeMap<Integer, ArrayList<int[]>> map = new TreeMap<>();
+        // PriorityQueue - Time: O(N*logK), Space: O(K)
+        PriorityQueue<int[]> pq = new PriorityQueue<>((p2, p1) -> p1[0] * p1[0] + p1[1] * p1[1] - p2[0] * p2[0] - p2[1] * p2[1]);
         for (int[] point : points) {
-            int distance = point[0]*point[0] + point[1]*point[1];
-            if (!map.containsKey(distance)) map.put(distance, new ArrayList<int[]>());
-            map.get(distance).add(point);
+            pq.offer(point);
+            if (pq.size() > K) pq.poll();
         }
-        for (Map.Entry<Integer, ArrayList<int[]>> entry : map.entrySet()) {
-            for (int[] point : entry.getValue()) {
-                if (K <= 0) return convertArr(res);
-                res.add(point);
-                K--;
-            }
+        int[][] res = new int[K][2]; int index = 0;
+        while (!pq.isEmpty()) {
+            res[index++] = pq.poll();
         }
-        return convertArr(res);
-    }
-    
-    public int[][] convertArr(ArrayList<int[]> arrList) {
-        int[][] array = new int[arrList.size()][];
-        for (int i=0; i < arrList.size(); i++) {
-            int[] row = arrList.get(i);
-            array[i] = row;
-        }
-        return array;
+        return res;
     }
 }
