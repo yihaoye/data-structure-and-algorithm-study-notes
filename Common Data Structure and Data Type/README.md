@@ -37,7 +37,7 @@
   - [最值栈 | Extreme (Min/Max etc) Stack](../Leetcode%20Practices/algorithms/easy/155%20Min%20Stack.java)
 - 映射表 | Map/Table
   - [散列表 | HashMap](./Data%20Structure%20Implementation/HashMap/README.md) (索引搜索 O(1)，插入/删除节点 O(1)；注意：最差时间复杂度为 O(N) - 即哈希值全部冲突，如果输入冲突数据为 N 则最差为 O(N^2))
-    - [Count-Min Sketch](./Data%20Structure%20Implementation/CountMinSketch/CountMinSketch.java) (概率型数据结构，高效元素计数)
+    - [Count-Min Sketch](../Common%20Algorithm%20and%20Theory/Count-Min-Sketch.md) (概率型数据结构，高效元素计数)
   - 并发散列表 | ConcurrentHashMap (索引搜索 O(1)，插入/删除节点 O(1))
   - 链散列表 | LinkedHashMap (按插入顺序的散列表，索引搜索 O(1)，插入/删除节点 O(1)；其实可以用一个顺序表+哈希表实现)
   - 树状映射表 | TreeMap (索引搜索 O(logN)，插入/删除节点 O(logN))
