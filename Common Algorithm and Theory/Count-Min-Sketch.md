@@ -34,14 +34,14 @@ class CountMeanMinSketch {
     // initialization and addition procedures as in CountMinSketch
     // n is total number of added elements
     public int estimate(String item) {
-        int e[] = new int[depth];
+        int[] tmp = new int[depth];
         for (int r = 0; r < depth; r++) {
             int c = funcs[r].hash(item);
             int sk = sketch[r][c];
             int noise = (n - sk) / (width - 1);
-            e[r] = sk – noise;
+            tmp[r] = sk – noise;
         }
-        return median(e);
+        return median(tmp);
     }
 }
 ```  
