@@ -309,7 +309,7 @@ Books:
 * 团队文化构建、健康沟通、情绪稳定（比如冷静）（对团队士气有影响）
   * 促进团队磨合、共同利益与成长（了解每个组员，辅助潜力释放、优势放大以及短板补足）
   * 和组员保持良善的关系（足够透明密切的沟通、定时 Team Building 都是很重要的不是无关紧要的）
-    * 沟通方法 1 - 提供背景、上下文以及建议选项，而非下结论
+    * 沟通方法 1 - 提供背景、上下文以及建议选项，而非下结论（Provide Context and Suggestion instead of Conclusion/Opinion, even better if suggestion are options - there are always multiple solutions/practises）
     * 沟通方法 2 - 不指责，而是构建规则规范
   * 冲突管理
     * 只专注能力资源可及的事情、工作、任务、项目本身，而非与人争执或急于证明
