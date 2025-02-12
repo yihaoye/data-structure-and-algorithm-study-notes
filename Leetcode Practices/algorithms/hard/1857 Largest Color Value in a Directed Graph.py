@@ -37,10 +37,9 @@ colors consists of lowercase English letters.
 
 
 # My Solution:
-# 本题通常采用拓扑排序
 class Solution:
     def largestPathValue(self, colors: str, edges: List[List[int]]) -> int:
-        # 记忆化搜索
+        # 回溯法 + 记忆化搜索
         outdegree = defaultdict(set)
         roots = set(range(len(colors)))
 
@@ -59,13 +58,34 @@ class Solution:
 
     def dfs(self, cur: int, visited: {}, nodes: {}, colors: str, outdegree: {}) -> int: # 贪心，记录每个节点的后续路径里每种颜色的最大值
             if cur in nodes: return max(nodes[cur].values())
-            tmp = defaultdict(int)
+            nodes[cur] = defaultdict(int)
             for nxt in outdegree[cur]:
                 if nxt in visited: return -1
                 visited.add(nxt)
                 if self.dfs(nxt, visited, nodes, colors, outdegree) == -1: return -1
                 visited.remove(nxt)
-                for k, v in nodes[nxt].items(): tmp[k] = max(tmp[k], v)
-            tmp[colors[cur]] = tmp[colors[cur]] + 1
-            nodes[cur] = tmp
+                for k, v in nodes[nxt].items(): nodes[cur][k] = max(nodes[cur][k], v)
+            nodes[cur][colors[cur]] += 1
             return max(nodes[cur].values())
+
+
+
+# Other's Solution:
+class Solution:
+    def largestPathValue(self, colors: str, edges: List[List[int]]) -> int:
+        # 拓扑排序 + DP
+        N = len(colors)                                     # Number of nodes
+        incoming, Graph = [0] * N, [[] for _ in range(N)]   # Define count for incoming edges, graph
+        for u, v in edges: incoming[v] += 1                 # Count incoming edges
+        for u, v in edges: Graph[u].append(v)               # Code the graph
+        queue = [u for u in range(N) if incoming[u] == 0]   # Populate stack with the nodes without incoming edges
+        cnts = [[0] * 26 for _ in range(N)]                 # Max. colors along all the incoming paths for the node 
+
+        for u in queue:                                     # While we have nodes to process
+            cnts[u][ord(colors[u]) - ord('a')] += 1         # Increment the color of the node itself
+            for v in Graph[u]:                              # For all outgoing edges of the node
+                cnts[v] = list(map(max, cnts[v], cnts[u]))  # Update max. colors of the outgoing node 相当于 """for i in range(26): cnts[v][i] = max(cnts[v][i], cnts[u][i])"""
+                incoming[v] -= 1                            # Decrement the counter of edges for the outgoing node
+                if incoming[v] == 0: queue.append(v)        # If outgoing node has no more incoming edges, add to the stack
+
+        return -1 if len(queue) < N else max(map(max, cnts))
