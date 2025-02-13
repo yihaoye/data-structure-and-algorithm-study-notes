@@ -12,7 +12,7 @@
   * [Codeforces](./Codeforces/README.md)
   * [Deep-ML](https://www.deep-ml.com/) (人工智能 Code Challenge)、[HackerRank](./HackerRank%20Practises/) (包括一些 [Java 语言实例解析](./HackerRank%20Practises/java/)、[Linux Bash](./HackerRank%20Practises/bash/))
   * [其他算法实践、真题、面经笔记](./Other%20Practices/)
-* [工具集 | Tool Sets](./Tool%20Sets/README.md) (常用编码逻辑工具集查询手册，包括一些 Java 语言实例解析、非 Java 语言内置但是重要的数学工具等等)
+* [工具集 | Tool Sets](./Tool%20Sets/README.md) (常用编码逻辑工具集查询手册，包括一些 Java 或 Python 语言实例解析、非编程语言内置但是重要的数学工具等等)
 * [计算机数学 | Computer Science Maths](./Computer%20Science%20Maths/README.md) (包括理论信息学如 [P/NP 问题](./Computer%20Science%20Maths/P%20vs%20NP%20vs%20NPC.md)，基础数学如[数学归纳法 | Mathematical Induction](./Computer%20Science%20Maths/Mathematical%20Induction.md)、[排列组合 | Combinatorics](./Computer%20Science%20Maths/Combinatorics.md)，高等数学以及算法常用数学工具、ACM 数论等等)
   * [数学建模 | Mathematical Modeling](./Computer%20Science%20Maths/数学建模.md)
 * [计算机论文 | Computer Science Paper](https://www.youtube.com/watch?v=_kynGl5hr9U)

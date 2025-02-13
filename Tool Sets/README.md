@@ -5,7 +5,7 @@ Tool Sets 是 Online / Take Home assessment、算法解题、编码过程中常�
 这里的模版集可用作算法解题中的工具集查询手册。  
   
 以下是模版：  
-* [数学 相关操作与套路](./Math.java)
+* [数学相关操作与套路](./Math.java) | [Python Math](./math_operation.py)
 * [数组与矩阵](./Arrays(Matrix).java)
 * [Java 大数操作 (以及 Java 内置高级数学函数)](./BigNumber.java)
 * [位操作](./Bitwise.java)
@@ -32,7 +32,8 @@ Tool Sets 是 Online / Take Home assessment、算法解题、编码过程中常�
       * [TCP/IP (SocketChannel 与 ServerSocketChannel)](./TCP.java)
       * UDP/IP (DatagramChannel)
     * [JavaX WebSocket](./WebSocket.java)
-  * [NIO 与 AIO](./NIO.java) | [Python AIO](./async_io_operation.py) | [Python Concurrency](./concurrency_operation.py)
+  * [Java NIO 与 AIO](./NIO.java) | [Python AIO](./async_io_operation.py)
+* 多线程 | [Python Concurrency](./concurrency_operation.py)
 * [Scanner](./Scanner.java)
 * [流](./Stream.java)
 * [JDBC 操作](./JDBC.java)
