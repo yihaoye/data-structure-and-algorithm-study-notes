@@ -72,6 +72,7 @@ At most 10^5 calls in total will be made to all functions.
 
 
 
+# My Solution:
 class VideoSharingPlatform:
     # Q2336 https://leetcode.com/problems/smallest-number-in-infinite-set/description/ 的拓展
     def __init__(self):
