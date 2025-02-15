@@ -12,7 +12,7 @@ Tool Sets 是 Online / Take Home assessment、算法解题、编码过程中常�
 * Java 容器
   * [Collections 进阶操作](./Collections.java)
   * [Map 进阶操作](./Map.java)
-* [Clone 与 Copy](./Clone(Copy).java)
+* [Clone 与 Copy](./Clone(Copy).java) | [Python Copy](./clone_copy_operation.py)
 * [Comparable](./Comparable.java)
 * [Comparator](./Comparator.java)
 * [数据类型转换](./DataTypeConversion.java)
@@ -39,7 +39,8 @@ Tool Sets 是 Online / Take Home assessment、算法解题、编码过程中常�
 * [JDBC 操作](./JDBC.java)
 * [状态压缩](./StateCompression.java)
 * [Iterator](./Iterator.java)
-* JSON 解析器 [完整版](./JSONParser.java)、[简单版](./../Other%20Practices/nested%20data/Solution.java) | [Python JSON](./json_operation.py)
+* JSON 操作 | [Python JSON](./json_operation.py)
+  * JSON 解析器 [完整版](./JSONParser.java)、[简单版](./../Other%20Practices/nested%20data/Solution.java)
 * [链表节点](./LinkedListNode.java)
 * [Java Time](./Time.java) | [Python Time](./time_operation.py)
 * [Java 对象泛操作](./Object.java)
