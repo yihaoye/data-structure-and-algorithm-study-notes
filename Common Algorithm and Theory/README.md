@@ -79,7 +79,7 @@ This personal Blog contains explanation and **Java library/template implementati
     - [分层可导航小世界算法 | Hierarchical Navigable Small World Algorithm](./HNSW.md) (时间复杂度：搜索平均 `O(logN)` 最差 `O(N^(1-1/d))`，插入 `O(logN)`，其中 N 为节点数、d 为维度数)
     - 近似算法 | Approximation Algorithm ([Wiki](https://en.wikipedia.org/wiki/Approximation_algorithm))
       - 多项式时间近似算法 | Polynomial-Time Approximation Scheme (PTAS) (时间复杂度 `O(N^c1+N^c2+...)` ~= `O(N^c1)`，指数为常数)
-    - 启发式算法/搜索 | Heuristic Algorithm/Search (启发式搜索通常不讨论时空复杂度)
+    - [启发式算法/搜索 | Heuristic Algorithm/Search](./启发式算法.md) (启发式搜索通常不讨论时空复杂度)
       - [A&ast; 搜索算法 | A&ast; Search Algorithm](./A*搜索算法.md) ([Ref](https://theory.stanford.edu/~amitp/GameProgramming/)；基于 Dijkstra 算法添加了启发式函数，单起点单终点最坏时间复杂度：`O(V+E*logV)`)
         - IDA&ast; 算法 | IDA&ast; Algorithm
       - 禁忌搜索 | Tabu Search
