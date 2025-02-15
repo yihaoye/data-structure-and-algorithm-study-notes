@@ -474,6 +474,9 @@
   * 通常不可更改：固件通常被存储在设备的只读存储器（ROM）或者闪存等非易失性存储器中，并且通常不会随意更改。但有些设备也提供了固件升级的机制，允许用户更新固件以修复 bug、增加新功能或提高性能。
 * [Cache 直接映射、组相连映射以及全相连映射](https://www.cnblogs.com/east1203/p/11572500.html) ([Ref](https://en.wikipedia.org/wiki/Cache_placement_policies))
 * [RDMA | 远程直接内存访问](https://zh.wikipedia.org/zh-hans/%E8%BF%9C%E7%A8%8B%E7%9B%B4%E6%8E%A5%E5%86%85%E5%AD%98%E8%AE%BF%E9%97%AE) - 一种绕过远程主机操作系统内核访问其内存中数据的技术，由于不经过操作系统，节省了大量 CPU 资源，提高了系统吞吐量、降低了系统的网络通信延迟，在大规模并行计算机集群中有广泛应用
+* [独立硬盘冗余阵列 (RAID)](https://zh.wikipedia.org/wiki/RAID) - 在单机时代，采用单块磁盘进行数据存储和读写的方式，由于寻址和读写的时间消耗，导致 I/O 性能非常低，且存储容量还会受到限制。另外，单块磁盘极其容易出现物理故障，经常导致数据的丢失。因此大家就在想，有没有一种办法将多块独立的磁盘结合在一起组成一个技术方案，来提高数据的可靠性和 I/O 性能呢。在这种情况下，RAID 技术就应运而生了，即独立磁盘冗余阵列（Redundant Array of Independent Disks），简称为`磁盘阵列`。[Ref](https://zhuanlan.zhihu.com/p/143338394)
+  * 数据冗余，是指把数据的校验信息同步、存放在冗余的磁盘中，在某些磁盘数据损坏时，能从其他未损坏的磁盘中，重新构建数据，与纠错码原理类似
+  * 性能提升，是指 RAID 能把多块独立的磁盘组成磁盘阵列，通过把数据切成分片的方式，使得读/写数据能走多块磁盘，从而提升性能
 * [CompTIA Linux+](https://www.youtube.com/watch?v=NN_xoinL6f4&list=PLw78nfbi6DWjX8ephtrITEqdnWL1wv8qC)
 
 ### Docker 高频
