@@ -45,10 +45,7 @@ class Solution:
         stack = []
         for curr in peaks:
             while True:
-                if not stack:
-                    stack.append(curr)
-                    break
-                visible = self.overlap(curr, stack[-1])
+                visible = self.overlap(curr, stack[-1]) if stack else 2
                 if visible == 0: # visible 0 意味着只能看到 curr
                     stack.pop()
                 if visible == 1: # visible 1 意味着只能看到 stack[-1]
