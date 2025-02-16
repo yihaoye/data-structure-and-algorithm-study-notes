@@ -156,6 +156,7 @@ public class SkipList<K extends Comparable<K>, V> implements Iterable<K> {
         private K key;
         private V value;
         private int level;
+        private int span; // span 表示在当前层级,该节点与前一个节点之间跨越了多少个节点，用于高效更新和计算节点的排名（ranking），在 add/remove 时更新，该模版未实现使用，ToDo...
         private Node<K, V> up, down, next, previous;
 
         public Node(K key, V value, int level) {

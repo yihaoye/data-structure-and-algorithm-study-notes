@@ -237,7 +237,7 @@
 * [AOF 持久化机制](https://zq99299.github.io/note-book/cache-pdp/redis/010.html#aof-%E6%8C%81%E4%B9%85%E5%8C%96%E6%9C%BA%E5%88%B6%E7%9A%84%E4%BC%98%E7%82%B9)
   * [AOF 重写机制](https://redis.io/docs/management/persistence/#log-rewriting) - AOF 重写会只保留当前缓存内的数据集
 * [全数据结构及其 API](https://www.cnblogs.com/yidengjiagou/p/17305653.html)
-  * ZSet (Sorted Set)
+  * [ZSet (Sorted Set)](https://redis.io/docs/latest/develop/data-types/sorted-sets/)
     * 内部编码有 2 种：
       * ziplist 编码：当 Zset 中元素个数小于 128 个，并且所有元素的长度都小于 64 字节时，Redis 会使用 ziplist 编码存储 Zset。这种编码方式可以节省内存空间，并且可以提高存取效率，但是不支持随机访问和范围查询
       * skiplist 编码：当 Zset 中元素个数大于等于 128 个，或者有一个元素的长度大于 64 字节时，Redis 会使用 skiplist 编码存储 Zset。这种编码方式支持高效的随机访问和范围查询，但是需要占用更多的内存空间

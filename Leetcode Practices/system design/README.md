@@ -1352,6 +1352,10 @@ C10M 问题，是千万级并发实现。Linux 上通常用 epoll 实现。
 
 ![](./Facebook%20Live%20System%20Design%20Mock.png)  
 
+### 设计 Facebook Live Comment 系统
+参考：https://www.hellointerview.com/learn/system-design/problem-breakdowns/fb-live-comments  
+
+
 </details>
 
 
@@ -2359,6 +2363,14 @@ Word Cloud，属于 Top K 系统的 follow up 更为复杂，因为可以进行�
   * terms 聚合在处理高基数字段时内存消耗大，高基数字段是指包含大量唯一值的字段。
   * significant_terms 性能更不如 terms（因为前者需要计算每个术语在当前文档集和整个索引中的分布，这通常需要更多的计算资源和时间）。用于查找在指定文档集中显著但在整个索引中不常见的术语。它不仅考虑术语在文档集中的出现频率，还考虑术语在整个索引中的出现频率，以识别那些对当前查询结果特别重要的术语。
 3. 最后再进行聚合统计排序，这部分就是 O(KlogM)，其中 K 为想要获取的 Top K。
+
+### 设计玩家游戏排名系统
+[参考](https://juejin.cn/post/7319904113375117363)  
+核心需求：
+* 头 100 名玩家（按积分排序）
+* 每个玩家可查自己的总排名
+
+具体直接使用 Redis 的 ZSet 就可以实现了，[参考 SkipList](./../../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/SkipList/README.md#总结)
 
 </details>
 
