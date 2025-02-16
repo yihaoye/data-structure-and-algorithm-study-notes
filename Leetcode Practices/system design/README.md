@@ -17,7 +17,8 @@
   
 ### **面试步骤**
 [真实面试过程模拟 (System Design Mock: with ex-Google EM)](https://www.youtube.com/watch?v=_K-eupuDVEc)
-* 场景确认（所有细节，Back-of-the-envelope estimation 比如 QPS、带宽、存储）、分析及列出需求（功能与非功能，写非功能需求时最好把具体原因写上比如流媒体服务性能需求主要体现在下载资源流畅）-（OOD 也一样）
+* 需求（功能与非功能，写非功能需求时最好把具体原因写上比如流媒体服务性能需求主要体现在下载资源流畅）与场景确认（所有细节，Back-of-the-envelope estimation 比如 QPS、带宽、存储）、分析 -（OOD 也一样）
+  * 非常重要，因为准确理解后可以简化、引导后续所有步骤：按顺序构建设计，逐一满足功能要求。这将帮助保持专注，确保不会在设计过程中迷失方向。一旦满足了功能要求，就可以依靠非功能性要求来指导逐步增加设计的深度和复杂性
 * 初步架构图（注意可以在一开始列出主要服务如 booking / ordering、payment、feed / stream、search、upload / download、cronjob、auth / limit、notification 等等并用不同的组件画框把它们区分开来）至少画 5-6 个系统的核心组件 -（对应于 OOD 的流程图）
   * 除了架构图外，还可以视情况需要使用其他绘图方式辅助表达，包括大部分 UML - 具体参考 [OOD 设计绘图](../object%20oriented%20design/README.md#前置知识点：一些基本设计分工)
 * 数据建模、数据库选择（SQL 还是 NoSQL 及其原因）与 schema 设计（所有的 Table 然后细讲主要的 Table）-（对应于 OOD 里选择什么数据结构以及类设计进行存储）
