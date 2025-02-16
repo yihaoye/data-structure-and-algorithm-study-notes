@@ -1356,6 +1356,38 @@ C10M 问题，是千万级并发实现。Linux 上通常用 epoll 实现。
 ### 设计 Facebook Live Comment 系统
 参考：https://www.hellointerview.com/learn/system-design/problem-breakdowns/fb-live-comments  
 
+直播间评论读比写多，websocket 可能成本过重，更推荐使用 Kafka，具体代码如下：  
+```python
+@app.get("/new_comment")
+async def new_comment():
+    async def event_generator():
+        while True:  # 保持连接
+            # 等待新消息
+            data = await queue.get()
+            # 发送消息给客户端
+            if data:
+              yield {
+                  "event": "message",
+                  "data": data
+              }
+            await asyncio.sleep(0.1)
+    
+    return EventSourceResponse(event_generator())
+```  
+
+客户端  
+```javascript
+// get history comments when just get into live room
+var response = await fetch('/history_comments');
+var comments = await response.json();
+cache(comments);
+
+// SSE get new comment after that
+const sse = new EventSource('/new_comment');
+sse.onmessage = (event) => {
+    console.log(event.data);
+};
+```
 
 </details>
 
