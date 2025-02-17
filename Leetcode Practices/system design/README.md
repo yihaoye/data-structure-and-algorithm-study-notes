@@ -1565,11 +1565,11 @@ Dropbox 异步任务框架 ATF：
   
 **读取如果总是轮询查数据库且客户端数量巨量时可能会造成数据库过载，因此应该从消息队列读取/写入。**  
 以 Kafka 为例：  
-但是主题如果选择用户 ID 的话会造成分区过多（一个分区只属于一个主题），导致维护管理困难。因此主题需要更 general（比如 new-private-message etc），但是每个用户都只和一个线程进行通讯，如何保证消息不被其他无关的线程 commit 掉导致真正的服务线程 miss 掉消息呢？答案是每个用户的消费者实例（线程）都独占一个独立的消费组。  
+但是主题如果选择用户 ID 的话会造成分区过多（一个分区只属于一个主题），导致维护管理困难（Kafka 在 Raft 下面能支持百万级别的 topic）。因此主题需要更 general（比如 chat group、channel etc），但是每个用户都只和一个线程进行通讯，如何保证消息不被其他无关的线程 commit 掉导致真正的服务线程 miss 掉消息呢？答案是每个用户所在的消费者实例（线程）都独占一个独立的消费组（Kafka 消费者组是动态的，不需要提前注册）。  
 又因此，那么每个分区的消息可能会被多个用户的消费者实例读取。这种情况下，确实需要在消费者端进行消息的过滤，以保证每个用户只处理属于自己的消息。  
 消息过滤可能会对性能产生一些影响，因为需要在消费者端对每条消息进行判断和过滤。然而，这种影响通常可以通过合理的优化和设计来降低。以下是一些可能的优化策略：  
 1. 合并处理：将多个消息的过滤合并为一次操作，减少判断和过滤的次数，提高效率。
-2. 使用索引：在消息中添加索引字段，如用户ID，可以加速过滤操作，提高性能。
+2. 使用索引：在消息中添加索引字段，如用户 ID，可以加速过滤操作，提高性能。
 3. 并发处理：使用多线程或异步处理来并行地处理消息，减少过滤操作对主线程的影响。
 4. 缓存过滤结果：对于一些重复性的过滤操作，可以将过滤结果缓存起来，减少重复的判断。
 5. 分区合并：如果可能，可以将属于同一个用户的分区合并到一个消费者组中，减少需要过滤的消息数量。
@@ -1597,7 +1597,7 @@ Dropbox 异步任务框架 ATF：
 method: POST  
 `https://example.com/api/v1/messages/`  
 ```python
-send_message(user_id, message):
+def send_message(user_id, message):
   server = get_chat_server(user_id)
   server.send(user_id, message)
 ```
@@ -1605,9 +1605,22 @@ send_message(user_id, message):
 method: GET  
 `https://example.com/api/v1/messages/?user_id=1`  
 ```python
-read_message(user_id, max_read_id):
+def read_message(user_id, max_read_id):
   server = get_chat_server(user_id)
   return server.read_from_db(user_id, max_read_id)
+
+def read_message2(user_id):
+  consumer = KafkaConsumer( # 创建消费者，订阅多个 topic
+      'topic1',
+      'topic2',
+      'topic3',
+      bootstrap_servers='localhost:9092',
+      auto_offset_reset='latest', # 可选：从最新消息开始消费
+      group_id='my-group' # 可选：消费者组 ID
+  )
+
+  for message in consumer: # 消费消息
+    handle(message.topic, message.value) # SSE return
 ```
   
 **存储结构设计**  
@@ -1669,6 +1682,10 @@ Thread Table 链式消息
 
 Discord 海量数据存储方案：  
 ![](./discord-data-store.jpeg)  
+
+slack 总 channel 数极大，但是好像上面还有一层是 workspace，每个 channel 都只隶属于一个 workspace，因此是否实际 slack 实现时是每个 workspace 有自己的单独 kafka 集群，这样也就不会有单独 mq 支撑上百亿 channel 的问题（一个 workspace 顶多也就几千 channel）？  
+在此之上拓展，是否本身每个 workspace 就是单独部署一整套 slack 服务（系统级层面的分区，类似 on-premise 的解决方案），如此，很多数据库数据过大、扩展等问题也可以迎刃而解，基建出了问题也不会所有的 workspace 同时不可用。  
+workspace 的资源使用、比如实例规格等，又可以与该 workspace 的订阅付费时选的 plan 挂钩，选的 plan 越高级（比如支持的成员数越多）则资源以及规格越高，而免费 workspace 们则可以使用共享的系统分区（当然还可以再分 default_0, default_1, default_2, ... 如此类推与扩展）。  
 
 参考：
 * https://www.acwing.com/blog/content/26646/
