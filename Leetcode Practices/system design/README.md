@@ -1683,9 +1683,14 @@ Thread Table 链式消息
 Discord 海量数据存储方案：  
 ![](./discord-data-store.jpeg)  
 
+[亿级 IM 聊天系统设计](https://juejin.cn/post/7352797634556428303)：  
+![](./billions-user-im-system.awebp)  
+Netty 服务器部分的 channel 对象即是对网络连接（Socket）的抽象封装  
+  
 slack 总 channel 数极大，但是好像上面还有一层是 workspace，每个 channel 都只隶属于一个 workspace，因此是否实际 slack 实现时是每个 workspace 有自己的单独 kafka 集群，这样也就不会有单独 mq 支撑上百亿 channel 的问题（一个 workspace 顶多也就几千 channel）？  
 在此之上拓展，是否本身每个 workspace 就是单独部署一整套 slack 服务（系统级层面的分区，类似 on-premise 的解决方案），如此，很多数据库数据过大、扩展等问题也可以迎刃而解，基建出了问题也不会所有的 workspace 同时不可用。  
 workspace 的资源使用、比如实例规格等，又可以与该 workspace 的订阅付费时选的 plan 挂钩，选的 plan 越高级（比如支持的成员数越多）则资源以及规格越高，而免费 workspace 们则可以使用共享的系统分区（当然还可以再分 default_0, default_1, default_2, ... 如此类推与扩展）。  
+但是 whatsapp、wechat、discord 等全民互通互组的亿级用户聊天系统则无法按照 workspace 来分区，一个可能性应该是按照用户的注册地区选择相应分区来存储和连接应用服务，如果一个 channel 里用户 A 发送消息时，有其他地区的用户，则可以通过查询其他用户的地区再转发消息到该地区的 kafka 集群（甚至进一步优化可以把其他客户的地区元数据缓存在发送者的客户端，因此发送时会带上所有接收者的地区，在顶层负载均衡时再根据该信息分发给所有这些地区的系统集群）。  
 
 参考：
 * https://www.acwing.com/blog/content/26646/
