@@ -2,18 +2,34 @@
 
 <details>
 <summary>AWS</summary>
+
+* [Rotting Oranges](../Leetcode%20Practices/algorithms/medium/994%20Rotting%20Oranges.java)
+* Matrix
+
 </details>
 
 <details>
 <summary>Atlassian</summary>
+
+* [Router](./14-10-2021%20router/)
+* [Collections of Files](./collections%20of%20files/)
+* [Rate Limiter](../Leetcode%20Practices/object%20oriented%20design/other%20practices/rate%20limiter%203/Solution.java)
+
 </details>
 
 <details>
 <summary>Canva</summary>
+
+* [Design Service](./26-07-2023%20design%20service/)
+* [Game of Life](./game%20of%20life/)
+
 </details>
 
 <details>
 <summary>Google</summary>
+
+* [LRU](../Leetcode%20Practices/algorithms/medium/146%20LRU%20Cache.java)
+
 </details>
 
 <details>
@@ -22,6 +38,9 @@
 
 <details>
 <summary>Square</summary>
+
+* [Simple Bank](../Leetcode%20Practices/object%20oriented%20design/other%20practices/simple%20bank/)
+
 </details>
 
 <details>
@@ -40,15 +59,26 @@ Session 3: Pair Programming with a Engineering Manager. 出了题目是是这个
 </details>
 
 <details>
-<summary>Tiktok</summary>
+<summary>TikTok</summary>
+
+* Topo Sort
+* DP
+* [Number of Flowers in Full Bloom](../Leetcode%20Practices/algorithms/hard/2251%20Number%20of%20Flowers%20in%20Full%20Bloom.java)
+
 </details>
 
 <details>
 <summary>Workday</summary>
+
+* [Multi Processor Schedule](./04-11-2021%20multiple%20processor%20schedule%20min%20time/)
+
 </details>
 
 <details>
 <summary>Xero</summary>
+
+* Invoice OOD
+
 </details>
 
 <details>
@@ -57,4 +87,14 @@ Session 3: Pair Programming with a Engineering Manager. 出了题目是是这个
 
 <details>
 <summary>MongoDB</summary>
+
+* [Random Map](./random%20map/)
+
+</details>
+
+<details>
+<summary>Unity</summary>
+
+* [Consistent Hash](../Leetcode%20Practices/object%20oriented%20design/other%20practices/consistent%20hash/)
+
 </details>
