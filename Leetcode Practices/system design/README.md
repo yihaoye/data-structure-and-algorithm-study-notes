@@ -442,7 +442,18 @@ API 网关是位于客户端与后端服务集之间的大门 - API 管理工具
 ### [路由](./路由.md)
 
 ## 状态有无
-在计算机系统中，"stateful"（有状态）和 "stateless"（无状态）是两种不同的概念，用于描述系统或组件在处理请求和交互时是否保存状态信息。state (for instance user session data). A good practice is to store session data in the persistent storage such as relational database or NoSQL.  
+在计算机系统中，"stateful"（有状态）和 "stateless"（无状态）是两种不同的概念，用于描述系统或组件在处理请求和交互时是否保存状态信息。state (for instance user session data). 简单来说区别其实就是前者是总是指定服务器服务指定用户，后者是随时任意一个服务器服务指定用户。  
+
+```
+Stateless (REST API):  
+Client -> Load Balancer -> [Server1/Server2/Server3] 随机  
+每个请求都带着 token，哪台服务器处理都行  
+
+Stateful (WebSocket、SSE):  
+Client -> Load Balancer -> Server2 (固定)  
+必须保持和 Server2 的连接，不能随意切换服务器  
+```
+  
 1. **Stateful（有状态）：**
    - 一个有状态的系统或组件会在处理请求和交互时维护一些状态信息。这意味着系统在不同的请求之间会保留之前的状态，从而能够跟踪用户或对象的操作。
    - 有状态的系统通常需要在服务器端存储数据，以便在不同的请求之间共享和维护状态。这可能涉及到会话管理、状态跟踪、数据存储等。
@@ -460,15 +471,12 @@ API 网关是位于客户端与后端服务集之间的大门 - API 管理工具
 > 如果是状态化请求，那么服务器端一般都要保存请求的相关信息，每个请求可以默认地使用以前的请求信息。  
 > 而无状态的请求，服务器端的处理信息必须全部来自于请求所携带的信息以及可以被所有请求所使用的公共信息。  
 > 
-> 可以理解为 “有数据” 就等价于 “有状态”。  
-> 数据在程序中的作用范围分为`局部`和`全局`（对应局部变量和全局变量），因此`状态`其实也可以分为两种，一种是局部的`会话状态`，一种是全局的`资源状态`。
-> 与有状态相反的是无状态，无状态意味着每次 “加工” 的所需的 “原料” 全部由外界提供，服务端内部不做任何的暂存区。并且请求可以提交到服务端的任意副本节点上，处理结果都是完全一样的。  
-> 有一类方法天生是无状态，就是负责表达移动和组合的 “算法”。因为它的本质就是：接收 “原料”（入参）、“加工” 并返回 “成果”（出参）。纯函数式编程，就是无状态的。有状态，也叫有副作用。  
-> 
 > 为什么主流观点都在说要将方法多做成无状态的呢？因为人们更习惯于编写有状态的代码，但是有状态不利于系统的易伸缩性和可维护性。  
 
 以上来源：https://cloud.tencent.com/developer/article/1620559  
 
+![](./stateful-vs-stateless.png)  
+  
 ## [Deployment](https://www.youtube.com/watch?v=AWVTKBUnoIg)
 * ![](./top-5-most-used-deployment-strategies.png) (by ByteByteGo)
   
@@ -1531,7 +1539,9 @@ Dropbox 异步任务框架 ATF：
 <summary>details</summary>
 
 设计 IM 系统  
-参考：https://interview-science.org/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/IM%20%E7%B3%BB%E7%BB%9F  
+参考：
+* https://bytebytego.com/courses/system-design-interview/design-a-chat-system
+* https://interview-science.org/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/IM%20%E7%B3%BB%E7%BB%9F  
 
 **功能性需求与核心指标**  
 **功能性需求**  
@@ -1542,6 +1552,9 @@ Dropbox 异步任务框架 ATF：
 **核心指标**  
 1. 获取与发布信息的响应时间
 2. 信息的有序性以及一致性
+
+**技术重点**  
+唯一有状态的服务是聊天服务。该服务是有状态的，因为每个客户端都与聊天服务器保持持久的网络连接。在此服务中，只要服务器仍然可用，客户端通常不会切换到另一个聊天服务器。服务发现与聊天服务紧密协调，以避免服务器过载。此处需要深入探讨细节。  
 
 **基础架构**  
 读阶段  
@@ -1685,7 +1698,7 @@ Discord 海量数据存储方案：
 
 [亿级 IM 聊天系统设计](https://juejin.cn/post/7352797634556428303)：  
 ![](./billions-user-im-system.awebp)  
-Netty 服务器部分的 channel 对象即是对网络连接（Socket）的抽象封装  
+Netty 服务器部分的 channel 对象即是对网络连接（Socket）的抽象封装，这里也可以看到其设计仍然是 statefull 的  
   
 slack 总 channel 数极大，但是好像上面还有一层是 workspace，每个 channel 都只隶属于一个 workspace，因此是否实际 slack 实现时是每个 workspace 有自己的单独 kafka 集群，这样也就不会有单独 mq 支撑上百亿 channel 的问题（一个 workspace 顶多也就几千 channel）？  
 在此之上拓展，是否本身每个 workspace 就是单独部署一整套 slack 服务（系统级层面的分区，类似 on-premise 的解决方案），如此，很多数据库数据过大、扩展等问题也可以迎刃而解，基建出了问题也不会所有的 workspace 同时不可用。  
