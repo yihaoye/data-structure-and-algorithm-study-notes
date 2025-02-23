@@ -3,8 +3,9 @@
 [主要关注 3 点：](https://www.youtube.com/shorts/tIvCjH2ETzo)
 * 数据模型 - 是否有复杂的关系，还是仅简单的 lookup
 * 事务（即 ACID） - 是否支持
-* 查询样式（query pattern）- 复杂 JOIN、范围查询、分析查询（analytics）、全文搜索 etc
+* 查询样式（query pattern）- 复杂 JOIN（是否需要支持范式化）、范围查询、分析查询（analytics）、全文搜索 etc
 * 可扩展性和数据一致性 - 分布式友好（以及数据最终一致性）
+  * RDBMS 在大规模场景下需要额外架构设计，才能支持水平扩展，使用时也更复杂（分库分表 Sharding 拆分数据使得 JOIN 查询、事务支持变复杂）
   
 ## 数据库类型特征
 * SQL - structured and predefined schemas
@@ -32,6 +33,9 @@
     * 聚合 - NoSQL 数据库可以进行聚合操作，但其聚合的方式、功能和效率通常与传统的关系型数据库（SQL）不同（通常是通过数据库的内置 API），且聚合能力有强有弱（比如 ES、MongoDB 内置聚合能力极强，Cassandra、DynamoDB、HBase、Redis 等内置仅提供基础聚合通常需要将复杂聚合操作放到应用层）
   * Scalability
     * SQL, in most common situations, are vertically scalable, horizontal scale is challenging and time-consuming
+      * 多台数据库间保持事务一致性代价高
+      * 数据拆分后，跨节点的 JOIN 查询性能差
+      * 数据分片（Sharding）难度大（主键分布、查询优化等问题）
     * NoSQL, horizontally scalable, many NoSQL tech also distribute data across servers automatically.
   * Reliability or ACID Compliancy (Atomicity, Consistency, Isolation, Durability)
     * SQL mostly are ACID compliant.
@@ -41,7 +45,7 @@
     * CP or CA scenario
     * 需要事务或 need to ensure ACID compliance reduces anomalies and protects the integrity of db (for many e-commerce and financial applications, an ACID-compliant database remains the preferred option) - 但实际上有些 NoSQL 也较好地支持事务和强一致性，比如 MongoDB 和 Spanner（Google）
     * data is structured (or have any relational data) and unchanging
-    * need JOIN operation (通常情况下，NoSQL 数据库不太支持传统的 SQL 中的 JOIN 操作，因为在 NoSQL 中，数据冗余、重复存储是常见的做法，即其本身设计思路就是鼓励通过反范式的设计来避免、减少关联操作)，因此也意味着如果希望系统更范式化（整洁、减少重复数据维护的工作量、低空间资源成本等）则应选择 SQL 数据库
+    * need JOIN operation (通常情况下，NoSQL 数据库不太支持传统的 SQL 中的 JOIN 操作，因为在 NoSQL 中，数据冗余、重复存储是常见的做法，即其本身设计思路就是鼓励通过反范式的设计来避免、减少关联操作)，因此也意味着如果希望系统更范式化（整洁、减少重复数据维护的工作量或不容易出错出现数据不一致、低空间资源成本等）则应选择 SQL 数据库
     * ![](./How%20to%20Select%20SQL%20DB.jpeg)
   * Reasons to use NoSQL database (Big data contributes to NoSQL databases' succeed)
     * AP or CP scenario

@@ -4027,6 +4027,8 @@ To Be Continue ...
 - 数据中心级、超级计算机和云基础设施：大约 10 Gbps 到 100 Gbps 的甚至超过 100 Gbps 的带宽处理能力。
 
 ## Storage 计算
+UTF-8 是最常见的编码，一个字符通常动态占用 1~4 B，通常按 4B 计算  
+
 以下为常用存储单位，每个之间为 1024（~1000）倍的比例，比如 1KB = 1024B，如此类推（除了第一个 Byte 可缩写成 B，它代表、等于 8 个比特/Bit，Bit 可缩写成 b，Bit 即一位二进制位仅表示 0 或 1，为最小单元）  
 |Name	|Equal To	|Size(In Bytes) |Scientific Notation   |
 |--   |--       |--             |-- |
