@@ -2427,6 +2427,8 @@ Word Cloud，属于 Top K 系统的 follow up 更为复杂，因为可以进行�
 
 具体直接使用 Redis 的 ZSet 就可以实现了，[参考 SkipList](./../../Common%20Data%20Structure%20and%20Data%20Type/Data%20Structure%20Implementation/SkipList/README.md#总结)
 
+[Redis 其他使用场景](../../Computer%20System%20Layer/数据库/Redis/README.md#Redis-使用案例)
+
 </details>
 
 

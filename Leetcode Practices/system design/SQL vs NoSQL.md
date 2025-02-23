@@ -1,3 +1,12 @@
+其实这个问题本身是不对的，目前业界的做法并不是根据简单的场景来看应该选择哪个大类的数据库（因为关系和非关系数据库功能互相融合，都各自有朝着对方靠拢地发展），而是根据具体场景选择具体的数据库（Postgre、MongoDB etc）  
+
+[主要关注 3 点：](https://www.youtube.com/shorts/tIvCjH2ETzo)
+* 数据模型 - 是否有复杂的关系，还是仅简单的 lookup
+* 事务（即 ACID） - 是否支持
+* 查询样式（query pattern）- 复杂 JOIN、范围查询、分析查询（analytics）、全文搜索 etc
+* 可扩展性和数据一致性 - 分布式友好（以及数据最终一致性）
+  
+## 数据库类型特征
 * SQL - structured and predefined schemas
 * NoSQL
   * 子分类
