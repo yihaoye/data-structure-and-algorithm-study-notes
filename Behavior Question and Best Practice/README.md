@@ -267,7 +267,7 @@ Books:
 * [Developing Interpersonal Skills](https://www.coursera.org/learn/interpersonal-skills)
 * [工作中的技术深度](https://mp.weixin.qq.com/s/wImyzpbGHV_zO9FB3omooA)
 * [关于晋升](https://www.reddit.com/r/ExperiencedDevs/comments/vwpj9a/promo_process_is_it_easier_to_be_hired_into_a/)，虽然要视具体情况，但统计显示，对于中高级工程师通常跳槽比内部晋升简单，而一些更高阶层的高级经理或专家工程师以及首席工程师等可能在企业内部会更容易获得待遇提升
-* [职业倦怠过劳（Burnout）的原因及其应对方法](https://www.mayoclinic.org/zh-hans/healthy-lifestyle/adult-health/in-depth/burnout/art-20046642) ([Ref 1](https://www.1point3acres.com/bbs/thread-1110317-1-1.html)、[Ref 2](https://www.youtube.com/watch?v=4mhji8SxHHk))
+* [职业倦怠过劳（Burnout）的原因及其应对方法](https://www.mayoclinic.org/zh-hans/healthy-lifestyle/adult-health/in-depth/burnout/art-20046642) ([Ref 1](https://www.1point3acres.com/bbs/thread-1110317-1-1.html)、[Ref 2](https://www.youtube.com/watch?v=4mhji8SxHHk)、[Ref 3](https://www.1point3acres.com/bbs/thread-897238-1-1.html))
   * 原因
     * 缺乏控制。对自己完成工作的方式没有发言权，比如时间安排、工作分配或工作量，这些都可能导致职业倦怠。缺少完成工作所需的条件也会导致倦怠。
     * 未明确对您的期望。如果您不确定老板或他人对您的期望，您就不太可能感觉自己工作出色。
@@ -277,9 +277,9 @@ Books:
     * 难以平衡工作与生活。难以平衡工作与生活。可能工作占用了您太多时间和精力，导致您无暇顾及家人和朋友。这种失衡可能导致职业倦怠。
   * 应对方法
     * 重要：看看您有哪些选择
-      * 设定优先级只做重要的事，学会拒绝，划清界限（下班不接电话） - 与上司讨论您的担忧。或许你们可以携手做出改变或解决问题。为必须完成的工作设定切实可行的目标。确定哪些工作可以先暂缓。
-      * 纠正工作的心态，意识到工作只是用时间换钱不要带入个人感情不要牺牲自己的健康，工作是为了获得好的生活而不是差的。
-      * 换工作或者换组 - 如果这份工作不太可能会有任何改变，您可以寻找更适合自己的新工作。
+      * 设定优先级只做重要的事，学会拒绝，划清界限（下班不接电话）- 与上司讨论您的担忧。或许你们可以携手做出改变或解决问题。为必须完成的工作设定切实可行的目标。确定哪些工作可以先暂缓。
+      * 纠正工作的心态，不要随便归罪自己，意识到工作只是用时间换钱不要带入个人感情不要牺牲自己的健康，工作是为了获得好的生活而不是差的。
+      * [换工作或者换组 - 如果这份工作不太可能会有任何改变，您可以寻找更适合自己的新工作。](https://www.youtube.com/watch?v=WMGhPIRlgbM)
     * 重要：补充睡眠和保持健康的生活饮食。睡眠可恢复身心健康，并有助于保护健康。在压力情况下可能暴饮暴食，或进食不健康的食物，这样会使得身体欠佳副作用于精神。
     * 寻求支持。看心理医生，向同事、朋友或亲人寻求支持。与他人交谈对于应对压力可能有所帮助。如果您的工作提供员工援助项目，请了解具体提供哪些服务。
     * 尝试进行放松身心的活动。寻找能帮您缓解压力的活动。例如瑜伽、冥想或太极。像每天做几次深呼吸这样简单的事情也有助于缓解紧张。这里要注意，在放假期间进行旅游未必是一个好的解压方式，因为旅游本身有许多工作
@@ -300,8 +300,8 @@ Books:
   * 对业务、工程都做到细致入微、全面、敏锐洞察（如性能优化）
   * 产品设计、市场研究（**对产品的理解以及询问产品背后设计的逻辑与原因是重要的，只考虑工程侧关心是不足的，兼备工程与产品的考虑方案才是企业主应有的态度**）
   * 成本预算
-* 主动寻求、引导新的发展、探索、方向、战略 - 参考 [Staff Engineer](https://yucliu.gitbook.io/staff-engineer)
-  * 判断力、[时机管理](https://www.sohu.com/a/290572401_100300347)
+* 主动寻求、引导新的发展、探索 - 参考 [Staff Engineer](https://yucliu.gitbook.io/staff-engineer)
+  * 判断力、[找对战略方向](https://www.youtube.com/watch?v=PFpKJRdW0Kw)、[时机管理](https://www.sohu.com/a/290572401_100300347)
   * 不断发明和重新发明、优化
   * 对核心及次核心业务有高标准
 * 执行力、策略
@@ -316,8 +316,11 @@ Books:
 * 团队文化构建、健康沟通、情绪稳定（比如冷静）（对团队士气有影响）
   * 促进团队磨合、共同利益与成长（了解每个组员，辅助潜力释放、优势放大以及短板补足）
   * 和组员保持良善的关系（足够透明密切的沟通、定时 Team Building 都是很重要的不是无关紧要的）
+    * 沟通方法 0 - [简洁沟通](https://www.youtube.com/watch?v=Br03ro98amM)
     * 沟通方法 1 - 提供背景、上下文以及建议选项，而非下结论（Provide Context and Suggestion instead of Conclusion/Opinion, even better if suggestion are options - there are always multiple solutions/practises）
     * 沟通方法 2 - 不指责，而是构建规则规范
+    * 沟通方法 3 - [不抬杠](https://www.youtube.com/watch?v=iL6bmviqaEc)
+    * 沟通方式 4 - [逻辑清晰](https://www.youtube.com/watch?v=DDwS3IYX4sI)
   * 冲突管理
     * 只专注能力资源可及的事情、工作、任务、项目本身，而非与人争执或急于证明
     * 通过团队休整、避免加班、合规断联等方法皆可使得同事之间保持合适距离，合适的距离有时可以很好地减少不必要的误会与怨言
