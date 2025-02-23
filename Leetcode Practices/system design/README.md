@@ -19,6 +19,7 @@
 [真实面试过程模拟 (System Design Mock: with ex-Google EM)](https://www.youtube.com/watch?v=_K-eupuDVEc)
 * 需求（功能与非功能，写非功能需求时最好把具体原因写上比如流媒体服务性能需求主要体现在下载资源流畅）与场景确认（所有细节，Back-of-the-envelope estimation 比如 QPS、带宽、存储）、分析 -（OOD 也一样）
   * 非常重要，因为准确理解后可以简化、引导后续所有步骤：按顺序构建设计，逐一满足功能要求。这将帮助保持专注，确保不会在设计过程中迷失方向。一旦满足了功能要求，就可以依靠非功能性要求来指导逐步增加设计的深度和复杂性
+  * 另外因为面试时间短，不可能设计完整系统，因此只关注核心需求（要和面试官确认）
 * 初步架构图（注意可以在一开始列出主要服务如 booking / ordering、payment、feed / stream、search、upload / download、cronjob、auth / limit、notification 等等并用不同的组件画框把它们区分开来）至少画 5-6 个系统的核心组件 -（对应于 OOD 的流程图）
   * 除了架构图外，还可以视情况需要使用其他绘图方式辅助表达，包括大部分 UML - 具体参考 [OOD 设计绘图](../object%20oriented%20design/README.md#前置知识点：一些基本设计分工)
 * 数据建模、数据库选择（SQL 还是 NoSQL 及其原因）与 schema 设计（所有的 Table 然后细讲主要的 Table）-（对应于 OOD 里选择什么数据结构以及类设计进行存储）
@@ -2289,7 +2290,9 @@ https://www.zhihu.com/question/19839828/answer/28434795
 <details>
 <summary>details</summary>
 
-参考来源：https://www.youtube.com/watch?v=_NyVaxEIYGo  
+参考来源：
+* https://courses.cs.washington.edu/courses/cse454/15wi/papers/mercator.pdf
+* https://www.youtube.com/watch?v=_NyVaxEIYGo
 
 **Scenario 场景 + Service 服务**  
 * 功能性要求
@@ -2307,10 +2310,10 @@ https://www.zhihu.com/question/19839828/answer/28434795
   * 30B * (100KB + 0.5KB) = 3.02PB
 * 带宽估计
   * Crawl 速度 - 30B / (30 days * 86400 s/day) = 11574 pages/second
-  * 下载带宽 - 11574 pages/second * (100KB + 0.5KB) / page = 1.16GB/s (i.e. 9.3Gbps)
+  * 下载带宽 - 11574 pages/second * (100KB + 0.5KB) / page = 1.16GB/s (i.e. 9.3Gbps，因为 1GB = 8Gb)
 
 **High Level Design**  
-整个网络就像一张图，爬取的过程就如图的遍历过程。而首先需要给定一些起始爬取的点（seed URLs），又因为互联网有海量网站，因此爬取需要有优先级以提高效率/ROI  
+整个网络就像一张图，爬取的过程就如图的遍历过程 **(其实整个设计也有点像算法题实现图遍历 - 并且是带优先队列以及去重的图遍历)**。而首先需要给定一些起始爬取的点（seed URLs），又因为互联网有海量网站，因此爬取需要有优先级以提高效率/ROI  
 然后执行以下步骤：  
 1. Pick 一个 URL，爬取对应的网页
 2. 处理下载下来的网页，比如存到数据库并添加索引
@@ -2368,17 +2371,29 @@ URL Frontier 主要是存储一堆待访问的 URL。它有 2 个接口：
 * Front Queue 与 Prioritizer 实现选择策略，为 URL 优先级进行了排序（Prioritizer 根据 URL 重要性或上次被访问距今间隔时间等等来评定，然后根据评定的优先级插到对应的队列里面）。假设数字越低优先级越高，优先级为 1 的 URL 就放进 Front Queue 1 队列，以此类推（优先级高的队列有更高的概率被选中）。
 * Back Queue
   * Back Queues、Politeness Router 以及 Mapping Table `<url, back_queue_id>` 把同一个网站/子网页/URL 都插入到同一个 Back Queue 中，比如 Amazon 的 URLs 只放进 B1、Facebook 的 URLs 只放进 B2 等等。
-  * 接着实现礼貌性策略，控制对一个网站访问的频率（politeness selector 协同一个时间戳排序的 heap 以控制每个 Back Queue 何时可以再次读取 - heap 里存储的是每个 Back Queue 下一次可以被访问/读取/poll 的时间）。
+  * 接着实现礼貌性策略，控制对一个网站访问的频率（politeness selector 协同一个时间戳排序的 heap 以控制每个 Back Queue 何时可以再次读取 - heap 里存储的是每个 Back Queue（即同一个网站）下一次可以被访问/读取/poll 的最早时间）。
 * 分为 Front、Back 两个队列的原因是，要避免多个机器、Worker 同时爬取同一个根域名的网站（礼貌性策略），而 Front 队列只提供了优先级区分的功能，没有限制一个网站只被一个机器、Worker 爬取处理的逻辑，所以需要额外的 Back 队列来负责限制逻辑这部分。
 
 ![](./Web%20Crawler%20Mapping%20Table.png)  
+
+**更多队列细节**  
+> 每个 Back Queue 需要遵循下面的几条不变定律：
+> * 当它处于信息采集过程中，必须保证其队列是非空的。
+> * [它只包含来自于同一台主机（host / domain）上的 URL](https://nlp.stanford.edu/IR-book/html/htmledition/the-url-frontier-1.html)。一个辅助表 T 被用来维护主机到 back 队列之间的映射关系。每当 back 队列为空，要被 front 队列重新填充的时，T 表必须要进行相应的更新。
+
+> 堆里存放着的条目对应每一个 back 队列，该条目记录着该队列所对应的主机可以再次被连接的最早时间 te。请求获取 URL 的爬虫线程会抽取出堆顶元素，然后一直等到相应 te 时间。接下来，它会获取到该堆顶元素所对应的 back 队列 j 的队首 URL u，进而开始进行 URL u 的抓取。抓取过程完成后，调用线程会检查队列 j 是否为空。如果为空，它会挑选一个 front 队列，然后抽取出其队首 URL v。Front 队列的选择方法对于更高优先级的队列来说可能并不公平（通常是一个随机的过程），但这样做是确保高优先级的 URL 可以更快的流入到 back 队列中来。接下来，会检查 v，判断 v 所对应的主机是否已经存在并且已经存有一些 URL。如果是这样的话，v 会被添加到该队列里，然后重新返回到 front 队列，寻找另一个可以插入到空队列 j 的 URL。这个过程会一直持续，直到队列 j 再次变为非空。同时，该线程会向堆中插入一条包含最早开始时间 te 的新条目，这个时间是根据队列 j 中最新被提取的 URL 的相关属性所决定的（比如上次何时进行的连接或是上次爬取花费的时间），之后会继续执行这个过程。  
+> Front 队列的数量以及分配权值和挑选队列的策略共同组成了希望植入系统的优先级属性。Back 队列的数量决定着可以维持多少线程处于运行状态同时又遵守着礼貌性特征。Mercator 的设计者提出一个比较粗糙的建议：可以使用数量三倍于爬虫线程的 back 队列。  
+> 在大规模下的信息采集过程中，随着 URL 队列的增长，可能会造成节点的可用内存不足（经过实验，的确是这样，这个问题也是很棘手的问题）。一个解决方法是让大多数 URL 队列存储在磁盘上，只将每个队列中的一部分保存在内存中，当内存中数据不足时，可以从磁盘中读取更多的数据。
   
+以上参考：[Ref 1](https://nlp.stanford.edu/IR-book/html/htmledition/the-url-frontier-1.html)、[Ref 2](https://www.cnblogs.com/coser/archive/2012/04/15/2450342.html)  
+
 **Fault Tolerance（容错性）& Scalability（扩展性）**  
 * 扩展性
   * Database sharding
   * Consistent hashing
 * 容错性
   * Server replacement
+  * 另外就是一些任务，比如过滤、下载、解析等任务较多，任一任务失败时（比如 worker 宕机）尽量不需要重新执行之前的任务，如此一个常见方案是使用消息队列以及重试机制
 
 相关参考方案：[Web Crawler Detector](./example%20questions/Web%20Crawler%20Detector.md)  
 
