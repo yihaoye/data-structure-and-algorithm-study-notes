@@ -511,6 +511,13 @@ update table set B = B + 1亿;
 commit; -- 提交事务
 ```  
 要保证上面操作的原子性，就得等 begin 和 commit 之间的操作全部成功完成后，才将结果统一提交给数据库保存，如果途中任意一个操作失败，就撤销前面的操作，且操作不会提交数据库保存，这样就保证了原子性。  
+
+**为什么需要 commit 这一机制？**  
+COMMIT 主要的作用是保证事务的原子性（Atomicity），即要么所有操作成功，要么都失败，避免了部分操作提交的情况。这是数据库事务管理的核心之一。  
+在没有 COMMIT 的情况下，修改的数据仍处于未提交状态，并且如果系统崩溃或者其他原因导致事务中断，那么所有操作都应该被撤销，不应该影响系统的最终一致性。  
+也因此，非事务的更新操作其实都没有也不需要 UNCOMMITTED 的状态，这些操作都是立刻 commit（auto-commit）。  
+UNCOMMITTED 的数据通常存储在数据库的内存中，而不是永久存储（磁盘）中 - 只有 COMMIT 了才会写入磁盘。它存在于数据库的事务日志、内存缓存，以及数据库的 Undo Log 或 Write-Ahead Log（WAL）中。具体的存储位置和机制依赖于数据库的实现。  
+长时间不 COMMIT 可能会导致多个问题，具体影响取决于数据库的事务管理机制和负载情况，因此串行化虽然最安全但是性能不佳，通常场景权衡下使用可重复读隔离就满足系统要求了。  
   
 #### 使用 COMMIT、ROLLBACK、SAVEPOINT
 https://www.developerastrid.com/sql/sql-transaction/  
@@ -591,6 +598,9 @@ SET SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED;
 SQL 标准定义了 4 种不同的数据库事务隔离级别，由低到高依次为 Read uncommitted、Read committed、Repeatable read、Serializable，这四个级别可以逐个解决脏读、不可重复读、幻读这几类问题。  
 
 ![](./脏读vs不可重复读vs幻读.png)  
+
+**为什么 Repeatable Read 可以解决丢失更新的问题？**  
+在可重复读隔离级别下，一个事务在读取数据时，不允许其他事务修改已经读取的数据。这意味着如果一个事务已经读取了某个数据行，那么这个数据行在事务执行过程中其他事务不能修改，即使其他事务更新了相同的行，该事务也看不到这些更改。  
   
 MySQL 的默认隔离级别就是 Repeatable read。  
 不可重复读和脏读的区别是：脏读是某一事务读取了另一个事务未提交的脏数据，而不可重复读则是读取了前一事务提交的数据。  
