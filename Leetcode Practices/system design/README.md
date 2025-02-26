@@ -3033,11 +3033,9 @@ For the poll-first-available-message API, the sever could do `select * from mess
 
 And there is another solution is optimistic lock - compare and set, after select the first available record, then do  
 ```sql
-begin;
 update message_table set status = 'pending' where id = {the-selected-id} and status = 'available';
-commit;
 ```  
-if commit fail then do the select again (something like a while loop until succeed).
+if fail then do the select again (something like a while loop until succeed).
 
 **设计改良/扩展（推荐：仿 Kafka）**  
 可以为每个消息在 message_table 里对应一个记录，有 topic 字段并添加 partition 字段，但是不需要 status 字段。每个消费者对应 consumer_partition_table 里的 k 个记录（数量 k == 消费者对应的 partition 数量），记录有 consumer_id，partition_id（分区 ID 建议是类似 UUID 而不是可重复的第几个分区，因为这样可以顺便实现消费者对消息的访问权限隔离功能，访问权限有 permission_table 来管理）和 last_commit 字段，partition 也有 producer_partition_table（包括 partition_id、producer_id 字段），producer 有 producer_table。  
