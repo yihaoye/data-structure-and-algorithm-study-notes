@@ -115,6 +115,8 @@ MongoDB 的适用场景为：数据不是特别重要（例如通知，推送这
 
 以上转载自：https://www.ymatrix.cn/article/4  
 
+时序数据库支持类 SQL 语句，比如 InfluxDB 的 InfluxQL。  
+
 ### [In-memory indexing and the Time-Structured Merge Tree (TSM)](https://docs.influxdata.com/influxdb/v1/concepts/storage_engine/)
 
 # 向量数据库
