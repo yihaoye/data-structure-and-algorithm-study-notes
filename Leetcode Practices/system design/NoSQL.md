@@ -116,6 +116,7 @@ MongoDB 的适用场景为：数据不是特别重要（例如通知，推送这
 以上转载自：https://www.ymatrix.cn/article/4  
 
 时序数据库支持类 SQL 语句，比如 InfluxDB 的 InfluxQL。  
+时序数据库（TSDB）通常都支持分区（可以按时间分区，也可以按指定字段分区 - 通常如果查询有给定指定字段则按其来分区比较高效），而且许多数据库提供内置分区和分布式存储优化，以提高查询和写入性能。另外时序数据库也提供字段索引功能。  
 
 ### [In-memory indexing and the Time-Structured Merge Tree (TSM)](https://docs.influxdata.com/influxdb/v1/concepts/storage_engine/)
 
