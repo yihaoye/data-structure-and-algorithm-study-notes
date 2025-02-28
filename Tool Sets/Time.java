@@ -17,6 +17,20 @@ public class Main {
         System.out.println(now.toEpochMilli()); // 毫秒
     }
 }
+
+
+
+// sleep
+public void process() {
+    try {
+        Thread.sleep(1000); // ms
+    } catch(InterruptedException e) {
+        // ...
+    }
+}
+
+
+
 /*
 LocalDateTime，ZoneId，Instant，ZonedDateTime 和 long 都可以互相转换：
 
