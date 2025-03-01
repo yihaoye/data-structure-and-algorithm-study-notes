@@ -20,7 +20,7 @@
   * [面向对象设计及函数式编程 | Object Oriented Design and Functional Programming](./Leetcode%20Practices/object%20oriented%20design/README.md)
   * [系统设计 | System Design](./Leetcode%20Practices/system%20design/README.md)
   * [接口设计 | API Design](./Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md#api-design)
-  * 产品设计 | Product Design ([Ref 1](https://www.reddit.com/r/leetcode/comments/18zat0a/metas_product_design_vs_system_design_interview/?rdt=38667)、[Ref 2](https://vimeo.com/810250813))
+  * 产品设计 | Product Design ([Meta's Product Design vs System Design](https://www.reddit.com/r/leetcode/comments/18zat0a/metas_product_design_vs_system_design_interview/?rdt=38667)、[Product Architecture 1](https://www.hellointerview.com/blog/meta-system-vs-product-design?utm_source=reddit&utm_medium=social&utm_campaign=product-vs-system#what-is-the-product-architecture-interview)、[Product Architecture 2](https://vimeo.com/810250813)，另外，在该环节，了解一些前端、UI / UX 可能会有助益)
   * 系统论、[控制论](./Behavior%20Question%20and%20Best%20Practice/README.md#控制理论)、[信息论](https://zh.wikipedia.org/wiki/%E4%BF%A1%E6%81%AF%E8%AE%BA) | Systems Theory、Control Theory、Information Theory (又称 SCI 理论或老三论，《控制论与科学方法论》：[Ref 1](https://writings.sh/post/cybernetics-and-scientific-methodology-notes)、[Ref 2](https://book.douban.com/subject/1322336/)、[Ref 3](https://zh.wikipedia.org/wiki/Category:%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA))
     * [稳定性判据 | Stability Criterion](https://zh.wikipedia.org/wiki/%E7%A8%B3%E5%AE%9A%E6%80%A7%E5%88%A4%E6%8D%AE) (比如奈奎斯特稳定判据)
   * 耗散结构论、协同论、突变论 | Dissipative Structure Theory、Synergetics、Catastrophe Theory (又称 DSC 理论或新三论，[Ref](https://groups.google.com/g/academictokyo/c/GGKwiFLZYRE))
@@ -46,6 +46,9 @@
   
 #### 预先准备
 熟用熟背[刷题常用模版](./常用算法模版.md)（推荐：或算法长时间手生需重捡复习，可配合[分类分析套路](./分析套路.md)）  
+  
+#### 沟通建议
+[如何提升面试官的体验](https://www.1point3acres.com/bbs/thread-1114727-1-1.html)  
   
 #### 看题
 1. 确定完全看懂题目，题目描述若一下子不理解可先看下面的例子解释来结合理解，再不行建议主动向考官交流、咨询，另外细节与条件或限制也应该在一开始厘清：比如输入数据的集合大小范围、集合是否有顺序、集合内的每个元素的范围（是否有重复、是否正负）、题解是否规定时间复杂度或空间复杂度、输出是否允许重复或是否要求顺序、是否允许更改原输入集合等等。
