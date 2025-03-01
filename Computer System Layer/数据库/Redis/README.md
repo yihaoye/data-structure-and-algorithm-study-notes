@@ -676,3 +676,4 @@ Redis 不仅仅是缓存，还应用于以下场景：
 * Recommend - ZSet 可以用于实现推荐系统，例如个性化商品推荐、新闻推荐等。通过将用户与他们感兴趣的项目及其相关性（权重）存储在 ZSet 中，可以根据用户的兴趣为他们推荐相关项目。
 * Real-Time Analytics - ZSet 可以用于存储和分析实时数据，例如股票价格、传感器数据等。通过将数据点和它们的时间戳（权重）存储在 ZSet 中，可以高效地分析数据的趋势和模式。
 * Real-Time Geo Search and Update - 使用 Geo 数据类型；场景如地理围栏（创建地理围栏，并触发当用户进入或离开围栏时事件）、地理搜索（根据用户的地理位置进行搜索，例如查找附近的餐馆、商店或景点）、地理分析（分析地理数据，例如计算人口密度或绘制交通流量图）。
+  * [通过 ZSet / Sorted Set 内置支持 GeoHash](https://redis.io/docs/latest/commands/geohash/)
