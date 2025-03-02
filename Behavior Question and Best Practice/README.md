@@ -267,7 +267,7 @@ Books:
 * [Developing Interpersonal Skills](https://www.coursera.org/learn/interpersonal-skills)
 * [工作中的技术深度](https://mp.weixin.qq.com/s/wImyzpbGHV_zO9FB3omooA)
 * [关于晋升](https://www.reddit.com/r/ExperiencedDevs/comments/vwpj9a/promo_process_is_it_easier_to_be_hired_into_a/)，虽然要视具体情况，但统计显示，对于中高级工程师通常跳槽比内部晋升简单，而一些更高阶层的高级经理或专家工程师以及首席工程师等可能在企业内部会更容易获得待遇提升
-  * 无论内部或外部晋升都需要运气和时机，千里马常有而伯乐不常有，晋升不顺利不必过多苛责自己、尽力就好
+  * 无论内部或外部晋升都需要运气和时机，**千里马常有而伯乐不常有**，晋升不顺利不必过多苛责自己、尽力就好
   * [向上管理](https://www.michaelpage.com.cn/advice/career-advice/productivity-and-performance/1024474)
 * [职业倦怠过劳（Burnout）的原因及其应对方法](https://www.mayoclinic.org/zh-hans/healthy-lifestyle/adult-health/in-depth/burnout/art-20046642) ([Ref 1](https://www.1point3acres.com/bbs/thread-1110317-1-1.html)、[Ref 2](https://www.youtube.com/watch?v=4mhji8SxHHk)、[Ref 3](https://www.1point3acres.com/bbs/thread-897238-1-1.html))
   * 原因
