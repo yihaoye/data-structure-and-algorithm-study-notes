@@ -43,33 +43,37 @@ rotate the input matrix in-place such that it becomes:
 
 
 
-
 // Other's Solution:
 class Solution {
     public void rotate(int[][] matrix) {
-        // https://leetcode.com/problems/rotate-image/solutions/18872/a-common-method-to-rotate-the-image/?orderBy=most_votes
-        /*
+        /* 模拟 - https://leetcode.com/problems/rotate-image/solutions/18872/a-common-method-to-rotate-the-image/
         * clockwise rotate
         * first reverse up to down, then swap the symmetry 
         * 1 2 3     7 8 9     7 4 1
         * 4 5 6  => 4 5 6  => 8 5 2
         * 7 8 9     1 2 3     9 6 3
-        *
+        * 
         * 5  1  9  11      15 14 12 16          15 13 2  5
         * 2  4  8  10  =>  13 3  6  7     =>    14 3  4  1
         * 13 3  6  7       2  4  8  10          12 6  8  9
         * 15 14 12 16      5  1  9  11          16 7  10 11
+        * 
+        * follow-up: anticlockwise rotate
+        * first reverse left to right, then swap the symmetry
+        * 1 2 3     3 2 1     3 6 9
+        * 4 5 6  => 6 5 4  => 2 5 8
+        * 7 8 9     9 8 7     1 4 7
         */
-        int s = 0, e = matrix.length - 1;
-        while (s < e) {
-            int[] temp = matrix[s];
-            matrix[s] = matrix[e];
-            matrix[e] = temp;
-            s++; e--;
+        int rowUp = 0, rowDown = matrix.length - 1, n = matrix.length;
+        while (rowUp < rowDown) {
+            int[] temp = matrix[rowUp];
+            matrix[rowUp] = matrix[rowDown];
+            matrix[rowDown] = temp;
+            rowUp++; rowDown--;
         }
 
-        for (int r = 0; r < matrix.length; r++) {
-            for (int c = r+1; c < matrix[r].length; c++) { // c = r+1 因为对角线左边的已经被之前的操作换过了，对角线上的不用换
+        for (int r = 0; r < n; r++) {
+            for (int c = r+1; c < n; c++) { // c = r+1 因为对角线左边的已经被之前的操作换过了，对角线上的不用换
                 int temp = matrix[r][c];
                 matrix[r][c] = matrix[c][r];
                 matrix[c][r] = temp;
