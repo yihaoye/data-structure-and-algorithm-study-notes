@@ -321,9 +321,10 @@ Books:
   * 和组员保持良善的关系（足够透明密切的沟通、定时 Team Building 都是很重要的不是无关紧要的）
     * 沟通方法 0 - [简洁沟通](https://www.youtube.com/watch?v=Br03ro98amM)
     * 沟通方法 1 - 提供背景、上下文以及建议选项，而非下结论（Provide Context and Suggestion instead of Conclusion/Opinion, even better if suggestion are options - there are always multiple solutions/practises）
-    * 沟通方法 2 - 不指责，而是构建规则规范
-    * 沟通方法 3 - [不抬杠](https://www.youtube.com/watch?v=iL6bmviqaEc)
-    * 沟通方式 4 - [逻辑清晰](https://www.youtube.com/watch?v=DDwS3IYX4sI)
+    * 沟通方法 2 - 决策调解，如果两方无法达成一致，最终决策权应归于负责方，即一个问题的利害关联更偏向其中一方的责任领域、范围，则应该由该方决定，因为责任明确是基本原则、更具公平性和良好持续的长期最佳模式，所以不需要纠结当前决策优劣（短期）。
+    * 沟通方法 3 - 不指责，而是构建规则规范
+    * 沟通方法 4 - [不抬杠](https://www.youtube.com/watch?v=iL6bmviqaEc)
+    * 沟通方式 5 - [逻辑清晰](https://www.youtube.com/watch?v=DDwS3IYX4sI)
   * 冲突管理
     * 只专注能力资源可及的事情、工作、任务、项目本身，而非与人争执或急于证明
     * 通过团队休整、避免加班、合规断联等方法皆可使得同事之间保持合适距离，合适的距离有时可以很好地减少不必要的误会与怨言
