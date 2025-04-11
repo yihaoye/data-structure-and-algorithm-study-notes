@@ -9,7 +9,7 @@ go test -bench=. -benchmem escape_benchmark_test.go
 
 预期
 返回指针的函数会有明显的内存分配（堆内存字节/操作 B/op 不为 0，堆内存分配次数/操作 allocs/op 不为 0）
-返回值的函数通常不会有堆内存分配（B/op 为 0，allocs/op 为 0）
+返回值的函数通常不会有堆内存分配（B/op 为 0，allocs/op 为 0，因为是堆内存不是栈，所以这里才可能是 0）
 返回指针的函数可能会比返回值的函数慢，特别是在大型结构体的情况下
 
 goos: darwin
@@ -22,21 +22,22 @@ ok      command-line-arguments  2.228s
 */
 
 /*
-go test -gcflags="-m -l" -bench=. escape_benchmark_test.go
+go test -gcflags="-m -l" -bench=. -benchmem escape_benchmark_test.go
+-l 这里意味着禁止了内联优化，也就是说最差情况下下面的速度还是提升了 8 倍
 
 # command-line-arguments [command-line-arguments.test]
-./escape_benchmark_test.go:42:2: moved to heap: p
-./escape_benchmark_test.go:53:27: b does not escape
-./escape_benchmark_test.go:63:29: b does not escape
+./escape_benchmark_test.go:65:2: moved to heap: p
+./escape_benchmark_test.go:76:27: b does not escape
+./escape_benchmark_test.go:86:29: b does not escape
 # command-line-arguments.test
 _testmain.go:45:42: testdeps.TestDeps{} escapes to heap
 goos: darwin
 goarch: amd64
 cpu: VirtualApple @ 2.50GHz
-BenchmarkValueStruct-8          257187864                4.649 ns/op
-BenchmarkPointerStruct-8        29160363                36.16 ns/op
+BenchmarkValueStruct-8          253894794                4.669 ns/op           0 B/op          0 allocs/op
+BenchmarkPointerStruct-8        29400474                36.94 ns/op           80 B/op          1 allocs/op
 PASS
-ok      command-line-arguments  3.454s
+ok      command-line-arguments  3.362s
 */
 
 // 复杂的结构体示例

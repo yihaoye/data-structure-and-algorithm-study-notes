@@ -202,6 +202,7 @@
 * func 不能直接对比，比如 f1 == f2，但是可以判断是否是同一个函数对象：具体为使用 reflect.ValueOf(f).Pointer() 比较函数地址，因此使用单实例函数（全局变量即可 `var SingletonFunc = func(b int) int { return b+1 }`）
 * 函数变量（单实例）可以并发调用，只要不是改写函数变量且函数是纯函数式编程（不读写函数外的全局变量，只使用入参和局部变量）的话就是并发安全的
 * [sqlx 简介及其使用](https://colobu.com/2024/05/10/sqlx-a-brief-introduction/#more)
+* 内联优化 - 内联（inlining）是编程语言编译器常用的优化手段，其优化的对象为函数，也称为函数内联。如果某函数 F 支持内联，则意味着编译器可以用 F 的函数体/函数定义替换掉对函数 F 进行调用的代码，以消除函数调用带来的额外开销。[Ref 1](https://tonybai.com/2022/10/17/understand-go-inlining-optimisations-by-example/)
 
 
 ## 数据库高频
