@@ -45,6 +45,7 @@ Go 的 GC（垃圾回收）采用的是并发三色标记清除算法，所以 �
 根据 官方 Go runtime 团队的数据:
 "Typical stop-the-world pause times are well under 1 millisecond, even for large heaps."
 所以基本不用担心
+主要需关注的是 GC 对 CPU、内存的浪费、不必要地增加常规使用量
 */
 func main() {
 	var memStats runtime.MemStats
@@ -58,6 +59,7 @@ func main() {
 	count := 0
 	var p *Person
 
+forLoop:
 	for {
 		select {
 		case <-ticker.C:
@@ -65,17 +67,15 @@ func main() {
 			_ = p // 使用结果防止编译器优化掉
 			count++
 		case <-done:
-			goto END
+			runtime.ReadMemStats(&memStats)
+
+			fmt.Println("Total allocations:", memStats.TotalAlloc)
+			fmt.Println("Number of allocations:", count)
+			fmt.Println("Number of GC runs:", memStats.NumGC)
+			if memStats.NumGC > 0 {
+				fmt.Println("Average alloc per GC:", (memStats.TotalAlloc)/uint64(memStats.NumGC), "bytes")
+			}
+			break forLoop
 		}
-	}
-
-END:
-	runtime.ReadMemStats(&memStats)
-
-	fmt.Println("Total allocations:", memStats.TotalAlloc)
-	fmt.Println("Number of allocations:", count)
-	fmt.Println("Number of GC runs:", memStats.NumGC)
-	if memStats.NumGC > 0 {
-		fmt.Println("Average alloc per GC:", (memStats.TotalAlloc)/uint64(memStats.NumGC), "bytes")
 	}
 }
