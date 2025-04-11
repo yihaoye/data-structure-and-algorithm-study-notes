@@ -5,7 +5,7 @@ import (
 )
 
 /*
-go test -bench=. -benchmem escape_benchmark_test.go
+go test -bench=. -benchmem mem_escape_benchmark_test.go
 
 预期
 返回指针的函数会有明显的内存分配（堆内存字节/操作 B/op 不为 0，堆内存分配次数/操作 allocs/op 不为 0）
@@ -22,13 +22,13 @@ ok      command-line-arguments  2.228s
 */
 
 /*
-go test -gcflags="-m -l" -bench=. -benchmem escape_benchmark_test.go
+go test -gcflags="-m -l" -bench=. -benchmem mem_escape_benchmark_test.go
 -l 这里意味着禁止了内联优化，也就是说最差情况下下面的速度还是提升了 8 倍
 
 # command-line-arguments [command-line-arguments.test]
-./escape_benchmark_test.go:65:2: moved to heap: p
-./escape_benchmark_test.go:76:27: b does not escape
-./escape_benchmark_test.go:86:29: b does not escape
+./mem_escape_benchmark_test.go:65:2: moved to heap: p
+./mem_escape_benchmark_test.go:76:27: b does not escape
+./mem_escape_benchmark_test.go:86:29: b does not escape
 # command-line-arguments.test
 _testmain.go:45:42: testdeps.TestDeps{} escapes to heap
 goos: darwin

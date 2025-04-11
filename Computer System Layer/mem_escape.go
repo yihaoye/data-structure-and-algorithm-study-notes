@@ -26,7 +26,7 @@ func NewPersonPointer() *Person {
 }
 
 /*
-% GOGC=50 go run escape.go
+% GOGC=50 go run mem_escape.go
 
 默认 GOGC=100
 GOGC 是控制垃圾回收触发的阈值，它是一个百分比。
