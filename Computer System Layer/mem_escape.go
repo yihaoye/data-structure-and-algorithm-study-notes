@@ -88,17 +88,25 @@ GOGC 是控制垃圾回收触发的阈值，它是一个百分比。
 
 % go run mem_escape.go --type=escape
 
-运行 30 秒结果
-Total heap allocations: 7394792
-Times of new data: 29546
-Number of GC runs: 2
+运行 60 秒结果
+Total heap allocations: 564203160
+Times of new data: 596040
+Number of GC runs: 226
+File: mem_escape
+Type: cpu
+Time: Apr 15, 2025 at 11:17pm (AEST)
+Duration: 60.09s, Total samples = 7.62s (12.68%)
 
 % go run mem_escape.go --type=noescape
 
-运行 30 秒结果
-Total heap allocations: 281592
-Times of new data: 29535
-Number of GC runs: 0
+运行 60 秒结果
+Total heap allocations: 30182168
+Times of new data: 596820
+Number of GC runs: 11
+File: mem_escape
+Type: cpu
+Time: Apr 15, 2025 at 11:16pm (AEST)
+Duration: 60.09s, Total samples = 6s ( 9.99%)
 
 Go 的 GC（垃圾回收）采用的是并发三色标记清除算法，所以 不会长时间 Stop-The-World（STW），但确实每次 GC 都有短暂的 STW 阶段，通常发生在：
 标记开始前（STW #1）
@@ -109,22 +117,21 @@ Go 的 GC（垃圾回收）采用的是并发三色标记清除算法，所以 �
 主要需关注的是 GC 对 CPU、内存的浪费、不必要地增加常规使用量
 */
 func main() {
-	qps_ := flag.Int("qps", 1000, "每秒请求数量")
-	duration_ := flag.Duration("duration", 30*time.Second, "测试持续时间")
+	qps_ := flag.Int("qps", 10000, "每秒请求数量")
+	duration_ := flag.Duration("duration", 60*time.Second, "测试持续时间")
 	type_ := flag.String("type", "escape", "处理器类型 (escape/noescape)")
 	flag.Parse()
 
-	ticker := time.NewTicker(time.Second)
+	endTime := time.Now().Add(*duration_)
+	qpms := *qps_ / 1000
+	ticker := time.NewTicker(time.Millisecond)
 	defer ticker.Stop()
 
 	var wg sync.WaitGroup
-	endTime := time.Now().Add(*duration_)
 	var count int64
 	var p *Data
 	var v Data
-
 	var memStats runtime.MemStats
-	runtime.ReadMemStats(&memStats)
 	f, err := os.Create("cpu.prof")
 	if err != nil {
 		log.Fatal(err)
@@ -132,6 +139,7 @@ func main() {
 	if err := pprof.StartCPUProfile(f); err != nil {
 		log.Fatal(err)
 	}
+
 	defer func() {
 		runtime.ReadMemStats(&memStats)
 		fmt.Println("Total heap allocations:", memStats.TotalAlloc)
@@ -140,7 +148,6 @@ func main() {
 
 		pprof.StopCPUProfile()
 		f.Close()
-
 		path, _ := filepath.Abs(f.Name())
 		cmd := exec.Command("go", "tool", "pprof", path)
 		cmd.Stdout = os.Stdout
@@ -150,7 +157,7 @@ func main() {
 
 	for time.Now().Before(endTime) {
 		<-ticker.C
-		for i := 0; i < *qps_; i++ {
+		for i := 0; i < qpms; i++ {
 			wg.Add(1)
 			go func() {
 				defer wg.Done()
