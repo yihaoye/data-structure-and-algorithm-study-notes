@@ -108,6 +108,8 @@ PASS
 ok      command-line-arguments  3.263s
 */
 
+// 其他测评 https://huizhou92.com/p/go-high-performance-programming-ep9-escape-analysis/
+
 // 复杂的结构体示例
 type Data struct {
 	F0, F1, F2, F3, F4, F5, F6, F7, F8, F9           float64
