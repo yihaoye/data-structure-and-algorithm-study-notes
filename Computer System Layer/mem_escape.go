@@ -3,15 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	"log"
-	_ "net/http/pprof"
-	"os"
-	"os/exec"
-	"path/filepath"
 	"runtime"
-	"runtime/pprof"
-	"sync"
-	"sync/atomic"
 	"time"
 )
 
@@ -89,24 +81,17 @@ GOGC 是控制垃圾回收触发的阈值，它是一个百分比。
 % go run mem_escape.go --type=escape
 
 运行 60 秒结果
-Total heap allocations: 564203160
-Times of new data: 596040
-Number of GC runs: 226
-File: mem_escape
-Type: cpu
-Time: Apr 15, 2025 at 11:17pm (AEST)
-Duration: 60.09s, Total samples = 7.62s (12.68%)
+Total heap allocations: 540300288
+Times of new data: 592110
+Number of GC runs: 148
 
 % go run mem_escape.go --type=noescape
 
 运行 60 秒结果
-Total heap allocations: 30182168
-Times of new data: 596820
-Number of GC runs: 11
-File: mem_escape
-Type: cpu
-Time: Apr 15, 2025 at 11:16pm (AEST)
-Duration: 60.09s, Total samples = 6s ( 9.99%)
+Total heap allocations: 9707536
+Times of new data: 589000
+Number of GC runs: 2
+这里仍有 7 次 GC，通过 go build -gcflags="-m" mem_escape.go 可知 ./mem_escape.go:126:7: func literal escapes to heap 即每次起协程都要分配一些堆内存
 
 Go 的 GC（垃圾回收）采用的是并发三色标记清除算法，所以 不会长时间 Stop-The-World（STW），但确实每次 GC 都有短暂的 STW 阶段，通常发生在：
 标记开始前（STW #1）
@@ -117,59 +102,37 @@ Go 的 GC（垃圾回收）采用的是并发三色标记清除算法，所以 �
 主要需关注的是 GC 对 CPU、内存的浪费、不必要地增加常规使用量
 */
 func main() {
-	qps_ := flag.Int("qps", 10000, "每秒请求数量")
-	duration_ := flag.Duration("duration", 60*time.Second, "测试持续时间")
-	type_ := flag.String("type", "escape", "处理器类型 (escape/noescape)")
+	qpms_ := flag.Int("qpms", 10, "每毫秒请求数量")
+	duration_ := flag.Duration("duration", 60*time.Second, "测试持续时间单位为秒")
+	type_ := flag.String("type", "escape", "处理类型即是否内存逃逸 (escape/noescape)")
 	flag.Parse()
 
-	endTime := time.Now().Add(*duration_)
-	qpms := *qps_ / 1000
-	ticker := time.NewTicker(time.Millisecond)
-	defer ticker.Stop()
-
-	var wg sync.WaitGroup
 	var count int64
-	var p *Data
-	var v Data
 	var memStats runtime.MemStats
-	f, err := os.Create("cpu.prof")
-	if err != nil {
-		log.Fatal(err)
-	}
-	if err := pprof.StartCPUProfile(f); err != nil {
-		log.Fatal(err)
-	}
-
 	defer func() {
 		runtime.ReadMemStats(&memStats)
 		fmt.Println("Total heap allocations:", memStats.TotalAlloc)
 		fmt.Println("Times of new data:", count)
 		fmt.Println("Number of GC runs:", memStats.NumGC)
-
-		pprof.StopCPUProfile()
-		f.Close()
-		path, _ := filepath.Abs(f.Name())
-		cmd := exec.Command("go", "tool", "pprof", path)
-		cmd.Stdout = os.Stdout
-		cmd.Stderr = os.Stderr
-		cmd.Run()
 	}()
 
-	for time.Now().Before(endTime) {
+	start := time.Now()
+	ticker := time.NewTicker(time.Millisecond)
+	defer ticker.Stop()
+
+	for time.Since(start) < *duration_ {
 		<-ticker.C
-		for i := 0; i < qpms; i++ {
-			wg.Add(1)
+		for i := 0; i < *qpms_; i++ {
 			go func() {
-				defer wg.Done()
 				if *type_ == "escape" {
-					p = NewPointer()
+					p := NewPointer()
 					_ = p // 使用结果防止编译器优化掉
 				} else {
-					v = NewValue()
+					v := NewValue()
 					_ = v
 				}
-				atomic.AddInt64(&count, 1)
 			}()
+			count++
 		}
 	}
 }

@@ -38,6 +38,55 @@ File: main.test
 Type: cpu
 Time: Apr 15, 2025 at 10:42pm (AEST)
 Duration: 1.61s, Total samples = 2.08s (129.55%)
+
+
+以下是并发场景基准测试
+$ go test -bench=BenchmarkConcurrentValueStruct -benchmem -cpuprofile=cpu.prof mem_escape_benchmark_test.go
+$ go tool pprof cpu.prof
+---
+goos: darwin
+goarch: amd64
+cpu: VirtualApple @ 2.50GHz
+BenchmarkConcurrentValueStruct-8        142114825               10.53 ns/op            0 B/op          0 allocs/op
+PASS
+ok      command-line-arguments  3.193s
+File: main.test
+Type: cpu
+Time: Apr 16, 2025 at 3:38pm (AEST)
+Duration: 2.51s, Total samples = 11s (438.56%)
+
+
+$ go test -bench=BenchmarkConcurrentPointerStruct -benchmem -cpuprofile=cpu.prof mem_escape_benchmark_test.go
+$ go tool pprof cpu.prof
+---
+goos: darwin
+goarch: amd64
+cpu: VirtualApple @ 2.50GHz
+BenchmarkConcurrentPointerStruct-8       4003012               301.7 ns/op           896 B/op          1 allocs/op
+PASS
+ok      command-line-arguments  2.376s
+File: main.test
+Type: cpu
+Time: Apr 16, 2025 at 3:39pm (AEST)
+Duration: 1.71s, Total samples = 5.08s (296.65%)
+注意: ns/op 相比单线程版本 反而增加了 (从 ~204ns 增加到 ~301ns)。B/op 和 allocs/op 保持不变，说明 单次操作 的内存分配行为没变。但 时间成本 却增加了。这强烈暗示了 并发冲突。多个 goroutine 同时请求在堆上分配内存 (NewPointer 内部)，会竞争内存分配器的锁，并且增加了垃圾收集器 (GC) 的压力和工作量（需要扫描和回收更多堆对象），导致整体效率下降，单次操作的平均耗时增加。
+
+
+非逃逸版本 (ConcurrentValueStruct) 的 pprof CPU 使用率（Total samples 百分比）高于逃逸版本 (ConcurrentPointerStruct)
+主要是因为它在测试期间执行了远超逃逸版本的操作次数 (b.N)
+
+ConcurrentValueStruct (b.N ≈ 1.42 亿次) 在约 3.19 秒内完成了巨量操作，CPU 在这段时间自然高度繁忙，累积的 CPU 时间（Total samples = 11s）就多。
+ConcurrentPointerStruct (b.N ≈ 400 万次) 在约 2.38 秒内完成的操作少得多，虽然单次操作更耗时且有并发冲突，但总的 CPU 累积时间（Total samples = 5.08s）反而可能更少。
+直接比较 pprof 输出头部的总 CPU 时间百分比（如 438.56% vs 296.65%）来判断哪个“CPU 使用率高”是没有意义的，因为它没有考虑效率，即完成单位操作所需的 CPU 资源。
+
+如何公平地对比并发基准测试的 CPU 使用效率？
+推荐】直接使用 ns/op (纳秒/操作):
+这是 go test -bench 提供的核心指标，代表完成单次操作平均所需的墙上时间 (wall-clock time)。它已经隐式包含了 CPU 计算时间、内存分配/GC 开销、锁等待等所有因素。
+公平性: ns/op 直接反映了哪个版本能更快地完成一个操作。数值越低，效率越高，吞吐量越大。
+数据:
+ConcurrentValueStruct: 10.53 ns/op
+ConcurrentPointerStruct: 301.7 ns/op
+结论: 值传递版本完成单次操作的平均时间远低于指针传递版本（快约 28 倍），这直接表明了其在 CPU 资源利用（以及内存管理效率）上的巨大优势。这是最常用且足够说明问题的对比方式。
 */
 
 /*
@@ -143,4 +192,28 @@ func BenchmarkPointerStruct(b *testing.B) {
 	}
 	// 防止编译器优化掉结果
 	_ = p
+}
+
+// 并发版本：多个 goroutine 运行返回值函数
+func BenchmarkConcurrentValueStruct(b *testing.B) {
+	b.SetParallelism(4) // 默认 GOMAXPROCS
+	b.RunParallel(func(pb *testing.PB) {
+		var v Data
+		for pb.Next() {
+			v = NewValue()
+		}
+		_ = v
+	})
+}
+
+// 并发版本：多个 goroutine 运行返回指针函数
+func BenchmarkConcurrentPointerStruct(b *testing.B) {
+	b.SetParallelism(4)
+	b.RunParallel(func(pb *testing.PB) {
+		var p *Data
+		for pb.Next() {
+			p = NewPointer()
+		}
+		_ = p
+	})
 }
