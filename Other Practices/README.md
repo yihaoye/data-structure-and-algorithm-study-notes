@@ -73,7 +73,8 @@ Session 3: Pair Programming with a Engineering Manager. 出了题目是是这个
 * Code
   * [Topo Sort](../Common%20Algorithm%20and%20Theory/拓扑排序.md)
   * Find first positive number - Binary Search
-  * DP
+  * [Add Strings](../Leetcode%20Practices/algorithms/easy/415%20Add%20Strings.java)
+  * 类似爬楼梯、零钱兑换 - DP
   * [Number of Flowers in Full Bloom](../Leetcode%20Practices/algorithms/hard/2251%20Number%20of%20Flowers%20in%20Full%20Bloom.java)
 * System Design
   * [Design TinyURL](../Leetcode%20Practices/system%20design/README.md#设计-TinyURL)
@@ -121,7 +122,7 @@ Session 3: Pair Programming with a Engineering Manager. 出了题目是是这个
 <summary>CommBank</summary>
 
 * Code
-  * [Rotate Metrix](../Leetcode%20Practices/algorithms/medium/48%20Rotate%20Image.java)
+  * [Rotate Matrix](../Leetcode%20Practices/algorithms/medium/48%20Rotate%20Image.java)
 * System Design
   * [Design Web Crawler](../Leetcode%20Practices/system%20design/README.md#设计-Web-Crawler)
   * [Design Dropbox](../Leetcode%20Practices/system%20design/README.md#设计云存储系统如-Dropbox-S3)
