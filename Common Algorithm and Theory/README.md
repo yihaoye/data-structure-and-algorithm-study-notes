@@ -149,14 +149,14 @@ This personal Blog contains explanation and **Java library/template implementati
         - 高响应比优先 | Highest Response Ratio Next (HRRN 综合考虑作业/进程的等待时间和要求服务的时间，所以不会出现处理饥饿，是介于 FCFS 与 SJF 之间的折中算法)
       - 抢占式调度算法
         - 最短剩余时间优先 | Shortest Remaining Time (SRTF 基于进程的剩余执行时间来确定下一个要执行的进程，SRTF 算法的工作原理如下：当一个进程到达系统时，系统会比较该进程的剩余执行时间与当前正在执行的进程的剩余执行时间。可能出现处理饥饿)
-    - Loosy Counting 算法
-    - [协同算法](./协同算法.md) ([应用在协同编辑系统](../Leetcode%20Practices/system%20design/README.md#设计协同编辑系统))
+    - Loosy Counting 算法 (一种流式算法，用于在有限的内存空间内高效地估算数据流中元素的频率，允许一定的误差以节省存储资源)
+    - [协同算法](./协同算法.md) ([处理协同编辑](../Leetcode%20Practices/system%20design/README.md#设计协同编辑系统)的算法。常用于作为实现文档协同的底层算法，支持多个用户同时编辑文档，不会因为用户并发修改导致冲突，而导致结果不一致甚至数据丢失的问题)
       - OT 协同算法 | Operational Transformation
       - CRDT 协同算法 | Conflict-Free Replicated Data Type
     - [四叉树算法, R 树算法 | QuadTree, RTree Algorithm](./QuadTree-RTree-算法.md)
     - 默克尔树算法 | Merkle Tree Algorithm ([Wiki](https://en.wikipedia.org/wiki/Merkle_tree)、[Code](./../Leetcode%20Practices/algorithms/easy/572%20Subtree%20of%20Another%20Tree.java))
     - Rete 匹配算法 | Rete Algorithm ([Wiki](https://en.wikipedia.org/wiki/Rete_algorithm)；Rete 算法通过构建高效的数据结构和利用条件之间的共享信息，避免了重复匹配和不必要的计算，从而实现了高效的规则匹配。由于其高效性和灵活性，被广泛应用于规则引擎、专家系统、数据挖掘等领域，是规则匹配的重要技术之一；时间复杂度通常为 `O(N)`)
-    - 光线投射算法 | Ray Casting
+    - 光线投射算法 | Ray Casting (基于图像序列的直接体绘制算法。从图像的每一个像素，沿固定方向发射一条光线，光线穿越整个图像序列，并在这个过程中，对图像序列进行采样获取颜色信息，同时依据光线吸收模型将颜色值进行累加，直至光线穿越整个图像序列，最后得到的颜色值就是渲染图像的颜色)
     - [垃圾回收算法 | Garbage Collection Algorithm](../Computer%20System%20Layer/JVM/README.md#垃圾回收) ([Ref](https://mp.weixin.qq.com/s/M8R4QPidlCrr6vix4JUWmg))
     - [共识机制/算法 (分布式选举问题) | Consensus Algorithm](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md) (或称选举算法，[etcd 实现](../Leetcode%20Practices/system%20design/example%20questions/Leader%20Election.md))
       - 崩溃容错协议 | CFT
