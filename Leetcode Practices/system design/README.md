@@ -3205,6 +3205,7 @@ OAuth 2.0
 该系统可以说是 [Pastebin](./README.md#design-pastebin) 的进阶版。  
 
 参考：
+* [协同算法](../../Common%20Algorithm%20and%20Theory/协同算法.md)
 * https://www.cnblogs.com/theseventhson/p/16632237.html
 * https://interview-science.org/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/%E5%88%86%E7%B1%BB%E6%80%BB%E7%BB%93/%E5%8D%8F%E5%90%8C%E7%BC%96%E8%BE%91%E7%B3%BB%E7%BB%9F
 

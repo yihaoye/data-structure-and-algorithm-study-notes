@@ -112,7 +112,7 @@ This personal Blog contains explanation and **Java library/template implementati
     - 局部敏感哈希 | Locality-Sensitive Hashing ([Wiki](https://en.wikipedia.org/wiki/Locality-sensitive_hashing))
       - 最小哈希 | MinHash ([Wiki](https://en.wikipedia.org/wiki/MinHash), [Ref 1](https://www.cnblogs.com/liuxiaochong/p/14552227.html), [Ref 2](https://ansvver.github.io/lsh_minhash.html))
       - 相似哈希 | SimHash
-    - 校验和 | Checksum ([Wiki](https://zh.wikipedia.org/wiki/%E6%A0%A1%E9%AA%8C%E5%92%8C))
+    - 校验和 | Checksum ([Wiki](https://zh.wikipedia.org/wiki/%E6%A0%A1%E9%AA%8C%E5%92%8C)) - 属于滚动哈希的子类别。在实际应用中比如 Rsync 同步机制 ([Wiki](https://zh.wikipedia.org/zh-cn/Rsync#%E6%BC%94%E7%AE%97%E6%B3%95)、[Ref](https://zhuanlan.zhihu.com/p/59086295)) 是复合使用多种校验和算法而实现的
       - 循环冗余校验 | Cyclic Redundancy Check ([Wiki](https://zh.wikipedia.org/wiki/%E5%BE%AA%E7%92%B0%E5%86%97%E9%A4%98%E6%A0%A1%E9%A9%97)，不可逆，CRC32 是一种用于生成 32 位循环冗余校验码的哈希函数，主要用于检测数据传输中的错误，例如文件传输、网络通信等。其计算速度快、实现简单，但安全性较低，不适用于对数据完整性要求较高的场景)
       - MD5 消息摘要算法 (性质上不可逆，但是因为原像抗性不够高所以可通过彩虹表和剪枝暴力破解造成事实上可逆，而且抗碰撞能力也不够高，所以不安全)
       - 安全哈希算法系列 | Secure Hash Algorithm (SHA) ([Wiki](https://zh.wikipedia.org/wiki/SHA%E5%AE%B6%E6%97%8F)，不可逆。安全性主要指的是它的抗碰撞能力和原像抗性，即使输入数据发生细微的变化，输出的哈希值也会发生巨大的变化，且不可能从哈希值反推出原始数据)
@@ -150,12 +150,13 @@ This personal Blog contains explanation and **Java library/template implementati
       - 抢占式调度算法
         - 最短剩余时间优先 | Shortest Remaining Time (SRTF 基于进程的剩余执行时间来确定下一个要执行的进程，SRTF 算法的工作原理如下：当一个进程到达系统时，系统会比较该进程的剩余执行时间与当前正在执行的进程的剩余执行时间。可能出现处理饥饿)
     - Loosy Counting 算法
-    - [OT 算法 | Operational Transformation](../Leetcode%20Practices/system%20design/README.md#设计协同编辑系统)
+    - [协同算法](./协同算法.md) ([应用在协同编辑系统](../Leetcode%20Practices/system%20design/README.md#设计协同编辑系统))
+      - OT 协同算法 | Operational Transformation
+      - CRDT 协同算法 | Conflict-Free Replicated Data Type
     - [四叉树算法, R 树算法 | QuadTree, RTree Algorithm](./QuadTree-RTree-算法.md)
     - 默克尔树算法 | Merkle Tree Algorithm ([Wiki](https://en.wikipedia.org/wiki/Merkle_tree)、[Code](./../Leetcode%20Practices/algorithms/easy/572%20Subtree%20of%20Another%20Tree.java))
     - Rete 匹配算法 | Rete Algorithm ([Wiki](https://en.wikipedia.org/wiki/Rete_algorithm)；Rete 算法通过构建高效的数据结构和利用条件之间的共享信息，避免了重复匹配和不必要的计算，从而实现了高效的规则匹配。由于其高效性和灵活性，被广泛应用于规则引擎、专家系统、数据挖掘等领域，是规则匹配的重要技术之一；时间复杂度通常为 `O(N)`)
     - 光线投射算法 | Ray Casting
-    - Rsync 算法 ([Wiki](https://zh.wikipedia.org/zh-cn/Rsync#%E6%BC%94%E7%AE%97%E6%B3%95))
     - [垃圾回收算法 | Garbage Collection Algorithm](../Computer%20System%20Layer/JVM/README.md#垃圾回收) ([Ref](https://mp.weixin.qq.com/s/M8R4QPidlCrr6vix4JUWmg))
     - [共识机制/算法 (分布式选举问题) | Consensus Algorithm](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md) (或称选举算法，[etcd 实现](../Leetcode%20Practices/system%20design/example%20questions/Leader%20Election.md))
       - 崩溃容错协议 | CFT
