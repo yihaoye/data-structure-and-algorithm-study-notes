@@ -2736,11 +2736,11 @@ CDC（Change Data Capture）系统通常被设计为一种主动监测和捕获�
 * https://en.wikipedia.org/wiki/Change_data_capture
 
 CDC 实现方式通常有 3 种
-* Polling
-* Database Triggers
-* Streaming Logs
-
-通常的业界最佳实践是第 3 种 -- 通过 Streaming Logs / 审计日志：  
+* **Log-based CDC** - This is the most efficient way to implement CDC. When a new transaction comes into a database, it gets logged into a log file with no impact on the source system. And you can pick up those changes and then move those changes from the log.
+* **Query-based CDC (Polling)** - Here you query the data in the source to pick up changes. This approach is more invasive to the source systems because you need something like a timestamp in the data itself.
+* **Trigger-based CDC (Database Triggers)** - In this approach, you change the source application to trigger the write to a change table and then move it. This approach reduces database performance because it requires multiple writes each time a row is updated, inserted, or deleted.
+  
+通常的业界最佳实践是 Log-based CDC：  
 数据库的审计日志是数据库事务日志（例如 Redo Log、Write-Ahead Log、Binary Log、OpLog etc）的拷贝，它记录了每一行的修改。  
 因此，不需要使用数据库或者应用级别的触发器去创建新的审计日志组件，而是直接扫描数据库的事务日志并从中抽取出 CDC 事件日志即可。  
 而业界最流行的日志读取类 CDC daemon 是 Debezium，因为其支持了多种数据库  
