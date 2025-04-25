@@ -2732,8 +2732,22 @@ KV 数据库主要的考点是高可用性、扩展性及高性能：
 CDC（Change Data Capture）系统通常被设计为一种主动监测和捕获数据变更的机制，它不需要周期性轮询检查更新。相反，CDC 系统会主动订阅和捕获数据库中的变更事件，一旦有数据变化，CDC 系统会立即捕获并触发相应的动作，如将变更事件异步传输给目标系统（消息队列、API 接口等）。  
 * https://medium.com/meroxa/stream-your-database-changes-with-change-data-capture-part-two-8fa4daee6afc
 * https://www.modb.pro/db/70259
+* https://www.qlik.com/us/change-data-capture/cdc-change-data-capture
 * https://en.wikipedia.org/wiki/Change_data_capture
 
+CDC 实现方式通常有 3 种
+* Polling
+* Database Triggers
+* Streaming Logs
+
+通常的业界最佳实践是第 3 种 -- 通过 Streaming Logs / 审计日志：  
+数据库的审计日志是数据库事务日志（例如 Redo Log、Write-Ahead Log、Binary Log、OpLog etc）的拷贝，它记录了每一行的修改。  
+因此，不需要使用数据库或者应用级别的触发器去创建新的审计日志组件，而是直接扫描数据库的事务日志并从中抽取出 CDC 事件日志即可。  
+而业界最流行的日志读取类 CDC daemon 是 Debezium，因为其支持了多种数据库  
+![](./CDC-Debezium.webp)  
+其他选项还有 Meroxa、Zendesk Maxwell 等等  
+  
+  
 **其他**  
 ETL 系统其实与 cronjob / batch process 系统有一些类似。  
 
