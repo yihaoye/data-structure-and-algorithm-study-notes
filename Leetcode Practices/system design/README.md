@@ -2639,7 +2639,7 @@ KV 数据库主要的考点是高可用性、扩展性及高性能：
 </details>
 
 
-## 设计分布式 Job Scheduler、ETL、ELT、Migrator 系统
+## 设计分布式 Job Scheduler 系统
 <details>
 <summary>details</summary>
 
@@ -2647,8 +2647,8 @@ KV 数据库主要的考点是高可用性、扩展性及高性能：
 转载自：https://leetcode.com/discuss/general-discussion/1082786/System-Design%3A-Designing-a-distributed-Job-Scheduler-or-Many-interesting-concepts-to-learn  
 
 其他参考材料：  
-* https://towardsdatascience.com/ace-the-system-design-interview-job-scheduling-system-b25693817950  
-* https://www.youtube.com/watch?v=ta5x62cDxf4  
+* https://dropbox.tech/infrastructure/asynchronous-task-scheduling-at-dropbox
+* https://www.youtube.com/watch?v=ta5x62cDxf4
 
 **功能要求（可能会有所不同，但假设如下）：**  
 * 一个 job 可以被其他服务/微服务安排一次或多次执行（cron job）
@@ -2727,7 +2727,14 @@ KV 数据库主要的考点是高可用性、扩展性及高性能：
 * String createTrigger(String TriggerType, JSON Config) - 创建 Trigger 并返回其 ID
 * Boolean updateTrigger(String TriggerID, String TriggerType, JSON Config) - 更新已有的 Trigger
 
-### CDC
+</details>
+
+
+## 设计 ETL、ELT、Migrator 系统
+<details>
+<summary>details</summary>
+
+**Change Data Capture**  
 ![](./cdc.webp)  
 CDC（Change Data Capture）系统通常被设计为一种主动监测和捕获数据变更的机制，它不需要周期性轮询检查更新。相反，CDC 系统会主动订阅和捕获数据库中的变更事件，一旦有数据变化，CDC 系统会立即捕获并触发相应的动作，如将变更事件异步传输给目标系统（消息队列、API 接口等）。  
 * https://medium.com/meroxa/stream-your-database-changes-with-change-data-capture-part-two-8fa4daee6afc
@@ -2746,7 +2753,12 @@ CDC 实现方式通常有 3 种
 而业界最流行的日志读取类 CDC daemon 是 Debezium，因为其支持了多种数据库  
 ![](./CDC-Debezium.webp)  
 其他选项还有 Meroxa、Zendesk Maxwell 等等  
-  
+
+CDC 的用途广泛，包括但不限于把数据处理打包到搜索引擎（ES）、日志、监控、告警、数据仓库、第三方平台、触发计算（比如 Lambda）。注意 CDC 一般不用于数据库备份，数据库备份通常有[其他办法如逻辑备份和物理备份](https://docs.redhat.com/zh-cn/documentation/red_hat_enterprise_linux/9/html/configuring_and_using_database_servers/backing-up-mysql-data_assembly_using-mysql#backing-up-mysql-data_assembly_using-mysql)  
+* Extract, Transform, Load (ETL): Capturing every change of one datastore and applying these changes to another allows for replication (one-time sync) and mirroring (continuous syncing).
+* Integration and Automation: The action taken on data change events can automate tasks, trigger workflows, or even execute cloud functions.
+* History: When performing historical analysis on a dataset, having the current state of the data and all past changes gives you complete information for a higher fidelity analysis.
+* Alerting: Most of the time, applications send an event to a user whenever the data they care about changes. CDC can be the trigger for real-time alerting systems.
   
 **其他**  
 ETL 系统其实与 cronjob / batch process 系统有一些类似。  
