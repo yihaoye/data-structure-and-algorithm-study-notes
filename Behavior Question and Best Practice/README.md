@@ -110,6 +110,9 @@ Books:
 
 # Best Practice 工作实践
 * 工程复杂性管理
+  * UNIX 哲学 - 只做一件事，并做到极致
+  * KISS 原则 - Keep It Simple, Stupid
+  * 奥卡姆剃刀 - 如无必要，勿增实体
   * [软件设计哲学 | A Philosophy of Software Design](https://go7hic.github.io/A-Philosophy-of-Software-Design/#/)
     * [降低软件复杂性一般原则和方法](./降低软件复杂性一般原则和方法.md)
     * 原书总结
@@ -355,12 +358,12 @@ by ChatGPT
 ### 创业家思维
 * [为自己工作](https://www.youtube.com/watch?v=3TiNEVIuMhU)
 * 客户、市场至上
-  * 倾听需求
+  * 倾听需求、**先找买家**
   * 关注、学习对手
 * 明确目标与重点、规划、坚持，[好的规划](https://wiki.mbalib.com/wiki/%E8%A7%84%E5%88%92)类似 OKR 如下：
+  * 分清主次 - [最小可行产品（MVP）](https://www.woshipm.com/share/5911174.html)
   * [强自驱自激励的目标](https://book.douban.com/subject/1395123/)
-  * 充足的前期调研
-  * 平衡开拓与踏实（可执行、灵活性）
+  * 充足的前期调研、平衡开拓与踏实（可执行、灵活性）
   * 全局性考量、长期主义
   * 量化评价（以确定目标达成）
 * 信心、觉察（专注于当下而不加评判，在一些语境下称为正念）
