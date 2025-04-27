@@ -118,8 +118,8 @@ Redis Pipeline（管道）是一种将多个命令打包在一起发送给 Redis
 * 提高吞吐量: 在需要执行大量命令的情况下，Pipeline 可以显著提高吞吐量，即每秒处理的命令数量。
 
 适用场景:
-* 批量 执行命令：例如，批量更新用户数据、批量读取缓存数据等。
-* 高并发 场景：例如，Web 应用中的缓存更新、消息队列等。
+* 批量执行命令：例如，批量更新用户数据、批量读取缓存数据等。
+* 高并发场景：例如，Web 应用中的缓存更新、消息队列等。
 
 注意事项:
 * Pipeline 中的命令必须是原子操作，不能包含跨事务的操作。
@@ -161,43 +161,16 @@ Redis 提供了一系列原子操作（Atomic Operations），这些操作是在
 10. **INCRBY（Increment BY）和 DECRBY（Decrement BY）：** 类似于 INCR 和 DECR，但可以指定增加或减少的量。
 
 这些原子操作允许在多个线程或客户端之间执行并发操作，同时保证数据的一致性和完整性。在编写具有高并发性要求的应用程序时，Redis 的原子操作能够帮助避免竞态条件和数据不一致的问题。  
+Redis 的数据结构（string、list、set、zset、hash、bitmap、hyperloglog、stream 等）本身都是线程安全的。因为 Redis 是单线程执行命令的（主线程），不会同时处理两个命令，所以只要是原子命令（比如 INCR，LPUSH，SADD），天然就是并发安全的。多个客户端并发发送命令时，Redis 内部会顺序排队，一个个处理，不存在同时读写冲突。但是组合多个命令时（比如先 GET，再 INCR 根据 GET 的结果），中间是非原子的，需要手动处理。所以，Redis 才引入了事务（MULTI/EXEC）、乐观锁（WATCH）、还有 Lua 脚本 -- 这些可以看作单条命令，所以是并发安全的。  
 
 ## 第三方 API
 一些库，比如 go-redis 还提供了[限流](https://redis.uptrace.dev/guide/go-redis-rate-limiting.html)以及 [Cuckoo Filter、Count-Min Sketch 与 Top-K 等高级算法功能的实现](https://redis.uptrace.dev/guide/bloom-cuckoo-count-min-top-k.html)。  
 
 ## 事务
-Redis 事务通过 MULTI、EXEC 和 DISCARD 三个命令来实现。
-* MULTI: 开启一个事务
-* EXEC: 执行事务中的所有命令
-* DISCARD: 丢弃事务中的所有命令
-
-示例:
-```bash
-# 开启事务
-MULTI
-# 将用户 A 的余额减少 100
-INCRBY user:A -100
-# 将用户 B 的余额增加 100
-INCRBY user:B 100
-# 执行事务
-EXEC
-```
-
-注意事项:
-* 事务中的命令必须是原子操作，不能包含跨事务的操作。
-* 事务中的命令不能包含需要立即返回结果的命令，例如 WATCH、MULTI、EXEC 等。
-* 如果事务中的命令出现错误，则整个事务都将失败。
-
-Redis 事务的替代方案:
-* 乐观锁: 使用乐观锁机制来保证操作的原子性，例如使用版本号来控制数据的并发更新。
-* 分布式事务: 使用分布式事务框架来实现跨多个数据库或服务的事务操作。
-
-Redis 事务的隔离级别是 READ_UNCOMMITTED，这意味着在事务执行期间，其他客户端可以看到事务对数据的修改。  
-Redis 事务的超时时间可以通过 redis.Redis.transaction_timeout 属性进行配置。  
-Redis 事务可以嵌套使用，以便在需要时执行更复杂的命令序列。  
-
-以上 by Gemini  
-
+Redis 事务通过 MULTI/EXEC 实现，但其实可以发现 Lua 脚本也同样可以实现事务且更强大方便。这是因为脚本功能是 Redis 2.6 才引入的，而事务功能则更早之前就存在了，所以 Redis 才会同时存在两种处理事务的方法。不过官方声明并不打算在短时间内就移除事务功能，因为事务提供了一种即使不使用脚本，也可以避免竞争条件的方法，而且事务本身的实现并不复杂。  
+所以实际上如果需要事务，直接使用 Lua 脚本实现即可。  
+参考：https://www.cnblogs.com/makemylife/p/17299566.html  
+  
 ## 持久化
 Redis 是一个内存存储系统，通常被用作缓存和快速数据存储，但它也提供了一些持久化选项，以便在重启或故障恢复时保留数据。以下是与 Redis 持久化相关的内容：
 1. **RDB 持久化**：
