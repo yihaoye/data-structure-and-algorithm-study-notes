@@ -13,41 +13,40 @@
 
 ## 创建型模式
 创建型模式关注点是如何创建对象，其核心思想是要把对象的创建和使用相分离，这样使得两者能相对独立地变换。  
-* [工厂方法 | Factory](./Factory.java) - 可与注册器合用
-  * ([Go 示例](./Factory.go))
 * [建造者 | Builder](./Builder.java)
+  * ([Go 示例](./Builder.go))
 * [单例 | Singleton](./Singleton.java) - 进阶的为对象池模式、多例模式
   * ([Go 示例](./Singleton.go))
-* [原型 | Prototype](./Prototype.java) - 即 copy/clone
+* 对象池 | Object Pool - [信号量模式 | Semaphore](./Semaphore.java) 与其十分类似
+  * ([Go 示例](./ObjectPool.go))
+* [工厂方法 | Factory](./Factory.java) - 可与注册器合用，语言如 Go 不推荐使用工厂模式而是鼓励使用 NewXXX() 函数即可
   
 ## 结构型模式
 结构型模式主要涉及如何组合各种对象以便获得更好、更灵活的结构。虽然面向对象的继承机制提供了最基本的子类扩展父类的功能，但结构型模式不仅仅简单地使用继承，而更多地通过组合与运行期的动态组合来实现更灵活的功能。  
 * [适配器 | Adapter](./Adapter.java)
   * ([Go 示例](./Adapter.go))
-* [桥接 | Bridge](./Bridge.java)
-* [组合 | Composite](./Composite.java)
-* [代理 | Proxy](./Proxy.java)
-* [信号量模式 | Semaphore](./Semaphore.java)
-* [装饰器 | Decorator](./Decorator.java)  
+* [组合 | Composite](./Composite.java) - Go 默认推荐采用组合而非继承
+  * ([Go 示例](./Composite.go))
+* [代理 | Proxy](./Proxy.java) - 类似 Middleware、Wrapper、[装饰器 | Decorator](./Decorator.java)
+  * ([Go 示例](./Middleware.go)) - Web 中间件 Middleware 加日志、鉴权等等
   
 ## 行为型模式
 行为型模式主要涉及算法和对象间的职责分配。通过使用对象组合，行为型模式可以描述一组对象应该如何协作来完成一个整体任务。  
-* [迭代器 | Iterator](./Iterator.java)
-  * (在 Go 更多直接使用内置的 slice 和 for range 结构，因其足够简洁而有效的迭代功能)
 * [观察者 | Observer(Listener)](./Observer.java)
   * ([Go 示例](./Observer.go))
-* [状态 | State](./State.java)
-* [策略 | Strategy](./Strategy.java)
-  * (包括命令模式，在 Go 中有其他更直接的方式来达到相同的目的，例如使用函数闭包或接口组合 - [Go 示例](./Strategy.go))
+* [策略 | Strategy](./Strategy.java) - 包括命令模式，在 Go 中有其他更直接的方式来达到相同的目的
+  * [Go 示例](./Strategy.go) - 使用函数闭包或接口组合
 * 分发 | Dispatch - 类似策略模式，用于将来自多个来源的请求调度到不同的处理程序，它通常用于构建事件驱动系统或 GUI 应用程序。优点：提高了代码的可维护性、可扩展性、灵活性
   *  ([Go 示例](./Dispatch.go))
+  *  ([Go 示例 2](./Router.go)) Web 路由器 | Router - [Command Dispatch Pattern](https://colobu.com/2024/06/03/command-dispacher-pattern/#more)
 * 重试 | Retry
   * ([Go 示例](./Retry.go))
 * [责任链 | Chain of Responsibility](./CoR.java) - 衍生的有过滤器模式
 * 断路器 | Circuit Breaker
   * ([Go 示例](./CircuitBreaker.go))
-* [模板 | Template](./Template.java)
-* [访问者 | Visitor](./Visitor.java)
+* [迭代器 | Iterator](./Iterator.java)
+  * (在 Go 更多直接使用内置的 slice 和 for range 结构，因其足够简洁而有效的迭代功能)
+* [状态 | State](./State.java)
 
 ## 并发型模式
 * 生产消费 | Producer Consumer
@@ -60,18 +59,19 @@
   * ([Go 示例](./PipelineFilters.go))
 * 互斥锁 | Mutex
   * ([Go 示例](./Mutex.go))
-* 工作池（协程池）| Worker Pool
+* 工作池（协程池）| Worker Pool - 是前面对象池模式在并发场景下的使用
   * ([Go 示例](./WorkerPool.go))
   * ([Go 示例 2](./WorkerPool2.go))
 * 定时器与超时 | Tick Timeout
   * ([Go 示例](./TickTimeout.go))
   * ([Go 示例 2](./TickTimeout2.go))
 
-## Web 型模式
-* 中间件 | Middleware
-  * ([Go 示例](./Middleware.go))
-* 路由器 | Router - [Command Dispatch Pattern](https://colobu.com/2024/06/03/command-dispacher-pattern/#more)
-  * ([Go 示例](./Router.go))
+## 其他复杂少用的
+* [原型 | Prototype](./Prototype.java) - 即 copy / clone
+* [桥接 | Bridge](./Bridge.java)
+* [模板 | Template](./Template.java)
+* [访问者 | Visitor](./Visitor.java)
+
 
 以上引用自
 * https://www.liaoxuefeng.com/wiki/1252599548343744/1264742167474528
