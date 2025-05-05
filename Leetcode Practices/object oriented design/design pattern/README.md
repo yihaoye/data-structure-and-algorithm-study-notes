@@ -16,7 +16,7 @@
 * [建造者 | Builder](./Builder.java)
   * ([Go 示例](./Builder.go))
 * [单例 | Singleton](./Singleton.java) - 进阶的为对象池模式、多例模式
-  * ([Go 示例](./Singleton.go))
+  * ([Go 示例](./Singleton.go)) - Go sync.Once 且适用于并发场景
 * 对象池 | Object Pool - [信号量模式 | Semaphore](./Semaphore.java) 与其十分类似
   * ([Go 示例](./ObjectPool.go))
 * [工厂方法 | Factory](./Factory.java) - 可与注册器合用，语言如 Go 不推荐使用工厂模式而是鼓励使用 NewXXX() 函数即可
@@ -41,7 +41,6 @@
   *  ([Go 示例 2](./Router.go)) Web 路由器 | Router - [Command Dispatch Pattern](https://colobu.com/2024/06/03/command-dispacher-pattern/#more)
 * 重试 | Retry
   * ([Go 示例](./Retry.go))
-* [责任链 | Chain of Responsibility](./CoR.java) - 衍生的有过滤器模式
 * 断路器 | Circuit Breaker
   * ([Go 示例](./CircuitBreaker.go))
 * [迭代器 | Iterator](./Iterator.java)
@@ -71,6 +70,7 @@
 * [桥接 | Bridge](./Bridge.java)
 * [模板 | Template](./Template.java)
 * [访问者 | Visitor](./Visitor.java)
+* [责任链 | Chain of Responsibility](./CoR.java) - 衍生的有过滤器模式
 
 
 以上引用自
