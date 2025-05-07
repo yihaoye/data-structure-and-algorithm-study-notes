@@ -134,6 +134,10 @@ Books:
       * 精准名称、显见逻辑（比如[约定优于配置](https://zh.wikipedia.org/wiki/%E7%BA%A6%E5%AE%9A%E4%BC%98%E4%BA%8E%E9%85%8D%E7%BD%AE)）、保持一致
       * 注释可以缓解认知负荷与未知的未知（注释也可以作为系统设计的工具，如果只需要简单的注释就可以描述模块的设计思路和功能，说明这个模块的设计是良好的。另一方面，如果模块很难注释，说明模块没有好的抽象），另外注释应该描述代码中不明显的内容
   * [软件复杂度](./软件复杂度.md)
+  * [软件复杂性的三大定律](https://maheshba.bitbucket.io/blog/2024/05/08/2024-ThreeLaws.html)
+    * 设计良好的系统会随着时间变得设计不良
+    * 复杂性是一种护城河（由泄漏的抽象填充）
+    * 软件复杂性没有根本的上限
   * 代码大全 | Code Complete [Ref 1](https://blog.codingnow.com/cloud/CodeComplete)、[Ref 2](https://book.douban.com/review/1075004/)、[Ref 3](https://www.cnblogs.com/janes/p/4506310.html)
     * 需求阶段
       * 发现错误的时间要尽量接近进入该错误的时间。由于需求是首先进行的活动，所以需求阶段引入的缺陷可能在系统中潜伏的时间最长，代价也更昂贵
