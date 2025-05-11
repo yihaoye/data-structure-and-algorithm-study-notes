@@ -277,7 +277,7 @@ Books:
   * 无论内部或外部晋升都需要运气和时机，**千里马常有而伯乐不常有**，晋升不顺利不必过多苛责自己、尽力就好
   * [向上管理](https://www.michaelpage.com.cn/advice/career-advice/productivity-and-performance/1024474)
 * [职业倦怠过劳（Burnout）的原因及其应对方法](https://www.mayoclinic.org/zh-hans/healthy-lifestyle/adult-health/in-depth/burnout/art-20046642) ([Ref 1](https://www.1point3acres.com/bbs/thread-1110317-1-1.html)、[Ref 2](https://www.youtube.com/watch?v=4mhji8SxHHk)、[Ref 3](https://www.1point3acres.com/bbs/thread-897238-1-1.html))
-  * 原因
+  * 原因 - 参考[社会心理性危害](https://www.safeworkaustralia.gov.au/safety-topic/managing-health-and-safety/mental-health/psychosocial-hazards)
     * 缺乏控制。对自己完成工作的方式没有发言权，比如时间安排、工作分配或工作量，这些都可能导致职业倦怠。缺少完成工作所需的条件也会导致倦怠。
     * 未明确对您的期望。如果您不确定老板或他人对您的期望，您就不太可能感觉自己工作出色。
     * 与他人起冲突。您的共事者可能进行办公室霸凌。或者您感觉同事针对你。或者老板过度介入您的工作。这些冲突都会增加工作压力。
