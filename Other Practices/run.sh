@@ -1,4 +1,4 @@
 #!/bin/bash
 
 javac Solution.java
-java Solution
+java -ea Solution
