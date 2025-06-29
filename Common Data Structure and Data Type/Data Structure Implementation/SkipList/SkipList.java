@@ -35,7 +35,7 @@ public class SkipList<K extends Comparable<K>, V> implements Iterable<K> {
         else return null;
     }
 
-    // ToDo：在 add 方法中维护 span 的思路，注意下面循环逻辑是由下至上的，先下到最底层才开始第 1 步：
+    // ToDo：在 add 方法中维护 span 的思路，注意下面循环逻辑是由下至上的（即先下到最底层才开始第 1 步）：
     // 1. 插入时，同时设置插入节点 span（newNode.span），如果是整层的第一个节点则为 0 否则为下层计算的 m（如果是最底层则 m 为 1）
     // 2. 插入后：
     //    - 更新右边节点的 span，leftNode.span = leftNode.span - newNode.span + 1
