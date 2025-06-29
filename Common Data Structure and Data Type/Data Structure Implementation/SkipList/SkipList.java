@@ -7,7 +7,7 @@ import java.util.*;
  * 
  * 应用到 Leetcode Q1206 Design-Skiplist
  * 
- * ToDo: 实现查询指定 ranking 范围的元素、查询元素的 ranking 等等...
+ * ToDo: 彻底实现查询指定 ranking 范围的元素、查询元素的 ranking 等等（相关函数逻辑已完成只差实现在 add/remove 方法中维护 span）...
  *
  * @author SylvanasSun
  */
@@ -35,6 +35,11 @@ public class SkipList<K extends Comparable<K>, V> implements Iterable<K> {
         else return null;
     }
 
+    // ToDo：在 add 方法中维护 span 的思路，注意下面循环逻辑是由下至上的，先下到最底层才开始第 1 步：
+    // 1. 插入时，同时设置插入节点 span（newNode.span），如果是整层的第一个节点则为 0 否则为下层计算的 m（如果是最底层则 m 为 1）
+    // 2. 插入后：
+    //    - 更新右边节点的 span，leftNode.span = leftNode.span - newNode.span + 1
+    //    - 如果随机数决定了要为新节点构建上一层级的节点：按原逻辑会左走回到前一个可以往上走的同一层级的节点，此时求和经过的节点的 span 为 m 供第 1 步使用然后继续循环逻辑（由下至上）
     public void add(K key, V value) { // 这里的 K 是不可重复的，重复 K 会覆盖原值。如果想实现可重复的，可以将 Node 的 value 改为整数统计或 List<V>，且 get、add、remove 方法均需要修改
         checkKeyValidity(key);
         Node<K, V> node = findNode(key);
@@ -68,6 +73,8 @@ public class SkipList<K extends Comparable<K>, V> implements Iterable<K> {
         size++;
     }
 
+    // ToDo：在 remove 方法中维护 span 的思路：
+    // 与 add 相反即可
     public void remove(K key) {
         checkKeyValidity(key);
         Node<K, V> node = findNode(key);
@@ -153,12 +160,39 @@ public class SkipList<K extends Comparable<K>, V> implements Iterable<K> {
         y.setUp(x);
     }
 
+    public int getRank(K key) { // O(logN)
+        Node<K, V> node = head; int rank = 0;
+        for (; node != null; node = node.getDown()) {
+            for (; node.getNext() != null; node = node.getNext()) {
+                int cmp = node.getNext().getKey().compareTo(key);
+                if (cmp > 0) break; // 右边节点比 key 大，往下走。注意这里如果 key 不存在且后面不再会有比 key 更小的 node 时也会尝试往下走，因为这样代码更精简且性能也没什么影响
+                rank += node.getNext().span;
+                if (cmp == 0) return rank; // key 存在且定位，直接返回。否则右边节点比 key 小，for loop 往右走
+            }
+        }
+        return rank; // key 不存在，返回小于 key 的节点数
+    }
+
+    public Node<K, V> getElementByRank(int rank) { // O(logN)
+        if (rank < 0 || rank >= size) throw new IllegalArgumentException("Rank out of bounds");
+        Node<K, V> node = head; int curRank = 0;
+        for (; node != null; node = node.getDown()) {
+            for (; node.getNext() != null; node = node.getNext()) {
+                int nxtRank = curRank + node.getNext().span;
+                if (nxtRank == rank) return node.getNext(); // 定位，直接返回
+                if (nxtRank > rank) break; // 右边节点排名超出，往下走
+                curRank = nxtRank; // 右边节点排名未超出，for loop 往右走
+            }
+        }
+        return null; // 非预期情况，返回 null 以保证编译
+    }
+
 
     protected static class Node<K extends Comparable<K>, V> {
         private K key;
         private V value;
         private int level;
-        private int span; // ToDo：span 表示在当前层级，该节点与前一个节点之间跨越了多少个节点，用于高效更新和计算节点的排名（ranking），在 add/remove 时更新
+        private int span; // 表示在当前层级，该节点与前一个节点之间跨越了多少个底层节点，用于高效更新和计算节点的排名（ranking），在 add/remove 时更新，span 为 0 则应该是整个 SkipList 的头一个，如果紧跟着前一个节点则 span 应为 1
         private Node<K, V> up, down, next, previous;
 
         public Node(K key, V value, int level) {
