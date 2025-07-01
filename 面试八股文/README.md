@@ -420,9 +420,10 @@
   * ![](./inference-server.webp)
 * 语义缓存 - [Ref 1](https://redis.io/blog/rediscover-redis-for-vector-similarity-search/)、[Ref 2](https://www.cnblogs.com/smartloli/p/18105994)、[Ref 3](https://platform.openai.com/docs/guides/embeddings)、[Ref 4](https://openai.com/index/new-embedding-models-and-api-updates/)、[Ref 5](https://www.luxiangdong.com/2023/07/09/vecdb/)、[Ref 6](https://www.pinecone.io/learn/series/faiss/locality-sensitive-hashing/)、[Ref 7](https://www.pinecone.io/learn/search-with-pinecone/)、[Ref 8](https://www.pinecone.io/learn/series/faiss/vector-indexes/#Inverted-File-Index)、[Ref 9](https://docs.pinecone.io/guides/get-started/quickstart)、[Ref 10](https://docs.pinecone.io/models/multilingual-e5-large)
 * [Prompt (System & User), AI Agent (Agent Tool), MCP & Function Calling](https://www.youtube.com/watch?v=1UQ8uz4kuIc)
-  * Function Calling 是 AI 模型（商用或开源）调用函数的机制
+  * System Prompt 是常用上下文
+  * Function Calling 是替代 System Prompt 对 Agent Tools（函数、脚本等等）的注册 - 使用类似 JSON 等格式，所以更精确、节省地应对 AI 模型的随机化错误
   * AI Agent 只是简单的自动化程序，充当人在与 AI 模型沟通完后的动手操作部分的代劳
-  * MCP Server 是开发了一系列常用 Agent Tools（函数、脚本等等）的网络服务（类似后端 API 服务），MCP 规定了如何与 AI Agent 通信、提供了哪些接口（比如查询有哪些 Agent Tools 函数及其描述、功能、参数、格式，及其调用，资源读写，提示词模版等）
+  * MCP Server 是开发了一系列常用 Agent Tools 的网络服务（类似后端 API 服务），MCP 规定了如何与 AI Agent 通信、提供了哪些接口（比如查询有哪些 Agent Tools 函数及其描述、功能、参数、格式，及其调用，资源读写，提示词模版等）
 
 
 ## 硬件与操作系统（Linux & bash）高频
