@@ -649,7 +649,7 @@ Apache Kafka、Amazon Kinesis Streams 和 Twitter 的 DistributedLog 都是基�
 * 容错机制须改变 - 不能简单开始重启失败任务
 
 **流处理的应用**  
-长期以来，流处理一直用于监控目的，如果某个事件发生，组织希望能得到警报。
+长期以来，流处理一直用于监控目的，如果某个事件发生，组织希望能得到警报。  
 
 
 To Be Continue ...  
