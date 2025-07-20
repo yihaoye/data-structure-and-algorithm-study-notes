@@ -323,6 +323,7 @@ Books:
   * 判断力、[找对战略方向](https://www.youtube.com/watch?v=PFpKJRdW0Kw)、[时机管理](https://www.sohu.com/a/290572401_100300347)
   * 不断发明和重新发明、优化
   * 对核心及次核心业务有高标准
+  * 除了主导，也要同时跟进其他人好的推动 - [to lead you have to follow](https://yucliu.gitbook.io/staff-engineer/operating-at-staff/to-lead-you-have-to-follow)
 * 执行力、策略
   * 为团队设定明确、可衡量的目标，以跟踪成果的进展 - 具体可通过 1-3-5 year plan 来保证长期策略
   * 通过定期回顾结果来培养持续改进的文化
