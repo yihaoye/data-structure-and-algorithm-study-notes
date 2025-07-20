@@ -73,7 +73,7 @@
 ## **系统设计模式**
 系统设计也有设计模式（类似 OOD 的设计模式），就像算法需要掌握数据结构，系统设计也需要掌握系统设计模式，因为这些都是最佳实践、通常比自己创造想象的要来得稳健。  
 <details>
-<summary>主要的系统设计模式：https://docs.microsoft.com/zh-cn/azure/architecture/patterns/</summary>
+<summary>主要的系统设计模式：https://docs.microsoft.com/zh-cn/azure/architecture/patterns/、https://docs.aws.amazon.com/zh_cn/prescriptive-guidance/latest/cloud-design-patterns/introduction.html</summary>
 
 ![](./most-used-distributed-system-pattern.jpeg)  
 
@@ -184,6 +184,7 @@
   * 排序统计 - 涉及到数据的排名和顺序、序列等需求，因此集合本身应是有序集合，除此之外还可以延伸出`趋势分析`
   * 二值状态统计 - 指集合元素如 Bitmap 的取值只有 0 和 1 两种状态，通常用于表示某个事件是否发生或某个条件是否成立
   * 基数统计 - 统计一个集合中不重复的元素个数
+* [事务发件箱模式（Transactional Outbox Pattern）](https://docs.aws.amazon.com/zh_cn/prescriptive-guidance/latest/cloud-design-patterns/transactional-outbox.html) - 解决了分布式系统中的双重写入操作问题，当应用程序向两个不同的系统写入数据时，便会发生双重写入操作；例如，当微服务需要在数据库中持久化数据并发送消息以通知其他系统时。其中一个操作失败便可能会导致数据不一致。
 * [更多：计算资源合并、外部配置存储、网关路由、运行状况 endpoint 监视、领导选择、优先级队列、发布方/订阅方、基于队列的负载调控、分片、静态内容托管、Geodes、竞争性使用者等等](https://learn.microsoft.com/zh-cn/azure/architecture/patterns/)
 
 </details>
