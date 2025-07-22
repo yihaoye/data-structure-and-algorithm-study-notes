@@ -1455,7 +1455,7 @@ Some of the essential points related to the recursive CTE are:
 Benefits of using CTE:  
 * It provides better readability of the query. (可以在一个语句中多次引用公用表表达式 CTE)
 * It increases the performance of the query.
-* The CTE allows us to use it as an alternative to the VIEW concept (当不需要将结果集作为视图被多个地方引用时，CTE可以使其更加简洁)
+* The CTE allows us to use it as an alternative to the VIEW concept (当不需要将结果集作为视图被多个地方引用时，CTE 可以使其更加简洁)
 * It can also be used as chaining of CTE for simplifying the query.
 * It can also be used to implement recursive queries easily. (可以定义递归公用表表达式 CTE)
 * GROUP BY 语句可以直接作用于子查询所得的标量列
