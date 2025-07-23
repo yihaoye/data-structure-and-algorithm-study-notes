@@ -1438,13 +1438,14 @@ AS
   
 按照是否递归，可以将公用表（CTE）表达式分为递归公用表表达式和非递归公用表表达式。  
 
-https://www.javatpoint.com/mysql-common-table-expression  
+https://www.rockdata.net/zh-cn/tutorial/dml-recursive-query/  
+非递归公用表语法：  
 ```sql
-WITH cte_name (column_names) AS (query)   
-SELECT * FROM cte_name;
-
-WITH RECURSIVE cte_name (column_names) AS (subquery)   
-SELECT * FROM cte_name;
+WITH RECURSIVE cte_name AS(
+    CTE_query_definition -- non-recursive term
+    UNION [ALL]
+    CTE_query definion  -- recursive term
+) SELECT * FROM cte_name;
 ```  
 
 Some of the essential points related to the recursive CTE are:  
