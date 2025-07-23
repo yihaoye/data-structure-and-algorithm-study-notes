@@ -141,6 +141,7 @@ This personal Blog contains explanation and **Java library/template implementati
     - [限流算法 | Rate Limiter Algorithm](../Leetcode%20Practices/system%20design/README.md#设计-API-Rate-Limiter)
       - 固定窗口, 滑动窗口 | Fixed Window, Sliding Window ([Code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/rate%20limiter%202/Solution.java)，固定窗口又称计数器法，即简单的 IncrBy 和 Expire TTL，虽然简单但有致命的临界问题)
       - 漏桶算法, 令牌桶算法 | Leaky Bucket, Token Bucket ([Code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/rate%20limiter%203/Solution.java))
+    - [退避算法 | Backoff Algorithm](../Leetcode%20Practices/object%20oriented%20design/design%20pattern/Retry.go)
     - [调度算法 | Scheduling](https://en.wikipedia.org/wiki/Scheduling_(computing)) (相关数学：[排队论 | Queueing Theory](https://en.wikipedia.org/wiki/Queueing_theory))
       - 非抢占式调度算法
         - FIFO (FCFS 先来先服务)、LIFO

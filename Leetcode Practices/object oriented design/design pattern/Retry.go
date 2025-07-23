@@ -6,6 +6,8 @@ import (
 	"time"
 )
 
+// ToDo 除了斐波那契外，更多退避策略：固定间隔、指数或带抖动的指数、随机或比例概率等等
+
 func main() {
 	fib := fibonacci()
 	for i := 0; ; i++ {

@@ -39,7 +39,7 @@
 * 分发 | Dispatch - 类似策略模式，用于将来自多个来源的请求调度到不同的处理程序，它通常用于构建事件驱动系统或 GUI 应用程序。优点：提高了代码的可维护性、可扩展性、灵活性
   *  ([Go 示例](./Dispatch.go))
   *  ([Go 示例 2](./Router.go)) Web 路由器 | Router - [Command Dispatch Pattern](https://colobu.com/2024/06/03/command-dispacher-pattern/#more)
-* 重试 | Retry
+* 重试 | Retry - 通常配合退避（Backoff）策略
   * ([Go 示例](./Retry.go))
 * 断路器 | Circuit Breaker
   * ([Go 示例](./CircuitBreaker.go))
