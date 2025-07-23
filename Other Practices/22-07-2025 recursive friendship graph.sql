@@ -24,7 +24,7 @@ WITH RECURSIVE Friends AS (
         user_id AS start_user,          -- 原始查询的用户
         friend_id AS current_friend,    -- 当前层级的好友
         1 AS depth,                     -- 关系深度（1 表示直接好友）
-        CAST(user_id AS VARCHAR(MAX)) + ' -> ' + CAST(friend_id AS VARCHAR(MAX)) AS path -- 关系路径
+        CAST(user_id AS TEXT) + ' -> ' + CAST(friend_id AS TEXT) AS path -- 关系路径
     FROM
         friendships
     WHERE
@@ -35,17 +35,17 @@ WITH RECURSIVE Friends AS (
     -- 递归成员 (Recursive Member): 查找当前好友的好友
     SELECT
         rf.start_user,
-        f.friend_id AS current_friend,
+        fs.friend_id AS current_friend,
         rf.depth + 1 AS depth,
-        rf.path + ' -> ' + CAST(f.friend_id AS VARCHAR(MAX)) AS path
+        rf.path + ' -> ' + CAST(fs.friend_id AS TEXT) AS path
     FROM
-        friendships f
+        friendships fs
     JOIN
-        Friends rf ON f.user_id = rf.current_friend -- 当前好友的 friend_id 是下一轮的 user_id
+        Friends rf ON fs.user_id = rf.current_friend -- 当前好友的 friend_id 是下一轮的 user_id
     WHERE
         rf.depth < 2                        -- 我们只查找二度好友（即深度最大为 2）
-        AND f.friend_id != rf.start_user    -- 避免回到起始用户（可选，取决于具体需求）
-        AND f.friend_id NOT IN (            -- 避免循环或重复已访问的用户（重要）
+        AND fs.friend_id != rf.start_user    -- 避免回到起始用户（可选，取决于具体需求）
+        AND fs.friend_id NOT IN (            -- 避免循环或重复已访问的用户（重要）
             SELECT current_friend FROM Friends WHERE start_user = rf.start_user
         )
 )
