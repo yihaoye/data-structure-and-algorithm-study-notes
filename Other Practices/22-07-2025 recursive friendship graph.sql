@@ -43,7 +43,7 @@ WITH RECURSIVE Friends AS (
     JOIN
         Friends rf ON fs.user_id = rf.current_friend -- 当前好友的 friend_id 是下一轮的 user_id
     WHERE
-        rf.depth < 2                            -- 只查找二度好友（即深度最大为 2），同时也是 CTE 结束条件（造成查询为空触发 CTE 退出递归机制）有助于提早退出递归
+        rf.depth < 2                            -- 只查找二度好友（即深度最大为 2），同时也是 CTE 结束条件（造成查询返回数据为空触发 CTE 退出递归机制）有助于提早退出递归
         AND fs.friend_id != rf.start_user       -- 避免回到起始用户（可选，取决于具体需求）
         AND fs.friend_id NOT IN (               -- 避免循环或重复已访问的用户（重要）
             SELECT current_friend FROM Friends WHERE start_user = rf.start_user -- 如果 start_user 只是以单用户为起点则此处并不需要 WHERE start_user = rf.start_user，但是如果多用户起点的话则必须

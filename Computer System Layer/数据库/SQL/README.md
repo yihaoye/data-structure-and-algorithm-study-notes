@@ -1428,7 +1428,7 @@ https://www.cnblogs.com/careyson/archive/2011/12/12/2284740.html
 公用表达式的定义非常简单，只包含三部分：  
 * 公用表表达式的名字（在 WITH 之后）
 * 所涉及的列名（可选）
-* 一个 SELECT 语句(紧跟 AS 之后)
+* 一个 SELECT 语句（紧跟 AS 之后）- CTE 支持且仅支持读操作，不支持写操作如 UPDATE、DELETE 等
 
 ```sql
 WITH expression_name [ ( column_name [,...n] ) ] 
@@ -1444,7 +1444,7 @@ https://www.rockdata.net/zh-cn/tutorial/dml-recursive-query/
 WITH RECURSIVE cte_name AS(
     CTE_query_definition -- non-recursive term
     UNION [ALL]
-    CTE_query definion  -- recursive term，递归 CTE 在无法生成新数据时会自动停止，但为了安全、控制性能并符合业务需求，仍强烈建议添加深度限制（本质还是造成查询为空触发 CTE 退出递归机制）来防止无限循环或资源耗尽，具体可参考下面的 Friendship Graph 示例
+    CTE_query definion  -- recursive term，递归 CTE 在无法生成新数据时会自动停止，但为了安全、控制性能并符合业务需求，仍强烈建议添加深度限制（本质还是造成查询返回数据为空触发 CTE 退出递归机制）来防止无限循环或资源耗尽，具体可参考下面的 Friendship Graph 示例
 )
 SELECT * FROM cte_name;
 ```  
