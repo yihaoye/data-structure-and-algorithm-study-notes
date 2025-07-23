@@ -1444,8 +1444,9 @@ https://www.rockdata.net/zh-cn/tutorial/dml-recursive-query/
 WITH RECURSIVE cte_name AS(
     CTE_query_definition -- non-recursive term
     UNION [ALL]
-    CTE_query definion  -- recursive term
-) SELECT * FROM cte_name;
+    CTE_query definion  -- recursive term，递归 CTE 在无法生成新数据时会自动停止，但为了安全、控制性能并符合业务需求，仍强烈建议添加深度限制（本质还是造成查询为空触发 CTE 退出递归机制）来防止无限循环或资源耗尽，具体可参考下面的 Friendship Graph 示例
+)
+SELECT * FROM cte_name;
 ```  
 
 Some of the essential points related to the recursive CTE are:  
@@ -1461,7 +1462,8 @@ Benefits of using CTE:
 * It can also be used to implement recursive queries easily. (可以定义递归公用表表达式 CTE)
 * GROUP BY 语句可以直接作用于子查询所得的标量列
 
-例题：  
+示例：  
+* [Friendship Graph](../../../Other%20Practices/22-07-2025%20recursive%20friendship%20graph.sql)
 * [Leetcode Q1384](./../../../Leetcode%20Practices/database/hard/1384%20Total%20Sales%20Amount%20by%20Year.sql)
 * [Leetcode Q1767 - 创建原本不存在的临时表](./../../../Leetcode%20Practices/database/hard/1767%20Find%20the%20Subtasks%20That%20Did%20Not%20Execute.sql)
 
