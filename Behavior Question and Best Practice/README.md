@@ -358,7 +358,8 @@ Books:
 
 by ChatGPT  
 
-### 创业家思维
+### 创业家特质与思维
+* 异于常人的旺盛精力与体力、韧性、毅力
 * [为自己工作](https://www.youtube.com/watch?v=3TiNEVIuMhU)
 * 客户、市场至上
   * 倾听需求、**先找买家**
