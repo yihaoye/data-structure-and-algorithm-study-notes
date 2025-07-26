@@ -112,7 +112,7 @@ Books:
 * 工程复杂性管理
   * UNIX 哲学 - 只做一件事，并做到极致
   * KISS 原则 - Keep It Simple, Stupid
-  * 奥卡姆剃刀 - 如无必要，勿增实体
+  * YAGNI 原则 / 奥卡姆剃刀 - You aren't gonna need it / 如无必要，勿增实体
   * [软件设计哲学 | A Philosophy of Software Design](https://go7hic.github.io/A-Philosophy-of-Software-Design/#/)
     * [降低软件复杂性一般原则和方法](./降低软件复杂性一般原则和方法.md)
     * 原书总结
