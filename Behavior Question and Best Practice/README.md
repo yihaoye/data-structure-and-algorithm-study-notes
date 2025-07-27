@@ -112,7 +112,11 @@ Books:
 * 工程复杂性管理
   * UNIX 哲学 - 只做一件事，并做到极致
   * KISS 原则 - Keep It Simple, Stupid
-  * YAGNI 原则 / 奥卡姆剃刀 - You aren't gonna need it / 如无必要，勿增实体
+  * 奥卡姆剃刀 - 如无必要，勿增实体；如果关于同一个问题有许多种理论、方案，人们应该选择假设最少的理论、方案，在没有证明假设之前，更应倾向于简单而非复杂。假设是非常有用的，但不正确的假设会产生灾难性的影响。系统越复杂，失败的概率就越高
+    * 最后响应时刻 | Last Responsible Moment - 尽可能晚做决定，直到可以根据事实而不是不确定的假设和预测做出决定
+    * 过度工程化 - 将产品设计得比其应用所需的更健壮或更复杂。过度工程的一个典型例子是有太多的抽象层
+    * 过度简单设计 - 把复杂的问题和问题看得比实际简单得多。简单的软件设计可能只关注当前的功能需求，而忽略了某些非功能需求，如可维护性、可扩展性和可重用性
+    * [YAGNI 原则](https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it) - You aren't gonna need it，不应添加任何功能，除非它被认为有必要；YAGNI 旨在与其他几种极限编程实践结合使用，例如持续重构、持续自动化单元测试和持续集成，如果没有持续重构，YAGNI 可能会导致代码混乱和大量返工，即技术债务
   * [软件设计哲学 | A Philosophy of Software Design](https://go7hic.github.io/A-Philosophy-of-Software-Design/#/)
     * [降低软件复杂性一般原则和方法](./降低软件复杂性一般原则和方法.md)
     * 原书总结
@@ -194,6 +198,9 @@ Books:
   * Restrict Pointers Use
   * Be Pedantic
   * Test Test Test
+* [极限编程 | XP](https://zh.wikipedia.org/wiki/%E6%9E%81%E9%99%90%E7%BC%96%E7%A8%8B) - 一种软件工程方法学，强调可适应性（有能力在项目周期的任何阶段去适应变化）而不是可预测性，因为软件需求的不断变化是不可避免的、很自然的现象
+  * 价值排序
+  * 风险排序
 * 软件生命周期 - software development life cycle, how will you lead a project from end to end, how will you split the work amongst your peers etc.
 * [约定式提交](https://www.conventionalcommits.org/zh-hans/v1.0.0/) - 包括 git 分支名、commit 内容格式等等
 
