@@ -76,6 +76,7 @@
 <summary>主要的系统设计模式：https://docs.microsoft.com/zh-cn/azure/architecture/patterns/、https://docs.aws.amazon.com/zh_cn/prescriptive-guidance/latest/cloud-design-patterns/introduction.html</summary>
 
 ![](./most-used-distributed-system-pattern.jpeg)  
+![](./microservice-patterns.jpeg)  
 
 * [代表/大使模式](https://docs.microsoft.com/zh-cn/azure/architecture/patterns/ambassador) - 代表模式是一种将外部系统或组件与微服务之间的交互抽象成一个代表（Representative）的模式。这个代表可以是一个单独的微服务，负责与外部系统通信、处理复杂的逻辑或封装对外部系统的访问。代表模式可以帮助减少微服务之间的直接依赖，从而提高系统的可维护性和扩展性。
 * [边车/挎斗模式](https://learn.microsoft.com/zh-cn/azure/architecture/patterns/sidecar) - 边车模式是一种将某些辅助功能或非核心功能从主微服务中分离出来，放置到一个独立的边车（Sidecar）中运行的模式。这个边车与主微服务一起部署，但是可以独立地进行扩展、升级或替换，而且语言无关，边车服务可以用任何语言编写。边车模式常用于处理与主微服务业务不直接相关的功能，例如通用的基建功能：日志收集、监控追踪、安全、服务发现、网络连接、负载均衡、认证授权、流量控制等。边车模式的一个例子是 [Service Mesh](https://zhuanlan.zhihu.com/p/61901608)。![](./appmesh-proxy.png)![](./service-mesh.png)
