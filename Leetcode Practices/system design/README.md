@@ -484,7 +484,7 @@ Client -> Load Balancer -> Server2 (固定)
 * ![](./top-5-most-used-deployment-strategies.png) (by ByteByteGo)
 
 ## 分布式/微服务问题与治理
-在微服务架构中，级联深度（或称调用链深度）是一个非常重要的考量点（尤其应尽量避免过深的同步链路/级联），它直接影响系统的性能、开发协作、可靠性、可观测性和可维护性 [Ref 1](https://zhuanlan.zhihu.com/p/592946057)、[Ref 2](https://www.bilibili.com/video/BV1GBpheZEDi/)：
+在[分布式系统](https://www.atlassian.com/zh/microservices/microservices-architecture/distributed-architecture)/微服务架构中，级联深度（或称调用链深度）是一个非常重要的考量点（尤其应尽量避免过深的同步链路/级联），它直接影响系统的性能、开发协作、可靠性、可观测性和可维护性 [Ref 1](https://zhuanlan.zhihu.com/p/592946057)、[Ref 2](https://www.bilibili.com/video/BV1GBpheZEDi/)：
 * 性能下降：每增加一层服务调用，都会引入网络延迟、序列化/反序列化开销、服务间认证/授权开销。调用链越长，总响应时间越长
 * 可靠性降低：级联越深，任何一个中间服务失败的概率就越大，导致整个调用链失败的风险增高。这是 “乘法原理”，即使每个服务有 99.9% 的可用性，十个串联服务总可用性可能就降到 99.0%
 * 可观测性挑战：追踪和调试一个跨越十几个甚至几十个服务的请求会变得异常困难。需要分布式追踪系统来重建完整的调用链
@@ -501,7 +501,7 @@ Client -> Load Balancer -> Server2 (固定)
 * 合理采用异步架构 - 事件驱动架构 (EDA)
 * 集成强大的可观测性工具，链路追踪与优化
 * 服务网格 (Service Mesh) - 如 Istio、Linkerd 可以在不修改服务代码的情况下，提供流量管理、熔断、重试、限流、可观测性等能力。它能帮助管理级联调用中的复杂性，提高系统的弹性和可靠性。Ref [Envoy 服务网格实践：Lyft 是如何解决级联故障问题的](https://www.infoq.cn/article/envoy-service-mesh-cascading-failure)
-* 无法再瘦身下的优化：缓存机制、降级策略、批量请求
+* 其它优化（仅治标不治本）：缓存机制、降级策略、批量请求、超时控制（如 golang context timeout）等等
 
 ### 库 vs 独立/微服务
 |特性	| 库 (Library) | 独立/微服务 (Microservice)
