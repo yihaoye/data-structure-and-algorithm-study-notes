@@ -1,5 +1,5 @@
 # ElasticSearch
-该数据库引擎是基于 Finite State Transducer（有限状态转换器，类似字典树概念）+ 跳表支持倒排索引基本功能（[Ref 1](https://stackoverflow.com/a/43203339/6481829)、[Ref 2](https://www.elastic.co/cn/blog/found-elasticsearch-from-the-bottom-up)）。  
+该数据库引擎是基于 Finite State Transducer（有限状态转换器，类似字典树概念）+ 跳表支持倒排索引的主要功能（[Ref 1](https://stackoverflow.com/a/43203339/6481829)、[Ref 2](https://www.elastic.co/cn/blog/found-elasticsearch-from-the-bottom-up)）。  
 
 ES 的设计是针对查询搜索的，对写的性能一般，应对 CRUD 就是 Create 性能可接受、Read 查询良好、Update 或 Delete 性能勉强（因为涉及之前的分词数据等，所以实际比如分词是通过标记删除来实现的）。ES 是为数据不经常变化的日志分析而设计的。  
 
