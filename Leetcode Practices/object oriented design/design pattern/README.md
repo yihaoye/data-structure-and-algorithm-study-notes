@@ -20,7 +20,9 @@
 * 对象池 | Object Pool - [信号量模式 | Semaphore](./Semaphore.java) 与其十分类似
   * ([Go 示例](./ObjectPool.go))
 * [工厂方法 | Factory](./Factory.java) - 可与注册器合用，语言如 Go 不推荐使用工厂模式而是鼓励使用 NewXXX() 函数即可
-* [函数选项模式 | Functional Options Pattern](./Options.go) - Go 语言推荐模式
+* 函数选项模式 | Functional Options Pattern - Go 语言推荐模式
+  * ([Go 示例 1](./Options.go))
+  * ([Go 示例 2](./Options2.go))
   
 ## 结构型模式
 结构型模式主要涉及如何组合各种对象以便获得更好、更灵活的结构。虽然面向对象的继承机制提供了最基本的子类扩展父类的功能，但结构型模式不仅仅简单地使用继承，而更多地通过组合与运行期的动态组合来实现更灵活的功能。  
