@@ -220,6 +220,10 @@
 * 函数变量（单实例）可以并发调用，只要不是改写函数变量且函数是纯函数式编程（不读写函数外的全局变量，只使用入参和局部变量）的话就是并发安全的
 * [sqlx 简介及其使用](https://colobu.com/2024/05/10/sqlx-a-brief-introduction/#more)
 * 内联优化 - 内联（inlining）是编程语言编译器常用的优化手段，其优化的对象为函数，也称为函数内联。如果某函数 F 支持内联，则意味着编译器可以用 F 的函数体/函数定义替换掉对函数 F 进行调用的代码，以消除函数调用带来的额外开销。通常情况下在构建生产代码时会进行内联优化，以提高性能，尤其是在使用默认的编译优化级别时（也就是没有显式关掉优化的情况下）。[Ref 1](https://tonybai.com/2022/10/17/understand-go-inlining-optimisations-by-example/)
+* Context WithValue 使用场景
+  * 用 WithValue：传递像 traceID、logID、userID（在整个请求中都需要的）、tenantID 等与业务逻辑松散相关，但需要贯穿整个调用链的元数据。
+  * 不用 WithValue：传递函数的必需输入或只在中间少数几层需要的业务参数。对于这些参数，应该通过函数显式参数、结构体字段或选项模式（如果希望它是可选的）来传递，以确保代码的清晰和可维护性。
+* [go struct{} 的几种特殊用法](https://www.cnblogs.com/wanghui-garcia/p/10581388.html) - `map[xxx]struct{}` 的可作为 set 使用且这里哈希表的值完全不占空间（比布尔值更省）
 
 
 ## 数据库高频
