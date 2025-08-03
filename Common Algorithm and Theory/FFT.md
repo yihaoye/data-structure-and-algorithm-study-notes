@@ -105,7 +105,7 @@ public class FFT {
      * @throws IllegalArgumentException if the length of {@code x} does not equal
      *         the length of {@code y} or if the length is not a power of 2
      */
-    public static Complex[] cconvolve(Complex[] x, Complex[] y) {
+    public static Complex[] cconvolve(Complex[] x, Complex[] y) { // 循环卷积
         // should probably pad x and y with 0s so that they have same length
         // and are powers of 2
         if (x.length != y.length)
@@ -135,7 +135,7 @@ public class FFT {
      * @throws IllegalArgumentException if the length of {@code x} does not equal
      *         the length of {@code y} or if the length is not a power of 2
      */
-    public static Complex[] convolve(Complex[] x, Complex[] y) {
+    public static Complex[] convolve(Complex[] x, Complex[] y) { // 线性卷积
         Complex[] a = new Complex[2*x.length];
         for (int i = 0; i < x.length; i++)
             a[i] = x[i];
@@ -364,7 +364,8 @@ public class Complex {
 
 ## 应用
 * 音讯与影像压缩
-* 频谱分析
+* 频谱分析、信号分析
 * 图像处理与快速卷积
 * 多项式乘法与同态加密
+  * 加速大整数的乘法计算
 * etc
