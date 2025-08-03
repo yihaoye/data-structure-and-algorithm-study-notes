@@ -36,6 +36,7 @@ This personal Blog contains explanation and **Java library/template implementati
     - [贪心算法 | Greedy Algorithm](./贪婪算法.md)
       - [耐心排序 | Patience Sorting](./耐心排序.md)
       - [摩尔投票 | Boyer–Moore Majority Vote Algorithm](../Leetcode%20Practices/algorithms/easy/169%20Majority%20Element.java) ([Wiki](https://zh.wikipedia.org/wiki/%E5%A4%9A%E6%95%B0%E6%8A%95%E7%A5%A8%E7%AE%97%E6%B3%95)，仅局限适用于有某元素得票数大于 1/2 的场景)
+      - [Sunday 算法 | Sunday Algorithm](./sunday_search.py) (字符串匹配，比 KMP 简单，平均时间复杂度 `O(N+M)`，最差时间复杂度 `O(N*M)`)
     - [拓扑排序 | Topological Sorting](./拓扑排序.md) (时间复杂度 `O(N)`)
     - [单调栈 (包括单调队列) | Monotone Stack](./单调栈.md) (时间复杂度 `O(N)`)
     - [自定义哈希/指纹 | Customized HashCode/FingerPrint](./自定义哈希指纹.md) (时间复杂度 `O(N)`)
