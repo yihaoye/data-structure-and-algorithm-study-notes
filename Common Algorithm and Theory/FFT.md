@@ -7,6 +7,7 @@
 # 快速傅立叶变换
 快速傅里叶变换（Fast Fourier Transform, FFT），是快速计算序列的离散傅里叶变换（DFT）或其逆变换的方法。傅里叶分析将信号从原始域（通常是时间或空间）转换到频域的表示或者逆过来转换。FFT 会通过把 DFT 矩阵分解为稀疏（大多为零）因子之积来快速计算此类变换。因此，它能够将计算 DFT 的复杂度从只用 DFT 定义计算需要的 O(n^2) 降低到 O(nlogn)，其中 n 为数据大小。  
 FFT 支持在 O(nlogn) 的时间内计算两个 n 度的多项式的乘法，比朴素的 O(n^2) 算法更高效。由于两个整数的乘法也可以被当作多项式乘法，因此这个算法也可以用来加速大整数的乘法计算以及卷积计算之类。  
+离散傅立叶变换 DFT 通常通过矩阵乘法来实现，而快速傅立叶变换 FFT 则是对这一矩阵运算进行优化的算法，FFT 利用 DFT 矩阵的对称性和周期性性质、并非直接在矩阵乘法的基础上进行优化。  
 
 * **快速傅里叶变换推荐讲解：[Ref 1](https://blog.csdn.net/Flag_z/article/details/99163939) + [Ref 2](https://zhuanlan.zhihu.com/p/31584464)**
 * [快速傅里叶变换详细讲解](https://www.youtube.com/watch?v=RlxT4Nmd45I&list=PLEUKC88yR4_al2oa2LF0SKS2RPpxmWg3n&index=9)
@@ -36,27 +37,23 @@ public class FFT {
         int n = x.length;
 
         // base case
-        if (n == 1) {
+        if (n == 1)
             return new Complex[] { x[0] };
-        }
 
         // radix 2 Cooley-Tukey FFT
-        if (n % 2 != 0) {
+        if (n % 2 != 0)
             throw new IllegalArgumentException("n is not a power of 2");
-        }
 
         // fft of even terms
         Complex[] even = new Complex[n/2];
-        for (int k = 0; k < n/2; k++) {
+        for (int k = 0; k < n/2; k++)
             even[k] = x[2*k];
-        }
         Complex[] q = fft(even);
 
         // fft of odd terms
         Complex[] odd = even;  // reuse the array
-        for (int k = 0; k < n/2; k++) {
+        for (int k = 0; k < n/2; k++)
             odd[k] = x[2*k + 1];
-        }
         Complex[] r = fft(odd);
 
         // combine
@@ -82,22 +79,19 @@ public class FFT {
         Complex[] y = new Complex[n];
 
         // take conjugate
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++)
             y[i] = x[i].conjugate();
-        }
 
         // compute forward FFT
         y = fft(y);
 
         // take conjugate again
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++)
             y[i] = y[i].conjugate();
-        }
 
         // divide by n
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++)
             y[i] = y[i].scale(1.0 / n);
-        }
 
         return y;
     }
@@ -114,9 +108,8 @@ public class FFT {
     public static Complex[] cconvolve(Complex[] x, Complex[] y) {
         // should probably pad x and y with 0s so that they have same length
         // and are powers of 2
-        if (x.length != y.length) {
+        if (x.length != y.length)
             throw new IllegalArgumentException("Dimensions don't agree");
-        }
 
         int n = x.length;
 
@@ -126,9 +119,8 @@ public class FFT {
 
         // point-wise multiply
         Complex[] c = new Complex[n];
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < n; i++)
             c[i] = a[i].times(b[i]);
-        }
 
         // compute inverse FFT
         return ifft(c);
@@ -369,3 +361,10 @@ public class Complex {
 
 例题：  
 * Leetcode Q43 可以被 FFT 优化
+
+## 应用
+* 音讯与影像压缩
+* 频谱分析
+* 图像处理与快速卷积
+* 多项式乘法与同态加密
+* etc
