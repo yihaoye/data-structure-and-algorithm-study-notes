@@ -2570,6 +2570,7 @@ https://docs.oracle.com/en-us/iaas/data-science/using/pipelines-about.htm
 <summary>details</summary>
 
 参考：
+* [数学读心术：大数据猜你喜欢为什么这么准](https://www.youtube.com/watch?v=cvR0FaI486k)
 * [推荐系统基础系列](https://www.youtube.com/watch?v=5dTOPen28ts&list=PLvOO0btloRntAi-VnV06M1Bu0X1xljUUP)
 
 主要流程（Cascade Ranking 整体如漏斗型）：
