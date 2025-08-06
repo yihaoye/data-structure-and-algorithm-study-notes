@@ -2479,7 +2479,7 @@ Word Cloud，属于 Top K 系统的 follow up 更为复杂，因为可以进行�
 另外词云系统与全文搜索强相关，在扫描一段文本数据时需要先进行分词及停用词过滤，然后再存入上面的数据存储中，又因为通常词云不要求实时的精确度，所以该部分工作是由消息队列、异步（MapReduce）处理的，在应对海量数据场景里也更适合和可扩展（也因此上面的时间戳精度没必要精确到分、秒，因为整体系统的性能成本上不允许也没必要）。  
 
 注意词云系统可以由 ES 全文搜索引擎内置地支持（分词聚合），其中有 2 种办法（但是只有第 1 种可行）：
-* doc_values：推荐，默认开启的，使用的是磁盘（不会 OOM），实际本质也是以上面的列式存储实现。但是注意它应该是针对 keyword 字段而不是 text 字段（默认对 text 也是关闭的），所以为文本内容创建一个单独的 text 字段，并给它一个 keyword 类型的子字段，这个子字段会捕获并存储所有分词结果，以便高效地进行词云聚合。[Ref 1](https://www.cnblogs.com/juniorMa/p/16198364.html)、[Ref 2](https://cloud.tencent.com/developer/article/2398533)、[Ref 3](https://cloud.tencent.com/developer/article/2228842)
+* doc_values：推荐，默认开启的，使用的是磁盘（不会 OOM），实际本质也是以上面的列式存储实现。但是注意它应该是针对 keyword 字段而不是 text 字段（默认对 text 也是关闭的），所以为文本内容创建一个单独的 text 字段，并给它一个 keyword 类型的子字段（[ES 通过 fields 来增加多个子字段](https://godleon.github.io/blog/Elasticsearch/Elasticsearch-getting-started/#Multiple-Field-%E7%89%B9%E6%80%A7%E5%8F%8A-Mapping-%E4%B8%AD%E9%85%8D%E7%BD%AE%E8%87%AA%E5%AE%9A%E7%BE%A9-Analyzer)），这个子字段会捕获并存储所有分词结果，以便高效地进行词云聚合。[Ref 1](https://www.cnblogs.com/juniorMa/p/16198364.html)、[Ref 2](https://cloud.tencent.com/developer/article/2398533)、[Ref 3](https://cloud.tencent.com/developer/article/2228842)、[Ref 4](https://www.cnblogs.com/leeSmall/p/9215909.html)、[Ref 5](https://zhuanlan.zhihu.com/p/107820698)
 * fielddata：不推荐，默认是关闭的需要自己开启，使用的是内存。实际上数据量稍微较多的时候就会使得 ES 实际不可用（会 OOM，性能成本极高），原因接下来一步步分析这种聚合过程（实际情况是分布式、增量式的算法在分片级别并行执行，但仍然可见其成本）：
   1. 找出每个符合条件的文本/文档的映射词 - 其中如果符合条件的文本有 N 个，比如 1e5 个，那么就必须是 O(N) 地先扫描一遍。
   2. 每个找出的唯一的词都存入同一个内存临时表里 - 假设总共的唯一词有 M 个（通常大于 N），那么每个写入临时表是 logM（必须，用于后续聚合排序），总共就是 O(MlogM)。但是实际上操作的词是大于 M 的，应该是 W（假设每个文本/文档平均找出 w 个词，那么 W = w * N），所以实际应该是 O(WlogM)。
