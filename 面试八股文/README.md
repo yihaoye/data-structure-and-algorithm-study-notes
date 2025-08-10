@@ -259,6 +259,7 @@
   * 遍历和查询具有父子关系的层级数据
   * [遍历图结构数据](../Other%20Practices/22-07-2025%20recursive%20friendship%20graph.sql)
   * 生成序列或日期范围
+* PG 数据库 [Citus](https://github.com/citusdata/citus) - citus 是 PostgreSQL 数据库中的一种轻量级的分库分表解决方案。citus 不是一个单独的程序，它是 PostgreSQL 数据库中的一个插件，可以使用 create extension 安装此插件。每个 citus 集群有多个 PostgreSQL 数据库实例组成，数据库实例分为两类：master 节点，通常有一台。master 节点只存储分库分表的元数据，不存储实际的数据；worker 节点，通常有多台。worker节点存储实际的分片数据 (shard)。用户只连接 master 节点，即用户把 SQL 发到 master 节点，然后 master 节点解析SQL，把SQL分解成各个子 SQL 发送到底层的 worker 节点，完成 SQL 的处理。当各个 workder 把数据返给 master 之后，master 再做一次聚合运算，然后把结果返回用户。[Ref](http://www.pgsql.tech/article_102_10000013)
 
 ### Redis 高频
 * Redis 有哪些数据类型？可以应用在什么场景？[Ref 1](https://cloud.tencent.com/developer/article/1975464)、[Ref 2](../Computer%20System%20Layer/数据库/Redis/README.md)
@@ -803,6 +804,7 @@
 * iframe 使用场景及安全风险 - `iframe` 常用于嵌入第三方内容（如广告、视频、社交媒体插件）、多域内容整合（展示不同来源的数据或应用）和隔离不受信任的组件（避免影响主页面）。此外，它还能嵌入文档或网页，提供多功能展示。然而，`iframe` 带来了一些安全风险。跨站脚本（XSS）攻击可能通过 `iframe` 嵌入恶意内容；点击劫持（Clickjacking）引诱用户执行意想不到的操作；数据泄露可能通过内嵌第三方内容发生；不当的跨域资源共享（CORS）设置可能允许未授权访问；混合内容问题在 HTTPS 页面嵌入 HTTP 内容会导致安全漏洞；过多权限可能执行危险操作。
   * 防护措施包括：设置严格的 Content Security Policy（CSP）限制外部资源；使用 `X-Frame-Options` 或 `Content-Security-Policy` 响应头防止点击劫持；使用 `sandbox` 属性限制 `iframe` 行为；配置严格的 CORS 策略确保信任来源；确保所有嵌入内容使用 HTTPS 协议；最小化 `iframe` 权限，使用 `allow` 属性控制功能。通过这些措施，可以显著提高 `iframe` 的安全性。
 * 前端性能优化 ![](./frontend-core-enhance.jpeg)
+* [gRPC-Web](https://www.infoq.cn/article/zqcgem6ximfgr195h6iq)
 
 
 以上部分参考：https://osjobs.net/topk/  
