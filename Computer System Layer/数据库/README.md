@@ -40,6 +40,7 @@
   * 关系模型、文档模型（树模型/KV模型）、图模型（网络模型）
 * [数据库设计模式](./数据库设计模式.md)
 * 数据库常见组件：Parser、Binder、Planner、Optimizer、Execution、Storage
+  * ![](./sql_execute.png)
 
 ## 数据库扩展
 ![](./database-scaling-cheatsheet.gif)  
