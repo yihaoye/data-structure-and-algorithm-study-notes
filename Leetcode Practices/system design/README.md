@@ -3274,6 +3274,7 @@ SESSION 的数据保存在在服务器端，但不是保存在内存中（但是
 
 ![](./SSO2.webp)  
 ![](./SSO.jpeg)  
+![](./SSO3.png)  
 
 OAuth 2.0  
 ![](./oauth2-abstract-flow.png)  
