@@ -111,6 +111,7 @@ Books:
 # Best Practice 工作实践
 * 工程复杂性管理
   * UNIX 哲学 - 只做一件事，并做到极致
+    * [Make It Work, Make It Right, Make It Fast](https://wiki.c2.com/?MakeItWorkMakeItRightMakeItFast) - first make it work, then make it right, and, finally, make it fast.
   * KISS 原则 - Keep It Simple, Stupid
   * 奥卡姆剃刀 - 如无必要，勿增实体；如果关于同一个问题有许多种理论、方案，人们应该选择假设最少的理论、方案，在没有证明假设之前，更应倾向于简单而非复杂。假设是非常有用的，但不正确的假设会产生灾难性的影响。系统越复杂，失败的概率就越高
     * 最后响应时刻 | Last Responsible Moment - 尽可能晚做决定，直到可以根据事实而不是不确定的假设和预测做出决定
