@@ -51,7 +51,7 @@ This personal Blog contains explanation and **Java library/template implementati
     - [位运算 | Bitwise Operation](./位运算.md)
     - [洗牌算法 | Knuth-Shuffle](./../Leetcode%20Practices/algorithms/medium/384%20Shuffle%20an%20Array.java)
   - 进阶 | Advanced
-    - [动态规划, 状态机 | Dynamic Programming, State Machine](./动态规划与状态机.md) (动态规划本质上属于分治法的应用)
+    - [动态规划, 状态机 | Dynamic Programming, State Machine](./动态规划与状态机.md) (动态规划本质上属于分治法的应用，并在分治法之上增加了通过空间缓存子问题结果以避免重复计算来优化性能，即只适用于有重复子问题的问题，因为有些问题分治后每个子问题都是独立不重复的)
       - [前缀和, 差分, 树状数组, 线段树 | Prefix Sum, Difference, Binary Indexed Tree, Segment Tree](./前缀和与差分.md)
       - [记忆化搜索 | Memory Search](./记忆化搜索.md)
       - [位掩码 | Bitmasking](./动态规划与状态机.md#位掩码-dp)
