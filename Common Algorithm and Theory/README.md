@@ -28,6 +28,8 @@ This personal Blog contains explanation and **Java library/template implementati
       - 归纳法 | Inductive Reasoning ([Wiki](https://zh.wikipedia.org/zh-hans/%E5%BD%92%E7%BA%B3%E6%8E%A8%E7%90%86)；可用于基于测试数据的输入输出案例进行目标算法逻辑的先期猜测、过滤)
   - 中阶 | Intermediate
     - [二分搜索/二分算法 | Binary Search](./二分搜索.md) (时间复杂度 `O(logN)`)
+      - 插值搜索 | Interpolation Search (时间复杂度平均 `O(log(logN))` 最坏 `O(N)`，[Ref](https://zq99299.github.io/dsalg-tutorial/dsalg-java-hsp/08/03.html#%E6%8F%92%E5%80%BC%E6%9F%A5%E6%89%BE%E7%AE%97%E6%B3%95))
+      - 斐波那契搜索 | Fibonacci Search (时间复杂度 `O(logN)`，[Ref](https://blog.csdn.net/weixin_42145502/article/details/99676008))
     - [双指针法, 滑动窗口算法 | Two Pointer, Sliding Window](./双指针法与滑动窗口算法.md)
     - [深度优先, 广度优先, 树图遍历 | Depth First Search, Breadth First Search](./树图遍历.md)
       - [回溯法 | Backtracking](./回溯法.md) (回溯法通常用于解决 NP 问题 i.e. 非确定性多项式问题)
