@@ -57,7 +57,7 @@
       - [二叉堆 | Binary Heap](./Data%20Structure%20Implementation/BinaryHeap/README.md) (构造 O(N)，遍历 O(N)，插入/删除节点 O(logN))
         - 优先队列 | PriorityQueue
       - 斐波那契堆 | Fibonacci Heap
-  - 线索二叉树 | Threaded Binary Tree (又分：前序线索二叉树、中序线索二叉树、后序线索二叉树，[Ref](https://zhuanlan.zhihu.com/p/134184036))
+  - 线索二叉树 | Threaded Binary Tree (又分：前序线索二叉树、中序线索二叉树、后序线索二叉树，其作用主要是提高二叉树遍历的效率，特别是避免在遍历时使用递归或栈来保存中间状态 [Ref](https://www.cnblogs.com/linfangnan/p/16501961.html))
   - 霍夫曼树 | Huffman Tree (设二叉树具有 n 个带权叶结点，从根结点到各叶结点的路径长度与相应叶节点权值的乘积之和称为树的带权路径长度 Weighted Path Length of Tree，WPL)
   - 二叉搜索树 | Binary Search Tree (搜索 O(logN) - O(N)，插入/删除节点 O(1))
   - 平衡树 | Balanced Tree
