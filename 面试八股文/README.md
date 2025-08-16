@@ -253,7 +253,7 @@
       * [opengl and golang getting started](https://medium.com/@drgomesp/opengl-and-golang-getting-started-abcd3d96f3db)
       * shader 编程
       * cuda
-  * Runtime 库
+  * Runtime 库 - 是 Go 程序运行时所依赖的核心组件，它负责管理程序的底层操作，如内存分配、垃圾回收、Goroutine 调度、以及 channel 通信等
     * 函数、类函数、接口实现、CPU 开销
     * 函数内联
     * 类型转换机制及其开销
@@ -271,7 +271,7 @@
   * 标准库
     * 字符串
       * string、[]byte 区别以及转换开销
-      * byte、rune 区别
+      * byte、rune 区别 - byte 和 rune 都是用来表示字符的，但它们在处理字符的范围和方式上有所不同。byte 是 uint8 的别名，代表 UTF-8 字符串的单个字节（所以只占 1 个字节），主要用于表示 ASCII 码字符，范围是 0-255。而 rune 是 int32 的别名，代表 Unicode 字符，占 4 个字节，可以表示更大的字符范围，包括中文、日文等，通常用于处理 Unicode 或 UTF-8 字符
     * timer
       * time.Sleep, time.Ticker, time.After, runtime.usleep, runtime.Osyield, runtime.Gosched 区别以及性能
       * time, runtime.nanotime 区别
@@ -287,7 +287,7 @@
     * 指针和结构使用场景
     * make 提前给出空间大小
     * hash 函数选择 - 系统默认 aes，bkdr、murmurhash、elf...
-  * cgo
+  * cgo - 是 Go 语言提供的一种机制，允许开发在 Go 代码中调用 C 语言函数，也可以将 Go 代码编译成共享库供 C 程序调用
     * cgo 调用机制 - c 调用 go，go 调用 c
     * 对 routine、cgo 栈管理的区别
     * 参数传递规则
