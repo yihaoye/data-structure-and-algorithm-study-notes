@@ -308,6 +308,17 @@
       * iterface{func} -> eface
     * offset、align 用法
     * mmap
+  * 并发编程
+    * goroutine 模型使用场景、优缺点
+    * goroutine 调度开销
+    * channel 实现方式
+    * channel 和 mutex 区别
+    * 多线程共享安全性
+    * goroutine 池
+    * goroutine ID 获取
+    * 调用栈数据共享实现
+    * context 机制
+    * channel leak
 
 
 ## 数据库高频
