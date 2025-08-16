@@ -224,6 +224,90 @@
   * 用 WithValue：传递像 traceID、logID、userID（在整个请求中都需要的）、tenantID 等与业务逻辑松散相关，但需要贯穿整个调用链的元数据。
   * 不用 WithValue：传递函数的必需输入或只在中间少数几层需要的业务参数。对于这些参数，应该通过函数显式参数、结构体字段或选项模式（如果希望它是可选的）来传递，以确保代码的清晰和可维护性。
 * [go struct{} 的几种特殊用法](https://www.cnblogs.com/wanghui-garcia/p/10581388.html) - `map[xxx]struct{}` 的可作为 set 使用且这里哈希表的值完全不占空间（比布尔值更省）
+* 高性能编程优化
+  * 工具 - pprof 及其数据指标、火焰图、内存选项（-inuse_space, -inuse_objects, -alloc_space, -alloc_objects）、net/HTTP/pprof；基准测试 benchmark（-cpuprofile, -memprofile, -benchmem）
+  * 系统级 Trace - gperf, perf, pstack, strace, tcpdump
+  * GC 机制
+    * 堆、栈分配区别
+    * 栈扩容机制，管理开销
+    * go 栈、cgo 栈
+    * 内存分配模型 - 对齐方式、填充方式
+    * 内存逃逸
+    * 内存池使用 - sync.Pool、手动管理
+    * gc - 减少内存碎片、降低内存使用
+    * 切片与偏移量 - 当 GC 运行时指针写入需要 writebarrier
+    * 大小端
+  * 进阶
+    * CPU 缓存
+      * cache-line - 大小、填充、对齐
+      * 伪共享 false-sharing
+      * 分片技术
+      * cache-miss 工具
+    * 分支预测
+      * 从内部循环中删除分支（示例 `if a { for {} } else { for {} }` 好于 `for { if a {} else {} }`）
+      * 使用更好的汇编代码，代替原生
+      * 排序数据、数据结构设计考虑、通过缓存局部性和分支预测来提高性能
+    * 函数调用开销
+    * 整数、浮点数转化
+    * GPU 加速
+      * [opengl and golang getting started](https://medium.com/@drgomesp/opengl-and-golang-getting-started-abcd3d96f3db)
+      * shader 编程
+      * cuda
+  * Runtime 库
+    * 函数、类函数、接口实现、CPU 开销
+    * 函数内联
+    * 类型转换机制及其开销
+      * runtime.convT2E
+      * runtime.convT2I
+    * type assertions vs type switches
+    * defer 使用场景
+      * defer 机制（LIFO）
+      * defer 开销
+      * 热点代码禁止使用 defer
+      * for 循环禁止使用 defer
+    * map - 底层机制、读写速度、与 for slice 对比、switch 性能对比
+    * IO 模型 - epoll, schedule
+    * mutex、rwmutex、atomic - 底层实现、开销、无锁实现
+  * 标准库
+    * 字符串
+      * string、[]byte 区别以及转换开销
+      * byte、rune 区别
+    * timer
+      * time.Sleep, time.Ticker, time.After, runtime.usleep, runtime.Osyield, runtime.Gosched 区别以及性能
+      * time, runtime.nanotime 区别
+      * timer 性能，极限个数
+    * rand - 实现机制、性能开销、不同 rand 场景，默认带锁新建无锁
+    * 数组边界检查开销
+    * fmt、strconv 区别、性能开销
+    * so 调用
+    * bytes.Buffer
+    * copy、append 机制
+    * 排序 - sort.Sort 和最小堆效率
+    * for、goto 效率
+    * 指针和结构使用场景
+    * make 提前给出空间大小
+    * hash 函数选择 - 系统默认 aes，bkdr、murmurhash、elf...
+  * cgo
+    * cgo 调用机制 - c 调用 go，go 调用 c
+    * 对 routine、cgo 栈管理的区别
+    * 参数传递规则
+  * 汇编
+    * 体系结构 - amd64, arm, 386, mips
+    * plan9 汇编
+    * 汇编、go 代码相互调用
+    * 堆栈管理分配
+    * 特殊指令优化 - sse4、avx、avx2、avx512、aes
+    * 方便的汇编工具 - asmfmt、peachpy、c2goasm
+  * unsafe 包
+    * 使用场景与风险
+    * 基础结构与 reflect 结构转换
+      * string -> stringheader
+      * []int -> sliceheader
+      * map -> hmap
+      * iterface -> iface
+      * iterface{func} -> eface
+    * offset、align 用法
+    * mmap
 
 
 ## 数据库高频
