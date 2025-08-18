@@ -201,6 +201,8 @@ This personal Blog contains explanation and **Java library/template implementati
       - FP-Growth 算法 (以及相关的 Frequent Pattern Tree；[Ref](https://en.wikipedia.org/wiki/Frequent_pattern_discovery))
   - 并行算法 | Parallel Algorithm ([Wiki](https://en.wikipedia.org/wiki/Parallel_algorithm)、[Ref](https://blog.51cto.com/luweir/4873113?articleABtest=0)：并行算法尚在发展中，不及串行算法丰富。目前最常用的的方法是 PCAM 方法，即划分，通信，组合，映射。并行算法与串行算法最大的不同之处在于，并行算法不仅要考虑问题本身，而且还要考虑所使用的并行模型，网络连接等等)
     - 阿姆达尔定律 | Amdahl's Law ([Wiki](https://zh.wikipedia.org/wiki/%E9%98%BF%E5%A7%86%E8%BE%BE%E5%B0%94%E5%AE%9A%E5%BE%8B))
+  - 图形学算法 | Computer Graphics Algorithm
+    - Boids 模型 | Boids Model ([Wiki](https://en.wikipedia.org/wiki/Boids)，又称鸟群算法，用于模拟鸟类的群集行为以及相关的群体运动；[Ref](https://www.red3d.com/cwr/boids/))
   - [数学 | Maths](../Computer%20Science%20Maths/README.md) (以下分类不严格界限，互相可以有重叠)
     - 专项专题 | Special Topics
       - 排序网络 | Sorting Network ([Ref](http://www.matrix67.com/blog/archives/185))
