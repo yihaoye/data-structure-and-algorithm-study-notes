@@ -69,6 +69,29 @@ Keep at least 3 project examples/stories which better to be large scale.
 
 Books:  
 * [Staff Engineer: Leadership Beyond the Management Track](https://staffeng.com/book)
+  * 技术质量管理
+  * 与权威（明确的此刻的组织利益方向）保持一致 - 头衔会赋予一种组织上的权威，只不过这种权威是由一个更大的组织权威借给的。授予的东西也可以收回，而能否保持组织权威取决于与能否和授予权威的上级/提供者保持深度一致。（个人认为如果不认同组织利益方向比如出于道德等原因，更好的建议是应该考虑其他组织并重新慎重做出选择）
+    * 保持一致，永远不要让上级、经理吃惊
+    * 不要被上级吃惊 - 比如主动询问经理是否还有其他需要关注的领域，以及目前的优先事项与上司的优先事项是否一致等等
+    * 提供 context
+  * 除了主导，也要同时跟进其他人好的推动 - [to lead you have to follow](https://yucliu.gitbook.io/staff-engineer/operating-at-staff/to-lead-you-have-to-follow)
+  * 学会永不犯错
+    * 最高效的工程师在每次会议中都会以达成共识为目标，了解会议室中各方的需求和观点，并确定需要采取哪些措施才能达成一致。并且每个待办事项都有明确的负责人。
+    * 找到了一种既不犯错又不占据主导地位的方法。坚持正确，同时为他人留出空间。
+    * 倾听沟通练习的机会无处不在。文档上的每条评论都是一个机会。每次会议都是一个机会。每个 PR 都是一个机会。
+    * 对付不合作的同事最有效的两种方法是：
+      * 在会议中包括一些他们不能欺负的人（比如他们的经理或首席技术官）
+      * 在会议之前投入大量精力与他们协调，这样他们就会觉得自己被倾听了，也不太可能破坏讨论
+  * 为他人创造空间
+    * 衡量作为一名 Staff-plus 工程师长期成功的最佳指标之一是，周围的组织是否越来越多地受益于其贡献（辅助人物），但并不完全依赖于其贡献（关键人物）。
+      * 将贡献转向提问。提出正确的问题不仅有助于避免失误，还能让更多人更容易做出贡献。
+      * 如果你在会议中看到有人没有参与，就把他们拉进来讨论。
+      * 成为做笔记的人。
+      * 把最难的部分委托给团队，让他们去拓展和发展。另一方面，将判断力转移给别人很困难，尤其是在复杂的决策方面。幸运的是，可以采取渐进式的方法，将日益复杂和重要的决策转移给更广泛的团队。
+      * 尽早沟通，在最终形成决策之前就进行。大多数人很难改变既定的观点，而尽早收集反馈更容易融入意见，并让人们参与到决策过程中，这样他们就能看到思考的轨迹以及最终的结果。
+      * 不要让他们参与你的工作，而要让他们参与工作。
+      * 最后一步是赞助其他人完成那些可以让他们晋升为 Staff-plus 职位的工作。重要的是，当工作变成他们的工作时，必须让他们自己去做。提供咨询、建议、提供背景信息，但最终，支持意味着可能让他们采取不同的、非预定的方法。
+  * 建立同行网络
 * [The Starter Manager Guide](https://commoncog.com/g/starter-manager/)
 * [Managing Humans - Biting and Humorous Tales of a Software Engineering Manager](https://link.springer.com/book/10.1007/978-1-4842-2158-7?source=post_page-----4594bfd4b9a--------------------------------)
 * [The Manager's Path](https://www.oreilly.com/library/view/the-managers-path/9781491973882/?source=post_page-----4594bfd4b9a--------------------------------)
@@ -331,7 +354,6 @@ Books:
   * 判断力、[找对战略方向](https://www.youtube.com/watch?v=PFpKJRdW0Kw)、[时机管理](https://www.sohu.com/a/290572401_100300347)
   * 不断发明和重新发明、优化
   * 对核心及次核心业务有高标准
-  * 除了主导，也要同时跟进其他人好的推动 - [to lead you have to follow](https://yucliu.gitbook.io/staff-engineer/operating-at-staff/to-lead-you-have-to-follow)
 * 执行力、策略
   * 为团队设定明确、可衡量的目标，以跟踪成果的进展 - 具体可通过 1-3-5 year plan 来保证长期策略。通过定期回顾结果来培养持续改进的文化
   * 留有余裕，70% 至 80% 的时间完成既定真正高优需求、剩下的时间用于优化、发散、支持他人等等
