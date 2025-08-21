@@ -68,6 +68,8 @@ Keep at least 3 project examples/stories which better to be large scale.
 * Vision and goal setting
 
 Books:  
+* 原子习惯
+  * 建立系统，而非目标（[Ref 1](https://www.reddit.com/r/selfimprovement/comments/1c2azfs/systems_not_goals/?tl=zh-hans)、[Ref 2](https://36kr.com/p/1903166793541768)）
 * [Staff Engineer: Leadership Beyond the Management Track](https://staffeng.com/book)
   * 在真正重要（高回报）的事情上努力
     * 尽量少做简单的、低影响的事，也少做低影响、高能见度的工作

@@ -224,7 +224,7 @@
   * 用 WithValue：传递像 traceID、logID、userID（在整个请求中都需要的）、tenantID 等与业务逻辑松散相关，但需要贯穿整个调用链的元数据。
   * 不用 WithValue：传递函数的必需输入或只在中间少数几层需要的业务参数。对于这些参数，应该通过函数显式参数、结构体字段或选项模式（如果希望它是可选的）来传递，以确保代码的清晰和可维护性。
 * [go struct{} 的几种特殊用法](https://www.cnblogs.com/wanghui-garcia/p/10581388.html) - `map[xxx]struct{}` 的可作为 set 使用且这里哈希表的值完全不占空间（比布尔值更省）
-* Go BigDecimal，因为没有直接的库（math/big 也不完整支持），所以可能要按需使用第三方包[（示例）](https://github.com/ericlagergren/decimal)，而且因为现代计算机内存不再是首要的瓶颈，许多大型企业代码扫描都把 double 定成风险中度高危代码（因为因此造成的 bug 影响的人效、资损远高于提高性能省的成本）。
+* Go BigDecimal，因为没有直接的库（math/big 也不完整支持），所以可能要按需使用第三方包（[示例](https://github.com/ericlagergren/decimal)），而且因为现代计算机内存不再是首要的瓶颈，许多大型企业代码扫描都把 double 定成风险中度高危代码（因为因此造成的 bug 影响的人效、资损远高于提高性能省的成本）。
 * 高性能编程优化
   * 工具 - pprof 及其数据指标、火焰图、内存选项（-inuse_space, -inuse_objects, -alloc_space, -alloc_objects）、net/HTTP/pprof；基准测试 benchmark（-cpuprofile, -memprofile, -benchmem）
   * 系统级 Trace - gperf, perf, pstack, strace, tcpdump
