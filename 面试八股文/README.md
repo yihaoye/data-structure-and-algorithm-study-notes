@@ -542,6 +542,7 @@
   * Function Calling 是替代 System Prompt 对 Agent Tools（函数、脚本等等）的注册 - 使用类似 JSON 等格式，所以更精确、节省地应对 AI 模型的随机化错误
   * AI Agent 只是简单的自动化程序，充当人在与 AI 模型沟通完后的动手操作部分的代劳（基于 AI 模型返回结果去跑、调用 Agent Tools 函数、脚本等等，从而能真正“做事”）
   * MCP Server 是开发了一系列常用 Agent Tools 的网络服务（类似后端 API 服务），MCP 规定了如何与 AI Agent 通信、提供了哪些接口（比如查询有哪些 Agent Tools 函数及其描述、功能、参数、格式，及其调用，资源读写，提示词模版等）
+* [Claude Code Best Practices](https://www.anthropic.com/engineering/claude-code-best-practices)
 
 
 ## 硬件与操作系统（Linux & bash）高频
