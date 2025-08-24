@@ -543,6 +543,12 @@
   * AI Agent 只是简单的自动化程序，充当人在与 AI 模型沟通完后的动手操作部分的代劳（基于 AI 模型返回结果去跑、调用 Agent Tools 函数、脚本等等，从而能真正“做事”）
   * MCP Server 是开发了一系列常用 Agent Tools 的网络服务（类似后端 API 服务），MCP 规定了如何与 AI Agent 通信、提供了哪些接口（比如查询有哪些 Agent Tools 函数及其描述、功能、参数、格式，及其调用，资源读写，提示词模版等）
 * [Claude Code Best Practices](https://www.anthropic.com/engineering/claude-code-best-practices)
+  * 自定义设置：仓库使用 CLAUDE.md 文件（用作提示工程）
+  * 提供更多工具给它：Bash、MCP、自定义命令（`.claude/commands`）
+  * 使用常见工作流：TDD 编写测试 -> 提交 -> 编码 -> 迭代 -> 提交、代码库 Q&A
+  * 优化工作流：指示越具体越好、提供图像、告知你希望它关注处理的文件、提供 URL、尽早并经常纠正、使用 `/clean` 来保持上下文的重点、复杂工作流使用清单和便笺薄、提供数据（比如日志）
+  * 使用 headless 模式进行基础设施自动化：CI、pre-commit hooks、build 脚本、自动化、linter
+  * 使用多 Claude 工作流进行升级：一个 Claude 编码另一个验证、
 
 
 ## 硬件与操作系统（Linux & bash）高频
