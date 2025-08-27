@@ -152,7 +152,7 @@ Books:
 # Best Practice 工作实践
 * 工程复杂性管理
   * [UNIX 哲学](../Quality%20Assurance/README.md#Unix-哲学)
-    * 精简版：只做一件事，并做到极致。其实就是 SOLID 的 Single Responsibility，适用于广泛的软件日常设计，比如 OOD、系统设计、领域划分（如微服务职责、数据库表设计）、应用层级职责（如 controller 层不要写 SQL，repository 层不要写业务；模块边界清晰、模块之间只通过接口通信，不要跨层调用，例如 controller 不要直接调 SQL，repository，要走 service -> repository）
+    * 精简版：只做一件事，并做到极致。其实就是 SOLID 的 Single Responsibility，适用于广泛的软件日常设计，比如 OOD、系统设计、领域划分（如微服务职责、数据库表设计）、应用层级职责（如 controller 层不要写 SQL，repository 层不要写业务）
     * [Make It Work, Make It Right, Make It Fast](https://wiki.c2.com/?MakeItWorkMakeItRightMakeItFast) - first make it work, then make it right, and, finally, make it fast.
   * KISS 原则 - Keep It Simple, Stupid
   * 奥卡姆剃刀 - 如无必要，勿增实体；如果关于同一个问题有许多种理论、方案，人们应该选择假设最少的理论、方案，在没有证明假设之前，更应倾向于简单而非复杂。假设是非常有用的，但不正确的假设会产生灾难性的影响。系统越复杂，失败的概率就越高
@@ -161,7 +161,7 @@ Books:
     * [YAGNI 原则](https://en.wikipedia.org/wiki/You_aren%27t_gonna_need_it) - You aren't gonna need it，不应添加任何功能，除非它被认为有必要；YAGNI 旨在与其他几种极限编程实践结合使用，例如持续重构、持续自动化单元测试和持续集成，如果没有持续重构，YAGNI 可能会导致代码混乱和大量返工，即技术债务
   * 模块化最佳实践
     * 接口优先设计 - 模块之间先定义接口，再写实现，且接口与实现分离
-    * 分层清晰 + 限制依赖方向 - 不允许反向调用（比如 repository 反调 service）
+    * 分层清晰/模块边界清晰 + 限制依赖方向 - 模块之间只通过接口通信，不要跨层调用（例如 controller 不要直接调 SQL，repository，要走 service -> repository），不允许反向调用（比如 repository 反调 service），平层调用可以但要有限制，另外还有通用模块 util/pkg/helper 之类的虽然在最顶层也可以作为最底层模块被前面说的各个层级调用（但是要保持内聚、无业务逻辑、低依赖、轻量、抽象、可重用、明确分类，因为通用模块本身也可以分层、互相依赖所以其实模块内规范与前面其他层级一样）
     * 领域驱动设计（适合复杂业务）- 用领域对象表达业务规则，而不是散落在 if-else
     * 解耦第三方依赖 - 通过接口适配第三方系统
     * 横切关注点抽离（AOP 思想）- 认证、日志、监控、事务，不要散落在业务逻辑里，而是集中处理
