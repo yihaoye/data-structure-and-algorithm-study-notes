@@ -151,7 +151,8 @@ Books:
 
 # Best Practice 工作实践
 * 工程复杂性管理
-  * UNIX 哲学 - 只做一件事，并做到极致
+  * [UNIX 哲学](../Quality%20Assurance/README.md#Unix-哲学)
+    * 精简版：只做一件事，并做到极致。其实就是 SOLID 的 Single Responsibility，适用于广泛的软件日常设计，比如 OOD、系统设计、领域划分（如微服务职责、数据库表设计）、应用层级职责（如 controller 层不要写 SQL，repository 层不要写业务；模块边界清晰、模块之间只通过接口通信，不要跨层调用，例如 controller 不要直接调 SQL，repository，要走 service -> repository）
     * [Make It Work, Make It Right, Make It Fast](https://wiki.c2.com/?MakeItWorkMakeItRightMakeItFast) - first make it work, then make it right, and, finally, make it fast.
   * KISS 原则 - Keep It Simple, Stupid
   * 奥卡姆剃刀 - 如无必要，勿增实体；如果关于同一个问题有许多种理论、方案，人们应该选择假设最少的理论、方案，在没有证明假设之前，更应倾向于简单而非复杂。假设是非常有用的，但不正确的假设会产生灾难性的影响。系统越复杂，失败的概率就越高
