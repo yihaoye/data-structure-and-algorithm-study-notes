@@ -18,7 +18,8 @@
 * [单例 | Singleton](./Singleton.java) - 进阶的为对象池模式、多例模式
   * ([Go 示例](./Singleton.go)) - Go sync.Once 且适用于并发场景
 * 对象池 | Object Pool - [信号量模式 | Semaphore](./Semaphore.java) 与其十分类似
-  * ([Go 示例](./ObjectPool.go))
+  * ([Go 示例 1](./ObjectPool.go))
+  * ([Go 示例 2](./Semaphore.go)) - 可用于应对下游限流调用，同时比串行调用快一些
 * [工厂方法 | Factory](./Factory.java) - 可与注册器合用，语言如 Go 不推荐使用工厂模式而是鼓励使用 NewXXX() 函数即可
 * 函数选项模式 | Functional Options Pattern - Go 语言推荐模式
   * ([Go 示例 1](./Options.go))
