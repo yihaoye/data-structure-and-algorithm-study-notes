@@ -2,7 +2,7 @@ package main
 
 import (
 	"context"
-	"fmt"
+	"log"
 	"time"
 
 	"golang.org/x/sync/errgroup"
@@ -15,14 +15,15 @@ func main() {
 
 	for i := range 100 {
 		i := i
+		if err := sem.Acquire(ctx, 1); err != nil {
+			panic(err)
+		}
+
 		g.Go(func() error {
-			if err := sem.Acquire(ctx, 1); err != nil {
-				return err
-			}
 			defer sem.Release(1)
 
 			// Mock request down stream API
-			fmt.Printf("Run: %v", i)
+			log.Printf("Run: %v", i)
 			time.Sleep(3 * time.Second)
 
 			return nil
@@ -30,5 +31,5 @@ func main() {
 	}
 
 	g.Wait()
-	fmt.Printf("Finished")
+	log.Printf("Finished")
 }
