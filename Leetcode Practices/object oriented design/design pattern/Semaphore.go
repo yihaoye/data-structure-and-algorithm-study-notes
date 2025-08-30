@@ -2,7 +2,8 @@ package main
 
 import (
 	"context"
-	"log"
+	"fmt"
+	"math/rand"
 	"time"
 
 	"golang.org/x/sync/errgroup"
@@ -10,26 +11,37 @@ import (
 )
 
 func main() {
-	sem := semaphore.NewWeighted(10)
-	g, ctx := errgroup.WithContext(context.Background())
+	err := run(context.Background())
+	if err != nil {
+		panic(err)
+	}
+}
 
-	for i := range 100 {
-		i := i
+func run(ctx context.Context) error {
+	sem := semaphore.NewWeighted(10)
+	g, ctx := errgroup.WithContext(ctx)
+
+	for i := 0; i < 100; i++ {
+		// i := i
 		if err := sem.Acquire(ctx, 1); err != nil {
-			panic(err)
+			return err
 		}
 
 		g.Go(func() error {
 			defer sem.Release(1)
-
-			// Mock request down stream API
-			log.Printf("Run: %v", i)
-			time.Sleep(3 * time.Second)
-
-			return nil
+			return callAPI(ctx)
 		})
 	}
 
-	g.Wait()
-	log.Printf("Finished")
+	return g.Wait()
+}
+
+// Mock request down stream API
+func callAPI(ctx context.Context) error {
+	random := rand.Intn(5)
+	if random == 0 {
+		return fmt.Errorf("error")
+	}
+	time.Sleep(time.Duration(random) * time.Second)
+	return nil
 }
