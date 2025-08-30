@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
 	"math/rand"
 	"time"
 
@@ -38,6 +39,7 @@ func run(ctx context.Context) error {
 
 // Mock request down stream API
 func callAPI(ctx context.Context) error {
+	log.Println("callAPI started")
 	random := rand.Intn(5)
 	if random == 0 {
 		return fmt.Errorf("error")
