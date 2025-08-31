@@ -225,3 +225,34 @@ Javadoc 是一款能根据源代码中的文档注释来产生 HTML 格式的 AP
 ### Best Practices for Unit Testing in Java
 * [资料 1](https://www.developer.com/java/best-practices-unit-testing-java/)
 * [资料 2](https://www.baeldung.com/java-unit-testing-best-practices)
+
+## Debugging Workflow
+![](./debugging-workflow.jpeg)  
+
+### 根本原因分析 RCA
+* [根本原因分析](https://aws.amazon.com/cn/what-is/root-cause-analysis/)  
+
+## Code Review
+![](./code_review_pyramid.png)  
+
+## 日志打印最佳实践
+![](./日志打印最佳实践.jpeg)  
+
+## 发布
+* [灰度发布](https://www.woshipm.com/pd/4381854.html) - 灰度，就是存在于黑与白之间的一个平滑过渡的区域。对于互联网产品来说，上线和未上线就是黑与白之分，而实现未上线功能平稳过渡的一种方式就叫做灰度发布。小产品（受众、流量较小）时使用灰度发布工程成本、迭代效率代价过高。
+  * 实现方式
+    * AB 实验
+    * 正式上线流量控制
+  * 兼容变更 vs 不兼容变更 - 比如 API 版本控制
+
+### [AB 实验最佳实践](https://tech.meituan.com/2023/08/24/ab-test-practice-in-meituan.html)
+注意不是所有的实验都会被证明对指标增长有显著效果，如果是这样，就没有必要进行实验了。因此对于实验失败（大概率事件）不要灰心，正因为某些实验被证明无效，才会找到有效的增长方式，最好的办法就是增加测试频率、持续测试，而非浅尝辄止，又回到经验决策或直觉拍板的旧思路上。  
+
+## 系统工程（系统科学内容之一）
+* [What is systems engineering](https://www.freecodecamp.org/news/what-is-systems-engineering/)
+* [系统工程 wiki](https://zh.wikipedia.org/zh-hans/%E7%B3%BB%E7%BB%9F%E5%B7%A5%E7%A8%8B)
+
+### 控制理论
+https://zh.wikipedia.org/wiki/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA  
+![](./控制理论.webp)  
+![](./控制理论2.webp)  
