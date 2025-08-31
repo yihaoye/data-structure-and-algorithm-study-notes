@@ -5,4 +5,4 @@
 
 这种大多数投票方法有一个非常好的优点：延迟是取决于最快的服务器。也就是说，如果副本数是3，则备份完成的等待时间取决于最快的 Follwer 。  
 
-[DDIA 宽松的法定人数](./../Leetcode%20Practices/system%20design/README.md#宽松的法定人数)
+[DDIA 宽松的法定人数](./../Leetcode%20Practices/system%20design/DDIA.md#宽松的法定人数)

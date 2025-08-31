@@ -2639,7 +2639,7 @@ KV 数据库主要的考点是高可用性、扩展性及高性能：
 
 数据备份：
 * [主从数据同步](./数据库数据建模分库分表.md#读写分离示意图)
-* [基于领导者的复制](./README.md#基于领导者的复制leader-based-replication)
+* [基于领导者的复制](./DDIA.md#基于领导者的复制leader-based-replication)
 
 </details>
 
