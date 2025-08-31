@@ -1297,6 +1297,10 @@ by ChatGPT
   
 **WebRTC**  
 [WebRTC](https://developer.mozilla.org/zh-CN/docs/Web/API/WebRTC_API)：WebRTC 是一种用于在网页浏览器中实现实时通信（如音视频通话和文件共享）的开放标准，结合了多种协议和技术，[包括：QUIC、SRTP 等](https://cloud.tencent.com/developer/article/2362013)。WebRTC 的一系列标准使得在不需要用户安装插件或任何其他第三方软件的情况下，可以实现点对点数据共享和电话会议。  
+
+**FFmpeg**  
+一个功能强大的开源多媒体处理工具，广泛应用于视频和音频文件的处理。FFmpeg 支持多种多媒体格式，能够实现视频编码/解码、格式转换、裁剪、合并、音频提取、流媒体处理等功能。（[Ref 1](https://www.ruanyifeng.com/blog/2020/01/ffmpeg.html)、[Ref 2](https://cloud.tencent.com/developer/article/2498679)）  
+流媒体平台早期做转码、打包、推流，最方便的就是直接基于 FFmpeg，因为它支持几乎所有主流格式和协议，避免了从零写解码器。大平台通常也仍基于 FFmpeg 的库做深度定制、优化。FFmpeg 实际上成了事实上的行业标准实现：很多新的视频格式或协议，首先都会有人在 FFmpeg 上实现，只需要跟着 FFmpeg 的更新，就能快速支持新格式。流媒体平台的底层或多或少需要依赖 FFmpeg 的生态或以其为基石。  
   
 **视频流式传输协议**  
 当用户在 Youtube 上观看视频时，通常视频流会立刻开始播放而不是等待整个视频下载好后再播放。下载整个视频意味着把视频复制到客户端，而流式传输（streaming）意味着客户端连续接收来自远程源视频的视频流，当用户观看流媒体视频时，客户端一次会加载一点数据，因此可以立即、连续地观看视频。  
