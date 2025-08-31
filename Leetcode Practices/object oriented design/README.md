@@ -62,7 +62,7 @@
 * [例题](./other%20practices/)  
   
 ## 详细掌握 OOD 的基本方法与步骤
-### 前置知识点：一些基本设计分工
+### 前置知识点 一些基本设计分工
 [参考链接 1](https://en.wikipedia.org/wiki/Object-oriented_analysis_and_design)  
 [参考链接 2](./grok%20object%20oriented%20design%20interview/1.%20Object-Oriented%20Design%20and%20UML/3.%20What%20is%20UML/What%20is%20UML_%20-%20Grokking%20the%20Object%20Oriented%20Design%20Interview.html)  
 * [Use Case Diagram](https://en.wikipedia.org/wiki/Use_case_diagram) - 即小人图，关心主要对象之间的互动（着重 Communication 与 Abstraction）。
