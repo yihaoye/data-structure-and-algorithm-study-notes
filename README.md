@@ -21,7 +21,7 @@
   * [系统设计 | System Design](./Leetcode%20Practices/system%20design/README.md)
   * [接口设计 | API Design](./Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md#api-design)
   * 产品设计 | Product Design ([Meta's Product Design vs System Design](https://www.reddit.com/r/leetcode/comments/18zat0a/metas_product_design_vs_system_design_interview/?rdt=38667)、[Product Architecture 1](https://www.hellointerview.com/blog/meta-system-vs-product-design?utm_source=reddit&utm_medium=social&utm_campaign=product-vs-system#what-is-the-product-architecture-interview)、[Product Architecture 2](https://vimeo.com/810250813)，另外，在该环节，了解一些前端、UI / UX 可能会有助益)
-  * 系统论、[控制论](./Behavior%20Question%20and%20Best%20Practice/README.md#控制理论)、[信息论](https://zh.wikipedia.org/wiki/%E4%BF%A1%E6%81%AF%E8%AE%BA) | Systems Theory、Control Theory、Information Theory (又称 SCI 理论或老三论，《控制论与科学方法论》：[Ref 1](https://writings.sh/post/cybernetics-and-scientific-methodology-notes)、[Ref 2](https://book.douban.com/subject/1322336/)、[Ref 3](https://zh.wikipedia.org/wiki/Category:%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA))
+  * 系统论、[控制论](./Quality%20Assurance%20and%20Best%20Practice/README.md#控制理论)、[信息论](https://zh.wikipedia.org/wiki/%E4%BF%A1%E6%81%AF%E8%AE%BA) | Systems Theory、Control Theory、Information Theory (又称 SCI 理论或老三论，《控制论与科学方法论》：[Ref 1](https://writings.sh/post/cybernetics-and-scientific-methodology-notes)、[Ref 2](https://book.douban.com/subject/1322336/)、[Ref 3](https://zh.wikipedia.org/wiki/Category:%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA))
     * [稳定性判据 | Stability Criterion](https://zh.wikipedia.org/wiki/%E7%A8%B3%E5%AE%9A%E6%80%A7%E5%88%A4%E6%8D%AE) (比如奈奎斯特稳定判据)
   * 耗散结构论、协同论、突变论 | Dissipative Structure Theory、Synergetics、Catastrophe Theory (又称 DSC 理论或新三论，[Ref](https://groups.google.com/g/academictokyo/c/GGKwiFLZYRE))
 * [计算机系统基础 | Computer System Layer & Basics](./Computer%20System%20Layer/README.md) 包括：
@@ -32,9 +32,9 @@
 * [领域知识、面试八股文 | Domain Knowledge](./面试八股文/README.md)
   * [编程语言特性 | Programming Languages Features](./Program%20Languages%20Features/README.md)
   * [计算机术语表 | Related Terms](./面试八股文/英文术语.md)
-* [行为型问题与工作实践 | Behavior Question & Best Practice](./Behavior%20Question%20and%20Best%20Practice/README.md) (包括 Soft Skills、谈判术、职业心理健康、职业倦怠应对等)
-  * [质量保证 | Quality Assurance](./Quality%20Assurance/README.md)
-  * [数据分析 | Data Analysis](./Data%20Analysis/README.md)
+* [质量保证与最佳实践 | Quality Assurance & Best Practice](./Quality%20Assurance%20and%20Best%20Practice/README.md) (包括软件代码质量、生命周期等等)
+* [行为型问题与工作实践 | Behavior Question & Work Practice](./Behavior%20Question%20and%20Work%20Practice/README.md) (包括 Soft Skills、谈判术、职业心理健康、职业倦怠应对等)
+* [数据分析 | Data Analysis](./Data%20Analysis/README.md)
 * [其他类别岗位（如架构师、工程经理、安全工程师等）模拟面试 ｜ Other Position Interview Mock](https://www.youtube.com/@tryexponent/playlists) ([性能工程师](https://en.wikipedia.org/wiki/Performance_engineering))
 * Books and Courses ([算法导论 | Introduction to Algorithms](./Introduction%20to%20Algorithms/)、[程序员面试金典 | Cracking the Coding Interview](./Cracking%20the%20Coding%20Interview/)、[算法竞赛入门经典](./算法竞赛入门经典/README.md)、[算法艺术与信息学竞赛](./算法艺术与信息学竞赛/README.md)、[其他数据结构网课笔记](./其他数据结构网课/))
 * [Topcoder](./Topcoder/)、[Codility Practices](./Codility%20Practices/)、[Google Code Jam Practices](./Google%20Code%20Jam/)
@@ -164,7 +164,7 @@ https://www.youtube.com/watch?v=fyf-GRH1Ceo
 * 开始编码前要注重沟通，问清楚该业务场景下的所有需求 - 比如需要哪几个类/对象、类之间的关系如何（比如一对多、多对多关系，一个对象与另一个对象的某个属性之间的关系等等）；又比如哪个类/对象应该实现什么方法、该方法与其他类/对象有何种关系等等；又比如应该问某个属性/数据是否唯一、有什么数据类型偏好（有时可以从题目给定的接口中推断出来）。面向对象设计的过程就是抽象的过程，分以下三步来完成：第一步：发现类（需求中的名词有控制台、宠物、昵称和主人等）；第二步：发现类的属性（可作为属性的的名词有健康值、亲密度和品种等）；第三步：发现类的方法（需求中的动词有输入、选择和领养等）；[详细步骤](./Leetcode%20Practices/object%20oriented%20design/README.md#详细掌握-ood-的基本方法与步骤)。另外建议参考 [5C 解题法](https://www.youtube.com/watch?v=oaUVVBOhyJw&t=3340s)：  
 ![](./Leetcode%20Practices/object%20oriented%20design/5c.svg)  
 * 类/对象之间的关系、类/对象的方法及业务场景下的延伸思考 - 应该使用何种数据结构来表达、连接、存储（比如用 Java Collection 作为容器来存储/管理某个类的对象或跨类对象的某几个属性时，若有多个数据结构均可以胜任时哪个性能更好（面试 FLAG、独角兽等这类企业时，要求较高，需时刻思考时间、空间复杂度是否最优）？比如在确认需要存储的数据不会发生重复的情况下，选择 Set 作为容器在性能上会好于 List。平时不要只关注某几个数据结构对其他数据结构不够熟悉）；有时在某些场景下直接使用内置的某个数据结构未必趁手可能需要自己重复造一个相同的数据结构（如[示例代码](./Common%20Data%20Structure%20and%20Data%20Type/数据结构组合/README.md#组合-1)），以及[多个数据结构如何组合](./Common%20Data%20Structure%20and%20Data%20Type/数据结构组合/)为好 - 学会根据面向对象设计的需求来组合数据结构以及多熟悉一些经典组合/最佳实践以及规避组合：比如尽量避免嵌套 Map。
-* 面向类/对象设计的过程中，设计的优化思路可参考 DRY 原则、[SOLID 原则](./Leetcode%20Practices/object%20oriented%20design/README.md) 和 [其他面向对象设计原则](./Leetcode%20Practices/object%20oriented%20design/README.md#其他面向对象设计原则)、封装性（防止外部代码不受控制地修改对象的内部状态）、[设计模式](./Leetcode%20Practices/object%20oriented%20design/design%20pattern/README.md)、避免[反模式](./Behavior%20Question%20and%20Best%20Practice/反面模式.md#一般设计上的反模式)等。
+* 面向类/对象设计的过程中，设计的优化思路可参考 DRY 原则、[SOLID 原则](./Leetcode%20Practices/object%20oriented%20design/README.md) 和 [其他面向对象设计原则](./Leetcode%20Practices/object%20oriented%20design/README.md#其他面向对象设计原则)、封装性（防止外部代码不受控制地修改对象的内部状态）、[设计模式](./Leetcode%20Practices/object%20oriented%20design/design%20pattern/README.md)、避免[反模式](./Quality%20Assurance%20and%20Best%20Practice/反面模式.md#一般设计上的反模式)等。
 * 涉及 I/O 时，注意事项及最佳实践包括：使用缓冲（使用适当的缓冲区大小）、使用 try-with-resources、使用 NIO、避免使用绝对路径、处理字符编码（使用合适的字符编码，如 UTF-8，以确保文本数据的正确性）、处理异常、确保资源释放、考虑多线程、测试和性能优化（工具如 JMH - Java Microbenchmarking Harness 可以帮助评估和提高 I/O 性能）、[其他](https://www.kancloud.cn/digest/javashare/142762)等等。
 * 涉及并发时，注意事项及最佳实践包括：优先考虑使用高级并发库（而不是手动编写低级线程管理代码）、避免共享可变状态、使用不可变对象、使用 volatile 关键字、[根据情况选择合适的锁](./Computer%20System%20Layer/并发与并行(Java)/README.md#Java-锁)、避免死锁、使用线程池、使用 Callable 和 Future、避免线程饥饿、考虑性能和扩展性、使用并发集合、避免使用 stop 方法、不要滥用线程等等。
 * 数据类型的深入思考 - 比如若有多个数据类型（比如 Integer 或 String）均可以胜任时该场景（比如存储在不同容器如 List 或 Set）下使用/搭配哪个更好；以及应不应该对多个数据结构的同一个属性（比如 userID）保持数据类型一致还是说可以允许转换数据类型即不同数据结构中的对应属性/关联键的数据类型不同。
