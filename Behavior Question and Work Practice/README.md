@@ -47,12 +47,12 @@ Keep at least 3 project examples/stories which better to be large scale.
 最近做的 / 最喜欢的 / 最具挑战性的项目是什么，不只是要把项目背景说出来，还要说出为什么喜欢，有哪些挑战，推理过程。  
   
 ## 各公司的特点
-* Amazon
-  * [Leadership Principles](https://www.amazon.jobs/en/principles)
-* Stripe
-  * [Search and Quick Use, Trace and Real Problem Solve Skill](https://medium.com/@SantalTech/no-leetcode-the-stripe-interview-experience-cf1b29e6f55d)
 * Netflix
   * [Context, not Control](https://www.linkedin.com/pulse/netflixs-context-control-how-does-work-steve-urban/)
+* Stripe
+  * [Search and Quick Use, Trace and Real Problem Solve Skill](https://medium.com/@SantalTech/no-leetcode-the-stripe-interview-experience-cf1b29e6f55d)
+* Amazon
+  * [Leadership Principles](https://www.amazon.jobs/en/principles)
 
 ## ChatGPT 列出的 team leader 最重要的 leadership skills
 * Technical expertise
@@ -82,6 +82,7 @@ Books:
     * 修复那些会立即导致问题的热点
     * 采用已知的提高质量的最佳实践 - 一个好的流程是渐进的，而不是强制的
     * 当代码发生变化时，优先考虑保持质量的支点/关键点 - 软件开发中，一小部分的针对质量的额外投资可以防止未来严重的质量问题和减少未来所需的对质量的投资，最具影响力的三个点是：`接口协议`（其中对外接口又更关键）、`有状态系统`（优先考虑无状态设计，必要时明确状态边界）和`数据模型`，它们都是影响面较广的基础设计，其他开发逻辑和后续扩展都会围绕它们，所以在设计初期或变更时就需要深思熟虑
+      * 除了上面书上提出的三点外，还有一点需要关注（基于实际工作经验），即`底层库（或多处使用的模块）`的关键及次关键逻辑
       * 所以不必纠结（比如代码审核时）一些不重要的技术细节，因为总是有更价值的事情等你做
     * 当组织变动也影响到软件的时候，要匹配技术向量 - Conway 法则
     * 衡量技术质量来指导更深入的投资
@@ -321,7 +322,7 @@ Books:
   * 促进团队磨合、共同利益与成长（熟悉了解每个组员，辅助释放潜力、发挥擅长与优势、补足短板 - **即会用人、把对的人用到对的事情和位置上去**）
   * 和组员保持良善的关系（足够透明密切的沟通、定时 Team Building 都是很重要的不是无关紧要的），保持恰当的距离（即友善也不互相侵占私人空间、以及不能让情感影响到工作）
     * 沟通方法 0 - [简洁沟通](https://www.youtube.com/watch?v=Br03ro98amM)
-    * 沟通方法 1 - 提供背景、上下文以及建议选项，而非下结论（Provide Context and Suggestion instead of Conclusion/Opinion, even better if suggestion are options - there are always multiple solutions/practises）
+    * 沟通方法 1 - 提供背景、上下文以及建议选项，而非下结论（Provide Context and Suggestion instead of Conclusion/Opinion, even better if suggestion are options - there are always multiple solutions/practises）- Netflix 倡导
     * 沟通方法 2 - 决策调解，如果两方无法达成一致，最终决策权应归于负责方，即一个问题的利害关联更偏向其中一方的责任领域、范围，则应该由该方决定，因为责任明确是基本原则、更具公平性和良好持续的长期最佳模式，所以不需要纠结当前决策优劣（短期）。
     * 沟通方法 3 - 不指责，而是构建规则规范
     * 沟通方法 4 - [不抬杠](https://www.youtube.com/watch?v=iL6bmviqaEc)
