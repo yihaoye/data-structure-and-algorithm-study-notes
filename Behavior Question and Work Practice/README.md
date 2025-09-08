@@ -116,6 +116,8 @@ Books:
 * [Peopleware: Productive Projects and Teams](https://www.goodreads.com/book/show/67825.Peopleware?source=post_page-----4594bfd4b9a--------------------------------)
 * [Building Software Teams](https://www.amazon.com.au/Building-Software-Teams-Joost-Visser/dp/149195177X)
 
+### 关于技术人员的误区
+**记着最重要的不是技术本身，而是解决方案（Solution）**，技术固然重要但本质是工具，因此不要执着虚幻的品味，而是要注重实在的创造、结果。  
 ![](./roles.jpg)  
 
 # 思维工具
