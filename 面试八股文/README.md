@@ -352,6 +352,7 @@
   * 基于偏移量的分页 - 最常见的分页方法，其基本思想是跳过指定数量的记录，然后返回一定数量的记录。通过 LIMIT 和 OFFSET 子句来实现：`SELECT * FROM table_name ORDER BY xxx LIMIT page_size OFFSET (page_number - 1) * page_size;`，但有性能风险，当 OFFSET 值非常大时（即查询很靠后的页面），数据库需要先扫描并跳过 OFFSET 指定的所有记录，然后才开始获取数据。例如 OFFSET 100_0000 会导致数据库扫描一百万条数据并丢弃它们，造成巨大的性能浪费（注意 ORDER BY 这里是没有性能问题的只要正确加了索引的话）
   * 基于窗口函数分页 - 通过使用 `ROW_NUMBER()`，实际与偏移量分页 OFFSET 类似有性能问题
   * 基于令牌的分页（也被称为游标分页、键集分页）- 目前公认的最高效、最适合大型应用的分页方法，尤其适用于无限滚动的场景，通过 WHERE 条件来定位下一页的起始位置。客户端在请求下一页时，需要带上上一页最后一条记录的唯一且有序的键（比如自增 ID 或时间戳）：`SELECT * FROM table_name WHERE xxx > last_last_xxx_value ORDER BY xxx LIMIT page_size;`。游标分页返回当前 LIMIT 数据最后一行记录的值时，可以使用 base64（支持无损 decode）encode 生成 next_page_token 返回前端，作为下次继续查询的使用，这样既可以提高一些安全性还可以支持 next_page_token 按需基于多列数据（需要先对多列数据 json marshal 再用 base64）
+    * 另外需谨记，游标分页的字段需添加索引（至少一个游标关联的高基数字段，如果游标是关联多个字段则最好是复合索引并注意最左前缀是高基数字段）否则无意义，另外如果 OFFSET 不超过 10000 其实性能都还可以（可能也就几十毫秒，[Ref](https://cloud.tencent.com/developer/article/1177384)），没必要使用游标分页以至于带来不必要的复杂性
 * CTE vs 子查询 - CTE 如同 SQL 中的模块化函数，能显著提升代码可读性并减少重复（也类似变量的作用）子查询。它定义临时命名结果集，可被多次引用。相比直接重复的子查询，CTE 更有可能被数据库优化器物化（MATERIALIZED，即只计算一次），从而在复杂查询中提升性能和效率，是编写结构化 SQL 的推荐方式。另外递归 CTE 还使得更多复杂查询成为了可能，以下是递归 CTE 的使用场景：
   * 遍历和查询具有父子关系的层级数据
   * [遍历图结构数据](../Other%20Practices/22-07-2025%20recursive%20friendship%20graph.sql)
