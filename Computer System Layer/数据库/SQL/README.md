@@ -965,6 +965,21 @@ foreign key(classno) references t_class(cno) on update cascade;
 * 因为固定长度，CHAR 的存取速度比 VARCHAR 快很多，同时缺点是会占用多余空间，属于空间换时间；  
   
   
+## SQL 语法糖
+元组比较  
+```sql
+-- 元组比较写法
+SELECT *
+FROM orders
+WHERE (customer_id, created_at) > (123, '2025-01-01');
+-- 等价于
+SELECT *
+FROM orders
+WHERE customer_id > 123
+   OR (customer_id = 123 AND created_at > '2025-01-01');
+```
+
+
 # 优化
 根据现网环境优化执行的难易度，在优化顺序可以按照：SQL 语句 -> 数据库表设计（比如范式、关系映射、索引、分表、数据类型等等）-> 数据库参数配置 -> 数据库存储引擎 -> 服务器硬件。通过编写高效的 SQL 语句，并以合适的方式创建表和索引，使系统始终保持良好的性能。  
 务必学好树，特别是 B+ Tree，就会明白索引何时生效或失效。  
