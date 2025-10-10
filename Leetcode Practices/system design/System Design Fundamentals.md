@@ -100,6 +100,8 @@ https://www.algoexpert.io/systems/fundamentals
 * 关键知识：
   * [Pagination](https://www.youtube.com/watch?v=poqTHxtDXwU&list=PLl-K7zZEsYLluG5MCVEzXAQ7ACZBCuZgZ&index=8) ![](./api-pagination.jpeg)
   * CRUD Operations
+  * Error / Exception
+    * 返回报错时，最佳实践是都包含状态码，另外如果包含错误信息的话，最好不要直接返回错误栈的原信息（因为会泄漏内部服务信息，有安全隐患），而是给定和业务逻辑相关的描述信息
 * 考核过程
   * 询问关于系统的哪个功能、部分，询问系统规模，询问 API 消费细节
   * 列出每个 API 概要 / outline（列出 API 所依赖的 entity、资源，比如 Twitter API 依赖 tweet 资源或 entity，又比如 Stripe 依赖支付、客户等资源或 entity。entity 的细节要包括需要哪些属性、字段及其数据类型），列出 API 的 endpoint、请求参数（必要或可选）、返回响应，但是不需要实现逻辑细节（或者只需要写出一些关键逻辑）
