@@ -34,8 +34,12 @@ MySQL 默认存储引擎 InnoDB 默认使用 B-Tree（实际是 B+ Tree）索引
   
 添加索引的示例代码：  
 ```sql
+-- MySQL，版本 5.6 之后普通创建索引不会锁表
 ALTER TABLE table_a
 ADD INDEX idx_col1 (col1);
+
+-- PgSQL，这里注意有并发关键词，意味着是并发创建索引因为普通创建索引会锁表阻塞写入和部分读取（https://www.51cto.com/article/750242.html）
+CREATE INDEX CONCURRENTLY idx_col2 ON table_a(col2);
 ```  
   
 ### 存储引擎
