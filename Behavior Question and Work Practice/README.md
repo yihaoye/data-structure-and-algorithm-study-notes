@@ -362,6 +362,7 @@ by ChatGPT
   * 充足的前期调研、平衡开拓与踏实（可执行、灵活性）
   * 全局性考量、长期主义
   * 量化评价（以确定目标达成）
+  * [预期管理与高韧性](https://www.youtube.com/watch?v=AoGmfcsoADI)
 * 信心、觉察（专注于当下而不加评判，在一些语境下称为正念）
   * [稀缺心态](https://book.douban.com/subject/26178426/)（可以是生理心理上的，包括休闲时间、物质、被认可的需求等，是造成不理性、无法[延迟满足](https://zh.wikipedia.org/zh-hans/%E5%BB%B6%E9%81%B2%E6%BB%BF%E8%B6%B3)等行为的主因）
 * OPT（别人的时间）与 OPM（别人的金钱）- 资源整合
