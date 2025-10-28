@@ -330,6 +330,8 @@ Books:
     * 沟通方法 3 - 不指责，而是构建规则规范
     * 沟通方法 4 - [不抬杠](https://www.youtube.com/watch?v=iL6bmviqaEc)
     * 沟通方式 5 - [逻辑清晰](https://www.youtube.com/watch?v=DDwS3IYX4sI)
+    * 沟通方式 6 - [强调对方的内心感受，而不是外部评价](https://www.youtube.com/shorts/2Wl_ghGXPu4)
+    * 沟通方式 7 - [真话要说，但别急着说](https://www.youtube.com/shorts/6_wFDfbtReI)
   * 冲突管理
     * 只专注能力资源可及的事情、工作、任务、项目本身，而非与人争执或急于证明
     * 通过团队休整、避免加班（[工贼](https://en.wikipedia.org/wiki/Strikebreaker)）、合规断联等方法皆可使得同事之间保持合适距离，合适的距离有时可以很好地减少不必要的误会与怨言
