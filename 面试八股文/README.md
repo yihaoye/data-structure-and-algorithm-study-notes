@@ -643,6 +643,8 @@
 * [Docker Compose 是什么](https://www.cnblogs.com/sparkdev/p/9753793.html)
 * [Docker 群（Swarm）是什么](https://www.modb.pro/db/404626)
 * [在使用 Docker 技术的产品中如何监控其运行](https://www.modb.pro/db/404626)
+* [CPU 与 GPU 的区别](https://www.youtube.com/watch?v=Axd50ew4pco) - 简单就是 CPU 更通用但是串行处理适合少量但复杂的任务，GPU 是专用于可以并行处理的问题、场景适合大量且重复的任务。CPU 每个 ALU（执行单元）更复杂能力更强但数量较少，GPU 每个 ALU 更简单能力更弱的数量众多。
+  * GPU 适用于人工智能的原因：深度学习的核心及大部分计算是大规模矩阵运算（尤其是全连接层、卷积层、[注意力机制](https://zhuanlan.zhihu.com/p/410776234)、梯度下降与反向传播、神经网络每一层都是矩阵运算），而矩阵运算本质上是数十万、数百万个相同类型的简单计算，可以在不同数据元素之间完全并行。
 
 
 ## 网络高频
