@@ -643,8 +643,9 @@
 * [Docker Compose 是什么](https://www.cnblogs.com/sparkdev/p/9753793.html)
 * [Docker 群（Swarm）是什么](https://www.modb.pro/db/404626)
 * [在使用 Docker 技术的产品中如何监控其运行](https://www.modb.pro/db/404626)
-* [CPU 与 GPU 的区别](https://www.youtube.com/watch?v=Axd50ew4pco) - 简单就是 CPU 更通用但是串行处理适合少量但复杂的任务，GPU 是专用于可以并行处理的问题、场景适合大量且重复的任务。CPU 每个 ALU（执行单元）更复杂能力更强但数量较少，GPU 每个 ALU 更简单能力更弱的数量众多。
+* [CPU 与 GPU 的区别](https://www.youtube.com/watch?v=Axd50ew4pco) - 简单就是 CPU 更通用但是串行处理适合少量但复杂的任务，GPU 是专用于可以并行处理的问题、场景适合大量且重复的任务。CPU 每个核心及其 ALU（执行单元）更复杂能力更强但数量较少，GPU 每个核心及其 ALU 更简单能力更弱的数量众多。CPU 核心通常 8-64 个，而 GPU 的核心通常几千甚至上万多，且单个 GPU 核心的 ALU 数量也多于单个 CPU 核心的 ALU 数量，除此之外还有[架构的区别](https://medium.com/@rohithreddy66666/decoding-cpu-vs-gpu-a-detailed-exploration-of-nvidia-and-amd-gpu-architectures-e09ebfb594ed)。![](./CPU%20vs%20GPU.png)
   * GPU 适用于人工智能的原因：深度学习的核心及大部分计算是大规模矩阵运算（尤其是全连接层、卷积层、[注意力机制](https://zhuanlan.zhihu.com/p/410776234)、梯度下降与反向传播、神经网络每一层都是矩阵运算），而矩阵运算本质上是数十万、数百万个相同类型的简单计算，可以在不同数据元素之间完全并行。
+* [Nvidia CUDA](https://www.youtube.com/watch?v=pPStdjuYzSI)、[一句话讲清楚什么是 CUDA，人人都能听懂的 CUDA 概念](https://mcp.csdn.net/68005931a5baf817cf49109b.html)、[什麼是 CUDA](https://blogs.nvidia.com.tw/blog/what-is-cuda-2/) - 是一种协助 CPU 任务分发 + GPU 并行处理的编程模型/平台，用于加速 GPU 和 CPU 之间的计算。也就是说 CUDA 通过 CPU 任务分发和 GPU 并行处理的方式，把计算任务通过 CPU 分发给 GPU 进行并行计算加速。而 GPU 并行计算的能力需要 CUDA 借助其自带的编程接口和工具，比如 C/C++ 语言来编写并行计算程序，并通过 CUDA 编译器将程序转化为可以在 NVIDIA GPU 上执行的机器码快速运行。
 
 
 ## 网络高频
