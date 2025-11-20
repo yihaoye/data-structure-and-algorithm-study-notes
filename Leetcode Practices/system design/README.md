@@ -3723,6 +3723,10 @@ UTF-8 是最常见的编码，一个字符通常动态占用 1~4 B，通常按 4
 * [深入理解 Java 中的流 (Stream)](https://cloud.tencent.com/developer/article/1479298)
 * [自我修复型设计](https://learn.microsoft.com/zh-cn/azure/architecture/guide/design-principles/self-healing)
 
+## [存储过程架构](https://www.youtube.com/watch?v=BWI943IEHIk)
+即将业务逻辑写入数据库中。[Ref](https://juejin.cn/post/7515597690945191936)  
+这种架构适用于普通数据量、普通用户量且逻辑不需要跨库的系统，优点在于简便且高性能、安全。  
+
 ## 事件驱动架构
 ![](./inside-eda.png)  
 参考：https://serverlessland.com/event-driven-architecture/visuals/inside-event-driven-architectures  
@@ -3750,7 +3754,6 @@ QPS 与 TPS 的区别
 上面分别谈完了 QPS 与 TPS，看看两者有什么区别呢？  
 假如对于一个页面的一次访问算一个 TPS，但一次页面请求，可能产生 N 次对服务器的请求，服务器对这些请求，就可计入 QPS 之中，即 QPS = N*TPS。  
 又假如对一个查询接口（单场景）压测，且这个接口内部不会再去请求其它接口，那么 TPS = QPS。
-
 
 ## [如何设计高吞吐量系统架构](https://blog.csdn.net/shudaqi2010/article/details/54380995)
 一个系统吞吐量，通常由 QPS（TPS）、并发数两个因素决定，每套系统这两个值都有一个相对极限值，在应用场景访问压力下，只要某一项达到系统最高值，系统的吞吐量就上不去了，如果压力继续增大，系统的吞吐量反而会下降，原因是系统超负荷工作，上下文切换、内存等等其它消耗导致系统性能下降，决定系统响应时间要素。  
