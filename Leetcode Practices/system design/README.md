@@ -3727,6 +3727,55 @@ UTF-8 是最常见的编码，一个字符通常动态占用 1~4 B，通常按 4
 常规架构：`前端 -> 应用服务（业务逻辑） -> 数据库（存数据）`  
 存储过程架构即把部分或全部业务规则、逻辑直接写入数据库中，例如使用存储过程（Stored Procedure）、触发器（Trigger）、自定义函数（Function）和约束（Constraint）等特性。应用层只负责参数传递、UI 展示。[Ref](https://juejin.cn/post/7515597690945191936)  
 这种架构适用于普通数据量、普通用户量且逻辑不需要跨库的系统，优点在于简便且高性能、安全。缺点是难以测试、系统复杂较大的话难以维护甚至无法支持。  
+  
+存储过程（函数）实现业务逻辑  
+```sql
+-- place_order 函数：检查库存，创建订单，扣减库存
+CREATE OR REPLACE FUNCTION place_order(
+    p_user_id INT,
+    p_product_id INT,
+    p_quantity INT
+) RETURNS VOID AS $$
+DECLARE
+    available_stock INT;
+BEGIN
+    -- 锁定该商品行，避免并发冲突
+    SELECT stock INTO available_stock FROM products WHERE id = p_product_id FOR UPDATE;
+    IF available_stock < p_quantity THEN
+        RAISE EXCEPTION 'out of stock';
+    END IF;
+    -- 扣减库存
+    UPDATE products SET stock = stock - p_quantity WHERE id = p_product_id;
+    -- 创建订单
+    INSERT INTO orders(user_id, product_id, quantity)
+    VALUES (p_user_id, p_product_id, p_quantity);
+END;
+$$ LANGUAGE plpgsql;
+```
+  
+自动记录日志的触发器  
+```sql
+-- 触发器函数：在每次订单插入后，自动写入日志表
+CREATE OR REPLACE FUNCTION log_order_insert()
+RETURNS TRIGGER AS $$
+BEGIN
+    INSERT INTO order_log(order_id, action)
+    VALUES (NEW.id, 'create order');
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+-- 创建触发器
+CREATE TRIGGER trg_log_order
+AFTER INSERT ON orders
+FOR EACH ROW
+EXECUTE FUNCTION log_order_insert();
+```
+  
+调用示例  
+```sql
+-- 调用下单函数：用户 1 购买商品 101 的 2 件
+SELECT place_order(1, 101, 2);
+```
 
 ### 版本控制与维护建议
 1. 所有数据库函数、触发器、初始数据放入 SQL 脚本（按模块拆分）
