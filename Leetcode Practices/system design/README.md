@@ -3728,6 +3728,13 @@ UTF-8 是最常见的编码，一个字符通常动态占用 1~4 B，通常按 4
 存储过程架构即把部分或全部业务规则、逻辑直接写入数据库中，例如使用存储过程（Stored Procedure）、触发器（Trigger）、自定义函数（Function）和约束（Constraint）等特性。应用层只负责参数传递、UI 展示。[Ref](https://juejin.cn/post/7515597690945191936)  
 这种架构适用于普通数据量、普通用户量且逻辑不需要跨库的系统，优点在于简便且高性能、安全。缺点是难以测试、系统复杂较大的话难以维护甚至无法支持。  
 
+### 版本控制与维护建议
+1. 所有数据库函数、触发器、初始数据放入 SQL 脚本（按模块拆分）
+2. 使用 Flyway、Sqitch 或 Liquibase 等工具进行数据库迁移管理
+3. 存储过程内避免过度业务嵌套逻辑，只保留核心流程判断
+4. 复杂规则使用 UDF 拆解，保持函数职责清晰
+5. 编写数据库层级单元测试（pgTAP、utPLSQL）
+
 ## 事件驱动架构
 ![](./inside-eda.png)  
 参考：https://serverlessland.com/event-driven-architecture/visuals/inside-event-driven-architectures  
