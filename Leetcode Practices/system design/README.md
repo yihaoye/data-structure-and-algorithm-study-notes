@@ -2825,6 +2825,37 @@ CDC 的用途广泛，包括但不限于把数据处理打包到搜索引擎（E
 * History: When performing historical analysis on a dataset, having the current state of the data and all past changes gives you complete information for a higher fidelity analysis.
 * Alerting: Most of the time, applications send an event to a user whenever the data they care about changes. CDC can be the trigger for real-time alerting systems.
   
+CDC vs 代码写入 Kafka 选择指南  
+* 使用 CDC (Change Data Capture) 
+  * 适用场景
+    * 数据库同步 - 需要实时捕获数据库变更 (INSERT/UPDATE/DELETE)
+    * 遗留系统集成 - 无法修改源系统代码
+    * 数据湖/数仓 - 构建数据管道，保持数据一致性
+    * 审计需求 - 需要完整的变更历史记录
+    * 微服务拆分 - 从单体应用逐步迁移数据
+  * 优势
+    * 非侵入式，无需改动业务代码
+    * 自动捕获所有数据变更
+    * 保证事务一致性
+    * 包含完整变更元数据 (before / after 值)
+* 使用代码直接写入
+  * 适用场景
+    * 事件驱动架构 - 发布业务事件 (如订单创建、支付完成)
+    * 实时消息推送 - 用户通知、日志收集
+    * 精确控制 - 需要自定义消息格式和分区策略
+    * 高性能写入 - 批量处理、异步操作
+    * 业务逻辑耦合 - 消息内容需要业务计算/聚合
+  * 优势
+    * 灵活控制消息内容和格式
+    * 可以发送聚合后的业务事件
+    * 更低延迟
+    * 精确控制发送时机和条件
+  
+快速决策  
+CDC 适合：数据库是事实来源（source of truth），要捕获所有变更事件。  
+代码写 Kafka 适合：事件来源是业务逻辑，不是数据库。  
+混合使用：许多系统同时采用两种方式 - CDC 用于数据同步，代码写入用于业务事件。  
+  
 **其他**  
 ETL 系统其实与 cronjob / batch process 系统有一些类似。  
 
