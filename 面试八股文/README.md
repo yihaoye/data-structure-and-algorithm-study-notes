@@ -818,12 +818,13 @@
 * XSS ![](./xss.jpeg)
 * [Cookie、Session、Token、JWT 区别](https://juejin.cn/post/6844904034181070861)
 * [JWT 认证中可以防止他人冒充 token 吗？](https://www.zhihu.com/question/364616467) - 答案是 “否”，在防止冒充这个部分，需要其他的防护手段，比如通常使用 HTTPS 双向认证，双向加密之类的。并且启用 JWT 过期设置，在如无跨域需要的情况下开启 CORS 最好。
-  * 双 Token（Access Token、Refresh Token）机制过期设置，Refresh Token 用作获取新的 Access Token，通常 Access Token 有限期较短只有 10 来分钟，Refresh Token 较长可以是按天或月计。Refresh Token 过期后会强制要求用户重新登陆。双 Token 的意义在于因为存储隔离（Access Token 存 localStorage / 内存，Refresh Token 存 HttpOnly Cookie），如此不同的泄漏概率，另外提供异常检测机制（Refresh Token 使用频率低，总是定期使用，容易监控，删除 Refresh Token 全局失效快速响应）。Access Token 有时因为有跨域（CORS）的需要所以有时不能放在 Cookie 里（当然如果没有跨域需要的话也存在 Cookie 里最好、更安全）
+  * 双 Token（Access Token、Refresh Token）机制过期设置（俩不在同一个 jwt），Refresh Token 用作获取新的 Access Token，通常 Access Token 有限期较短只有 10 来分钟（所以可以有效缩短攻击时间窗口），Refresh Token 较长可以是按天或月计。Refresh Token 过期后会强制要求用户重新登陆。双 Token 的意义在于因为存储隔离（Access Token 存 localStorage / 内存，Refresh Token 存 HttpOnly Cookie），如此不同的泄漏概率，另外提供异常检测机制（Refresh Token 使用频率低，总是定期使用，容易监控，删除 Refresh Token 全局失效快速响应）。Access Token 有时因为有跨域（CORS）的需要所以有时不能放在 Cookie 里（当然如果没有跨域需要的话也存在 Cookie 里最好、更安全）
 * [Password, Session, Cookie, Token, JWT, SSO, OAuth - Authentication Explained](https://blog.bytebytego.com/p/password-session-cookie-token-jwt)
   * [ByteByteGo - Session, cookie, JWT, token, SSO, and OAuth](https://blog.bytebytego.com/p/ep34-session-cookie-jwt-token-sso)
   * [SSO, SAML, OpenID](https://www.youtube.com/watch?v=O1cRJWYF-g4) - session/cookie 方便了同源网站系统登录，而 token (SAML, OpenID JWT 等，基于 OAuth 2.0 协议) 进一步将便利性普及到非同源网站系统
   * [OAuth 2.0](https://www.youtube.com/watch?v=ZV5yTm4pT8g) - 即临时凭证（当用户希望某个第三方有限地访问自己在某个系统的资源但又不希望直接给出账号密码时）
 * [JSON Web Token 入门教程](https://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html) - JWT 的本质和解决的根本问题是在分布式系统中，如何让服务器不保存会话状态，仍能验证用户身份以及获取用户基础信息，在微服务架构中，每个服务都能独立验证身份，无需调用认证中心。总结就是用平衡可控的安全妥协方案换取架构灵活性和性能，因为传统方案 Session 每次都要查数据库、Redis，分布式系统需要 Session 共享但横向扩展困难且微服务架构复杂，每种身份验证模式都有其优缺点，JWT 在技术上确实比基于会话（Session）的身份验证安全性较低
+  * 客户端调用后端 API 时通过 `Authorization: Bearer xxx.xxx.xxx` 传递 JWT
 * [Session 是怎么实现的？存储在哪里？](https://juejin.cn/post/6942852054847062053)
 * 安全清单
   * 反 SQL/代码注入
