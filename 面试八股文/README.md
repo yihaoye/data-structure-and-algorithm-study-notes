@@ -816,8 +816,8 @@
   * 服务端请求伪造（SSRF）
   * 不安全的设计（需要更多地使用威胁建模、安全设计模式和原则以及参考架构）
 * XSS ![](./xss.jpeg)
-* [Cookie、Session、Token、JWT 区别](https://juejin.cn/post/6844904034181070861)
-* [JWT 认证中可以防止他人冒充 token 吗？否](https://www.zhihu.com/question/364616467)
+* [Cookie、Session、Token、JWT 区别](https://juejin.cn/post/6844904034181070861) - JWT 的本质和解决的根本问题是在分布式系统中，如何让服务器不保存会话状态，仍能验证用户身份以及获取用户基础信息，在微服务架构中，每个服务都能独立验证身份，无需调用认证中心
+* [JWT 认证中可以防止他人冒充 token 吗？](https://www.zhihu.com/question/364616467) - 答案是 “否”，在防止冒充这个部分，需要其他的防护手段，比如通常使用 HTTPS 双向认证，双向加密之类的。
 * [Password, Session, Cookie, Token, JWT, SSO, OAuth - Authentication Explained](https://blog.bytebytego.com/p/password-session-cookie-token-jwt)
   * [ByteByteGo - Session, cookie, JWT, token, SSO, and OAuth](https://blog.bytebytego.com/p/ep34-session-cookie-jwt-token-sso)
   * [SSO, SAML, OpenID](https://www.youtube.com/watch?v=O1cRJWYF-g4) - session/cookie 方便了同源网站系统登录，而 token (SAML, OpenID JWT 等，基于 OAuth 2.0 协议) 进一步将便利性普及到非同源网站系统
