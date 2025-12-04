@@ -2776,6 +2776,8 @@ KV 数据库主要的考点是高可用性、扩展性及高性能：
 * Kafka 提供消息排序
 
 **其他问题和进阶**：  
+更复杂自定义的定时系统，需要使用一些定时引擎或算法，比如 [RRULE（Recurrence Rule）](https://icalendar.org/RFC-Specifications/iCalendar-RFC-5545/)的引擎（比如 [JS 引擎](https://github.com/jkbrzt/rrule)、[.Net 引擎](https://github.com/ical-org/ical.net) 或 [Golang 引擎](https://github.com/teambition/rrule-go)等等），同时把相关的 rrule 字符串持久化到相关数据库记录，以进行每下一次事件时间的计算。  
+
 不可靠的时钟/时间：在分布式系统中，有不可靠的时钟和时间（比如由于请求 NTP 时间时的无限延迟，因为使用的是 packet-switched networks/分组交换网络，通常不是 circuit-switched networks/电路交换网络），不可靠的 NTP 服务器（即 Time server/时间服务器），石英时钟会产生偏移量等问题。当想要可靠地调度 Jobs 并在正确的时间执行它们时，时钟和时间起着重要的作用。因此，需要确保节点上的时间是同步的并且不会相差太大。实现这一目标的一种方法是使用多个 NTP 服务器并过滤掉那些偏差很大的服务器。另一种更可靠但成本更高的方法是在数据中心使用原子钟。  
 
 给一个 DAG（Directed Acyclic Graph 有向无环图）表示 execution nodes 之间的依赖关系，每个 node 会根据 dependency nodes 的结果做一系列计算（比如给一个 list of node 得到每个 node 对应的结果）。  
