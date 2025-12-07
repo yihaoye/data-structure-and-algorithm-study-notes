@@ -3,7 +3,7 @@
 [主要关注 3 点：](https://www.youtube.com/shorts/tIvCjH2ETzo)
 * 数据模型 - 是否有复杂的关系，还是仅简单的 lookup
 * 事务（即 ACID） - 是否支持
-* 查询样式（query pattern）- 复杂 JOIN（是否需要支持范式化）、范围查询、分析查询（analytics）、全文搜索 etc
+* 查询样式（query pattern）与特殊功能、性能 - 复杂 JOIN（是否需要支持范式化）、范围查询、分析查询（analytics）、全文搜索、图数据结构查询优化、内存级响应速度等
 * 可扩展性和数据一致性 - 分布式友好（以及数据最终一致性）
   * RDBMS 在大规模场景下需要额外架构设计，才能支持水平扩展，使用时也更复杂（分库分表 Sharding 拆分数据使得 JOIN 查询、事务支持变复杂）
   
@@ -55,6 +55,9 @@
     * 高性能、侧重写操作（LSM 树）
     * 只需要序列化/反序列化数据
     * ![](./How%20to%20Select%20NoSQL%20DB.jpeg)
-
+  
+为什么许多 NoSQL 数据库不支持事务？原因是 NoSQL 主要为分布式而生，在其之上实现的事务就是分布式事务，而分布式事务的复杂度和开销都非常高，通常会严重影响系统的性能和可扩展性。因此，与其实现不完善的功能，不如不实现、局部实现或让应用层来处理事务逻辑。  
+对于分布式 RDBMS 也是一样存在多节点/跨分片事务的问题，比如 PostgreSQL 的 Citus 方案涉及到多节点/跨分片事务时也是通过 2PC 等分布式事务方案实现，不及单机事务那样方便直观、严格（仅保证最终一致性）以及高性能。[Ref 1](https://zhuanlan.zhihu.com/p/667067679)、[Ref 2](https://zhuanlan.zhihu.com/p/695904884)  
+  
 参考：https://pingcap.medium.com/how-to-efficiently-choose-the-right-database-for-your-applications-20a109abced3  
 
