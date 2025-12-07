@@ -358,6 +358,10 @@
   * [遍历图结构数据](../Other%20Practices/22-07-2025%20recursive%20friendship%20graph.sql)
   * 生成序列或日期范围
 * PG 数据库 [Citus](https://github.com/citusdata/citus) - citus 是 PostgreSQL 数据库中的一种轻量级的分库分表解决方案。citus 不是一个单独的程序，它是 PostgreSQL 数据库中的一个插件，可以使用 create extension 安装此插件。每个 citus 集群有多个 PostgreSQL 数据库实例组成，数据库实例分为两类：master 节点，通常有一台。master 节点只存储分库分表的元数据，不存储实际的数据；worker 节点，通常有多台。worker节点存储实际的分片数据 (shard)。用户只连接 master 节点，即用户把 SQL 发到 master 节点，然后 master 节点解析SQL，把SQL分解成各个子 SQL 发送到底层的 worker 节点，完成 SQL 的处理。当各个 workder 把数据返给 master 之后，master 再做一次聚合运算，然后把结果返回用户。[Ref](http://www.pgsql.tech/article_102_10000013)
+* Schema 的意义 - 其实 NoSQL 与 RDBMS 在这一点上的区别类似动态语言与静态语言的类型检查，有好有坏。Schema 的坏处主要是较为麻烦、灵活性较低，好处主要是：
+  * 数据完整性、一致性、类型安全 - Schema 可以定义数据的结构和约束，帮助维护数据的一致性、确保不同表之间的数据关系正确，确保数据符合预期的格式和类型，防止无效或错误的数据被插入数据库
+  * 查询优化 - 有了明确的 Schema，数据库的查询优化器可以更好地优化查询计划，提高查询性能
+  * 自文档化 - Schema 本身可以作为数据库结构的文档，帮助团队成员理解、维护数据模型
 
 ### Redis 高频
 * Redis 有哪些数据类型？可以应用在什么场景？[Ref 1](https://cloud.tencent.com/developer/article/1975464)、[Ref 2](../Computer%20System%20Layer/数据库/Redis/README.md)
@@ -824,7 +828,7 @@
 * [JWT 认证中可以防止他人冒充 token 吗？](https://www.zhihu.com/question/364616467) - 答案是 “否”，在防止冒充这个部分，需要其他的防护手段，比如通常使用 HTTPS 双向认证，双向加密之类的。并且启用 JWT 过期设置，在如无跨域需要的情况下开启 CORS 最好。
 * 双 Token 机制 - [访问令牌（Access Token）](https://auth-wiki.logto.io/zh/access-token)与[刷新令牌（Refresh Token）](https://auth-wiki.logto.io/zh/refresh-token)，其中 Access Token 可以是不透明字符串或 JWT，Refresh Token 通常是不透明字符串（即随机的、无意义的字符串，因此攻击者无法从令牌本身提取任何有用信息，也因为没有元数据所以可以方便立即撤销、且使得必须在服务器端进行验证和查找，因此每次使用它时，服务器都需要检查其有效性、是否被撤销等状态，这提供了一个集中的控制点，而且不负载元数据也使得其存储占用资源较少）
   * 双 Token 机制过期设置：Refresh Token 用作获取新的 Access Token，通常 Access Token 有限期较短只有 10 来分钟（所以可以有效缩短攻击时间窗口 - 万一被黑客截获），Refresh Token 较长可以是按天或月计。Refresh Token 过期后会强制要求用户重新登陆。双 Token 的意义在于 1. 分布式系统多服务扩展性及性能，更容易地、且不会过度损耗数据库地进行访问验证，2. 存储隔离（Access Token 存 localStorage / 内存，Refresh Token 存 HttpOnly Cookie）如此它们不同的泄漏概率，3. 提供异常检测机制（Refresh Token 使用频率低，总是定期使用，容易监控），4. 就是 Refresh Token 是可以撤销的，而 Access Token 不行，因此删除 Refresh Token 全局失效可快速响应泄漏风险，5. Access Token 有时因为有跨域（CORS）的需要所以有时不能放在 Cookie 里（当然如果没有跨域需要的话也存在 Cookie 里最好、更安全）。[Ref 1](https://www.reddit.com/r/brdev/comments/1ik45oi/duvida_sobre_jwt_token_e_refresh_token/)、[Ref 2](https://medium.com/%E4%BC%81%E9%B5%9D%E4%B9%9F%E6%87%82%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88/jwt-json-web-token-%E5%8E%9F%E7%90%86%E4%BB%8B%E7%B4%B9-74abfafad7ba)
-  * Bearer Token [Ref 1](https://zhuanlan.zhihu.com/p/703895640)、[Ref 2](https://www.reddit.com/r/webdev/comments/n19l98/jwt_token_vs_access_token_vs_bearer_token/?tl=zh-hans) - 访问令牌的一种，通常用于 OAuth 2.0 授权框架中。客户端在请求资源时只需在 HTTP 请求头的 Authorization 字段中包含该令牌即可，无需额外的身份验证信息。它是一种无状态的、短期的凭证，所谓无状态，意味着服务器不需要保存任何关于 Bearer Token 的会话信息，只需要在收到请求时验证该 Token 的有效性，这样做的好处是减少了服务器的负担，提升了系统的扩展性。JWT 就是一种常见的 Bearer Token，另外[将把 JWT 放在 Bearer 里可以防止 CSRF](https://david-silva.medium.com/how-to-implement-csrf-protection-on-a-jwt-based-app-node-csurf-angular-bb90af2a9efd)。
+  * Bearer Token [Ref 1](https://zhuanlan.zhihu.com/p/703895640)、[Ref 2](https://www.reddit.com/r/webdev/comments/n19l98/jwt_token_vs_access_token_vs_bearer_token/?tl=zh-hans) - 访问令牌的一种，通常用于 OAuth 2.0 授权框架中。客户端在请求资源时只需在 HTTP 请求头的 Authorization 字段中包含该令牌即可，无需额外的身份验证信息。它是一种无状态的、短期的凭证，所谓无状态，意味着服务器不需要保存任何关于 Bearer Token 的会话信息，只需要在收到请求时验证该 Token 的有效性，这样做的好处是减少了服务器的负担，提升了系统的扩展性。JWT 就是一种常见的 Bearer Token，另外[同时在 Cookie 和请求头 Bearer 里发送 Token 可以很好防御 CSRF](https://david-silva.medium.com/how-to-implement-csrf-protection-on-a-jwt-based-app-node-csurf-angular-bb90af2a9efd)。
 * [Password, Session, Cookie, Token, JWT, SSO, OAuth - Authentication Explained](https://blog.bytebytego.com/p/password-session-cookie-token-jwt)
   * [ByteByteGo - Session, cookie, JWT, token, SSO, and OAuth](https://blog.bytebytego.com/p/ep34-session-cookie-jwt-token-sso)
   * [SSO, SAML, OpenID](https://www.youtube.com/watch?v=O1cRJWYF-g4) - session/cookie 方便了同源网站系统登录，而 token (SAML, OpenID JWT 等，基于 OAuth 2.0 协议) 进一步将便利性普及到非同源网站系统
