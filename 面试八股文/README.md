@@ -834,6 +834,11 @@
   * [ByteByteGo - Session, cookie, JWT, token, SSO, and OAuth](https://blog.bytebytego.com/p/ep34-session-cookie-jwt-token-sso)
   * [SSO, SAML, OpenID](https://www.youtube.com/watch?v=O1cRJWYF-g4) - session/cookie 方便了同源网站系统登录，而 token (SAML, OpenID JWT 等，基于 OAuth 2.0 协议) 进一步将便利性普及到非同源网站系统
   * [OAuth 2.0](https://www.youtube.com/watch?v=ZV5yTm4pT8g) - 即临时凭证（当用户希望某个第三方有限地访问自己在某个系统的资源但又不希望直接给出账号密码时）
+* [常见接口鉴权、字段](https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Reference/Headers/Authorization) - `Authorization: <auth-scheme> <authorization-parameters>`
+  * Basic 身份验证 - 在 HTTP 请求头中使用 `Authorization: Basic base64(username:password)` 进行身份验证，其中 `base64(username:password)` 是将用户名和密码通过冒号连接后进行 Base64 编码得到的字符串
+  * Bearer 身份验证 - 参考上面双 Token 机制部分
+  * Digest 身份验证 - `Authorization: Digest username="xxx", realm="xxx", uri="xxx", algorithm=<algorithm>, nonce="xxx", nc=<nc>, cnonce="xxx", qop=<qop>, response="xxx", opaque="xxx"`
+  * etc
 * [JSON Web Token 入门教程](https://www.ruanyifeng.com/blog/2018/07/json_web_token-tutorial.html) - JWT 的本质和解决的根本问题是在分布式系统中，如何让服务器不保存会话状态，仍能验证用户身份以及获取用户基础信息，在微服务架构中，每个服务都能独立验证身份，无需调用认证中心。总结就是用平衡可控的安全妥协方案换取架构灵活性和性能，因为传统方案 Session 每次都要查数据库、Redis，分布式系统需要 Session 共享但横向扩展困难且微服务架构复杂，每种身份验证模式都有其优缺点，JWT 在技术上确实比基于会话（Session）的身份验证安全性较低
   * 客户端调用后端 API 时通过 `Authorization: Bearer xxx.xxx.xxx` 传递 JWT
   * 后端还可以从 JWT 中获取用户权限等级等信息，从而决定是否允许访问某些资源或执行某些操作
