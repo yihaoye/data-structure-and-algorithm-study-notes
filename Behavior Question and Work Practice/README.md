@@ -355,7 +355,7 @@ by ChatGPT
 * 异于常人的旺盛精力与体力、韧性、毅力
 * [为自己工作](https://www.youtube.com/watch?v=3TiNEVIuMhU)
 * 客户、市场至上
-  * 倾听需求、**先找买家**、[目标人群定位](https://www.woshipm.com/pmd/3115640.html)
+  * 倾听需求、**先找买家**、[目标人群/客户定位](https://www.woshipm.com/pmd/3115640.html)
   * 关注、学习对手
 * 明确目标与重点、规划、坚持，[好的规划](https://wiki.mbalib.com/wiki/%E8%A7%84%E5%88%92)类似 OKR 如下：
   * 分清主次 - [最小可行产品（MVP）](https://www.woshipm.com/share/5911174.html)
