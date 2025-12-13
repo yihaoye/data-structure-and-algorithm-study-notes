@@ -359,10 +359,12 @@
   * 生成序列或日期范围
 * PG 数据库 [Citus](https://github.com/citusdata/citus) - citus 是 PostgreSQL 数据库中的一种轻量级的分库分表解决方案。citus 不是一个单独的程序，它是 PostgreSQL 数据库中的一个插件，可以使用 create extension 安装此插件。每个 citus 集群有多个 PostgreSQL 数据库实例组成，数据库实例分为两类：master 节点，通常有一台。master 节点只存储分库分表的元数据，不存储实际的数据；worker 节点，通常有多台。worker 节点存储实际的分片数据 (shard)。用户只连接 master 节点，即用户把 SQL 发到 master 节点，然后 master 节点解析 SQL，把 SQL 分解成各个子 SQL 发送到底层的 worker 节点，完成 SQL 的处理。当各个 workder 把数据返给 master 之后，master 再做一次聚合运算，然后把结果返回用户。[Ref](http://www.pgsql.tech/article_102_10000013)
   * 在定义表的同时时，通过 `create_distributed_table()` 函数指定字段作为分片键 (shard key)，citus 会根据分片键的值把数据分布到不同的 worker 节点上。在写 SQL 时则不再需要涉及任何分片信息就如普通 SQL 书写即可，citus 会自动处理背后的分片查询与结果聚合。[Ref](https://docs.citusdata.com/en/stable/develop/reference_ddl.html#create-distributed-table)
-* Schema 的意义 - 其实 NoSQL 与 RDBMS 在这一点上的区别类似动态语言与静态语言的类型检查，有好有坏。Schema 的坏处主要是较为麻烦、灵活性较低，好处主要是：
+* 数据结构化/Schema 的意义 - 其实 NoSQL 与 RDBMS 在这一点上的区别类似动态语言与静态语言的类型检查，有好有坏。Schema 的坏处主要是前期设计较为麻烦、灵活性较低，好处主要是：
   * 数据完整性、一致性、类型安全 - Schema 可以定义数据的结构和约束，帮助维护数据的一致性、确保不同表之间的数据关系正确，确保数据符合预期的格式和类型，防止无效或错误的数据被插入数据库
   * 查询优化 - 有了明确的 Schema，数据库的查询优化器可以更好地优化查询计划，提高查询性能
   * 自文档化 - Schema 本身可以作为数据库结构的文档，帮助团队成员理解、维护数据模型
+  * 代码工程优化 - 核心点！有了 Schema，代码部分的逻辑往往可以简化，因为可以依赖数据库的 Schema 来确保数据的正确性，而不需要在代码中进行过多的验证和检查，而一些 NoSQL 的无 Schema 特性虽然数据模型灵活，但这种灵活性是以将数据约束的责任转移给应用代码为代价的。总结就是，Schema 并不是负担，Schema 是把复杂度前移到设计阶段，无 Schema 只是把复杂度后移到代码和运行期
+  * 补充 - Schema 与否并不是绝对的好坏，而是要根据具体的应用场景和需求来选择。有些系统的使用场景的数据可能本身就非常灵活不可控，因此也就只能选择 Schema-less，不过关系型数据库也可以通过 JSON/JSONB 支持半结构化数据，从而在一定程度上兼顾两者的优点
 
 ### Redis 高频
 * Redis 有哪些数据类型？可以应用在什么场景？[Ref 1](https://cloud.tencent.com/developer/article/1975464)、[Ref 2](../Computer%20System%20Layer/数据库/Redis/README.md)
