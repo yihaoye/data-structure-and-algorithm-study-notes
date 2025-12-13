@@ -9,6 +9,7 @@
     * MySQL
     * PostgreSQL
     * SQLite
+    * Google Cloud Spanner - 最接近 CAP 完美的分布式数据库，通过极致的工程优化（如顶级云基础设施支持等等）和时钟同步技术实现分区容错性、强一致性和高可用性（99.999% 可用，即仍然是 CP 架构）
 * [NoSQL](./../../Leetcode%20Practices/system%20design/NoSQL.md)
   * 键值数据库 | KV 数据库
     * [文档数据库](./../../Leetcode%20Practices/system%20design/NoSQL.md#文档数据库)
