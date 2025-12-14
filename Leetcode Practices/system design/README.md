@@ -2670,7 +2670,7 @@ KV 数据库主要的考点是高可用性、扩展性及高性能：
 
 参考：[System Design Interview - Distributed Cache](https://www.youtube.com/watch?v=iuqZvajTOyA)  
 
-基本与设计 KV 数据库一致。除此之外要实现一些基本的缓存策略、算法如 LRU，以及缓存注意事项：[缓存雪崩、缓存击穿、缓存穿透](../../Computer%20System%20Layer/数据库/Redis/README.md#什么是缓存雪崩、缓存击穿、缓存穿透？)。  
+基本与设计 KV 数据库一致。除此之外要实现一些基本的缓存策略、算法如 LRU，以及缓存注意事项：[缓存雪崩、缓存击穿、缓存穿透](../../Computer%20System%20Layer/数据库/Redis/README.md#缓存三大故障)。  
 
 另外对比两种模式：
 * Dedicated Cache Cluster
