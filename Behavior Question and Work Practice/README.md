@@ -377,6 +377,8 @@ by ChatGPT
 
 其实是前面团队领导者素质、领导力的父集。  
 
+[李嘉诚 75 句智慧箴言](https://www.youtube.com/watch?v=uPuzgHz0clI)  
+
 ![](./how-software-is-created.jpeg)  
 
 ## 会议
