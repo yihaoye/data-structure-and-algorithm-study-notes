@@ -28,6 +28,7 @@
 * 产生死锁的必要条件有哪些？如何解决死锁？
 * [[微服務] 什麼是 gRPC，架構上為什麼要使用 gRPC](https://www.youtube.com/watch?v=qEB3yFzETVs)
 * RPC 与 REST 区别与选择 - [解答一](https://www.cnblogs.com/wongbingming/p/11086773.html)、[解答二](https://zhuanlan.zhihu.com/p/102760613)、[服务调用 / API 设计](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md#API%20Design)
+* oneof 联合类型 - 在 API（gRPC）设计和开发时，有时，一个属性可以是多种类型中的一个，但不能同时是多种类型，此时可以使用 oneof 类型，作为优雅、灵活的解决方案。[Ref](https://whrss.com/posts/api-design-openapi&grpc)
 * 基于文本的数据格式如 JSON 为什么比一些二进制序列化格式会占用更多的空间？
   * 文本字符的额外开销：JSON 使用可读的文本字符来表示数据，这包括了各种标记、键、值以及字符间的分隔符号（如大括号、逗号、冒号等）。这些额外的字符和标记增加了数据的体积。
   * 数据类型表示：JSON 为了支持不同的数据类型（字符串、数字、布尔值等）而增加了额外的字符，比如字符串需要用引号括起来，数字和布尔值等需要明确标识。
