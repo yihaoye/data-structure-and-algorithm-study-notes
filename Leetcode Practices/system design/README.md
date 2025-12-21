@@ -1756,7 +1756,7 @@ Discord 海量数据存储方案：
 ![](./discord-data-store.jpeg)  
 
 [亿级 IM 聊天系统设计](https://juejin.cn/post/7352797634556428303)：  
-![](./billions-user-im-system.awebp)  
+![](./billions-user-im-system.webp)  
 Netty 服务器部分的 channel 对象即是对网络连接（Socket）的抽象封装，这里也可以看到其设计仍然是 statefull 的  
   
 slack 总 channel 数极大，但是好像上面还有一层是 workspace，每个 channel 都只隶属于一个 workspace，因此是否实际 slack 实现时是每个 workspace 有自己的单独 kafka 集群，这样也就不会有单独 mq 支撑上百亿 channel 的问题（一个 workspace 顶多也就几千 channel）？  
@@ -1832,6 +1832,9 @@ WebSocket 连接由客户端启动。它是双向和持久的。它从 HTTP 连�
 [端到端加密内容审核](https://www.secrss.com/articles/41741)  
 
 * [其他参考](https://github.com/yihaoye/stem-notes/blob/master/e-computer-network/end-to-end_encryption.md)
+  
+WhatsApp 架构：  
+![](./whatsapp.gif)  
   
 其他参考方案：[Design a Chat Service](./example%20questions/Design%20a%20Chat%20Service.md)  
 
