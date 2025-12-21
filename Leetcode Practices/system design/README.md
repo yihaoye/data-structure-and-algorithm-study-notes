@@ -3390,6 +3390,8 @@ http1.1 允许客户端不用等待上一次请求结果返回，就可以发出
 <details>
 <summary>details</summary>
 
+该系统与日志系统设计深度绑定、强关联，所以这里一起探讨。  
+
 参考：
 * https://pdai.tech/md/db/nosql-es/elasticsearch-x-introduce-2.html#beats-logstath-elasticsearch-kibana
 * https://cloud.google.com/bigtable#section-8
@@ -3450,6 +3452,7 @@ http1.1 允许客户端不用等待上一次请求结果返回，就可以发出
 
 **数据库设计**  
 可以采用 NoSQL 负责写请求。分库分表时，应该可以以时间戳为 Key 进行一致性哈希分区（以 user_id 的话可能会造成部分分区过热，因为总是有一些网站远比其他网站热门）。  
+注意：日志写入关系型数据库是反模式，因此通常采用 NoSQL 数据库，如 Elasticsearch、MongoDB 等，但实际上成本仍然较高，因此新的方案如 Loki - 压缩日志并使用对象、文件存储（S3、OSS、GCS 或者本地磁盘）来存储，用数据库存储元数据、标签等，最后通过分布式 grep（LogQL）来索引查询。  
 
 **日志-监控-告警**  
 ![](./log-mornitor-alert.jpeg)  
