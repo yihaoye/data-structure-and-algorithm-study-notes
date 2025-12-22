@@ -21,7 +21,7 @@
   * ([Go 示例 1](./ObjectPool.go))
   * ([Go 示例 2](./Semaphore.go)) - 可用于应对下游限流调用，同时比串行调用快一些
 * [工厂方法 | Factory](./Factory.java) - 可与注册器合用，语言如 Go 不推荐使用工厂模式而是鼓励使用 NewXXX() 函数即可
-* 函数选项模式 | Functional Options Pattern - Go 语言推荐模式
+* 函数选项模式 | Functional Options Pattern - 又称函数式选项模式，Go 语言推荐模式，适合构造参数多、大部分有合理默认值、参数可选、需要继续扩展（向后兼容）、想要链式调用的优雅语法的场景
   * ([Go 示例 1](./Options.go))
   * ([Go 示例 2](./Options2.go))
   
