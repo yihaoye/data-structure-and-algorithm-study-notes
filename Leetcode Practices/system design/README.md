@@ -3487,7 +3487,7 @@ Ref：
   * Pay-in flow: payment system receives money from customers on behalf of sellers.
   * Pay-out flow: payment system sends money to sellers around the world.
 * Non-functional requirements
-  * Transactional integrity. Payments are financial transactions, so it is critical to ensure ACID (因此重点关注数据库事务以及分布式事务，核心支付数据库只能是关系型数据库如 Oracle、DB2、SQL Server 以及推荐 Google Cloud Spanner - 银行也在上云，Spanner 可以最小成本最大程度支持 CAP).
+  * Transactional integrity. Payments are financial transactions, so it is critical to ensure ACID (因此重点关注数据库事务以及分布式事务，核心支付数据库只能是关系型数据库如 Oracle、DB2、SQL Server、PostgreSQL 以及推荐 Google Cloud Spanner - 银行也在上云，Spanner 可以最小成本最大程度支持 CAP).
   * Reliability and fault tolerance. Failed payments need to be carefully handled.
   * A reconciliation process between internal services (payment systems, accounting systems) and external services (payment service providers) is required. The process asynchronously verifies that the payment information across these systems is consistent.
 
