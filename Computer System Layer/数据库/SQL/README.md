@@ -830,6 +830,11 @@ InnoDB 的加锁方法
 1. 防止并发修改：当多个事务需要同时访问同一数据集合，并且希望确保只有一个事务能够修改数据行时，可以使用此语句。
 2. 处理队列：当多个事务需要从一个队列或任务列表中获取任务，并且每个任务只能由一个事务处理时，可以使用此语句。正在处理的任务将被锁定，而其他事务将跳过已锁定的任务。
 
+**select for update nowait**  
+for update nowait 和 for update 都会对所查询到得结果集进行加锁，所不同的是，如果另外一个线程正在修改结果集中的数据，for update nowait 不会进行资源等待，只要发现结果集中有些数据被加锁，立刻返回 “XXX 错误，内容是资源正忙, 但指定以 NOWAIT 方式获取资源”。  
+for update 和 for update nowait 加上的是一个行级锁，也就是只有符合 where 条件的数据被加锁，在 select 的结果集中，只要有任何一个记录在加锁（正在被另一个线程使用），则整个结果集都在等待系统资源（如果是 nowait，则抛出相应的异常）。  
+使用场景：[The best way to use SQL NOWAIT](https://vladmihalcea.com/sql-no-wait/)、[避免极端情况下的死锁](https://stackoverflow.com/questions/63253395/deadlock-involving-select-for-update)  
+
 **select lock in share mode**  
 in share mode 子句的作用就是将查找的数据加上一个 share 锁，这个就是表示其他的事务只能对这些数据进行简单的 select 操作，而不能进行 DML 操作。  
 使用场景：为了确保自己查询的数据不会被其他事务正在修改，也就是确保自己查询到的数据是最新的数据，并且不允许其他事务来修改数据。与 select for update 不同的是，本事务在查找完之后不一定能去更新数据，因为有可能其他事务也对同数据集使用了 in share mode 的方式加上了 S 锁；  
@@ -890,6 +895,7 @@ commit;
 查询商品的频率比下单支付的频次高，基于以上可能会优先考虑第二种方案（当然还有其他的方案，这里只考虑以上两种方案）。  
 
 ### T-SQL 锁语法
+与 Microsoft SQL Server 绑定，不适用于 MySQL、PostgreSQL、Oracle 等。  
 ![](./types-of-database-locks.png)  
 
 ### 总结
