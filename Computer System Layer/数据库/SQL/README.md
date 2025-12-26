@@ -1516,6 +1516,22 @@ Benefits of using CTE:
 * [Leetcode Q1384](./../../../Leetcode%20Practices/database/hard/1384%20Total%20Sales%20Amount%20by%20Year.sql)
 * [Leetcode Q1767 - 创建原本不存在的临时表](./../../../Leetcode%20Practices/database/hard/1767%20Find%20the%20Subtasks%20That%20Did%20Not%20Execute.sql)
 
+写 SQL 时，CTE & 临时表 & 视图的选择：
+* **优先考虑 CTE**：如果只是简化单个复杂查询，特别是递归查询，或提高 SQL 可读性。
+  - 单个查询内的逻辑分解
+  - 递归查询（唯一选择）
+  - 一次性的复杂计算
+* **其次考虑临时表**：如果需要在**当前会话**的多个查询中反复使用中间结果集，或需要对中间结果进行 DML 操作（INSERT/UPDATE/DELETE）、创建索引。
+  - 会话内多次查询同一结果集
+  - 需要对中间结果修改
+  - 需要创建索引优化性能
+  - ETL数据清洗过程
+* **最后考虑视图**：如果查询逻辑需要被多个应用程序或用户**长期**共享、重复使用。
+  - 封装业务逻辑，统一数据访问
+  - 权限控制和数据安全
+  - 简化应用层代码
+  - 注意：普通视图**不存储数据**，不是持久化存储结果，而是持久化存储查询定义，如需持久化存储结果，应使用**物化视图**（Materialized View）
+
 ToDo...  
 
 ### 使用 EXPLAIN 分析 SQL 性能  
