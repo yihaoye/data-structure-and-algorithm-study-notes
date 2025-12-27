@@ -3208,6 +3208,11 @@ offset 的实现可以结合 message_table 和 consumer_partition_table 的 last
 * Notification 系统适用于实时通知、事件驱动、消息广播等场景，消息通常是短暂性的，不需要长期存储。
 * Notification 系统通常需要订阅者自行处理消息，它不保留消息。
 
+![](./design-a-notification-push-system.png)  
+![](./push-notifiction.jpg)  
+
+* https://bytebytego.com/guides/how-does-a-typical-push-notification-system-work/  
+
 </details>
 
 
