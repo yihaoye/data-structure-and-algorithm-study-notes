@@ -2555,17 +2555,23 @@ Example: Booking.com, Airbnb
   
 ![](./Hotel%20Booking%20System%20Design.png)  
 
-上面的设计应该优化：不需要根据不同的可用日期重复每个相同的房间（room 表可以去掉 time 和 status 且 room_id 唯一），只需要在 order 表看看该房间是否已有冲突时间即可（如果对同一个房间一次预约 n 天，则会在 order 表里创建 n 个新纪录）
+上面的设计应该优化：不需要根据不同的可用日期重复每个相同的房间（room 表可以去掉 time 和 status 且 room_id 唯一），只需要在 order 表看看该房间是否已有冲突时间即可，查询可用房间的 SQL 如下：
 ```sql
-SELECT r.room_id
-FROM room AS r
-LEFT JOIN (
-    SELECT DISTINCT room_id
-    FROM order
-    WHERE order_date BETWEEN start_date AND end_date
-) AS o ON r.room_id = o.room_id
-WHERE o.room_id IS NULL
-AND r.price <= ? AND r.location LIKE ?;
+-- 声明要搜索的时间段和条件
+-- SET @check_in_date = '2024-12-20';
+-- SET @check_out_date = '2024-12-27';
+-- SET @hotel_id = 123;
+-- SET @room_type = 'double_bed';
+-- 
+SELECT r.room_id, r.room_number, r.room_type
+FROM rooms AS r
+LEFT JOIN orders AS o ON r.room_id = o.room_id
+  AND :check_in_date < o.end_date   -- 关键：把时间重叠条件放在 ON 子句里
+  AND :check_out_date > o.start_date
+WHERE
+  r.hotel_id = :hotel_id
+  AND r.room_type = :room_type
+  AND o.order_id IS NULL; -- 关键：只选择没有找到重叠订单的房间
 ```
 
 Other's Design  
