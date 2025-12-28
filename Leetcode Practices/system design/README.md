@@ -908,7 +908,7 @@ API 返回数据 (JSON)
   * 如何将一个新的地方插入到系统中？每当用户添加了一个新的地方，就需要把它插入到数据库和 QuadTree 中。如果树居住在一台服务器上，添加一个新的地方很容易，但如果 QuadTree 分布在不同的服务器上，首先需要找到新地方的网格/服务器，然后将其添加到那里（在下一节讨论）。
 * （可行方案二）是使用 Geohash，本质上就是降维。降维的原因是，一维的数据管理和查找起来要容易得多，二维的数据要做到高效查找比较困难。查找条件是基于经纬度的，而不是一个单值；存储的数据也都是一个个经纬度形成的点，因此，Geohash 的办法就是把查找条件和存储的数据全部都变成一个个单值，这样就可以利用开发中熟悉的一维数组区域查找的技术来高效实现（比如把它索引化，而索引化其实是可以通过 B+ 树来实现的，因此 Geohash 的查询时间复杂度和 QuadTree 是可以在同一个数量级的，都是 logN）。
 * （可行方案三）Google S2 希尔伯特曲线。
-* （可行方案四）是使用 [R*-Tree](https://www.cnblogs.com/yanghh/p/14141407.html) + GIST Index（PostgreSQL + PostGIS）。其实是许多中小企业（甚至大企业）的实际工程方案，好处是内置实线，支持复杂的几何运算，缺点是在海量写入和超大规模分布式场景下如果要分库分表会比较麻烦。[空间索引](https://cloud.tencent.com/developer/article/2457667)
+* （可行方案四）是使用 [R* Tree](https://www.cnblogs.com/yanghh/p/14141407.html) + GIST Index（PostgreSQL + PostGIS）。其实是许多中小企业（甚至大企业）的[空间索引](https://cloud.tencent.com/developer/article/2457667)（尤其是静态数据）的实际工程方案，好处是内置实现，支持复杂的几何运算，缺点是在海量写入和超大规模分布式场景下如果要分库分表会比较麻烦，还有就是因为数据更新时的 R 树维护成本及磁盘 IO 因此不适合位置高频更新的场景（比如 Uber）。
   
 PS：问：一些教程在教 Yelp、Uber 时使用 QuadTree 而一些使用 Geohash，有什么不同？哪个更好？答：QuadTree 是更精准更慢，Geohash 是不精准会有突变但更快，微软用 QuadTree，很多开源的如 ElasticSearch、MongoDB 用 Geohash，还有谷歌用 Hilbertcurve。[参考](https://www.1point3acres.com/bbs/thread-537353-1-1.html)  
   

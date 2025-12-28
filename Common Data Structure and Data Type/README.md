@@ -71,7 +71,8 @@
     - 自平衡搜索树 | Self-Balanced Search Tree
       - [B/B+ 树 | B/B+ Tree](./Data%20Structure%20Implementation/BPlusTree/README.md)
       - 2–3 树 | 2-3 Tree
-    - [R 树 | R Tree](./../Common%20Algorithm%20and%20Theory/QuadTree-RTree-算法.md) (2D、3D 的空间索引，理论上不如 K-D 树通用)
+    - [R 树 | R Tree](./../Common%20Algorithm%20and%20Theory/QuadTree-RTree-算法.md) (2D、3D 的空间索引，理论上不如 K-D 树通用，但是工程上广泛用于 GIS 系统的空间索引)
+      - R* 树 | R* Tree ([Wiki](https://zh.wikipedia.org/wiki/R*%E6%A0%91)，[Ref 1](https://baige5117.github.io/blog/R*-Tree.html))
     - [H 树 | H Tree](https://en.wikipedia.org/wiki/HTree)
     - [K-D 树 | K-D Tree](./Data%20Structure%20Implementation/KDTree/README.md) ([Wiki](https://zh.wikipedia.org/zh-hans/K-d%E6%A0%91)，时间复杂度：索引搜索 O(N^(1-1/d))，最坏情况下可能会退化成链表，所以其平衡性并不稳定，因此业界实际使用更高级的数据结构 - 分层可导航小世界图 / HNSW)
       - B-K-D 树 | B-K-D Tree ([Ref 1](https://medium.com/@nickgerleman/the-bkd-tree-da19cf9493fb))
