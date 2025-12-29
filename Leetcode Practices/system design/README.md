@@ -221,7 +221,8 @@
 * 分布式锁、[分布式一致性](./System%20Design%20Fundamentals.md)与[选举算法/共识机制](./example%20questions/Leader%20Election.md)
 * 网络（如 [VPN](./VPN.gif) 等）、拓扑（如 AWS VPC 等），点对点网络/去中心化（Peer-to-peer Networks，如 VPC Peering、指数增长的高效的针对大规模目标对象的数据拷贝传输、区块链项目如 Bitcoin、等等）  
   
-![](./System%20Design%20Blueprint.jpeg)
+![](./System%20Design%20Blueprint.jpeg)  
+![](./9-essential-components-of-production-microservice-app.png)  
 
 </details>
 <br />
