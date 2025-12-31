@@ -16,4 +16,7 @@ R树是用来做空间数据存储的树状数据结构。例如给地理位置�
 插入：最差 O(N)  
 通常用于 2D、3D 的空间索引，所以理论上不如 KD 树更通用，也更不如 Hierarchical Navigable Small World（HNSW，通用更大维度且性能优异）。  
 
+![](./R树详解.png)  
+转载自：https://www.cnblogs.com/yanghh/p/14141407.html  
+
 https://zh.wikipedia.org/wiki/R%E6%A0%91  
