@@ -257,7 +257,7 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
   * *Size of messages representing the volume of data exchanges.*
   * Database Performance ![](./db-performance.gif)
   * 系统设计中的时间复杂度（主要为数据库、数据仓库、缓存、消息队列等持久化数据的操作）
-    * SQL - 索引优化影响所有操作，以下描述约定 M 为已经被 WHERE 等查询优化了范围后符合条件的目标数据量，N 为表的数据总数，且约定下面操作皆为查询优化后的复杂度。常见的 SQL 数据库即使千万级数据，全表扫描也仅需 10 至几十秒。理论上，使用 SSD 且前提条件没有复杂的数据存储结构 + 是顺序读取，遍历千万级数据可以在 3-5 秒内完成。一些参考链接：[SQL 时间复杂度](https://medium.com/learning-data/understanding-algorithmic-time-efficiency-in-sql-queries-616176a85d02)
+    * SQL - 索引优化影响所有操作，以下描述约定 M 为已经被 WHERE 等查询优化了范围后符合条件的目标数据量，N 为表的数据总数，且约定下面操作皆为查询优化后的复杂度。常见的 SQL 数据库即使千万级数据，全表扫描也仅需 10 至几十秒。理论上，使用 SSD 且前提条件没有复杂的数据存储结构 + 是顺序读取，遍历千万级数据可以在 3-5 秒内完成。一些参考链接：[SQL 时间复杂度](https://medium.com/learning-data/understanding-algorithmic-time-efficiency-in-sql-queries-616176a85d02)、[Ref 1](https://stackoverflow.com/questions/2065754/is-there-any-general-rule-on-sql-query-complexity-vs-performance)
       * WHERE 的条件过滤如等值查询（=）、范围查询（>、<、BETWEEN）的时间复杂度可以是 `O(logN)`（索引支持）~ `O(N)`（索引缺失或索引失效）
         * LIKE
           * 前缀匹配（如 LIKE 'prefix%'）- 时间复杂度 `O(logN)`，因为数据库可以利用索引
