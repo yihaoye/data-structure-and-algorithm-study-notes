@@ -257,19 +257,21 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
   * *Size of messages representing the volume of data exchanges.*
   * Database Performance ![](./db-performance.gif)
   * 系统设计中的时间复杂度（主要为数据库、数据仓库、缓存、消息队列等持久化数据的操作）
-    * SQL - 索引优化影响所有操作，以下描述约定 M 为已经被 WHERE 等查询优化了范围后符合条件的目标数据量，N 为表的数据总数，且约定下面操作皆为查询优化后的复杂度。（常见的 SQL 数据库即使千万级数据，全表扫描也仅需 10 至几十秒。理论上，使用 SSD 且前提条件没有复杂的数据存储结构 + 是顺序读取，遍历千万级数据可以在 3-5 秒内完成）
-      * GROUP BY - 时间复杂度 `O(M)`，因为聚合总是要遍历所有数据行
+    * SQL - 索引优化影响所有操作，以下描述约定 M 为已经被 WHERE 等查询优化了范围后符合条件的目标数据量，N 为表的数据总数，且约定下面操作皆为查询优化后的复杂度。常见的 SQL 数据库即使千万级数据，全表扫描也仅需 10 至几十秒。理论上，使用 SSD 且前提条件没有复杂的数据存储结构 + 是顺序读取，遍历千万级数据可以在 3-5 秒内完成。一些参考链接：[SQL 时间复杂度](https://medium.com/learning-data/understanding-algorithmic-time-efficiency-in-sql-queries-616176a85d02)
+      * WHERE 的条件过滤如等值查询（=）、范围查询（>、<、BETWEEN）的时间复杂度可以是 `O(logN)`（索引支持）~ `O(N)`（索引缺失或索引失效）
+        * LIKE
+          * 前缀匹配（如 LIKE 'prefix%'）- 时间复杂度 `O(logN)`，因为数据库可以利用索引
+          * 全模糊匹配或中间模糊匹配（如 LIKE '%substring%'）- 时间复杂度 `O(N)`，因为不能使用索引，通常会进行全表扫描
+        * IN | NOT IN - 时间复杂度 `O(logN)` ~ `O(N)`，IN 操作通常能利用索引，尤其是当查询中的元素数较少时，如果元素过多，优化器可能会选择全表扫描。NOT IN 操作通常较难通过索引优化，特别是当查询中涉及到排除大量数据时，数据库更倾向于执行全表扫描（!= 也同理），若数据表中存在 NULL 值，NOT IN 查询的结果可能会不准确，且性能更差。为提高性能，尽量避免使用 NOT IN，而是考虑使用 NOT EXISTS 或 LEFT JOIN 等替代方案，同时，确保对相关字段创建有效的索引，以优化查询性能
+      * GROUP BY - 时间复杂度 `O(M)`，因为聚合总是要遍历所有数据行。如果分组字段没有索引，数据库通常需要先进行排序 `O(M*logM)` 或者建立哈希表 `O(M)` 空间复杂度
       * COUNT、SUM、MAX 等聚合函数 - 时间复杂度 `O(M)`
       * ORDER BY - 时间复杂度 `O(M*logM)`
-      * JOIN - 时间复杂度有索引 FULL JOIN `O(N1*logN1 + N2*logN2)` 无索引或笛卡尔积 CROSS JOIN `O(N1*N2)`，因为 JOIN 命令顺序在 WHERE 之前，所以不会被 WHERE 优化，但是可以被索引优化，另外索引优化过的 INNER、LEFT、RIGHT JOIN 都是 `O(N1*logN2)`。其中 INNER JOIN 执行时会自动选择选择最小的表当基础表，是 JOIN 中效率最高的，所以通常最佳实践都会建议尽量使用数据量小的表当主表（前提是索引优化）。[JOIN 优化](https://www.cnblogs.com/wql025/p/14439071.html)
-        * 如果一定想通过 WHERE 优化 JOIN，也是可以的，方法是将 JOIN 的目标表修改为子查询结果（但必须过滤结果较小以避免大的内存消耗）
-      * HAVING - 时间复杂度 `O(M)`
-      * LIMIT - 时间复杂度 `O(K)`
-      * UNION - 时间复杂度 `O(M1 + M2)`
-      * LIKE
-        * 前缀匹配（如 LIKE 'prefix%'）- 时间复杂度 `O(logN)`，因为数据库可以利用索引
-        * 全模糊匹配或中间模糊匹配（如 LIKE '%substring%'）- 时间复杂度 `O(N)`，因为不能使用索引，通常会进行全表扫描
-      * IN | NOT IN - 时间复杂度 `O(logN)` ~ `O(N)`，IN 操作通常能利用索引，尤其是当查询中的元素数较少时，如果元素过多，优化器可能会选择全表扫描。NOT IN 操作通常较难通过索引优化，特别是当查询中涉及到排除大量数据时，数据库更倾向于执行全表扫描，若数据表中存在 NULL 值，NOT IN 查询的结果可能会不准确，且性能更差。为提高性能，尽量避免使用 NOT IN，而是考虑使用 NOT EXISTS 或 LEFT JOIN 等替代方案，同时，确保对相关字段创建有效的索引，以优化查询性能
+      * JOIN - 时间复杂度有索引 FULL JOIN `O(M1*logN2 + M2*logN1)` 无索引或笛卡尔积 CROSS JOIN `O(M1*M2)`，索引优化过的 INNER、LEFT、RIGHT JOIN 都是 `O(M1*logN2)`（N2 为被驱动表总索引量，物理现实 - 表 2 的索引 B+ 树是包含该列所有数据的。即便通过 WHERE 过滤了表 2，表 2 的索引结构依然是 N2 那么大）。其中 INNER JOIN 执行时会自动选择选择最小的表当基础表，是 JOIN 中效率最高的，所以通常最佳实践都会建议尽量使用数据量小的表当主表（前提是索引优化）。[JOIN 优化](https://www.cnblogs.com/wql025/p/14439071.html)
+        * 旧版本的数据库因为 JOIN 命令顺序在 WHERE 之前，所以不会被 WHERE 优化需要开发者自己进行谓词下推优化，不过新版本的数据库（MySQL 5.6 或 PG 8.2 开始）的 Optimizer 都提供主动谓词下推（PredicatePushDown）优化，所以不需要开发者自己优化了
+      * HAVING - 时间复杂度 `O(M)`，它作用于聚合后的中间、临时结果集，此时无法直接利用原始表的索引
+      * LIMIT offset, count - 时间复杂度 `O(offset + count)`
+      * UNION - 不去重（UNION ALL）时间复杂度 `O(M1 + M2)`；UNION 默认会去重（Distinct），这涉及到排序或哈希，时间复杂度大概 `O((M1 + M2) * log(M1 + M2))`
+      * EXISTS | NOT EXISTS - 有充分索引支持的情况下时间复杂度均为 `O(M * logN)`，EXISTS 检查子查询内表物理索引树（N）相关数据是否存在于外表（M - 过滤后的外表），见有/找到即返回 True，NOT EXISTS 则是见有/找到即返回 False，即双向短路
 * **Serviceability or Manageability** - how easy to operate and maintain. simplicity and speed with which a system can be repaired or maintained. （相关组件与手段：日志系统、CI/CD、统一配置中心、应用框架、IaC、版本管理、标准制定如协议、解耦）
   * *If the time to fix a failed system increases, then availability will decrease.*
   * *Ease of diagnosing and understanding problems when they occur, ease of making updates or modifications, and how simple the system is to operate.*
