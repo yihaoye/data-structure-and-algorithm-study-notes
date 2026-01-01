@@ -397,7 +397,7 @@
 * [如何确定当前能读到哪一条消息](https://cloud.tencent.com/developer/article/1853417)
 * [Kafka consumer group](https://www.cnblogs.com/huxi2b/p/6223228.html)
 * [Kafka 如何保证消息顺序性](https://cloud.tencent.com/developer/article/1839597) - 要满足全局有序，需要 1 个 Topic 只能对应 1 个 Partition。要满足局部有序，只需要在发消息的时候指定 Partition Key，Kafka 对其进行 Hash 计算，根据计算结果决定放入哪个 Partition，这样 Partition Key 相同的消息会放在同一个 Partition。此时，Partition 的数量仍然可以设置多个，提升 Topic 的整体吞吐量。
-* 背压（Backpressure）- 是指当数据生产速度超过数据消费速度时，消费者向生产者施加的一种压力机制。背压的目的是为了保护消费者，防止其被生产者产生的数据压倒或超负荷，从而导致系统资源耗尽或性能下降，[ref 1](https://www.zhihu.com/question/49618581)
+* [背压（Backpressure）](../Leetcode%20Practices/system%20design/背压.md)- 是指当数据生产速度超过数据消费速度时，消费者向生产者施加的一种压力机制。背压的目的是为了保护消费者，防止其被生产者产生的数据压倒或超负荷，从而导致系统资源耗尽或性能下降，[ref 1](https://www.zhihu.com/question/49618581)
   * 反压机制（Pushback）： 消费者通过某种方式向生产者发出信号，告知生产者当前处理速率不足，需要减缓生产速度。生产者收到信号后可以采取相应的措施，例如降低数据生成速率、缓存数据或丢弃部分数据
   * Backpressure 响应式编程（Reactive Programming）： 在响应式编程中，背压是一种处理异步数据流的机制。例如，在使用 RxJava、Project Reactor 等响应式框架时，可以使用背压操作符来处理数据流中的背压情况，例如通过缓存、丢弃、延迟请求等方式来减缓数据流的速率
   * 具体来说，背压通常用于处理数据流式处理场景，特别是在异步、非阻塞的环境中，例如响应式编程、流处理系统等。在这些场景中，数据生产者产生的数据速率可能会超过消费者处理的速率，导致消费者处理不过来，造成内存溢出、系统崩溃等问题。为了解决这个问题，可以采取背压机制，让消费者通知生产者降低生产速率，从而使数据生产和消费达到平衡
