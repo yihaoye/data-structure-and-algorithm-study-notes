@@ -271,7 +271,8 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
       * HAVING - 时间复杂度 `O(M)`，它作用于聚合后的中间、临时结果集，此时无法直接利用原始表的索引（所以能用 WHERE 就不用 HAVING）
       * LIMIT offset, count - 时间复杂度 `O(offset + count)`
       * UNION - 不去重（UNION ALL）时间复杂度 `O(M1 + M2)`；UNION 默认会去重（Distinct），这涉及到排序或哈希，时间复杂度大概 `O((M1 + M2) * log(M1 + M2))`
-      * EXISTS | NOT EXISTS - 有充分索引支持的情况下时间复杂度均为 `O(M * logN)`，EXISTS 检查子查询内表物理索引树（N）相关数据是否存在于外表（M - 过滤后的外表），见有/找到即返回 True，NOT EXISTS 则是见有/找到即返回 False，即双向短路
+      * EXISTS | NOT EXISTS - 有充分索引支持的情况下时间复杂度均为 `O(M*logN)`，EXISTS 检查子查询内表物理索引树（N）相关数据是否存在于外表（M - 过滤后的外表），见有/找到即返回 True，NOT EXISTS 则是见有/找到即返回 False，即双向短路
+      * CTE 递归查询 - 索引支持下：时间复杂度 $O(M_{root} + \sum_{i=1}^{D} M_i \times \log N)$，$M_i$ 是第 $i$ 层的数据量，$\log N$ 是通过外键索引查找子节点的代价，在一个设计良好的递归查询中，每个节点应该只被访问一次。无索引：每层递归都会触发一次全表扫描，总复杂度会飙升至 $O(D \times N)$（$D$ 为深度），这在千万级数据面前是灾难性的。
 * **Serviceability or Manageability** - how easy to operate and maintain. simplicity and speed with which a system can be repaired or maintained. （相关组件与手段：日志系统、CI/CD、统一配置中心、应用框架、IaC、版本管理、标准制定如协议、解耦）
   * *If the time to fix a failed system increases, then availability will decrease.*
   * *Ease of diagnosing and understanding problems when they occur, ease of making updates or modifications, and how simple the system is to operate.*
