@@ -268,7 +268,7 @@ Core scalable/distributed system concepts include: `Consistent Hashing`, `CAP Th
       * ORDER BY - 时间复杂度 `O(M*logM)`
       * JOIN - 时间复杂度有索引 FULL JOIN `O(M1*logN2 + M2*logN1)` 无索引或笛卡尔积 CROSS JOIN `O(M1*M2)`，索引优化过的 INNER、LEFT、RIGHT JOIN 都是 `O(M1*logN2)`（N2 为被驱动表总索引量，物理现实 - 表 2 的索引 B+ 树是包含该列所有数据的。即便通过 WHERE 过滤了表 2，表 2 的索引结构依然是 N2 那么大）。其中 INNER JOIN 执行时会自动选择选择最小的表当基础表，是 JOIN 中效率最高的，所以通常最佳实践都会建议尽量使用数据量小的表当主表（前提是索引优化）。[JOIN 优化](https://www.cnblogs.com/wql025/p/14439071.html)
         * 旧版本的数据库因为 JOIN 命令顺序在 WHERE 之前，所以不会被 WHERE 优化需要开发者自己进行谓词下推优化，不过新版本的数据库（MySQL 5.6 或 PG 8.2 开始）的 Optimizer 都提供主动谓词下推（PredicatePushDown）优化，所以不需要开发者自己优化了
-      * HAVING - 时间复杂度 `O(M)`，它作用于聚合后的中间、临时结果集，此时无法直接利用原始表的索引
+      * HAVING - 时间复杂度 `O(M)`，它作用于聚合后的中间、临时结果集，此时无法直接利用原始表的索引（所以能用 WHERE 就不用 HAVING）
       * LIMIT offset, count - 时间复杂度 `O(offset + count)`
       * UNION - 不去重（UNION ALL）时间复杂度 `O(M1 + M2)`；UNION 默认会去重（Distinct），这涉及到排序或哈希，时间复杂度大概 `O((M1 + M2) * log(M1 + M2))`
       * EXISTS | NOT EXISTS - 有充分索引支持的情况下时间复杂度均为 `O(M * logN)`，EXISTS 检查子查询内表物理索引树（N）相关数据是否存在于外表（M - 过滤后的外表），见有/找到即返回 True，NOT EXISTS 则是见有/找到即返回 False，即双向短路

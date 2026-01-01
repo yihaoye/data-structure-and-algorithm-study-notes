@@ -1236,6 +1236,7 @@ https://shardingsphere.apache.org/index_zh.html
 * 只返回必要的列，用具体的字段列表代替 Select * 语句
 * 区分 in 和 exists
 * 优化 Group By 语句 - 尽量让 Group By 过程用上表的索引，确认方法是 explain 结果里没有 Using temporary 和 Using filesort；
+* 能用 WHERE 就不用 HAVING
 * 尽量使用数字型字段
 * 优化 Join 语句
 * WHERE 子句中应该尽量避免在字段上使用函数，因为这样做会使该字段上的索引失效，即使该字段上没有索引，也应该避免在字段上使用函数（CPU 开销）
