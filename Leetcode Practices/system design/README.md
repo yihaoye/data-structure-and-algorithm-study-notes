@@ -2459,11 +2459,15 @@ URL Frontier 主要是存储一堆待访问的 URL。它有 2 个接口：
 > * 当它处于信息采集过程中，必须保证其队列是非空的。
 > * [它只包含来自于同一台主机（host / domain）上的 URL](https://nlp.stanford.edu/IR-book/html/htmledition/the-url-frontier-1.html)。一个辅助表 T 被用来维护主机到 back 队列之间的映射关系。每当 back 队列为空，要被 front 队列重新填充的时，T 表必须要进行相应的更新。
 
+> 但是全世界有数亿个域名，给每个域名都开一个永久的 Back Queue，内存会瞬间爆掉（Back Queue 通常是基于 Redis List 且开启 AOF 防止掉电易失，堆也正好可以使用 Redis ZSet），因此需要一些优化：在实际的大规模爬虫系统（如 Google 的 Mercator 架构）中，解决这个问题的核心方案是：动态复用（Dynamic Reuse）。
+> * 固定数量的活跃槽位（Active Slots）- 系统并不会为每个域名开一个队列，而是只维持一个固定大小的 Back Queue 集合（比如 N 个）。只有正在被爬取的域名才会占用一个 Back Queue。当一个 Back Queue (b1) 里的比如 Wikipedia 链接爬完了，或者该域名被判定为爬取已达上限时，这个 b1 就会被释放。释放后的 b1 会立即被分配给 Front Queue 中排队的下一个新域名（比如 StackOverflow）。为什么 Back Queue 的数量不需要太多？因为虽然域名多，但并发爬取的线程数（Workers）是有限的。通常情况下，Back Queue 的数量 $\approx$ 工作线程数 $\times$ 一个常数（通常是 3，下面也有提及）。多出来的队列是为了让 Min-Heap 有足够的缓冲，保证线程在等待某个域名冷却时，总能从堆顶找到另一个已经冷却完毕的域名，从而不让 CPU 闲着。
+> * 域名表的待命状态 - 虽然内存中活跃的 Back Queue 数量是固定的，但海量的待处理 URL 存放在分布式数据库（如 HBase、BigTable，因为消息队列无法承载百亿级数据且不支持复杂的优先级排序）。Front Queue 在数据库中利用 RowKey（（如 `ReverseHost:Priority:DiscoveryTime`））排序或索引机制，实现逻辑上按域名聚集且按优先级排列。调度器（Scheduler / Politeness Router）负责监测 $N$ 个内存 Back Queue 的状态。一旦某个域名的队列空了，调度器就根据优先级策略从数据库中捞出下一个待处理域名的一批 URL，填充到内存 Back Queue（通常是 Redis）中，从而实现海量数据与高效调度的平衡。当 Back Queue 中的 URL 被抓取完成后，其抓取结果（成功 / 失败 / 重试）会异步写回分布式数据库，从而更新该 URL 在 Front Queue 中的状态，完成闭环。
+> 
 > 堆里存放着的条目对应每一个 back 队列，该条目记录着该队列所对应的主机可以再次被连接的最早时间 te。请求获取 URL 的爬虫线程会抽取出堆顶元素，然后一直等到相应 te 时间。接下来，它会获取到该堆顶元素所对应的 back 队列 j 的队首 URL u，进而开始进行 URL u 的抓取。抓取过程完成后，调用线程会检查队列 j 是否为空。如果为空，它会挑选一个 front 队列，然后抽取出其队首 URL v。Front 队列的选择方法对于更高优先级的队列来说可能并不公平（通常是一个随机的过程），但这样做是确保高优先级的 URL 可以更快的流入到 back 队列中来。接下来，会检查 v，判断 v 所对应的主机是否已经存在并且已经存有一些 URL。如果是这样的话，v 会被添加到该队列里，然后重新返回到 front 队列，寻找另一个可以插入到空队列 j 的 URL。这个过程会一直持续，直到队列 j 再次变为非空。同时，该线程会向堆中插入一条包含最早开始时间 te 的新条目，这个时间是根据队列 j 中最新被提取的 URL 的相关属性所决定的（比如上次何时进行的连接或是上次爬取花费的时间），之后会继续执行这个过程。  
 > Front 队列的数量以及分配权值和挑选队列的策略共同组成了希望植入系统的优先级属性。Back 队列的数量决定着可以维持多少线程处于运行状态同时又遵守着礼貌性特征。Mercator 的设计者提出一个比较粗糙的建议：可以使用数量三倍于爬虫线程的 back 队列。  
 > 在大规模下的信息采集过程中，随着 URL 队列的增长，可能会造成节点的可用内存不足（经过实验，的确是这样，这个问题也是很棘手的问题）。一个解决方法是让大多数 URL 队列存储在磁盘上，只将每个队列中的一部分保存在内存中，当内存中数据不足时，可以从磁盘中读取更多的数据。
   
-以上参考：[Ref 1](https://nlp.stanford.edu/IR-book/html/htmledition/the-url-frontier-1.html)、[Ref 2](https://www.cnblogs.com/coser/archive/2012/04/15/2450342.html)  
+以上参考：[Ref 1](https://nlp.stanford.edu/IR-book/html/htmledition/the-url-frontier-1.html)、[Ref 2](https://www.cnblogs.com/coser/archive/2012/04/15/2450342.html)、Gemini  
 
 **Fault Tolerance（容错性）& Scalability（扩展性）**  
 * 扩展性
