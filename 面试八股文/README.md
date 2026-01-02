@@ -823,7 +823,7 @@
   * 敏感信息泄露、加密失败
   * 失效的访问控制
   * 安全配置错误
-  * 软件和数据完整性故障（不安全的反序列化）
+  * 软件和数据完整性故障（不安全的反序列化）- 序列化本身并不提供加密或安全保证。所有主流二进制序列化协议（Protobuf / Thrift / Avro）的二进制序列化都仅仅是降低了可读性、提高了逆向成本（相较于 JSON 的明文自描述格式），而不是安全边界。在缺失 Schema / Message Definition 的情况下，仅凭 payload 逆向还原部分 data model（值与字段号，但是无法获取字段名、类型语义、枚举含义）是完全没问题的（比如 `protoc --decode_raw`）。[Ref 1](https://stackoverflow.com/questions/25898230/decoding-protobuf-without-schema)、[Ref 2](https://www.reddit.com/r/learnpython/comments/d034x0/decoding_a_protobuf_message_without_a_proto_file/)
   * 使用含有已知漏洞的、易受攻击或过期的组件
   * 失效或不足的日志记录和监控
   * 服务端请求伪造（SSRF）
