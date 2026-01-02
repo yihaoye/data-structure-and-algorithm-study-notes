@@ -2446,7 +2446,7 @@ URL Frontier 主要是存储一堆待访问的 URL。它有 2 个接口：
   * 手动选择种子URL：这是最常见的方法，爬虫系统的操作员手动选择一些重要的、具有代表性的网页作为种子URL。通常选择与爬虫目标相关的网页，确保这些网页包含了系统要收集的数据。
   * 搜索引擎结果页：可以从搜索引擎结果页中提取一些相关的链接作为种子URL。这些链接通常与特定主题或关键字相关，可以帮助爬虫系统开始收集相关内容。
   * 网站地图（Site Map）：一些网站提供了网站地图，其中包含了站点的所有页面链接。爬虫可以从网站地图中选择一些链接作为种子URL，以确保覆盖整个站点。
-* Front Queue 与 Prioritizer 实现选择策略，为 URL 优先级进行了排序（Prioritizer 根据 URL 重要性或上次被访问距今间隔时间等等来评定，然后根据评定的优先级插到对应的队列里面）。假设数字越低优先级越高，优先级为 1 的 URL 就放进 Front Queue 1 队列，以此类推（优先级高的队列有更高的概率被选中）。
+* Front Queue 与 Prioritizer 实现选择策略，为 URL 优先级进行了排序（Prioritizer 根据 PageRank 算法计算或 URL 重要性或上次被访问距今间隔时间等等来评定，然后根据评定的优先级插到对应的队列里面）。假设数字越低优先级越高，优先级为 1 的 URL 就放进 Front Queue 1 队列，以此类推（优先级高的队列有更高的概率被选中）。
 * Back Queue
   * Back Queues、Politeness Router 以及 Mapping Table `<url, back_queue_id>` 把同一个网站/子网页/URL 都插入到同一个 Back Queue 中，比如 Amazon 的 URLs 只放进 B1、Facebook 的 URLs 只放进 B2 等等。
   * 接着实现礼貌性策略，控制对一个网站访问的频率（politeness selector 协同一个时间戳排序的 heap 以控制每个 Back Queue 何时可以再次读取 - heap 里存储的是每个 Back Queue（即同一个网站）下一次可以被访问/读取/poll 的最早时间）。
