@@ -105,13 +105,16 @@ This personal Blog contains explanation and **Java library/template implementati
     - [分块/分桶法 | Range Block/Bucketing](./分桶法.md) (若为平方分割，则时间复杂度 `O(√N)`，通常在线/离线均可使用)
       - 莫队算法 | Mo Algorithm ([Wiki](https://oi-wiki.org/misc/mo-algo/)，通常用于离线算法)
     - [蓄水池抽样算法 | Reservoir Sampling](./蓄水池抽样算法.md) (时间复杂度为 `O(N)` 且为一次遍历即可，空间复杂度 `O(m)` m 为从流中随机选出 m 个，因为 m 通常为有限的常数，所以空间复杂度可以认为是 `O(1)`)
-    - 编码算法 | Coding Algorithm ([熵编码](https://zh.wikipedia.org/wiki/%E7%86%B5%E7%B7%A8%E7%A2%BC%E6%B3%95)、[字典编码](https://en.wikipedia.org/wiki/Dictionary_coder))
-      - [霍夫曼压缩算法 | Huffman Coding/Compression](./霍夫曼压缩算法.md)
     - [布隆过滤器及其算法 | Bloom Filter](./布隆过滤器及其算法.md)
       - 计数布隆过滤器 | Counting Bloom Filter (支持删除操作)
       - 布谷鸟过滤器及其算法 | Cuckoo Filter (相比布隆过滤器的空间占用高一些且性能低一些，优势在于低假阳率、支持删除操作)
     - [Count-Min Sketch 算法](./Count-Min-Sketch.md) (可以替代上面的布隆过滤器以提供统计、删除功能)
       - Count-Mean-Min Sketch 算法
+    - 编码算法 | Encoding Algorithm ([熵编码](https://zh.wikipedia.org/wiki/%E7%86%B5%E7%B7%A8%E7%A2%BC%E6%B3%95)、[字典编码](https://en.wikipedia.org/wiki/Dictionary_coder)；哈希一般是不可逆的，编码和加密通常都是可逆的、无损的，压缩算法即可视为编码算法的一个子集，也有一些编码、压缩是有损的、不完全可逆的，通过丢弃部分不重要信息来大幅压缩数据的编码技术)
+      - [霍夫曼压缩算法 | Huffman Coding/Compression](./霍夫曼压缩算法.md) (无损)
+      - Base64 编码 | Base64 Encoding ([Wiki](https://zh.wikipedia.org/wiki/Base64)；无损，另外还有 Base32、Base58 等类似编码方式，以及 URL-Safe Base64 等变种)
+      - URL 编码 | URL Encoding ([Wiki](https://zh.wikipedia.org/wiki/URL%E7%BC%96%E7%A0%81))
+      - LZ 系列算法 | LZ77 and LZ78 ([Wiki](https://zh.wikipedia.org/wiki/LZ77%E4%B8%8ELZ78)；Gzip 的基础是 DEFLATE，DEFLATE 是 LZ77 与霍夫曼编码的一个组合体，无损，对文本文件压缩效果显著可达 70% 以上，Zstd 也是基于 DEFLATE 的一种更平衡高效的压缩算法并在工业界逐渐取代 Gzip)
     - 局部敏感哈希 | Locality-Sensitive Hashing ([Wiki](https://en.wikipedia.org/wiki/Locality-sensitive_hashing))
       - 最小哈希 | MinHash ([Wiki](https://en.wikipedia.org/wiki/MinHash), [Ref 1](https://www.cnblogs.com/liuxiaochong/p/14552227.html), [Ref 2](https://ansvver.github.io/lsh_minhash.html))
       - 相似哈希 | SimHash
@@ -122,7 +125,7 @@ This personal Blog contains explanation and **Java library/template implementati
       - bcrypt、scrypt、Argon2 (不可逆，不仅可以用于数据完整性校验，还可以用于密码存储和验证。它们通常包含一些安全特性，如盐和工作因子，以提高抵抗暴力破解和彩虹表攻击的能力)
       - 数字签名算法 | Digital Signature Algorithm (DSA) ([Wiki](https://zh.wikipedia.org/wiki/%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E7%AE%97%E6%B3%95)，不可逆。DSA 算法包含了四种操作：密钥生成、密钥分发、签名、验证。数字签名算法可以用于身份验证，发送方使用自己的私钥对数据进行签名，接收方使用发送方的公钥对签名进行验证)
         - 椭圆曲线数字签名算法 | ECDSA (不可逆)
-    - 纠错码 | Correcting Code ([Wiki](https://zh.m.wikipedia.org/wiki/%E7%BA%A0%E9%94%99%E7%A0%81)，其中[纠删码](https://en.wikipedia.org/wiki/Erasure_code)是其子集；vs 校验和：纠错码不仅可以检测错误，还能在一定程度上纠正错误，通常计算更复杂，需要更多的冗余数据，用于对数据完整性要求较高的场景如存储系统、卫星通信等)
+    - 纠错码 | Correcting Code ([Wiki](https://zh.m.wikipedia.org/wiki/%E7%BA%A0%E9%94%99%E7%A0%81)，其中[纠删码](https://en.wikipedia.org/wiki/Erasure_code)是其子集；vs 校验和：纠错码不仅可以检测错误，还能在一定程度上纠正错误，即有条件的可逆，通常计算更复杂，需要更多的冗余数据，用于对数据完整性要求较高的场景如存储系统、卫星通信等)
       - 里德-所罗门码 | RS Codes ([Wiki](https://zh.m.wikipedia.org/zh-hans/%E9%87%8C%E5%BE%B7-%E6%89%80%E7%BD%97%E9%97%A8%E7%A0%81))
     - 均匀哈希 | Uniform Hash
       - MurmurHash3 (不可逆，是一种非加密哈希函数，有速度快、均匀性好、易于使用等优点，常用于哈希表、布隆过滤器等数据结构中，以提高性能和减少哈希碰撞；[Code](https://commons.apache.org/proper/commons-codec/jacoco/org.apache.commons.codec.digest/MurmurHash3.java.html))
