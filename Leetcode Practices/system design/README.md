@@ -2367,7 +2367,7 @@ https://www.zhihu.com/question/19839828/answer/28434795
 
 **硬件选择与网络优化**  
 * FPGA - [现场可编程门阵列（FPGA）允许在硬件级别实现定制的网络协议处理和交易逻辑](https://www.youtube.com/watch?v=JmVOEkskft4)。通过将关键路径逻辑下放到 FPGA，可以将延迟降低到微秒以下。
-* 低延迟网络 - 使用专用的低延迟网络接口卡（NIC），并启用内核绕过（Kernel Bypass）技术，如 DPDK 或 Solarflare，可以显著减少网络堆栈引入的延迟。
+* 低延迟网络 - [使用专用的低延迟网络接口卡（NIC），并启用内核绕过（Kernel Bypass）技术，如 DPDK 或 Solarflare](https://aws.amazon.com/cn/blogs/china/kernel-bypass-network-optimization-basics-on-aws/)，可以显著减少网络堆栈引入的延迟。
 * 物理位置 - 将交易服务器放置在交易所附近（Co-location）以最小化信号传播延迟，是 HFT 的常见做法。
   
 **数据模型**  
