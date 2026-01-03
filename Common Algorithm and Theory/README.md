@@ -166,7 +166,7 @@ This personal Blog contains explanation and **Java library/template implementati
     - 光线投射算法 | Ray Casting (基于图像序列的直接体绘制算法。从图像的每一个像素，沿固定方向发射一条光线，光线穿越整个图像序列，并在这个过程中，对图像序列进行采样获取颜色信息，同时依据光线吸收模型将颜色值进行累加，直至光线穿越整个图像序列，最后得到的颜色值就是渲染图像的颜色)
     - [垃圾回收算法 | Garbage Collection Algorithm](../Computer%20System%20Layer/JVM/README.md#垃圾回收) ([Ref](https://mp.weixin.qq.com/s/M8R4QPidlCrr6vix4JUWmg)，无论哪种具体的垃圾回收算法，本质上都是`有向图的动态维护问题`)
       - 可达性法 | Tracing Garbage Collection ([Wiki](https://en.wikipedia.org/wiki/Tracing_garbage_collection)，基于对象可达性即图连接来判断对象是否仍被使用，是目前主流的垃圾回收思路)
-        - 三色标记算法 | Tri-color Marking (是目前主流的垃圾回收算法，结合并发增量回收、混合写屏障、调步算法以及用户程序协助等机制将垃圾收集的暂停时间 Stop-The-World 优化至毫秒级以下 [Ref](https://draven.co/golang/docs/part3-runtime/ch07-memory/golang-garbage-collector/#72-%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8))
+        - 三色标记算法 | Tri-color Marking (是目前主流的垃圾回收算法，在此基础之上再结合并发增量回收、混合写屏障、调步算法以及用户程序协助等机制后可以将垃圾收集的暂停时间 Stop-The-World 优化至毫秒级以下 [Ref](https://draven.co/golang/docs/part3-runtime/ch07-memory/golang-garbage-collector/#72-%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8))
         - 标记清除算法 | Naive Mark-and-Sweep
       - 引用计数法 | Reference Counting (目前已被业界淘汰，原因比如无法处理循环引用的问题)
     - [共识机制/算法 (分布式选举问题) | Consensus Algorithm](../Leetcode%20Practices/system%20design/System%20Design%20Fundamentals.md) (或称选举算法，[etcd 实现](../Leetcode%20Practices/system%20design/example%20questions/Leader%20Election.md))
