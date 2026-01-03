@@ -1197,6 +1197,17 @@ Naive Solution：在进行导航时，因为已经由客户输入出发与终点
 
 by ChatGPT  
 
+### [高德地图红绿灯功能原理](https://www.cnblogs.com/hujingnb/p/19401307)
+红绿灯的本质是一个周期性函数。只要观察到足够多的样本，就能拟合出这个函数。  
+高德做的就是这个观察者。它利用海量的用户手机 GPS 数据，分析车辆在路口的 “停车-起步” 行为，进而推算出红绿灯的周期时长和红绿相位。  
+这个过程主要分为三个核心步骤：  
+1. 样本筛选：找到经过该路口的车辆轨迹。  
+2. 起停波识别：识别车辆何时停车，何时起步。  
+3. 周期挖掘：通过起步时间的规律，算出红绿灯周期。
+  
+所以高德是不是接入了交警的红绿灯后台数据？答案是：极少部分是接入的，绝大部分是算出来的。  
+但是高德红绿灯预测有时也出现错误，特别是高峰期会调整红绿灯时间的路段。  
+  
 ### 全球定位系统 GPS
 主要由 GPS 卫星、地面控制站和用户端组成，用户只需拥有 GPS 接收芯片（接收器）即可使用该服务。  
 基本过程如下：  
@@ -2266,7 +2277,7 @@ https://medium.com/double-pointer/system-design-interview-search-engine-edb66b64
 </details>
 
 
-## 设计（高频）Trading（交易）系统
+## 设计高频交易系统 High Frequency Trading
 <details>
 <summary>details</summary>
 
@@ -2277,6 +2288,7 @@ https://medium.com/double-pointer/system-design-interview-search-engine-edb66b64
 **重要的前置知识：[FIX 协议](./FIX协议.md)**  
 
 参考资料（How do I design high-frequency trading systems and its architecture）：  
+https://www.youtube.com/watch?v=iwRaNYa8yTw  
 https://www.linkedin.com/pulse/how-do-i-design-high-frequency-trading-systems-its-part-silahian/  
 https://www.linkedin.com/pulse/how-do-i-design-high-frequency-trading-systems-its-part-silahian-1/  
 https://www.linkedin.com/pulse/how-do-i-design-high-frequency-trading-systems-its-part-silahian-2/  
@@ -2352,6 +2364,11 @@ https://www.zhihu.com/question/19839828/answer/28434795
   * Rust - 作为一门新兴的系统级语言，通过其所有权（Ownership）和借用（Borrowing）机制，在编译期保证内存安全，完全无需 GC，因此也能提供与 C++ 相媲美的性能和控制力。
   
 因此，构建 HFT 系统的核心交易路径时，选择 C++ 或 Rust 等非 GC 语言是业界的标准实践。  
+
+**硬件选择与网络优化**  
+* FPGA - [现场可编程门阵列（FPGA）允许在硬件级别实现定制的网络协议处理和交易逻辑](https://www.youtube.com/watch?v=JmVOEkskft4)。通过将关键路径逻辑下放到 FPGA，可以将延迟降低到微秒以下。
+* 低延迟网络 - 使用专用的低延迟网络接口卡（NIC），并启用内核绕过（Kernel Bypass）技术，如 DPDK 或 Solarflare，可以显著减少网络堆栈引入的延迟。
+* 物理位置 - 将交易服务器放置在交易所附近（Co-location）以最小化信号传播延迟，是 HFT 的常见做法。
   
 **数据模型**  
 应该与 C2C 的 ecommerce 类似：  
