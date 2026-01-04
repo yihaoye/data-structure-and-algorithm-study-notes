@@ -327,7 +327,7 @@ Books:
   * **保养并保证团队处于长期持续性的高能量状态 - 意味着要注意负荷平衡、成就感、凝聚力**
   * 了解不埋没同事、成员的工作、成就（人们通常抱怨自己的工作不被 visiable，所以领导者应该尽量有能力主动发觉他们的亮点）
   * 促进团队磨合、共同利益与成长（熟悉了解每个组员，辅助释放潜力、发挥擅长与优势、补足短板 - **即会用人、把对的人用到对的事情和位置上去**）
-  * 和组员保持良善的关系（足够透明密切的沟通、定时 Team Building 都是很重要的不是无关紧要的），保持恰当的距离（即友善也不互相侵占私人空间、以及不能让情感影响到工作）
+  * 和组员保持良善的关系（足够透明密切的沟通、定时 Team Building 都是很重要的不是无关紧要的），保持恰当的距离（即友善也不互相侵占私人空间、以及不能让情感影响到工作）。[关于如何 1 on 1](https://www.youtube.com/watch?v=cbO0l2CfnM0)
     * 沟通方法 0 - [简洁沟通](https://www.youtube.com/watch?v=Br03ro98amM)
     * 沟通方法 1 - 提供背景、上下文以及建议选项，而非下结论（Provide Context and Suggestion instead of Conclusion/Opinion, even better if suggestion are options - there are always multiple solutions/practises）- Netflix 倡导
     * 沟通方法 2 - 决策调解，如果两方无法达成一致，最终决策权应归于负责方，即一个问题的利害关联更偏向其中一方的责任领域、范围，则应该由该方决定，因为责任明确是基本原则、更具公平性和良好持续的长期最佳模式，所以不需要纠结当前决策优劣（短期）。
