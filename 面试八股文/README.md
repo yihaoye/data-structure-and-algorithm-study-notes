@@ -37,6 +37,7 @@
 * [服务降级、服务熔断](./../Leetcode%20Practices/system%20design/%E6%9C%8D%E5%8A%A1%E9%99%8D%E7%BA%A7%E4%B8%8E%E6%9C%8D%E5%8A%A1%E7%86%94%E6%96%AD.md)
 * [态势感知](https://www.amazonaws.cn/en/knowledge/what-is-situation-awareness/)
 * 云计算的定义 - 云计算就是指通过互联网，以按需服务的形式提供计算资源。这样企业就无需自行采购、配置或管理资源，而且只需要为实际使用的资源付费。本质上云计算就是第三方数据中心托管的一堆 Linux（或其他 OS）服务器。
+  * [云计算的好处](https://www.reddit.com/r/devops/comments/xb8km5/what_you_prefer_about_the_cloud_compared_to_run/?tl=zh-hans) - 人力成本、硬件成本、高可用性、高安全性、开发与部署的灵活性及效率等等。
 * 哈希、加密、编码的区别 - 哈希和加密的一个重要区别是前者不可逆而后者可逆 ![](./hash-encrpt-encode.png)
 * [SDN（软件定义网络）](https://www.cloudflare.com/zh-cn/learning/network-layer/what-is-sdn/) - SDN 通过将控制平面与转发平面分离，实现了网络的集中控制，从而可以灵活地控制网络流量，满足各种应用的需求，最终达成：提高系统的灵活性和可编程性、降低系统的管理和运维成本、提高系统的安全性。
 * [服务网格 | Service Mesh](../Leetcode%20Practices/system%20design/Service-Mesh.md) - [ref]((https://www.redhat.com/zh/topics/microservices/what-is-a-service-mesh))，可以认为是一种分布式通信系统的架构模式，用网格描述其实即图数据结构。
