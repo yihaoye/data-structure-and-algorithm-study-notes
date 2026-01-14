@@ -547,10 +547,11 @@
 * 6 大常见概念问题：[Ref 1](./ai-domain-knowledge-1.jpeg)、[Ref 2](./ai-domain-knowledge-2.jpeg)
 * Model repository, which is a storage location where models developed from any framework such as TensorFlow, PyTorch, Caffe, etc. When the inference server container starts on a GPU or CPU server, it loads the models from the repository into memory. The application then uses an API to call the inference server to run inference on a model. [Ref](https://medium.com/dataseries/easily-deploy-deep-learning-models-in-production-13db48071578)
   * 模型本身可简单认为是一种函数，模型训练的本质就是调整参数，模型仓库（Model Repository）里存的是：
-    * 模型文件
+    * 模型文件 - 在日常 AI 模型训练过程中，训练好的模型权重通常需要以一种格式存储在磁盘中。比如：目前最流行的 AI 框架 PyTorch 使用 pickle 格式存储模型权重文件，还有 Huggingface 提出的 Safetensors 格式。
       * 模型参数和权重：即训练好的模型的核心数据，包括神经网络的权重、线性模型的系数等
       * 模型架构：特别是对深度学习模型来说，模型文件中可能还包含网络的层次结构、每层的配置、激活函数等信息
       * 文件格式：不同的机器学习框架会有各自的模型文件格式，如 TensorFlow 的 .pb、PyTorch 的 .pt、Scikit-Learn 的 .pkl 或 .joblib，以及通用的 .onnx 格式。
+        * GGUF 格式是用于存储大型模型预训练结果的，相较于 Hugging Face 和 torch 的 bin 文件，它采用了紧凑的二进制编码格式、优化的数据结构以及内存映射等技术，提供了更高效的数据存储和访问方式。[Ref 1](https://zhuanlan.zhihu.com/p/681823811)、[Ref 2](https://zhuanlan.zhihu.com/p/848013326)
     * 版本信息、元数据
     * 依赖项和环境信息、推理配置
   * ![](./inference-server.webp)
