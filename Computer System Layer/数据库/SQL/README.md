@@ -838,7 +838,7 @@ InnoDB 在实现行锁时，为了在 `REPEATABLE READ` 隔离级别下解决幻
   - REPEATABLE READ：MySQL 加间隙锁，防止幻读
   - SERIALIZABLE：最大范围的锁定，接近串行执行
 * **性能与一致性的权衡**
-  - 隔离级别越高 -> 锁越多、范围越大 -> 并发性能越差 -> **死锁概率越高（核心原因：更多的锁 + 更长的持锁时间，如上所述）**
+  - 隔离级别越高 -> 锁越多、范围越大 -> 并发性能越差 -> **死锁概率越高（核心原因：更多的锁 + 更长的持锁时间，如上所述）**；这就是[为什么可串行化隔离级别不是默认设置](https://www.reddit.com/r/Database/comments/xc9r9n/why_isolation_level_serializable_is_not_the/?tl=zh-hans)
   - 但数据一致性保证越强
   
 **MVCC 通过以下机制保证读取的是已提交版本**  
