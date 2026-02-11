@@ -312,7 +312,7 @@ Books:
   * 产品设计、成本预算、市场研究（**对产品的理解以及询问产品背后设计的逻辑与原因是重要的，只考虑工程侧关心是不足的，兼备工程与产品的考虑方案才是企业主应有的态度**）
     * 产品基本功一：[学习、借鉴、抄竞品](https://www.woshipm.com/pmd/3621816.html)
     * 不能直接按用户要求的做，而要观察挖掘用户行为并基于本身的领域知识自决设计 - [Ref 1](https://www.youtube.com/watch?v=INb8niuXz5A)
-* 主动寻求、引导新的发展、探索 - 参考 [Staff Engineer](https://yucliu.gitbook.io/staff-engineer)
+* 主动寻求、引导新的发展、探索 - 参考 [Staff Engineer](https://yucliu.gitbook.io/staff-engineer)；[企业经营如逆水行舟不进则退，需要保持一定速度地持续发展，否则整个体系容易士气涣散，但是发展过快也不行](https://youtu.be/YBQFl18wapg&t=1831)
   * 判断力、[找对战略方向](https://www.youtube.com/watch?v=PFpKJRdW0Kw)、[时机管理](https://www.sohu.com/a/290572401_100300347)
   * 不断发明和重新发明、优化
   * 对核心及次核心业务有高标准
