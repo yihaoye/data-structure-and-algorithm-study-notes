@@ -360,6 +360,7 @@ by ChatGPT
 * 客户、市场至上
   * 倾听需求、**先找买家**、[目标人群/客户定位](https://www.woshipm.com/pmd/3115640.html)
   * 关注、学习对手
+  * 寻找差异化（[Ref 1](https://xueqiu.com/7667646479/221086254)、[Ref 2](https://www.woshipm.com/marketing/4180127.html)）
 * 明确目标与重点、规划、坚持，[好的规划](https://wiki.mbalib.com/wiki/%E8%A7%84%E5%88%92)类似 OKR 如下：
   * 分清主次 - [最小可行产品（MVP）](https://www.woshipm.com/share/5911174.html)
   * [强自驱自激励的目标](https://book.douban.com/subject/1395123/)
