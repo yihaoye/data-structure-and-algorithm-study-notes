@@ -111,6 +111,7 @@ This personal Blog contains explanation and **Java library/template implementati
     - [Count-Min Sketch 算法](./Count-Min-Sketch.md) (可以替代上面的布隆过滤器以提供统计、删除功能)
       - Count-Mean-Min Sketch 算法
     - 编码算法 | Encoding Algorithm ([熵编码](https://zh.wikipedia.org/wiki/%E7%86%B5%E7%B7%A8%E7%A2%BC%E6%B3%95)、[字典编码](https://en.wikipedia.org/wiki/Dictionary_coder)；哈希一般是不可逆的，编码和加密通常都是可逆的、无损的，压缩算法即可视为编码算法的一个子集，也有一些编码、压缩是有损的、不完全可逆的，通过丢弃部分不重要信息来大幅压缩数据的编码技术)
+      - 摩斯密码 | Morse Code ([Wiki](https://zh.wikipedia.org/wiki/%E6%91%A9%E6%96%AF%E7%A0%81)，无损、非压缩，摩斯密码是一种基于点和划的编码系统，它是一种为电报通信设计的字符编码系统，而不是用于通用计算机数据表示或压缩的编码方案)
       - [霍夫曼压缩算法 | Huffman Coding/Compression](./霍夫曼压缩算法.md) (无损)
       - Base64 编码 | Base64 Encoding ([Wiki](https://zh.wikipedia.org/wiki/Base64)，无损，Base64 的作用是把任何二进制数据转换成一种只包含 64 个安全 ASCII 字符的纯文本字符串，适用于那些不方便直接使用原二进制数据的场景；另外还有 Base32、Base58 等类似编码方式，以及 URL-Safe Base64 等变种)
       - URL 编码 | URL Encoding ([Wiki](https://zh.wikipedia.org/wiki/URL%E7%BC%96%E7%A0%81))
