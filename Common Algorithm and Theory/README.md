@@ -112,10 +112,11 @@ This personal Blog contains explanation and **Java library/template implementati
       - Count-Mean-Min Sketch 算法
     - 编码算法 | Encoding Algorithm ([熵编码](https://zh.wikipedia.org/wiki/%E7%86%B5%E7%B7%A8%E7%A2%BC%E6%B3%95)、[字典编码](https://en.wikipedia.org/wiki/Dictionary_coder)；哈希一般是不可逆的，编码和加密通常都是可逆的、无损的，压缩算法即可视为编码算法的一个子集，也有一些编码、压缩是有损的、不完全可逆的，通过丢弃部分不重要信息来大幅压缩数据的编码技术)
       - 摩斯密码 | Morse Code ([Wiki](https://zh.wikipedia.org/wiki/%E6%91%A9%E6%96%AF%E7%A0%81)，无损、非压缩，摩斯密码是一种基于点和划的编码系统，它是一种为电报通信设计的字符编码系统，而不是用于通用计算机数据表示或压缩的编码方案)
+      - 二维码 | QR Code ([Wiki](https://zh.wikipedia.org/wiki/%E4%BA%8C%E7%BB%B4%E7%A0%81)，是让数据变成可被机器视觉识别的应用标准、规范 ISO 18004，编码后的体积反而比原始数据大，因为重要特性之一是内置了纠错码比如 RS Codes，因此即使图形部分损毁也能正确解码。是为特定传输、识别场景设计的字符、数据编码方案，而非通用编码方案)
       - [霍夫曼压缩算法 | Huffman Coding/Compression](./霍夫曼压缩算法.md) (无损)
       - Base64 编码 | Base64 Encoding ([Wiki](https://zh.wikipedia.org/wiki/Base64)，无损，Base64 的作用是把任何二进制数据转换成一种只包含 64 个安全 ASCII 字符的纯文本字符串，适用于那些不方便直接使用原二进制数据的场景；另外还有 Base32、Base58 等类似编码方式，以及 URL-Safe Base64 等变种)
       - URL 编码 | URL Encoding ([Wiki](https://zh.wikipedia.org/wiki/URL%E7%BC%96%E7%A0%81))
-      - LZ 系列算法 | LZ77 and LZ78 ([Wiki](https://zh.wikipedia.org/wiki/LZ77%E4%B8%8ELZ78)；Gzip 的基础是 DEFLATE，DEFLATE 是 LZ77 与霍夫曼编码的一个组合体，无损，对文本文件压缩效果显著可达 70% 以上，Zstd 也是基于 DEFLATE 的一种更平衡高效的压缩算法并在工业界逐渐取代 Gzip)
+      - LZ 系列算法 | LZ77 and LZ78 ([Wiki](https://zh.wikipedia.org/wiki/LZ77%E4%B8%8ELZ78)；Gzip 的基础是 DEFLATE，DEFLATE 是 LZ77 与霍夫曼编码的一个组合体，无损，对文本文件压缩效果显著可达 70% 以上，Zstd 是基于 ANS（Asymmetric Numeral Systems 熵编码 + LZ 变体）的一种更平衡高效的压缩算法并在工业界逐渐取代 Gzip)
     - 局部敏感哈希 | Locality-Sensitive Hashing ([Wiki](https://en.wikipedia.org/wiki/Locality-sensitive_hashing))
       - 最小哈希 | MinHash ([Wiki](https://en.wikipedia.org/wiki/MinHash), [Ref 1](https://www.cnblogs.com/liuxiaochong/p/14552227.html), [Ref 2](https://ansvver.github.io/lsh_minhash.html))
       - 相似哈希 | SimHash
