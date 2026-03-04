@@ -106,8 +106,10 @@ This personal Blog contains explanation and **Java library/template implementati
       - 莫队算法 | Mo Algorithm ([Wiki](https://oi-wiki.org/misc/mo-algo/)，通常用于离线算法)
     - [蓄水池抽样算法 | Reservoir Sampling](./蓄水池抽样算法.md) (时间复杂度为 `O(N)` 且为一次遍历即可，空间复杂度 `O(m)` m 为从流中随机选出 m 个，因为 m 通常为有限的常数，所以空间复杂度可以认为是 `O(1)`)
     - [布隆过滤器及其算法 | Bloom Filter](./布隆过滤器及其算法.md)
-      - 计数布隆过滤器 | Counting Bloom Filter (支持删除操作)
+      - 计数布隆过滤器 | Counting Bloom Filter ([Wiki](https://en.wikipedia.org/wiki/Counting_Bloom_filter)，支持删除操作)
       - 布谷鸟过滤器及其算法 | Cuckoo Filter (相比布隆过滤器的空间占用高一些且性能低一些，优势在于低假阳率、支持删除操作)
+      - 可逆布隆过滤器 | Invertible Bloom Filter (支持删除操作，并且在元素数量较少时可以完全恢复原始元素集合，但当元素数量较多时可能无法完全恢复，适用于需要在空间受限的情况下进行集合差异检测的场景，[论文](https://people.cs.georgetown.edu/~clay/classes/fall2017/835/papers/IBLT.pdf))
+        - 无条件可逆布隆过滤器 | Rateless Invertible Bloom Filters (优化版的可逆布隆过滤器，[论文](https://dl.acm.org/doi/epdf/10.1145/3651890.3672219)，[实现](https://github.com/yangl1996/riblt))
     - [Count-Min Sketch 算法](./Count-Min-Sketch.md) (可以替代上面的布隆过滤器以提供统计、删除功能)
       - Count-Mean-Min Sketch 算法
     - 编码算法 | Encoding Algorithm ([熵编码](https://zh.wikipedia.org/wiki/%E7%86%B5%E7%B7%A8%E7%A2%BC%E6%B3%95)、[字典编码](https://en.wikipedia.org/wiki/Dictionary_coder)；哈希一般是不可逆的，编码和加密通常都是可逆的、无损的，压缩算法即可视为编码算法的一个子集，也有一些编码、压缩是有损的、不完全可逆的，通过丢弃部分不重要信息来大幅压缩数据的编码技术)
