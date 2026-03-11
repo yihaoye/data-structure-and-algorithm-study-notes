@@ -335,6 +335,7 @@
     * context 机制
     * channel leak
 * database/sql 包 - 是 Go 语言提供的一个标准库，用于与关系型数据库进行交互。它提供了一个通用的接口，使得开发者可以使用相同的代码来操作不同类型的数据库，如 MySQL、PostgreSQL、SQLite 等。不同数据库的 driver 仍然要单独下载 import 并且在 sql.Open 时指定 driver name 来使用。[更多细节](https://draven.co/golang/docs/part4-advanced/ch09-stdlib/golang-database-sql/)
+  * 数据库驱动（Database Driver）是应用程序与数据库管理系统（DBMS）之间的桥梁/翻译官，由数据库厂商提供。它允许应用程序（如 Java、Go）通过统一的接口（如 JDBC、database/sql）与特定数据库通信，将代码中的 SQL 指令转化为数据库能理解的协议，并处理数据返回。
 
 
 ## 数据库高频
