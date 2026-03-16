@@ -114,6 +114,20 @@ Books:
       * 不要让他们参与你的工作，而要让他们参与工作。
       * 最后一步是赞助其他人完成那些可以让他们晋升为 Staff-plus 职位的工作。重要的是，当工作变成他们的工作时，必须让他们自己去做。提供咨询、建议、提供背景信息，但最终，支持意味着可能让他们采取不同的、非预定的方法。
   * 建立同行网络
+* [领导力 21 法则](https://www.youtube.com/watch?v=CrHgcHGiba8&list=PLKsdiUrTmO58jwtcJh8DbS1U0AQ8tdNcS)
+  * 盖子法则 (The Law of the Lid) - 领导力水平决定了一个组织的办事成效水平
+  * 影响力法则 (The Law of Influence) - 真正的领导者是那些能够影响他人的人，而不是那些拥有权力或职位的人
+  * 尊重法则 (The Law of Respect) - 人们总是倾向于跟随比自己强的领导者，比如技术权威
+  * 增值法则 (The Law of Addition) - 领导者通过服务他人来增加价值
+  * 核心圈法则 (The Law of the Inner Circle) - 一个领导者的潜力，由最接近他的人决定
+  * 过程法则 (The Law of Process) - 领导力不是一夜之间形成的，而是一个持续的过程
+  * 导航法则 (The Law of Navigation) - 谁都能掌舵，但只有领导者能设定航线
+  * 哈顿法则 (The Law of E.F. Hutton) - 当真正的领导者说话时，人们会倾听
+  * 信任法则 (The Law of Solid Ground) - 信任是领导力的基石
+  * 直觉法则 (The Law of Intuition) - 领导者用洞见观察事物
+  * 磁力法则 (The Law of Magnetism) - 你是什么样的人，就吸引什么样的人
+  * 接纳法则 (The Law of Buy-In) - 人们先接纳领导者，再接纳他的远景
+  * 胜利法则 (The Law of Victory) - 领导者总能找到赢的方法
 * [The Starter Manager Guide](https://commoncog.com/g/starter-manager/)
 * [Managing Humans - Biting and Humorous Tales of a Software Engineering Manager](https://link.springer.com/book/10.1007/978-1-4842-2158-7?source=post_page-----4594bfd4b9a--------------------------------)
 * [The Manager's Path](https://www.oreilly.com/library/view/the-managers-path/9781491973882/?source=post_page-----4594bfd4b9a--------------------------------)
