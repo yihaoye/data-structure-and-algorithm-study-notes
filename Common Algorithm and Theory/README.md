@@ -211,7 +211,8 @@ This personal Blog contains explanation and **Java library/template implementati
       - 先验算法 | Apriori algorithm ([Wiki](https://en.wikipedia.org/wiki/Apriori_algorithm)，寻找关联性的经典算法)
       - FP-Growth 算法 (以及相关的 Frequent Pattern Tree；[Ref](https://en.wikipedia.org/wiki/Frequent_pattern_discovery))
   - 并行算法 | Parallel Algorithm ([Wiki](https://en.wikipedia.org/wiki/Parallel_algorithm)、[Ref](https://blog.51cto.com/luweir/4873113?articleABtest=0)：并行算法尚在发展中，不及串行算法丰富。目前最常用的的方法是 PCAM 方法，即划分，通信，组合，映射。并行算法与串行算法最大的不同之处在于，并行算法不仅要考虑问题本身，而且还要考虑所使用的并行模型，网络连接等等)
-    - 阿姆达尔定律 | Amdahl's Law ([Wiki](https://zh.wikipedia.org/wiki/%E9%98%BF%E5%A7%86%E8%BE%BE%E5%B0%94%E5%AE%9A%E5%BE%8B))
+    - 阿姆达尔定律 | Amdahl's Law ([Wiki](https://zh.wikipedia.org/wiki/%E9%98%BF%E5%A7%86%E8%BE%BE%E5%B0%94%E5%AE%9A%E5%BE%8B)、[Ref](https://www.cnblogs.com/uestc-mm/p/12874381.html)，在并行计算中，使用多个处理器的程序的加速比受限制于程序串行部分的执行时间)
+    - 古斯塔夫森定律 | Gustafson's Law ([Wiki](https://en.wikipedia.org/wiki/Gustafson's_law)，当增加处理器数量时，可以通过按比例扩大问题的规模即工作量来获得更高的加速比，强调了在大规模数据处理下的线性加速能力)
   - 图形学算法 | Computer Graphics Algorithm
     - Boids 模型 | Boids Model ([Wiki](https://en.wikipedia.org/wiki/Boids)，又称鸟群算法，用于模拟鸟类的群集行为以及相关的群体运动；[Ref](https://www.red3d.com/cwr/boids/))
   - [数学 | Maths](../Computer%20Science%20Maths/README.md) (以下分类不严格界限，互相可以有重叠)
