@@ -3752,6 +3752,8 @@ Content Similarity Detection [Wiki](https://zh.wikipedia.org/wiki/%E6%96%87%E7%A
 
 # [机器学习系统设计](./机器学习系统设计.md)
 
+# [生成式人工智能系统设计](./生成式人工智能系统设计.md)
+
 # 一些面试小技巧
 **[(重要) Back-Of-The-Envelope Estimation / Capacity Planning (ByteByteGo)](https://www.youtube.com/watch?v=UC5xf8FbdJc)**  
 * 请求负载
