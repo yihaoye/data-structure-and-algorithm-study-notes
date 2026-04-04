@@ -893,6 +893,7 @@
 * 原像抗性 - 是指对于给定的哈希值，找到相应的原始输入的难度。
 * 伪随机与哈希的区别 - 在算法不变的情况下，一个是以输入数据来决定输出值，一个是以序列（以及随机种子）来决定输出值。
 * [X.509](https://zh.wikipedia.org/zh-hans/X.509) - 是密码学里公钥证书的格式标准。X.509 证书里含有公钥、身份信息（比如网络主机名，组织的名称或个体名称等）和签名信息（可以是证书签发机构 CA 的签名，也可以是自签名）。
+* [CDN 如何服务 HTTPS 请求](https://x.com/dbates71/status/2040192842736271411) ![](./CDN%20HTTPS.png)
 * 主要攻击类型 ![](./cyber-attacks.jpeg)
 * 敏感数据管理 ![](./sensitive-data-management.jpeg)
 * [CISSP 考试认证](https://mp.weixin.qq.com/s/YRuiZ81dQKqNuhYkyFTtAA)

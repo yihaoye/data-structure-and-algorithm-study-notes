@@ -1625,7 +1625,7 @@ Dropbox 异步任务框架 ATF：
 <details>
 <summary>details</summary>
 
-设计 IM 系统  
+设计 IM（Instant Messenger）系统  
 参考：
 * https://bytebytego.com/courses/system-design-interview/design-a-chat-system
 * https://interview-science.org/%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/IM%20%E7%B3%BB%E7%BB%9F  
