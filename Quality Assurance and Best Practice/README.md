@@ -186,6 +186,13 @@
   * 风险排序
 * 软件生命周期 - software development life cycle, how will you lead a project from end to end, how will you split the work amongst your peers etc.
 * [约定式提交](https://www.conventionalcommits.org/zh-hans/v1.0.0/) - 包括 git 分支名、commit 内容格式等等
+* 开发策略
+  * 先具体实现，再抽象（Concrete -> Abstract），以及前提是用可演化的方式写具体实现，而不是写死。为什么不要一开始就做通用设计？因为容易过早抽象的问题，然而需求其实不稳定、抽象方向很容易错。抽象是被逼出来的，不是设计出来的，[写三次再抽象](https://juejin.cn/post/6894130774342107150)
+  * 弱抽象 + 强边界。
+    * 提前设计边界，但不设计实现，比如接口就是
+    * 数据模型结构尽量稳定
+    * 留逃生口（escape hatch）
+  * 减少设计冲动和完美框架，多做局部最优 + 可演化。
 
 ## 代码质量
 ### <代码整洁之道>
