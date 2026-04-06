@@ -354,7 +354,7 @@ Books:
   * 和组员保持良善的关系（足够透明密切的沟通、定时 Team Building 都是很重要的不是无关紧要的），保持恰当的距离（即友善也不互相侵占私人空间、以及不能让情感影响到工作）。[关于如何 1 on 1](https://www.youtube.com/watch?v=cbO0l2CfnM0)
     * 沟通方法 0 - [简洁沟通](https://www.youtube.com/watch?v=Br03ro98amM)
     * 沟通方法 1 - 提供背景、上下文以及建议选项，而非下结论（Provide Context and Suggestion instead of Conclusion/Opinion, even better if suggestion are options - there are always multiple solutions/practises）- Netflix 倡导
-    * 沟通方法 2 - 决策调解，如果两方无法达成一致，最终决策权应归于负责方，即一个问题的利害关联更偏向其中一方的责任领域、范围，则应该由该方决定，因为责任明确是基本原则、更具公平性和良好持续的长期最佳模式，所以不需要纠结当前决策优劣（短期）。
+    * 沟通方法 2 - 决策调解，如果两方无法达成一致，最终决策权应归于负责方，即一个问题的利害关联更偏向其中一方的责任领域、范围，则应该由该方决定，因为责任明确是基本原则、更具公平性和良好持续的长期最佳模式，所以不需要纠结当前决策优劣（短期）。**不一起承担后果的人，不允许参与决策，决策权永远跟着承担责任的人走，如果不上场，请别插手。**
     * 沟通方法 3 - 不指责，而是构建规则规范
     * 沟通方法 4 - [不抬杠](https://www.youtube.com/watch?v=iL6bmviqaEc)
     * 沟通方式 5 - [逻辑清晰](https://www.youtube.com/watch?v=DDwS3IYX4sI)
