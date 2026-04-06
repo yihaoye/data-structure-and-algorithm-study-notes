@@ -195,7 +195,7 @@ This personal Blog contains explanation and **Java library/template implementati
     - 隐马尔可夫模型 | Hidden Markov Model, HMM ([Ref](https://zh.wikipedia.org/wiki/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E9%93%BE)，用来描述一个含有隐含未知参数的[马尔可夫过程/随机状态转移](./Markovkate_01.svg.png)。其难点是从可观察的参数中确定该过程的隐含参数。然后利用这些参数来作进一步的分析，例如模式识别)
       - 前向与后向算法 | Forward–Backward Algorithm
       - 维特比算法 | Viterbi Algorithm
-    - [深度学习, 神经网络 | Deep Learning, Neural Networks](./机器学习.md#deep-learning) ([Ref](https://www.zhihu.com/question/314879954/answer/638380202))
+    - [深度学习, 神经网络 | Deep Learning, Neural Networks](./机器学习.md#deep-learning) ([Ref](https://www.zhihu.com/question/314879954/answer/638380202)、[神经网络训练原理](./神经网络.md))
       - [感知器 | Perceptron](./机器学习.md#single-neuron) ([Ref](https://www.youtube.com/watch?v=BS_CVhalVGw&list=PLxIHUhMHF8okwhq8poRuiHBChWjkVUHLL&index=2)；又称感知机、Neuron、Unit，该基本模型是神经网络的基础，是模拟了人工神经元的模型)
         - 卷积神经网络 | Convolutional Neural Network, CNN ([Wiki](https://zh.wikipedia.org/zh-hans/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C)、[Ref](https://www.nvidia.cn/glossary/data-science/convolutional-neural-network/)：用于处理网格数据，如图像、视频、音频等，进行特征提取和分类。结构由卷积层、池化层和全连接层组成，用于捕获局部特征和构建层次结构)
         - 循环神经网络 | Recurrent Neural Network, RNN (用于处理序列数据，如文本、语音、时间序列等，具有记忆性质。结构包括循环层 RNN、LSTM、GRU 等，用于处理序列中的时间依赖关系)
@@ -255,14 +255,15 @@ This personal Blog contains explanation and **Java library/template implementati
       - 指数函数 ｜ Exponential Function
       - 反函数 (比如对数函数是指数函数的反函数) | Inverse Function
     - [博弈论 | Game Theory](./博弈论.md)
-    - 最优化 | Mathematical Optimization ([Wiki](https://en.wikipedia.org/wiki/Mathematical_optimization)、[Ref](https://space.bilibili.com/97068901/channel/collectiondetail?sid=1387071)；最优化是应用数学的一个分支，是计算机与人工智能的一个重要研究领域：从很大程度上来说，[深度学习实际上是在解决大量复杂的优化问题](https://www.jiqizhixin.com/articles/071502)，神经网络仅仅是一个非常复杂的函数，包含数百万个参数，这些参数代表的是一个问题的数学解答，实质上，训练神经网络是在最小化一个损失函数，这个损失函数的值衡量了网络的性能在给定数据集上离完美还差多少)
+    - 最优化 | Mathematical Optimization ([Wiki](https://en.wikipedia.org/wiki/Mathematical_optimization)、[Ref](https://space.bilibili.com/97068901/channel/collectiondetail?sid=1387071)；最优化是应用数学的一个分支，是计算机与人工智能的一个重要研究领域：从很大程度上来说，[深度学习实际上是在解决大量复杂的优化问题](https://www.jiqizhixin.com/articles/071502)，神经网络可以被看作一个高维参数化函数，其训练过程本质上是在给定数据集上最小化一个损失函数，从而学习到一个能够近似目标映射的函数。因此，从优化的角度来看，深度学习在很大程度上可以被视为求解复杂非凸优化问题的过程)
       - 线性规划 | Linear Regression (特指目标函数和约束条件皆为线性的最优化问题，[图解](./Linear_programming_polytope.png))
         - 最小二乘法 | Least Squares Method ([Wiki](https://zh.wikipedia.org/wiki/%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95)、[Ref](https://zhuanlan.zhihu.com/p/103918948))
       - 线搜索 | Line Search ([Wiki](https://zh.wikipedia.org/wiki/%E7%BA%BF%E6%90%9C%E7%B4%A2))
         - 梯度下降法 | Gradient Descent (梯度其实是高维导数的另一种称呼，[梯度法](https://zh.wikipedia.org/wiki/%E6%A2%AF%E5%BA%A6%E6%B3%95)是数值分析在最优化的应用之一)
         - 牛顿法 | Newton's Method (数值分析在最优化的应用之一)
       - Adam 优化算法 ([Ref](https://zhuanlan.zhihu.com/p/32626442))
-      - 凸函数/凸优化 | Convex Function/Optimization ([Wiki 1](https://zh.wikipedia.org/zh-hans/%E5%87%B8%E5%87%BD%E6%95%B0)、[Wiki 2](https://zh.wikipedia.org/zh-hans/%E5%87%B8%E5%84%AA%E5%8C%96)、[非凸优化](https://zhuanlan.zhihu.com/p/70127314))
+      - 凸函数/凸优化 | Convex Function/Optimization ([Wiki 1](https://zh.wikipedia.org/zh-hans/%E5%87%B8%E5%87%BD%E6%95%B0)、[Wiki 2](https://zh.wikipedia.org/zh-hans/%E5%87%B8%E5%84%AA%E5%8C%96)、[凸优化和非凸优化](https://zhuanlan.zhihu.com/p/70127314)；其定义是在凸最优化中局部最优值必定是全局最优值。凸最优化在某种意义上说较一般情形的数学优化问题要简单)
+      - 非凸函数/非凸优化 ｜ Non-Convex Function/Optimization (目标函数或约束条件不满足凸性的数学优化问题。通常不保证局部最优解是全局最优解，这使得找到全局最优解变得非常困难，此外，这类问题的求解过程可能遇到多个局部最优解、鞍点或其他复杂的局部结构，一般形式的非凸优化问题在全局最优意义下通常是 NP-hard 的)
   - 其他常见优化思想、技巧 | Common Tricks
     - [剪枝 | Pruning](./剪枝.md)
     - 预处理 (打表) | Precompute (Hard Coding) ([Ref](https://www.cnblogs.com/hxtblogs/p/7654635.html))
