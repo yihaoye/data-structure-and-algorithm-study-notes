@@ -198,15 +198,17 @@ This personal Blog contains explanation and **Java library/template implementati
     - [深度学习, 神经网络 | Deep Learning, Neural Networks](./机器学习.md#deep-learning) ([Ref](https://www.zhihu.com/question/314879954/answer/638380202)、[神经网络训练原理](./神经网络.md))
       - [感知器 | Perceptron](./机器学习.md#single-neuron) ([Ref](https://www.youtube.com/watch?v=BS_CVhalVGw&list=PLxIHUhMHF8okwhq8poRuiHBChWjkVUHLL&index=2)；又称感知机、Neuron、Unit，该基本模型是神经网络的基础，是模拟了人工神经元的模型)
         - 卷积神经网络 | Convolutional Neural Network, CNN ([Wiki](https://zh.wikipedia.org/zh-hans/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C)、[Ref](https://www.nvidia.cn/glossary/data-science/convolutional-neural-network/)：用于处理网格数据，如图像、视频、音频等，进行特征提取和分类。结构由卷积层、池化层和全连接层组成，用于捕获局部特征和构建层次结构)
+          - AlexNet (首个真正意义上的深度卷积神经网络。其网络设计包含八层，前五层是卷积层其中包含三个池化，最后三层是全连接层，它使用了大量的 ReLU 非线性激活函数和 Dropout 正则化技术，此外还使用了数据增强、随机裁剪和 LRN 局部响应归一化等技术来提高模型的健壮性。AlexNet 主要为学术突破，工业界主要采用其后继者 ResNet、EfficientNet 等。[结构图](./AlexNet_structure.png)、[Ref 1](https://www.cnblogs.com/harrymore/p/17248164.html))
         - 循环神经网络 | Recurrent Neural Network, RNN (用于处理序列数据，如文本、语音、时间序列等，具有记忆性质。结构包括循环层 RNN、LSTM、GRU 等，用于处理序列中的时间依赖关系)
         - 长短期记忆 | Long Short-Term Memory, LSTM
         - 图神经网络 | Graph Neural Network, GNN (用于处理图数据，如社交网络、推荐系统、知识图谱、分子结构等，进行节点分类、链接预测等任务。结构包括图卷积层、图池化层和节点分类层，用于捕获图的结构和节点之间的关系)
         - 生成对抗网络 | Generative Adversarial Network, GAN (用于生成新的数据，例如图像、音频等。结构由生成器 Generator 和判别器 Discriminator 组成。生成器生成伪造数据，判别器评估生成器生成的数据与真实数据之间的相似性)
-      - 多头模型 | Multi-Head Model ([Ref 1](https://debuggercafe.com/multi-head-deep-learning-models-for-multi-label-classification/)、[Ref 2](./multi_head_nn_diff_outputs.jpg)，在深度学习中，多头模型通常指的是在同一层或同一网络中使用多个独立的注意力头或输出头。每个头可以关注数据的不同方面或产生不同类型的输出)
-      - [Transformer 模型, 大语言模型 (Large Language Model)](https://github.com/yihaoye/lyrics-gpt) (Related: [注意力机制解读](./注意力机制解读.md)、[Wiki](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model))、[注意力机制 1](https://en.wikipedia.org/wiki/Attention_(machine_learning))、[注意力机制 2](https://www.youtube.com/watch?v=nzqlFIcCSWQ)、[检索增强生成（RAG）](https://aws.amazon.com/cn/what-is/retrieval-augmented-generation/)、[GraphRAG](https://microsoft.github.io/graphrag/)、[提示工程](https://en.wikipedia.org/wiki/Prompt_engineering))
-        - BERT
-        - GPT ([build GPT from scratch](https://www.youtube.com/watch?v=kCc8FmEb1nY))
-    - [多模态学习 | Multimodal Learning](./机器学习.md#多模态学习) ([Ref](https://zhuanlan.zhihu.com/p/53511144))
+        - [Transformer 模型, 大语言模型 (Large Language Model)](https://github.com/yihaoye/lyrics-gpt) (Related: [注意力机制解读](./注意力机制解读.md)、[Wiki](https://en.wikipedia.org/wiki/Transformer_(machine_learning_model))、[注意力机制 1](https://en.wikipedia.org/wiki/Attention_(machine_learning))、[注意力机制 2](https://www.youtube.com/watch?v=nzqlFIcCSWQ)、[检索增强生成（RAG）](https://aws.amazon.com/cn/what-is/retrieval-augmented-generation/)、[GraphRAG](https://microsoft.github.io/graphrag/)、[提示工程](https://en.wikipedia.org/wiki/Prompt_engineering))
+          - BERT
+          - GPT ([build GPT from scratch](https://www.youtube.com/watch?v=kCc8FmEb1nY))
+          - 多头模型 | Multi-Head Model ([Ref 1](https://debuggercafe.com/multi-head-deep-learning-models-for-multi-label-classification/)、[Ref 2](./multi_head_nn_diff_outputs.jpg)，或称多头注意力。在深度学习中，多头模型通常指的是在同一层或同一网络中使用多个独立的注意力头或输出头。每个头可以关注数据的不同方面或产生不同类型的输出)
+          - Vision Transformer, ViT (将 Transformer 模型应用于计算机视觉任务，如图像分类、目标检测等。结构由图像分块层、位置编码层、Transformer 编码器层和分类层组成，用于捕获图像的全局特征和上下文信息。目前在业界与 CNN 模型并行使用，且在某些任务上表现优于 CNN 模型)
+      - [多模态学习 | Multimodal Learning](./机器学习.md#多模态学习) ([Ref](https://zhuanlan.zhihu.com/p/53511144))
     - 关联规则学习 | Association Rule Learning ([Wiki](https://zh.wikipedia.org/wiki/%E5%85%B3%E8%81%94%E8%A7%84%E5%88%99%E5%AD%A6%E4%B9%A0))
       - 先验算法 | Apriori algorithm ([Wiki](https://en.wikipedia.org/wiki/Apriori_algorithm)，寻找关联性的经典算法)
       - FP-Growth 算法 (以及相关的 Frequent Pattern Tree；[Ref](https://en.wikipedia.org/wiki/Frequent_pattern_discovery))
