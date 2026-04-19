@@ -582,6 +582,7 @@
   * 优化工作流：指示越具体越好、提供图像、告知你希望它关注处理的文件、提供 URL、尽早并经常纠正、使用 `/clean` 来保持上下文的重点、复杂工作流使用清单和便笺薄、提供数据（比如日志）
   * 使用 headless 模式进行基础设施自动化：CI、pre-commit hooks、build 脚本、自动化、linter
   * 使用多 Claude 工作流进行升级：一个 Claude 编码另一个验证、
+* SLAM (Simultaneous Localization and Mapping) - [同步定位与地图构建](https://zh.wikipedia.org/wiki/%E5%90%8C%E6%97%B6%E5%AE%9A%E4%BD%8D%E4%B8%8E%E5%9C%B0%E5%9B%BE%E6%9E%84%E5%BB%BA)。是指机器人或无人机在未知环境中，通过传感器（如激光雷达、相机）同步进行自身位置估计并构建环境地图的技术。它实现了机器不知道在哪但机器能边走边绘图、并依靠地图确定自己位置的自主功能，是自动驾驶、扫地机器人和 AR 应用的核心技术。
 
 
 ## 硬件与操作系统（Linux & bash）高频
