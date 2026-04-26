@@ -1377,6 +1377,8 @@ Timeline:
 如果是如 YouTube、TikTok 那样的可以订阅账号的系统，还可以引入 Twitter 那样的 newsfeed（fan-out）机制。  
 因为总有一些用户是订阅量大的大 V 而有一些是低订阅量的普通用户。  
 
+[大型系统中/跨服务的 DAG 相关](../../Computer%20Science%20Maths/可计算性理论.md#停机问题与系统设计)  
+
 </details>
 
 
