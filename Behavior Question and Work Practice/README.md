@@ -351,6 +351,7 @@ Books:
   * 不断发明和重新发明、优化
   * 对核心及次核心业务有高标准
 * 执行力、策略
+  * **Move despite uncertainty。领导者总是会遇到许多不确定，很多时候无法等到完全确信了才行动（7 Signs You're Not Ready To Lead）**
   * 有计划有条理，主导并安排、同步好跨组合作
   * 为团队设定明确、可衡量的目标，以跟踪成果的进展 - 具体可通过 1-3-5 year plan 来保证长期策略。通过定期回顾结果来培养持续改进的文化
   * 留有余裕，70% 至 80% 的时间完成既定真正高优需求、剩下的时间用于优化、发散、支持他人等等
@@ -371,6 +372,7 @@ Books:
     * 沟通方式 5 - [逻辑清晰](https://www.youtube.com/watch?v=DDwS3IYX4sI)
     * 沟通方式 6 - [强调对方的内心感受，而不是外部评价](https://www.youtube.com/shorts/2Wl_ghGXPu4)
     * 沟通方式 7 - [真话要说，但别急着说](https://www.youtube.com/shorts/6_wFDfbtReI)
+    * 沟通方式 8 - 容许保持沉默，不要因为沉默而感到不安，否则只是自我价值证明的焦虑在作祟，本质是不安全感驱动而非真正的领导力体现（7 Signs You're Not Ready To Lead）
   * 冲突管理
     * 只专注能力资源可及的事情、工作、任务、项目本身，而非与人争执或急于证明
     * 通过团队休整、避免加班（[工贼](https://en.wikipedia.org/wiki/Strikebreaker)）、合规断联等方法皆可使得同事之间保持合适距离，合适的距离有时可以很好地减少不必要的误会与怨言
