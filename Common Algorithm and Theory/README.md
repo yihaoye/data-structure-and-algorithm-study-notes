@@ -146,7 +146,7 @@ This personal Blog contains explanation and **Java library/template implementati
       - Rendezvous Hashing ([Wiki](https://en.m.wikipedia.org/wiki/Rendezvous_hashing))
       - Maglev Hashing
     - [反向索引 | Inverted Index]((../Leetcode%20Practices/system%20design/README.md#设计搜索引擎-Twitter-Search)) ([Code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/inverted%20index/InvertedIndex.java))
-    - TF-IDF | Term Frequency-Inverse Document Frequency (是一种统计方法，用来量化文本与查询词的相关性，从而对搜索结果进行排名和评分的核心基础算法之一。词频 Term Frequency 朴素的理解，一个词语 term 在一个 doc 中出现的频率越高，那么 doc 的相关性也越高。逆向文档频率 Inverse Document Frequency，通俗的解释每个检索词在索引中出现的频率，频率越高，相关性越低。 比如`的`这样的词语，可能每个 doc 都有，相反一些专业术语出现的文档数很少，这些文档的权重就很高，[Ref](https://www.cnblogs.com/xiaoqi/p/18003267/bm25))
+    - [TF-IDF | Term Frequency-Inverse Document Frequency](./TF-IDF.md) (训练阶段和计算阶段时间复杂度均为 `O(N*L)`，其中 N 是文档数，L 是每篇文档的平均词数；训练阶段空间复杂度 `O(M)`，计算阶段空间复杂度 `O(N*M)`，其中 M 是词汇表大小即不同词的总数)
       - BM25 算法 | Okapi Best Matching 25 Algorithm ([Wiki](https://en.wikipedia.org/wiki/Okapi_BM25)，是 TF-IDF 的改进版本，考虑了文档长度和词频的饱和效应，能够更准确地评估文档与查询之间的相关性，因此在信息检索领域被广泛使用)
         - BM25+ 算法 (BM25 只考虑了 term 和 doc 的维度，对 query 里 term 的频率没有考虑，BM25+ 基于这一点改进 BM25 算法，[Ref](https://www.cnblogs.com/xiaoqi/p/18003267/bm25))
     - Frugal Streaming 算法
