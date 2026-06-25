@@ -952,6 +952,9 @@
   * 密码学意义上的安全随机数分为两类：
     * 真随机数产生器产生的随机数（Linux、Windows 操作系统均有提供相关接口）；
     * 以真随机数产生器产生的少量随机数作为种子的密码学安全的伪随机数产生器产生的大量随机数。
+* ReBAC（Relationship-Based Access Control）- 实现在 DAC（Discretionary Access Control）语义下的细粒度资源授权（Fine-grained Authorization，FGA），例如查询某个用户是否有权访问某个资源、或者该用户有哪些资源可以访问、哪些用户可以访问某个资源。通常 ReBAC 中的授权是通过遍历关系有向图来执行的。
+  * [Microservices service-level authorization](https://cheatsheetseries.owasp.org/cheatsheets/Microservices_Security_Cheat_Sheet.html#service-level-authorization)
+  * SpiceDB - 受谷歌 Zanzibar 启发，是一个用于管理应用程序权限的数据库系统，可扩展、支持分布式且具备一致性的细粒度授权系统。内部通过关系图和缓存机制优化权限计算。
 
 
 ## Nginx 高频
