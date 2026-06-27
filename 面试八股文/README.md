@@ -918,7 +918,7 @@
 * [内容农场](https://zh.wikipedia.org/zh-hans/%E5%85%A7%E5%AE%B9%E8%BE%B2%E5%A0%B4) - 指为了牟取广告费等商业利益或出于控制舆论、带风向等特殊目的，快速生产大量网路文章来吸引流量的网站，通常，其也利用搜索引擎来达到吸睛点击；农场文则是此类网站制造的文章。
   * 常见特征：大量剽窃、二手转载、垃圾劣质机造内容、免洗网站、社群导流、夸大标题、匿名作者、广告行销、恶意程式。
 * [盲水印和图片隐写术](https://ulyc.github.io/2019/03/15/%E7%9B%B2%E6%B0%B4%E5%8D%B0%E5%92%8C%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99%E6%9C%AF/)
-* [Access Control](https://en.wikipedia.org/wiki/Access_control) 以及[常见权限模型](https://www.woshipm.com/share/6057931.html)
+* [Access Control](https://en.wikipedia.org/wiki/Access_control) 以及[常见权限模型](https://www.woshipm.com/share/6057931.html) - 访问控制是对主体（Subject）访问客体（Object）的操作（Action）进行管控的机制，确保授权的访问被允许，未授权的访问被拒绝。归属于信息安全体系里的 AAA 框架（Authentication 认证主体是谁、验证身份；Authorization 授权即该主体能做什么、访问控制就在这里；Accounting 审计、主体做了什么、日志追踪）
   * ACL (Access Control List) - 一种面向资源的访问控制模型。核心在于用户可以直接和权限挂钩，权限模型包括：资源标识、用户标识、授权状态
   * DAC (Discretionary Access Control) - 在 ACL 的基础上，DAC 模型将授权的权力下放，允许拥有权限的用户，可以自主地将权限授予其他用户，常见于 OS 的文件系统
   * MAC (Mandatory Access Control) - 弥补 DAC 权限控制过于分散的问题而诞生的。主体被赋予一定的安全级别，客体被赋予一定的安全级别，主体能否访问客体由双方的关系安全级别决定
