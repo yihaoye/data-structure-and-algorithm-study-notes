@@ -920,15 +920,15 @@
 * [盲水印和图片隐写术](https://ulyc.github.io/2019/03/15/%E7%9B%B2%E6%B0%B4%E5%8D%B0%E5%92%8C%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99%E6%9C%AF/)
 * [Access Control](https://en.wikipedia.org/wiki/Access_control) 以及[常见权限模型](https://www.woshipm.com/share/6057931.html)
   * ACL (Access Control List) - 一种面向资源的访问控制模型。核心在于用户可以直接和权限挂钩，权限模型包括：资源标识、用户标识、授权状态
-    * DAC - 在 ACL 的基础上，DAC 模型将授权的权力下放，允许拥有权限的用户，可以自主地将权限授予其他用户，常见于 OS 的文件系统
-    * MAC - 弥补 DAC 权限控制过于分散的问题而诞生的。主体被赋予一定的安全级别，客体被赋予一定的安全级别，主体能否访问客体由双方的关系安全级别决定
-  * [ReBAC（Relationship-Based Access Control）](https://auth0.com/blog/relationship-based-access-control-rebac/)- 实现在 DAC（Discretionary Access Control）语义下的细粒度资源授权（Fine-grained Authorization，FGA），例如查询某个用户是否有权访问某个资源、或者该用户有哪些资源可以访问、哪些用户可以访问某个资源。通常 ReBAC 中的授权是通过遍历关系有向图来执行的。
+  * DAC (Discretionary Access Control) - 在 ACL 的基础上，DAC 模型将授权的权力下放，允许拥有权限的用户，可以自主地将权限授予其他用户，常见于 OS 的文件系统
+  * MAC (Mandatory Access Control) - 弥补 DAC 权限控制过于分散的问题而诞生的。主体被赋予一定的安全级别，客体被赋予一定的安全级别，主体能否访问客体由双方的关系安全级别决定
+  * [ReBAC (Relationship-Based Access Control)](https://auth0.com/blog/relationship-based-access-control-rebac/) - 实现在 DAC 语义下的细粒度资源授权（Fine-grained Authorization，FGA），例如查询某个用户是否有权访问某个资源、或者该用户有哪些资源可以访问、哪些用户可以访问某个资源。通常 ReBAC 中的授权是通过遍历关系有向图来执行的。
     * [Microservices service-level authorization](https://cheatsheetseries.owasp.org/cheatsheets/Microservices_Security_Cheat_Sheet.html#service-level-authorization)
     * SpiceDB - 受谷歌 Zanzibar 启发，是一个用于管理应用程序权限的数据库系统，开源、可扩展、支持分布式且具备一致性的细粒度授权系统。内部通过关系图和缓存机制优化权限计算。
   * RBAC (Role-Based Access Control) - 将访问权限与角色相关联，通过给用户分配适合的角色，让用户与访问权限相联系
-  * ABAC - 基于属性的访问控制权限模型。定义：规定哪些属性的主体可以对哪些属性的资源在哪些属性的环境下进行哪些操作属性
-  * TBAC - 基于任务的访问控制模型。它从工作流中的任务角度建模，可以依据任务和任务状态的不同，对权限进行动态管理
-  * EBAC - 基于受控实体的访问控制技术。对各种客观存在的和逻辑定义的企业信息资源（即主体拥有访问权限的客体），定义为受控实体
+  * ABAC (Attribute-Based Access Control) - 基于属性的访问控制权限模型。定义：规定哪些属性的主体可以对哪些属性的资源在哪些属性的环境下进行哪些操作属性
+  * TBAC (Task-Based Access Control) - 基于任务的访问控制模型。它从工作流中的任务角度建模，可以依据任务和任务状态的不同，对权限进行动态管理
+  * EBAC (Entity-Based Access Control) - 基于受控实体的访问控制技术。对各种客观存在的和逻辑定义的企业信息资源（即主体拥有访问权限的客体），定义为受控实体
 * IP 伪造 [Ref 1](https://sym01.com/posts/2023/ip-forgery/), [Ref 2](https://www.cloudflare.com/zh-cn/learning/ddos/glossary/ip-spoofing/) - IP 伪造问题的根因都是相似的，即后端服务无条件地信任了别人传递过来的 IP 信息。尽管 IP 欺骗可以伪造源 IP，但它有一个重要的局限性：攻击者通常收不到目标服务器的响应。因为响应数据包会发回给被伪造的那个 IP 地址（也就是真正的 IP 地址），而不是攻击者本人。所以，IP 欺骗对于需要双向通信的协议（比如 TCP 协议，它需要三次握手来建立连接）效果很差，因为攻击者无法完成握手。它主要用于那些不需要接收响应（如 UDP 泛洪攻击）或可以通过其他方式截获响应的攻击场景。
   * 攻击方法
     * 修改的 Internet 协议 (IP) 数据包
