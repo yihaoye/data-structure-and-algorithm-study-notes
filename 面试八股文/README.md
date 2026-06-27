@@ -918,10 +918,13 @@
 * [内容农场](https://zh.wikipedia.org/zh-hans/%E5%85%A7%E5%AE%B9%E8%BE%B2%E5%A0%B4) - 指为了牟取广告费等商业利益或出于控制舆论、带风向等特殊目的，快速生产大量网路文章来吸引流量的网站，通常，其也利用搜索引擎来达到吸睛点击；农场文则是此类网站制造的文章。
   * 常见特征：大量剽窃、二手转载、垃圾劣质机造内容、免洗网站、社群导流、夸大标题、匿名作者、广告行销、恶意程式。
 * [盲水印和图片隐写术](https://ulyc.github.io/2019/03/15/%E7%9B%B2%E6%B0%B4%E5%8D%B0%E5%92%8C%E5%9B%BE%E7%89%87%E9%9A%90%E5%86%99%E6%9C%AF/)
-* [7 种权限模型](https://www.woshipm.com/share/6057931.html)
+* [Access Control](https://en.wikipedia.org/wiki/Access_control) 以及[常见权限模型](https://www.woshipm.com/share/6057931.html)
   * ACL (Access Control List) - 一种面向资源的访问控制模型。核心在于用户可以直接和权限挂钩，权限模型包括：资源标识、用户标识、授权状态
     * DAC - 在 ACL 的基础上，DAC 模型将授权的权力下放，允许拥有权限的用户，可以自主地将权限授予其他用户，常见于 OS 的文件系统
     * MAC - 弥补 DAC 权限控制过于分散的问题而诞生的。主体被赋予一定的安全级别，客体被赋予一定的安全级别，主体能否访问客体由双方的关系安全级别决定
+  * [ReBAC（Relationship-Based Access Control）](https://auth0.com/blog/relationship-based-access-control-rebac/)- 实现在 DAC（Discretionary Access Control）语义下的细粒度资源授权（Fine-grained Authorization，FGA），例如查询某个用户是否有权访问某个资源、或者该用户有哪些资源可以访问、哪些用户可以访问某个资源。通常 ReBAC 中的授权是通过遍历关系有向图来执行的。
+    * [Microservices service-level authorization](https://cheatsheetseries.owasp.org/cheatsheets/Microservices_Security_Cheat_Sheet.html#service-level-authorization)
+    * SpiceDB - 受谷歌 Zanzibar 启发，是一个用于管理应用程序权限的数据库系统，开源、可扩展、支持分布式且具备一致性的细粒度授权系统。内部通过关系图和缓存机制优化权限计算。
   * RBAC (Role-Based Access Control) - 将访问权限与角色相关联，通过给用户分配适合的角色，让用户与访问权限相联系
   * ABAC - 基于属性的访问控制权限模型。定义：规定哪些属性的主体可以对哪些属性的资源在哪些属性的环境下进行哪些操作属性
   * TBAC - 基于任务的访问控制模型。它从工作流中的任务角度建模，可以依据任务和任务状态的不同，对权限进行动态管理
@@ -952,9 +955,6 @@
   * 密码学意义上的安全随机数分为两类：
     * 真随机数产生器产生的随机数（Linux、Windows 操作系统均有提供相关接口）；
     * 以真随机数产生器产生的少量随机数作为种子的密码学安全的伪随机数产生器产生的大量随机数。
-* ReBAC（Relationship-Based Access Control）- 实现在 DAC（Discretionary Access Control）语义下的细粒度资源授权（Fine-grained Authorization，FGA），例如查询某个用户是否有权访问某个资源、或者该用户有哪些资源可以访问、哪些用户可以访问某个资源。通常 ReBAC 中的授权是通过遍历关系有向图来执行的。
-  * [Microservices service-level authorization](https://cheatsheetseries.owasp.org/cheatsheets/Microservices_Security_Cheat_Sheet.html#service-level-authorization)
-  * SpiceDB - 受谷歌 Zanzibar 启发，是一个用于管理应用程序权限的数据库系统，可扩展、支持分布式且具备一致性的细粒度授权系统。内部通过关系图和缓存机制优化权限计算。
 
 
 ## Nginx 高频
