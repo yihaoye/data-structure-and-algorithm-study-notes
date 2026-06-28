@@ -41,6 +41,7 @@
 * 哈希、加密、编码的区别 - 哈希和加密的一个重要区别是前者不可逆而后者可逆 ![](./hash-encrpt-encode.png)
 * [SDN（软件定义网络）](https://www.cloudflare.com/zh-cn/learning/network-layer/what-is-sdn/) - SDN 通过将控制平面与转发平面分离，实现了网络的集中控制，从而可以灵活地控制网络流量，满足各种应用的需求，最终达成：提高系统的灵活性和可编程性、降低系统的管理和运维成本、提高系统的安全性。
 * [服务网格 | Service Mesh](../Leetcode%20Practices/system%20design/Service-Mesh.md) - [ref]((https://www.redhat.com/zh/topics/microservices/what-is-a-service-mesh))，可以认为是一种分布式通信系统的架构模式，用网格描述其实即图数据结构。
+  * [Service Mesh 起源、发展和现状](https://developer.aliyun.com/article/769010)
   * [控制面板（Control Panel）](https://www.zhihu.com/tardis/zm/art/397945267?source_id=1003)- 是用来从全局的角度上控制 SideCar，相当于 Service Mesh 架构的大脑，控制着 SideCar 来实现服务治理的各项功能。比如，它负责所有 SideCar 的注册，存储统一的路由表，帮助各个 SideCar 进行负载均衡和请求调度，配置分发以及证书配置；它收集所有 SideCar 的监控信息和日志数据。![](./service-mesh-control-panel.jpg)
   * [Service Mesh 起源、演进、定义](https://www.lixueduan.com/posts/istio/02-service-mesh/)
   * [Why Istio](https://jimmysong.io/en/blog/why-do-you-need-istio-when-you-already-have-kubernetes/)
@@ -932,8 +933,7 @@
   * DAC (Discretionary Access Control) - 在 ACL 的基础上，DAC 模型将授权的权力下放，允许拥有权限的用户，可以自主地将权限授予其他用户，常见于 OS 的文件系统
   * MAC (Mandatory Access Control) - 弥补 DAC 权限控制过于分散的问题而诞生的。主体被赋予一定的安全级别，客体被赋予一定的安全级别，主体能否访问客体由双方的关系安全级别决定
   * [ReBAC (Relationship-Based Access Control)](https://auth0.com/blog/relationship-based-access-control-rebac/) - 实现在 DAC 语义下的细粒度资源授权（Fine-grained Authorization，FGA），例如查询某个用户是否有权访问某个资源、或者该用户有哪些资源可以访问、哪些用户可以访问某个资源。通常 ReBAC 中的授权是通过遍历关系有向图来执行的。
-    * [Microservices service-level authorization](https://cheatsheetseries.owasp.org/cheatsheets/Microservices_Security_Cheat_Sheet.html#service-level-authorization)
-    * SpiceDB - 受谷歌 Zanzibar 启发，是一个用于管理应用程序权限的数据库系统，开源、可扩展、支持分布式且具备一致性的细粒度授权系统。内部通过关系图和缓存机制优化权限计算。
+    * SpiceDB - 受谷歌 Zanzibar 启发，是一个用于管理应用程序权限的数据库系统，开源、可扩展、支持分布式且具备一致性的细粒度授权系统。内部通过关系图和缓存机制优化权限计算。在 [Microservices service-level authorization](https://cheatsheetseries.owasp.org/cheatsheets/Microservices_Security_Cheat_Sheet.html#service-level-authorization) 的架构分类中属于 Pattern 2（集中式单一 PDP），但通过 Watch API、Zookie 一致性 token 等机制解决了 Pattern 2 的高可用和一致性问题，是涉及复杂关系型权限场景下的工程最佳实践。
   * RBAC (Role-Based Access Control) - 将访问权限与角色相关联，通过给用户分配适合的角色，让用户与访问权限相联系
   * ABAC (Attribute-Based Access Control) - 基于属性的访问控制权限模型。定义：规定哪些属性的主体可以对哪些属性的资源在哪些属性的环境下进行哪些操作属性
   * TBAC (Task-Based Access Control) - 基于任务的访问控制模型。它从工作流中的任务角度建模，可以依据任务和任务状态的不同，对权限进行动态管理
