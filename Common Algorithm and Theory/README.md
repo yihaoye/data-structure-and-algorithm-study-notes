@@ -198,6 +198,7 @@ This personal Blog contains explanation and **Java library/template implementati
     - 隐马尔可夫模型 | Hidden Markov Model, HMM ([Ref](https://zh.wikipedia.org/wiki/%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E9%93%BE)，用来描述一个含有隐含未知参数的[马尔可夫过程/随机状态转移](./Markovkate_01.svg.png)。其难点是从可观察的参数中确定该过程的隐含参数。然后利用这些参数来作进一步的分析，例如模式识别)
       - 前向与后向算法 | Forward–Backward Algorithm
       - 维特比算法 | Viterbi Algorithm
+    - [哥德尔机 | Gödel Machine](./哥德尔机.md)
     - [深度学习, 神经网络 | Deep Learning, Neural Networks](./机器学习.md#deep-learning) ([Ref](https://www.zhihu.com/question/314879954/answer/638380202)、[神经网络训练原理](./神经网络.md))
       - [感知器 | Perceptron](./机器学习.md#single-neuron) ([Ref](https://www.youtube.com/watch?v=BS_CVhalVGw&list=PLxIHUhMHF8okwhq8poRuiHBChWjkVUHLL&index=2)；又称感知机、Neuron、Unit，该基本模型是神经网络的基础，是模拟了人工神经元的模型)
         - 卷积神经网络 | Convolutional Neural Network, CNN ([Wiki](https://zh.wikipedia.org/zh-hans/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C)、[Ref](https://www.nvidia.cn/glossary/data-science/convolutional-neural-network/)：用于处理网格数据，如图像、视频、音频等，进行特征提取和分类。结构由卷积层、池化层和全连接层组成，用于捕获局部特征和构建层次结构)
