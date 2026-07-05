@@ -41,7 +41,7 @@ https://www.algoexpert.io/systems/fundamentals
 * Polling And Streaming
   * Polling - 客户端定时请求服务端（缺点在于用户多且需要实时获取事件更新的场景下，服务端可能承担过多无效负载）
   * Streaming / Pushing - [Server-Sent Events (SSE)](https://stackoverflow.com/questions/5195452/websockets-vs-server-sent-events-eventsource)、websocket、long lived connection, i.e. 无间断地监听 socket 是否有其他机器（如服务器主动发送数据）传输过来的数据 (可供两个机器互相通讯，socket 原理上是计算机里的一个可读写文件)，场景如 Polling 的缺点场景、IM 等
-* Configuration
+* [Configuration](./Configuration.md)
   * 配置即系统或应用需用到的存放在某个独立文件中（而不是代码程序逻辑里）的参数（parameters）或常量（constants）的集合
   * 格式通常是 JSON 或 YAML
   * 根据实际情况权衡使用静态配置或动态配置
