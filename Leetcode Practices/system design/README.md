@@ -1644,7 +1644,7 @@ Dropbox 异步任务框架 ATF：
 2. 信息的有序性以及一致性
 
 **技术重点**  
-唯一有状态的服务是聊天服务。该服务是有状态的，因为每个客户端都与聊天服务器保持持久的网络连接。在此服务中，只要服务器仍然可用，客户端通常不会切换到另一个聊天服务器。服务发现与聊天服务紧密协调，以避免服务器过载。此处需要深入探讨细节。  
+聊天服务通常是有状态设计（stateful），包括私聊、群聊都是。该服务是有状态的，因为每个客户端都与聊天服务器保持持久的网络连接。在此服务中，只要服务器仍然可用，客户端通常不会切换到另一个聊天服务器。服务发现与聊天服务紧密协调，以避免服务器过载。此处需要深入探讨细节。  
 
 **基础架构**  
 读阶段  
@@ -1868,6 +1868,40 @@ WhatsApp 架构：
 ![](./whatsapp.gif)  
   
 其他参考方案：[Design a Chat Service](./example%20questions/Design%20a%20Chat%20Service.md)  
+
+</details>
+
+
+## 设计 PvP Pong 游戏系统
+<details>
+<summary>details</summary>
+
+参考：
+* https://aws.amazon.com/blogs/gametech/stateful-or-stateless/
+* https://www.metaplay.io/blog/stateful-vs-stateless-design-key-considerations-for-game-developers
+* https://openkruise.io/zh/kruisegame/best-practices/session-based-game
+
+PvP 游戏也是一个典型的 stateful 系统（并不是说所有 PvP 游戏都是如此，但是通常低延迟、高并发、同时在线人数较多的情况下 stateful 更高效），客户端与服务端之间需要保持实时的连接。  
+
+**功能性需求**  
+* 登录（决定是否在线）
+* 匹配玩家（要匹配在线玩家，且不能超配，任意一方限时未确定需重新匹配）
+* 分配游戏
+* 统计数据（分数、排名，游戏结束后，用于以后匹配参考）
+
+**非功能性需求**  
+* 高并发：1 万还是 100 万 CCU（Concurrent Connected Users 同时在线玩家），单区域还是全球。这里决定了 matchmaker 是一个进程还是一个分片系统
+* 低延迟：Pong 游戏体验要求极低的网络延迟（< 100ms RTT），且多区域时要就近分配
+* 高可用性：系统需要保证在高负载下仍能稳定运行
+
+Pong 的特殊性 - 一场对局的全部状态就是两个球拍坐标 + 球的位置、速度 + 比分，几十个字节；固定 2 人对战，且对战时间短（几十秒到几分钟）。
+
+**基础架构设计**  
+Login 登录部分和大部分互联网应用类似，使用 stateless 设计，标准 OAuth/用户名密码换 JWT，客户端携带 JWT token 访问游戏服务及保证所有业务请求正常调用所需的微服务接口，不需要回源查 session。  
+
+Matchmaker 匹配器负责撮合玩家并选择游戏权威服务器节点（权威服务器 Authoritative Server 的意思是服务端运行游戏逻辑，客户端只负责渲染和输入，服务端才是游戏的最终裁决者，反之则是客户端权威即客户端跑逻辑、服务端只负责转发给其他客户端，这里选择权威服务器的原因是：1. 防止作弊；2. 更好保障一致性）。权威服务器通常是 stateful 的，因为它需要维护游戏状态，并且需要与客户端保持实时连接且最好是长链接。  
+如果根据玩家的 rating 找一个最接近的人，可以使用 Redis Sorted Set 来存储玩家的 rating，Sorted Set 的 score 就是玩家的 rating，value 是玩家的 ID。一个 matchmaker 进程轮询配对，等待越久搜索窗口越宽，匹配时可以使用 ZRANGEBYSCORE 命令来获取指定范围内的玩家 ID，然后从中随机选择一个玩家进行匹配（即使 100 万 CCU、每秒几千次入队，单个 matchmaker 进程也绰绰有余，因为内存配对是微秒级）。  
+
 
 </details>
 
