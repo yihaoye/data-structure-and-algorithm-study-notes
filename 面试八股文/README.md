@@ -854,6 +854,12 @@
 * 加密解密
   * [对称加密](https://www.youtube.com/watch?v=uD_zCOKuYPc) - 最粗糙的一次性安全加密可以采用异或运算即可（通常异或就是工业级对称加密算法的基础，比如 [AES](https://zh.wikipedia.org/wiki/%E9%AB%98%E7%BA%A7%E5%8A%A0%E5%AF%86%E6%A0%87%E5%87%86)）
   * [非对称加密](https://github.com/yihaoye/stem-notes/blob/master/e-computer-network/https_and_ssl_tls.md)
+* HTTPS 原理简易过程
+  1. 客户端发送请求，包含支持的 TLS 版本、加密算法套件等信息
+  2. 服务器响应，选择一个加密算法套件（比如 SHA256），生成公钥（加密）和私钥（解密），并将公钥发送给客户端
+  3. 客户端使用服务器的公钥加密一个随机生成的对称密钥（比如 AES 密钥），并将其发送给服务器
+  4. 服务器使用私钥解密，获取对称密钥
+  5. 双方使用对称密钥进行加密通信
 * [实际工程项目中应用密匙如何存取](https://zh.wikipedia.org/zh-hant/%E5%AF%86%E9%92%A5%E7%AE%A1%E7%90%86)
 * [Security for Programmer](https://www.youtube.com/watch?v=qjrkV4RjgIU)
 * OWASP top 10 : [1](https://owasp.org/www-pdf-archive/OWASP_Top_10_2017_%E4%B8%AD%E6%96%87%E7%89%88v1.2.pdf), [2](https://owasp.org/www-project-top-ten/)
@@ -868,12 +874,6 @@
   * 服务端请求伪造（SSRF）
   * 不安全的设计（需要更多地使用威胁建模、安全设计模式和原则以及参考架构）
 * XSS ![](./xss.jpeg)
-* HTTPS 原理简易过程
-  1. 客户端发送请求，包含支持的 TLS 版本、加密算法套件等信息
-  2. 服务器响应，选择一个加密算法套件（比如 SHA256），生成公钥（加密）和私钥（解密），并将公钥发送给客户端
-  3. 客户端使用服务器的公钥加密一个随机生成的对称密钥（比如 AES 密钥），并将其发送给服务器
-  4. 服务器使用私钥解密，获取对称密钥
-  5. 双方使用对称密钥进行加密通信
 * [Cookie、Session、Token、JWT 区别](https://juejin.cn/post/6844904034181070861)
 * [JWT 认证中可以防止他人冒充 token 吗？](https://www.zhihu.com/question/364616467) - 答案是 “否”，在防止冒充这个部分，需要其他的防护手段，比如通常使用 HTTPS 双向认证，双向加密之类的。并且启用 JWT 过期设置，在如无跨域需要的情况下开启 CORS 最好。
 * 双 Token 机制 - [访问令牌（Access Token）](https://auth-wiki.logto.io/zh/access-token)与[刷新令牌（Refresh Token）](https://auth-wiki.logto.io/zh/refresh-token)，其中 Access Token 可以是不透明字符串或 JWT，Refresh Token 通常是不透明字符串（即随机的、无意义的字符串，因此攻击者无法从令牌本身提取任何有用信息，也因为没有元数据所以可以方便立即撤销、且使得必须在服务器端进行验证和查找，因此每次使用它时，服务器都需要检查其有效性、是否被撤销等状态，这提供了一个集中的控制点，而且不负载元数据也使得其存储占用资源较少）
