@@ -1874,7 +1874,7 @@ WhatsApp 架构：
 </details>
 
 
-### 设计 PvP Pong 游戏系统
+## 设计 PvP Pong 游戏系统
 <details>
 <summary>details</summary>
 
@@ -2846,7 +2846,7 @@ KV 数据库主要的考点是高可用性、扩展性及高性能：
   * 难以与多个数据中心一起扩展
   * 跨多个服务器，ID 不会随时间递增。
   * 当添加或删除服务器时，它的扩展性不佳。
-* UUID / TSID
+* [UUID](./../../Common%20Algorithm%20and%20Theory/UUID.md) / TSID
 * Ticket Server - 单个中心数据库（包括从数据库副本）自增 ID 提供给所有其他系统，优点是针对中小系统容易实现，缺点是容易单点故障和低性能
 * [Twitter Snowflake](./../../Common%20Algorithm%20and%20Theory/雪花算法.md)
 * 随机化且非重复 ID（避免数据库数据量被外界得知）
@@ -3412,8 +3412,7 @@ Ref: https://blog.bytebytego.com/i/65351443/how-does-google-authenticator-or-oth
   
 更多详细内容：[TOTP(基于时间的一次性密码算法)](https://zh.wikipedia.org/wiki/%E5%9F%BA%E4%BA%8E%E6%97%B6%E9%97%B4%E7%9A%84%E4%B8%80%E6%AC%A1%E6%80%A7%E5%AF%86%E7%A0%81%E7%AE%97%E6%B3%95)  
 
-### 2FA 流程
-
+**2FA 流程**  
 ref: https://swoopnow.com/how-does-two-factor-authentication-work/  
 https://blog.bytebytego.com/p/password-session-cookie-token-jwt  
 

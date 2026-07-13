@@ -139,6 +139,7 @@ This personal Blog contains explanation and **Java library/template implementati
       - RSA 加密算法 (可逆，最重要的[非对称加密算法](./非对称加密算法.md))
     - [HyperLogLog 算法](./HyperLogLog.md)
     - [雪花算法 | Snowflake ID](./雪花算法.md)
+    - [UUID 算法 | Universally Unique Identifier](./UUID.md)
     - 一致性哈希 | Consistent Hashing ([Ref](https://dgryski.medium.com/consistent-hashing-algorithmic-tradeoffs-ef6b8e2fcae8)) (数据操作时间复杂度为 `O(logN)`，节点增删时间复杂度为 `~O(N/M)` 其中 M 为实际节点数)
       - [环形哈希 (虚拟节点) | Ring Hashing](./../Leetcode%20Practices/system%20design/一致性哈希.md) ([Code](../Leetcode%20Practices/object%20oriented%20design/other%20practices/consistent%20hash/README.md))
       - 跳跃哈希 | Jump Hashing ([Ref 1](https://arxiv.org/pdf/1406.2294.pdf)、[Ref 2](https://writings.sh/post/consistent-hashing-algorithms-part-3-jump-consistent-hash))
