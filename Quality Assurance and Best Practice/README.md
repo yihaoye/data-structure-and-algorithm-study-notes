@@ -234,7 +234,7 @@ Javadoc 是一款能根据源代码中的文档注释来产生 HTML 格式的 AP
 * 文档标记 (block tags) - 常用的标签。文档标记常放于包/类/方法的 Javadoc 注释的第三段
   * `@author, @since, @version, @code, @return, @param, @value, @throws @exception, @link @linkplain @see, @deprecated, <pre>`, etc
 
-### [Code Taste](https://www.youtube.com/watch?v=78Y17hAo96I)
+### [Linux Code Taste](https://www.youtube.com/watch?v=78Y17hAo96I)
 好的代码品味就是能够看透问题的本质（宏观 Big Patterns），通过优雅的设计消除不必要的边缘情况（Edge Cases），让代码逻辑自然且统一。  
 
 

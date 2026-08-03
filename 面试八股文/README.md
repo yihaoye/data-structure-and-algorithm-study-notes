@@ -418,6 +418,7 @@
     * ZRANGE - 返回有序集中，指定区间内的元素，且元素按分数值递增来排序，具有相同分数值的元素按字典序排列。另外还有 ZREVRANGE，但已弃用
   * String
     * SETNX - 仅当 key 不存在时，才设置 key 的值
+* 大 Key 问题及处理方法 - 大 Key 问题指的是某个 Key 对应的 Value 非常大，主要不是内存占用大而是因为 Redis 是单线程的后台处理，单个大 Key 在读写/同步（AOF）时会阻塞导致影响性能，以及导致集群节点内存分配不均（数据倾斜）。处理方法包括：拆分大 Key（类似分片）、使用压缩算法等。可以通过比如 `redis-cli --bigkeys` 或 `MEMORY USAGE key` 排查，手动处理时不要直接 `DEL key`，而是采用类似 `UNLINK key` 的异步删除方式。注意大 Key 和热 Key 是不同的概念，热 Key 指的是访问频率高的 Key，大 Key 通常指的是单个 KV 占用 500MB 以上的 Key
 
 
 ## Kafka 高频
