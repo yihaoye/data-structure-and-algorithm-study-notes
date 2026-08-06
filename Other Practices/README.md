@@ -28,7 +28,7 @@
 * Code
   * [Design Service](./26-07-2023%20design%20service/Solution.java)
 * System Design
-  * [Game of Life](./game%20of%20life/Solution.java)
+  * [Game of Life](./game-of-life/Solution.java)
 
 </details>
 
