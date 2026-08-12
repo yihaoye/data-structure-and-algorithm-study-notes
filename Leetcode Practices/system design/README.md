@@ -504,6 +504,8 @@ Stateful 避免了向不相关实例广播事件（或减少了实例需要过�
 
 ![](./stateful-vs-stateless.png)  
   
+## [多租户架构 vs 单租户架构](./单租户架构-vs-多租户架构.md)
+
 ## [Deployment](https://www.youtube.com/watch?v=AWVTKBUnoIg)
 * ![](./top-5-most-used-deployment-strategies.png) (by ByteByteGo)
 
