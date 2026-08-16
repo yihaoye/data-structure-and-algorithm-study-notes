@@ -102,6 +102,9 @@ https://www.algoexpert.io/systems/fundamentals
   * CRUD Operations
   * Error / Exception
     * 返回报错时，最佳实践是都包含状态码，另外如果包含错误信息的话，最好不要直接返回错误栈的原信息（因为会泄漏内部服务信息，有安全隐患），而是给定和业务逻辑相关的描述信息
+  * 权限控制
+* 其他知识：
+  * 防抖 debounce - 客户端（常规途径）通过[延迟函数](../algorithms/medium/2627%20Debounce.ts)实现，服务端如果是异步则通过 delay job 且以最后一个请求为准（本质和客户端一样）、同步则通过分布式 KV + TTL 实现（单个实例的话可以通过内存 KV TTL 实现）并以第一个请求为准（但是因为经典的 debounce 语义定义为 last event wins，而服务端同步很难实现 last event wins，所以这种情况下可能称之为 deduplicate / singleflight 更准确）。注意 debounce 与幂等性不是同一概念
 * 考核过程
   * 询问关于系统的哪个功能、部分，询问系统规模，询问 API 消费细节
   * 列出每个 API 概要 / outline（列出 API 所依赖的 entity、资源，比如 Twitter API 依赖 tweet 资源或 entity，又比如 Stripe 依赖支付、客户等资源或 entity。entity 的细节要包括需要哪些属性、字段及其数据类型），列出 API 的 endpoint、请求参数（必要或可选）、返回响应，但是不需要实现逻辑细节（或者只需要写出一些关键逻辑）
