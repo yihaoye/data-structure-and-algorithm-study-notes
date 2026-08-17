@@ -131,7 +131,8 @@ This personal Blog contains explanation and **Java library/template implementati
         - 椭圆曲线数字签名算法 | ECDSA (不可逆)
     - 纠错码 | Correcting Code ([Wiki](https://zh.m.wikipedia.org/wiki/%E7%BA%A0%E9%94%99%E7%A0%81)，其中[纠删码](https://en.wikipedia.org/wiki/Erasure_code)是其子集；vs 校验和：纠错码不仅可以检测错误，还能在一定程度上纠正错误，即有条件的可逆，通常计算更复杂，需要更多的冗余数据，用于对数据完整性要求较高的场景如存储系统、卫星通信等)
       - 里德-所罗门码 | RS Codes ([Wiki](https://zh.m.wikipedia.org/zh-hans/%E9%87%8C%E5%BE%B7-%E6%89%80%E7%BD%97%E9%97%A8%E7%A0%81))
-    - 均匀哈希 | Uniform Hash
+    - 均匀哈希 | Uniform Hash (其实大多数通用哈希算法都是均匀的，因为这是大部分使用场景的基本要求，但是也有一类哈希算法基于使用场景被刻意设计为不均匀的，比如局部敏感哈希)
+      - Fowler–Noll–Vo (又称 FNV，不可逆，是最基础简单的非加密哈希算法，就是逐字节处理输入 - 将当前 hash 与字节进行 XOR 再乘以一个固定的 FNV prime 并根据 FNV 变体在固定 bit 宽度下溢出)
       - MurmurHash3 (不可逆，是一种非加密哈希函数，有速度快、均匀性好、易于使用等优点，常用于哈希表、布隆过滤器等数据结构中，以提高性能和减少哈希碰撞；[Code](https://commons.apache.org/proper/commons-codec/jacoco/org.apache.commons.codec.digest/MurmurHash3.java.html))
       - xxHash (同上，是比 MurmurHash 更快的哈希算法，尤其在较大数据块的哈希运算上表现优异，[Ref](https://xxhash.com/))
     - 加密算法 | Cryptography (可逆)
