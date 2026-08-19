@@ -77,6 +77,17 @@ Temporal 集群本身并不执行代码。虽然该平台保证代码的持久�
 #### Worker Connectivity
 由于 Worker 使用 Temporal Client 与 Temporal Cluster 通信，因此运行 Worker 的每台机器都需要连接到集群的前端服务，该服务默认监听 TCP 端口 7233。  
 
+### 集成到应用
+Temporal 服务于多种应用场景；例如，确保电子商务订单和金融交易的可靠执行。这些应用的最终用户并非开发人员，可能并不了解 Temporal，但他们的操作会触发工作流执行以及与 Temporal 集群的其他交互。  
+这就引出了一个问题：如何将 Temporal 应用程序集成到整个应用程序中？例如，如何响应用户在 Web 或移动应用程序中点击按钮的操作来启动工作流执行？  
+
+直接集成到应用程序前端 - 可以在这些应用程序内部使用 Temporal 客户端。也可以完全不使用 Temporal 客户端，直接从应用程序发出 gRPC 请求。然而，这两种方法都属于非典型做法。  
+![](./temporal-integration-direct.png)  
+
+更典型的做法是让最终用户应用程序调用后端服务（例如提供 REST 端点的 Web 应用程序），该服务充当应用程序网关，并使用 Temporal 客户端与集群交互。例如，假设最终用户在 Web 应用程序中提交表单，这将导致向与订单处理相关的端点发出请求。在这种情况下，Web 服务器上运行的代码可以从 HTTP 请求中提取数据，并将其用作工作流执行的输入。工作流执行通过 Temporal Client 启动，从而向 Temporal Cluster 发出 gRPC 请求。Web 应用程序还可以提供用于取消工作流或检索其结果的端点，这些端点也可以使用 Temporal Client 来实现。  
+从网络安全角度来看，这种方法更容易支持，因为时间集群的前端服务只需要接受来自 Web 服务器的入站连接，而不需要接受来自每个最终用户的连接。  
+![](./temporal-integration-indirect.png)  
+
 
 
 // TBC...
