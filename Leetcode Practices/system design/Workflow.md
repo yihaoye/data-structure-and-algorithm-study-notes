@@ -71,6 +71,7 @@ Temporal 通常还会配合另外两个工具使用。Prometheus 用于从 Tempo
 #### Workers
 Temporal 集群本身并不执行代码。虽然该平台保证代码的持久化执行，但它是通过编排实现的。应用程序代码的执行发生在集群外部，在典型的部署环境中，这些代码运行在一组独立的服务器上，这些服务器可能位于与 Temporal 集群不同的数据中心。  
 负责执行代码的实体称为 Worker，通常会在多台服务器上运行 Worker，因为这样可以提高应用程序的可扩展性和可用性。作为应用程序一部分的 Worker 与 Temporal Cluster 通信，以管理工作流的执行。  
+换句话说，Worker 是由业务方自己部署和运行的长运行后台进程，可以部署在自己的服务器、虚拟机、Kubernetes Deployment、Docker Container、ECS Task 或其他计算环境中。Temporal Server 不会主动执行业务代码，而是把任务放入 Task Queue，等待 Worker 轮询并执行。  
 ![](./temporal-platform-diagram.png)  
 应用程序将包含用于初始化 Worker、Workflow 以及构成业务逻辑的其他函数的代码，可能还包括用于启动或检查 Workflow 状态的代码。运行时，需要在至少运行一个 Worker 进程的每台机器上准备好执行应用程序所需的一切资源，包括代码中引用的任何库或其他依赖项。  
 
@@ -85,19 +86,40 @@ Temporal 服务于多种应用场景；例如，确保电子商务订单和金�
 ![](./temporal-integration-direct.png)  
 
 更典型的做法是让最终用户应用程序调用后端服务（例如提供 REST 端点的 Web 应用程序），该服务充当应用程序网关，并使用 Temporal 客户端与集群交互。例如，假设最终用户在 Web 应用程序中提交表单，这将导致向与订单处理相关的端点发出请求。在这种情况下，Web 服务器上运行的代码可以从 HTTP 请求中提取数据，并将其用作工作流执行的输入。工作流执行通过 Temporal Client 启动，从而向 Temporal Cluster 发出 gRPC 请求。Web 应用程序还可以提供用于取消工作流或检索其结果的端点，这些端点也可以使用 Temporal Client 来实现。  
-从网络安全角度来看，这种方法更容易支持，因为时间集群的前端服务只需要接受来自 Web 服务器的入站连接，而不需要接受来自每个最终用户的连接。  
+从网络安全角度来看，这种方法更容易支持，因为 Temporal 集群的前端服务只需要接受来自 Web 服务器的入站连接，而不需要接受来自每个最终用户的连接。  
 ![](./temporal-integration-indirect.png)  
+
+#### Client 和 Worker 的代码库关系
+Temporal Client 和 Worker 是两个不同的运行角色，但在真实项目里，它们通常来自同一个代码库，并以不同入口、不同进程或不同部署单元运行。  
+
+常见形态：
+```
+same repo
+├── cmd/api        # 后端 API 服务，创建 Temporal Client，启动 Workflow
+├── cmd/worker     # Worker 服务，注册 Workflow / Activity，轮询 Task Queue
+├── workflows      # Workflow Definition
+└── activities     # Activity Definition
+```
+
+也就是说，Client 通常集成在后端应用中，负责响应用户请求、定时任务或消息事件并启动 Workflow；Worker 通常作为独立的长运行后台进程部署，负责真正执行 Workflow 和 Activity。两者可以共享同一个代码库中的 Workflow / Activity 类型定义，但运行时通常是不同进程，例如不同的 Docker Container、Kubernetes Deployment、ECS Task 或 systemd service。  
+
+为什么通常是共享代码库，而不是共享同一个运行服务？原因是 Client 端调用 `client.ExecuteWorkflow()` 时通常需要引用 Workflow function 的类型签名。在 Go、Java 这类强类型语言里尤其明显：Client 需要知道要启动哪个 Workflow、输入参数是什么、返回值是什么。如果 Client 和 Worker 完全分属两个独立代码库，就容易出现 Workflow 类型定义重复维护、字符串 name 约定不一致、参数结构版本不一致、拼写错误等问题，最终可能导致 Workflow 启动失败或 Task 长时间无法被正确处理。共享代码库可以让 Workflow / Activity 的类型定义复用，提升类型安全（type safety）和版本同步能力。  
+
+Client 和 Worker 之间并不直接通过网络互相调用，它们通过 Task Queue 连接起来。Client 在 `StartWorkflowOptions` 中指定 Task Queue 名称，并通过 Temporal Server 创建 Workflow Execution；Worker 轮询同一个 Task Queue 名称来领取 Workflow Task 或 Activity Task。也就是说，Temporal Server 是中介：Worker 暂时挂掉时，任务会保留在 Temporal Server 端等待可用 Worker，而不是像同步 RPC 那样因为目标服务不可用就立即失败。  
+
+这种拆分的原因是 API Server 和 Worker 的负载模型不同：API Server 面向用户请求，通常追求低延迟和快速返回；Worker 面向后台任务，可能执行耗时操作、自动重试、等待 Timer 或调用外部系统。因此两者通常使用不同的扩缩容策略和运维边界。这里的 Timer 是 Temporal 持久化 Timer，不是 Worker 进程内的 `sleep`。即使 Worker 重启、机器宕机或换了一批 Worker，只要 Temporal Server 的状态还在，Timer 到期后 Workflow 仍然可以被唤醒并继续执行。  
+
+需要注意版本兼容问题：Client 和 Worker 可以共享同一个代码库，但部署时间点可能不同，而且线上可能存在旧版本 Workflow Execution 仍在运行。如果 Worker 升级后直接改变 Workflow 代码逻辑，旧 Workflow 在 replay 历史事件时可能触发 non-determinism error。Temporal 提供 Workflow Versioning 机制来处理这类演进问题，例如在代码中使用 `workflow.GetVersion`，或者使用 Worker Versioning 特性。Client / Worker 分离部署虽然带来扩缩容和故障隔离优势，但 Workflow 代码版本演进是实际项目里需要认真设计的运维复杂度之一。  
 
 ### Worker 初始化说明
 配置 Worker 通常需要三样东西：
-* Temporal 客户端用于与 Temporal 集群通信。函数的第一行 main 创建一个客户端，接下来的几行代码检查创建过程是否出现任何错误，并确保在不再需要时将其关闭。如果使用的是 Temporal Cloud 或自托管集群，则用于创建客户端的代码将与此处所示的代码有所不同，因为这还包含前端服务的地址和端口号以及用于身份验证的凭据。
-* 任务队列的名称，该队列由 Temporal 服务器维护，并由 Woker 轮询。实例代码里任务队列名称为 `greeting-tasks`。此值与客户端一起在创建 Worker 时提供。
-* Workflow 定义函数的完整限定名称，用于调用 RegisterWorkflow。每个工作流定义函数必须至少注册到一个 Worker 才能执行，但可以将多个此类函数注册到任何给定的 Worker。
+* Temporal 客户端 - 用于与 Temporal 集群通信。函数的第一行 main 创建一个客户端，接下来的几行代码检查创建过程是否出现任何错误，并确保在不再需要时将其关闭。如果使用的是 Temporal Cloud 或自托管集群，则用于创建客户端的代码将与此处所示的代码有所不同，因为这还包含前端服务的地址和端口号以及用于身份验证的凭据。
+* 任务队列的名称 - 该队列由 Temporal 服务器维护，并由 Woker 轮询。实例代码里任务队列名称为 `greeting-tasks`。此值与客户端一起在创建 Worker 时提供。
+* Workflow 定义函数的完整限定名称 - 用于调用 RegisterWorkflow。每个工作流定义函数必须至少注册到一个 Worker 才能执行，但可以将多个此类函数注册到任何给定的 Worker。
 
-完成 Worker 的配置后，即可调用其 Run 函数启动它。Worker 随后会对指定的任务队列进行长轮询。如果使用类似上文所示的程序从终端启动 Worker，则可能只看到几行输出，这是正常现象。程序并未卡住，它只是忙于轮询任务队列并处理从 Temporal Cluster 接收的任务。  
+完成 Worker 的配置后，即可调用其 Run 函数启动它。Worker 是一个持续运行的进程，启动后通常不会在处理完一个 Workflow 后退出，而是持续对指定的任务队列进行长轮询。如果使用类似上文所示的程序从终端启动 Worker，则可能只看到几行输出，这是正常现象。程序并未卡住，它只是忙于轮询任务队列并处理从 Temporal Cluster 接收的任务。  
 
 
 
 
 // TBC...
-

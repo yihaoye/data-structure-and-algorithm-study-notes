@@ -103,3 +103,5 @@ run, err := c.ExecuteWorkflow(
 这段代码通过 client 启动 Workflow。
 
 真实项目里，Temporal Client 不一定叫 `starter`，也不一定是独立命令行程序。它可能存在于 HTTP API Server、Cron Job、CLI Tool、Message Consumer 或 Admin Script 中。
+
+关于 Worker 部署方式、Temporal Client 如何集成到业务应用、Temporal Server 和 Worker 的职责边界，见 [Workflow.md](../Workflow.md)。
