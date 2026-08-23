@@ -111,7 +111,7 @@ Client 和 Worker 之间并不直接通过网络互相调用，它们通过 Task
 
 需要注意版本兼容问题：Client 和 Worker 可以共享同一个代码库，但部署时间点可能不同，而且线上可能存在旧版本 Workflow Execution 仍在运行。如果 Worker 升级后直接改变 Workflow 代码逻辑，旧 Workflow 在 replay 历史事件时可能触发 non-determinism error。Temporal 提供 Workflow Versioning 机制来处理这类演进问题，例如在代码中使用 `workflow.GetVersion`，或者使用 Worker Versioning 特性。Client / Worker 分离部署虽然带来扩缩容和故障隔离优势，但 Workflow 代码版本演进是实际项目里需要认真设计的运维复杂度之一。  
 
-### Worker 初始化说明
+### Worker 初始化
 配置 Worker 通常需要三样东西：
 * Temporal 客户端 - 用于与 Temporal 集群通信。函数的第一行 main 创建一个客户端，接下来的几行代码检查创建过程是否出现任何错误，并确保在不再需要时将其关闭。如果使用的是 Temporal Cloud 或自托管集群，则用于创建客户端的代码将与此处所示的代码有所不同，因为这还包含前端服务的地址和端口号以及用于身份验证的凭据。
 * 任务队列的名称 - 该队列由 Temporal 服务器维护，并由 Woker 轮询。实例代码里任务队列名称为 `greeting-tasks`。此值与客户端一起在创建 Worker 时提供。
@@ -119,7 +119,15 @@ Client 和 Worker 之间并不直接通过网络互相调用，它们通过 Task
 
 完成 Worker 的配置后，即可调用其 Run 函数启动它。Worker 是一个持续运行的进程，启动后通常不会在处理完一个 Workflow 后退出，而是持续对指定的任务队列进行长轮询。如果使用类似上文所示的程序从终端启动 Worker，则可能只看到几行输出，这是正常现象。程序并未卡住，它只是忙于轮询任务队列并处理从 Temporal Cluster 接收的任务。  
 
+#### Worker 的生命周期
+Worker 的生命周期和 Workflow Execution 的持续时间没有直接关系。  
+用于启动 Worker 的 Run 函数是一个阻塞函数。除非 Worker 被终止，或者遇到致命错误，否则它不会停止。Worker 进程可能会持续运行几天、几周，甚至更久。  
+如果它处理的 Workflow 比较短，那么一个 Worker 在自己的生命周期内可能会执行成千上万，甚至数百万个 Workflow。另一方面，一个 Workflow 可能会运行数年，而运行某个 Worker 进程的服务器，可能几个月后就因为管理员维护而重启。如果这个 Workflow Type 已经注册到了其他 Worker 上，那么其中一个或多个 Worker 会自动从原 Worker 停下的位置继续执行。  
+如果当前没有其他可用 Worker，那么等原来的 Worker 重启后，Workflow Execution 也会从之前中断的位置继续执行。
+无论是哪种情况，Worker 的停机都不会导致 Workflow Execution 失败。  
 
+**选择 Task Queue 名称**  
+Task Queue 名称是大小写敏感的。为了减少问题，应该选择描述性强、尽量简短、简单的名称。
 
 
 // TBC...
