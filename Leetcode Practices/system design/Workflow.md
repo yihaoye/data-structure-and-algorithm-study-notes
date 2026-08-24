@@ -114,7 +114,7 @@ Client 和 Worker 之间并不直接通过网络互相调用，它们通过 Task
 ### Worker 初始化
 配置 Worker 通常需要三样东西：
 * Temporal 客户端 - 用于与 Temporal 集群通信。函数的第一行 main 创建一个客户端，接下来的几行代码检查创建过程是否出现任何错误，并确保在不再需要时将其关闭。如果使用的是 Temporal Cloud 或自托管集群，则用于创建客户端的代码将与此处所示的代码有所不同，因为这还包含前端服务的地址和端口号以及用于身份验证的凭据。
-* 任务队列的名称 - 该队列由 Temporal 服务器维护，并由 Woker 轮询。实例代码里任务队列名称为 `greeting-tasks`。此值与客户端一起在创建 Worker 时提供。
+* 任务队列的名称 - 该队列由 Temporal 服务器维护，并由 Woker 轮询。实例代码里任务队列名称为 `hello-task-queue`。此值与客户端一起在创建 Worker 时提供。
 * Workflow 定义函数的完整限定名称 - 用于调用 RegisterWorkflow。每个工作流定义函数必须至少注册到一个 Worker 才能执行，但可以将多个此类函数注册到任何给定的 Worker。
 
 完成 Worker 的配置后，即可调用其 Run 函数启动它。Worker 是一个持续运行的进程，启动后通常不会在处理完一个 Workflow 后退出，而是持续对指定的任务队列进行长轮询。如果使用类似上文所示的程序从终端启动 Worker，则可能只看到几行输出，这是正常现象。程序并未卡住，它只是忙于轮询任务队列并处理从 Temporal Cluster 接收的任务。  
@@ -129,5 +129,36 @@ Worker 的生命周期和 Workflow Execution 的持续时间没有直接关系�
 **选择 Task Queue 名称**  
 Task Queue 名称是大小写敏感的。为了减少问题，应该选择描述性强、尽量简短、简单的名称。
 
+### 使用 CLI 启动 Workflow
+已经创建一个 Workflow Definition，并初始化一个能够执行它的 Worker。下一步就是运行应用程序。
+启动 Workflow 的一种方式，是使用 `temporal` 命令行工具执行类似下面的命令：
+```bash
+temporal workflow start \
+    --type Greet \
+    --task-queue hello-task-queue \
+    --workflow-id greeting-workflow \
+    --input '"Temporal"'
+```
+注意 `input` 值的引号写法：外层是单引号，里面还有双引号。  
+传给 `temporal` 命令的输入必须是 JSON 格式。这里的引号写法是为了让这个值能够正确地穿过 shell，并以正确格式传入 Workflow。
+
+**命令参数说明**  
+这个命令指定了几个参数。
+第一个是 Workflow Type。在 Go SDK 中，Workflow Type 默认是 Workflow Definition 函数的名称。  
+下一个是 Task Queue。Temporal Cluster 会使用这个 Task Queue，它必须和初始化 Worker 时提供的值完全一致。由于 Task Queue 是动态创建的，所以如果 Task Queue 名称写错，并不会立即报错。但这会导致创建出两个不同的 Task Queue。这样 Temporal Cluster 和 Worker 就不会共享同一个队列，Workflow Execution 也就永远不会继续推进。  
+命令还指定了一个 Workflow ID。这个参数是可选的，但推荐提供。Workflow ID 是用户自定义标识符，通常带有业务含义。例如，一个费用报销 Workflow 的 Workflow ID 可以用来标识某个费用报销单，或者提交报销单的员工。如果省略 Workflow ID，Temporal 会自动分配一个 UUID 作为 Workflow ID。  
+由于这个 Workflow 需要输入参数，也就是一个用于定制问候语的名字字符串，所以命令里传入了这个值。  
+当通过命令行提交 Workflow 执行请求时，输入总是 JSON 格式。这就是为什么命令中的 input 看起来是在单引号里面放了双引号。  
+对于这种简单场景，直接在命令行里写 JSON 没问题，因为这里只有一个参数和一个值。但如果要传入更复杂的数据，这种方式就会很笨拙。好在可以把输入保存成一个 JSON 文件，然后通过 `--input-file` 指定文件路径，而不是用 `--input` 在命令行里直接写数据。  
+
+**执行命令后会发生什么**  
+当运行这个命令时，它会把 Workflow Execution 请求提交给 Temporal Cluster。  
+Cluster 会返回 Workflow ID。这个 Workflow ID 要么就是提供的那个值，要么是在省略时由系统自动分配的 UUID。  
+它还会显示一个 Run ID。Run ID 用来唯一标识这一次具体的 Workflow 执行。  
+不过，命令不会显示 Workflow 返回的结果，因为 Workflow 可能会运行几个月甚至几年。  
+可以使用下面的命令查看结果：
+```bash
+temporal workflow show --workflow-id greeting-workflow
+```
 
 // TBC...
