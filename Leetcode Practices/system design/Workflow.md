@@ -161,4 +161,39 @@ Cluster 会返回 Workflow ID。这个 Workflow ID 要么就是提供的那个�
 temporal workflow show --workflow-id greeting-workflow
 ```
 
+### 从应用程序代码执行工作流
+另一种方法是通过应用程序代码启动工作流，这样可以避免每次 temporal 都输入冗长的命令。  
+虽然两种方法都能达到相同的目的，但通过代码实现可以更方便地将 Temporal 集成到应用程序中。例如，可以根据用户操作（例如在 Web 或移动应用中点击按钮）来执行或终止工作流。  
+
+[示例代码说明：执行 Workflow](../system%20design/temporal_app/cmd/starter/main.go)  
+这个应用程序通过以下三个主要步骤来启动 Workflow：
+1. 从 Temporal SDK 导入 `client` 包。
+2. 创建并配置一个 client。
+3. 使用 API 请求执行 Workflow。
+
+关于第二点，这里用于创建和配置 client 的代码，与初始化 Worker 时使用的代码是完全相同的。可以将应用程序设计成让这两部分代码共享同一个 client。实际上，在真实的 Temporal 应用程序中，这是一种很常见的做法。不过在本课程中，将 Worker 的初始化代码和 Workflow 启动代码分开，这样更容易区分两者各自的职责。  
+
+Workflow Execution 的配置项指定了 **Workflow ID** 和 **Task Queue 名称**，也就是传给 `temporal` 命令的那两个参数。  
+应用程序通过调用 client 的 `ExecuteWorkflow` 函数来请求执行 Workflow。调用时需要传入：
+* `Context`
+* Workflow Execution 配置项
+* Workflow 函数的完整限定名称（fully-qualified name）
+* Workflow 的输入参数
+
+在这个例子中，Workflow 的输入参数是在运行这个应用程序时通过命令行提供的。  
+顺便说一下，当从代码中启动 Workflow 时，并不需要像在命令行中那样把输入写成 JSON 格式。可以直接使用 SDK 所支持的类型，例如整数、字符串或者结构体，SDK 会自动将它们转换成 JSON。  
+
+**获取执行结果**  
+Workflow 可以运行非常长的时间。`ExecuteWorkflow` 的调用不会阻塞，因此即使 Workflow 需要几年才能完成，Starter 仍会紧接着就输出 `"Started Workflow"`，以及 Workflow ID 和 Run ID 日志。  
+业务并不要求必须等待 Workflow 完成，也不一定需要获取它的结果。不过示例代码展示了如何获取结果。由于只有当 Workflow Execution 完成之后才能获得结果，因此 `ExecuteWorkflow` 会返回一个 **`Future`**。这个 `Future` 可以在结果准备好之后提供对结果的访问。  
+
+真正发生阻塞的是对这个 `Future` 调用 `Get` 函数。  
+在调用 `Get` 之前，代码首先定义一个与 Workflow 函数返回值类型匹配的变量。在这个例子中，它是一个名为 `result`、类型为 `string` 的变量。  
+然后，代码调用 `ExecuteWorkflow` 返回的 `Future` 上的 `Get` 函数，并将这个变量的地址传进去，以便接收 Workflow 函数返回的结果。  
+用于获取结果的 `Get` 调用会一直阻塞到 Workflow Execution 完成为止。如果 Workflow Execution 成功完成，那么 `result` 变量就会被赋值为 Workflow 的输出结果。如果 Workflow Execution 产生了错误，那么 `result` 变量不会被设置，而是会得到对应的错误值。  
+
+这里其实是在讲 Temporal 一个非常重要的概念  
+可以把它简单理解成：提交/启动一个可靠的长期任务，并立即拿到一个代表这个任务执行结果的 Future。这也是 Temporal 和普通函数调用非常重要的区别。  
+
+
 // TBC...
