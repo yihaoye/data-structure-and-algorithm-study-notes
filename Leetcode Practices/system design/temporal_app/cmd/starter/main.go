@@ -5,12 +5,10 @@ import (
 	"fmt"
 	"log"
 
-	temporalapp "temporal_app"
+	internal "temporal_app/internal"
 
 	"go.temporal.io/sdk/client"
 )
-
-const taskQueue = "hello-task-queue"
 
 func main() {
 	// Starter 使用 Temporal Client 发起一次 Workflow Execution。
@@ -22,11 +20,11 @@ func main() {
 
 	options := client.StartWorkflowOptions{
 		ID:        "greeting-workflow",
-		TaskQueue: taskQueue,
+		TaskQueue: internal.GreetingTaskQueue,
 	}
 
 	// 监听该 Task Queue 的 Worker 会真正执行 Workflow 代码。
-	run, err := c.ExecuteWorkflow(context.Background(), options, (&temporalapp.GreetingWorkflow{}).Greet, "Temporal")
+	run, err := c.ExecuteWorkflow(context.Background(), options, (&internal.GreetingWorkflow{}).Greet, "Temporal")
 	if err != nil {
 		log.Fatalln("Unable to execute workflow", err)
 	}

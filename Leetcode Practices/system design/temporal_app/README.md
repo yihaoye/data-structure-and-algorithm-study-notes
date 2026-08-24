@@ -11,8 +11,10 @@ temporal_app/
 │   │   └── main.go
 │   └── worker/
 │       └── main.go
-├── activity.go
-├── workflow.go
+├── internal/
+│   ├── activity.go
+│   ├── config.go
+│   └── workflow.go
 ├── go.mod
 └── go.sum
 ```
@@ -47,8 +49,11 @@ Hello, Temporal!
 
 - `cmd/worker`: Worker 进程入口，负责注册 Workflow 并监听 Task Queue。
 - `cmd/starter`: Workflow 启动入口，负责发起一次 Workflow Execution。
-- `workflow.go`: Workflow Definition，描述可靠执行的业务流程。
-- `activity.go`: Activity Definition，负责执行具体业务动作。
+- `internal/config.go`: 共享配置，例如 Task Queue 名称。
+- `internal/workflow.go`: Workflow Definition，描述可靠执行的业务流程。
+- `internal/activity.go`: Activity Definition，负责执行具体业务动作。
+
+`internal` 中的代码属于应用内部实现，只由 `cmd/worker` 和 `cmd/starter` 使用，不作为公共 Go 包对外暴露。
 
 ## Workflow 和 Activity
 

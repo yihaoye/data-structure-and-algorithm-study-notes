@@ -3,13 +3,11 @@ package main
 import (
 	"log"
 
-	temporalapp "temporal_app"
+	internal "temporal_app/internal"
 
 	"go.temporal.io/sdk/client"
 	"go.temporal.io/sdk/worker"
 )
-
-const taskQueue = "hello-task-queue"
 
 func main() {
 	c, err := client.Dial(client.Options{})
@@ -18,9 +16,9 @@ func main() {
 	}
 	defer c.Close()
 
-	w := worker.New(c, taskQueue, worker.Options{})
-	w.RegisterWorkflow((&temporalapp.GreetingWorkflow{}).Greet)
-	w.RegisterActivity(temporalapp.CreateGreeting)
+	w := worker.New(c, internal.GreetingTaskQueue, worker.Options{})
+	w.RegisterWorkflow((&internal.GreetingWorkflow{}).Greet)
+	w.RegisterActivity(internal.CreateGreeting)
 
 	if err := w.Run(worker.InterruptCh()); err != nil {
 		log.Fatalln("Unable to start worker", err)

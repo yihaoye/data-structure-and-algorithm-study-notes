@@ -114,7 +114,7 @@ Client 和 Worker 之间并不直接通过网络互相调用，它们通过 Task
 ### Worker 初始化
 配置 Worker 通常需要三样东西：
 * Temporal 客户端 - 用于与 Temporal 集群通信。函数的第一行 main 创建一个客户端，接下来的几行代码检查创建过程是否出现任何错误，并确保在不再需要时将其关闭。如果使用的是 Temporal Cloud 或自托管集群，则用于创建客户端的代码将与此处所示的代码有所不同，因为这还包含前端服务的地址和端口号以及用于身份验证的凭据。
-* 任务队列的名称 - 该队列由 Temporal 服务器维护，并由 Woker 轮询。实例代码里任务队列名称为 `hello-task-queue`。此值与客户端一起在创建 Worker 时提供。
+* 任务队列的名称 - 该队列由 Temporal 服务器维护，并由 Woker 轮询。实例代码里任务队列名称为 `greeting-task-queue`。此值与客户端一起在创建 Worker 时提供。
 * Workflow 定义函数的完整限定名称 - 用于调用 RegisterWorkflow。每个工作流定义函数必须至少注册到一个 Worker 才能执行，但可以将多个此类函数注册到任何给定的 Worker。
 
 完成 Worker 的配置后，即可调用其 Run 函数启动它。Worker 是一个持续运行的进程，启动后通常不会在处理完一个 Workflow 后退出，而是持续对指定的任务队列进行长轮询。如果使用类似上文所示的程序从终端启动 Worker，则可能只看到几行输出，这是正常现象。程序并未卡住，它只是忙于轮询任务队列并处理从 Temporal Cluster 接收的任务。  
@@ -135,7 +135,7 @@ Task Queue 名称是大小写敏感的。为了减少问题，应该选择描述
 ```bash
 temporal workflow start \
     --type Greet \
-    --task-queue hello-task-queue \
+    --task-queue greeting-task-queue \
     --workflow-id greeting-workflow \
     --input '"Temporal"'
 ```
