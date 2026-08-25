@@ -195,5 +195,39 @@ Workflow 可以运行非常长的时间。`ExecuteWorkflow` 的调用不会阻�
 这里其实是在讲 Temporal 一个非常重要的概念  
 可以把它简单理解成：提交/启动一个可靠的长期任务，并立即拿到一个代表这个任务执行结果的 Future。这也是 Temporal 和普通函数调用非常重要的区别。  
 
+### 使用 CLI 查看 Workflow History
+**运行 `temporal workflow show`**  
+Temporal Service 会维护每个 Workflow Execution 的详细历史记录（Event History）。这是 Temporal 平台的一项优势：无论 Workflow 当前正在运行，还是最近刚刚运行结束，都可以通过历史记录了解应用程序中发生了什么。  
+查看 Workflow Execution 简要历史的一种方式，是运行类似下面的 `temporal` 命令：
+```bash
+temporal workflow show --workflow-id greeting-workflow
+```
+
+**解读命令输出**  
+运行上面的命令后，会看到类似下面的输出，其中记录了这个 Workflow 执行期间发生的事件：
+```text
+Progress:
+    ID           Time                     Type
+        1  2025-03-10T17:38:31Z  WorkflowExecutionStarted
+        2  2025-03-10T17:38:31Z  WorkflowTaskScheduled
+        3  2025-03-10T17:38:31Z  WorkflowTaskStarted
+        4  2025-03-10T17:38:31Z  WorkflowTaskCompleted
+        5  2025-03-10T17:38:31Z  WorkflowExecutionCompleted
+
+Results:
+    Status          COMPLETED
+    Result          "Hello Temporal!"
+    ResultEncoding  json/plain
+```
+这个 Workflow Execution 的 Event History 中包含五个事件，同时还显示了它的状态和输出结果。后续会进一步学习这些 Event 的含义。  
+如果要查看更详细的 Workflow Execution 历史，可以运行下面的命令：
+```bash
+temporal workflow show \
+        --workflow-id greeting-workflow \
+        --detailed
+```
+然后可以看到，详细输出包含了简要输出中的相同事件，但提供了更多上下文信息和配置项。  
+第一个事件右侧的字段包含了 Workflow Type（`Greet`）、Task Queue（`greeting-task-queue`）、输入值（`Temporal`）以及本次 Workflow Execution 使用的各种超时设置。接下来的三个事件表示 Temporal Service 调度了一个 Workflow Task，该任务随后由 Worker 启动并完成。最后一个事件确认 Workflow Execution 已经完成，并返回了结果（`Hello Temporal!`）。  
+
 
 // TBC...
