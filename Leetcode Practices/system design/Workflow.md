@@ -229,5 +229,32 @@ temporal workflow show \
 然后可以看到，详细输出包含了简要输出中的相同事件，但提供了更多上下文信息和配置项。  
 第一个事件右侧的字段包含了 Workflow Type（`Greet`）、Task Queue（`greeting-task-queue`）、输入值（`Temporal`）以及本次 Workflow Execution 使用的各种超时设置。接下来的三个事件表示 Temporal Service 调度了一个 Workflow Task，该任务随后由 Worker 启动并完成。最后一个事件确认 Workflow Execution 已经完成，并返回了结果（`Hello Temporal!`）。  
 
+### 修改 Workflow
+向后兼容性（Backward Compatibility）是 Temporal 中的重要考量。一个给定的 Workflow Definition 可能执行数百次、数千次甚至数百万次。如果某次执行失败，Temporal 会重建 Workflow 在故障前的状态，然后继续执行。虽然现在还不需要深入了解这个机制的工作原理，但它对 Workflow Definition 的开发和维护方式有一些影响。  
+
+**输入参数和返回值**  
+一般来说，应该避免改变 Workflow 输入参数的数量或类型，以及返回值的类型。  
+Temporal 建议 Workflow Function 只接收单个输入参数，且该参数是一个 `struct`（结构体），而不是多个输入参数。改变结构体中哪些字段是其组成部分并不会改变结构体本身的类型，因此这种方式提供了一种向后兼容的代码演进方法。  
+
+**确定性（Determinism）**  
+虽然 Temporal 应用程序经常用于管理非确定性工作（例如调用微服务或 LLM），但 Workflow Definition 本身必须是确定性的，即用于编排这些工作的代码。Temporal 对确定性有明确的定义，但理解这个定义需要更深入的 Workflow Execution 知识，所以这里先泛化一下：可以把确定性理解为一个要求——给定相同的输入，Workflow 的每一次执行都必须产生相同的输出。这意味着在 Workflow 代码中不应该做诸如使用随机数这样的事情。  
+
+**关于非确定性操作**  
+确定性要求仅适用于 Workflow 编排逻辑。几乎所有与外部世界交互的操作都本质上是非确定性的：
+- 调用 LLM API 或调用 AI 工具
+- 查询数据库
+- 读取或写入文件
+- 向外部服务发起 HTTP 请求
+
+好消息是：Temporal 应用程序完全可以处理所有这些操作。如果需要执行某些非确定性操作，只需将这些代码移到一个名为 **Activity** 的单独函数中，然后在 Workflow 代码中引用它。Activity 在 Workflow replay 路径之外运行，并由 Temporal 可靠地重试。下一章会进一步学习和开始使用 Activity。  
+
+**Temporal 不能用于 AI 吗？**  
+恰恰相反。Workflow 确定性正是 Temporal 很适合用于 AI 应用的原因。因为 LLM 调用、工具使用和 agent 步骤都进入了 Activity，Workflow 可以编排这些序列，而 Temporal 会持久化每一步——所以 agent 可以从崩溃中恢复、重试失败的 LLM 调用，并在不丢失状态的情况下恢复长期运行的任务。  
+这种确定性 Workflow 与非确定性 Activity 之间的分离，正是使 Temporal 能够提供 Durable Execution（持久化执行）的基础。  
+
+### 版本控制（Versioning）
+由于 Temporal 中的 Workflow Execution 可能会运行很长时间 - 有时长达数月甚至数年 - 在某个 Workflow Execution 仍在进行中时，经常需要对 Workflow Definition 进行重大改变。例如，假设当前的 Workflow 在订单发货时用电子邮件通知客户，后来决定改为同时发送电子邮件和短信。版本控制是 Temporal 中的一个特性，可帮助安全地管理这些代码变更。通过版本控制，可以修改 Workflow Definition，使得新执行使用更新的代码，而现有的执行继续运行原始版本。当进行非确定性变更时，这尤其有用 - 即导致正在运行的 Workflow Execution 内部执行顺序发生变化的变更。Temporal SDK 允许跟踪和管理这些版本，让旧执行使用原始代码，而新执行使用修改后的版本。可以使用 SDK 的 ["Versioning"](https://docs.temporal.io/go/versioning/) 特性来识别何时引入了非确定性变更。  
+更多关于版本控制的内容，可以参考免费的 [Versioning Workflows](https://learn.temporal.io/courses/versioning/) 课程。  
+
 
 // TBC...
