@@ -309,5 +309,83 @@ func GreetInSpanish(ctx context.Context, name string) (string, error) {
 }
 ```
 
+### 注册 Activities
+在初始化 Worker 时，必须注册 Workflow。对 Activities 也必须执行类似的步骤。注册 Activity 的过程几乎与注册 Workflow 完全相同，唯一的区别只是调用的注册函数名不同。  
+
+**Activity Registration Example**  
+下面的 Worker 初始化代码展示了注册 Activity 的示例（`app.GreetInSpanish` 是对定义 Activity 的函数的完全限定名称的引用）。  
+```go
+func main() {
+        c, err := client.Dial(client.Options{})
+        if err != nil {
+                log.Fatalln("Unable to create client", err)
+        }
+        defer c.Close()
+
+        w := worker.New(c, "greeting-tasks", worker.Options{})
+
+        w.RegisterWorkflow(app.GreetSomeone)
+        w.RegisterActivity(app.GreetInSpanish)
+
+        err = w.Run(worker.InterruptCh())
+        if err != nil {
+                log.Fatalln("Unable to start worker", err)
+        }
+}
+```
+
+### 执行 Activities
+
+#### 指定 Activity 选项
+在 Workflow 中执行 Activity 的第一步，是指定控制其执行的选项：  
+```go
+options := workflow.ActivityOptions{
+    StartToCloseTimeout: time.Second * 5,
+}
+```  
+
+关键的是，这里包括了一个 `Start-to-Close` 超时（Start-to-Close timeout），建议始终设置它。这个值应该大于业务认为 Activity 执行最长可能耗时的时间。这样 Temporal Cluster 就能检测到 Worker 已崩溃的情况，并将该次尝试视为失败，然后创建另一个任务，让其他 Worker 来接手。这里还可以设置[其他类型的超时](https://docs.temporal.io/tags/timeouts)，但它们使用频率较低。  
+
+**执行 Activity**  
+需要调用 `workflow.ExecuteActivity` 函数来请求执行 Activity。这个函数的第一个参数是一个 `context`，需要通过调用 `workflow.WithActivityOptions` 创建它，并把 Workflow 传入的 `context` 对象和定义好的 `ActivityOptions` 一起传进去。  
+`ExecuteActivity` 的第二个参数是定义 Activity 的函数名。如果开发者的 Activity 需要输入参数，就把它作为第三个参数传入。  
+```go
+ctx = workflow.WithActivityOptions(ctx, options)
+future := workflow.ExecuteActivity(ctx, GreetInSpanish, name)
+```  
+
+**获取结果**  
+Workflow 本身并不执行 Activity，也就是说，它不会直接调用 Activity Function。相反，它会向 Temporal Cluster 发起请求，要求它去调度 Activity 的执行。  
+和 Workflow Execution 一样，`ExecuteActivity` 调用也会返回一个 `Future`，因为 Activity 返回的结果要等 Activity 完成之后才能拿到。  
+要访问这个 `Future` 中的值，首先要定义一个与返回值类型对应的变量。接着，需要在这个 `Future` 上调用 `Get` 函数，并传入之前传给 `ExecuteActivity` 的 `context`，以及要赋值的变量地址。一定要先检查错误，再尝试使用这个结果，因为如果 Activity Execution 失败，这个变量就不会被赋值。  
+```go
+var result string
+err := future.Get(ctx, &result)
+if err != nil {
+    return err 
+}
+
+// do something with the result
+```  
+
+虽然可以把 `ExecuteActivity` 和 `Get` 分成两条语句调用，但通常会像下一段示例那样把它们串起来。  
+这个示例展示了一个 Workflow Definition：它发起一个 Activity 执行请求，并在一条语句中获取其结果。  
+```go
+func GreetSomeone(ctx workflow.Context, name string) (string, error) {
+    options := workflow.ActivityOptions{
+        StartToCloseTimeout: time.Second * 5,
+    }
+    ctx = workflow.WithActivityOptions(ctx, options)
+
+    var spanishGreeting string
+    err := workflow.ExecuteActivity(ctx, GreetInSpanish, name).Get(ctx, &spanishGreeting)
+    if err != nil {
+        return "", err
+    }
+
+    return spanishGreeting, nil
+}
+```
+
 
 // TBC...
