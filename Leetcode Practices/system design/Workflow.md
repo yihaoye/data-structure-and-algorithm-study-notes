@@ -387,5 +387,22 @@ func GreetSomeone(ctx workflow.Context, name string) (string, error) {
 }
 ```
 
+### 使用合适的超时时间
+`Start-to-Close Timeout` 表示允许 Activity Task 执行的总时间，因此它应该略大于预期这个 Activity 成功完成的最长时间。一个 Start-to-Close Timeout 为 5 秒，可能对一个最基本的 Hello World 示例非常合适。因为它的 Activity 只需在几分之一秒内返回问候语：  
+```go
+// Start-to-Close Timeout should be set a little longer than the maximum
+// length of time you expect for the Activity to complete successfully
+options := workflow.ActivityOptions{
+    StartToCloseTimeout: time.Second * 5,
+}
+ctx = workflow.WithActivityOptions(ctx, options)
+
+var result string
+err := workflow.ExecuteActivity(ctx, MyActivity, input).Get(ctx, &result)
+```
+
+但是，如果修改了 Activity 代码，让它调用远程服务、处理文件，或者查询数据库，那么执行时间会明显更长。如果没有把这个值更新为大于预期执行时间的值，那么这个 Activity 很大概率会超时。  
+虽然把 `Start-to-Close Timeout` 设得过短会导致问题，但也要避免设得过长。`Start-to-Close Timeout` 是 Temporal 用来检测 Worker 崩溃的机制，因此过长的值会延迟故障检测与恢复，从而浪费时间并降低吞吐量。`Start-to-Close Timeout` 的设置应当略大于预期的最慢成功执行时间。  
+
 
 // TBC...
