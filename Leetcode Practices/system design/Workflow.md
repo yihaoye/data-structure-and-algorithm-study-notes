@@ -256,5 +256,58 @@ Temporal 建议 Workflow Function 只接收单个输入参数，且该参数是�
 由于 Temporal 中的 Workflow Execution 可能会运行很长时间 - 有时长达数月甚至数年 - 在某个 Workflow Execution 仍在进行中时，经常需要对 Workflow Definition 进行重大改变。例如，假设当前的 Workflow 在订单发货时用电子邮件通知客户，后来决定改为同时发送电子邮件和短信。版本控制是 Temporal 中的一个特性，可帮助安全地管理这些代码变更。通过版本控制，可以修改 Workflow Definition，使得新执行使用更新的代码，而现有的执行继续运行原始版本。当进行非确定性变更时，这尤其有用 - 即导致正在运行的 Workflow Execution 内部执行顺序发生变化的变更。Temporal SDK 允许跟踪和管理这些版本，让旧执行使用原始代码，而新执行使用修改后的版本。可以使用 SDK 的 ["Versioning"](https://docs.temporal.io/go/versioning/) 特性来识别何时引入了非确定性变更。  
 更多关于版本控制的内容，可以参考免费的 [Versioning Workflows](https://learn.temporal.io/courses/versioning/) 课程。  
 
+### Worker 代码更新需要重启 Worker 进程才能生效
+Temporal Worker 会使用缓存来实现最佳性能。其结果是，开发者对代码所做的修改不会立刻生效，直到重启正在运行该应用程序的 Worker。  
+在刚接触 Temporal 开发时，忘记在修改代码后重启 Worker 是一种相当常见的错误。若在修改后没有看到预期结果，应该优先尝试的事情之一，就是检查并重启 Worker。  
+
+### Activities 是什么？
+之前学到过，Workflow 代码必须是确定性的，而且在相同输入下每次都必须产生相同输出。这也意味着它不能与外部世界交互，例如访问文件或网络资源，或者调用 LLM 和其他 AI 服务，因为这些资源在某个时间点可能不可用。即使它们可用，它们在每次调用时也可能返回不同的结果。然而，业务逻辑可能确实需要做这些事情。那怎么办？  
+在 Temporal 中，可以使用 Activity 来封装那些容易失败的业务逻辑。与 Workflow Definition 不同的是，Activity Definition 不要求是确定性的。  
+一般来说，任何会引入失败可能性的操作，都应该作为 Activity 的一部分来执行，而不是直接写在 Workflow 中。虽然 Activity 是 Workflow Execution 的一部分，但它们有一个重要特征：如果失败，它们会被重试。假设有一个很大的 Workflow，需要访问某个服务，而这个服务恰好不可用。程序不会想要重跑整个 Workflow，而是只想重试失败的那一部分，因此可以把这段代码定义为一个 Activity，并在 Workflow Definition 中引用它。这个 Activity Definition 中的代码会被执行；如果必要，会进行重试；等 Activity 成功完成后，Workflow 才会继续往前推进。  
+
+### Activity Definition
+就像 Workflow Definition 是一个可导出的 Go 函数一样，Activity Definition 也是一个可导出的 Go 函数，并且它与 Workflow Definition 在输入参数和返回值允许的类型规则上是相同的。这个函数必须返回一个 `Error` 类型的值，但它也可以返回另一个任何允许类型的值。例如，任何能转换为 JSON 的内容都可以，但像 channel 或 unsafe pointer 这类内容不行。Temporal 不会强制要求 Activity Definition 的命名方式。可以把 Activity Definition 放在和 Workflow Definition 同一个源文件里，也可以放在不同的源文件中。  
+虽然 Temporal 不像 Workflow Definitions 那样强制要求 Activity Definition 的第一个参数必须是某种固定类型，但建议让 `context.Context` 成为 Activity Definition 的第一个参数。这样可以利用一些额外特性，例如心跳（heartbeating），它可以改善长时间运行 Activity 的失败检测。虽然现在可能还不需要这些特性，但养成在 Activity Definition 中把 `context.Context` 放在第一个参数的位置的习惯，会在未来需要使用这些高级特性时更容易上手。  
+
+**Activity Definition 示例**  
+下面这段代码是一个 Activity Definition，和在后面的练习中将会使用的版本很像。和已经运行过的 Workflow Definition 一样，它接收一个名字（`string`）作为输入，并返回一个定制化的问候语（`string`）作为输出。然而，这个 Activity 会调用一个通过 HTTP 访问的微服务，以请求西班牙语的问候语。它会把名字放进 URL 中，并从响应体中获取问候语。  
+```go
+package serviceworkflow
+
+import (
+        "context"
+        "errors"
+        "fmt"
+        "io/ioutil"
+        "net/http"
+        "net/url"
+)
+
+func GreetInSpanish(ctx context.Context, name string) (string, error) {
+        base := "http://localhost:9999/get-spanish-greeting?name=%s"
+        url := fmt.Sprintf(base, url.QueryEscape(name))
+
+        resp, err := http.Get(url)
+        if err != nil {
+                return "", err
+        }
+        defer resp.Body.Close()
+
+        body, err := ioutil.ReadAll(resp.Body)
+        if err != nil {
+                return "", err
+        }
+
+        translation := string(body)
+        status := resp.StatusCode
+        if status >= 400 {
+                message := fmt.Sprintf("HTTP Error %d: %s", status, translation)
+                return "", errors.New(message)
+        }
+
+        return translation, nil
+}
+```
+
 
 // TBC...
