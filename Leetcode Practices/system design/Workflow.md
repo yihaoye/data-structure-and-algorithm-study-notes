@@ -405,4 +405,23 @@ err := workflow.ExecuteActivity(ctx, MyActivity, input).Get(ctx, &result)
 虽然把 `Start-to-Close Timeout` 设得过短会导致问题，但也要避免设得过长。`Start-to-Close Timeout` 是 Temporal 用来检测 Worker 崩溃的机制，因此过长的值会延迟故障检测与恢复，从而浪费时间并降低吞吐量。`Start-to-Close Timeout` 的设置应当略大于预期的最慢成功执行时间。  
 
 
+### Temporal 如何处理 Activity 失败
+#### 默认行为
+Temporal 的默认行为是自动重试 Activity：每次尝试之间会有一个较短的延迟，直到 Activity 成功或被取消。这意味着，间歇性故障通常不需要采取任何操作。只要后续请求成功，代码就会像故障从未发生过一样继续执行。  
+不过，这种行为并不总是符合需求，因此 Temporal 允许通过自定义的 Retry Policy（重试策略）来调整它。  
+
+#### 修改重试时间和次数
+以下四个属性决定重试的时间间隔和次数：
+| 属性 | 说明 | 默认值 |
+| --- | --- | --- |
+| `InitialInterval` | 第一次重试前等待的时长 | 1 秒 |
+| `BackoffCoefficient` | 用于计算后续重试间隔的乘数 | 2.0 |
+| `MaximumInterval` | 两次重试之间允许的最大间隔 | `100 * InitialInterval` |
+| `MaximumAttempts` | 放弃前允许的最大重试次数 | 0（无限次） |
+
+- `InitialInterval` 属性定义了初次失败后多久进行第一次重试。默认值为 1 秒。
+- `BackoffCoefficient` 是一个乘数，会应用于 `InitialInterval`，用于计算后续每次尝试之间的等待时间。假设这两个属性都使用默认值，那么第一次重试会在 1 秒后进行，之后分别在 2 秒、4 秒、8 秒后重试，以此类推。
+- `MaximumInterval` 限制了重试间隔的上限。默认值是初始间隔的 100 倍，这意味着重试间隔会像上面描述的那样不断翻倍，但永远不会超过 100 秒。
+- 最后，`MaximumAttempts` 指定了在将 Activity 标记为失败之前允许的最大重试次数。如果 Activity 最终失败，Workflow 可以根据业务逻辑处理这个失败。
+
 // TBC...
