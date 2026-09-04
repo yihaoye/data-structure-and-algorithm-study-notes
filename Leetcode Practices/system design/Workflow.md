@@ -424,4 +424,12 @@ Temporal 的默认行为是自动重试 Activity：每次尝试之间会有一�
 - `MaximumInterval` 限制了重试间隔的上限。默认值是初始间隔的 100 倍，这意味着重试间隔会像上面描述的那样不断翻倍，但永远不会超过 100 秒。
 - 最后，`MaximumAttempts` 指定了在将 Activity 标记为失败之前允许的最大重试次数。如果 Activity 最终失败，Workflow 可以根据业务逻辑处理这个失败。
 
+**Activity Retry Policy 示例**  
+下图展示了一个标注过的 Retry Policy（重试策略）示例。在 Workflow 中使用自定义 Retry Policy 来控制 Activity 失败处理方式，主要有以下三个步骤：
+1. 导入 `workflow` 包。
+2. 为一个或多个属性指定值，例如上一节介绍的 `InitialInterval` 或 `BackoffCoefficient`。
+3. 将这个策略关联到 Activity 使用的 `ActivityOptions`。
+
+![](https://learn.temporal.io/courses/temporal-101/go/handling-activity-failure/retry-policy-example.png)
+
 // TBC...
