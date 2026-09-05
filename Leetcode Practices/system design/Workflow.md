@@ -432,4 +432,133 @@ Temporal 的默认行为是自动重试 Activity：每次尝试之间会有一�
 
 ![](https://learn.temporal.io/courses/temporal-101/go/handling-activity-failure/retry-policy-example.png)
 
+### 示例
+在前面的练习中，执行了一个包含两个 Activity 的 Workflow。这两个 Activity 都调用了一个微服务，由它提供定制化的西班牙语消息。这个练习展示了本课程中许多重要概念。虽然已经亲自体验了如何在 Temporal Platform 上开发和运行应用程序，但通过观察 Workflow Execution 期间发生的事情，可以进一步理解 Temporal 的工作方式。  
+
+首先，先识别这个场景中的参与者，这有助于再次梳理几个重要概念。  
+首先，示例中包含一个 Worker。它负责执行 Workflow 和 Activity 代码，并使用 Client 与 Temporal Cluster 通信。  
+接着，Temporal Cluster 通过与 Worker 协作来编排这些代码的执行，并使用双方共享的 Task Queue。  
+最后，启动 Workflow 的程序称为 Client Application（客户端应用程序），因为它向 Temporal Cluster 请求 Workflow Execution 以及执行结果。Client Application 通过 Client 完成这些操作。  
+![Workflow Execution 场景中的参与者](https://learn.temporal.io/courses/temporal-101/go/understanding-workflow-execution/actors-in-scenario.png)
+
+工作分配是间接完成的。Temporal Cluster 不会把任务直接分配给某个 Worker；事实上，Temporal Cluster 并不维护 Worker 列表。相反，Worker 会持续轮询 Temporal Cluster 的 Task Queue，并在自身有足够处理能力时领取任务。这种方式有许多好处，其中之一是：如果 Worker 数量不足，任务会继续停留在队列中，因此可以通过增加 Worker 来提升吞吐量和可扩展性。  
+![Worker 与任务](https://learn.temporal.io/courses/temporal-101/go/understanding-workflow-execution/workers-and-tasks.png)
+
+正如前面所学，在生产环境中，Temporal 应用通常会运行多个 Worker。不过为了简化示例，这里只使用一个 Worker。  
+另一个有助于理解 Temporal 的概念是 Command（命令）的作用。当 Worker 在 Workflow Execution 期间遇到某些 API 调用时，例如调用 Workflow 的 `ExecuteActivity` 函数，它会向 Temporal Cluster 发送一个 Command。Cluster 会根据这些 Command 执行相应操作，例如创建一个 Activity Task，同时也会保存这些 Command，以便在发生故障时使用。  
+例如，如果 Worker 崩溃，Temporal Cluster 会将保存的信息发送给另一个 Worker，由它把 Workflow 的状态恢复到崩溃发生前的状态，然后从中断的位置继续执行。这样，开发者就可以像这些故障根本不可能发生一样编写代码。  
+![Commands](https://learn.temporal.io/courses/temporal-101/go/understanding-workflow-execution/commands-go.png)
+  
+应用程序定义了两个 Activity：`GreetInSpanish` 和 `FarewellInSpanish`。此外，它还定义了一个工具函数，供这两个 Activity 调用翻译服务。
+```go
+func GreetInSpanish(ctx context.Context, name string) (string, error) {
+    greeting, err := callService("get-spanish-greeting", name)
+    return greeting, err
+}
+
+func FarewellInSpanish(ctx context.Context, name string) (string, error) {
+    greeting, err := callService("get-spanish-farewell", name)
+    return greeting, err
+}
+
+// 调用微服务的工具函数
+func callService(stem string, name string) (string, error) {
+    base := "http://localhost:9999/" + stem + "?name=%s"
+    serviceURL := fmt.Sprintf(base, url.QueryEscape(name))
+
+    resp, err := http.Get(serviceURL)
+    if err != nil {
+        return "", err
+    }
+    defer resp.Body.Close()
+
+    body, err := ioutil.ReadAll(resp.Body)
+    if err != nil {
+        return "", err
+    }
+
+    translation := string(body)
+
+    status := resp.StatusCode
+    if status >= 400 {
+        message := fmt.Sprintf("HTTP Error %d: %s", status, translation)
+        return "", errors.New(message)
+    }
+
+    return translation, nil
+}
+```
+
+Workflow Definition 会执行这两个 Activity，并根据它们的输出拼接出一个字符串后返回。  
+
+```go
+package farewell
+
+import (
+    "time"
+
+    "go.temporal.io/sdk/workflow"
+)
+
+func GreetSomeone(ctx workflow.Context, name string) (string, error) {
+    options := workflow.ActivityOptions{
+        StartToCloseTimeout: time.Second * 5,
+    }
+    ctx = workflow.WithActivityOptions(ctx, options)
+
+    var spanishGreeting string
+    err := workflow.ExecuteActivity(ctx, GreetInSpanish, name).Get(ctx, &spanishGreeting)
+    if err != nil {
+        return "", err
+    }
+
+    var spanishFarewell string
+    err = workflow.ExecuteActivity(ctx, FarewellInSpanish, name).Get(ctx, &spanishFarewell)
+    if err != nil {
+        return "", err
+    }
+
+    helloGoodbye := "\n" + spanishGreeting + "\n" + spanishFarewell
+
+    return helloGoodbye, nil
+}
+```
+
+下面是 Worker 初始化代码，其中注册了 Workflow Definition 和 Activity Definition。  
+
+```go
+package main
+
+import (
+    "log"
+
+    farewell "temporal101/exercises/farewell-workflow/solution"
+
+    "go.temporal.io/sdk/client"
+    "go.temporal.io/sdk/worker"
+)
+
+func main() {
+    c, err := client.Dial(client.Options{})
+    if err != nil {
+        log.Fatalln("Unable to create client", err)
+    }
+    defer c.Close()
+
+    w := worker.New(c, "greeting-tasks", worker.Options{})
+
+    w.RegisterWorkflow(farewell.GreetSomeone)
+    w.RegisterActivity(farewell.GreetInSpanish)
+    w.RegisterActivity(farewell.FarewellInSpanish)
+
+    err = w.Run(worker.InterruptCh())
+    if err != nil {
+        log.Fatalln("Unable to start worker", err)
+    }
+}
+```
+
+可以看到 Temporal Application 的各个组成部分 - Worker、Temporal Cluster 和 Client Application - 如何在 Workflow Execution 期间协同工作。  
+
+
 // TBC...
