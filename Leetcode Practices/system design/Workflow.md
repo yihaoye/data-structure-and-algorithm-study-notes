@@ -560,5 +560,87 @@ func main() {
 
 可以看到 Temporal Application 的各个组成部分 - Worker、Temporal Cluster 和 Client Application - 如何在 Workflow Execution 期间协同工作。  
 
+### Workflow Execution 代码 walkthrough
+正如前面所讲，Worker 负责执行 Workflow 和 Activity 代码，因此除非至少有一个 Worker 正在运行，否则 Workflow Execution 无法继续推进。启动 Worker 会创建一个新的进程。由于这个示例使用 Go 编写，程序会先定位 `main` 包并运行 `main` 函数。这个函数首先创建一个 Temporal Client。
+
+接下来，程序使用这个 Client、Task Queue 名称以及用于配置 Worker 行为的选项，创建一个新的 Worker Entity。本示例使用默认选项。
+
+Worker 可以执行注册到自身的 Workflow Type 和 Activity Type 对应的 Workflow Task 和 Activity Task。
+
+运行 Worker Entity 会建立一条与 Temporal Cluster 的长连接，并利用这条连接持续轮询新任务。此时虽然 Worker 正在运行，但 Workflow 还没有启动，因此 Task Queue 为空，Worker 没有任务可做。  
+
+启动 Workflow 的一种方式是使用 `temporal` 命令行工具。这个示例会指定 Worker 使用的 Task Queue 名称、用户定义的 Workflow ID、Workflow Type 以及输入数据。  
+另一种方式是在自己的应用程序代码中启动 Workflow：使用 Temporal Client 调用 `ExecuteWorkflow` 函数，并传入输入参数。  
+无论采用哪种方式启动 Workflow，行为都是相同的：Temporal Cluster 会在这个 Workflow Execution 的 Event History 中记录一个新的 Event。`WorkflowExecutionStarted` 始终是第一个 Event。  
+
+在接下来的讲解中，请注意右侧显示的 Event History。随着 Workflow Execution 的推进，新的 Event 会逐个出现在这个 Event 下面。  
+
+Temporal Cluster 会向 Task Queue 添加一个 Workflow Task，并在 Event History 中记录另一个 Event：`WorkflowTaskScheduled`。它的命名遵循一个规律：当新 Task 被添加到队列时，对应 Event 的名称以 `Scheduled` 结尾。  
+
+由于 Worker Process 有能力处理新的任务，它会接收这个 Task。这样会产生一个新的 Event，其名称同样遵循特定规律：当 Worker 从队列中取出一个 Task 时，Cluster 会生成一个名称以 `Started` 结尾的 Event。  
+
+Worker Process 通过调用 Workflow Definition 中的函数来开始执行 Workflow Task，然后继续执行这个函数中的代码。在这个示例中，最开始的几条语句用于配置 Activity 的超时选项。  
+
+接下来，Workflow 代码声明一个变量，用来接收第一个 Activity 的输出，然后请求执行这个 Activity：`GreetInSpanish`。由于 `ExecuteActivity` 返回一个 `Future`，而示例会对这个 Future 调用 `Get`，所以代码会一直阻塞，直到 Activity Execution 完成。执行成功时可以访问输出，执行失败时则可以访问错误。  
+
+调用 `ExecuteActivity` 会产生几个重要结果。由于 Activity Execution 完成之前，Worker 无法继续推进 Workflow，因此它会通知 Cluster 当前 Workflow Task 已完成。Cluster 收到通知后，会向 Event History 添加一个新的 Event。同时，Worker 还会向 Cluster 发送一个 Command，请求 Cluster 调度一个 Activity Task。  
+Temporal Cluster 创建 Activity Task 并将其添加到 Task Queue，从而产生一个新的 Event。  
+由于 Worker Process 还有能力执行其他任务，它会接收这个 Activity Task。  
+Worker Entity 随后调用 `GreetInSpanish` Activity 对应的 Activity Definition 函数。  
+Worker 接着执行这个函数中的代码。在本例中，Activity 会调用工具函数，而工具函数进一步向微服务发起请求。  
+这次请求成功了，服务返回一条定制化的西班牙语问候语。  
+Activity 函数返回后，Worker 会通知 Temporal Cluster Activity Task 已完成，并因此产生一个新的 Event。  
+作为响应，Temporal Cluster 会将一个新的 Workflow Task 放入队列，并记录另一个 Event。  
+当 Worker 接收这个新 Task 后，Temporal Cluster 会将 `WorkflowTaskStarted` Event 添加到 Event History 中。  
+Worker 会从上次停止的位置继续执行，也就是执行 Workflow Definition 中的下一条语句。  
+
+现在轮到执行第二个 Activity，因此 Worker 会通知 Temporal Cluster 当前 Workflow Task 已完成，并发送一个 Command，请求调度 Activity Task。  
+Temporal Cluster 会为第二个 Activity 将一个 Activity Task 放入队列，并在 Event History 中记录一个 `ActivityTaskScheduled` Event。这里可以暂停一下，看看一种失败场景：如果 Worker 崩溃了，例如因为内存耗尽，会发生什么？  
+可以通过重启 Worker，或者在另一台机器上启动一个新的 Worker 来恢复。在这两种情况下，Temporal 都会自动重建 Workflow 在失败点之前的状态，因此执行会从那里继续，就像 Worker 从未崩溃一样。  
+在崩溃之前已经成功完成的 Activity 不会再次执行。Temporal 会复用这些 Activity 之前执行时返回的值。  
+当 Worker 接收 Activity Task 后，Temporal Cluster 会在 Event History 中添加 `ActivityTaskStarted`。  
+Worker 现在调用第二个 Activity 对应的函数。和之前一样，它会执行函数中的代码，并通过工具函数调用微服务。  
+但是，如果微服务恰好在请求发出前离线了，会发生什么？这时请求会失败，最终导致 Activity 函数返回错误。  
+Temporal 对失败 Activity 的默认行为是自动重试：每次重试之间会有一个较短的延迟，直到 Activity 成功或被取消。也可以通过 Retry Policy 自定义这一行为。  
+通过重试，Worker 会再次调用 Activity 函数；Activity 函数又会调用工具函数，并向微服务发起请求。  
+在这个示例中，假设刚才的服务中断是一次间歇性故障，因此重试时发出的请求成功了。  
+由于服务已经恢复在线，它会响应最新的请求，并返回所需的告别消息。  
+Activity 函数返回后，Worker 会通知 Temporal Cluster Activity Task 已完成。  
+Workflow 代码中仍有几行尚未执行，因此 Temporal Cluster 会将一个新的 Workflow Task 添加到队列中。  
+
+当 Worker 接收这个新 Task 时，Temporal Cluster 会在 Event History 中添加一个 `WorkflowTaskStarted` Event。Worker 会从上次停止的位置继续执行 Workflow Definition 中剩余的语句。  
+当 Workflow 函数返回后，Workflow Task 就完成了。由于 Workflow 函数已经返回，Workflow Execution 也随之完成，Cluster 会将最后一个 Event 添加到 Event History 中。  
+Worker 会继续轮询新的 Task，但已经没有与这个 Workflow Execution 相关的其他工作了。  
+
+Client Application 一直在等待 Workflow Execution 的结果，因为它被对 `Get` 的调用阻塞。现在，它会收到这个结果。  
+Cluster 将结果提供给应用程序，应用程序可以按照自己的需要处理这个结果。  
+至此就是 Workflow Execution 期间发生的完整过程。  
+
+### Temporal 101 核心要点
+下面总结上面最重要的内容：
+- Temporal 保证应用程序的持久化执行（Durable Execution）。
+- 在 Temporal 中，Workflow 通过代码定义，通常使用 Temporal SDK 编写。
+- Temporal Cluster 负责编排代码的执行。
+- Worker 负责实际执行代码。
+- Frontend Service 负责接收来自 Client 的请求，并在必要时将请求路由到合适的后端服务。这些请求以及后端服务之间的通信都使用 gRPC，并且可以通过 TLS 进行保护。
+- Temporal Cluster 维护动态创建的 Task Queue。
+- Worker 会持续轮询 Task Queue，并在有空闲处理能力时接收任务。
+- 通过增加 Worker，可以提升应用程序的可扩展性。
+- 部署代码变更后，必须重启 Worker。
+- 自托管 Temporal Cluster 有多种部署方式。
+- Temporal Cloud 提供基于用量的计费，是自建 Cluster 的一种便捷替代方案。
+- 迁移到 Temporal Cloud 或从 Temporal Cloud 迁出时，通常只需要对应用程序代码做很少改动。
+- Namespace 用于在 Cluster 内实现隔离。
+- 可以根据应用程序状态或所有权等维度创建 Namespace，从逻辑上进行隔离。
+- 在 Go SDK 中，Temporal Workflow 通过函数定义。
+- Activity 同样通过函数定义。
+- Activity 用于封装不可靠或非确定性的代码，例如调用 LLM、调用 API、查询数据库以及进行文件输入输出（File I/O）。
+- Activity 在失败时会自动重试。
+- 可以通过 Retry Policy 自定义重试行为。
+- 由于非确定性工作通过 Activity 执行，Temporal 可以用于构建持久化的 AI 应用，同时不会破坏 Workflow 的确定性要求。
+- Web UI 是了解应用程序运行情况的强大工具。
+- Web UI 会展示当前和最近的 Workflow Execution。
+- Web UI 会显示输入、输出以及 Event History。
+
 
 // TBC...
