@@ -25,6 +25,11 @@ Distributed Business Process
         └── Event-driven / Saga
 ```
 
+## n8n
+n8n 是一个可视化、基于节点的工作流自动化平台，常用于连接 SaaS、API、数据库和各种外部服务。近年来，n8n 增加了 AI Agent、LangChain、记忆管理、工具调用以及 MCP 等能力，也可以用于构建 AI 工作流。  
+它的主要特点是低代码（但还是支持嵌入有限的自定义代码逻辑的，这一点比 Zapier 更灵活。但代码运行在沙箱环境中 - 尤其 Python 是 Pyodide 不能装 pip 包，外部依赖和复杂逻辑有限，更适合胶水层面的定制，而非核心业务逻辑）、自托管能力强、上手门槛较低，并同时提供 Cloud 和 self-hosted 部署方式。不同版本和套餐的计费方式不同，通常与工作流执行量或订阅方案有关。  
+与 Temporal 相比，n8n 更偏向可视化集成、自动化和快速搭建；Temporal 更偏向代码驱动的 Durable Execution，适合长时间运行、需要可靠恢复、重试和精确状态管理的业务流程。而 n8n 调试和版本管理较差，更适合做一个原型 MVP、快速验证一个自动化想法能不能跑通，多用于业务、运营、独立开发者，如果构建工业、生产级应用、系统，还是需要考虑 Temporal 等更专业的解决方案。[更多关于 n8n vs Temporal](https://www.reddit.com/r/AiAutomations/comments/1o2z3d4/n8n_vs_pure_code_temporal_langchain_etc_for/?tl=zh-hans)  
+
 ## Temporal 101
 是一个分布式工作流编排 / Durable Execution（持久化执行）系统。把一个跨服务、跨时间、可能执行几天甚至几个月的业务流程，写成一段代码，然后 Temporal 保证它最终能够可靠地执行完。[Temporal 101](https://temporal.talentlms.com/plus/my/training/126/units/2101)  
 
