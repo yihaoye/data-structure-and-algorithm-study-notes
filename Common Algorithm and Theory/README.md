@@ -190,6 +190,12 @@ This personal Blog contains explanation and **Java library/template implementati
       - DHT 的 Kademlia 协议
       - DHT 的 Chord 算法 ([Wiki](https://en.wikipedia.org/wiki/Chord_(peer-to-peer)))
       - [Gossip 协议/流行病协议](../Computer%20System%20Layer/数据库/Dynamo/README.md#Gossip-协议)
+    - 分布式系统时钟算法
+      - NTP 协议 | Network Time Protocol
+      - Lamport 逻辑时钟 | Lamport Logical Clock
+      - 向量时钟算法 | Vector Clock ([Ref](https://yang.observer/2020/09/12/vector-clock/)。用于分布式系统中记录事件的发生顺序和因果关系，它的思想是进程间通信的时候，不光同步本进程的时钟值，还同步自己知道的其他进程的时钟值。时间复杂度为 `O(N)`，其中 N 是参与进程的数量)
+      - TrueTime (Google Spanner 的分布式时钟系统，结合了 GPS 和原子钟来提供全局一致的时间戳，保证了分布式事务的一致性和可串行化)
+      - 混合逻辑时钟 | Hybrid Logical Clock
   - [人工智能, 机器学习, 数据挖掘 | Artificial Intelligence, Machine Learning, Data Mining](./机器学习.md) ([人工智能分类](./人工智能分类.jpeg)、[ML 算法时间复杂度](./ML-Algorithms-Time-Complexity.jpeg)、[训练与推断过程](./Training-and-Inference-workflow-diagram.png))
     - [决策树算法 | Decision Tree Algorithm](./机器学习.md#决策树) ([Ref 1](./decision-tree.png)、[Ref 2](https://www.ibm.com/cn-zh/topics/decision-trees))
       - [随机森林 | Random Forest](./机器学习.md#随机森林) ([Ref](https://www.nvidia.cn/glossary/data-science/random-forest/))
