@@ -1,4 +1,4 @@
-// Package bplustree 是一个内存中的 B+ 树示例实现，用来学习原理。
+// Package bplustree 是一个内存中的 B+ 树示例实现，用来学习原理。By Claude
 //
 // 规则（阶数 order = m，表示一个节点最多有 m 个孩子）：
 //   - 内部节点：最多 m-1 个键、m 个孩子；非根节点至少 ⌈m/2⌉-1 个键。
