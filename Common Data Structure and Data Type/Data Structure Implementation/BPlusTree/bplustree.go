@@ -286,6 +286,11 @@ func (t *Tree[K, V]) rebalanceInternal(parent *node[K, V], i int) {
 	}
 
 	// 2. 向右兄弟借（左旋）。
+	// 实际挪走的是 right.children[0] 这整棵子树，它的键范围是 [parent.keys[i], right.keys[0])
+	// 子树挪到 n 的最右边后，n 需要一个新键把它和 n 原来的最后一个孩子分开，这个键必须是子树的下界 parent.keys[i]（下移）。上界 right.keys[0] 则上移到父节点，作为 n 和 right 之间新的分隔键。
+	//
+	// 注意不能把 right.keys[0] 放进 n：那样 [parent.keys[i], right.keys[0]) 之间的键会被导向 n 原来的最后一个孩子，查找就找不到了。
+	// 叶子借键时写的是 parent.keys[i] = right.keys[0]，那是在更新父节点，而且叶子借的是单个键值对，不涉及子树，和这里不一样。
 	if i < len(parent.children)-1 {
 		right := parent.children[i+1]
 		if len(right.keys) > t.minInternal {
