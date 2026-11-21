@@ -71,8 +71,8 @@
       - [LCT 树 | Link-Cut Tree](https://oi-wiki.org/ds/lct/)
     - 自平衡搜索树 | Self-Balanced Search Tree
       - [B/B+ 树 | B/B+ Tree](./Data%20Structure%20Implementation/BPlusTree/README.md)
+        - [2–3 树 | 2-3 Tree](./Data%20Structure%20Implementation/BPlusTree/README.md#2-3-树) (还有 [2-3-4 树](https://zh.wikipedia.org/wiki/2-3-4%E6%A0%91)等)
         - 枫树 | Maple Tree (应用场景如 Linux 内核，相比红黑树，枫树是 RCU/Read-Copy-Update 并发安全的、树的高度更低、更高效的缓存，并且独立支持有序遍历 - 红黑树则还需要结合双向链表才行。[Ref 1](https://lpc.events/event/16/contributions/1226/attachments/1116/2145/Maple_Tree.pdf)、[Ref 2](https://richardweiyang-2.gitbook.io/kernel-exploring/00-index-3/06-maple_tree))
-      - 2–3 树 | 2-3 Tree
     - [R 树 | R Tree](./../Common%20Algorithm%20and%20Theory/QuadTree-RTree-算法.md) (平均时间复杂度 O(log<sub>M</sub>N) 这里 M 是平均分支因子/出度，最差时间复杂度 O(N)。2D、3D 的空间索引，理论上不如 K-D 树通用，但是工程上广泛用于 GIS 系统的空间索引)
       - R* 树 | R* Tree ([Wiki](https://zh.wikipedia.org/wiki/R*%E6%A0%91)，[Ref 1](https://baige5117.github.io/blog/R*-Tree.html))
     - [H 树 | H Tree](https://en.wikipedia.org/wiki/HTree)
