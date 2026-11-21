@@ -688,6 +688,20 @@
 * [Docker Compose 是什么](https://www.cnblogs.com/sparkdev/p/9753793.html)
 * [Docker 群（Swarm）是什么](https://www.modb.pro/db/404626)
 * [在使用 Docker 技术的产品中如何监控其运行](https://www.modb.pro/db/404626)
+* 为什么不建议用 Docker 跑数据库
+  - 根本原因：容器的设计是 "随时可以丢弃、重建"，适合无状态服务，而数据库恰好相反是有状态的。
+    - 有状态：服务要保存数据，结果取决于过去发生的事，数据丢了就找不回来。数据库就是典型。
+    - 无状态：服务本身不保存必须留住的数据，可以随时重启、删掉或者多开几个副本。普通的 Web API 就是这样。
+    - 无状态服务像收银员，换谁都一样；数据库像账本，丢了或记乱了就对不上账。
+  - 具体的坑：
+    - 不挂数据卷，或者误删数据卷，数据就没了。
+    - 容器文件系统写入慢；Mac、Windows 的 Docker Desktop 挂载目录也慢。
+    - 数据库按宿主机内存配置缓存，超过容器的内存上限就会被 OOM 杀掉。`docker stop` 默认只等 10 秒，数据库来不及正常关闭就被强制杀掉。Kubernetes 会把容器调度到别的节点，数据却留在原来的磁盘上。内核参数是和宿主机共享的。端口映射会增加一点网络延迟。
+  - 更深一层：Docker 只解决了 "怎么跑起来"。备份、复制、高可用、升级、监控这些难题，Docker 都不管。
+  - 结论
+    - 开发、测试、CI：非常推荐用 Docker 跑数据库。
+    - 生产环境：可以，但要处理好持久化、内存、关闭流程、备份这几件事。在 Kubernetes 上用成熟的 operator。
+    - 团队没有专人运维数据库：优先用云厂商托管的数据库。
 * [CPU 与 GPU 的区别](https://www.youtube.com/watch?v=Axd50ew4pco) - 简单就是 CPU 更通用但是串行处理适合少量但复杂的任务，GPU 是专用于可以并行处理的问题、场景适合大量且重复的任务。CPU 每个核心及其 ALU（执行单元）更复杂能力更强但数量较少，GPU 每个核心及其 ALU 更简单能力更弱的数量众多。CPU 核心通常 8-64 个，而 GPU 的核心通常几千甚至上万多，且单个 GPU 核心的 ALU 数量也多于单个 CPU 核心的 ALU 数量，除此之外还有[架构的区别](https://medium.com/@rohithreddy66666/decoding-cpu-vs-gpu-a-detailed-exploration-of-nvidia-and-amd-gpu-architectures-e09ebfb594ed)。![](./CPU%20vs%20GPU.png)
   * GPU 适用于人工智能的原因：深度学习的核心及大部分计算是大规模矩阵运算（尤其是全连接层、卷积层、[注意力机制](https://zhuanlan.zhihu.com/p/410776234)、梯度下降与反向传播、神经网络每一层都是矩阵运算），而矩阵运算本质上是数十万、数百万个相同类型的简单计算，可以在不同数据元素之间完全并行。
 * [Nvidia CUDA](https://www.youtube.com/watch?v=pPStdjuYzSI)、[一句话讲清楚什么是 CUDA，人人都能听懂的 CUDA 概念](https://mcp.csdn.net/68005931a5baf817cf49109b.html)、[什麼是 CUDA](https://blogs.nvidia.com.tw/blog/what-is-cuda-2/) - 是一种协助 CPU 任务分发 + GPU 并行处理的编程模型/平台，用于加速 GPU 和 CPU 之间的计算。也就是说 CUDA 通过 CPU 任务分发和 GPU 并行处理的方式，把计算任务通过 CPU 分发给 GPU 进行并行计算加速。而 GPU 并行计算的能力需要 CUDA 借助其自带的编程接口和工具，比如 C/C++ 语言来编写并行计算程序，并通过 CUDA 编译器将程序转化为可以在 NVIDIA GPU 上执行的机器码快速运行。
