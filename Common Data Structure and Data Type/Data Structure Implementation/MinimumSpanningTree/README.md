@@ -10,9 +10,6 @@ https://www.youtube.com/watch?v=wmW8G8SrXDs
 
 ![](./mst1.png)  
 
-## Chazelle 算法
-确定性算法（非随机算法），时间复杂度为 `O(m·α(m,n))`，α 是反 Ackermann 函数，实际中几乎等于常数，但理论上并不是线性。  
-
 ## Prim 算法
 原理：贪心 + 优先队列  
 Time: O(E*logV), Space: O(V+E)  
@@ -118,3 +115,10 @@ class Solution {
 ## 例题
 * [Leetcode Q1135](./../../../Leetcode%20Practices/algorithms/medium/1135%20Edgeecting%20Cities%20With%20Minimum%20Cost.java)
 * [Leetcode Q1168](./../../../Leetcode%20Practices/algorithms/hard/1168%20Optimize%20Water%20Distribution%20in%20a%20Village.java)
+
+## Chazelle 算法
+确定性算法（非随机算法），时间复杂度为 `O(M·α(M,N))`，α 是反 Ackermann 函数，实际中几乎等于常数，但理论上并不是线性。  
+
+核心思路可以概括：用一个允许出错的优先队列（Chazelle 发明的 soft heap，会故意损坏一部分键值的近似优先队列）来近似地找 MST，把被弄错的边先放到一边，再递归地修正。该算法结构非常复杂，常数也大，主要是理论上的突破，实际工程中几乎没人用。实践中大家还是用 Kruskal、Prim 或 Borůvka，它们的 `O(M*logN)` 对真实数据已经足够快。  
+
+2026 年 11 月的[新论文](https://arxiv.org/abs/2611.31187)（预印本，尚未经同行评审）声称证明了 MST 存在确定性的 `O(M)` 线性时间算法。思路不是改进 Chazelle 算法，而是证明 MST 的确定性比较复杂度为线性，再借助 Pettie–Ramachandran（2002）的最优算法得出结论。  
