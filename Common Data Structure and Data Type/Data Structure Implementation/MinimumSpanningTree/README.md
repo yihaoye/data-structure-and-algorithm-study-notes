@@ -10,6 +10,9 @@ https://www.youtube.com/watch?v=wmW8G8SrXDs
 
 ![](./mst1.png)  
 
+## Chazelle 算法
+确定性算法（非随机算法），时间复杂度为 `O(m·α(m,n))`，α 是反 Ackermann 函数，实际中几乎等于常数，但理论上并不是线性。  
+
 ## Prim 算法
 原理：贪心 + 优先队列  
 Time: O(E*logV), Space: O(V+E)  
